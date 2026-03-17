@@ -1605,15 +1605,14 @@ const scenes = {};
 //  SCENE 5 — MYSTERY COW
 // =============================================
 class Scene5 extends BaseScene {
-  constructor() { super('canvas-s5'); this.t = 0; this.phase = 0; this.phaseTimer = 0; }
-  init() {
-    this.canvas.onclick = (e) => {
-      const r = this.canvas.getBoundingClientRect();
-      const mx = (e.clientX - r.left) * (CW / r.width);
-      const my = (e.clientY - r.top)  * (CH / r.height);
-      if (mx > 220 && mx < 340 && my > 80 && my < 170) showVersePopup('cow_slaughter');
-      if (mx > 370 && mx < 500 && my > 60 && my < 170) showVersePopup('man_revived');
-    };
+  constructor() {
+    super('canvas-s5');
+    if (!this.canvas) return;
+    this.phase = 0; this.phaseTimer = 0;
+    this.clickZones = [
+      { x: 215, y: 78,  w: 135, h: 100, key: 'cow_slaughter' },
+      { x: 375, y: 55,  w: 115, h: 120, key: 'man_revived'   },
+    ];
   }
   draw() {
     const ctx = this.ctx;
@@ -1691,13 +1690,14 @@ class Scene5 extends BaseScene {
 //  SCENE 6 — HARD HEART
 // =============================================
 class Scene6 extends BaseScene {
-  constructor() { super('canvas-s6'); this.t = 0; this.spots = 0; this.spotTimer = 0; }
-  init() {
-    this.canvas.onclick = (e) => {
-      const r  = this.canvas.getBoundingClientRect();
-      const mx = (e.clientX - r.left) * (CW / r.width);
-      showVersePopup(mx < CW / 2 ? 'hard_heart' : 'hard_heart');
-    };
+  constructor() {
+    super('canvas-s6');
+    if (!this.canvas) return;
+    this.spots = 0; this.spotTimer = 0;
+    this.clickZones = [
+      { x: 0,      y: 0, w: CW / 2, h: CH, key: 'hard_heart' },
+      { x: CW / 2, y: 0, w: CW / 2, h: CH, key: 'hard_heart' },
+    ];
   }
   draw() {
     const ctx = this.ctx;
@@ -1780,15 +1780,15 @@ class Scene6 extends BaseScene {
 //  SCENE 7 — IBRAHIM BUILDS THE KA'BA
 // =============================================
 class Scene7 extends BaseScene {
-  constructor() { super('canvas-s7'); this.t = 0; this.blocksBuilt = 0; }
-  init() {
-    this.canvas.onclick = (e) => {
-      const r  = this.canvas.getBoundingClientRect();
-      const mx = (e.clientX - r.left) * (CW / r.width);
-      const my = (e.clientY - r.top)  * (CH / r.height);
-      if (mx > 190 && mx < 370 && my > 40 && my < 170) showVersePopup('ka_ba_building');
-      else showVersePopup('ibrahim_dua');
-    };
+  constructor() {
+    super('canvas-s7');
+    if (!this.canvas) return;
+    this.blocksBuilt = 0;
+    this.clickZones = [
+      { x: 190, y: 30, w: 185, h: 135, key: 'ka_ba_building' },
+      { x: 0,   y: 0,  w: 190, h: CH,  key: 'ibrahim_dua'    },
+      { x: 375, y: 0,  w: 185, h: CH,  key: 'ibrahim_dua'    },
+    ];
   }
   draw() {
     const ctx = this.ctx;
@@ -1866,13 +1866,13 @@ class Scene7 extends BaseScene {
 //  SCENE 8 — THE NEW DIRECTION (QIBLA CHANGE)
 // =============================================
 class Scene8 extends BaseScene {
-  constructor() { super('canvas-s8'); this.t = 0; }
-  init() {
-    this.canvas.onclick = (e) => {
-      const r  = this.canvas.getBoundingClientRect();
-      const mx = (e.clientX - r.left) * (CW / r.width);
-      showVersePopup(mx < CW / 2 ? 'qibla_verse' : 'inna_lillahi');
-    };
+  constructor() {
+    super('canvas-s8');
+    if (!this.canvas) return;
+    this.clickZones = [
+      { x: 0,      y: 0, w: CW / 2, h: CH, key: 'qibla_verse'  },
+      { x: CW / 2, y: 0, w: CW / 2, h: CH, key: 'inna_lillahi' },
+    ];
   }
   draw() {
     const ctx = this.ctx;
@@ -1935,13 +1935,13 @@ class Scene8 extends BaseScene {
 //  SCENE 9 — AL-BIRR (5 TRAITS ORBITING)
 // =============================================
 class Scene9 extends BaseScene {
-  constructor() { super('canvas-s9'); this.t = 0; }
-  init() {
-    this.canvas.onclick = (e) => {
-      const r  = this.canvas.getBoundingClientRect();
-      const mx = (e.clientX - r.left) * (CW / r.width);
-      showVersePopup(mx < CW/2 ? 'al_birr' : 'ramadan_verse');
-    };
+  constructor() {
+    super('canvas-s9');
+    if (!this.canvas) return;
+    this.clickZones = [
+      { x: 0,      y: 0, w: CW / 2, h: CH, key: 'al_birr'       },
+      { x: CW / 2, y: 0, w: CW / 2, h: CH, key: 'ramadan_verse'  },
+    ];
   }
   draw() {
     const ctx = this.ctx;
@@ -2024,13 +2024,14 @@ class Scene9 extends BaseScene {
 //  SCENE 10 — BATTLE: TALUT, JALUT & DAWUD
 // =============================================
 class Scene10 extends BaseScene {
-  constructor() { super('canvas-s10'); this.t = 0; this.phase = 0; }
-  init() {
-    this.canvas.onclick = (e) => {
-      const r  = this.canvas.getBoundingClientRect();
-      const mx = (e.clientX - r.left) * (CW / r.width);
-      showVersePopup(mx < CW * 0.55 ? 'small_army' : 'dawud_jalut');
-    };
+  constructor() {
+    super('canvas-s10');
+    if (!this.canvas) return;
+    this.phase = 0;
+    this.clickZones = [
+      { x: 0,          y: 0, w: CW * 0.55,  h: CH, key: 'small_army'  },
+      { x: CW * 0.55,  y: 0, w: CW * 0.45,  h: CH, key: 'dawud_jalut' },
+    ];
   }
   draw() {
     const ctx = this.ctx;
@@ -2128,9 +2129,12 @@ class Scene10 extends BaseScene {
 //  SCENE 11 — AYAT AL-KURSI (COSMIC THRONE)
 // =============================================
 class Scene11 extends BaseScene {
-  constructor() { super('canvas-s11'); this.t = 0; }
-  init() {
-    this.canvas.onclick = () => showVersePopup('ayat_kursi');
+  constructor() {
+    super('canvas-s11');
+    if (!this.canvas) return;
+    this.clickZones = [
+      { x: 0, y: 0, w: CW, h: CH, key: 'ayat_kursi' },
+    ];
   }
   draw() {
     const ctx = this.ctx;
@@ -2221,13 +2225,13 @@ class Scene11 extends BaseScene {
 //  SCENE 12 — CHARITY GARDEN (GROWING PLANT)
 // =============================================
 class Scene12 extends BaseScene {
-  constructor() { super('canvas-s12'); this.t = 0; }
-  init() {
-    this.canvas.onclick = (e) => {
-      const r  = this.canvas.getBoundingClientRect();
-      const mx = (e.clientX - r.left) * (CW / r.width);
-      showVersePopup(mx < CW * 0.6 ? 'charity_parable' : 'charity_cancelled');
-    };
+  constructor() {
+    super('canvas-s12');
+    if (!this.canvas) return;
+    this.clickZones = [
+      { x: 0,          y: 0, w: CW * 0.62, h: CH, key: 'charity_parable'   },
+      { x: CW * 0.62,  y: 0, w: CW * 0.38, h: CH, key: 'charity_cancelled' },
+    ];
   }
   draw() {
     const ctx = this.ctx;
@@ -2309,13 +2313,13 @@ class Scene12 extends BaseScene {
 //  SCENE 13 — THE FINAL TREASURE (NIGHT DU'A)
 // =============================================
 class Scene13 extends BaseScene {
-  constructor() { super('canvas-s13'); this.t = 0; }
-  init() {
-    this.canvas.onclick = (e) => {
-      const r  = this.canvas.getBoundingClientRect();
-      const my = (e.clientY - r.top) * (CH / r.height);
-      showVersePopup(my < CH * 0.6 ? 'amana_rasul' : 'la_yukallifu');
-    };
+  constructor() {
+    super('canvas-s13');
+    if (!this.canvas) return;
+    this.clickZones = [
+      { x: 0, y: 0,          w: CW, h: CH * 0.6, key: 'amana_rasul'  },
+      { x: 0, y: CH * 0.6,   w: CW, h: CH * 0.4, key: 'la_yukallifu' },
+    ];
   }
   draw() {
     const ctx = this.ctx;
