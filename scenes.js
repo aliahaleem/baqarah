@@ -336,6 +336,102 @@ const VERSES = {
     english: '"There gushed forth twelve springs, and every people knew their watering place."',
     note: 'One rock. One strike from Musa\'s staff. Twelve springs — one for each tribe — so that no tribe would crowd or argue. Allah solved the social problem AND the thirst problem in one miracle. This is the precision of Allah\'s care.',
   },
+  cow_slaughter: {
+    ref: 'Al-Baqarah 2:67',
+    arabic: 'إِنَّ اللَّهَ يَأْمُرُكُمْ أَن تَذْبَحُوا بَقَرَةً',
+    english: '"Indeed, Allah commands you to slaughter a cow."',
+    note: 'A simple command. But Bani Isra\'il asked so many questions that the command became harder on themselves. The lesson: when Allah commands, obey first. Asking unnecessary questions is a sign of a heart that resists obedience.',
+  },
+  man_revived: {
+    ref: 'Al-Baqarah 2:73',
+    arabic: 'فَقُلْنَا اضْرِبُوهُ بِبَعْضِهَا ۚ كَذَٰلِكَ يُحْيِي اللَّهُ الْمَوْتَىٰ',
+    english: '"We said: Strike him [the dead man] with part of it. Thus does Allah bring the dead to life, and He shows you His signs so that you might reason."',
+    note: 'A miracle of justice: the dead man came back to life, named his killer, then died again. Allah can reverse death to bring out truth. He who controls life and death needs no courtroom.',
+  },
+  hard_heart: {
+    ref: 'Al-Baqarah 2:74',
+    arabic: 'ثُمَّ قَسَتْ قُلُوبُكُم مِّن بَعْدِ ذَٰلِكَ فَهِيَ كَالْحِجَارَةِ أَوْ أَشَدُّ قَسْوَةً',
+    english: '"Then your hearts became hardened after that, being like stones or even harder. For indeed, some rocks have rivers gushing from them — some split and water comes out — but from your hearts: nothing."',
+    note: 'The Prophet ﷺ said: "When a person commits a sin, a black dot appears on his heart. If he repents, it is erased. If he continues, it spreads until his heart is completely covered." (Ibn Majah). This is the "Ran" — the stain — of the heart. The cure: tawbah today, before tomorrow.',
+  },
+  ka_ba_building: {
+    ref: 'Al-Baqarah 2:127',
+    arabic: 'وَإِذْ يَرْفَعُ إِبْرَاهِيمُ الْقَوَاعِدَ مِنَ الْبَيْتِ وَإِسْمَاعِيلُ رَبَّنَا تَقَبَّلْ مِنَّا ۖ إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ',
+    english: '"And when Ibrahim was raising the foundations of the House with Ismail: Our Lord! Accept from us! Indeed You are the All-Hearing, All-Knowing."',
+    note: 'Every time you face the Ka\'ba in salah, you face the place these two built with their own hands. And they made du\'a with every stone: "Accept from us, O Allah." What a beautiful way to work — always asking Allah to accept what you do.',
+  },
+  ibrahim_dua: {
+    ref: 'Al-Baqarah 2:129',
+    arabic: 'رَبَّنَا وَابْعَثْ فِيهِمْ رَسُولًا مِّنْهُمْ يَتْلُو عَلَيْهِمْ آيَاتِكَ',
+    english: '"Our Lord! Raise from among them a messenger who will recite Your verses to them, teach them the Book and wisdom, and purify them."',
+    note: 'Ibrahim and Ismail made this du\'a over 2,500 years before the Prophet ﷺ was born. And Allah answered it with our beloved Prophet Muhammad ﷺ. No du\'a made sincerely is ever wasted. SubhanAllah.',
+  },
+  qibla_verse: {
+    ref: 'Al-Baqarah 2:144',
+    arabic: 'فَوَلِّ وَجْهَكَ شَطْرَ الْمَسْجِدِ الْحَرَامِ ۚ وَحَيْثُ مَا كُنتُمْ فَوَلُّوا وُجُوهَكُمْ شَطْرَهُ',
+    english: '"Turn your face toward al-Masjid al-Haram. And wherever you are, turn your faces toward it."',
+    note: 'Before this command, Muslims faced Jerusalem (Masjid al-Aqsa). The change of Qibla was a test: who truly follows the Messenger ﷺ, and who follows their own preferences?',
+  },
+  inna_lillahi: {
+    ref: 'Al-Baqarah 2:155–157',
+    arabic: 'الَّذِينَ إِذَا أَصَابَتْهُم مُّصِيبَةٌ قَالُوا إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ',
+    english: '"Those who, when disaster strikes them, say: Indeed we belong to Allah, and indeed to Him we will return — upon those are blessings from their Lord and mercy. And it is those who are rightly guided."',
+    note: 'The Prophet ﷺ said no Muslim is struck by even a thorn except that Allah uses it to raise their rank or erase a sin — if they are patient. Say "Inna lillahi wa inna ilayhi raji\'un" whenever anything goes wrong, big or small.',
+  },
+  al_birr: {
+    ref: 'Al-Baqarah 2:177',
+    arabic: 'لَّيْسَ الْبِرَّ أَن تُوَلُّوا وُجُوهَكُمْ قِبَلَ الْمَشْرِقِ وَالْمَغْرِبِ وَلَٰكِنَّ الْبِرَّ مَنْ آمَنَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ',
+    english: '"Righteousness is not that you turn your faces East or West. Righteousness is in one who believes in Allah, the Last Day, the angels, the Book, and the Prophets — and gives wealth despite love of it to relatives, orphans, the needy and travellers..."',
+    note: 'Al-Birr is the Arabic word for complete goodness — a tree with many branches. Belief is the root. From it grows generosity, worship, integrity and patience. You can\'t claim to be truly righteous if even one branch is missing.',
+  },
+  ramadan_verse: {
+    ref: 'Al-Baqarah 2:183',
+    arabic: 'يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ',
+    english: '"O believers! Fasting has been prescribed for you — as it was prescribed for those before you — so that you may develop taqwa (God-consciousness)."',
+    note: 'Every Prophet\'s nation was commanded to fast. It is not unique to Islam — it is the universal training of the soul. The goal is taqwa: being aware of Allah in every moment, even when no one is watching.',
+  },
+  small_army: {
+    ref: 'Al-Baqarah 2:249',
+    arabic: 'كَم مِّن فِئَةٍ قَلِيلَةٍ غَلَبَتْ فِئَةً كَثِيرَةً بِإِذْنِ اللَّهِ ۗ وَاللَّهُ مَعَ الصَّابِرِينَ',
+    english: '"How many a small company has overcome a large company by permission of Allah. And Allah is with the patient."',
+    note: 'This verse was revealed about Talut\'s army — but it applies to every test in life. When you feel overwhelmed and outnumbered, remember: it is not the size of the army. It is whether Allah is with you.',
+  },
+  dawud_jalut: {
+    ref: 'Al-Baqarah 2:251',
+    arabic: 'فَهَزَمُوهُم بِإِذْنِ اللَّهِ وَقَتَلَ دَاوُودُ جَالُوتَ وَآتَاهُ اللَّهُ الْمُلْكَ وَالْحِكْمَةَ',
+    english: '"So they defeated them by Allah\'s permission, and Dawud killed Jalut, and Allah gave him the kingship and wisdom and taught him from whatever He willed."',
+    note: 'Dawud was not a king or general when he faced Jalut. He was young — perhaps a shepherd. But he had certainty in Allah. That certainty moved a stone further than any sword.',
+  },
+  ayat_kursi: {
+    ref: 'Al-Baqarah 2:255',
+    arabic: 'اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ',
+    english: '"Allah — there is no deity except Him, the Ever-Living, the Sustainer of existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth..."',
+    note: 'The Prophet ﷺ said this is the greatest verse in the Quran. Whoever recites it after every salah — nothing stands between them and Paradise except death. Whoever recites it before sleeping — an angel guards them all night.',
+  },
+  charity_parable: {
+    ref: 'Al-Baqarah 2:261',
+    arabic: 'مَّثَلُ الَّذِينَ يُنفِقُونَ أَمْوَالَهُمْ فِي سَبِيلِ اللَّهِ كَمَثَلِ حَبَّةٍ أَنبَتَتْ سَبْعَ سَنَابِلَ فِي كُلِّ سُنبُلَةٍ مِّائَةُ حَبَّةٍ',
+    english: '"The example of those who spend in the way of Allah is like a grain that grows seven spikes; in each spike is a hundred grains. And Allah multiplies for whom He wills."',
+    note: '1 grain → 7 heads → 700 grains. And then "Allah multiplies for whom He wills" — meaning it can go far beyond 700. Every dirham given sincerely for Allah multiplies in the next life in ways we cannot imagine.',
+  },
+  charity_cancelled: {
+    ref: 'Al-Baqarah 2:264',
+    arabic: 'لَا تُبْطِلُوا صَدَقَاتِكُم بِالْمَنِّ وَالْأَذَىٰ',
+    english: '"Do not cancel your charities with reminders and hurt (mann and adha)."',
+    note: 'The two destroyers of charity: 1) Mann — reminding the person what you gave them. 2) Adha — hurting their feelings or looking down on them. A single word of reminder can erase years of giving.',
+  },
+  amana_rasul: {
+    ref: 'Al-Baqarah 2:285',
+    arabic: 'آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ وَالْمُؤْمِنُونَ ۚ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ',
+    english: '"The Messenger has believed in what was revealed to him from his Lord, and so have the believers. All of them have believed in Allah, His angels, His books, and His messengers — we make no distinction between any of His messengers."',
+    note: 'This is the declaration of the whole Ummah. We believe in ALL the Prophets. Not just Muhammad ﷺ — but also Musa, Isa, Ibrahim, Dawud and every Prophet sent before. They all brought the same message: worship Allah alone.',
+  },
+  la_yukallifu: {
+    ref: 'Al-Baqarah 2:286',
+    arabic: 'لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا',
+    english: '"Allah does not burden a soul beyond its capacity. It will have [the consequence of] what [good] it has gained, and it will bear [the consequence of] what [evil] it has earned."',
+    note: 'This is one of the most comforting verses in the Quran. Whatever you are going through — Allah already knows it is within your ability. He designed you for exactly the life He gave you. You are never given more than you can carry with His help.',
+  },
 };
 
 // ---- HTML POPUP ----
@@ -1505,11 +1601,802 @@ class Scene4 extends BaseScene {
 
 const scenes = {};
 
+// =============================================
+//  SCENE 5 — MYSTERY COW
+// =============================================
+class Scene5 extends BaseScene {
+  constructor() { super('canvas-s5'); this.t = 0; this.phase = 0; this.phaseTimer = 0; }
+  init() {
+    this.canvas.onclick = (e) => {
+      const r = this.canvas.getBoundingClientRect();
+      const mx = (e.clientX - r.left) * (CW / r.width);
+      const my = (e.clientY - r.top)  * (CH / r.height);
+      if (mx > 220 && mx < 340 && my > 80 && my < 170) showVersePopup('cow_slaughter');
+      if (mx > 370 && mx < 500 && my > 60 && my < 170) showVersePopup('man_revived');
+    };
+  }
+  draw() {
+    const ctx = this.ctx;
+    this.t++;
+    // Sky + ground
+    ctx.fillStyle = '#7ec8e3'; fillRect(ctx, 0, 0, CW, CH * 0.55);
+    ctx.fillStyle = '#5d8a3c'; fillRect(ctx, 0, CH * 0.55, CW, CH * 0.45);
+    // Crowd (left)
+    const crowd = ['#c8a870','#a07840','#d4b080','#b08050'];
+    for (let i = 0; i < 5; i++) {
+      ctx.fillStyle = crowd[i % crowd.length];
+      const cx = 30 + i * 36, cy = 80;
+      fillRect(ctx, cx, cy, 16, 22); // body
+      fillRect(ctx, cx + 2, cy - 14, 12, 12); // head
+      // "?" bubble
+      ctx.fillStyle = '#fff'; ctx.font = `bold 10px sans-serif`; ctx.textAlign = 'center';
+      ctx.fillText('?', cx + 8, cy - 18);
+    }
+    // Golden Cow (centre)
+    const bobY = Math.sin(this.t * 0.04) * 2;
+    const glow = Math.abs(Math.sin(this.t * 0.05));
+    ctx.fillStyle = `rgba(255,215,0,${0.2 + glow * 0.2})`;
+    fillRect(ctx, 210, 88 + bobY, 140, 80);
+    ctx.fillStyle = '#d4a800'; // body
+    fillRect(ctx, 228, 102 + bobY, 88, 50);
+    ctx.fillStyle = '#e8bc00'; // lighter top
+    fillRect(ctx, 232, 98  + bobY, 80, 20);
+    ctx.fillStyle = '#a07800'; // legs
+    for (let i = 0; i < 4; i++) fillRect(ctx, 236 + i*20, 148 + bobY, 10, 20);
+    ctx.fillStyle = '#c09000'; // head
+    fillRect(ctx, 226, 96 + bobY, 22, 24);
+    // horns
+    ctx.fillStyle = '#804000';
+    fillRect(ctx, 224, 88 + bobY, 4, 10);
+    fillRect(ctx, 244, 88 + bobY, 4, 10);
+    // cow label
+    ctx.fillStyle = '#fff'; ctx.font = `bold 9px sans-serif`; ctx.textAlign = 'center';
+    ctx.fillText('🐄 CLICK ME', 280, 96 + bobY);
+
+    // Dead/rising figure (right)
+    const risingY = this.phase >= 1 ? Math.max(60, 110 - (this.t - this.phaseTimer) * 0.5) : 110;
+    ctx.fillStyle = this.phase >= 1 ? '#c8d8f0' : '#808080';
+    fillRect(ctx, 400, risingY, 18, 26); // body
+    fillRect(ctx, 402, risingY - 14, 14, 12); // head
+    if (this.phase >= 1) {
+      // pointing arm
+      ctx.fillStyle = '#c8d8f0';
+      fillRect(ctx, 416, risingY + 4, 20, 6);
+      ctx.fillStyle = '#fff'; ctx.font = `bold 8px sans-serif`;
+      ctx.fillText('ALIVE! 👆', 440, risingY - 2);
+    }
+    // grave mound
+    ctx.fillStyle = '#8b6040';
+    fillRect(ctx, 390, 152, 40, 14);
+    ctx.fillStyle = '#fff'; ctx.font = `8px sans-serif`; ctx.textAlign = 'center';
+    ctx.fillText('CLICK', 410, 178);
+
+    // Phase cycling
+    if (this.t % 180 === 0) {
+      this.phase = (this.phase + 1) % 2;
+      this.phaseTimer = this.t;
+    }
+
+    // Labels
+    ctx.fillStyle = 'rgba(0,0,0,0.55)'; fillRect(ctx, 0, 0, 160, 20);
+    ctx.fillStyle = '#fff'; ctx.font = `bold 9px sans-serif`; ctx.textAlign = 'left';
+    ctx.fillText('⬅ QUESTIONING CROWD', 6, 13);
+    ctx.fillStyle = 'rgba(0,0,0,0.55)'; fillRect(ctx, 365, 0, 195, 20);
+    ctx.fillStyle = '#fff'; ctx.textAlign = 'right';
+    ctx.fillText('MIRACLE OF RESURRECTION ➡', CW - 6, 13);
+  }
+}
+
+// =============================================
+//  SCENE 6 — HARD HEART
+// =============================================
+class Scene6 extends BaseScene {
+  constructor() { super('canvas-s6'); this.t = 0; this.spots = 0; this.spotTimer = 0; }
+  init() {
+    this.canvas.onclick = (e) => {
+      const r  = this.canvas.getBoundingClientRect();
+      const mx = (e.clientX - r.left) * (CW / r.width);
+      showVersePopup(mx < CW / 2 ? 'hard_heart' : 'hard_heart');
+    };
+  }
+  draw() {
+    const ctx = this.ctx;
+    this.t++;
+    // Split bg
+    ctx.fillStyle = '#2a1a2a'; fillRect(ctx, 0, 0, CW / 2, CH);
+    ctx.fillStyle = '#1a2a3a'; fillRect(ctx, CW / 2, 0, CW / 2, CH);
+
+    // --- LEFT: HEART ---
+    const hx = 110, hy = 75, hw = 90, hh = 80;
+    const spotsNow = Math.min(5, Math.floor(this.t / 60));
+    const darkness  = Math.min(0.85, spotsNow * 0.17);
+    const heartCol  = `rgb(${Math.round(180 - darkness*160)},${Math.round(30 - darkness*20)},${Math.round(40 - darkness*30)})`;
+    ctx.fillStyle = heartCol;
+    // heart shape (two bumps + triangle)
+    ctx.beginPath();
+    ctx.moveTo(hx + hw/2, hy + hh * 0.3);
+    ctx.bezierCurveTo(hx + hw/2, hy, hx, hy, hx, hy + hh * 0.3);
+    ctx.bezierCurveTo(hx, hy + hh * 0.6, hx + hw/2, hy + hh * 0.85, hx + hw/2, hy + hh);
+    ctx.bezierCurveTo(hx + hw/2, hy + hh * 0.85, hx + hw, hy + hh * 0.6, hx + hw, hy + hh * 0.3);
+    ctx.bezierCurveTo(hx + hw, hy, hx + hw/2, hy, hx + hw/2, hy + hh * 0.3);
+    ctx.fill();
+    // black spots
+    ctx.fillStyle = '#0a0a0a';
+    const spotPos = [{x:0.35,y:0.4},{x:0.6,y:0.35},{x:0.45,y:0.65},{x:0.25,y:0.6},{x:0.65,y:0.62}];
+    for (let i = 0; i < spotsNow; i++) {
+      const sp = spotPos[i];
+      const r2 = 6 + i * 2;
+      ctx.beginPath(); ctx.arc(hx + sp.x*hw, hy + sp.y*hh, r2, 0, Math.PI*2); ctx.fill();
+    }
+    // glow if fresh spots
+    if (spotsNow < 5) {
+      const pulse = Math.abs(Math.sin(this.t * 0.08));
+      ctx.fillStyle = `rgba(255,80,80,${pulse*0.3})`;
+      ctx.beginPath(); ctx.arc(hx + hw/2, hy + hh/2, 52, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.fillStyle = '#fff'; ctx.font = `bold 9px sans-serif`; ctx.textAlign = 'center';
+    ctx.fillText('HEART (click)', 155, 175);
+    ctx.fillStyle = '#e85858'; ctx.font = `8px sans-serif`;
+    ctx.fillText(spotsNow >= 5 ? '⚫ SEALED' : `${spotsNow} black spots`, 155, 188);
+
+    // --- RIGHT: ROCK with streams ---
+    const rx = 300, ry = 60;
+    // rock body
+    ctx.fillStyle = '#6a7a8a';
+    ctx.beginPath(); ctx.moveTo(rx, ry+60); ctx.lineTo(rx+20, ry); ctx.lineTo(rx+100, ry+10); ctx.lineTo(rx+130, ry+50); ctx.lineTo(rx+120, ry+100); ctx.lineTo(rx+10, ry+100); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#8a9aaa';
+    ctx.beginPath(); ctx.moveTo(rx+20, ry); ctx.lineTo(rx+60, ry-10); ctx.lineTo(rx+100, ry+10); ctx.lineTo(rx+20, ry); ctx.closePath(); ctx.fill();
+    // streams
+    const streamPts = [0.2, 0.4, 0.65, 0.85];
+    ctx.strokeStyle = `rgba(80,160,255,0.85)`; ctx.lineWidth = 3;
+    streamPts.forEach((p, i) => {
+      const sx = rx + p * 130;
+      const wave = Math.sin(this.t * 0.07 + i) * 4;
+      ctx.beginPath(); ctx.moveTo(sx, ry + 100);
+      for (let dy = 0; dy < 60; dy += 4) {
+        ctx.lineTo(sx + Math.sin(this.t * 0.05 + dy * 0.3 + i) * 3 + wave, ry + 100 + dy);
+      }
+      ctx.stroke();
+    });
+    ctx.fillStyle = '#5ab8ff'; ctx.font = `bold 9px sans-serif`; ctx.textAlign = 'center';
+    ctx.fillText('STONE has rivers', 365, 178);
+    ctx.fillText('Hearts had nothing', 365, 191);
+
+    // divider
+    ctx.strokeStyle = '#ffffff33'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(CW/2, 0); ctx.lineTo(CW/2, CH); ctx.stroke();
+
+    // labels
+    ctx.fillStyle = 'rgba(0,0,0,0.6)'; fillRect(ctx, 5, 5, 145, 18);
+    ctx.fillStyle = '#ff8888'; ctx.font = `bold 8px sans-serif`; ctx.textAlign = 'left';
+    ctx.fillText('💔 THE HARDENED HEART', 10, 17);
+    ctx.fillStyle = 'rgba(0,0,0,0.6)'; fillRect(ctx, CW/2+5, 5, 175, 18);
+    ctx.fillStyle = '#88ddff'; ctx.textAlign = 'left';
+    ctx.fillText('💧 THE GENEROUS STONE (2:74)', CW/2+10, 17);
+  }
+}
+
+// =============================================
+//  SCENE 7 — IBRAHIM BUILDS THE KA'BA
+// =============================================
+class Scene7 extends BaseScene {
+  constructor() { super('canvas-s7'); this.t = 0; this.blocksBuilt = 0; }
+  init() {
+    this.canvas.onclick = (e) => {
+      const r  = this.canvas.getBoundingClientRect();
+      const mx = (e.clientX - r.left) * (CW / r.width);
+      const my = (e.clientY - r.top)  * (CH / r.height);
+      if (mx > 190 && mx < 370 && my > 40 && my < 170) showVersePopup('ka_ba_building');
+      else showVersePopup('ibrahim_dua');
+    };
+  }
+  draw() {
+    const ctx = this.ctx;
+    this.t++;
+    // Night sky
+    ctx.fillStyle = '#0d1b2a'; fillRect(ctx, 0, 0, CW, CH * 0.7);
+    ctx.fillStyle = '#5d8a3c'; fillRect(ctx, 0, CH * 0.7, CW, CH * 0.3);
+    // Stars
+    ctx.fillStyle = '#fffbe6';
+    [[50,20],[100,35],[160,15],[220,40],[350,22],[420,30],[490,18],[520,40],[80,60],[450,55]].forEach(([sx,sy]) => {
+      const pulse = 0.5 + 0.5 * Math.sin(this.t * 0.03 + sx);
+      ctx.globalAlpha = pulse;
+      fillRect(ctx, sx, sy, 2, 2);
+    });
+    ctx.globalAlpha = 1;
+    // Crescent moon
+    const moonX = 480, moonY = 35;
+    ctx.fillStyle = '#ffe87a';
+    ctx.beginPath(); ctx.arc(moonX, moonY, 18, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#0d1b2a';
+    ctx.beginPath(); ctx.arc(moonX+10, moonY-4, 15, 0, Math.PI*2); ctx.fill();
+
+    // Ka'ba being built (growing blocks)
+    const maxBlocks   = 6;
+    const blocksNow   = Math.min(maxBlocks, Math.floor(this.t / 50) + 1);
+    const kabaX = 195, kabaBaseY = 152, blockW = 170, blockH = 18;
+    // glow beneath
+    const glow = 0.3 + 0.2 * Math.sin(this.t * 0.04);
+    ctx.fillStyle = `rgba(255,200,80,${glow})`;
+    fillRect(ctx, kabaX - 10, kabaBaseY - blocksNow * blockH - 10, blockW + 20, blocksNow * blockH + 20);
+    // blocks
+    for (let b = 0; b < blocksNow; b++) {
+      const by    = kabaBaseY - (b + 1) * blockH;
+      const shade = b % 2 === 0 ? '#2c2c2c' : '#1a1a1a';
+      ctx.fillStyle = shade;
+      fillRect(ctx, kabaX, by, blockW, blockH - 2);
+      ctx.fillStyle = '#444';
+      fillRect(ctx, kabaX, by, blockW, 3);
+    }
+    // door
+    ctx.fillStyle = '#8b6914';
+    fillRect(ctx, kabaX + blockW/2 - 12, kabaBaseY - blockH * 2, 24, blockH * 2);
+    // CLICK label
+    ctx.fillStyle = '#ffe87a'; ctx.font = `bold 9px sans-serif`; ctx.textAlign = 'center';
+    ctx.fillText('🕋 CLICK', 280, kabaBaseY - blocksNow * blockH - 16);
+
+    // Ibrahim figure (left, passing stone)
+    const ibX = 100, ibY = 118;
+    ctx.fillStyle = '#c8a870';
+    fillRect(ctx, ibX, ibY, 18, 26); fillRect(ctx, ibX+2, ibY-16, 14, 13);
+    ctx.fillStyle = '#d4a060'; fillRect(ctx, ibX+16, ibY+4, 20, 8);  // arm holding stone
+    // stone
+    ctx.fillStyle = '#888'; fillRect(ctx, ibX+34, ibY+2, 10, 10);
+
+    // Ismail figure (right, placing stone at top)
+    const isX = 390, isY = kabaBaseY - blocksNow * blockH - 26;
+    ctx.fillStyle = '#a07840';
+    fillRect(ctx, isX, isY, 18, 26); fillRect(ctx, isX+2, isY-16, 14, 13);
+    // raised arms
+    ctx.fillStyle = '#a07840';
+    fillRect(ctx, isX-12, isY+2, 14, 8);
+
+    // du'a text
+    const alpha = 0.5 + 0.5 * Math.sin(this.t * 0.03);
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = '#ffe87a'; ctx.font = `bold 8px sans-serif`; ctx.textAlign = 'center';
+    ctx.fillText('رَبَّنَا تَقَبَّلْ مِنَّا', 280, 20);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = '#aaa'; ctx.font = `8px sans-serif`;
+    ctx.fillText('"Our Lord, accept from us"', 280, 35);
+  }
+}
+
+// =============================================
+//  SCENE 8 — THE NEW DIRECTION (QIBLA CHANGE)
+// =============================================
+class Scene8 extends BaseScene {
+  constructor() { super('canvas-s8'); this.t = 0; }
+  init() {
+    this.canvas.onclick = (e) => {
+      const r  = this.canvas.getBoundingClientRect();
+      const mx = (e.clientX - r.left) * (CW / r.width);
+      showVersePopup(mx < CW / 2 ? 'qibla_verse' : 'inna_lillahi');
+    };
+  }
+  draw() {
+    const ctx = this.ctx;
+    this.t++;
+    // Sky
+    const skyGrad = ctx.createLinearGradient(0,0,0,CH);
+    skyGrad.addColorStop(0, '#1a2a4a'); skyGrad.addColorStop(1, '#3a5a8a');
+    ctx.fillStyle = skyGrad; fillRect(ctx, 0, 0, CW, CH);
+    ctx.fillStyle = '#5d8a3c'; fillRect(ctx, 0, CH*0.68, CW, CH*0.32);
+
+    // Jerusalem dome (left)
+    ctx.fillStyle = '#8b6914'; fillRect(ctx, 40, 100, 80, 60);
+    ctx.fillStyle = '#c8a030';
+    ctx.beginPath(); ctx.arc(80, 100, 28, Math.PI, 0); ctx.fill();
+    ctx.fillStyle = '#ffe87a'; ctx.font = `8px sans-serif`; ctx.textAlign = 'center';
+    ctx.fillText('Jerusalem ✡', 80, 180);
+
+    // Ka'ba (right)
+    ctx.fillStyle = '#1a1a1a'; fillRect(ctx, 420, 90, 80, 70);
+    ctx.fillStyle = '#333'; fillRect(ctx, 420, 90, 80, 10);
+    ctx.fillStyle = '#8b6914'; fillRect(ctx, 450, 130, 22, 30);
+    ctx.fillStyle = '#ffe87a'; ctx.font = `8px sans-serif`; ctx.textAlign = 'center';
+    ctx.fillText('Mecca 🕋', 460, 180);
+
+    // Arrow showing direction
+    const arrowProgress = (Math.sin(this.t * 0.025) + 1) / 2; // 0→1→0
+    const arrowX = 120 + arrowProgress * 280;
+    ctx.strokeStyle = '#ffe87a'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(120, 95); ctx.lineTo(arrowX, 95); ctx.stroke();
+    ctx.fillStyle = '#ffe87a';
+    ctx.beginPath(); ctx.moveTo(arrowX+14, 95); ctx.lineTo(arrowX, 88); ctx.lineTo(arrowX, 102); ctx.closePath(); ctx.fill();
+
+    // Figure in salah (centre)
+    const figX = 255, figY = 98;
+    ctx.fillStyle = '#c8a870';
+    fillRect(ctx, figX, figY, 20, 28); fillRect(ctx, figX+3, figY-16, 14, 13);
+    // sijdah arms forward
+    ctx.fillStyle = '#c8a870';
+    fillRect(ctx, figX-6, figY+8, 8, 8);
+    fillRect(ctx, figX+18, figY+8, 8, 8);
+
+    // "Inna lillahi" text — right side label
+    const il_alpha = 0.6 + 0.4 * Math.sin(this.t * 0.04);
+    ctx.globalAlpha = il_alpha;
+    ctx.fillStyle = '#88ddff'; ctx.font = `bold 8px sans-serif`; ctx.textAlign = 'center';
+    ctx.fillText('إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ', CW/2, 210);
+    ctx.globalAlpha = 1;
+
+    // Labels
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 0, 0, 150, 18);
+    ctx.fillStyle = '#ffcc88'; ctx.font = `bold 8px sans-serif`; ctx.textAlign = 'left';
+    ctx.fillText('← ORIGINAL QIBLA', 6, 13);
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, CW-160, 0, 160, 18);
+    ctx.fillStyle = '#ffe87a'; ctx.textAlign = 'right';
+    ctx.fillText('NEW QIBLA: MECCA →', CW-6, 13);
+  }
+}
+
+// =============================================
+//  SCENE 9 — AL-BIRR (5 TRAITS ORBITING)
+// =============================================
+class Scene9 extends BaseScene {
+  constructor() { super('canvas-s9'); this.t = 0; }
+  init() {
+    this.canvas.onclick = (e) => {
+      const r  = this.canvas.getBoundingClientRect();
+      const mx = (e.clientX - r.left) * (CW / r.width);
+      showVersePopup(mx < CW/2 ? 'al_birr' : 'ramadan_verse');
+    };
+  }
+  draw() {
+    const ctx = this.ctx;
+    this.t++;
+    ctx.fillStyle = '#0e1c2e'; fillRect(ctx, 0, 0, CW, CH);
+
+    // Left half: Al-Birr traits
+    const traitData = [
+      { label: '💚 BELIEF',     angle: 0 },
+      { label: '💰 GENEROSITY', angle: Math.PI * 0.4 },
+      { label: '🙏 WORSHIP',    angle: Math.PI * 0.8 },
+      { label: '🤝 INTEGRITY',  angle: Math.PI * 1.2 },
+      { label: '💪 PATIENCE',   angle: Math.PI * 1.6 },
+    ];
+    const cx0 = 135, cy0 = 108, orbitR = 75;
+    // centre glow
+    const pulse = 0.4 + 0.3 * Math.sin(this.t * 0.05);
+    ctx.fillStyle = `rgba(100,200,100,${pulse})`;
+    ctx.beginPath(); ctx.arc(cx0, cy0, 30, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#5dcc5d';
+    ctx.beginPath(); ctx.arc(cx0, cy0, 22, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = `bold 7px sans-serif`; ctx.textAlign = 'center';
+    ctx.fillText('AL-BIRR', cx0, cy0 + 3);
+
+    traitData.forEach((tr) => {
+      const angle = tr.angle + this.t * 0.008;
+      const tx = cx0 + Math.cos(angle) * orbitR;
+      const ty = cy0 + Math.sin(angle) * orbitR;
+      // orbit dot
+      ctx.strokeStyle = 'rgba(100,200,100,0.3)';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(cx0, cy0, orbitR, 0, Math.PI*2); ctx.stroke();
+      // trait bubble
+      ctx.fillStyle = 'rgba(0,80,0,0.85)';
+      fillRect(ctx, tx-32, ty-10, 64, 20);
+      ctx.fillStyle = '#aaffaa'; ctx.font = `bold 7px sans-serif`; ctx.textAlign = 'center';
+      ctx.fillText(tr.label, tx, ty+4);
+    });
+
+    // Right half: Ramadan / crescent moon
+    const rx = 390;
+    // moon
+    ctx.fillStyle = '#ffe87a';
+    ctx.beginPath(); ctx.arc(rx, 80, 40, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#0e1c2e';
+    ctx.beginPath(); ctx.arc(rx+18, 72, 32, 0, Math.PI*2); ctx.fill();
+    // stars
+    ctx.fillStyle = '#fff';
+    [[rx+58,50],[rx+68,80],[rx+50,30]].forEach(([sx,sy]) => {
+      const p = 0.5 + 0.5 * Math.sin(this.t * 0.04 + sx);
+      ctx.globalAlpha = p; fillRect(ctx, sx, sy, 2, 2);
+    });
+    ctx.globalAlpha = 1;
+    // fasting figure
+    ctx.fillStyle = '#c8a870';
+    fillRect(ctx, rx+20, 115, 18, 26); fillRect(ctx, rx+22, 100, 14, 13);
+    // no food icon
+    ctx.fillStyle = '#ff4444'; ctx.font = `14px sans-serif`; ctx.textAlign = 'center';
+    ctx.fillText('🚫🍽️', rx+28, 160);
+    // iftar glow
+    const sunsetGlow = (Math.sin(this.t * 0.02) + 1) / 2;
+    ctx.fillStyle = `rgba(255,150,50,${sunsetGlow * 0.2})`;
+    fillRect(ctx, CW/2, 0, CW/2, CH);
+
+    // divider
+    ctx.strokeStyle = '#ffffff22'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(CW/2, 0); ctx.lineTo(CW/2, CH); ctx.stroke();
+
+    // labels
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 2, 2, 130, 18);
+    ctx.fillStyle = '#aaffaa'; ctx.font = `bold 8px sans-serif`; ctx.textAlign = 'left';
+    ctx.fillText('📋 AL-BIRR (click)', 6, 14);
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, CW/2+2, 2, 165, 18);
+    ctx.fillStyle = '#ffe87a'; ctx.font = `bold 8px sans-serif`;
+    ctx.fillText('🌙 RAMADAN FASTING (click)', CW/2+6, 14);
+  }
+}
+
+// =============================================
+//  SCENE 10 — BATTLE: TALUT, JALUT & DAWUD
+// =============================================
+class Scene10 extends BaseScene {
+  constructor() { super('canvas-s10'); this.t = 0; this.phase = 0; }
+  init() {
+    this.canvas.onclick = (e) => {
+      const r  = this.canvas.getBoundingClientRect();
+      const mx = (e.clientX - r.left) * (CW / r.width);
+      showVersePopup(mx < CW * 0.55 ? 'small_army' : 'dawud_jalut');
+    };
+  }
+  draw() {
+    const ctx = this.ctx;
+    this.t++;
+    const phase = Math.floor(this.t / 200) % 3;
+    // Sky + ground
+    const skyCol = phase === 2 ? '#2a0a0a' : '#1a2a4a';
+    ctx.fillStyle = skyCol; fillRect(ctx, 0, 0, CW, CH * 0.65);
+    ctx.fillStyle = '#4a6a30'; fillRect(ctx, 0, CH * 0.65, CW, CH * 0.35);
+    // Dust particles
+    if (phase > 0) {
+      ctx.fillStyle = 'rgba(180,140,80,0.3)';
+      for (let i = 0; i < 8; i++) {
+        const dx = (this.t * 0.5 + i * 70) % CW;
+        const dy = 100 + i * 8;
+        fillRect(ctx, dx, dy, 8, 4);
+      }
+    }
+
+    if (phase === 0) {
+      // Phase 0: Two armies facing each other
+      // Small faithful army (left) — 4 figures
+      ctx.fillStyle = '#4a8a4a';
+      for (let i = 0; i < 4; i++) {
+        const fx = 40 + i * 30, fy = 100;
+        fillRect(ctx, fx, fy, 14, 22); fillRect(ctx, fx+2, fy-13, 10, 11);
+        fillRect(ctx, fx+12, fy+4, 16, 4); // spear
+      }
+      ctx.fillStyle = '#fff'; ctx.font = `7px sans-serif`; ctx.textAlign = 'center';
+      ctx.fillText('Talut\'s faithful army', 90, 148);
+      ctx.fillText('(small but true)', 90, 158);
+      // Large enemy army (right) — 10 figures
+      ctx.fillStyle = '#8a2a2a';
+      for (let i = 0; i < 10; i++) {
+        const fx = 310 + (i % 5) * 40, fy = 90 + Math.floor(i/5) * 32;
+        fillRect(ctx, fx, fy, 16, 24); fillRect(ctx, fx+2, fy-14, 12, 12);
+      }
+      ctx.fillStyle = '#ff9999'; ctx.font = `7px sans-serif`;
+      ctx.fillText("Jalut's massive army", 400, 162);
+      // vs
+      ctx.fillStyle = '#ffe87a'; ctx.font = `bold 20px sans-serif`;
+      ctx.fillText('VS', CW/2, 120);
+    } else if (phase === 1) {
+      // Phase 1: Dawud faces Jalut
+      // Dawud (young, small)
+      ctx.fillStyle = '#c8d060';
+      fillRect(ctx, 140, 100, 16, 24); fillRect(ctx, 142, 86, 12, 12);
+      // sling in hand
+      ctx.strokeStyle = '#c8a870'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(156, 104); ctx.bezierCurveTo(180, 85, 195, 90, 200, 110); ctx.stroke();
+      ctx.fillStyle = '#fff'; ctx.font = `7px sans-serif`; ctx.textAlign = 'center';
+      ctx.fillText('Dawud (young)', 148, 148);
+      // Jalut (giant)
+      ctx.fillStyle = '#6a1a1a';
+      fillRect(ctx, 370, 60, 36, 56); fillRect(ctx, 372, 40, 32, 26);
+      // shield
+      ctx.fillStyle = '#3a0a0a'; fillRect(ctx, 342, 70, 22, 36);
+      ctx.fillStyle = '#ff6666'; ctx.font = `7px sans-serif`;
+      ctx.fillText('JALUT (giant)', 388, 148);
+      // stone flying
+      const stoneX = 156 + (this.t % 200) * 1.1;
+      ctx.fillStyle = '#aaa';
+      ctx.beginPath(); ctx.arc(Math.min(stoneX, 372), 90 + Math.sin((this.t % 200) * 0.03) * 20, 5, 0, Math.PI*2); ctx.fill();
+    } else {
+      // Phase 2: Victory
+      ctx.fillStyle = '#ffe87a'; ctx.font = `bold 16px sans-serif`; ctx.textAlign = 'center';
+      const shimmer = 0.7 + 0.3 * Math.sin(this.t * 0.08);
+      ctx.globalAlpha = shimmer;
+      ctx.fillText('بِإِذْنِ اللَّهِ', CW/2, 60);
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = '#88ff88'; ctx.font = `bold 12px sans-serif`;
+      ctx.fillText('VICTORY — BY ALLAH\'S PERMISSION', CW/2, 85);
+      // Jalut fallen
+      ctx.fillStyle = '#6a1a1a';
+      fillRect(ctx, 330, 120, 56, 22); // lying down
+      fillRect(ctx, 376, 110, 26, 22);
+      // Dawud standing victorious
+      ctx.fillStyle = '#c8d060';
+      fillRect(ctx, 200, 98, 16, 24); fillRect(ctx, 202, 84, 12, 12);
+      // raised arm
+      fillRect(ctx, 214, 98, 20, 8);
+      ctx.fillStyle = '#ffe87a'; ctx.font = `7px sans-serif`;
+      ctx.fillText('Dawud — king + wisdom given', CW/2, 170);
+    }
+
+    // Labels
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 2, 2, 155, 18);
+    ctx.fillStyle = '#88ff88'; ctx.font = `bold 8px sans-serif`; ctx.textAlign = 'left';
+    const phaseLabels = ['⬅ CLICK: Small beats large', '⬅ CLICK: Dawud faces Jalut', '⬅ CLICK: Victory with Allah'];
+    ctx.fillText(phaseLabels[phase], 6, 14);
+  }
+}
+
+// =============================================
+//  SCENE 11 — AYAT AL-KURSI (COSMIC THRONE)
+// =============================================
+class Scene11 extends BaseScene {
+  constructor() { super('canvas-s11'); this.t = 0; }
+  init() {
+    this.canvas.onclick = () => showVersePopup('ayat_kursi');
+  }
+  draw() {
+    const ctx = this.ctx;
+    this.t++;
+    // Deep space background
+    ctx.fillStyle = '#000614'; fillRect(ctx, 0, 0, CW, CH);
+    // Stars (many)
+    const starSeeds = [11,22,37,55,70,93,110,140,170,200,230,260,300,330,360,400,430,460,500,530];
+    starSeeds.forEach((s, i) => {
+      const sx = (s * 37 + i * 53) % CW;
+      const sy = (s * 19 + i * 31) % (CH * 0.75);
+      const brightness = 0.4 + 0.6 * Math.sin(this.t * 0.02 + i * 1.3);
+      ctx.fillStyle = `rgba(255,255,240,${brightness})`;
+      fillRect(ctx, sx, sy, i % 3 === 0 ? 2 : 1, i % 3 === 0 ? 2 : 1);
+    });
+
+    // Earth (bottom)
+    ctx.fillStyle = '#1a5a2a';
+    ctx.beginPath(); ctx.arc(CW/2, CH+20, 80, Math.PI, 0); ctx.fill();
+    ctx.fillStyle = '#2a7ae0';
+    ctx.beginPath(); ctx.arc(CW/2 - 20, CH+15, 30, Math.PI, 0); ctx.fill();
+
+    // Heavens layers (rings)
+    for (let layer = 6; layer > 0; layer--) {
+      const alpha = 0.06 + (7 - layer) * 0.03;
+      const radius = 50 + layer * 25;
+      ctx.strokeStyle = `rgba(100,180,255,${alpha})`;
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.ellipse(CW/2, CH*0.55, radius, radius * 0.25, 0, 0, Math.PI*2); ctx.stroke();
+    }
+
+    // Throne (top centre) — majestic golden structure
+    const throneGlow = 0.6 + 0.4 * Math.sin(this.t * 0.04);
+    ctx.fillStyle = `rgba(255,210,50,${throneGlow * 0.3})`;
+    ctx.beginPath(); ctx.ellipse(CW/2, 55, 110, 30, 0, 0, Math.PI*2); ctx.fill();
+    // Throne base
+    ctx.fillStyle = '#b8860b'; fillRect(ctx, CW/2-80, 28, 160, 40);
+    ctx.fillStyle = '#d4a800'; fillRect(ctx, CW/2-80, 28, 160, 10);
+    ctx.fillStyle = '#ffd700'; fillRect(ctx, CW/2-70, 20, 140, 14);
+    // pillars
+    ctx.fillStyle = '#b8860b';
+    fillRect(ctx, CW/2-65, 38, 10, 30); fillRect(ctx, CW/2+55, 38, 10, 30);
+    // top decoration
+    ctx.fillStyle = '#ffe87a';
+    fillRect(ctx, CW/2-72, 16, 144, 8);
+    // CLICK label on throne
+    ctx.fillStyle = '#fff'; ctx.font = `bold 9px sans-serif`; ctx.textAlign = 'center';
+    ctx.fillText('👑 CLICK — READ AYAT AL-KURSI', CW/2, 12);
+
+    // Light rays from throne
+    ctx.globalAlpha = 0.12 + 0.05 * Math.sin(this.t * 0.03);
+    ctx.fillStyle = '#ffe87a';
+    for (let r = 0; r < 8; r++) {
+      const angle = (r / 8) * Math.PI + Math.PI; // downward fan
+      const endX  = CW/2 + Math.cos(angle) * 240;
+      const endY  = 55    + Math.sin(angle) * 200;
+      ctx.beginPath(); ctx.moveTo(CW/2-10, 55); ctx.lineTo(endX-10, endY);
+      ctx.moveTo(CW/2+10, 55); ctx.lineTo(endX+10, endY); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    // Angels flanking (pixel art)
+    const aColors = ['#c0c8ff','#d0d8ff'];
+    [[80, 90], [CW-96, 90]].forEach(([ax, ay], side) => {
+      // wings
+      ctx.fillStyle = 'rgba(220,230,255,0.7)';
+      if (side === 0) {
+        ctx.beginPath(); ctx.moveTo(ax+8, ay+8); ctx.bezierCurveTo(ax-30, ay-20, ax-20, ay+40, ax, ay+24); ctx.fill();
+      } else {
+        ctx.beginPath(); ctx.moveTo(ax+8, ay+8); ctx.bezierCurveTo(ax+46, ay-20, ax+36, ay+40, ax+16, ay+24); ctx.fill();
+      }
+      ctx.fillStyle = aColors[0];
+      fillRect(ctx, ax, ay, 16, 26); fillRect(ctx, ax+2, ay-14, 12, 12);
+      // bowing head
+      fillRect(ctx, ax+2, ay+2, 12, 6);
+    });
+
+    // Scroll text: Arabic phrase
+    const scrollAlpha = 0.5 + 0.5 * Math.sin(this.t * 0.025);
+    ctx.globalAlpha = scrollAlpha;
+    ctx.fillStyle = '#ffe87a'; ctx.font = `bold 11px sans-serif`; ctx.textAlign = 'center';
+    ctx.fillText('وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ', CW/2, CH - 10);
+    ctx.globalAlpha = 1;
+  }
+}
+
+// =============================================
+//  SCENE 12 — CHARITY GARDEN (GROWING PLANT)
+// =============================================
+class Scene12 extends BaseScene {
+  constructor() { super('canvas-s12'); this.t = 0; }
+  init() {
+    this.canvas.onclick = (e) => {
+      const r  = this.canvas.getBoundingClientRect();
+      const mx = (e.clientX - r.left) * (CW / r.width);
+      showVersePopup(mx < CW * 0.6 ? 'charity_parable' : 'charity_cancelled');
+    };
+  }
+  draw() {
+    const ctx = this.ctx;
+    this.t++;
+    // Background: day sky left, grey right
+    ctx.fillStyle = '#7ec8e3'; fillRect(ctx, 0, 0, CW * 0.62, CH);
+    ctx.fillStyle = '#5a6a7a'; fillRect(ctx, CW * 0.62, 0, CW * 0.38, CH);
+    ctx.fillStyle = '#5d8a3c'; fillRect(ctx, 0, CH * 0.72, CW * 0.62, CH * 0.28);
+    ctx.fillStyle = '#4a5a6a'; fillRect(ctx, CW * 0.62, CH * 0.72, CW * 0.38, CH * 0.28);
+
+    // LEFT SIDE: Growing plant (1 grain → 7 spikes → 700)
+    const growProgress = Math.min(1, (this.t % 300) / 180);
+    const plantX = 160, plantBaseY = 152;
+    const stalkH  = Math.round(growProgress * 90);
+    // stem
+    ctx.fillStyle = '#4a8a4a';
+    fillRect(ctx, plantX - 3, plantBaseY - stalkH, 6, stalkH);
+    // leaves
+    if (growProgress > 0.3) {
+      ctx.fillStyle = '#5dcc5d';
+      fillRect(ctx, plantX - 20, plantBaseY - stalkH * 0.5, 18, 8);
+      fillRect(ctx, plantX + 3,  plantBaseY - stalkH * 0.65, 18, 8);
+    }
+    // 7 heads
+    if (growProgress > 0.65) {
+      const headCount = Math.min(7, Math.round((growProgress - 0.65) / 0.05));
+      for (let h = 0; h < headCount; h++) {
+        const angle  = (h / 7) * Math.PI * 2 - Math.PI/2;
+        const headX  = plantX + Math.cos(angle) * 30;
+        const headY  = plantBaseY - stalkH - 8 + Math.sin(angle) * 12;
+        ctx.fillStyle = '#d4a800';
+        ctx.beginPath(); ctx.ellipse(headX, headY, 8, 20, angle, 0, Math.PI*2); ctx.fill();
+      }
+    }
+    // grain counter
+    ctx.fillStyle = '#fff'; ctx.font = `bold 9px sans-serif`; ctx.textAlign = 'center';
+    if (growProgress < 0.3)       ctx.fillText('1 grain planted...', plantX, 178);
+    else if (growProgress < 0.65) ctx.fillText('Stalk growing...', plantX, 178);
+    else                          ctx.fillText(`→ 7 spikes × 100 = 700 🌾`, plantX, 178);
+
+    // RIGHT SIDE: Rock parable (charity cancelled)
+    const rockX = 390, rockY = 80;
+    // rock
+    ctx.fillStyle = '#7a8a9a';
+    ctx.beginPath(); ctx.moveTo(rockX, rockY+50); ctx.lineTo(rockX+20, rockY); ctx.lineTo(rockX+90, rockY+10); ctx.lineTo(rockX+120, rockY+45); ctx.lineTo(rockX+110, rockY+80); ctx.lineTo(rockX+10, rockY+80); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#9aaabb'; ctx.beginPath(); ctx.moveTo(rockX+20, rockY); ctx.lineTo(rockX+55, rockY-10); ctx.lineTo(rockX+90, rockY+10); ctx.lineTo(rockX+20, rockY); ctx.closePath(); ctx.fill();
+    // soil layer that washes away
+    const soilAlpha = Math.max(0, 0.7 - (this.t % 240) / 200);
+    if (soilAlpha > 0) {
+      ctx.fillStyle = `rgba(100,70,30,${soilAlpha})`;
+      fillRect(ctx, rockX+10, rockY+30, 100, 20);
+    }
+    // rain
+    ctx.strokeStyle = 'rgba(100,160,255,0.6)'; ctx.lineWidth = 1.5;
+    for (let dr = 0; dr < 6; dr++) {
+      const rx2 = rockX + 10 + dr * 18;
+      const ry2 = ((this.t * 2 + dr * 30) % 80) + rockY - 20;
+      ctx.beginPath(); ctx.moveTo(rx2, ry2); ctx.lineTo(rx2-2, ry2+8); ctx.stroke();
+    }
+    ctx.fillStyle = '#ff9999'; ctx.font = `7px sans-serif`; ctx.textAlign = 'center';
+    ctx.fillText('Charity + reminder/hurt =', rockX+60, 178);
+    ctx.fillText('bare rock — nothing remains', rockX+60, 188);
+
+    // divider
+    ctx.strokeStyle = '#ffffff33'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(CW*0.62, 0); ctx.lineTo(CW*0.62, CH); ctx.stroke();
+
+    // Labels
+    ctx.fillStyle = 'rgba(0,0,0,0.55)'; fillRect(ctx, 2, 2, 200, 18);
+    ctx.fillStyle = '#ffe87a'; ctx.font = `bold 8px sans-serif`; ctx.textAlign = 'left';
+    ctx.fillText('🌱 SINCERE CHARITY → 700x (click)', 6, 14);
+    ctx.fillStyle = 'rgba(0,0,0,0.55)'; fillRect(ctx, CW*0.62+2, 2, 185, 18);
+    ctx.fillStyle = '#ffaaaa'; ctx.font = `bold 8px sans-serif`;
+    ctx.fillText('🪨 CANCELLED CHARITY (click)', CW*0.62+6, 14);
+  }
+}
+
+// =============================================
+//  SCENE 13 — THE FINAL TREASURE (NIGHT DU'A)
+// =============================================
+class Scene13 extends BaseScene {
+  constructor() { super('canvas-s13'); this.t = 0; }
+  init() {
+    this.canvas.onclick = (e) => {
+      const r  = this.canvas.getBoundingClientRect();
+      const my = (e.clientY - r.top) * (CH / r.height);
+      showVersePopup(my < CH * 0.6 ? 'amana_rasul' : 'la_yukallifu');
+    };
+  }
+  draw() {
+    const ctx = this.ctx;
+    this.t++;
+    // Deep blue night
+    const nightGrad = ctx.createLinearGradient(0,0,0,CH);
+    nightGrad.addColorStop(0, '#000814'); nightGrad.addColorStop(1, '#0a1428');
+    ctx.fillStyle = nightGrad; fillRect(ctx, 0, 0, CW, CH);
+    // Ground
+    ctx.fillStyle = '#1a2a14'; fillRect(ctx, 0, CH*0.75, CW, CH*0.25);
+
+    // Stars — slowly lighting up one by one
+    const allStars = [
+      [60,25],[120,18],[200,30],[280,12],[360,28],[440,20],[500,35],[540,15],
+      [90,55],[170,48],[250,62],[330,44],[410,58],[490,45],[530,62],
+      [40,80],[150,75],[300,82],[450,78],[510,72],
+    ];
+    const litStars = Math.min(allStars.length, Math.floor(this.t / 18));
+    allStars.forEach(([sx, sy], i) => {
+      if (i >= litStars) return;
+      const twinkle = 0.5 + 0.5 * Math.sin(this.t * 0.04 + i * 1.7);
+      ctx.fillStyle = `rgba(255,255,220,${twinkle})`;
+      fillRect(ctx, sx, sy, i % 4 === 0 ? 3 : 2, i % 4 === 0 ? 3 : 2);
+    });
+
+    // Moon
+    ctx.fillStyle = '#ffe87a';
+    ctx.beginPath(); ctx.arc(480, 50, 30, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#0a1428';
+    ctx.beginPath(); ctx.arc(494, 44, 24, 0, Math.PI*2); ctx.fill();
+
+    // Glowing du'a words appearing in sequence
+    const duaWords = ['آمَنَ', 'الرَّسُولُ', 'لَا يُكَلِّفُ', 'اللَّهُ', 'نَفْسًا', 'إِلَّا وُسْعَهَا'];
+    const visibleWords = Math.min(duaWords.length, Math.floor(this.t / 60));
+    const wordPositions = [[80,38],[180,22],[280,42],[380,28],[450,42],[520,30]];
+    for (let w = 0; w < visibleWords; w++) {
+      const alpha = Math.min(1, (this.t - w*60) / 40);
+      const glow  = 0.5 + 0.5 * Math.sin(this.t * 0.03 + w);
+      ctx.globalAlpha = alpha * glow;
+      ctx.fillStyle = '#ffe87a'; ctx.font = `bold 9px sans-serif`; ctx.textAlign = 'center';
+      ctx.fillText(duaWords[w], wordPositions[w][0], wordPositions[w][1]);
+    }
+    ctx.globalAlpha = 1;
+
+    // Figure in sajdah at the bottom
+    const figX = CW/2, figY = 148;
+    ctx.fillStyle = '#c8a870';
+    // prostration — head forward, arms out
+    fillRect(ctx, figX-10, figY,   20, 16); // torso
+    fillRect(ctx, figX-14, figY+2, 8, 6);   // left arm
+    fillRect(ctx, figX+6,  figY+2, 8, 6);   // right arm
+    fillRect(ctx, figX-5,  figY+6, 10, 10); // head on ground
+    // prayer mat
+    ctx.fillStyle = '#2a5a2a'; fillRect(ctx, figX-26, figY+14, 52, 8);
+
+    // Peaceful glow around figure
+    const peaceGlow = 0.15 + 0.1 * Math.sin(this.t * 0.03);
+    ctx.fillStyle = `rgba(255,235,150,${peaceGlow})`;
+    ctx.beginPath(); ctx.ellipse(figX, figY+8, 60, 25, 0, 0, Math.PI*2); ctx.fill();
+
+    // Labels
+    ctx.fillStyle = 'rgba(0,0,0,0.55)'; fillRect(ctx, 2, 2, 185, 18);
+    ctx.fillStyle = '#ffe87a'; ctx.font = `bold 8px sans-serif`; ctx.textAlign = 'left';
+    ctx.fillText('🤲 CLICK: The final du\'a (2:285–286)', 6, 14);
+  }
+}
+
 function initScenes() {
-  scenes.s1 = new Scene1();
-  scenes.s2 = new Scene2();
-  scenes.s3 = new Scene3();
-  scenes.s4 = new Scene4();
+  scenes.s1  = new Scene1();
+  scenes.s2  = new Scene2();
+  scenes.s3  = new Scene3();
+  scenes.s4  = new Scene4();
+  scenes.s5  = new Scene5();
+  scenes.s6  = new Scene6();
+  scenes.s7  = new Scene7();
+  scenes.s8  = new Scene8();
+  scenes.s9  = new Scene9();
+  scenes.s10 = new Scene10();
+  scenes.s11 = new Scene11();
+  scenes.s12 = new Scene12();
+  scenes.s13 = new Scene13();
 }
 
 function startScene(n) {
