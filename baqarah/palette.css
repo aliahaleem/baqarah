@@ -1,4 +1,21 @@
 /* Surah Al-Baqarah — midnight navy / gold / green */
+/* ── ELEGANT: lavender dusk — twilight violet, pearl text, warm gold ── */
+html[data-theme="stars"] {
+  --bg:             #1e1b38;
+  --bg2:            #27235a;
+  --surface:        #302c6a;
+  --card-bg:        #302c6a;
+  --primary:        #7060d0;
+  --primary-lit:    #9080ee;
+  --accent:         #d4b860;
+  --accent2:        #b09840;
+  --text:           #f0edff;
+  --text-dim:       #b0a8d8;
+  --tile-locked:    #181530;
+  --tile-unlocked:  #22204a;
+  --tile-completed: #2a265c;
+}
+
 :root {
   --bg:             #0d0d2b;
   --bg2:            #1a1a3e;

@@ -11,12 +11,22 @@
 //  THEME MANAGEMENT
 // =============================================
 function getTheme() { return localStorage.getItem('quranQuestTheme') || 'minecraft'; }
+
+function _applyNamePlaceholder(theme) {
+  const input = document.getElementById('explorer-name');
+  if (!input) return;
+  input.placeholder = theme === 'stars'
+    ? 'Your name, e.g. Ayesha...'
+    : 'Your name, e.g. Ahmad...';
+}
+
 function setTheme(t) {
   localStorage.setItem('quranQuestTheme', t);
   document.documentElement.setAttribute('data-theme', t);
   document.querySelectorAll('.theme-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.theme === t);
   });
+  _applyNamePlaceholder(t);
 }
 
 // =============================================
@@ -186,6 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.theme-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.theme === savedTheme);
   });
+  _applyNamePlaceholder(savedTheme);
 
   // Load saved progress
   loadProgress();

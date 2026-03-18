@@ -170,14 +170,14 @@
   .naziat-portal   { background: linear-gradient(160deg,#020e08,#061a10); border-color:#1a6040; box-shadow:0 0 20px #1a604044; }
   .naziat-portal:hover   { border-color:#2a9060; box-shadow:0 0 36px #2a906066; }
 
-  /* Stars & Ink — softer, glowing portals */
-  html[data-theme="stars"] .portal { box-shadow: var(--card-shadow-h); }
-  html[data-theme="stars"] .baqarah-portal  { background:linear-gradient(135deg,#0a1a0a,#182a14); border-color:#4a9a3a; }
-  html[data-theme="stars"] .imran-portal    { background:linear-gradient(135deg,#100a20,#1e1436); border-color:#7a5ac8; }
-  html[data-theme="stars"] .muhammad-portal { background:linear-gradient(135deg,#1a050a,#28101a); border-color:#b03050; }
-  html[data-theme="stars"] .naba-portal     { background:linear-gradient(135deg,#0a0318,#180c30); border-color:#8838e0; }
-  html[data-theme="stars"] .mulk-portal     { background:linear-gradient(135deg,#040714,#0a1630); border-color:#3060d0; }
-  html[data-theme="stars"] .naziat-portal   { background:linear-gradient(135deg,#020e08,#081a10); border-color:#2a9060; }
+  /* Elegant dusk — soft twilight portal cards */
+  html[data-theme="stars"] .portal { box-shadow: 0 6px 28px rgba(80,60,180,0.3); }
+  html[data-theme="stars"] .baqarah-portal  { background:linear-gradient(135deg,#1e1b38,#2a265a); border-color:#9080ee; }
+  html[data-theme="stars"] .imran-portal    { background:linear-gradient(135deg,#1c1a34,#2e2a60); border-color:#8868e8; }
+  html[data-theme="stars"] .muhammad-portal { background:linear-gradient(135deg,#1e1832,#302858); border-color:#a070e0; }
+  html[data-theme="stars"] .naba-portal     { background:linear-gradient(135deg,#1c1935,#2c2865); border-color:#9860e8; }
+  html[data-theme="stars"] .mulk-portal     { background:linear-gradient(135deg,#151830,#232c55); border-color:#5878e8; }
+  html[data-theme="stars"] .naziat-portal   { background:linear-gradient(135deg,#161d38,#22305a); border-color:#6888e0; }
 
   .portal-icon {
     font-size: 48px;
@@ -312,10 +312,10 @@
   <div class="theme-toggle-wrap">
     <span class="theme-toggle-label">THEME:</span>
     <button class="theme-btn active" id="btn-minecraft" onclick="setHubTheme('minecraft')">
-      ⚔️ Adventure
+      ⚡ Pixel
     </button>
     <button class="theme-btn" id="btn-stars" onclick="setHubTheme('stars')">
-      ✨ Stars &amp; Ink
+      ✨ Elegant
     </button>
   </div>
 

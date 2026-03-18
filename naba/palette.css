@@ -1,4 +1,21 @@
 /* Surah An-Naba — deep cosmic purple / amber */
+/* ── ELEGANT: violet dusk — deep periwinkle sky, rose-gold accent ── */
+html[data-theme="stars"] {
+  --bg:             #1c1935;
+  --bg2:            #252256;
+  --surface:        #2e2a68;
+  --card-bg:        #2e2a68;
+  --primary:        #7840c8;
+  --primary-lit:    #9860e8;
+  --accent:         #e8b840;
+  --accent2:        #c09030;
+  --text:           #f8f2ff;
+  --text-dim:       #b8aad8;
+  --tile-locked:    #161330;
+  --tile-unlocked:  #201e4a;
+  --tile-completed: #28245a;
+}
+
 :root {
   --bg:             #080215;
   --bg2:            #120830;

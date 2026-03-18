@@ -1,4 +1,21 @@
 /* Surah An-Nazi'at — deep teal / amber / emerald */
+/* ── ELEGANT: sapphire dusk — cool blue-indigo twilight, champagne gold ── */
+html[data-theme="stars"] {
+  --bg:             #161d38;
+  --bg2:            #1e2852;
+  --surface:        #263268;
+  --card-bg:        #263268;
+  --primary:        #4868c0;
+  --primary-lit:    #6888e0;
+  --accent:         #d0b050;
+  --accent2:        #a88830;
+  --text:           #eaf0ff;
+  --text-dim:       #a0acd0;
+  --tile-locked:    #101830;
+  --tile-unlocked:  #1a2248;
+  --tile-completed: #222c58;
+}
+
 :root {
   --bg:             #020e08;
   --bg2:            #061a10;

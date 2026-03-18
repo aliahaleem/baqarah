@@ -25,7 +25,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-body);
   background: var(--sky);
   color: var(--white);
   min-height: 100vh;
@@ -114,7 +114,7 @@ body::before {
   margin-bottom: 10px;
 }
 #explorer-name {
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-body);
   font-size: 10px;
   background: #111;
   border: 3px solid #555;
@@ -169,7 +169,7 @@ body::before {
   border: 2px solid #555;
   box-shadow: 2px 2px 0 #000;
   padding: 6px 10px;
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-body);
   font-size: 7px;
   color: #888;
   cursor: pointer;
@@ -337,7 +337,7 @@ body::before {
   border: 2px solid #000;
   box-shadow: 3px 3px 0 #000;
   padding: 10px 16px;
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-body);
   font-size: 9px;
   color: var(--white);
   cursor: pointer;
@@ -530,7 +530,7 @@ body::before {
   border: 2px solid #555;
   box-shadow: 2px 2px 0 #000;
   padding: 10px 8px;
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-body);
   font-size: 7px;
   color: var(--white);
   cursor: pointer;
@@ -572,7 +572,7 @@ body::before {
 .order-btn {
   background: var(--stone-dark);
   border: 2px solid #000;
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-body);
   font-size: 9px;
   color: var(--white);
   cursor: pointer;
@@ -588,7 +588,7 @@ body::before {
   border: 3px solid #000;
   box-shadow: 4px 4px 0 #000;
   padding: 12px 18px;
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-body);
   font-size: 9px;
   color: var(--white);
   cursor: pointer;
@@ -684,7 +684,7 @@ body::before {
   border: 2px solid #000;
   box-shadow: 2px 2px 0 #000;
   padding: 8px 12px;
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-body);
   font-size: 7px;
   color: var(--white);
   cursor: pointer;
@@ -724,7 +724,7 @@ canvas {
   border: 2px solid #000;
   box-shadow: 2px 2px 0 #000;
   padding: 4px 8px;
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-body);
   font-size: 7px;
   color: var(--gold);
   cursor: pointer;

@@ -1,4 +1,21 @@
 /* Surah Muhammad — deep crimson / ruby / gold */
+/* ── ELEGANT: plum dusk — violet-rose twilight, amber gold ── */
+html[data-theme="stars"] {
+  --bg:             #1e1832;
+  --bg2:            #282050;
+  --surface:        #322860;
+  --card-bg:        #322860;
+  --primary:        #8050c0;
+  --primary-lit:    #a070e0;
+  --accent:         #e8b040;
+  --accent2:        #c09030;
+  --text:           #f8eeff;
+  --text-dim:       #b8a8d0;
+  --tile-locked:    #181430;
+  --tile-unlocked:  #221c48;
+  --tile-completed: #2c2458;
+}
+
 :root {
   --bg:             #1a0408;
   --bg2:            #2a0e18;

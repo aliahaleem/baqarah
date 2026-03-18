@@ -1,4 +1,21 @@
 /* Surah Al-Mulk — midnight navy / starfield blue / gold */
+/* ── ELEGANT: indigo dusk — royal blue-indigo sky, starlight gold ── */
+html[data-theme="stars"] {
+  --bg:             #151830;
+  --bg2:            #1d2248;
+  --surface:        #252c5e;
+  --card-bg:        #252c5e;
+  --primary:        #3858c8;
+  --primary-lit:    #5878e8;
+  --accent:         #d8c060;
+  --accent2:        #b09840;
+  --text:           #eaecff;
+  --text-dim:       #9ca8cc;
+  --tile-locked:    #101428;
+  --tile-unlocked:  #181e40;
+  --tile-completed: #20284e;
+}
+
 :root {
   --bg:             #030610;
   --bg2:            #0a1428;
