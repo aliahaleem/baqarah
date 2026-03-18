@@ -12,12 +12,12 @@ const GY = 152;  // ground y level
 function sceneP() {
   const s = document.documentElement.dataset.theme === 'stars';
   return s ? {
-    sky0:    '#06021a', sky1:    '#0a0422', sky2:    '#080318',
-    gnd:     '#1a0e30', gndAcc:  '#241840',
-    starStr: 'rgba(200,170,255,',
-    acStr:   'rgba(210,140,200,',
-    hint:    'rgba(210,160,220,0.85)',
-    label:   '#c898e8',
+    sky0:    '#1e1b38', sky1:    '#27235a', sky2:    '#302c6a',
+    gnd:     '#382a72', gndAcc:  '#4a3888',
+    starStr: 'rgba(200,185,255,',
+    acStr:   'rgba(212,184,96,',
+    hint:    'rgba(212,184,96,0.9)',
+    label:   '#d4b860',
   } : {
     sky0:    '#1a3660', sky1:    '#122448', sky2:    '#0e1c30',
     gnd:     '#3a8a2a', gndAcc:  '#2a5a1a',
@@ -31,10 +31,22 @@ function sceneP() {
 // ---- DRAWING UTILITIES ----
 
 function spr(ctx, ox, oy, parts) {
+  const elegant = document.documentElement.dataset.theme === 'stars';
   parts.forEach(([dx, dy, w, h, c]) => {
     if (!c) return;
     ctx.fillStyle = c;
-    ctx.fillRect(ox + dx * P, oy + dy * P, w * P, h * P);
+    const x = ox + dx * P, y = oy + dy * P, W = w * P, H = h * P;
+    if (elegant) {
+      const r = Math.min(W * 0.35, H * 0.35, 7);
+      ctx.shadowColor = 'rgba(100,80,200,0.25)';
+      ctx.shadowBlur  = 4;
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(x, y, W, H, r); else ctx.rect(x, y, W, H);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    } else {
+      ctx.fillRect(x, y, W, H);
+    }
   });
 }
 

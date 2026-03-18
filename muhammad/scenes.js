@@ -9,12 +9,12 @@ const CW = 560, CH = 220, GY = 160, P = 4;
 function sceneP() {
   const s = document.documentElement.dataset.theme === 'stars';
   return s ? {
-    sky0:    '#06021a', sky1:    '#0a0422', sky2:    '#080318',
-    gnd:     '#1a0e30', gndAcc:  '#241840',
-    starStr: 'rgba(200,170,255,',
-    acStr:   'rgba(210,140,200,',
-    label:   '#c898e8',
-    hint:    '#9870b8',
+    sky0:    '#1e1832', sky1:    '#282050', sky2:    '#322860',
+    gnd:     '#3c3068', gndAcc:  '#4e4080',
+    starStr: 'rgba(200,185,255,',
+    acStr:   'rgba(232,176,64,',
+    label:   '#e8b040',
+    hint:    '#c89030',
   } : {
     sky0:    '#100808', sky1:    '#0e0604', sky2:    '#041408',
     gnd:     '#3a2818', gndAcc:  '#2a1808',
@@ -27,7 +27,18 @@ function sceneP() {
 
 function fillRect(ctx, x, y, w, h, col) {
   if (col) ctx.fillStyle = col;
-  ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
+  const rx = Math.round(x), ry = Math.round(y), rw = Math.round(w), rh = Math.round(h);
+  if (document.documentElement.dataset.theme === 'stars' && rw < 120 && rh < 120 && rw > 4 && rh > 4) {
+    const r = Math.min(rw * 0.3, rh * 0.3, 7);
+    ctx.shadowColor = 'rgba(100,80,200,0.2)';
+    ctx.shadowBlur  = 3;
+    ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(rx, ry, rw, rh, r); else ctx.rect(rx, ry, rw, rh);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  } else {
+    ctx.fillRect(rx, ry, rw, rh);
+  }
 }
 
 // =============================================
