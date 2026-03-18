@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="minecraft">
+<head>
+  <meta charset="UTF-8"/>
+  <script>(function(){var t=localStorage.getItem('quranQuestTheme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surah Abasa Quest 🌾</title>
+  <link rel="stylesheet" href="../shared/base.css"/>
+  <link rel="stylesheet" href="palette.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header id="game-header" style="display:none">
+  <div>
+    <div class="game-title">🌾 SURAH ABASA QUEST</div>
+    <div class="header-explorer">Explorer: <span id="header-name">—</span></div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div>
+    <div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div>
+    <div class="stat-chip done-chip">✅ <span id="done-display">0</span>/6</div>
+    <button class="reset-btn" onclick="resetGame()">↺ Reset</button>
+    <a class="hub-btn" href="../index.html">🏠 Hub</a>
+  </div>
+</header>
+
+<div id="intro-screen">
+  <div class="intro-icon">🌾</div>
+  <div class="intro-title">SURAH ABASA QUEST</div>
+  <div class="intro-arabic">سُوْرَةُ عَبَسَ</div>
+  <div class="intro-subtitle">
+    6 Levels · He Frowned · The Noble Quran<br/>
+    Created from a Drop · Your Food · The Blast · Two Faces
+  </div>
+  <div class="intro-form">
+    <input class="intro-input" id="explorer-name" type="text" placeholder="Enter your name..." maxlength="20"/>
+    <div id="name-error" style="color:#ff6666;font-size:8px;min-height:12px;"></div>
+    <button class="intro-btn" onclick="startGame()">▶ BEGIN QUEST</button>
+  </div>
+</div>
+
+<div id="main-view" style="display:none">
+<div class="container">
+
+  <div class="ibn-ameen-panel">
+    <div class="character-avatar">🧙‍♂️</div>
+    <div class="speech-bubble">
+      <strong>Ibn Ameen says:</strong><br/>
+      <span id="welcome-text">As-salamu alaykum, Explorer! Surah Abasa — "He Frowned." A blind man came to the Prophet ﷺ seeking knowledge. A divine lesson on who truly matters. The noble Quran carried by honoured angels. Creation from a drop. Seven foods of provision. The Deafening Blast. And two faces on That Day. 6 levels await!</span>
+    </div>
+  </div>
+
+  <h2 class="section-heading">🌾 THE QUEST MAP</h2>
+  <div class="map-grid">
+    <div class="map-tile locked" id="tile-1" onclick="openSection(1)">
+      <div class="tile-icon">🙈</div>
+      <div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">He Frowned</div>
+      <div class="tile-verses">80:1-10</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+    <div class="map-tile locked" id="tile-2" onclick="openSection(2)">
+      <div class="tile-icon">📜</div>
+      <div class="tile-level">LEVEL 2</div>
+      <div class="tile-name">Noble Quran</div>
+      <div class="tile-verses">80:11-16</div>
+      <div class="tile-status" id="status-2">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-3" onclick="openSection(3)">
+      <div class="tile-icon">🌱</div>
+      <div class="tile-level">LEVEL 3</div>
+      <div class="tile-name">From a Drop</div>
+      <div class="tile-verses">80:17-23</div>
+      <div class="tile-status" id="status-3">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-4" onclick="openSection(4)">
+      <div class="tile-icon">🌾</div>
+      <div class="tile-level">LEVEL 4</div>
+      <div class="tile-name">Your Food</div>
+      <div class="tile-verses">80:24-32</div>
+      <div class="tile-status" id="status-4">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-5" onclick="openSection(5)">
+      <div class="tile-icon">💥</div>
+      <div class="tile-level">LEVEL 5</div>
+      <div class="tile-name">The Blast</div>
+      <div class="tile-verses">80:33-37</div>
+      <div class="tile-status" id="status-5">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-6" onclick="openSection(6)">
+      <div class="tile-icon">✨</div>
+      <div class="tile-level">LEVEL 6</div>
+      <div class="tile-name">Two Faces</div>
+      <div class="tile-verses">80:38-42</div>
+      <div class="tile-status" id="status-6">🔒 LOCKED</div>
+    </div>
+  </div>
+
+  <div id="world-builder">
+    <h2 class="section-heading">🌾 BUILD THE HARVEST GARDEN</h2>
+    <div style="border:3px solid var(--primary);margin-bottom:12px;background:#0a0602;">
+      <canvas id="build-canvas" width="560" height="250" style="width:100%;image-rendering:pixelated;display:block;"></canvas>
+    </div>
+    <p style="font-family:var(--font-body);font-size:var(--font-size-sm);color:var(--primary-lit);text-align:center;margin-bottom:10px;line-height:1.8;">
+      Complete each level to grow the Harvest Garden — all 6 levels reveal the full garden!<br/>
+      <em style="color:var(--text-dim);">"Fal-yandhur al-insan ila ta'amihi" — 80:24</em>
+    </p>
+    <div class="world-preview">
+      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">He Frowned</div></div>
+      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Noble Quran</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">From a Drop</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Your Food</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">The Blast</div></div>
+      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Two Faces</div></div>
+    </div>
+  </div>
+
+  <div id="all-complete">
+    <div style="font-size:36px;margin-bottom:10px;">✨</div>
+    <div style="color:var(--accent);font-size:10px;margin-bottom:8px;">SURAH ABASA COMPLETE!</div>
+    <div style="font-family:var(--font-body);font-size:var(--font-size-body);color:#ddd;line-height:1.9;">
+      MashAllah! All 6 levels of Surah Abasa complete!<br/>
+      <em>"Wujuhun yawma'idhin musfirah — dahikah mustabshirah."</em><br/>
+      "Faces that Day will be bright — laughing, rejoicing."<br/>
+      May Allah make our faces those faces on That Day. Ameen!
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ===================== VERSE POPUP ===================== -->
+<div id="verse-popup">
+  <div class="vp-box">
+    <div id="vp-ref"></div>
+    <div id="vp-arabic"></div>
+    <div id="vp-eng"></div>
+    <div id="vp-note"></div>
+    <button id="vp-close" onclick="hideVersePopup()">✕ Close</button>
+  </div>
+</div>
+
+<!-- ===================== REWARD OVERLAY ===================== -->
+<div id="reward-overlay">
+  <div class="reward-box">
+    <span class="reward-icon" id="reward-icon">🏆</span>
+    <div class="reward-title" id="reward-title">LEVEL COMPLETE!</div>
+    <div class="reward-xp"   id="reward-xp"></div>
+    <div class="reward-gems" id="reward-gems"></div>
+    <div class="reward-msg"  id="reward-msg"></div>
+    <button class="reward-ok-btn" onclick="dismissReward()">✅ Continue Quest</button>
+  </div>
+</div>
+
+<!-- ===================== SECTION VIEW ===================== -->
+<div id="section-view" style="display:none">
+  <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;">
+    <button class="back-btn" onclick="closeSection()">◀ Back to Map</button>
+  </header>
+
+  <!-- ==================== SECTION 1 — He Frowned ==================== -->
+  <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        A blind companion named Abdullah ibn Umm Maktum came eagerly to the Prophet ﷺ asking to learn. But the Prophet ﷺ was busy talking to powerful Quraysh leaders, hoping they'd accept Islam. He frowned and turned away — and Allah revealed this entire surah to teach a lesson that will last until Judgment Day! Match each element of the incident to its description.
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">👁️ LEVEL 1 — HE FROWNED (80:1-10)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 The Incident — Click to reveal verses</span></div>
+        <canvas id="canvas-1" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        <p>One day the Prophet Muhammad ﷺ was in deep conversation with leaders of the Quraysh — powerful, respected men he hoped to guide to Islam. He was focused, attentive, trying his best to reach their hearts.</p>
+        <p>Then <strong>Abdullah ibn Umm Maktum</strong> arrived. He was blind, and not wealthy. But he was on FIRE — he wanted to learn, he wanted the Quran, he wanted guidance. He called out: "Teach me, O Messenger of Allah!"</p>
+        <p>The Prophet ﷺ felt a twinge of annoyance at the interruption. He frowned, turned slightly away, and continued with the Quraysh men. It was a small gesture — but <em>Allah noticed it.</em></p>
+        <p>And Allah revealed these verses — not as a harsh punishment, but as a gentle divine correction: <strong>Who is more deserving of your time?</strong> The man who comes hungry for truth? Or the man who feels he needs nothing?</p>
+        <p>This surah became a lifelong lesson. After this revelation, every time the Prophet ﷺ saw Abdullah ibn Umm Maktum, he would welcome him saying: <em>"Welcome to the one for whom my Lord honoured me!"</em></p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">عَبَسَ وَتَوَلَّىٰ ۩ أَن جَاءَهُ الْأَعْمَىٰ</div>
+        <div class="verse-translation">"He frowned and turned away — because the blind man came to him." (80:1-2) — Allah is gently identifying exactly what happened, without hiding it. This is the honesty of the Quran.</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَمَا يُدْرِيكَ لَعَلَّهُ يَزَّكَّىٰ ۩ أَوْ يَذَّكَّرُ فَتَنفَعَهُ الذِّكْرَىٰ</div>
+        <div class="verse-translation">"But what would make you know? Perhaps he might be purified — or be reminded and the reminder benefit him." (80:3-4) — Allah points out: you don't know the future! Maybe THIS man, if taught, will become purified. Don't judge by appearances.</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَأَمَّا مَن جَاءَكَ يَسْعَىٰ ۩ وَهُوَ يَخْشَىٰ ۩ فَأَنتَ عَنْهُ تَلَهَّىٰ</div>
+        <div class="verse-translation">"And as for he who came to you striving eagerly — while he fears Allah — from him you are distracted." (80:8-10) — Three qualities of Abdullah: came eagerly (yas'a), fears Allah (yakhsha), and striving (sa'y). This is the profile of someone whose learning will benefit them.</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 GAME — MATCH THE INCIDENT (80:1-10)</div>
+      <div class="game-instructions">Drag each card to its correct description. All 4 must be correct to claim your reward!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-1"></div>
+        <div class="drop-zones" id="drop-zones-1"></div>
+      </div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 2 — Noble Quran ==================== -->
+  <div class="section-panel" id="section-panel-2">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        After correcting the Prophet ﷺ, Allah describes what the Quran actually IS. "Kalla — No!" This Quran is a Reminder. It is written on honoured, elevated, purified sheets. It is carried by noble, virtuous angels. It doesn't need to beg for anyone's attention. Whoever WANTS it can benefit — whoever doesn't, their loss! Answer these questions about the Quran's nobility.
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📜 LEVEL 2 — THE NOBLE QURAN (80:11-16)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 Honoured Sheets — Click to reveal verse</span></div>
+        <canvas id="canvas-2" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        <p>Having corrected the Prophet ﷺ with a gentle but firm "Kalla!" (No!), Allah now explains WHY this correction matters. The Quran itself is far too noble to be used as a bargaining chip with the disinterested wealthy.</p>
+        <p><strong>"Inna-ha tadhkirah"</strong> — Indeed these verses are a Reminder. Not entertainment. Not poetry for show. A divine Reminder that calls the soul back to its Lord.</p>
+        <p><strong>"Fi suhufin mukarramah"</strong> — Written in honoured, sacred sheets. The word "mukarramah" means honoured, dignified, precious. These are not ordinary pages.</p>
+        <p><strong>"Marfu'atin mutahharah"</strong> — Elevated and purified. The sheets are raised high — spiritually exalted — and completely pure, untouched by falsehood, doubt, or error.</p>
+        <p><strong>"Bi aydi safaratin, kiramin bararah"</strong> — In the hands of messenger-angels, noble and virtuous. The angel scribes who carry these sheets are themselves pure, honoured beings. <em>Everything about the Quran is dignified — from its source to its carriers.</em></p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">كَلَّا إِنَّهَا تَذْكِرَةٌ ۩ فَمَن شَاءَ ذَكَرَهُ</div>
+        <div class="verse-translation">"No! Indeed these verses are a reminder. So whoever wills may remember it." (80:11-12) — "Kalla" is a strong word of correction. The Quran will not chase the unwilling. But for whoever opens their heart — it is there, ready.</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">فِي صُحُفٍ مُّكَرَّمَةٍ ۩ مَّرْفُوعَةٍ مُّطَهَّرَةٍ ۩ بِأَيْدِي سَفَرَةٍ ۩ كِرَامٍ بَرَرَةٍ</div>
+        <div class="verse-translation">"In honoured sheets — exalted and purified — in the hands of messenger-angels, noble and virtuous." (80:13-16) — Four qualities stack up: honoured, exalted, purified, carried by noble angels. Every layer reinforces the Quran's supreme dignity.</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — THE NOBLE QURAN (80:11-16)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-2"></div>
+      <div class="game-feedback" id="feedback-2"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 3 — From a Drop ==================== -->
+  <div class="section-panel" id="section-panel-3">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        "Qutila al-insan — ma akfarahu!" Destroyed is man — how ungrateful he is! Allah asks: from what thing did He create him? From a drop of liquid! Then proportioned. Then given a path. Then death. Then a grave. Then resurrection. Six stages of your existence — listed one by one. Can you put them in the right order?
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🌱 LEVEL 3 — FROM A DROP (80:17-23)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 Stages of Creation — Click to reveal verse</span></div>
+        <canvas id="canvas-3" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        <p>After describing the Quran's nobility, Allah turns to address human arrogance directly — with a rhetorical challenge that should stop you in your tracks.</p>
+        <p><strong>"Qutila al-insan — ma akfarahu!"</strong> — May man be destroyed — how incredibly ungrateful he is! This is an expression of astonishment, almost exasperation. After ALL that Allah has given — man still denies?</p>
+        <p><strong>"Min ayyi shay'in khalaqahu?"</strong> — From what thing did He create him? The question is meant to make you think. The answer: <em>from a nutfah</em> — a tiny drop of liquid. That's it. That is your origin, O proud human.</p>
+        <p>Then Allah lists what He did with that drop: <strong>Created (khalaqa)</strong> him → <strong>Proportioned (qaddara)</strong> him perfectly → <strong>Made easy (yassara)</strong> the path → Then He <strong>causes death (amatahu)</strong> → Provides a <strong>grave (aqbarahu)</strong> → Then when He wills, <strong>resurrects (anshara)</strong> him.</p>
+        <p>Six stages. Six acts of Allah. And still — <em>"Kalla lamma yaqdi ma amarahu"</em> — No! He has not fulfilled what He was commanded! The ingratitude is breathtaking.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">قُتِلَ الْإِنسَانُ مَا أَكْفَرَهُ ۩ مِنْ أَيِّ شَيْءٍ خَلَقَهُ ۩ مِن نُّطْفَةٍ خَلَقَهُ فَقَدَّرَهُ</div>
+        <div class="verse-translation">"Destroyed is man — how ungrateful he is! From what thing did He create him? From a drop of liquid He created him and proportioned him." (80:17-19) — The drop (nutfah) is the humbling origin. Yet from it, Allah builds a perfectly functioning human being.</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">ثُمَّ السَّبِيلَ يَسَّرَهُ ۩ ثُمَّ أَمَاتَهُ فَأَقْبَرَهُ ۩ ثُمَّ إِذَا شَاءَ أَنشَرَهُ</div>
+        <div class="verse-translation">"Then He made the path easy for him. Then He causes him to die and provides a grave. Then when He wills, He will resurrect him." (80:20-22) — Life, death, burial, and resurrection — all in Allah's hands. Every stage is His gift and His plan.</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 ORDER THE STAGES — HUMAN CREATION (80:17-23)</div>
+      <div class="game-instructions">Use ↑ ↓ arrows to put the 6 stages in the correct order from first to last!</div>
+      <div class="order-list" id="order-3"></div>
+      <div class="game-feedback" id="feedback-3"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection3()">✅ Check Order</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 4 — Your Food ==================== -->
+  <div class="section-panel" id="section-panel-4">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        "Fal-yandhur al-insan ila ta'amihi!" Let man LOOK at his food! Allah describes an incredible process: water poured down, earth split open, then seven types of food emerge. Every meal you eat is the result of a chain of miracles. Match each provision to its Quranic description!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🌾 LEVEL 4 — YOUR FOOD (80:24-32)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 The Garden of Provision — Click to reveal verse</span></div>
+        <canvas id="canvas-4" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        <p>Having challenged human ingratitude regarding creation, Allah now gives a specific, practical command: <strong>"Fal-yandhur al-insan ila ta'amihi"</strong> — Let man LOOK at his food.</p>
+        <p>Not just eat it — but actually LOOK. Contemplate. Think about where it came from. Allah then traces the journey of your food in reverse:</p>
+        <p>First: <strong>water</strong> — We poured it "sabba" (abundantly, in floods). Every drop of rain is planned, measured, and sent by Allah.</p>
+        <p>Then: the <strong>earth splits open</strong> — "shaqaqna al-ardha shaqqan." The hard earth actually opens to receive the seed. This is a miracle we take for granted every day.</p>
+        <p>Then seven categories of food emerge: <strong>Grain (habba)</strong>, <strong>Grapes (inab)</strong>, <strong>Greens (qadhb)</strong>, <strong>Olives (zaytun)</strong>, <strong>Palms (nakhl)</strong>, <strong>Dense gardens (hada'iq ghulb)</strong>, and <strong>Fruit and pasture (fakiha wa abba)</strong>.</p>
+        <p><em>"Mata'an lakum wa li an'amikum"</em> — As enjoyment for you and your livestock. Your food and your animals' food — all provided by Him.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">فَلْيَنظُرِ الْإِنسَانُ إِلَىٰ طَعَامِهِ ۩ أَنَّا صَبَبْنَا الْمَاءَ صَبًّا ۩ ثُمَّ شَقَقْنَا الْأَرْضَ شَقًّا</div>
+        <div class="verse-translation">"Let man look at his food: We pour water abundantly, then split the earth in splits." (80:24-26) — Before the food appears, two divine acts happen: water sent down from the sky, earth opened from below. Both are miracles you didn't create.</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">فَأَنبَتْنَا فِيهَا حَبًّا ۩ وَعِنَبًا وَقَضْبًا ۩ وَزَيْتُونًا وَنَخْلًا ۩ وَحَدَائِقَ غُلْبًا ۩ وَفَاكِهَةً وَأَبًّا</div>
+        <div class="verse-translation">"And We cause grain to grow, and grapes and greens, and olives and palms, and dense gardens, and fruit and pasture." (80:27-31) — Seven categories. Every food type human beings need is listed. All from Allah's provision.</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 GAME — MATCH THE PROVISION (80:24-32)</div>
+      <div class="game-instructions">Drag each provision card to its correct Quranic description. All 5 must be correct!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-4"></div>
+        <div class="drop-zones" id="drop-zones-4"></div>
+      </div>
+      <div class="game-feedback" id="feedback-4"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection4()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 5 — The Deafening Blast ==================== -->
+  <div class="section-panel" id="section-panel-5">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        "Fa-idha ja'at al-Sakhkhah!" When the Deafening Blast comes — that Day, a man will flee from his own brother, his mother, his father, his wife, and his children! Not because he hates them — but because every single person is overwhelmed by their own account. Are you ready to answer questions about the most terrifying day?
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">💥 LEVEL 5 — THE DEAFENING BLAST (80:33-37)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 The Day of Fleeing — Click to reveal verse</span></div>
+        <canvas id="canvas-5" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        <p>The Quran now leaps forward to the ultimate moment — <strong>Al-Sakhkhah</strong> — a name for the Day of Resurrection that comes from the Arabic root meaning to deafen. The sound is so overwhelming it shatters hearing itself.</p>
+        <p>What happens next is deeply sobering. On that Day, <strong>a man will flee from his own brother</strong>. Then from his <strong>mother</strong> and <strong>father</strong>. Then from his <strong>wife</strong> and <strong>children</strong>.</p>
+        <p>Five relationships listed — in what order? First sibling (most distant), then parents (above you), then wife and children (below you, your own creation). Every tier of human relationship — dismantled in an instant.</p>
+        <p>Why? Not cruelty or loss of love. But because of this: <strong>"Li kulli imri'in minhum yawma'idhin sha'nun yughniyhi"</strong> — For each person among them that Day will be a matter sufficient to occupy him.</p>
+        <p><em>Every soul is CONSUMED by their own account</em>. Your deeds. Your record. Your standing before Allah. There is no room for anything else. You will not even be able to look at your mother — not because you don't love her — but because you are too terrified of your own reckoning.</p>
+        <p>SubhanAllah — this is the Day. Plant your deeds NOW, while there is still time.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">فَإِذَا جَاءَتِ الصَّاخَّةُ ۩ يَوْمَ يَفِرُّ الْمَرْءُ مِنْ أَخِيهِ ۩ وَأُمِّهِ وَأَبِيهِ</div>
+        <div class="verse-translation">"Then when the Deafening Blast comes — the day a man will flee from his brother, and his mother and his father." (80:33-35) — Al-Sakhkhah: from the root sakha (to deafen). The sound overwhelms everything. And the first to flee from are the siblings, then parents.</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَصَاحِبَتِهِ وَبَنِيهِ ۩ لِكُلِّ امْرِئٍ مِّنْهُمْ يَوْمَئِذٍ شَأْنٌ يُغْنِيهِ</div>
+        <div class="verse-translation">"And his wife and his children — for each person among them that Day will be a matter to occupy him." (80:36-37) — "Sha'nun yughniyhi" — a matter that SUFFICES him entirely. His own account, his own standing, his own fate. This is the ultimate reality check.</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — THE DEAFENING BLAST (80:33-37)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-5"></div>
+      <div class="game-feedback" id="feedback-5"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 6 — Two Faces ==================== -->
+  <div class="section-panel" id="section-panel-6">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        The surah ends with the ultimate contrast — two types of faces on That Day. Faces bright, laughing, rejoicing! And faces covered in dust and darkness. The lesson of the whole surah comes full circle: the blind man who came eagerly will have a BRIGHT face that Day. The rich men who ignored the message? Which faces might they have? Answer these final questions carefully.
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">✨ LEVEL 6 — TWO FACES (80:38-42)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 Bright &amp; Dusty — Click to reveal verse</span></div>
+        <canvas id="canvas-6" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        <p>The surah closes with a stunning visual contrast — two kinds of faces that will exist on the Day of Judgment. It perfectly mirrors the opening: the blind man who came earnestly vs the nobles who were indifferent.</p>
+        <p><strong>"Wujuhun yawma'idhin musfirah"</strong> — Faces that Day will be bright (musfirah), glowing with inner light. <strong>"Dahikah mustabshirah"</strong> — Laughing and rejoicing — full of good news. These are the believers who came to Allah with eager hearts, just like Abdullah ibn Umm Maktum came to the Prophet ﷺ.</p>
+        <p>Then: <strong>"Wa wujuhun 'alayha ghabarah"</strong> — And faces with dust upon them. The word "ghabarah" means dust — a layer of earth covering their faces. Then: <strong>"Tarhaqu-ha qatarah"</strong> — Covered by darkness. "Qatarah" is soot or black smoke — smothering their faces in layers of darkness.</p>
+        <p>These faces belong to <strong>"Al-kafarah al-fajarah"</strong> — The disbelievers who also lived sinfully. They are identified by two things working together: denying the truth AND living in transgression.</p>
+        <p><em>The surah began with a frowned face — and ends with a glowing one. The lesson: turn toward the truth, however blind or poor you may be, and your face will glow with Allah's light on That Day.</em></p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وُجُوهٌ يَوْمَئِذٍ مُّسْفِرَةٌ ۩ ضَاحِكَةٌ مُّسْتَبْشِرَةٌ</div>
+        <div class="verse-translation">"[Some] faces that Day will be bright — laughing, rejoicing!" (80:38-39) — Three qualities: bright (musfirah), laughing (dahikah), rejoicing with good news (mustabshirah). This is the face of the one who pleased their Lord.</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَوُجُوهٌ يَوْمَئِذٍ عَلَيْهَا غَبَرَةٌ ۩ تَرْهَقُهَا قَتَرَةٌ ۩ أُولَٰئِكَ هُمُ الْكَفَرَةُ الْفَجَرَةُ</div>
+        <div class="verse-translation">"And [other] faces that Day will have dust upon them — covered in darkness. Those are the disbelievers, the sinners." (80:40-42) — Ghabarah (dust) + qatarah (soot/darkness) = layers of spiritual darkness made physically visible. Kufr + fujur: disbelief + sinfulness.</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 FINAL QUIZ — TWO FACES (80:38-42)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to complete Surah Abasa!</div>
+      <div id="quiz-6"></div>
+      <div class="game-feedback" id="feedback-6"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+</div><!-- end section-view -->
+
+<script src="scenes.js"></script>
+<script src="../shared/engine.js"></script>
+<script src="../shared/ui.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+/* Surah Abasa (80) — warm amber / terracotta / earth-gold */
+/* ── ELEGANT: amber-mauve dusk — warm plum, harvest gold ── */
+html[data-theme="stars"] {
+  --bg:             #2e2460;
+  --bg2:            #3c3078;
+  --surface:        #4a3c90;
+  --card-bg:        #4a3c90;
+  --primary:        #9060d0;
+  --primary-lit:    #b080f0;
+  --accent:         #f4c840;
+  --accent2:        #d4a020;
+  --text:           #ffffff;
+  --text-dim:       #d0c4f8;
+  --tile-locked:    #261e58;
+  --tile-unlocked:  #342870;
+  --tile-completed: #423488;
+}
+
+:root {
+  --bg:             #150a02;
+  --bg2:            #241408;
+  --surface:        #321c0c;
+  --card-bg:        #321c0c;
+  --primary:        #8a3a10;
+  --primary-lit:    #c05820;
+  --accent:         #e8a030;
+  --accent2:        #c07818;
+  --text:           #fff0e0;
+  --text-dim:       #c09070;
+  --tile-locked:    #100802;
+  --tile-unlocked:  #201208;
+  --tile-completed: #2a1c0a;
+}

@@ -169,6 +169,8 @@
   .mulk-portal:hover     { border-color:#3050c0; box-shadow:0 0 36px #3050c066; }
   .naziat-portal   { background: linear-gradient(160deg,#020e08,#061a10); border-color:#1a6040; box-shadow:0 0 20px #1a604044; }
   .naziat-portal:hover   { border-color:#2a9060; box-shadow:0 0 36px #2a906066; }
+  .abasa-portal    { background: linear-gradient(160deg,#100802,#241408); border-color:#8a3a10; box-shadow:0 0 20px #8a3a1044; }
+  .abasa-portal:hover    { border-color:#c05820; box-shadow:0 0 36px #c0582066; }
 
   /* Elegant dusk — vivid medium-bright portal cards */
   html[data-theme="stars"] .portal { box-shadow: 0 6px 28px rgba(80,60,180,0.45); }
@@ -178,6 +180,7 @@
   html[data-theme="stars"] .naba-portal     { background:linear-gradient(135deg,#2c2668,#483e9a); border-color:#b478ff; }
   html[data-theme="stars"] .mulk-portal     { background:linear-gradient(135deg,#203068,#384c96); border-color:#78a0ff; }
   html[data-theme="stars"] .naziat-portal   { background:linear-gradient(135deg,#223070,#3a4c9e); border-color:#88a8ff; }
+  html[data-theme="stars"] .abasa-portal    { background:linear-gradient(135deg,#2e2460,#4a3c90); border-color:#d4a020; }
 
   .portal-icon {
     font-size: 48px;
@@ -284,6 +287,8 @@
   .mulk-portal:hover     .portal-btn { background:#3050c0; color:#fff; }
   .naziat-portal   .portal-btn { color:#2a9060; border-color:#2a9060; background:transparent; }
   .naziat-portal:hover   .portal-btn { background:#2a9060; color:#fff; }
+  .abasa-portal    .portal-btn { color:#c05820; border-color:#c05820; background:transparent; }
+  .abasa-portal:hover    .portal-btn { background:#c05820; color:#fff; }
 
   /* ─── FOOTER ─── */
   .hub-footer {
@@ -405,6 +410,20 @@
       <div class="portal-btn">ENTER QUEST ▶</div>
     </div>
 
+    <!-- ABASA PORTAL -->
+    <div class="portal abasa-portal" onclick="window.location='abasa/index.html'">
+      <div class="portal-icon">🌾</div>
+      <div class="portal-title">SURAH ABASA</div>
+      <div class="portal-arabic">سورة عبس</div>
+      <div class="portal-desc">He Frowned — 42 Verses<br>6 Levels of reflection</div>
+      <div class="portal-separator"></div>
+      <div class="portal-progress-label">YOUR PROGRESS</div>
+      <div class="portal-progress" id="abasa-progress">
+        <span style="color:#888">Not started yet</span>
+      </div>
+      <div class="portal-btn">ENTER QUEST ▶</div>
+    </div>
+
   </div>
 
   <div class="hub-footer">
@@ -516,6 +535,7 @@
   renderProgress('muhammadQuestSave', 'muh-progress',    8);
   renderProgress('nabaQuestSave',     'naba-progress',   8);
   renderProgress('naziatQuestSave',   'naziat-progress', 7);
+  renderProgress('abasaQuestSave',    'abasa-progress',  6);
 </script>
 </body>
 </html>
