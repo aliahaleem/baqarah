@@ -1,19 +1,19 @@
 /* Surah An-Nazi'at — deep teal / amber / emerald */
-/* ── ELEGANT: sapphire dusk — cool blue-indigo twilight, champagne gold ── */
+/* ── ELEGANT: sapphire dusk — medium blue-indigo, champagne gold ── */
 html[data-theme="stars"] {
-  --bg:             #161d38;
-  --bg2:            #1e2852;
-  --surface:        #263268;
-  --card-bg:        #263268;
-  --primary:        #4868c0;
-  --primary-lit:    #6888e0;
-  --accent:         #d0b050;
-  --accent2:        #a88830;
-  --text:           #eaf0ff;
-  --text-dim:       #a0acd0;
-  --tile-locked:    #101830;
-  --tile-unlocked:  #1a2248;
-  --tile-completed: #222c58;
+  --bg:             #223070;
+  --bg2:            #2e3e88;
+  --surface:        #3a4c9e;
+  --card-bg:        #3a4c9e;
+  --primary:        #6888e8;
+  --primary-lit:    #88a8ff;
+  --accent:         #f0cc50;
+  --accent2:        #d0a828;
+  --text:           #ffffff;
+  --text-dim:       #c4d0f8;
+  --tile-locked:    #1a2860;
+  --tile-unlocked:  #283880;
+  --tile-completed: #344698;
 }
 
 :root {

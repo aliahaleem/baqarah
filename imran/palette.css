@@ -1,19 +1,19 @@
 /* Surah Al-Imran — royal purple / violet / gold */
-/* ── ELEGANT: violet dusk — rich twilight violet, golden-amber glow ── */
+/* ── ELEGANT: violet dusk — vivid deep violet, golden-amber glow ── */
 html[data-theme="stars"] {
-  --bg:             #1c1a34;
-  --bg2:            #262254;
-  --surface:        #302c66;
-  --card-bg:        #302c66;
-  --primary:        #6848c8;
-  --primary-lit:    #8868e8;
-  --accent:         #e0c050;
-  --accent2:        #b89838;
-  --text:           #f4eeff;
-  --text-dim:       #b0a8cc;
-  --tile-locked:    #161430;
-  --tile-unlocked:  #20204c;
-  --tile-completed: #2a285e;
+  --bg:             #2c2870;
+  --bg2:            #3a3488;
+  --surface:        #48429e;
+  --card-bg:        #48429e;
+  --primary:        #8868e0;
+  --primary-lit:    #a888ff;
+  --accent:         #f2c848;
+  --accent2:        #d2a028;
+  --text:           #ffffff;
+  --text-dim:       #ccc8f8;
+  --tile-locked:    #242070;
+  --tile-unlocked:  #322e88;
+  --tile-completed: #403c9e;
 }
 
 :root {

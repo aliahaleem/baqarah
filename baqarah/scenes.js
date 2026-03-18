@@ -12,8 +12,8 @@ const GY = 152;  // ground y level
 function sceneP() {
   const s = document.documentElement.dataset.theme === 'stars';
   return s ? {
-    sky0:    '#1e1b38', sky1:    '#27235a', sky2:    '#302c6a',
-    gnd:     '#382a72', gndAcc:  '#4a3888',
+    sky0:    '#302c70', sky1:    '#3e3888', sky2:    '#4c45a0',
+    gnd:     '#5a50b0', gndAcc:  '#6a60c0',
     starStr: 'rgba(200,185,255,',
     acStr:   'rgba(212,184,96,',
     hint:    'rgba(212,184,96,0.9)',

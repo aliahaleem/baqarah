@@ -11,8 +11,8 @@ const CW = 560, CH = 220, P = 4;
 function sceneP() {
   const s = document.documentElement.dataset.theme === 'stars';
   return s ? {
-    sky0:    '#161d38', sky1:    '#1e2852', sky2:    '#263268',
-    gnd:     '#2e3870', gndAcc:  '#3e4888',
+    sky0:    '#223070', sky1:    '#2e3e88', sky2:    '#3a4c9e',
+    gnd:     '#4658aa', gndAcc:  '#5668bc',
     starStr: 'rgba(190,200,255,',
     acStr:   'rgba(208,176,80,',
     label:   '#d0b050',

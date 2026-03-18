@@ -51,20 +51,20 @@ html[data-theme="stars"] {
   --border-w:       2px;
   --border-w-sm:    1px;
   --transition:     0.2s;
-  /* Colour fallback — soft dusk lavender (surah palette.css overrides these) */
-  --bg:             #1e1b38;
-  --bg2:            #27235a;
-  --surface:        #302c6a;
-  --card-bg:        #302c6a;
-  --primary:        #7060d0;
-  --primary-lit:    #9080ee;
-  --accent:         #d4b860;
-  --accent2:        #b09840;
-  --text:           #f0edff;
-  --text-dim:       #b0a8d8;
-  --tile-locked:    #181530;
-  --tile-unlocked:  #22204a;
-  --tile-completed: #2a265c;
+  /* Colour fallback — medium-bright dusk (surah palette.css overrides these) */
+  --bg:             #302c70;
+  --bg2:            #3e3888;
+  --surface:        #4c45a0;
+  --card-bg:        #4c45a0;
+  --primary:        #9080f0;
+  --primary-lit:    #a898ff;
+  --accent:         #f4d458;
+  --accent2:        #d4b030;
+  --text:           #ffffff;
+  --text-dim:       #ccc4f0;
+  --tile-locked:    #28246a;
+  --tile-unlocked:  #38348a;
+  --tile-completed: #4840a2;
 }
 
 /* ================================================
@@ -103,13 +103,13 @@ body::before {
     radial-gradient(1px 1px at 3%  55%, rgba(255,255,255,0.6), transparent);
 }
 
-/* Elegant dusk theme — soft light blooms, no harsh stars */
+/* Elegant dusk theme — warm bloom highlights over the medium background */
 html[data-theme="stars"] body::before {
   background-image:
-    radial-gradient(ellipse 80% 60% at 15% 20%, rgba(140,120,220,0.18), transparent),
-    radial-gradient(ellipse 60% 50% at 85% 75%, rgba(100,80,200,0.14), transparent),
-    radial-gradient(ellipse 50% 40% at 50% 10%, rgba(180,160,255,0.10), transparent),
-    radial-gradient(ellipse 40% 30% at 70% 50%, rgba(212,184,96,0.06), transparent);
+    radial-gradient(ellipse 70% 50% at 20% 15%, rgba(180,160,255,0.30), transparent),
+    radial-gradient(ellipse 60% 45% at 80% 80%, rgba(140,110,220,0.22), transparent),
+    radial-gradient(ellipse 50% 35% at 55% 5%,  rgba(220,190,255,0.18), transparent),
+    radial-gradient(ellipse 35% 25% at 65% 55%, rgba(244,212,88,0.12),  transparent);
 }
 
 .container {

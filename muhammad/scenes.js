@@ -9,8 +9,8 @@ const CW = 560, CH = 220, GY = 160, P = 4;
 function sceneP() {
   const s = document.documentElement.dataset.theme === 'stars';
   return s ? {
-    sky0:    '#1e1832', sky1:    '#282050', sky2:    '#322860',
-    gnd:     '#3c3068', gndAcc:  '#4e4080',
+    sky0:    '#2e2268', sky1:    '#3c2e82', sky2:    '#4a3898',
+    gnd:     '#5844a8', gndAcc:  '#6854b8',
     starStr: 'rgba(200,185,255,',
     acStr:   'rgba(232,176,64,',
     label:   '#e8b040',
