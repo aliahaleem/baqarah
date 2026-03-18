@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baqarah Quest ⚔️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== INTRO SCREEN ===== -->
+<div id="intro-screen">
+  <div class="intro-box">
+    <div class="intro-char">🧙‍♂️</div>
+    <h1 class="intro-title">BAQARAH QUEST</h1>
+    <p class="intro-arabic">سورة البقرة</p>
+    <p class="intro-text">
+      As-salamu alaykum, young Explorer!<br><br>
+      I am <strong>Ibn Ameen</strong> — scholar and guide.<br>
+      You have memorized Al-Baqarah —<br>
+      now it's time to UNDERSTAND its meaning!<br><br>
+      Three lands await you. Are you ready?
+    </p>
+    <p class="intro-name-prompt">⚔️ ENTER YOUR EXPLORER NAME:</p>
+    <input type="text" id="explorer-name" placeholder="Your name..." maxlength="15">
+    <button class="action-btn gold" onclick="startGame()">BEGIN QUEST ▶</button>
+    <a href="../index.html" style="display:block;text-align:center;margin-top:10px;font-family:'Press Start 2P',monospace;font-size:8px;color:#888;text-decoration:none;border:2px solid #444;padding:8px">◀ BACK TO HUB</a>
+  </div>
+</div>
+
+<!-- ===== GAME HEADER ===== -->
+<header id="game-header">
+  <div class="header-left">
+    <div class="game-title">⚔️ BAQARAH QUEST</div>
+    <div class="header-explorer">Explorer: <span id="header-name">—</span></div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div>
+    <div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div>
+    <div class="stat-chip done-chip">✅ <span id="done-display">0</span>/13</div>
+    <a href="../index.html" style="background:transparent;border:2px solid #5a8a3a;color:#88cc66;font-family:'Press Start 2P',monospace;font-size:7px;padding:4px 8px;text-decoration:none;transition:background 0.2s" onmouseover="this.style.background='#5a8a3a';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#88cc66'">🏠 HUB</a>
+    <button class="reset-btn" onclick="resetGame()" title="Clear all progress and start over">🔄 Reset</button>
+  </div>
+</header>
+
+<!-- ===== MAIN CONTAINER ===== -->
+<div class="container">
+
+  <!-- WORLD MAP VIEW -->
+  <div id="main-view">
+
+    <div class="ibn-ameen-panel" id="welcome-panel">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble">
+        <p id="welcome-text">As-salamu alaykum, Explorer! Welcome to Baqarah Quest. You've memorized the greatest Surah — now let's discover its meaning! Choose your first level on the map below. 🗺️</p>
+      </div>
+    </div>
+
+    <h2 class="section-heading">🗺️ QUEST MAP</h2>
+    <div class="map-grid">
+
+      <div class="map-tile unlocked" id="tile-1" onclick="openSection(1)">
+        <div class="tile-icon">🌿</div>
+        <div class="tile-level">LEVEL 1</div>
+        <div class="tile-name">Plains of<br>Guidance</div>
+        <div class="tile-verses">Verses 1–5</div>
+        <div class="tile-status" id="status-1">▶ PLAY</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-2">
+        <div class="tile-icon">🌑</div>
+        <div class="tile-level">LEVEL 2</div>
+        <div class="tile-name">Cave of<br>Shadows</div>
+        <div class="tile-verses">Verses 6–20</div>
+        <div class="tile-status" id="status-2">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-3">
+        <div class="tile-icon">🌟</div>
+        <div class="tile-level">LEVEL 3</div>
+        <div class="tile-name">Garden of<br>First Light</div>
+        <div class="tile-verses">Verses 21–39</div>
+        <div class="tile-status" id="status-3">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-4">
+        <div class="tile-icon">🌊</div>
+        <div class="tile-level">LEVEL 4</div>
+        <div class="tile-name">Shores of<br>Sinai</div>
+        <div class="tile-verses">Verses 40–61</div>
+        <div class="tile-status" id="status-4">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-5">
+        <div class="tile-icon">🐄</div>
+        <div class="tile-level">LEVEL 5</div>
+        <div class="tile-name">Mystery<br>of the Cow</div>
+        <div class="tile-verses">Verses 62–74</div>
+        <div class="tile-status" id="status-5">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-6">
+        <div class="tile-icon">💎</div>
+        <div class="tile-level">LEVEL 6</div>
+        <div class="tile-name">The Hard<br>Heart</div>
+        <div class="tile-verses">Verses 75–103</div>
+        <div class="tile-status" id="status-6">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-7">
+        <div class="tile-icon">🕋</div>
+        <div class="tile-level">LEVEL 7</div>
+        <div class="tile-name">Ibrahim<br>Builds the Ka'ba</div>
+        <div class="tile-verses">Verses 124–141</div>
+        <div class="tile-status" id="status-7">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-8">
+        <div class="tile-icon">🧭</div>
+        <div class="tile-level">LEVEL 8</div>
+        <div class="tile-name">The New<br>Direction</div>
+        <div class="tile-verses">Verses 142–157</div>
+        <div class="tile-status" id="status-8">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-9">
+        <div class="tile-icon">📋</div>
+        <div class="tile-level">LEVEL 9</div>
+        <div class="tile-name">The Big<br>Rules (Al-Birr)</div>
+        <div class="tile-verses">Verses 177+183</div>
+        <div class="tile-status" id="status-9">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-10">
+        <div class="tile-icon">⚔️</div>
+        <div class="tile-level">LEVEL 10</div>
+        <div class="tile-name">Talut, Jalut<br>&amp; Dawud</div>
+        <div class="tile-verses">Verses 243–253</div>
+        <div class="tile-status" id="status-10">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-11">
+        <div class="tile-icon">👑</div>
+        <div class="tile-level">LEVEL 11</div>
+        <div class="tile-name">Ayat<br>al-Kursi</div>
+        <div class="tile-verses">Verse 255</div>
+        <div class="tile-status" id="status-11">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-12">
+        <div class="tile-icon">🌱</div>
+        <div class="tile-level">LEVEL 12</div>
+        <div class="tile-name">The Charity<br>Garden</div>
+        <div class="tile-verses">Verses 261–274</div>
+        <div class="tile-status" id="status-12">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-13">
+        <div class="tile-icon">🤲</div>
+        <div class="tile-level">LEVEL 13</div>
+        <div class="tile-name">The Final<br>Treasure</div>
+        <div class="tile-verses">Verses 284–286</div>
+        <div class="tile-status" id="status-13">🔒 LOCKED</div>
+      </div>
+
+    </div>
+
+    <!-- WORLD BUILDER -->
+    <div id="world-builder">
+      <h3 class="section-heading">🏗️ YOUR WORLD BUILDS AS YOU LEARN</h3>
+      <div class="world-preview">
+        <div class="world-chunk" id="chunk-1">
+          <span class="chunk-emoji">⬛</span>
+          <span class="chunk-label">Plains</span>
+        </div>
+        <div class="world-chunk" id="chunk-2">
+          <span class="chunk-emoji">⬛</span>
+          <span class="chunk-label">Caves</span>
+        </div>
+        <div class="world-chunk" id="chunk-3">
+          <span class="chunk-emoji">⬛</span>
+          <span class="chunk-label">Garden</span>
+        </div>
+        <div class="world-chunk" id="chunk-4">
+          <span class="chunk-emoji">⬛</span>
+          <span class="chunk-label">Shores</span>
+        </div>
+        <div class="world-chunk" id="chunk-5">
+          <span class="chunk-emoji">⬛</span>
+          <span class="chunk-label">The Cow</span>
+        </div>
+        <div class="world-chunk" id="chunk-6">
+          <span class="chunk-emoji">⬛</span>
+          <span class="chunk-label">Hard Heart</span>
+        </div>
+        <div class="world-chunk" id="chunk-7">
+          <span class="chunk-emoji">⬛</span>
+          <span class="chunk-label">Ka'ba</span>
+        </div>
+        <div class="world-chunk" id="chunk-8">
+          <span class="chunk-emoji">⬛</span>
+          <span class="chunk-label">Qibla</span>
+        </div>
+        <div class="world-chunk" id="chunk-9">
+          <span class="chunk-emoji">⬛</span>
+          <span class="chunk-label">Al-Birr</span>
+        </div>
+        <div class="world-chunk" id="chunk-10">
+          <span class="chunk-emoji">⬛</span>
+          <span class="chunk-label">Battle</span>
+        </div>
+        <div class="world-chunk" id="chunk-11">
+          <span class="chunk-emoji">⬛</span>
+          <span class="chunk-label">Kursi</span>
+        </div>
+        <div class="world-chunk" id="chunk-12">
+          <span class="chunk-emoji">⬛</span>
+          <span class="chunk-label">Charity</span>
+        </div>
+        <div class="world-chunk" id="chunk-13">
+          <span class="chunk-emoji">⬛</span>
+          <span class="chunk-label">Du'a</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main-view -->
+
+  <!-- SECTION VIEW -->
+  <div id="section-view" style="display:none">
+
+    <button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button>
+
+    <!-- ========== SECTION 1 ========== -->
+    <div class="section-panel" id="section-panel-1">
+
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble">
+          <p>Al-Baqarah opens with a bold claim: this Book has <strong>NO doubt</strong> in it. But who benefits from it? Only the <strong>Muttaqeen</strong> — those with taqwa. Let's find out who they are! 📖</p>
+        </div>
+      </div>
+
+      <!-- SCENE 1 -->
+      <div class="scene-container">
+        <div class="scene-header">
+          <span class="scene-title">🎬 WATCH THE SCENE — Click on characters to reveal verses!</span>
+        </div>
+        <canvas id="canvas-s1"></canvas>
+      </div>
+
+      <!-- STORY -->
+      <div class="card story-card">
+        <div class="card-header">📜 THE STORY — Plains of Guidance (2:1–5)</div>
+        <div class="story-text">
+          <p>Surah Al-Baqarah begins with three mysterious letters: <strong>Alif. Lam. Meem. (الٓمٓ)</strong></p>
+          <br>
+          <p>Only Allah knows their full meaning. They remind us that this Quran belongs to Allah alone — no human could ever create something like it.</p>
+          <br>
+          <div class="story-highlight">💡 <strong>Ibn Ameen whispers:</strong> "Scholars call these the <em>Huroof Muqatta'at</em> — the disconnected letters. 29 Surahs begin with them. They are a sign of the Quran's miracle — a challenge to all of humanity."</div>
+          <br>
+          <p>Then comes the declaration: <strong>"This is the Book — no doubt in it — a guidance for the Muttaqeen."</strong></p>
+          <br>
+          <p>The word <strong>Muttaqeen</strong> comes from <em>Taqwa</em> — a beautiful Arabic concept meaning to be aware of Allah, to protect yourself from what displeases Him. Think of it like a shield you carry in your heart.</p>
+          <br>
+          <p>But WHO are the Muttaqeen? Allah doesn't leave us guessing. He describes them with <strong>5 qualities</strong> right away:</p>
+          <br>
+          <p>🌙 They <strong>believe in Al-Ghayb (the Unseen)</strong> — things they cannot see with their eyes but trust completely: angels, Jannah, Jahannam, the Day of Judgment.</p>
+          <br>
+          <p>🕌 They <strong>establish As-Salah (Prayer)</strong> — not just "do" prayer, but truly give it its right: on time, with focus, consistently.</p>
+          <br>
+          <p>💰 They <strong>spend from what Allah gave them</strong> — sadaqah, zakat, charity. They know their wealth is a trust from Allah, not a permanent possession.</p>
+          <br>
+          <p>📖 They <strong>believe in the Quran</strong> — and in everything revealed before it (the Torah sent to Musa, the Injeel sent to Isa, peace be upon them).</p>
+          <br>
+          <p>⚖️ They are <strong>certain of Al-Akhirah (the Hereafter)</strong> — the Day of Return to Allah. This certainty changes how they live every single day.</p>
+          <br>
+          <div class="story-highlight">🏆 The result? <strong>"Those are upon guidance from their Lord, and those are the successful ones."</strong> (2:5) — This is Allah's very own definition of success!</div>
+        </div>
+      </div>
+
+      <!-- VERSES -->
+      <div class="card verse-card">
+        <div class="card-header">📿 THE VERSES — Al-Baqarah 2:1–5</div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:1</div>
+          <div class="arabic">الٓمٓ</div>
+          <div class="english">Alif-Lam-Meem.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:2</div>
+          <div class="arabic">ذَٰلِكَ ٱلْكِتَٰبُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ</div>
+          <div class="english">This is the Book about which there is no doubt, a guidance for those conscious of Allah —</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verses 2:3–4</div>
+          <div class="arabic">ٱلَّذِينَ يُؤْمِنُونَ بِٱلْغَيْبِ وَيُقِيمُونَ ٱلصَّلَوٰةَ وَمِمَّا رَزَقْنَٰهُمْ يُنفِقُونَ ۝ وَٱلَّذِينَ يُؤْمِنُونَ بِمَآ أُنزِلَ إِلَيْكَ وَمَآ أُنزِلَ مِن قَبْلِكَ وَبِٱلْءَاخِرَةِ هُمْ يُوقِنُونَ</div>
+          <div class="english">Who believe in the unseen, establish prayer, and spend out of what We have provided for them, and who believe in what has been revealed to you, [O Muhammad], and what was revealed before you, and of the Hereafter they are certain [in faith].</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:5</div>
+          <div class="arabic">أُو۟لَٰٓئِكَ عَلَىٰ هُدًى مِّن رَّبِّهِمْ ۖ وَأُو۟لَٰٓئِكَ هُمُ ٱلْمُفْلِحُونَ</div>
+          <div class="english">Those are upon [right] guidance from their Lord, and it is those who are the successful.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+      </div>
+
+      <!-- GAME: DRAG & DROP -->
+      <div class="card game-card">
+        <div class="card-header">🎮 MATCH THE QUALITIES!</div>
+        <div class="game-instructions">
+          Drag each quality BLOCK from the left column to its matching description on the right. You can drag items back to reset. Click CHECK when ready!
+        </div>
+        <div class="dnd-wrapper">
+          <div class="dnd-col">
+            <div class="col-label">🧱 DRAG FROM HERE</div>
+            <div id="drag-pool-1" class="drag-pool"></div>
+          </div>
+          <div class="dnd-col">
+            <div class="col-label">📦 DROP HERE</div>
+            <div id="drop-zones-1"></div>
+          </div>
+        </div>
+        <div id="feedback-1" class="game-feedback"></div>
+        <div class="game-footer">
+          <button class="action-btn" onclick="checkSection1()">CHECK ANSWERS ✓</button>
+          <button class="action-btn gold" id="complete-1-btn" onclick="completeSection(1)" style="display:none">🏆 CLAIM REWARD!</button>
+        </div>
+        <div class="back-btn-bottom">
+          <button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button>
+        </div>
+      </div>
+
+    </div><!-- /section-panel-1 -->
+
+    <!-- ========== SECTION 2 ========== -->
+    <div class="section-panel" id="section-panel-2">
+
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble">
+          <p>The map of guidance was clear. But not everyone follows it. Allah now warns us about <strong>two groups</strong> who turned away — and they're very different. Can you tell them apart? 🌑</p>
+        </div>
+      </div>
+
+      <!-- SCENE 2 -->
+      <div class="scene-container">
+        <div class="scene-header">
+          <span class="scene-title">🎬 WATCH THE SCENE — Click characters to reveal verses!</span>
+          <button class="scene-toggle-btn" id="s2-toggle-btn">🎭 SEE THE HYPOCRITE →</button>
+        </div>
+        <canvas id="canvas-s2"></canvas>
+      </div>
+
+      <!-- STORY -->
+      <div class="card story-card">
+        <div class="card-header">📜 THE STORY — Cave of Shadows (2:6–20)</div>
+        <div class="story-text">
+          <p>After describing the believers, Allah introduces those who rejected guidance. There are <strong>TWO very different groups</strong>.</p>
+          <br>
+          <p><strong>🔴 Group 1 — The Disbelievers (Al-Kafirun, Verses 6–7)</strong></p>
+          <br>
+          <p>These are people who openly reject faith. Allah says it makes no difference whether you warn them or not — they will not believe. Their hearts and ears have been "sealed."</p>
+          <br>
+          <p>But this isn't unfair. They <strong>chose</strong> to close their hearts — again and again — every time truth came to them. The sealing was a consequence of their own repeated choices.</p>
+          <br>
+          <div class="story-highlight">💡 <strong>Ibn Ameen explains:</strong> "Imagine a door. Allah gave everyone a door to open. Some people kept slamming it shut whenever truth knocked. Eventually it gets stuck. Allah is describing the result of their own stubbornness — not a punishment without cause."</div>
+          <br>
+          <p><strong>🟡 Group 2 — The Hypocrites (Al-Munafiqun, Verses 8–20)</strong></p>
+          <br>
+          <p>This group is more complex. They SAY "We believe in Allah and the Last Day!" — but their hearts don't mean a word of it. They try to <strong>deceive Allah and the believers</strong>. But they only deceive themselves.</p>
+          <br>
+          <p>Allah says there is a <strong>"disease" in their hearts</strong> — a spiritual sickness of doubt and deception. When told "don't spread corruption," they say: <strong>"WE are only reformers!"</strong> They cannot even see their own problem.</p>
+          <br>
+          <p>Allah gives us <strong>two powerful parables</strong> to picture the hypocrites:</p>
+          <br>
+          <p>🔥 <strong>The Fire Parable (2:17):</strong> Someone lights a fire in the dark. Just as it lights everything up — Allah removes their light. They are left in complete darkness, unable to see at all.</p>
+          <br>
+          <p>⛈️ <strong>The Storm Parable (2:19–20):</strong> Caught in a terrifying thunderstorm. When lightning flashes, they take a few steps. When it goes dark — they freeze. They only use truth when it's convenient for them.</p>
+          <br>
+          <div class="story-highlight">🧠 <strong>Key Lesson:</strong> Honesty with Allah — and with yourself — is the foundation. The hypocrites thought they could fool Allah. But "they only deceive themselves and perceive it not." (2:9)</div>
+        </div>
+      </div>
+
+      <!-- VERSES -->
+      <div class="card verse-card">
+        <div class="card-header">📿 THE VERSES — Al-Baqarah 2:6–20 (Key Verses)</div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verses 2:6–7 — The Disbelievers</div>
+          <div class="arabic">إِنَّ ٱلَّذِينَ كَفَرُوا۟ سَوَآءٌ عَلَيْهِمْ ءَأَنذَرْتَهُمْ أَمْ لَمْ تُنذِرْهُمْ لَا يُؤْمِنُونَ ۝ خَتَمَ ٱللَّهُ عَلَىٰ قُلُوبِهِمْ وَعَلَىٰ سَمْعِهِمْ ۖ وَعَلَىٰٓ أَبْصَٰرِهِمْ غِشَٰوَةٌ ۖ وَلَهُمْ عَذَابٌ عَظِيمٌ</div>
+          <div class="english">Indeed, those who disbelieve — it is all the same for them whether you warn them or do not warn them — they will not believe. Allah has set a seal upon their hearts and upon their hearing, and over their vision is a veil. And for them is a great punishment.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verses 2:8–9 — The Hypocrites</div>
+          <div class="arabic">وَمِنَ ٱلنَّاسِ مَن يَقُولُ ءَامَنَّا بِٱللَّهِ وَبِٱلْيَوْمِ ٱلْءَاخِرِ وَمَا هُم بِمُؤْمِنِينَ ۝ يُخَٰدِعُونَ ٱللَّهَ وَٱلَّذِينَ ءَامَنُوا۟ وَمَا يَخْدَعُونَ إِلَّآ أَنفُسَهُمْ وَمَا يَشْعُرُونَ</div>
+          <div class="english">And of the people are some who say, "We believe in Allah and the Last Day," but they are not believers. They [think to] deceive Allah and those who believe, but they deceive not except themselves and perceive [it] not.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:10 — The Disease</div>
+          <div class="arabic">فِى قُلُوبِهِم مَّرَضٌ فَزَادَهُمُ ٱللَّهُ مَرَضًا ۖ وَلَهُمْ عَذَابٌ أَلِيمٌ بِمَا كَانُوا۟ يَكْذِبُونَ</div>
+          <div class="english">In their hearts is disease, so Allah has increased their disease; and for them is a painful punishment because they [habitually] used to lie.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:17 — The Fire Parable</div>
+          <div class="arabic">مَثَلُهُمْ كَمَثَلِ ٱلَّذِى ٱسْتَوْقَدَ نَارًا فَلَمَّآ أَضَآءَتْ مَا حَوْلَهُۥ ذَهَبَ ٱللَّهُ بِنُورِهِمْ وَتَرَكَهُمْ فِى ظُلُمَٰتٍ لَّا يُبْصِرُونَ</div>
+          <div class="english">Their example is like that of one who kindled a fire, but when it illuminated what was around him, Allah took away their light and left them in darkness [so] they could not see.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+      </div>
+
+      <!-- GAME: QUIZ -->
+      <div class="card game-card">
+        <div class="card-header">🎮 QUICK QUIZ — Test Your Knowledge!</div>
+        <div class="game-instructions">
+          Choose the best answer for each question. You need <strong>4 out of 5</strong> correct to complete the level!
+        </div>
+        <div id="quiz-2"></div>
+        <div id="feedback-2" class="game-feedback"></div>
+        <div class="game-footer">
+          <button class="action-btn" onclick="checkSection2()">SUBMIT QUIZ ✓</button>
+          <button class="action-btn gold" id="complete-2-btn" onclick="completeSection(2)" style="display:none">🏆 CLAIM REWARD!</button>
+        </div>
+        <div class="back-btn-bottom">
+          <button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button>
+        </div>
+      </div>
+
+    </div><!-- /section-panel-2 -->
+
+    <!-- ========== SECTION 3 ========== -->
+    <div class="section-panel" id="section-panel-3">
+
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble">
+          <p>Now we reach the <strong>origin story</strong>, Explorer! The creation of Adam (AS) — the first human, the first test, the first tawbah. This story explains why WE are here on Earth! 🌍</p>
+        </div>
+      </div>
+
+      <!-- SCENE 3 -->
+      <div class="scene-container">
+        <div class="scene-header">
+          <span class="scene-title">🎬 WATCH THE SCENE — Click anything to reveal verses!</span>
+          <button class="scene-toggle-btn" id="s3-toggle-btn">🌳 SEE TREE SCENE →</button>
+        </div>
+        <canvas id="canvas-s3"></canvas>
+      </div>
+
+      <!-- STORY -->
+      <div class="card story-card">
+        <div class="card-header">📜 THE STORY — Garden of First Light (2:21–39)</div>
+        <div class="story-text">
+          <p>Before humans existed, the angels were constantly worshipping Allah in the heavens. Then came an announcement that changed everything.</p>
+          <br>
+          <p>Allah said to the angels: <strong>"I am going to place a Khalifah (خليفة) on Earth."</strong></p>
+          <br>
+          <p>The angels were worried. They asked: <strong>"Will You place someone who causes corruption and sheds blood? We glorify Your praise and sanctify You!"</strong></p>
+          <br>
+          <p>Allah's reply was simple and powerful: <strong>"I know what you do not know."</strong></p>
+          <br>
+          <div class="story-highlight">💡 <strong>Ibn Ameen explains:</strong> "The word Khalifah means caretaker, steward, vicegerent. We — human beings — are Allah's khalifah on Earth, given the responsibility to take care of it and live by His guidance. That's one of the most important things the Quran says about us!"</div>
+          <br>
+          <p>Then Allah created Adam (AS) and did something remarkable: <strong>He taught Adam the names of all things</strong> — every concept, creature, and piece of knowledge. Allah then asked the angels to name them. They couldn't.</p>
+          <br>
+          <p>When Adam named everything, the angels understood. By Allah's command, <strong>all the angels bowed to Adam</strong> — as a sign of honour and respect (not worship — worship is only for Allah).</p>
+          <br>
+          <p>All of them bowed — except <strong>Iblis</strong>. He refused. He said "I am better than him" and was arrogant. With that one choice, he became one of the disbelievers and was expelled.</p>
+          <br>
+          <p>Adam and his wife were placed in <strong>Jannah</strong> with one rule: <em>"Eat from wherever you wish — but do NOT go near this one tree."</em></p>
+          <br>
+          <p>But Shaytan whispered. He deceived them. And they slipped — they ate from the forbidden tree.</p>
+          <br>
+          <div class="story-highlight">🌟 <strong>But here's the beautiful part:</strong> Adam (AS) didn't make excuses. He didn't run away. He turned IMMEDIATELY to Allah with sincere words of regret and tawbah. And Allah — Al-Tawwab, the Ever-Accepting of Repentance — <strong>forgave him completely</strong>.</div>
+          <br>
+          <p>Then they were sent to Earth — but with a promise: <strong>"Follow My guidance when it comes to you, and whoever follows it will have no fear, nor shall they grieve."</strong> (2:38)</p>
+          <br>
+          <p>That promise is for all of us, Explorer. The Quran IS that guidance. And you are already learning it. 💚</p>
+        </div>
+      </div>
+
+      <!-- VERSES -->
+      <div class="card verse-card">
+        <div class="card-header">📿 THE VERSES — Al-Baqarah 2:30–39 (Key Verses)</div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:30 — The Khalifah</div>
+          <div class="arabic">وَإِذْ قَالَ رَبُّكَ لِلْمَلَٰٓئِكَةِ إِنِّى جَاعِلٌ فِى ٱلْأَرْضِ خَلِيفَةً ۖ قَالُوٓا۟ أَتَجْعَلُ فِيهَا مَن يُفْسِدُ فِيهَا وَيَسْفِكُ ٱلدِّمَآءَ وَنَحْنُ نُسَبِّحُ بِحَمْدِكَ وَنُقَدِّسُ لَكَ ۖ قَالَ إِنِّىٓ أَعْلَمُ مَا لَا تَعْلَمُونَ</div>
+          <div class="english">And [mention, O Muhammad], when your Lord said to the angels, "Indeed, I will make upon the earth a successive authority." They said, "Will You place upon it one who causes corruption therein and sheds blood, while we declare Your praise and sanctify You?" Allah said, "Indeed, I know that which you do not know."</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:34 — Iblis Refuses</div>
+          <div class="arabic">وَإِذْ قُلْنَا لِلْمَلَٰٓئِكَةِ ٱسْجُدُوا۟ لِءَادَمَ فَسَجَدُوٓا۟ إِلَّآ إِبْلِيسَ أَبَىٰ وَٱسْتَكْبَرَ وَكَانَ مِنَ ٱلْكَٰفِرِينَ</div>
+          <div class="english">And [mention] when We said to the angels, "Prostrate before Adam"; so they prostrated, except for Iblis. He refused and was arrogant and became of the disbelievers.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:37 — Adam's Tawbah</div>
+          <div class="arabic">فَتَلَقَّىٰٓ ءَادَمُ مِن رَّبِّهِۦ كَلِمَٰتٍ فَتَابَ عَلَيْهِ ۚ إِنَّهُۥ هُوَ ٱلتَّوَّابُ ٱلرَّحِيمُ</div>
+          <div class="english">Then Adam received from his Lord [some] words, and He accepted his repentance. Indeed, it is He who is the Accepting of repentance, the Merciful.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:38 — The Promise</div>
+          <div class="arabic">قُلْنَا ٱهْبِطُوا۟ مِنْهَا جَمِيعًا ۖ فَإِمَّا يَأْتِيَنَّكُم مِّنِّى هُدًى فَمَن تَبِعَ هُدَاىَ فَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ</div>
+          <div class="english">We said, "Go down from it, all of you. And when guidance comes to you from Me, whoever follows My guidance — there will be no fear concerning them, nor will they grieve."</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+      </div>
+
+      <!-- GAME: STORY ORDER -->
+      <div class="card game-card">
+        <div class="card-header">🎮 ORDER THE STORY!</div>
+        <div class="game-instructions">
+          Use the ↑ ↓ arrows to move the events into the correct order of what happened in the story. Then click CHECK!
+        </div>
+        <div id="order-3" class="order-list"></div>
+        <div id="feedback-3" class="game-feedback"></div>
+        <div class="game-footer">
+          <button class="action-btn" onclick="checkSection3()">CHECK ORDER ✓</button>
+          <button class="action-btn gold" id="complete-3-btn" onclick="completeSection(3)" style="display:none">🏆 CLAIM REWARD!</button>
+        </div>
+        <div class="back-btn-bottom">
+          <button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button>
+        </div>
+      </div>
+
+    </div><!-- /section-panel-3 -->
+
+    <!-- ========== SECTION 4 ========== -->
+    <div class="section-panel" id="section-panel-4">
+
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble">
+          <p>Time for a big story, Explorer! After Adam (AS) descended to Earth, generations passed... until <strong>Bani Isra'il</strong> — the Children of Israel — and their Prophet <strong>Musa (AS)</strong>. Allah gave them <strong>FIVE incredible miracles</strong>. Match each miracle to its description! 🌊</p>
+        </div>
+      </div>
+
+      <!-- SCENE 4 -->
+      <div class="scene-container">
+        <div class="scene-header">
+          <span class="scene-title">🎬 THREE MIRACLES IN THE DESERT — Click each panel for its verse!</span>
+        </div>
+        <canvas id="canvas-s4"></canvas>
+      </div>
+
+      <!-- STORY -->
+      <div class="card story-card">
+        <div class="card-header">📜 THE STORY — Shores of Sinai (2:40–61)</div>
+        <div class="story-text">
+          <p>After Adam and his descendants spread across the Earth, Allah chose a special nation — <strong>Bani Isra'il</strong>, the Children of Israel, descendants of Prophet Ya'qub (Jacob). He made a covenant with them: follow My laws, and I will grant you mercy and a special place.</p>
+          <br>
+          <p>But they were living as slaves in Egypt under the brutal Pharaoh. So Allah sent <strong>Prophet Musa (Mūsā, Moses)</strong> — and through him gave Bani Isra'il five extraordinary miracles:</p>
+          <br>
+          <p><strong>1. 🌊 The Sea Split (2:50)</strong> — Pharaoh's army was chasing them to the sea. Musa struck the water with his staff and it parted — two towering walls of water on each side — they crossed on dry land. Then the sea closed over Pharaoh.</p>
+          <br>
+          <p><strong>2. ☁️ The Cloud of Shade (2:57)</strong> — In the scorching Sinai desert, Allah sent special clouds to shield them from the brutal sun.</p>
+          <br>
+          <p><strong>3. 🍞 Manna & Salwa (2:57)</strong> — Allah rained down manna (a sweet, bread-like food) from the sky, and sent salwa (quail birds) for them to eat — nourishment without any farming or effort.</p>
+          <br>
+          <p><strong>4. 💧 12 Springs (2:60)</strong> — When they were thirsty in the desert, Musa struck a single rock and twelve springs of fresh water gushed out — one spring for each of the 12 tribes, so no one would argue.</p>
+          <br>
+          <p><strong>5. ⛰️ The Covenant at Sinai (2:63)</strong> — Allah gave Musa the Torah on Mount Sinai. He raised the mountain itself above them to impress the weight and seriousness of this covenant on their hearts.</p>
+          <br>
+          <div class="story-highlight">💡 <strong>Ibn Ameen explains:</strong> "Despite these five incredible miracles — miracles that no other nation ever received all at once — many of Bani Isra'il still disobeyed. This is why Allah says in Al-Baqarah again and again: <em>'Remember My favour upon you!'</em> (2:40, 2:47, 2:122). Gratitude — shukr — is one of the most important qualities a believer can have."</div>
+        </div>
+      </div>
+
+      <!-- VERSES -->
+      <div class="card verse-card">
+        <div class="card-header">📿 THE VERSES — Al-Baqarah 2:47–57 (Key Verses)</div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:47 — The Reminder</div>
+          <div class="arabic">يَٰبَنِىٓ إِسْرَٰٓءِيلَ ٱذْكُرُوا۟ نِعْمَتِىَ ٱلَّتِىٓ أَنْعَمْتُ عَلَيْكُمْ وَأَنِّى فَضَّلْتُكُمْ عَلَى ٱلْعَٰلَمِينَ</div>
+          <div class="english">O Children of Israel, remember My favor which I bestowed upon you and that I preferred you over the worlds.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:50 — The Sea Split</div>
+          <div class="arabic">وَإِذْ فَرَقْنَا بِكُمُ ٱلْبَحْرَ فَأَنجَيْنَٰكُمْ وَأَغْرَقْنَآ ءَالَ فِرْعَوْنَ وَأَنتُمْ تَنظُرُونَ</div>
+          <div class="english">And [recall] when We parted the sea for you and saved you and drowned the people of Pharaoh while you were looking on.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:57 — Manna & Salwa</div>
+          <div class="arabic">وَظَلَّلْنَا عَلَيْكُمُ ٱلْغَمَامَ وَأَنزَلْنَا عَلَيْكُمُ ٱلْمَنَّ وَٱلسَّلْوَىٰ ۖ كُلُوا۟ مِن طَيِّبَٰتِ مَا رَزَقْنَٰكُمْ</div>
+          <div class="english">And We shaded you with clouds and sent down to you manna and quails, [saying]: Eat from the good things We have provided for you.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:60 — Twelve Springs</div>
+          <div class="arabic">وَإِذِ ٱسْتَسْقَىٰ مُوسَىٰ لِقَوْمِهِۦ فَقُلْنَا ٱضْرِب بِّعَصَاكَ ٱلْحَجَرَ ۖ فَٱنفَجَرَتْ مِنْهُ ٱثْنَتَا عَشْرَةَ عَيْنًا</div>
+          <div class="english">And [recall] when Moses prayed for water for his people, so We said: Strike with your staff the rock — and there gushed forth from it twelve springs.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+      </div>
+
+      <!-- GAME: DRAG & DROP -->
+      <div class="card game-card">
+        <div class="card-header">🎮 MATCH THE MIRACLE!</div>
+        <div class="game-instructions">
+          Drag each miracle card (left) and drop it onto its matching description (right). Then click CHECK!
+        </div>
+        <div class="drag-layout">
+          <div class="drag-pool" id="drag-pool-4"></div>
+          <div class="drop-zones" id="drop-zones-4"></div>
+        </div>
+        <div id="feedback-4" class="game-feedback"></div>
+        <div class="game-footer">
+          <button class="action-btn" onclick="checkSection4()">CHECK MATCHES ✓</button>
+          <button class="action-btn gold" id="complete-4-btn" onclick="completeSection(4)" style="display:none">🏆 CLAIM REWARD!</button>
+        </div>
+        <div class="back-btn-bottom">
+          <button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button>
+        </div>
+      </div>
+
+    </div><!-- /section-panel-4 -->
+
+    <!-- ==================== SECTION 5 ==================== -->
+    <div id="section-panel-5" class="section-panel">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>The whole Surah is named after this story — "Al-Baqarah" means "The Cow." When Allah gave a command, Bani Isra'il kept asking questions instead of obeying. Each question made the command harder on themselves. What do we learn? <strong>When Allah commands — obey first, ask less.</strong> And then the miracle: a dead man comes back to life and names his killer! Let's explore it.</em></p></div>
+      </div>
+
+      <!-- SCENE 5 -->
+      <div class="scene-container">
+        <div class="scene-header">
+          <span class="scene-title">🐄 THE MYSTERY COW</span>
+        </div>
+        <canvas id="canvas-s5" width="560" height="220"></canvas>
+        <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click on the cow or the figure to reveal verses</div>
+      </div>
+
+      <!-- STORY CARD -->
+      <div class="card">
+        <div class="card-header">📖 Story: The Mystery Cow (2:62–74)</div>
+        <div class="story-text">
+          <p>Allah commanded Bani Isra'il: <em>"Slaughter a cow."</em> Simple enough — right? But instead of obeying, they asked: <em>"Are you mocking us?"</em> Musa (AS) replied: <em>"I seek Allah's refuge from being among the ignorant!"</em></p>
+          <p>They kept asking: What colour? What age? What type? Each question made the command more precise and harder to fulfil. Eventually they found the perfect cow — barely — and slaughtered it.</p>
+          <p>Why? Because there had been a murder. No one knew who killed the man. Allah's solution was extraordinary: strike the dead man with a piece of the slaughtered cow. He came back to life, named his killer, and died again. <strong>SubhanAllah — justice from beyond the grave.</strong></p>
+          <p>Then Allah says something profound: <em>"Your hearts became as hard as stone — or even harder. For indeed, some rocks have rivers gushing from them. Some split and water comes out. But your hearts? Nothing."</em> (2:74)</p>
+          <p><strong>The lesson:</strong> The story of the cow teaches obedience. When Allah commands, ask less and obey more. Asking unnecessary questions is a sign of a hard heart.</p>
+        </div>
+      </div>
+
+      <!-- VERSES -->
+      <div class="card">
+        <div class="card-header">📜 Key Verses</div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl">وَإِذْ قَالَ مُوسَىٰ لِقَوْمِهِ إِنَّ اللَّهَ يَأْمُرُكُمْ أَن تَذْبَحُوا بَقَرَةً ۖ قَالُوا أَتَتَّخِذُنَا هُزُوًا</div>
+          <div class="verse-translation">"And when Musa said to his people: Indeed, Allah commands you to slaughter a cow. They said: Do you take us in ridicule?" — (2:67, Sahih International)</div>
+        </div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl">فَقُلْنَا اضْرِبُوهُ بِبَعْضِهَا ۚ كَذَٰلِكَ يُحْيِي اللَّهُ الْمَوْتَىٰ</div>
+          <div class="verse-translation">"We said: Strike him [the dead man] with part of it. Thus does Allah bring the dead to life." — (2:73, Sahih International)</div>
+        </div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl">ثُمَّ قَسَتْ قُلُوبُكُم مِّن بَعْدِ ذَٰلِكَ فَهِيَ كَالْحِجَارَةِ أَوْ أَشَدُّ قَسْوَةً</div>
+          <div class="verse-translation">"Then your hearts became hardened after that, being like stones or even harder." — (2:74, Sahih International)</div>
+        </div>
+      </div>
+
+      <!-- QUIZ GAME -->
+      <div class="card">
+        <div class="card-header">🎮 QUIZ: The Mystery Cow</div>
+        <div id="quiz-5"></div>
+        <div id="feedback-5" class="game-feedback"></div>
+        <div class="game-footer">
+          <button class="action-btn" onclick="checkSection5()">SUBMIT QUIZ ✓</button>
+          <button class="action-btn gold" id="complete-5-btn" onclick="completeSection(5)" style="display:none">🏆 CLAIM REWARD!</button>
+        </div>
+        <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+      </div>
+    </div><!-- /section-panel-5 -->
+
+    <!-- ==================== SECTION 6 ==================== -->
+    <div id="section-panel-6" class="section-panel">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>This section shows us how hearts can slowly harden. Bani Isra'il heard the truth, saw miracles, made covenants with Allah — yet still turned away. Their hearts became harder than stone. <strong>The rock at least gives water. Their hearts gave nothing.</strong> May Allah protect our hearts. Let's learn this as a warning, not a judgment.</em></p></div>
+      </div>
+
+      <!-- SCENE 6 -->
+      <div class="scene-container">
+        <div class="scene-header">
+          <span class="scene-title">💎 THE HARD HEART</span>
+        </div>
+        <canvas id="canvas-s6" width="560" height="220"></canvas>
+        <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click the heart or the stone to see verses</div>
+      </div>
+
+      <!-- STORY CARD -->
+      <div class="card">
+        <div class="card-header">📖 Story: The Hard Heart (2:75–103)</div>
+        <div class="story-text">
+          <p>Allah took a solemn covenant from Bani Isra'il at Mount Sinai: worship Allah alone, honour your parents, care for orphans, speak kindly to people (2:83). It was a clear promise. But what did they do? They broke it.</p>
+          <p>Some of them began to change their scripture — after understanding it — writing things with their own hands and claiming it was from Allah (2:79). They exchanged what was true for a small price.</p>
+          <p>Then they followed magic and what Shaytan had spread (2:102), trading the Book of Allah for sorcery. And through all of this — the miracles, the messages, the warnings — their hearts became <strong>harder than stone</strong> (2:74).</p>
+          <p>Allah uses a beautiful comparison: <em>Even stones sometimes have rivers gushing from them. Even stones split and release water. But your hearts? Nothing came out.</em></p>
+          <p>This is a warning for all of us. Every sin we do without repentance leaves a dark mark on the heart (see Surah Al-Mutaffifin 83:14). The cure is tawbah — turning back to Allah.</p>
+        </div>
+      </div>
+
+      <!-- VERSES -->
+      <div class="card">
+        <div class="card-header">📜 Key Verses</div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl">ثُمَّ قَسَتْ قُلُوبُكُم مِّن بَعْدِ ذَٰلِكَ فَهِيَ كَالْحِجَارَةِ أَوْ أَشَدُّ قَسْوَةً ۚ وَإِنَّ مِنَ الْحِجَارَةِ لَمَا يَتَفَجَّرُ مِنْهُ الْأَنْهَارُ</div>
+          <div class="verse-translation">"Then your hearts hardened like stones or even harder — for some rocks have rivers gushing from them." — (2:74, Dr. Mustafa Khattab)</div>
+        </div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl">وَمِنْهُمُ الَّذِينَ يَكْتُبُونَ الْكِتَابَ بِأَيْدِيهِمْ ثُمَّ يَقُولُونَ هَٰذَا مِنْ عِندِ اللَّهِ</div>
+          <div class="verse-translation">"There are those who write scripture with their own hands then say: This is from Allah — to sell it for a small price." — (2:79, Sahih International)</div>
+        </div>
+      </div>
+
+      <!-- STORY ORDER GAME -->
+      <div class="card">
+        <div class="card-header">🎮 GAME: Put the Story in Order</div>
+        <p class="game-instructions">Use the ↑ ↓ arrows to arrange the 6 events of "The Hard Heart" in the correct order.</p>
+        <div id="order-6" class="order-list"></div>
+        <div id="feedback-6" class="game-feedback"></div>
+        <div class="game-footer">
+          <button class="action-btn" onclick="checkSection6()">CHECK ORDER ✓</button>
+          <button class="action-btn gold" id="complete-6-btn" onclick="completeSection(6)" style="display:none">🏆 CLAIM REWARD!</button>
+        </div>
+        <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+      </div>
+    </div><!-- /section-panel-6 -->
+
+    <!-- ==================== SECTION 7 ==================== -->
+    <div id="section-panel-7" class="section-panel">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>Did you know the Ka'ba — the cube that millions face in prayer every day — was built by Ibrahim (AS) and his son Ismail (AS)? With their own hands. And with every brick they placed, they made du'a: "Accept this from us, O Allah." This level is about Ibrahim — the friend of Allah (Khalilullah). He was tested more than almost anyone, and he passed every single test.</em></p></div>
+      </div>
+
+      <!-- SCENE 7 -->
+      <div class="scene-container">
+        <div class="scene-header">
+          <span class="scene-title">🕋 IBRAHIM BUILDS THE KA'BA</span>
+        </div>
+        <canvas id="canvas-s7" width="560" height="220"></canvas>
+        <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click the Ka'ba or the figures to see verses</div>
+      </div>
+
+      <!-- STORY CARD -->
+      <div class="card">
+        <div class="card-header">📖 Story: Ibrahim &amp; the Ka'ba (2:124–141)</div>
+        <div class="story-text">
+          <p>Ibrahim (AS) was called the <em>Khalilullah</em> — the close friend of Allah. He faced the fire and it became cool. He left his wife Hajar and son Ismail in the desert by Allah's command — and Allah made a nation from them. He was tested with his own son's life and did not flinch.</p>
+          <p>Allah says: <em>"Ibrahim was tested by his Lord with certain commands, and he fulfilled them all. [Allah] said: I will make you a leader of all people."</em> (2:124)</p>
+          <p>Then Allah commanded Ibrahim and Ismail to purify and build the Ka'ba. As they raised the walls, <strong>they made the most beautiful du'a</strong> — asking Allah to accept their work, make their offspring Muslims, and send a Prophet from among them (2:127–129). That Prophet — our beloved Prophet Muhammad ﷺ — came 2,500 years later.</p>
+          <p>Ibrahim called humanity to Hajj before he left. And Allah told us: <strong>Follow the religion of Ibrahim — the pure monotheist.</strong> He was not Jewish or Christian — he was simply a Muslim: one who submits to Allah alone.</p>
+        </div>
+      </div>
+
+      <!-- VERSES -->
+      <div class="card">
+        <div class="card-header">📜 Key Verses</div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl">وَإِذْ يَرْفَعُ إِبْرَاهِيمُ الْقَوَاعِدَ مِنَ الْبَيْتِ وَإِسْمَاعِيلُ رَبَّنَا تَقَبَّلْ مِنَّا ۖ إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ</div>
+          <div class="verse-translation">"And when Ibrahim and Ismail were raising the foundations of the House: Our Lord, accept from us! Indeed You are the All-Hearing, All-Knowing." — (2:127, Sahih International)</div>
+        </div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl">رَبَّنَا وَابْعَثْ فِيهِمْ رَسُولًا مِّنْهُمْ يَتْلُو عَلَيْهِمْ آيَاتِكَ</div>
+          <div class="verse-translation">"Our Lord! Raise from among them a messenger who will recite to them Your verses..." — (2:129) — This du'a was answered: our Prophet Muhammad ﷺ.</div>
+        </div>
+      </div>
+
+      <!-- DRAG & DROP GAME -->
+      <div class="card">
+        <div class="card-header">🎮 GAME: Match Ibrahim's Story</div>
+        <p class="game-instructions">Drag each event on the left to its correct description on the right. What happened and what was the result?</p>
+        <div class="drag-game-container">
+          <div class="drag-pool" id="drag-pool-7"></div>
+          <div class="drop-zones" id="drop-zones-7"></div>
+        </div>
+        <div id="feedback-7" class="game-feedback"></div>
+        <div class="game-footer">
+          <button class="action-btn" onclick="checkSection7()">CHECK MATCHES ✓</button>
+          <button class="action-btn gold" id="complete-7-btn" onclick="completeSection(7)" style="display:none">🏆 CLAIM REWARD!</button>
+        </div>
+        <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+      </div>
+    </div><!-- /section-panel-7 -->
+
+    <!-- ==================== SECTION 8 ==================== -->
+    <div id="section-panel-8" class="section-panel">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>Did you know Muslims used to face Jerusalem when they prayed? Then Allah changed the Qibla to face Mecca — the Ka'ba that Ibrahim built. Some people mocked: "Why did they change direction?" But Allah says: <strong>Wherever you turn, there is the face of Allah.</strong> The direction is not magic — it's obedience. And in the same verses, Allah teaches us the most important thing to say when hardship strikes.</em></p></div>
+      </div>
+
+      <!-- SCENE 8 -->
+      <div class="scene-container">
+        <div class="scene-header">
+          <span class="scene-title">🧭 THE NEW DIRECTION</span>
+        </div>
+        <canvas id="canvas-s8" width="560" height="220"></canvas>
+        <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click to see the verses of patience</div>
+      </div>
+
+      <!-- STORY CARD -->
+      <div class="card">
+        <div class="card-header">📖 Story: The Qibla Change (2:142–157)</div>
+        <div class="story-text">
+          <p>For the first years of Islam, Muslims prayed facing <strong>Jerusalem</strong> (Masjid al-Aqsa). Then, in Madinah, the Prophet ﷺ used to look up at the sky — hoping Allah would change the direction to Mecca. And then the command came:</p>
+          <p><em>"Turn your face toward al-Masjid al-Haram. And wherever you are, turn your faces toward it."</em> (2:144)</p>
+          <p>Some people — especially those who looked for excuses — asked: "Why did the Muslims change direction?" Allah's answer is simple: <em>Both directions belong to Allah. The change is a test to see who truly follows the Messenger.</em></p>
+          <p>Then Allah gives us the toolkit for surviving life's hardships. He says you WILL be tested — with <strong>fear, hunger, loss of wealth, loss of people you love, and loss of fruits</strong> (2:155). This is not punishment — it is a promise. But here is what to say:</p>
+          <p style="text-align:center;font-size:14px"><strong>إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</strong><br><em>Inna lillahi wa inna ilayhi raji'un</em><br>"We belong to Allah, and to Him we return."</p>
+          <p>Those who say this and are patient? <em>Allah's blessings and mercy are upon them. They are the ones who are guided.</em> (2:157)</p>
+        </div>
+      </div>
+
+      <!-- VERSES -->
+      <div class="card">
+        <div class="card-header">📜 Key Verses</div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl">فَوَلِّ وَجْهَكَ شَطْرَ الْمَسْجِدِ الْحَرَامِ ۚ وَحَيْثُ مَا كُنتُمْ فَوَلُّوا وُجُوهَكُمْ شَطْرَهُ</div>
+          <div class="verse-translation">"Turn your face towards al-Masjid al-Haram. And wherever you are, turn your faces toward it." — (2:144, Sahih International)</div>
+        </div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl">الَّذِينَ إِذَا أَصَابَتْهُم مُّصِيبَةٌ قَالُوا إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</div>
+          <div class="verse-translation">"Those who, when disaster strikes them, say: Indeed we belong to Allah, and indeed to Him we will return." — (2:156, Sahih International)</div>
+        </div>
+      </div>
+
+      <!-- QUIZ GAME -->
+      <div class="card">
+        <div class="card-header">🎮 QUIZ: The New Direction</div>
+        <div id="quiz-8"></div>
+        <div id="feedback-8" class="game-feedback"></div>
+        <div class="game-footer">
+          <button class="action-btn" onclick="checkSection8()">SUBMIT QUIZ ✓</button>
+          <button class="action-btn gold" id="complete-8-btn" onclick="completeSection(8)" style="display:none">🏆 CLAIM REWARD!</button>
+        </div>
+        <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+      </div>
+    </div><!-- /section-panel-8 -->
+
+    <!-- ==================== SECTION 9 ==================== -->
+    <div id="section-panel-9" class="section-panel">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>A lot of people think being a good Muslim just means praying. But Allah defines <strong>Al-Birr</strong> — true righteousness — as something much bigger: belief, generosity, worship, keeping promises, AND patience. All five together. Then comes the month of Ramadan — a whole month to train all five. Let's build the full picture.</em></p></div>
+      </div>
+
+      <!-- SCENE 9 -->
+      <div class="scene-container">
+        <div class="scene-header">
+          <span class="scene-title">📋 AL-BIRR — TRUE RIGHTEOUSNESS</span>
+        </div>
+        <canvas id="canvas-s9" width="560" height="220"></canvas>
+        <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click on the glowing traits to see their verse</div>
+      </div>
+
+      <!-- STORY CARD -->
+      <div class="card">
+        <div class="card-header">📖 Story: The Big Rules (2:177 + 2:183–187)</div>
+        <div class="story-text">
+          <p>Some people debated which direction to pray — East or West. Allah corrects them: <em>"Righteousness is not that you turn your faces East or West."</em> (2:177) Then He defines what <strong>true righteousness (Al-Birr)</strong> actually is:</p>
+          <p>🔹 <strong>Belief:</strong> Believing in Allah, the Last Day, angels, the Books, and the Prophets.<br>
+          🔹 <strong>Generosity:</strong> Giving wealth — even when you love it — to relatives, orphans, the poor, travellers, and those who ask.<br>
+          🔹 <strong>Worship:</strong> Establishing salah and giving zakah.<br>
+          🔹 <strong>Integrity:</strong> Keeping your promises and covenants.<br>
+          🔹 <strong>Patience:</strong> Being patient through poverty, sickness, and battles.</p>
+          <p>Then Allah describes the month of Ramadan (2:183–187): <em>"Fasting has been prescribed for you as it was prescribed for those before you — so that you may develop taqwa."</em> Ramadan is the annual training for all five traits of Al-Birr.</p>
+        </div>
+      </div>
+
+      <!-- VERSES -->
+      <div class="card">
+        <div class="card-header">📜 Key Verses</div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl">لَّيْسَ الْبِرَّ أَن تُوَلُّوا وُجُوهَكُمْ قِبَلَ الْمَشْرِقِ وَالْمَغْرِبِ وَلَٰكِنَّ الْبِرَّ مَنْ آمَنَ بِاللَّهِ</div>
+          <div class="verse-translation">"Righteousness is not that you turn your faces East or West, but righteousness is in one who believes in Allah..." — (2:177, Sahih International)</div>
+        </div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl">يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ</div>
+          <div class="verse-translation">"O believers! Fasting is prescribed for you — as it was for those before you — so perhaps you will become mindful of Allah." — (2:183, Dr. Mustafa Khattab)</div>
+        </div>
+      </div>
+
+      <!-- DRAG & DROP GAME -->
+      <div class="card">
+        <div class="card-header">🎮 GAME: Build Al-Birr — Match the 5 Traits</div>
+        <p class="game-instructions">Drag each trait of True Righteousness to its correct description from 2:177.</p>
+        <div class="drag-game-container">
+          <div class="drag-pool" id="drag-pool-9"></div>
+          <div class="drop-zones" id="drop-zones-9"></div>
+        </div>
+        <div id="feedback-9" class="game-feedback"></div>
+        <div class="game-footer">
+          <button class="action-btn" onclick="checkSection9()">CHECK MATCHES ✓</button>
+          <button class="action-btn gold" id="complete-9-btn" onclick="completeSection(9)" style="display:none">🏆 CLAIM REWARD!</button>
+        </div>
+        <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+      </div>
+    </div><!-- /section-panel-9 -->
+
+    <!-- ==================== SECTION 10 ==================== -->
+    <div id="section-panel-10" class="section-panel">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>This is the battle story of Bani Isra'il — and it's one of the greatest lessons in leadership. Their king Talut had a small army. The enemy was massive. But Talut did something smart: <strong>he tested his soldiers first.</strong> Most failed the test and left. The few who remained — with full trust in Allah — defeated a giant. Sound familiar? This is like Dawud (AS) and Jalut (Goliath). Let's go!</em></p></div>
+      </div>
+
+      <!-- SCENE 10 -->
+      <div class="scene-container">
+        <div class="scene-header">
+          <span class="scene-title">⚔️ TALUT, JALUT &amp; DAWUD</span>
+        </div>
+        <canvas id="canvas-s10" width="560" height="220"></canvas>
+        <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click on the armies or Dawud to see verses</div>
+      </div>
+
+      <!-- STORY CARD -->
+      <div class="card">
+        <div class="card-header">📖 Story: Talut, Jalut &amp; Dawud (2:243–253)</div>
+        <div class="story-text">
+          <p>After all the warnings, Allah now shows what happens when the believers OBEY. Bani Isra'il asked their Prophet: <em>"Appoint a king for us so we can fight in Allah's cause."</em> Allah chose <strong>Talut (Saul)</strong>. The people objected: "He's not wealthy or important enough!" But Allah chose him for his knowledge and strength of body (2:247).</p>
+          <p>Talut's first move was to <strong>test his army</strong>. He told them: when you reach the river, do not drink — except one small handful. It was a test of obedience and self-control. <strong>Most of them drank and left.</strong> Only the truly faithful remained.</p>
+          <p>As the small army approached the massive army of <strong>Jalut (Goliath)</strong>, they made du'a: <em>"Our Lord! Pour upon us patience, and plant our feet firmly, and help us against the disbelieving people."</em> (2:250)</p>
+          <p>Then came the moment: a young man named <strong>Dawud (David)</strong> picked up his sling, took a stone — and killed the giant Jalut. <em>"By Allah's permission, they defeated them. And Dawud killed Jalut, and Allah gave him kingship and wisdom."</em> (2:251)</p>
+          <p><strong>The lesson:</strong> It's not the size of your army. It's who Allah is with. A handful of faithful believers can overcome an ocean of enemies.</p>
+        </div>
+      </div>
+
+      <!-- VERSES -->
+      <div class="card">
+        <div class="card-header">📜 Key Verses</div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl">كَم مِّن فِئَةٍ قَلِيلَةٍ غَلَبَتْ فِئَةً كَثِيرَةً بِإِذْنِ اللَّهِ ۗ وَاللَّهُ مَعَ الصَّابِرِينَ</div>
+          <div class="verse-translation">"How many a small company has overcome a large company by permission of Allah. And Allah is with the patient." — (2:249, Sahih International)</div>
+        </div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl">فَهَزَمُوهُم بِإِذْنِ اللَّهِ وَقَتَلَ دَاوُودُ جَالُوتَ وَآتَاهُ اللَّهُ الْمُلْكَ وَالْحِكْمَةَ</div>
+          <div class="verse-translation">"So they defeated them by Allah's permission. And Dawud killed Jalut, and Allah gave him the kingship and wisdom." — (2:251, Sahih International)</div>
+        </div>
+      </div>
+
+      <!-- STORY ORDER GAME -->
+      <div class="card">
+        <div class="card-header">🎮 GAME: Order the Battle Story</div>
+        <p class="game-instructions">Put the 7 events of Talut's battle in the correct order using the ↑ ↓ arrows.</p>
+        <div id="order-10" class="order-list"></div>
+        <div id="feedback-10" class="game-feedback"></div>
+        <div class="game-footer">
+          <button class="action-btn" onclick="checkSection10()">CHECK ORDER ✓</button>
+          <button class="action-btn gold" id="complete-10-btn" onclick="completeSection(10)" style="display:none">🏆 CLAIM REWARD!</button>
+        </div>
+        <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+      </div>
+    </div><!-- /section-panel-10 -->
+
+    <!-- ==================== SECTION 11 ==================== -->
+    <div id="section-panel-11" class="section-panel">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>You have been reciting this verse since you were small — <strong>Ayat al-Kursi</strong>. The Prophet ﷺ said it is the greatest verse in the entire Quran. But do you KNOW what each part means? This level is about understanding — word by word — the verse you recite after every salah. By the end, you will never recite it the same way again. <strong>In sha Allah.</strong></em></p></div>
+      </div>
+
+      <!-- SCENE 11 -->
+      <div class="scene-container">
+        <div class="scene-header">
+          <span class="scene-title">👑 AYAT AL-KURSI — THE THRONE VERSE</span>
+        </div>
+        <canvas id="canvas-s11" width="560" height="220"></canvas>
+        <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click on the scene to reveal the full verse</div>
+      </div>
+
+      <!-- STORY CARD -->
+      <div class="card">
+        <div class="card-header">📖 The Greatest Verse (2:255)</div>
+        <div class="story-text">
+          <p>The Prophet ﷺ asked his companion Abu ibn Ka'b: <em>"Which verse in the Book of Allah is the greatest?"</em> He answered: <strong>Ayat al-Kursi.</strong> The Prophet ﷺ struck him on the chest in approval and said: <em>"May knowledge delight you, O Abu al-Mundhir!"</em></p>
+          <p>Let's learn it phrase by phrase:</p>
+          <p>🔹 <strong>اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ</strong> — <em>Allah — there is no deity except Him.</em> The foundation of everything: Tawhid.</p>
+          <p>🔹 <strong>الْحَيُّ الْقَيُّومُ</strong> — <em>The Ever-Living, the Sustainer of all existence.</em> He is alive and never dies. He sustains every atom in the universe.</p>
+          <p>🔹 <strong>لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ</strong> — <em>Neither drowsiness overtakes Him nor sleep.</em> Unlike us — He never tires, never sleeps. He is always watching.</p>
+          <p>🔹 <strong>وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ</strong> — <em>His Kursi (footstool) encompasses the heavens and earth.</em> The seven heavens and earth compared to the Kursi are like a ring thrown in a desert. And the Kursi compared to the 'Arsh (Throne) is like that ring in that desert.</p>
+          <p>🔹 <strong>وَلَا يَئُودُهُ حِفْظُهُمَا</strong> — <em>And He is not wearied by preserving both of them.</em> Holding and maintaining the universe does not tire Him at all.</p>
+          <p><strong>Recite it after every salah — and before sleeping, it protects you all night.</strong></p>
+        </div>
+      </div>
+
+      <!-- FULL VERSE DISPLAY -->
+      <div class="card">
+        <div class="card-header">📜 Ayat al-Kursi (2:255)</div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl" style="font-size:20px;line-height:2.2">اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ</div>
+          <div class="verse-translation">"Allah — there is no deity except Him, the Ever-Living, the Sustainer of existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission? He knows what is before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills. His Kursi extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great." — (2:255, Sahih International)</div>
+        </div>
+      </div>
+
+      <!-- DRAG & DROP GAME -->
+      <div class="card">
+        <div class="card-header">🎮 GAME: Match the Meaning to the Arabic</div>
+        <p class="game-instructions">Drag the English meaning to the matching Arabic phrase from Ayat al-Kursi that you have memorized.</p>
+        <div class="drag-game-container">
+          <div class="drag-pool" id="drag-pool-11"></div>
+          <div class="drop-zones" id="drop-zones-11"></div>
+        </div>
+        <div id="feedback-11" class="game-feedback"></div>
+        <div class="game-footer">
+          <button class="action-btn" onclick="checkSection11()">CHECK MATCHES ✓</button>
+          <button class="action-btn gold" id="complete-11-btn" onclick="completeSection(11)" style="display:none">🏆 CLAIM REWARD!</button>
+        </div>
+        <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+      </div>
+    </div><!-- /section-panel-11 -->
+
+    <!-- ==================== SECTION 12 ==================== -->
+    <div id="section-panel-12" class="section-panel">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>Imagine planting one grain of wheat... and getting back <strong>700 grains</strong>. That's what giving for Allah is like. But there's a catch: the reward is only that big if you give with a pure heart. The moment you remind someone what you gave them, or hurt their feelings — the reward vanishes. This level teaches you the full art of true generosity.</em></p></div>
+      </div>
+
+      <!-- SCENE 12 -->
+      <div class="scene-container">
+        <div class="scene-header">
+          <span class="scene-title">🌱 THE CHARITY GARDEN</span>
+        </div>
+        <canvas id="canvas-s12" width="560" height="220"></canvas>
+        <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click the plant or the rock to see the parables</div>
+      </div>
+
+      <!-- STORY CARD -->
+      <div class="card">
+        <div class="card-header">📖 Story: The Charity Garden (2:261–274)</div>
+        <div class="story-text">
+          <p>Allah gives us one of the most beautiful financial parables in the Quran. Those who spend in His cause are like a farmer who plants <strong>one grain</strong>. That grain grows into a stalk with <strong>seven heads</strong>, and each head has <strong>100 grains</strong>. Total? <strong>700 grains from one.</strong> And Allah can multiply even beyond that for whoever He wills (2:261).</p>
+          <p>But then Allah warns about two things that destroy charity's reward completely:</p>
+          <p>🔴 <strong>Mann (Reminding):</strong> "Do you remember when I gave you that money?" — This cancels the reward.<br>
+          🔴 <strong>Adha (Hurting):</strong> Looking down on someone, making them feel small — This also cancels it.</p>
+          <p>The parable for cancelled charity: like a <strong>smooth rock covered in soil</strong>. Rain falls on it — all the soil washes away. Nothing remains. The rock gives nothing (2:264).</p>
+          <p>What is better — giving openly or secretly? <strong>Giving secretly to the poor is better</strong> (2:271). It protects both you (from showing off) and them (from embarrassment). And a kind word is better than charity followed by hurt (2:263).</p>
+        </div>
+      </div>
+
+      <!-- VERSES -->
+      <div class="card">
+        <div class="card-header">📜 Key Verses</div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl">مَّثَلُ الَّذِينَ يُنفِقُونَ أَمْوَالَهُمْ فِي سَبِيلِ اللَّهِ كَمَثَلِ حَبَّةٍ أَنبَتَتْ سَبْعَ سَنَابِلَ فِي كُلِّ سُنبُلَةٍ مِّائَةُ حَبَّةٍ</div>
+          <div class="verse-translation">"The example of those who spend in the way of Allah is like a grain that grows seven spikes; in each spike is a hundred grains. And Allah multiplies for whom He wills." — (2:261, Sahih International)</div>
+        </div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl">قَوْلٌ مَّعْرُوفٌ وَمَغْفِرَةٌ خَيْرٌ مِّن صَدَقَةٍ يَتْبَعُهَا أَذًى</div>
+          <div class="verse-translation">"A kind word and forgiveness is better than a charity followed by hurt." — (2:263, Sahih International)</div>
+        </div>
+      </div>
+
+      <!-- QUIZ GAME -->
+      <div class="card">
+        <div class="card-header">🎮 QUIZ: The Charity Garden</div>
+        <div id="quiz-12"></div>
+        <div id="feedback-12" class="game-feedback"></div>
+        <div class="game-footer">
+          <button class="action-btn" onclick="checkSection12()">SUBMIT QUIZ ✓</button>
+          <button class="action-btn gold" id="complete-12-btn" onclick="completeSection(12)" style="display:none">🏆 CLAIM REWARD!</button>
+        </div>
+        <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+      </div>
+    </div><!-- /section-panel-12 -->
+
+    <!-- ==================== SECTION 13 ==================== -->
+    <div id="section-panel-13" class="section-panel">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>You have reached the end of Surah Al-Baqarah — and it ends with the most beautiful treasure. Allah ends the longest Surah in the Quran with a promise and a du'a. <strong>The last two verses (2:285–286) are themselves a shield.</strong> The Prophet ﷺ said: "Whoever recites the last two verses of Surah Al-Baqarah at night, they will suffice him." This is your final level, Explorer. Make it count.</em></p></div>
+      </div>
+
+      <!-- SCENE 13 -->
+      <div class="scene-container">
+        <div class="scene-header">
+          <span class="scene-title">🤲 THE FINAL TREASURE — LAST VERSES</span>
+        </div>
+        <canvas id="canvas-s13" width="560" height="220"></canvas>
+        <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click the stars or the figure to see the final du'a</div>
+      </div>
+
+      <!-- STORY CARD -->
+      <div class="card">
+        <div class="card-header">📖 The Final Treasure (2:284–286)</div>
+        <div class="story-text">
+          <p>Surah Al-Baqarah ends with one of the most moving passages in the Quran. After all the stories, laws, and warnings, Allah closes with <strong>the faith of the believers</strong> and a series of heartfelt du'as.</p>
+          <p>First, a reminder of Allah's total knowledge: <em>"To Allah belongs whatever is in the heavens and whatever is in the earth."</em> He knows everything we do openly AND privately (2:284).</p>
+          <p>Then the believers affirm: <em>"The Messenger has believed in what was revealed to him from his Lord — and so have the believers. All of them believe in Allah, His angels, His books, and His messengers."</em> And crucially: <strong>"We make no distinction between any of His messengers."</strong> (2:285)</p>
+          <p>Then comes Allah's greatest mercy: <em>"Allah does not burden a soul beyond its capacity."</em> (2:286) Whatever hardship you are going through — Allah knows it is within your ability.</p>
+          <p>And the Surah ends with a powerful series of du'as — asking Allah for forgiveness, for mercy, for not burdening us like those before us, and for victory. The scholars say these du'as were a gift given specifically to this Ummah, not given to any nation before us.</p>
+        </div>
+      </div>
+
+      <!-- VERSES -->
+      <div class="card">
+        <div class="card-header">📜 The Last Two Verses (2:285–286)</div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl" style="font-size:18px;line-height:2.2">آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ وَالْمُؤْمِنُونَ ۚ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِّن رُّسُلِهِ ۚ وَقَالُوا سَمِعْنَا وَأَطَعْنَا</div>
+          <div class="verse-translation">"The Messenger has believed in what was revealed to him from his Lord, and so have the believers. All of them have believed in Allah, His angels, His books and His messengers — We make no distinction between any of His messengers — and they say: We hear and we obey. Grant us Your forgiveness, our Lord. To You is the final destination." — (2:285)</div>
+        </div>
+        <div class="verse-block">
+          <div class="arabic-text" dir="rtl" style="font-size:18px;line-height:2.2">لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا ۚ لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا اكْتَسَبَتْ ۗ رَبَّنَا لَا تُؤَاخِذْنَا إِن نَّسِينَا أَوْ أَخْطَأْنَا</div>
+          <div class="verse-translation">"Allah does not burden a soul beyond its capacity... Our Lord, do not impose blame upon us if we have forgotten or erred. Our Lord, lay not upon us a burden like that which You laid upon those before us... and grant us victory over the disbelieving people." — (2:286)</div>
+        </div>
+      </div>
+
+      <!-- DRAG & DROP GAME -->
+      <div class="card">
+        <div class="card-header">🎮 GAME: Match the Du'a to its Meaning</div>
+        <p class="game-instructions">Drag each phrase from the final du'a to its correct meaning. Every phrase is a gift from Allah to this Ummah.</p>
+        <div class="drag-game-container">
+          <div class="drag-pool" id="drag-pool-13"></div>
+          <div class="drop-zones" id="drop-zones-13"></div>
+        </div>
+        <div id="feedback-13" class="game-feedback"></div>
+        <div class="game-footer">
+          <button class="action-btn" onclick="checkSection13()">CHECK MATCHES ✓</button>
+          <button class="action-btn gold" id="complete-13-btn" onclick="completeSection(13)" style="display:none">🏆 CLAIM REWARD!</button>
+        </div>
+        <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+      </div>
+    </div><!-- /section-panel-13 -->
+
+    <!-- ALL COMPLETE -->
+    <div id="all-complete" style="display:none">
+      <div class="card" style="text-align:center">
+        <div class="card-header">🌟 QUEST COMPLETE — MashAllah!</div>
+        <div style="padding:20px">
+          <div style="font-size:60px;margin-bottom:16px">🏆</div>
+          <div class="story-text">
+            <p><strong>ALLAHUMMA BARIK, Explorer!</strong><br><br>
+            You have completed all 13 levels of Baqarah Quest — all 286 verses of Surah Al-Baqarah!<br><br>
+            You now understand:<br><br>
+            ✅ The 5 qualities of the Muttaqeen (1–5)<br>
+            ✅ The Disbelievers and Hypocrites (6–20)<br>
+            ✅ Adam (AS) — the first tawbah (21–39)<br>
+            ✅ Bani Isra'il — covenant and miracles (40–61)<br>
+            ✅ The Mystery Cow — obedience &amp; hard hearts (62–74)<br>
+            ✅ The Hard Heart — how hearts darken (75–103)<br>
+            ✅ Ibrahim &amp; the Ka'ba — the ultimate test (124–141)<br>
+            ✅ The Qibla change &amp; Inna lillahi (142–157)<br>
+            ✅ Al-Birr — true righteousness &amp; Ramadan (177+183)<br>
+            ✅ Talut, Jalut &amp; Dawud — the faithful few (243–253)<br>
+            ✅ Ayat al-Kursi — the greatest verse (255)<br>
+            ✅ The Charity Garden — pure giving (261–274)<br>
+            ✅ The Final Treasure — the last du'a (284–286)<br><br>
+            <em>Ibn Ameen says: You have done what many adults never do — understood the meaning of the Surah you have memorized. May Allah make you among the Muttaqeen. Recite Ayat al-Kursi every night. Give charity sincerely. Be patient in every hardship. And never forget: لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا — Allah never burdens you beyond what you can carry.</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /section-view -->
+
+</div><!-- /container -->
+
+<!-- REWARD OVERLAY -->
+<div id="reward-overlay">
+  <div class="reward-box">
+    <div class="reward-icon" id="reward-icon">🏆</div>
+    <div class="reward-title" id="reward-title">LEVEL COMPLETE!</div>
+    <p class="reward-msg" id="reward-msg"></p>
+    <div class="reward-stats">
+      <div class="reward-stat" id="reward-xp-stat">+0 ⭐</div>
+      <div class="reward-stat" id="reward-gem-stat">+0 💎</div>
+    </div>
+    <button class="action-btn gold" onclick="closeReward()">CONTINUE QUEST ▶</button>
+  </div>
+</div>
+
+<!-- VERSE POPUP -->
+<div id="verse-popup" class="verse-popup">
+  <button class="vp-close" onclick="hideVersePopup()">✕ CLOSE</button>
+  <div class="vp-ref"    id="vp-ref"></div>
+  <div class="vp-arabic" id="vp-arabic"></div>
+  <div class="vp-eng"    id="vp-eng"></div>
+  <div class="vp-note"   id="vp-note"></div>
+</div>
+
+<script src="scenes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
