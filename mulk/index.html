@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surah Al-Mulk Quest 🌌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header id="game-header" style="display:none">
+  <div>
+    <div class="game-title">🌌 SURAH AL-MULK QUEST</div>
+    <div class="header-explorer">Explorer: <span id="header-name">—</span></div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div>
+    <div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div>
+    <div class="stat-chip done-chip">✅ <span id="done-display">0</span>/8</div>
+    <button class="reset-btn" onclick="resetGame()">↺ Reset</button>
+    <a class="hub-btn" href="../index.html">🏠 Hub</a>
+  </div>
+</header>
+
+<!-- ===== INTRO ===== -->
+<div id="intro-screen">
+  <div class="intro-icon">🌌</div>
+  <div class="intro-title">SURAH AL-MULK QUEST</div>
+  <div class="intro-arabic">سُوْرَةُ الْمُلْك</div>
+  <div class="intro-subtitle">
+    8 Levels · The Sovereignty · Seven Heavens<br/>
+    Fear in Secret · Birds & Tawakkul · The Water Verse
+  </div>
+  <div class="intro-form">
+    <input class="intro-input" id="explorer-name" type="text" placeholder="Enter your name..." maxlength="20"/>
+    <div id="name-error" style="color:#ff6666;font-size:8px;min-height:12px;"></div>
+    <button class="intro-btn" onclick="startGame()">▶ BEGIN QUEST</button>
+  </div>
+</div>
+
+<!-- ===== MAIN VIEW ===== -->
+<div id="main-view" style="display:none">
+<div class="container">
+
+  <div class="ibn-ameen-panel">
+    <div class="character-avatar">🧙‍♂️</div>
+    <div class="speech-bubble">
+      <strong>Ibn Ameen says:</strong><br/>
+      <span id="welcome-text">As-salamu alaykum, Explorer! Surah Al-Mulk — the Surah the Prophet ﷺ recited every single night before sleeping. It protects from the punishment of the grave. 30 verses. 8 levels. From the sovereignty of the heavens to the final question about water. "Blessed is He in whose hand is dominion!" — Let's go!</span>
+    </div>
+  </div>
+
+  <h2 class="section-heading">🌌 THE QUEST MAP</h2>
+  <div class="map-grid">
+    <div class="map-tile locked" id="tile-1">
+      <div class="tile-icon">🌌</div>
+      <div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">Al-Mulk Dominion</div>
+      <div class="tile-verses">67:1-2</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+    <div class="map-tile locked" id="tile-2">
+      <div class="tile-icon">⭐</div>
+      <div class="tile-level">LEVEL 2</div>
+      <div class="tile-name">Seven Heavens</div>
+      <div class="tile-verses">67:3-5</div>
+      <div class="tile-status" id="status-2">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-3">
+      <div class="tile-icon">🔥</div>
+      <div class="tile-level">LEVEL 3</div>
+      <div class="tile-name">Gates of Hellfire</div>
+      <div class="tile-verses">67:6-11</div>
+      <div class="tile-status" id="status-3">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-4">
+      <div class="tile-icon">🌙</div>
+      <div class="tile-level">LEVEL 4</div>
+      <div class="tile-name">Fear in Secret</div>
+      <div class="tile-verses">67:12-14</div>
+      <div class="tile-status" id="status-4">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-5">
+      <div class="tile-icon">🌍</div>
+      <div class="tile-level">LEVEL 5</div>
+      <div class="tile-name">Earth: A Gift</div>
+      <div class="tile-verses">67:15-18</div>
+      <div class="tile-status" id="status-5">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-6">
+      <div class="tile-icon">🦅</div>
+      <div class="tile-level">LEVEL 6</div>
+      <div class="tile-name">Birds &amp; Tawakkul</div>
+      <div class="tile-verses">67:19-21</div>
+      <div class="tile-status" id="status-6">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-7">
+      <div class="tile-icon">🌟</div>
+      <div class="tile-level">LEVEL 7</div>
+      <div class="tile-name">Signs &amp; The Day</div>
+      <div class="tile-verses">67:22-27</div>
+      <div class="tile-status" id="status-7">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-8">
+      <div class="tile-icon">💧</div>
+      <div class="tile-level">LEVEL 8</div>
+      <div class="tile-name">The Water Verse</div>
+      <div class="tile-verses">67:28-30</div>
+      <div class="tile-status" id="status-8">🔒 LOCKED</div>
+    </div>
+  </div>
+
+  <h2 class="section-heading">🌌 YOUR IMAN WORLD</h2>
+  <div id="world-builder">
+    <div class="world-preview">
+      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Al-Mulk</div></div>
+      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">7 Heavens</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Hellfire</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Fear Secret</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Earth Gift</div></div>
+      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Birds</div></div>
+      <div class="world-chunk" id="chunk-7"><div class="chunk-emoji">⬛</div><div class="chunk-label">Signs</div></div>
+      <div class="world-chunk" id="chunk-8"><div class="chunk-emoji">⬛</div><div class="chunk-label">Water</div></div>
+    </div>
+  </div>
+
+  <div id="all-complete" class="card" style="display:none;text-align:center;padding:20px;">
+    <div style="font-size:40px;margin-bottom:10px;">🌌</div>
+    <div style="font-size:10px;color:#ffd700;margin-bottom:8px;">SURAH AL-MULK COMPLETE!</div>
+    <div style="font-family:Georgia,serif;font-size:12px;color:#ddd;line-height:1.9;">"Who then could bring you flowing water?" — Only Allah.<br/>May Al-Mulk intercede for you every single night. Ameen!</div>
+  </div>
+
+</div>
+</div>
+
+<!-- ===== SECTION VIEW ===== -->
+<div id="section-view" style="display:none">
+<div class="container">
+  <div style="padding:8px 0 12px;">
+    <button class="back-btn" onclick="closeSection()">◀ Back to Map</button>
+  </div>
+
+  <!-- ============================================================
+       SECTION 1 — AL-MULK SOVEREIGNTY (67:1-2) — QUIZ
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-1">
+    <div class="card">
+      <div class="card-header">🌌 LEVEL 1 — AL-MULK: THE DOMINION (67:1-2)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🌌 Scene: The Cosmos</span><span style="font-size:7px;color:#888;">Click anywhere</span></div>
+        <canvas id="canvas-s1" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">"Tabaraka" — this word appears only for Allah in the Quran. It means Blessed in the most ultimate sense. And He holds <em>al-Mulk</em> — ALL dominion. Then immediately: He created death AND life. Note: death before life! Because death gives life its meaning. And what is the test? Not the <em>most</em> deeds — but the <em>best</em>. Ahsanu amala!</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 67:1 — Tabaraka:</strong> The Surah opens with "Tabaraka alladhi bi-yadihi al-Mulk." Blessed — in the most exalted sense — is He. In His hand is ALL dominion. Not some of it. Not most of it. ALL of it. He is "ala kulli shay'in qadir" — over ALL things, Competent.</p>
+        <p><strong>Verse 67:2 — The Purpose of Life:</strong> Why did Allah create death and life? "Li-yabluwakum" — to TEST you. Which of you is "ahsanu amala" — best in deed. Not "akthar" (most), but "ahsan" (best). The great scholar Fudhail ibn Iyad said: "Best in deed means most sincere and most correct (following the Sunnah)."</p>
+        <p><strong>The Protective Surah:</strong> The Prophet ﷺ said: "Surah Al-Mulk is al-waqiya — The Shield. It shields its reciter from the punishment of the grave." He ﷺ recited it every night before sleeping. This is the Surah your heart already holds from memorization — now learn what it means!</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ ۩ الَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا</div>
+        <div class="verse-translation">"Blessed is He in whose hand is dominion — and He is over all things competent. Who created death and life to test you as to which of you is best in deed." — Al-Mulk 67:1-2 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: QUIZ — AL-MULK</div>
+      <div class="game-instructions">Answer all 5 questions about the opening of Surah Al-Mulk. You need 80% to pass!</div>
+      <div id="quiz-1"></div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 2 — SEVEN HEAVENS (67:3-5) — DRAG & DROP
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-2">
+    <div class="card">
+      <div class="card-header">⭐ LEVEL 2 — SEVEN HEAVENS (67:3-5)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">⭐ Scene: The Layered Heavens</span><span style="font-size:7px;color:#888;">Click any layer</span></div>
+        <canvas id="canvas-s2" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">Verse 3 is a challenge: <em>"Look — do you see any inconsistency?"</em> Look at the mountains. The oceans. The human body. The galaxies. Science has looked for centuries and every time it looks deeper — it finds MORE perfection. Then verse 4: <em>"Look AGAIN."</em> Your vision comes back exhausted and humbled. That's the power of Allah's creation. Match each "look" to its verse!</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 67:3 — Seven Heavens, No Flaws:</strong> "He who created seven heavens in layers — you see no inconsistency (tafawut) in the creation of the Most Merciful. So return your vision — do you see any breaks (futur)?" A "futur" is a crack, a gap, a flaw. Look everywhere. You will find none. The universe is perfectly, flawlessly constructed.</p>
+        <p><strong>Verse 67:4 — Look Again:</strong> "Then return your vision twice again — your sight will return to you humbled (khasi'an) while it is fatigued." The more you look, the more the perfection humbles you. This is the scientific method turned into an act of worship: observe, reflect, conclude — there is none but Allah.</p>
+        <p><strong>Verse 67:5 — Stars: Two Gifts:</strong> "We have adorned the nearest heaven with lamps (stars)." Gift 1: beauty. We look at the night sky and see something magnificent. "And made them missiles to drive away the devils." Gift 2: protection. The stars serve as "ruujum" — missiles that repel devils trying to overhear the heavenly realm. Beauty and security, in one verse.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">مَّا تَرَىٰ فِي خَلْقِ الرَّحْمَٰنِ مِن تَفَاوُتٍ ۖ فَارْجِعِ الْبَصَرَ هَلْ تَرَىٰ مِن فُطُورٍ</div>
+        <div class="verse-translation">"You see no inconsistency in the creation of the Most Merciful. So return your vision — do you see any breaks? Then return your vision twice again — your sight will return to you humbled while it is fatigued." — Al-Mulk 67:3-4 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: MATCH EACH VERSE</div>
+      <div class="game-instructions">Drag each description to the correct verse meaning from Al-Mulk 67:3-5.</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-2"></div>
+        <div class="drop-zones" id="drop-zones-2"></div>
+      </div>
+      <div class="game-feedback" id="feedback-2"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection2()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 3 — GATES OF HELLFIRE (67:6-11) — STORY ORDER
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-3">
+    <div class="card">
+      <div class="card-header">🔥 LEVEL 3 — GATES OF HELLFIRE (67:6-11)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🔥 Scene: The Fire's Guardians</span><span style="font-size:7px;color:#888;">Click guardians or soul</span></div>
+        <canvas id="canvas-s3" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">When people are thrown into the Fire, the guardians ask: <em>"Did no warner come to you?"</em> Not because they don't know — but to establish the proof in front of everyone. Every person on earth received a warning: the Quran, the Prophet ﷺ, their own fitrah, the signs in creation. And what do the people of the Fire confess? They wish they had listened and used their reason. Put the events in order!</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 67:7-8 — The Fire Itself Rages:</strong> "When they are thrown into it, they hear its inhaling as it boils up. It almost bursts with rage." The Fire is described as if it is alive — raging, boiling, almost splitting with fury at those who denied Allah. This is not metaphor — it is the reality of what awaits those who reject the truth.</p>
+        <p><strong>Verse 67:8-9 — The Question at the Gates:</strong> The guardians of Hellfire ask each group: "Did no warner come to you?" This establishes Allah's justice — no one is punished without first being warned. The people confess: "Yes, a warner came — but we denied him." They admit it. Too late.</p>
+        <p><strong>Verse 67:10 — "If Only We Had Used Our Reason":</strong> "If only we had been listening (sam'a) or using reason ('aql), we would not be among the companions of the Blaze." Two things they wish they had used: hearing (listening to the message) and reason (thinking it through). Both were gifts given to them. Both were wasted. This verse is a warning to all of us: use your hearing and your reason NOW.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَقَالُوا لَوْ كُنَّا نَسْمَعُ أَوْ نَعْقِلُ مَا كُنَّا فِي أَصْحَابِ السَّعِيرِ</div>
+        <div class="verse-translation">"And they will say: If only we had been listening or reasoning, we would not be among the companions of the Blaze." — Al-Mulk 67:10 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: PUT IT IN ORDER!</div>
+      <div class="game-instructions">Use ↑ ↓ to arrange the 6 events at the Gates of Hellfire in the correct order from 67:6-11.</div>
+      <div class="order-list" id="order-3"></div>
+      <div class="game-feedback" id="feedback-3"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection3()">✅ Check Order</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 4 — FEAR IN SECRET (67:12-14) — QUIZ
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-4">
+    <div class="card">
+      <div class="card-header">🌙 LEVEL 4 — FEAR IN SECRET (67:12-14)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🌙 Scene: The Night Prayer</span><span style="font-size:7px;color:#888;">Click the figure or sky</span></div>
+        <canvas id="canvas-s4" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">Verse 12 is one of the most beautiful verses in the Quran for a believer: <em>"Those who fear their Lord in the unseen — for them is forgiveness AND a great reward."</em> In the unseen — meaning: when no one is watching. No camera. No friends. Just you and Allah. THAT moment of choosing right — that is what true iman looks like. And "Does He who created not know?" — SubhanAllah.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 67:12 — Fear in the Unseen:</strong> "Indeed, those who fear their Lord in the unseen (bil-ghayb) — for them is forgiveness and a great reward." Khashyat al-ghayb: the fear of Allah that operates even when no human eye is watching. This is the quality of the true believer — their consciousness of Allah is internal, not dependent on anyone else's presence.</p>
+        <p><strong>Verse 67:13-14 — Allah Knows All Secrets:</strong> "Whether you conceal your speech or make it known — He is Knowing of what is within the chests." And then the most logical statement: "Does He who CREATED not know?" Who knows a watch better than the watchmaker? Who knows the human heart better than the One who made it, who breathed life into it, who sustains it with every beat? Al-Latif: The Subtle, who knows the finest details. Al-Khabir: The Fully Acquainted with everything.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">إِنَّ الَّذِينَ يَخْشَوْنَ رَبَّهُم بِالْغَيْبِ لَهُم مَّغْفِرَةٌ وَأَجْرٌ كَبِيرٌ ۩ أَلَا يَعْلَمُ مَنْ خَلَقَ وَهُوَ اللَّطِيفُ الْخَبِيرُ</div>
+        <div class="verse-translation">"Those who fear their Lord in the unseen — for them is forgiveness and a great reward. Does He who created not know? He is the Subtle, the Acquainted." — Al-Mulk 67:12-14 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: QUIZ — FEAR IN SECRET</div>
+      <div class="game-instructions">Answer all 5 questions about verses 67:12-14. You need 80% to pass!</div>
+      <div id="quiz-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 5 — EARTH: A GIFT (67:15-18) — DRAG & DROP
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-5">
+    <div class="card">
+      <div class="card-header">🌍 LEVEL 5 — EARTH: A GIFT (67:15-18)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🌍 Scene: The Tame Earth</span><span style="font-size:7px;color:#888;">Click anywhere</span></div>
+        <canvas id="canvas-s5" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">The word in verse 15 is <em>"dhalul"</em> — tame, submissive. The earth was made THIS way for you. It doesn't fight you. It grows food. It holds mountains so you can sleep peacefully. It keeps the atmosphere so you can breathe. But then: <em>"And to Him is the resurrection."</em> Enjoy the earth — but never forget the destination! Match each event to its verse!</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 67:15 — The Tame Earth:</strong> "He made the earth dhalul (tame) for you — walk through its slopes and eat of His provision." The earth is our gift. We farm it, mine it, build on it, cross it — and it yields. This is not something to take for granted. Allah made it dhalul specifically for us. And everything we eat is His rizq — provision from Him directly.</p>
+        <p><strong>Verses 67:16-17 — Don't Feel Secure from Allah:</strong> "Do you feel secure that He who is in the heaven would not cause the earth to swallow you while it shakes?" The same earth that is tame and giving — can be made to shake and swallow at Allah's command. Earthquakes are a reminder. "Or send against you a storm of stones?" Hailstorms, meteors — everything is under His command.</p>
+        <p><strong>Verse 67:18 — The Warning of History:</strong> "And already those before them denied — and how terrible was My reproach!" The warning is historical: nations that felt secure from Allah's punishment — Aad, Thamud, the Pharaohs — all experienced His reproach. Use the earth. Benefit from it. But never forget Who made it tame for you.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">هُوَ الَّذِي جَعَلَ لَكُمُ الْأَرْضَ ذَلُولًا فَامْشُوا فِي مَنَاكِبِهَا وَكُلُوا مِن رِّزْقِهِ ۖ وَإِلَيْهِ النُّشُورُ</div>
+        <div class="verse-translation">"He is the One who made the earth tame for you — so walk through its slopes and eat of His provision. And to Him is the resurrection." — Al-Mulk 67:15 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: MATCH EACH VERSE</div>
+      <div class="game-instructions">Drag each description to its correct verse from Al-Mulk 67:15-18.</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-5"></div>
+        <div class="drop-zones" id="drop-zones-5"></div>
+      </div>
+      <div class="game-feedback" id="feedback-5"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection5()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 6 — BIRDS & TAWAKKUL (67:19-21) — QUIZ
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-6">
+    <div class="card">
+      <div class="card-header">🦅 LEVEL 6 — BIRDS &amp; TAWAKKUL (67:19-21)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🦅 Scene: Birds in Flight</span><span style="font-size:7px;color:#888;">Click the birds</span></div>
+        <canvas id="canvas-s6" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">Look at the birds spreading and contracting their wings. By all physics, they should fall. But they don't. Why? <em>"Ma yumsikuhunna illa ar-Rahman"</em> — NOTHING holds them except the Most Merciful. Every moment of flight is ar-Rahman's direct act. This verse teaches us tawakkul: do your work, spread your wings — but KNOW that only Allah is holding everything up. Not your skill. Not your planning.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 67:19 — The Birds:</strong> "Have they not seen the birds above them — spreading their wings and contracting them? None holds them up except the Most Merciful. Indeed He is, of all things, Seeing." This is one of the most powerful descriptions of tawakkul in the Quran. The birds don't sit still waiting for food to come to them — they fly, they search, they work. But they trust in ar-Rahman for every moment of flight.</p>
+        <p><strong>Verse 67:20 — Who Is Your Army?:</strong> "Who is it that could be an army for you to aid you other than the Most Merciful? The disbelievers are not but in delusion (ghurur)." The delusion is this: thinking that armies, wealth, technology, or numbers protect you — without Allah. True security comes only from ar-Rahman.</p>
+        <p><strong>Verse 67:21 — Who Provides for You?:</strong> "Or who is it that could provide for you if He withheld His provision?" Every job, every meal, every salary — it only reaches you because Allah willed it. Al-Razzaq — The Provider. This is the foundation of tawakkul: do your work, then fully rely on Him for the result.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">أَوَلَمْ يَرَوْا إِلَى الطَّيْرِ فَوْقَهُمْ صَافَّاتٍ وَيَقْبِضْنَ ۚ مَا يُمْسِكُهُنَّ إِلَّا الرَّحْمَٰنُ ۚ إِنَّهُ بِكُلِّ شَيْءٍ بَصِيرٌ</div>
+        <div class="verse-translation">"Have they not seen the birds above them spreading and contracting their wings? None holds them up except the Most Merciful. Indeed He is, of all things, Seeing." — Al-Mulk 67:19 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: QUIZ — BIRDS &amp; TAWAKKUL</div>
+      <div class="game-instructions">Answer all 5 questions about birds, tawakkul, and provision. You need 80%!</div>
+      <div id="quiz-6"></div>
+      <div class="game-feedback" id="feedback-6"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 7 — SIGNS & THE DAY (67:22-27) — STORY ORDER
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-7">
+    <div class="card">
+      <div class="card-header">🌟 LEVEL 7 — SIGNS &amp; THE DAY (67:22-27)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🌟 Scene: Questions in the Night</span><span style="font-size:7px;color:#888;">Click anywhere</span></div>
+        <canvas id="canvas-s7" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">Verse 23 is one of the most important reminders: <em>"He gave you hearing, sight, and hearts — but how little thanks you give!"</em> Three gifts. Every moment of hearing, seeing, and feeling is from Allah. And then — the disbelievers mock: "When will this Day come?" And the answer of truth: "I am only a plain warner. The knowledge is with Allah." Arrange the events in order!</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 67:22-23 — Walk Upright or Stumble:</strong> "Is one who walks stumbling on his face better guided, or one who walks upright on a straight path?" This is a parable: the believer walks upright — guided by the Quran and Sunnah. The disbeliever stumbles — lost, falling, confused. Then: "He gave you hearing, sight, and hearts — but how little you give thanks." Three gifts, one verse, total ingratitude from most people.</p>
+        <p><strong>Verse 67:24-26 — The Challenge:</strong> Allah scattered humanity across the earth — and to Him we will be gathered. The disbelievers challenge: "When will this promise come?" They think their mockery is strength. But it is just delay. The Prophet ﷺ's response is one of perfect humility: "The knowledge of its time is only with Allah — I am only a plain warner."</p>
+        <p><strong>Verse 67:27 — When They See It:</strong> "When they see it approaching — the faces of disbelievers will be full of grief. And it will be said: this is what you used to call for (in mockery)." The mockery ends. The Day arrives. The same mouths that used to say "When will it come?" will go silent with horror. May Allah protect us. Ameen.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">قُلْ هُوَ الَّذِي أَنشَأَكُمْ وَجَعَلَ لَكُمُ السَّمْعَ وَالْأَبْصَارَ وَالْأَفْئِدَةَ ۖ قَلِيلًا مَّا تَشْكُرُونَ</div>
+        <div class="verse-translation">"Say: He is the One who created you and made for you hearing and sight and hearts. Little are you grateful." — Al-Mulk 67:23 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: PUT IT IN ORDER!</div>
+      <div class="game-instructions">Use ↑ ↓ to arrange the 6 events of 67:22-27 in correct order.</div>
+      <div class="order-list" id="order-7"></div>
+      <div class="game-feedback" id="feedback-7"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection7()">✅ Check Order</button>
+        <button class="action-btn gold" id="complete-7-btn" style="display:none" onclick="completeSection(7)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 8 — THE WATER VERSE (67:28-30) — QUIZ
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-8">
+    <div class="card">
+      <div class="card-header">💧 LEVEL 8 — THE WATER VERSE (67:28-30)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">💧 Scene: Water Sinking Away</span><span style="font-size:7px;color:#888;">Click anywhere</span></div>
+        <canvas id="canvas-s8" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">The very last verse — <em>"If your water was to sink into the earth — who then could bring you flowing water?"</em> No one but Allah. Turn on your tap tomorrow morning and think: THIS is Allah's mercy. Every drop of rain — Allah's mercy. Every river, every spring, every well — Allah's mercy. The Surah of Dominion ends with the most basic reminder of total dependence on the Most Merciful.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 67:28-29 — The Believer's Declaration:</strong> "Say: Have you considered — if Allah should cause me and those with me to die or have mercy upon us — who would protect the disbelievers from a painful punishment?" No one. Then the believer's declaration: "He is ar-Rahman — we have believed in Him and upon Him we have relied (tawakkalna)." Three things: belief, declaration, and tawakkul. This is the complete formula.</p>
+        <p><strong>Verse 67:30 — The Final Question:</strong> "Say: Have you considered — if your water was to become sunken (ghawran) into the earth — who then could bring you flowing water (ma'in ma'in)?" The repetition "ma'in ma'in" is one of the most beautiful rhetorical devices in Arabic — emphasizing the extreme need, the urgency, the impossibility of any answer other than: only Allah.</p>
+        <p><strong>Why This Is the Closing Verse:</strong> The Surah opens with the greatest question — Who holds all dominion? Allah. It closes with the most basic need — who provides the most essential thing for life, water? Only Allah. From the cosmic scale to the cup of water you drink. Everything is His. SubhanAllah.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">قُلْ أَرَأَيْتُمْ إِنْ أَصْبَحَ مَاؤُكُمْ غَوْرًا فَمَن يَأْتِيكُم بِمَاءٍ مَّعِينٍ</div>
+        <div class="verse-translation">"Say: Have you considered — if your water were to sink into the earth, who then could bring you flowing water?" — Al-Mulk 67:30 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: FINAL QUIZ — AL-MULK</div>
+      <div class="game-instructions">The final 5 questions about the closing verses and the full Surah. You need 80%!</div>
+      <div id="quiz-8"></div>
+      <div class="game-feedback" id="feedback-8"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection8()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-8-btn" style="display:none" onclick="completeSection(8)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+</div>
+</div>
+
+<!-- ===== VERSE POPUP ===== -->
+<div id="verse-popup">
+  <div class="vp-box">
+    <div id="vp-ref"></div>
+    <div id="vp-arabic"></div>
+    <div id="vp-eng"></div>
+    <div id="vp-note"></div>
+    <button id="vp-close" onclick="hideVersePopup()">✕ Close</button>
+  </div>
+</div>
+
+<!-- ===== REWARD OVERLAY ===== -->
+<div id="reward-overlay">
+  <div class="reward-box">
+    <span class="reward-icon" id="reward-icon">🏆</span>
+    <div class="reward-title" id="reward-title">LEVEL COMPLETE!</div>
+    <div class="reward-xp"   id="reward-xp">+100 XP</div>
+    <div class="reward-gems" id="reward-gems">+4 💎</div>
+    <div class="reward-msg"  id="reward-msg"></div>
+    <button class="reward-ok-btn" onclick="dismissReward()">✅ Awesome! Continue</button>
+  </div>
+</div>
+
+<script src="scenes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

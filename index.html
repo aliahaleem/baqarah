@@ -167,6 +167,24 @@
   }
   .muhammad-portal:hover .portal-btn { background: #c03040; color: #fff; }
 
+  /* Al-Mulk — midnight navy / gold theme */
+  .mulk-portal {
+    background: linear-gradient(160deg, #030610 0%, #0a1428 100%);
+    border-color: #1e3080;
+    box-shadow: 0 0 20px #1e308044, inset 0 0 40px #03061088;
+  }
+  .mulk-portal:hover {
+    border-color: #3050c0;
+    box-shadow: 0 0 36px #3050c066;
+  }
+  .mulk-portal .progress-bar { background: #3050c0; }
+  .mulk-portal .portal-btn {
+    color: #3050c0;
+    border-color: #3050c0;
+    background: transparent;
+  }
+  .mulk-portal:hover .portal-btn { background: #3050c0; color: #fff; }
+
   /* Footer note */
   .hub-footer {
     text-align: center;
@@ -213,6 +231,20 @@
       <div class="portal-separator"></div>
       <div class="portal-progress-label">YOUR PROGRESS</div>
       <div class="portal-progress" id="im-progress">
+        <span style="color:#888">Not started yet</span>
+      </div>
+      <div class="portal-btn">ENTER QUEST ▶</div>
+    </div>
+
+    <!-- AL-MULK PORTAL -->
+    <div class="portal mulk-portal" onclick="window.location='mulk/index.html'">
+      <div class="portal-icon">🌌</div>
+      <div class="portal-title">SURAH AL-MULK</div>
+      <div class="portal-arabic">سورة الملك</div>
+      <div class="portal-desc">The Sovereignty — 30 Verses<br>8 Levels of starlight</div>
+      <div class="portal-separator"></div>
+      <div class="portal-progress-label">YOUR PROGRESS</div>
+      <div class="portal-progress" id="mulk-progress">
         <span style="color:#888">Not started yet</span>
       </div>
       <div class="portal-btn">ENTER QUEST ▶</div>
@@ -296,6 +328,7 @@
 
   renderProgress('baqarahQuestSave',   'bq-progress',  13, 'baqarah');
   renderProgress('imranQuestSave',     'im-progress',  10, 'imran');
+  renderProgress('mulkQuestSave',      'mulk-progress', 8, 'mulk');
   renderProgress('muhammadQuestSave',  'muh-progress',  8, 'muhammad');
 </script>
 </body>
