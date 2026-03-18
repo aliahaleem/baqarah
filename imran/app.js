@@ -488,8 +488,6 @@ document.addEventListener('drop', e => {
 
 // =============================================
 //  TOUCH DRAG & DROP — iOS / Android support
-//  Native drag events don't fire on touch screens.
-//  We simulate drag-drop with touchstart/move/end.
 // =============================================
 (function () {
   let touchEl    = null;
@@ -511,37 +509,22 @@ document.addEventListener('drop', e => {
     const target = e.target.closest('.drag-item');
     if (!target) return;
     e.preventDefault();
-
     touchEl = target;
     touchEl.classList.add('dragging');
-
     const touch = e.touches[0];
     const rect  = target.getBoundingClientRect();
     offX = touch.clientX - rect.left;
     offY = touch.clientY - rect.top;
-
     touchClone = target.cloneNode(true);
     const cs   = window.getComputedStyle(target);
     Object.assign(touchClone.style, {
-      position:      'fixed',
-      zIndex:        '9999',
-      pointerEvents: 'none',
-      opacity:       '0.85',
-      width:         rect.width  + 'px',
-      minHeight:     rect.height + 'px',
-      left:          (touch.clientX - offX) + 'px',
-      top:           (touch.clientY - offY) + 'px',
-      margin:        '0',
-      background:    cs.background,
-      border:        cs.border,
-      padding:       cs.padding,
-      color:         cs.color,
-      fontSize:      cs.fontSize,
-      fontFamily:    cs.fontFamily,
-      lineHeight:    cs.lineHeight,
-      whiteSpace:    'pre-line',
-      boxSizing:     'border-box',
-      transform:     'scale(1.06)',
+      position: 'fixed', zIndex: '9999', pointerEvents: 'none', opacity: '0.85',
+      width: rect.width + 'px', minHeight: rect.height + 'px',
+      left: (touch.clientX - offX) + 'px', top: (touch.clientY - offY) + 'px',
+      margin: '0', background: cs.background, border: cs.border,
+      padding: cs.padding, color: cs.color, fontSize: cs.fontSize,
+      fontFamily: cs.fontFamily, lineHeight: cs.lineHeight,
+      whiteSpace: 'pre-line', boxSizing: 'border-box', transform: 'scale(1.06)',
     });
     document.body.appendChild(touchClone);
   }, { passive: false });
@@ -552,7 +535,6 @@ document.addEventListener('drop', e => {
     const touch = e.touches[0];
     touchClone.style.left = (touch.clientX - offX) + 'px';
     touchClone.style.top  = (touch.clientY - offY) + 'px';
-
     document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
     const zone = zoneAt(touch.clientX, touch.clientY);
     if (zone) zone.classList.add('drag-over');
@@ -562,7 +544,6 @@ document.addEventListener('drop', e => {
     if (!touchEl) return;
     const touch = e.changedTouches[0];
     document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
-
     const zone = zoneAt(touch.clientX, touch.clientY);
     if (zone) {
       const existing = zone.querySelector('.drag-item');
@@ -574,7 +555,6 @@ document.addEventListener('drop', e => {
       touchEl.classList.add('placed');
       zone.appendChild(touchEl);
     }
-
     touchEl.classList.remove('dragging');
     touchEl = null;
     if (touchClone) { touchClone.remove(); touchClone = null; }
@@ -584,6 +564,155 @@ document.addEventListener('drop', e => {
 // =============================================
 //  UI & NAVIGATION
 // =============================================
+// =============================================
+//  MASJID WORLD BUILDER CANVAS
+// =============================================
+
+function _buildLabel(ctx, W, msg, done, total) {
+  ctx.fillStyle = '#7a5ab0'; ctx.font = '7px "Press Start 2P",monospace'; ctx.textAlign = 'center';
+  ctx.fillText(msg, W / 2, 18);
+  ctx.fillStyle = '#120a28'; ctx.fillRect(W / 2 - 100, 26, 200, 8);
+  ctx.fillStyle = '#5a3aa0'; ctx.fillRect(W / 2 - 100, 26, Math.round(200 * done / total), 8);
+  ctx.textAlign = 'left';
+}
+
+function _drawBuildCanvas(n) {
+  const c = document.getElementById('build-canvas'); if (!c) return;
+  const ctx = c.getContext('2d'), W = 560, H = 250;
+  ctx.clearRect(0, 0, W, H);
+
+  // Sky — lightens to royal purple at completion
+  const sk = ctx.createLinearGradient(0, 0, 0, H);
+  sk.addColorStop(0, n >= 10 ? '#1a0838' : '#060812');
+  sk.addColorStop(1, n >= 10 ? '#0e0420' : '#0a0c1a');
+  ctx.fillStyle = sk; ctx.fillRect(0, 0, W, H);
+
+  for (let i = 0; i < 65; i++) {
+    const sx = (i * 6143) % W, sy = (i * 4517) % 165;
+    const br = Math.min(0.9, (n / 4) * (0.3 + (i % 3) * 0.3));
+    ctx.fillStyle = `rgba(220,200,255,${br})`; ctx.fillRect(sx, sy, 1, 1);
+  }
+
+  if (n < 1) { _buildLabel(ctx, W, '🕌 Complete levels to build the Masjid!', 0, 10); return; }
+
+  // Ground
+  ctx.fillStyle = '#d0c8b0'; ctx.fillRect(0, 215, W, 35);
+  ctx.strokeStyle = '#b8b0a0'; ctx.lineWidth = 1;
+  for (let x = 0; x <= W; x += 40) { ctx.beginPath(); ctx.moveTo(x, 215); ctx.lineTo(x, 250); ctx.stroke(); }
+  for (let y = 218; y < 250; y += 18) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+
+  if (n < 2) { _buildLabel(ctx, W, '🕌 Plaza laid — 1/10', 1, 10); return; }
+
+  // Foundation base
+  ctx.fillStyle = '#c0b8a0'; ctx.fillRect(80, 207, 400, 12);
+  ctx.fillStyle = '#d0c8b0'; ctx.fillRect(80, 207, 400, 3);
+
+  if (n < 3) { _buildLabel(ctx, W, '🕌 Foundation placed — 2/10', 2, 10); return; }
+
+  // Building walls (3 bands, stages 3–5)
+  const WL = 120, WW = 320, WB = 207;
+  const bh = 34;
+  const bands = Math.min(3, n - 2);
+  for (let b = 0; b < bands; b++) {
+    ctx.fillStyle = '#c8b890'; ctx.fillRect(WL, WB - bh * (b + 1), WW, bh);
+    ctx.strokeStyle = '#a09870'; ctx.lineWidth = 1;
+    for (let ly = WB - bh * (b + 1) + 9; ly < WB - bh * b; ly += 10) {
+      ctx.beginPath(); ctx.moveTo(WL, ly); ctx.lineTo(WL + WW, ly); ctx.stroke();
+    }
+    for (let lx = WL + 20; lx < WL + WW; lx += 22) {
+      ctx.beginPath(); ctx.moveTo(lx, WB - bh * (b + 1)); ctx.lineTo(lx, WB - bh * b); ctx.stroke();
+    }
+  }
+
+  // Arched windows (level 4+)
+  if (n >= 4) {
+    for (let wi = 0; wi < 4; wi++) {
+      const wx = WL + 28 + wi * 74, wy = WB - bh * 2 + 6;
+      ctx.fillStyle = '#2a3850'; ctx.fillRect(wx, wy, 22, 26);
+      ctx.fillStyle = '#4060a0'; ctx.fillRect(wx + 3, wy + 5, 16, 20);
+      ctx.fillStyle = '#2a3850'; ctx.beginPath(); ctx.arc(wx + 11, wy, 11, Math.PI, 0); ctx.fill();
+      ctx.fillStyle = '#3050a0'; ctx.beginPath(); ctx.arc(wx + 11, wy, 8, Math.PI, 0); ctx.fill();
+    }
+  }
+
+  // Arched entrance door (level 5+)
+  if (n >= 5) {
+    ctx.fillStyle = '#2a3850'; ctx.fillRect(258, WB - 52, 44, 52);
+    ctx.beginPath(); ctx.arc(280, WB - 52, 22, Math.PI, 0); ctx.fill();
+    ctx.fillStyle = '#c0a860'; ctx.fillRect(262, WB - 50, 36, 48);
+    ctx.fillStyle = '#a08840'; ctx.beginPath(); ctx.arc(280, WB - 50, 18, Math.PI, 0); ctx.fill();
+  }
+
+  // Dome base ring (level 6+)
+  if (n >= 6) {
+    ctx.fillStyle = '#c0b890'; ctx.fillRect(195, WB - bh * 3 - 14, 170, 18);
+    ctx.fillStyle = '#d8c8a0'; ctx.fillRect(199, WB - bh * 3 - 12, 162, 14);
+  }
+
+  // Main dome (level 7+)
+  if (n >= 7) {
+    const dcy = WB - bh * 3 - 14;
+    ctx.fillStyle = '#b8a878';
+    ctx.beginPath(); ctx.arc(280, dcy, 76, Math.PI, 0, false); ctx.fill();
+    ctx.fillStyle = '#c8b888';
+    ctx.beginPath(); ctx.arc(280, dcy, 62, Math.PI, 0, false); ctx.fill();
+    ctx.fillStyle = '#c8b880'; ctx.fillRect(272, dcy - 28, 16, 30);
+  }
+
+  // Minaret tower left (level 8+)
+  if (n >= 8) {
+    ctx.fillStyle = '#c8b890'; ctx.fillRect(88, 118, 26, 92);
+    ctx.strokeStyle = '#a09870'; ctx.lineWidth = 1;
+    for (let my = 124; my < 210; my += 9) { ctx.beginPath(); ctx.moveTo(88, my); ctx.lineTo(114, my); ctx.stroke(); }
+    ctx.fillStyle = '#d0c8a0'; ctx.fillRect(83, 118, 36, 8);
+    ctx.fillStyle = '#b8a870';
+    ctx.beginPath(); ctx.moveTo(83, 118); ctx.lineTo(101, 92); ctx.lineTo(119, 118); ctx.closePath(); ctx.fill();
+  }
+
+  // Minaret tower right (level 9+)
+  if (n >= 9) {
+    ctx.fillStyle = '#c8b890'; ctx.fillRect(446, 118, 26, 92);
+    ctx.strokeStyle = '#a09870'; ctx.lineWidth = 1;
+    for (let my = 124; my < 210; my += 9) { ctx.beginPath(); ctx.moveTo(446, my); ctx.lineTo(472, my); ctx.stroke(); }
+    ctx.fillStyle = '#d0c8a0'; ctx.fillRect(441, 118, 36, 8);
+    ctx.fillStyle = '#b8a870';
+    ctx.beginPath(); ctx.moveTo(441, 118); ctx.lineTo(459, 92); ctx.lineTo(477, 118); ctx.closePath(); ctx.fill();
+  }
+
+  // Crescent on dome + completion glow (level 10)
+  if (n >= 10) {
+    const dcy = WB - bh * 3 - 14;
+    // Dome crescent
+    ctx.fillStyle = '#e8c840'; ctx.beginPath(); ctx.arc(280, dcy - 40, 13, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#c8b878'; ctx.beginPath(); ctx.arc(286, dcy - 45, 9, 0, Math.PI * 2); ctx.fill();
+    // Minaret crescents
+    ctx.fillStyle = '#ffd700'; ctx.beginPath(); ctx.arc(101, 84, 8, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#c8b878'; ctx.beginPath(); ctx.arc(104, 81, 6, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#ffd700'; ctx.beginPath(); ctx.arc(459, 84, 8, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#c8b878'; ctx.beginPath(); ctx.arc(462, 81, 6, 0, Math.PI * 2); ctx.fill();
+
+    const grd = ctx.createRadialGradient(280, 150, 30, 280, 150, 200);
+    grd.addColorStop(0, 'rgba(180,140,60,0.28)'); grd.addColorStop(1, 'rgba(180,140,60,0)');
+    ctx.fillStyle = grd; ctx.fillRect(0, 0, W, H);
+
+    // Praying people
+    for (let pi = 0; pi < 9; pi++) {
+      const px = 120 + pi * 38, py = 212;
+      ctx.fillStyle = '#e0d0b0'; ctx.fillRect(px, py - 13, 5, 5);
+      ctx.fillStyle = '#fff'; ctx.fillRect(px - 2, py - 8, 9, 9);
+      ctx.fillStyle = '#c0b090'; ctx.fillRect(px - 2, py + 1, 9, 4);
+    }
+
+    ctx.fillStyle = '#ffd700'; ctx.font = '9px "Press Start 2P",monospace'; ctx.textAlign = 'center';
+    ctx.fillText('ALLAHUMMA BARIK! 🕌 MASJID COMPLETE!', W / 2, 20);
+    ctx.font = '7px "Press Start 2P",monospace';
+    ctx.fillText('Surah Al-Imran — All 10 Levels Mastered!', W / 2, 35);
+    ctx.textAlign = 'left';
+  } else {
+    _buildLabel(ctx, W, `Building the Masjid — ${n}/10 levels`, n, 10);
+  }
+}
+
 function updateUI() {
   if (!state.explorerName) return;
   document.getElementById('header-name').textContent = state.explorerName;
@@ -639,6 +768,8 @@ function updateUI() {
   if (state.completed.length === 10) {
     document.getElementById('all-complete').style.display = 'block';
   }
+
+  _drawBuildCanvas(state.completed.length);
 }
 
 function markSectionComplete(n, showReward = true) {

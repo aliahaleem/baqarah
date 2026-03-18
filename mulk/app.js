@@ -424,6 +424,116 @@ document.addEventListener('drop', e => {
 }());
 
 // =============================================
+//  SEVEN HEAVENS WORLD BUILDER CANVAS
+// =============================================
+
+function _buildLabel(ctx, W, msg, done, total) {
+  ctx.fillStyle = '#4060c0'; ctx.font = '7px "Press Start 2P",monospace'; ctx.textAlign = 'center';
+  ctx.fillText(msg, W / 2, 18);
+  ctx.fillStyle = '#080c1a'; ctx.fillRect(W / 2 - 100, 26, 200, 8);
+  ctx.fillStyle = '#1e3080'; ctx.fillRect(W / 2 - 100, 26, Math.round(200 * done / total), 8);
+  ctx.textAlign = 'left';
+}
+
+function _drawBuildCanvas(n) {
+  const c = document.getElementById('build-canvas'); if (!c) return;
+  const ctx = c.getContext('2d'), W = 560, H = 250;
+  ctx.clearRect(0, 0, W, H);
+
+  // Seven heaven layer colours (index 0 = seventh/top, index 6 = first/lowest)
+  const heavenPairs = [
+    ['#020308', '#05060e'], // 7th (highest) — near void
+    ['#040614', '#080c20'], // 6th
+    ['#060a1c', '#0c1230'], // 5th
+    ['#081030', '#102040'], // 4th
+    ['#0a1440', '#142050'], // 3rd
+    ['#0c1850', '#183060'], // 2nd
+    ['#101e60', '#203880'], // 1st (lowest, where stars are)
+  ];
+  const lH = Math.floor(H / 7);
+
+  if (n < 1) {
+    ctx.fillStyle = '#020308'; ctx.fillRect(0, 0, W, H);
+    _buildLabel(ctx, W, '🌌 Complete levels to reveal the Seven Heavens!', 0, 8);
+    return;
+  }
+
+  // Levels 1–7 reveal heavens from lowest (first) to highest (seventh)
+  for (let h = 0; h < 7; h++) {
+    const stageNeeded = 7 - h;   // heaven index 6 (first/lowest) needs stage 1, index 0 (seventh) needs stage 7
+    const ly = h * lH;
+    const lh2 = h === 6 ? H - ly : lH;
+    if (n >= stageNeeded) {
+      const grad = ctx.createLinearGradient(0, ly, 0, ly + lh2);
+      grad.addColorStop(0, heavenPairs[h][1]);
+      grad.addColorStop(1, heavenPairs[h][0]);
+      ctx.fillStyle = grad; ctx.fillRect(0, ly, W, lh2);
+
+      ctx.fillStyle = 'rgba(100,130,255,0.35)'; ctx.font = '6px "Press Start 2P",monospace'; ctx.textAlign = 'right';
+      ctx.fillText(`HEAVEN ${7 - h}`, W - 6, ly + lH * 0.58);
+      ctx.textAlign = 'left';
+    } else {
+      ctx.fillStyle = '#010204'; ctx.fillRect(0, ly, W, lh2);
+    }
+  }
+
+  // Dividing lines between unlocked heavens
+  ctx.strokeStyle = 'rgba(80,100,220,0.35)'; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+  for (let h = 1; h <= Math.min(n, 7); h++) {
+    const ly = (7 - h) * lH;
+    ctx.beginPath(); ctx.moveTo(0, ly); ctx.lineTo(W, ly); ctx.stroke();
+  }
+  ctx.setLineDash([]);
+
+  // Stars in the first (lowest) heaven — always visible once level 1 done
+  for (let i = 0; i < 80; i++) {
+    const sx = (i * 6143) % W, sy = 6 * lH + (i * 3761) % lH;
+    const br = 0.3 + (i % 5) * 0.12;
+    ctx.fillStyle = `rgba(255,240,200,${br})`; ctx.fillRect(sx, sy, i % 9 === 0 ? 2 : 1, 1);
+  }
+
+  // Shooting star missiles to drive away devils (level 5+)
+  if (n >= 5) {
+    ctx.strokeStyle = '#ffd700'; ctx.lineWidth = 2;
+    for (let ss = 0; ss < 4; ss++) {
+      const sx = 60 + ss * 120, sy = 6 * lH + 6 + ss * 3;
+      ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(sx + 45, sy - 14); ctx.stroke();
+      ctx.fillStyle = '#ffe060'; ctx.fillRect(sx + 43, sy - 16, 7, 7);
+    }
+    ctx.fillStyle = 'rgba(200,180,80,0.6)'; ctx.font = '6px "Press Start 2P",monospace';
+    ctx.fillText('"...and We adorned the nearest heaven with lamps" (67:5)', 8, 6 * lH + 10);
+  }
+
+  // Blazing sun/lamp growing in level 6–8
+  if (n >= 6) {
+    const sunR = 18 + (n - 6) * 8;
+    ctx.strokeStyle = 'rgba(255,200,0,0.55)'; ctx.lineWidth = 3;
+    for (let ri = 0; ri < 8; ri++) {
+      const ra = (ri / 8) * Math.PI * 2;
+      ctx.beginPath(); ctx.moveTo(490 + Math.cos(ra) * sunR, 30 + Math.sin(ra) * sunR);
+      ctx.lineTo(490 + Math.cos(ra) * (sunR + 18), 30 + Math.sin(ra) * (sunR + 18)); ctx.stroke();
+    }
+    ctx.fillStyle = '#ffcc00'; ctx.beginPath(); ctx.arc(490, 30, sunR, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#ffe860'; ctx.beginPath(); ctx.arc(490, 30, sunR * 0.55, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // Full completion (level 8)
+  if (n >= 8) {
+    const grd = ctx.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, 290);
+    grd.addColorStop(0, 'rgba(60,80,200,0.22)'); grd.addColorStop(1, 'rgba(60,80,200,0)');
+    ctx.fillStyle = grd; ctx.fillRect(0, 0, W, H);
+
+    ctx.fillStyle = '#ffd700'; ctx.font = '9px "Press Start 2P",monospace'; ctx.textAlign = 'center';
+    ctx.fillText('ALLAHUMMA BARIK! 🌌 SEVEN HEAVENS REVEALED!', W / 2, 20);
+    ctx.font = '7px "Press Start 2P",monospace';
+    ctx.fillText('Surah Al-Mulk — "Tabaraka alladhi biyadihi al-mulk!" All 8 Done!', W / 2, 35);
+    ctx.textAlign = 'left';
+  } else {
+    _buildLabel(ctx, W, `Unveiling the heavens — ${n}/8 levels`, n, 8);
+  }
+}
+
+// =============================================
 //  UI & NAVIGATION
 // =============================================
 function updateUI() {
@@ -463,6 +573,8 @@ function updateUI() {
     }
   });
   if (state.completed.length === 8) document.getElementById('all-complete').style.display = 'block';
+
+  _drawBuildCanvas(state.completed.length);
 }
 
 function markSectionComplete(n) {

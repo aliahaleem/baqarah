@@ -428,6 +428,145 @@ document.addEventListener('drop', e => {
 }());
 
 // =============================================
+//  PARADISE GATE WORLD BUILDER CANVAS
+// =============================================
+
+function _buildLabel(ctx, W, msg, done, total) {
+  ctx.fillStyle = '#8840c8'; ctx.font = '7px "Press Start 2P",monospace'; ctx.textAlign = 'center';
+  ctx.fillText(msg, W / 2, 18);
+  ctx.fillStyle = '#0e0420'; ctx.fillRect(W / 2 - 100, 26, 200, 8);
+  ctx.fillStyle = '#5a20a0'; ctx.fillRect(W / 2 - 100, 26, Math.round(200 * done / total), 8);
+  ctx.textAlign = 'left';
+}
+
+function _drawBuildCanvas(n) {
+  const c = document.getElementById('build-canvas'); if (!c) return;
+  const ctx = c.getContext('2d'), W = 560, H = 250;
+  ctx.clearRect(0, 0, W, H);
+
+  // Sky — left dark world, right paradise glow when gate opens
+  if (n >= 8) {
+    const sk = ctx.createLinearGradient(0, 0, W, 0);
+    sk.addColorStop(0, '#080215'); sk.addColorStop(0.45, '#1a3208'); sk.addColorStop(1, '#2a5010');
+    ctx.fillStyle = sk; ctx.fillRect(0, 0, W, H);
+  } else {
+    ctx.fillStyle = '#080215'; ctx.fillRect(0, 0, W, H);
+  }
+
+  for (let i = 0; i < 45; i++) {
+    const sx = (i * 7123) % 260, sy = (i * 4419) % 175;
+    const br = 0.35 + (i % 3) * 0.18;
+    ctx.fillStyle = `rgba(200,170,255,${br})`; ctx.fillRect(sx, sy, 1, 1);
+  }
+
+  if (n < 1) { _buildLabel(ctx, W, '🌿 Complete levels to open the Gate of Paradise!', 0, 8); return; }
+
+  // Marble path leading to gate
+  ctx.fillStyle = '#2e2818'; ctx.fillRect(0, 210, W, 40);
+  ctx.fillStyle = '#d0c8b0'; ctx.fillRect(215, 195, 130, 55);
+  ctx.strokeStyle = '#b0a890'; ctx.lineWidth = 1;
+  for (let px = 220; px < 345; px += 22) { ctx.beginPath(); ctx.moveTo(px, 195); ctx.lineTo(px, 250); ctx.stroke(); }
+  for (let py = 200; py < 250; py += 16) { ctx.beginPath(); ctx.moveTo(215, py); ctx.lineTo(345, py); ctx.stroke(); }
+
+  if (n < 2) { _buildLabel(ctx, W, '🌿 Path to Paradise laid — 1/8', 1, 8); return; }
+
+  // Left gate pillar
+  if (n >= 2) {
+    ctx.fillStyle = '#c8b880'; ctx.fillRect(192, 95, 38, 122);
+    ctx.strokeStyle = '#a89860'; ctx.lineWidth = 1;
+    for (let py = 102; py < 217; py += 13) { ctx.beginPath(); ctx.moveTo(192, py); ctx.lineTo(230, py); ctx.stroke(); }
+    ctx.fillStyle = '#d8c890'; ctx.fillRect(192, 95, 38, 5);
+    ctx.fillRect(188, 90, 46, 10);
+  }
+
+  // Right gate pillar
+  if (n >= 3) {
+    ctx.fillStyle = '#c8b880'; ctx.fillRect(330, 95, 38, 122);
+    ctx.strokeStyle = '#a89860'; ctx.lineWidth = 1;
+    for (let py = 102; py < 217; py += 13) { ctx.beginPath(); ctx.moveTo(330, py); ctx.lineTo(368, py); ctx.stroke(); }
+    ctx.fillStyle = '#d8c890'; ctx.fillRect(330, 95, 38, 5);
+    ctx.fillRect(326, 90, 46, 10);
+  }
+
+  // Left outer wall
+  if (n >= 4) {
+    ctx.fillStyle = '#b8a870'; ctx.fillRect(96, 115, 96, 98);
+    ctx.strokeStyle = '#988858'; ctx.lineWidth = 1;
+    for (let py = 122; py < 213; py += 13) { ctx.beginPath(); ctx.moveTo(96, py); ctx.lineTo(192, py); ctx.stroke(); }
+    for (let px = 112; px < 192; px += 22) { ctx.beginPath(); ctx.moveTo(px, 115); ctx.lineTo(px, 213); ctx.stroke(); }
+  }
+
+  // Right outer wall
+  if (n >= 5) {
+    ctx.fillStyle = '#b8a870'; ctx.fillRect(368, 115, 96, 98);
+    ctx.strokeStyle = '#988858'; ctx.lineWidth = 1;
+    for (let py = 122; py < 213; py += 13) { ctx.beginPath(); ctx.moveTo(368, py); ctx.lineTo(464, py); ctx.stroke(); }
+    for (let px = 384; px < 464; px += 22) { ctx.beginPath(); ctx.moveTo(px, 115); ctx.lineTo(px, 213); ctx.stroke(); }
+  }
+
+  // Arch spanning the gate (level 6+)
+  if (n >= 6) {
+    ctx.strokeStyle = '#d8c050'; ctx.lineWidth = 9;
+    ctx.beginPath(); ctx.arc(280, 95, 88, Math.PI, 0, false); ctx.stroke();
+    ctx.strokeStyle = '#b8a030'; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.arc(280, 95, 88, Math.PI, 0, false); ctx.stroke();
+
+    ctx.fillStyle = '#d8c050'; ctx.fillRect(274, 4, 12, 22);
+    ctx.fillStyle = '#ffd700'; ctx.beginPath(); ctx.arc(280, 4, 11, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#e8c840'; ctx.beginPath(); ctx.arc(280, 4, 6, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // Gate doors (closed) — level 7
+  if (n >= 7 && n < 8) {
+    ctx.fillStyle = '#a07808'; ctx.fillRect(230, 95, 50, 122); ctx.fillRect(280, 95, 50, 122);
+    ctx.fillStyle = '#e0b020'; ctx.fillRect(234, 99, 42, 114); ctx.fillRect(284, 99, 42, 114);
+    ctx.fillStyle = '#c89818';
+    ctx.fillRect(240, 106, 30, 44); ctx.fillRect(290, 106, 30, 44);
+    ctx.fillRect(240, 154, 30, 30); ctx.fillRect(290, 154, 30, 30);
+    ctx.fillStyle = '#ffd700';
+    ctx.fillRect(270, 150, 10, 10); ctx.fillRect(280, 150, 10, 10);
+  }
+
+  // Gate OPEN — paradise visible (level 8)
+  if (n >= 8) {
+    // Paradise garden inside
+    const pGrad = ctx.createLinearGradient(230, 0, 330, 0);
+    pGrad.addColorStop(0, '#1a4a10'); pGrad.addColorStop(0.5, '#2a6018'); pGrad.addColorStop(1, '#1a4a10');
+    ctx.fillStyle = pGrad; ctx.fillRect(230, 95, 100, 122);
+
+    ctx.fillStyle = '#1c5012'; ctx.beginPath(); ctx.arc(258, 152, 20, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#287018'; ctx.beginPath(); ctx.arc(302, 146, 17, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#5a2808'; ctx.fillRect(254, 168, 7, 20); ctx.fillRect(298, 161, 7, 20);
+    ctx.fillStyle = '#d03030'; ctx.beginPath(); ctx.arc(251, 144, 5, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(264, 155, 4, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#3070d0'; ctx.fillRect(232, 192, 96, 14);
+    ctx.fillStyle = '#5090f0'; ctx.fillRect(232, 192, 96, 5);
+
+    // Golden light rays
+    const lightGrd = ctx.createRadialGradient(280, 95, 0, 280, 95, 180);
+    lightGrd.addColorStop(0, 'rgba(255,220,70,0.5)'); lightGrd.addColorStop(1, 'rgba(255,220,70,0)');
+    ctx.fillStyle = lightGrd; ctx.fillRect(0, 0, W, H);
+
+    // Doors swung open (left)
+    ctx.fillStyle = '#a07808'; ctx.fillRect(180, 95, 52, 122);
+    ctx.fillStyle = '#e0b020'; ctx.fillRect(183, 99, 44, 114);
+    ctx.fillStyle = '#c89818'; ctx.fillRect(189, 106, 32, 44); ctx.fillRect(189, 154, 32, 30);
+    // Doors swung open (right)
+    ctx.fillStyle = '#a07808'; ctx.fillRect(328, 95, 52, 122);
+    ctx.fillStyle = '#e0b020'; ctx.fillRect(331, 99, 44, 114);
+    ctx.fillStyle = '#c89818'; ctx.fillRect(337, 106, 32, 44); ctx.fillRect(337, 154, 32, 30);
+
+    ctx.fillStyle = '#ffd700'; ctx.font = '9px "Press Start 2P",monospace'; ctx.textAlign = 'center';
+    ctx.fillText('ALLAHUMMA BARIK! 🌿 GATES OF PARADISE OPEN!', W / 2, 20);
+    ctx.font = '7px "Press Start 2P",monospace';
+    ctx.fillText('"Inna lil-muttaqeena mafaza" — Surah An-Naba All 8 Done!', W / 2, 35);
+    ctx.textAlign = 'left';
+  } else {
+    _buildLabel(ctx, W, `Building the Gate — ${n}/8 levels`, n, 8);
+  }
+}
+
+// =============================================
 //  UI & NAVIGATION
 // =============================================
 function updateUI() {
@@ -467,6 +606,8 @@ function updateUI() {
     }
   });
   if (state.completed.length === 8) document.getElementById('all-complete').style.display = 'block';
+
+  _drawBuildCanvas(state.completed.length);
 }
 
 function markSectionComplete(n) {

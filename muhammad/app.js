@@ -505,6 +505,118 @@ document.addEventListener('drop', e => {
 // =============================================
 //  UI & NAVIGATION
 // =============================================
+// =============================================
+//  BATTLE BANNER WORLD BUILDER CANVAS
+// =============================================
+
+function _buildLabel(ctx, W, msg, done, total) {
+  ctx.fillStyle = '#a04050'; ctx.font = '7px "Press Start 2P",monospace'; ctx.textAlign = 'center';
+  ctx.fillText(msg, W / 2, 18);
+  ctx.fillStyle = '#160408'; ctx.fillRect(W / 2 - 100, 26, 200, 8);
+  ctx.fillStyle = '#8a2030'; ctx.fillRect(W / 2 - 100, 26, Math.round(200 * done / total), 8);
+  ctx.textAlign = 'left';
+}
+
+function _drawBuildCanvas(n) {
+  const c = document.getElementById('build-canvas'); if (!c) return;
+  const ctx = c.getContext('2d'), W = 560, H = 250;
+  ctx.clearRect(0, 0, W, H);
+
+  // Sky
+  ctx.fillStyle = '#060208'; ctx.fillRect(0, 0, W, H);
+
+  for (let i = 0; i < 60; i++) {
+    const sx = (i * 7283) % W, sy = (i * 5017) % 185;
+    const br = Math.min(0.9, (n / 4) * (0.4 + (i % 3) * 0.25));
+    ctx.fillStyle = `rgba(255,210,180,${br})`; ctx.fillRect(sx, sy, 1, 1);
+  }
+
+  if (n < 1) { _buildLabel(ctx, W, '⚔️ Complete levels to raise the banner!', 0, 8); return; }
+
+  // Battlefield ground
+  ctx.fillStyle = '#2a1a06'; ctx.fillRect(0, 212, W, 38);
+  ctx.fillStyle = '#382208'; ctx.fillRect(0, 212, W, 5);
+  for (let i = 0; i < 9; i++) {
+    ctx.fillStyle = '#1e3008'; ctx.fillRect(20 + i * 58, 209, 10, 9);
+  }
+
+  if (n < 2) { _buildLabel(ctx, W, '⚔️ Battlefield set — 1/8', 1, 8); return; }
+
+  // Flag pole
+  ctx.fillStyle = '#a08040'; ctx.fillRect(277, 32, 6, 180);
+  ctx.fillStyle = '#c0a060'; ctx.fillRect(275, 205, 10, 12);
+  ctx.fillStyle = '#c0a060'; ctx.fillRect(271, 210, 18, 8);
+
+  if (n < 3) { _buildLabel(ctx, W, '⚔️ Pole raised — 2/8', 2, 8); return; }
+
+  // Flag fabric grows from level 3 onward
+  const flagW = Math.min(210, 60 + (n - 2) * 50);
+  const flagY = 32, flagH = 114;
+
+  // Black flag
+  ctx.fillStyle = '#14100c'; ctx.fillRect(283, flagY, flagW, flagH);
+  ctx.fillStyle = '#0e0c08';
+  for (let fy = flagY + 15; fy < flagY + flagH; fy += 18) { ctx.fillRect(283, fy, flagW, 5); }
+
+  if (n < 4) { _buildLabel(ctx, W, '⚔️ Banner unfurling — 3/8', 3, 8); return; }
+
+  // Crescent on flag (level 5+)
+  if (n >= 5 && flagW > 100) {
+    const fcx = 283 + flagW * 0.38, fcy = flagY + flagH * 0.43;
+    ctx.fillStyle = '#c8a010'; ctx.beginPath(); ctx.arc(fcx, fcy, 30, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#14100c'; ctx.beginPath(); ctx.arc(fcx + 12, fcy - 9, 23, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // Star (level 6+)
+  if (n >= 6 && flagW > 140) {
+    const fsx = 283 + flagW * 0.65, fsy = flagY + flagH * 0.37;
+    ctx.fillStyle = '#c8a010'; ctx.beginPath(); ctx.moveTo(fsx, fsy - 17);
+    for (let si = 0; si < 5; si++) {
+      const a1 = si * (Math.PI * 2 / 5) - Math.PI / 2;
+      const a2 = a1 + Math.PI / 5;
+      ctx.lineTo(fsx + Math.cos(a1) * 17, fsy + Math.sin(a1) * 17);
+      ctx.lineTo(fsx + Math.cos(a2) * 7, fsy + Math.sin(a2) * 7);
+    }
+    ctx.closePath(); ctx.fill();
+  }
+
+  // Arabic text on flag (level 7+)
+  if (n >= 7 && flagW > 150) {
+    ctx.fillStyle = '#c8a010'; ctx.font = '15px Amiri,serif'; ctx.textAlign = 'center';
+    ctx.fillText('لَا إِلَٰهَ إِلَّا ٱللَّٰهُ', 283 + flagW * 0.5, flagY + flagH * 0.79);
+    ctx.textAlign = 'left';
+  }
+
+  // Victory completion (level 8)
+  if (n >= 8) {
+    const grd = ctx.createRadialGradient(280, 120, 20, 280, 120, 220);
+    grd.addColorStop(0, 'rgba(255,140,0,0.28)'); grd.addColorStop(1, 'rgba(255,140,0,0)');
+    ctx.fillStyle = grd; ctx.fillRect(0, 0, W, H);
+
+    ctx.strokeStyle = 'rgba(255,200,0,0.35)'; ctx.lineWidth = 2;
+    for (let ri = 0; ri < 12; ri++) {
+      const ra = (ri / 12) * Math.PI * 2;
+      ctx.beginPath(); ctx.moveTo(280, 20); ctx.lineTo(280 + Math.cos(ra) * 130, 20 + Math.sin(ra) * 130); ctx.stroke();
+    }
+
+    for (let wi = 0; wi < 11; wi++) {
+      const wx = 20 + wi * 48, wy = 208;
+      ctx.fillStyle = '#e0c090'; ctx.fillRect(wx, wy - 13, 5, 5);
+      ctx.fillStyle = ['#c03040', '#404880', '#308040', '#806030', '#a03050'][wi % 5];
+      ctx.fillRect(wx - 2, wy - 8, 9, 9);
+      ctx.fillStyle = '#a09090'; ctx.fillRect(wx + 6, wy - 11, 2, 13);
+    }
+
+    ctx.fillStyle = '#ffd700'; ctx.font = '9px "Press Start 2P",monospace'; ctx.textAlign = 'center';
+    ctx.fillText('ALLAHU AKBAR! ⚔️ BANNER OF TRUTH RAISED!', W / 2, 20);
+    ctx.font = '7px "Press Start 2P",monospace';
+    ctx.fillText('Surah Muhammad — All 8 Levels Mastered!', W / 2, 35);
+    ctx.textAlign = 'left';
+  } else {
+    _buildLabel(ctx, W, `Raising the banner — ${n}/8 levels`, n, 8);
+  }
+}
+
 function updateUI() {
   if (!state.explorerName) return;
   document.getElementById('header-name').textContent  = state.explorerName;
@@ -542,6 +654,8 @@ function updateUI() {
     }
   });
   if (state.completed.length === 8) document.getElementById('all-complete').style.display = 'block';
+
+  _drawBuildCanvas(state.completed.length);
 }
 
 function markSectionComplete(n, showReward = true) {

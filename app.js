@@ -371,6 +371,127 @@ function loadProgress() {
 }
 
 // =============================================
+//  KA'BA WORLD BUILDER CANVAS
+// =============================================
+
+function _buildLabel(ctx, W, msg, done, total) {
+  ctx.fillStyle = '#6a8a5a'; ctx.font = '7px "Press Start 2P",monospace'; ctx.textAlign = 'center';
+  ctx.fillText(msg, W / 2, 18);
+  ctx.fillStyle = '#111a0a'; ctx.fillRect(W / 2 - 100, 26, 200, 8);
+  ctx.fillStyle = '#3a7a2a'; ctx.fillRect(W / 2 - 100, 26, Math.round(200 * done / total), 8);
+  ctx.textAlign = 'left';
+}
+
+function _drawBuildCanvas(n) {
+  const c = document.getElementById('build-canvas'); if (!c) return;
+  const ctx = c.getContext('2d'), W = 560, H = 250;
+  ctx.clearRect(0, 0, W, H);
+
+  // Sky
+  ctx.fillStyle = '#06080f'; ctx.fillRect(0, 0, W, H);
+
+  // Stars — brightness grows with progress
+  for (let i = 0; i < 90; i++) {
+    const sx = (i * 5783 + 3) % W, sy = (i * 3917 + 7) % 170;
+    const br = Math.min(0.9, (n / 5) * (0.3 + 0.6 * ((i * 7 % 10) / 10)));
+    ctx.fillStyle = `rgba(255,240,200,${br})`;
+    ctx.fillRect(sx, sy, i % 7 === 0 ? 2 : 1, i % 7 === 0 ? 2 : 1);
+  }
+
+  // Crescent moon (level 5+)
+  if (n >= 5) {
+    ctx.fillStyle = '#ffe8a0'; ctx.beginPath(); ctx.arc(490, 40, 22, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#06080f'; ctx.beginPath(); ctx.arc(501, 33, 17, 0, Math.PI * 2); ctx.fill();
+  }
+
+  if (n < 1) { _buildLabel(ctx, W, "Complete levels to build the Ka'ba! 🕋", 0, 13); return; }
+
+  // Marble plaza ground
+  ctx.fillStyle = '#d0c8b8'; ctx.fillRect(0, 215, W, 35);
+  ctx.strokeStyle = '#b8b0a0'; ctx.lineWidth = 1;
+  for (let x = 0; x <= W; x += 40) { ctx.beginPath(); ctx.moveTo(x, 215); ctx.lineTo(x, 250); ctx.stroke(); }
+  for (let y = 215; y < 250; y += 18) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+
+  if (n < 2) { _buildLabel(ctx, W, "Plaza laid... 1/13", 1, 13); return; }
+
+  // Raised platform
+  ctx.fillStyle = '#bab0a0'; ctx.fillRect(155, 203, 250, 14);
+  ctx.fillStyle = '#d0c8b8'; ctx.fillRect(155, 203, 250, 3);
+  ctx.fillStyle = '#a09888'; ctx.fillRect(158, 214, 244, 3);
+
+  if (n < 3) { _buildLabel(ctx, W, "Platform placed! 2/13", 2, 13); return; }
+
+  // Ka'ba geometry constants
+  const KL = 200, KW = 160, KB = 203, KH = 136, KT = KB - KH;
+
+  function drawWallBand(x, y, w, h) {
+    ctx.fillStyle = '#1c1a14'; ctx.fillRect(x, y, w, h);
+    ctx.strokeStyle = '#2a2820'; ctx.lineWidth = 1;
+    for (let ly = y + 8; ly < y + h; ly += 8) { ctx.beginPath(); ctx.moveTo(x, ly); ctx.lineTo(x + w, ly); ctx.stroke(); }
+    for (let lx = x + 14; lx < x + w; lx += 18) { ctx.beginPath(); ctx.moveTo(lx, y); ctx.lineTo(lx, y + h); ctx.stroke(); }
+  }
+
+  // Build wall bands — one band unlocked every 3 levels (bands: bottom→top)
+  const bh = KH / 4;
+  const bandsBuilt = Math.min(4, Math.floor((n - 2) / 2.5) + 1);
+  for (let b = 0; b < bandsBuilt; b++) {
+    drawWallBand(KL, KB - bh * (b + 1), KW, bh);
+  }
+
+  // Golden door (level 8+)
+  if (n >= 8) {
+    const dw = 46, dh = 66, dx = KL + KW / 2 - 23, dy = KB - dh;
+    ctx.fillStyle = '#b07808'; ctx.fillRect(dx, dy, dw, dh);
+    ctx.fillStyle = '#e8b820'; ctx.fillRect(dx + 4, dy + 4, dw - 8, dh - 4);
+    ctx.fillStyle = '#d0a018';
+    ctx.fillRect(dx + 8, dy + 8, 14, 28); ctx.fillRect(dx + 26, dy + 8, 10, 28);
+    ctx.fillRect(dx + 8, dy + 40, 14, 18); ctx.fillRect(dx + 26, dy + 40, 10, 18);
+    ctx.fillStyle = '#ffd700'; ctx.fillRect(dx + 20, dy + 33, 7, 7);
+  }
+
+  // Kiswa golden band (level 11+)
+  if (n >= 11) {
+    const ky = KT + 18;
+    ctx.fillStyle = '#c8a010'; ctx.fillRect(KL, ky, KW, 20);
+    ctx.fillStyle = '#050200';
+    for (let kx = KL + 6; kx < KL + KW - 6; kx += 16) ctx.fillRect(kx, ky + 4, 9, 9);
+    ctx.fillStyle = '#e0c030'; ctx.fillRect(KL, ky - 1, KW, 3); ctx.fillRect(KL, ky + 20, KW, 3);
+  }
+
+  // Roof (level 12+)
+  if (n >= 12) {
+    ctx.fillStyle = '#2a2018'; ctx.fillRect(KL - 7, KT - 11, KW + 14, 14);
+    ctx.fillStyle = '#1a1410'; ctx.fillRect(KL - 3, KT - 9, KW + 6, 11);
+    ctx.fillStyle = '#3a3020'; ctx.fillRect(KL - 7, KT - 11, KW + 14, 3);
+  }
+
+  // FULL COMPLETION — tawaf + glow (level 13)
+  if (n >= 13) {
+    const grd = ctx.createRadialGradient(KL + KW / 2, KB - KH / 2, KH / 5, KL + KW / 2, KB - KH / 2, KH * 1.1);
+    grd.addColorStop(0, 'rgba(255,200,0,0.32)'); grd.addColorStop(1, 'rgba(255,200,0,0)');
+    ctx.fillStyle = grd; ctx.fillRect(0, 0, W, H);
+
+    // Tawaf pilgrims circling Ka'ba
+    const cx = KL + KW / 2, cy = KB - KH * 0.42;
+    const ihram = ['#fff', '#f0e8d0', '#d8c8a0', '#b0a880'];
+    for (let i = 0; i < 18; i++) {
+      const a = (i / 18) * Math.PI * 2;
+      const px = cx + Math.cos(a) * 104, py = cy + Math.sin(a) * 46 + 24;
+      if (py > KB - 2) continue;
+      ctx.fillStyle = '#e8c890'; ctx.fillRect(px - 2, py - 7, 4, 4);
+      ctx.fillStyle = ihram[i % 4]; ctx.fillRect(px - 3, py - 3, 6, 7);
+    }
+    ctx.fillStyle = '#ffd700'; ctx.font = '9px "Press Start 2P",monospace'; ctx.textAlign = 'center';
+    ctx.fillText("ALLAHUMMA BARIK! 🕋 KA'BA COMPLETE!", W / 2, 20);
+    ctx.font = '7px "Press Start 2P",monospace';
+    ctx.fillText("Surah Al-Baqarah — All 13 Levels Mastered!", W / 2, 35);
+    ctx.textAlign = 'left';
+  } else {
+    _buildLabel(ctx, W, `Building the Ka'ba — ${n}/13 levels`, n, 13);
+  }
+}
+
+// =============================================
 //  UI UPDATES
 // =============================================
 
@@ -430,6 +551,8 @@ function updateUI() {
       labelEl.textContent = chunkLabels[n - 1];
     }
   });
+
+  _drawBuildCanvas(state.completed.length);
 }
 
 // =============================================
