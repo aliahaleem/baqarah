@@ -643,6 +643,16 @@ document.addEventListener('drop', e => {
     touchEl = null;
     if (touchClone) { touchClone.remove(); touchClone = null; }
   }, { passive: false });
+
+  // Clean up if iOS cancels the touch (scroll gesture, notification, call, etc.)
+  // Without this, touchEl stays set and the next quiz tap gets intercepted.
+  document.addEventListener('touchcancel', function () {
+    if (!touchEl) return;
+    touchEl.classList.remove('dragging');
+    touchEl = null;
+    if (touchClone) { touchClone.remove(); touchClone = null; }
+    document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
+  });
 }());
 
 function checkSection1() {
@@ -696,18 +706,26 @@ function renderSection2Game() {
     const optsEl = qEl.querySelector(`#opts-${qi}`);
     q.opts.forEach((opt, oi) => {
       const btn = document.createElement('button');
-      btn.className       = 'option-btn';
-      btn.dataset.qi      = qi;
-      btn.dataset.oi      = oi;
-      btn.textContent     = opt;
-      btn.onclick         = () => selectOption(qi, oi);
+      btn.className        = 'option-btn';
+      btn.dataset.qi       = qi;
+      btn.dataset.oi       = oi;
+      btn.dataset.section  = 2;
+      btn.textContent      = opt;
+      let _touched2 = false;
+      btn.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        _touched2 = true;
+        selectOption(qi, oi);
+        setTimeout(() => { _touched2 = false; }, 500);
+      }, { passive: false });
+      btn.onclick = () => { if (_touched2) return; selectOption(qi, oi); };
       optsEl.appendChild(btn);
     });
   });
 
   // Restore previous answers
   Object.entries(state.s2Answers).forEach(([qi, oi]) => {
-    const btn = document.querySelector(`[data-qi="${qi}"][data-oi="${oi}"]`);
+    const btn = document.querySelector(`[data-section="2"][data-qi="${qi}"][data-oi="${oi}"]`);
     if (btn) btn.classList.add('selected');
   });
 
@@ -720,13 +738,18 @@ function renderSection2Game() {
 function selectOption(qi, oi) {
   if (state.s2Checked) return;
 
-  // Deselect all in this question
-  document.querySelectorAll(`[data-qi="${qi}"]`).forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll(`[data-section="2"][data-qi="${qi}"]`).forEach(b => b.classList.remove('selected'));
 
-  const btn = document.querySelector(`[data-qi="${qi}"][data-oi="${oi}"]`);
+  const btn = document.querySelector(`[data-section="2"][data-qi="${qi}"][data-oi="${oi}"]`);
   if (btn) btn.classList.add('selected');
   state.s2Answers[qi] = oi;
   saveProgress();
+  // Re-apply all other saved answers to protect against iOS touch quirks
+  Object.entries(state.s2Answers).forEach(([q, o]) => {
+    if (parseInt(q) === qi) return;
+    const b = document.querySelector(`[data-section="2"][data-qi="${q}"][data-oi="${o}"]`);
+    if (b) b.classList.add('selected');
+  });
 }
 
 function checkSection2() {
@@ -741,7 +764,7 @@ function checkSection2() {
   let correct = 0;
   S2_QUIZ.forEach((q, qi) => {
     const selected = state.s2Answers[qi];
-    document.querySelectorAll(`[data-qi="${qi}"]`).forEach((btn, oi) => {
+    document.querySelectorAll(`[data-section="2"][data-qi="${qi}"]`).forEach((btn, oi) => {
       btn.disabled = true;
       btn.classList.remove('selected');
       if (oi === q.correct) btn.classList.add('correct');
@@ -961,7 +984,15 @@ function _renderQuiz(n, quizData) {
       btn.dataset.oi      = oi;
       btn.dataset.section = n;
       btn.textContent     = opt;
-      btn.onclick         = () => _selectOption(n, qi, oi);
+      // touchend + preventDefault prevents ghost clicks and iOS touch-to-click conversion issues
+      let _touched = false;
+      btn.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        _touched = true;
+        _selectOption(n, qi, oi);
+        setTimeout(() => { _touched = false; }, 500);
+      }, { passive: false });
+      btn.onclick = () => { if (_touched) return; _selectOption(n, qi, oi); };
       optsEl.appendChild(btn);
     });
   });
@@ -984,6 +1015,12 @@ function _selectOption(n, qi, oi) {
   if (!state[`s${n}Answers`]) state[`s${n}Answers`] = {};
   state[`s${n}Answers`][qi] = oi;
   saveProgress();
+  // Re-apply ALL previously saved answers so iOS touch quirks can't wipe other selections
+  Object.entries(state[`s${n}Answers`]).forEach(([q, o]) => {
+    if (parseInt(q) === qi) return;
+    const b = document.querySelector(`[data-section="${n}"][data-qi="${q}"][data-oi="${o}"]`);
+    if (b) b.classList.add('selected');
+  });
 }
 
 function _checkQuiz(n, quizData) {

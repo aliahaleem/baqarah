@@ -537,6 +537,7 @@ body::before {
   line-height: 1.9;
   text-align: left;
   transition: all 0.1s;
+  touch-action: manipulation;
 }
 .option-btn:hover { background: var(--stone); transform: translate(-1px,-1px); box-shadow: 3px 3px 0 #000; }
 .option-btn.selected { background: var(--sky-light); border-color: #8888ff; }
