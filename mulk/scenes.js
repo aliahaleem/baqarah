@@ -5,6 +5,26 @@
 
 const CW = 560, CH = 220, P = 4;
 
+// --- THEME PALETTE ---
+function sceneP() {
+  const s = document.documentElement.dataset.theme === 'stars';
+  return s ? {
+    sky0:    '#06021a', sky1:    '#0a0422', sky2:    '#080318',
+    gnd:     '#1a0e30', gndAcc:  '#241840',
+    starStr: 'rgba(200,170,255,',
+    acStr:   'rgba(210,140,200,',
+    label:   '#c898e8',
+    hint:    '#9870b8',
+  } : {
+    sky0:    '#010208', sky1:    '#020414', sky2:    '#030618',
+    gnd:     '#1a2808', gndAcc:  '#2a3a10',
+    starStr: 'rgba(200,220,255,',
+    acStr:   'rgba(255,215,0,',
+    label:   '#8898cc',
+    hint:    '#aaa',
+  };
+}
+
 function fillRect(ctx, x, y, w, h, col) {
   if (col) ctx.fillStyle = col;
   ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
@@ -147,14 +167,15 @@ class Scene1 extends BaseScene {
   }
   draw() {
     const ctx = this.ctx;
+    const p = sceneP();
     const grad = ctx.createLinearGradient(0, 0, 0, CH);
-    grad.addColorStop(0, '#010208'); grad.addColorStop(1, '#020410');
+    grad.addColorStop(0, p.sky0); grad.addColorStop(1, p.sky1);
     ctx.fillStyle = grad; ctx.fillRect(0, 0, CW, CH);
 
     // Stars
     this.stars.forEach((s, i) => {
       const br = 0.3 + 0.6 * Math.abs(Math.sin(this.t * 0.02 + s.ph));
-      ctx.fillStyle = `rgba(200,220,255,${br})`; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = p.starStr + br + ')'; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
     });
 
     // Orbiting planets
@@ -176,9 +197,9 @@ class Scene1 extends BaseScene {
     ctx.fillText('الْمُلْكُ', cx, cy + 14);
     ctx.globalAlpha = 1;
 
-    ctx.fillStyle = '#c0d0ff'; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillStyle = p.starStr + '0.8)'; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('"Blessed is He in whose hand is all dominion"', cx, CH - 18);
-    ctx.fillStyle = '#8898cc'; ctx.font = '7px sans-serif';
+    ctx.fillStyle = p.hint; ctx.font = '7px sans-serif';
     ctx.fillText('Click anywhere', cx, CH - 6);
   }
 }
@@ -211,19 +232,20 @@ class Scene2 extends BaseScene {
       ctx.fillText(`Heaven ${7 - i}`, 8, i * this.bH + this.bH - 5);
     });
     // Stars in lowest band (i=6)
+    const p2 = sceneP();
     for (let s = 0; s < 30; s++) {
       const sx = (s * 61 + this.t * 0.3) % CW;
       const sy = 6 * this.bH + 2 + (s % 7) * 3;
       const br = 0.4 + 0.5 * Math.abs(Math.sin(this.t * 0.025 + s));
-      ctx.fillStyle = `rgba(255,240,180,${br})`; fillRect(ctx, sx, sy, 2, 2);
+      ctx.fillStyle = p2.starStr + br + ')'; fillRect(ctx, sx, sy, 2, 2);
     }
     // "No breaks!" label
     const a = 0.6 + 0.4 * Math.sin(this.t * 0.025);
     ctx.globalAlpha = a;
-    ctx.fillStyle = '#ffd700'; ctx.font = 'bold 9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillStyle = p2.acStr + '1)'; ctx.font = 'bold 9px sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('مَا تَرَىٰ مِن تَفَاوُتٍ — No inconsistency!', CW / 2, 14);
     ctx.globalAlpha = 1;
-    ctx.fillStyle = '#8898cc'; ctx.font = '7px sans-serif';
+    ctx.fillStyle = p2.hint; ctx.font = '7px sans-serif';
     ctx.fillText('Click any layer', CW / 2, CH - 5);
   }
 }
@@ -299,15 +321,16 @@ class Scene4 extends BaseScene {
   }
   draw() {
     const ctx = this.ctx;
+    const p4 = sceneP();
     const grad = ctx.createLinearGradient(0, 0, 0, CH);
-    grad.addColorStop(0, '#010208'); grad.addColorStop(1, '#08101a');
+    grad.addColorStop(0, p4.sky0); grad.addColorStop(1, p4.sky1);
     ctx.fillStyle = grad; ctx.fillRect(0, 0, CW, CH);
-    ctx.fillStyle = '#1a2a10'; fillRect(ctx, 0, CH * 0.75, CW, CH * 0.25);
+    ctx.fillStyle = p4.gnd; fillRect(ctx, 0, CH * 0.75, CW, CH * 0.25);
 
     // Stars
     this.stars.forEach((s, i) => {
       const br = 0.2 + 0.6 * Math.abs(Math.sin(this.t * 0.02 + s.ph));
-      ctx.fillStyle = `rgba(200,220,255,${br})`; fillRect(ctx, s.x, s.y, 2, 2);
+      ctx.fillStyle = p4.starStr + br + ')'; fillRect(ctx, s.x, s.y, 2, 2);
     });
 
     // Light beam from above
@@ -337,9 +360,9 @@ class Scene4 extends BaseScene {
     ctx.fillStyle = `rgba(200,220,255,${0.5 + 0.4 * Math.sin(this.t * 0.025)})`;
     ctx.font = 'bold 9px "Amiri", serif'; ctx.textAlign = 'center';
     ctx.fillText('يَخْشَوْنَ رَبَّهُم بِالْغَيْبِ', CW / 2, 28);
-    ctx.fillStyle = '#8898cc'; ctx.font = '7px sans-serif';
+    ctx.fillStyle = p4.starStr + '0.8)'; ctx.font = '7px sans-serif';
     ctx.fillText('"Those who fear their Lord in secret"', CW / 2, 44);
-    ctx.fillStyle = '#aaa'; ctx.font = '7px sans-serif';
+    ctx.fillStyle = p4.hint; ctx.font = '7px sans-serif';
     ctx.fillText('Click the figure or the sky', CW / 2, CH - 8);
   }
 }
@@ -356,12 +379,13 @@ class Scene5 extends BaseScene {
   draw() {
     const ctx = this.ctx;
     // Sky
+    const p5 = sceneP();
     const skyGrad = ctx.createLinearGradient(0, 0, 0, CH * 0.55);
-    skyGrad.addColorStop(0, '#040c1a'); skyGrad.addColorStop(1, '#0a1828');
+    skyGrad.addColorStop(0, p5.sky0); skyGrad.addColorStop(1, p5.sky1);
     ctx.fillStyle = skyGrad; fillRect(ctx, 0, 0, CW, CH * 0.55);
     // Ground
-    ctx.fillStyle = '#1a3010'; fillRect(ctx, 0, CH * 0.55, CW, CH * 0.45);
-    ctx.fillStyle = '#2a4018'; fillRect(ctx, 0, CH * 0.55, CW, 8);
+    ctx.fillStyle = p5.gnd; fillRect(ctx, 0, CH * 0.55, CW, CH * 0.45);
+    ctx.fillStyle = p5.gndAcc; fillRect(ctx, 0, CH * 0.55, CW, 8);
     // Mountains
     const mts = [[60, 130, 80, 55], [160, 120, 100, 65], [320, 110, 120, 70], [480, 125, 90, 60]];
     mts.forEach(([mx, my, mw, mh]) => {
@@ -392,7 +416,7 @@ class Scene5 extends BaseScene {
     ctx.globalAlpha = 1;
     ctx.fillStyle = '#88cc88'; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('"Walk through its slopes — eat of His provision"', CW / 2, 34);
-    ctx.fillStyle = '#aaa'; ctx.font = '7px sans-serif';
+    ctx.fillStyle = p5.hint; ctx.font = '7px sans-serif';
     ctx.fillText('Click anywhere', CW / 2, CH - 8);
   }
 }
@@ -435,11 +459,12 @@ class Scene6 extends BaseScene {
   draw() {
     const ctx = this.ctx;
     // Sky gradient
+    const p6 = sceneP();
     const grad = ctx.createLinearGradient(0, 0, 0, CH);
-    grad.addColorStop(0, '#040818'); grad.addColorStop(0.7, '#101828'); grad.addColorStop(1, '#1a2818');
+    grad.addColorStop(0, p6.sky0); grad.addColorStop(0.7, p6.sky1); grad.addColorStop(1, p6.sky2);
     ctx.fillStyle = grad; ctx.fillRect(0, 0, CW, CH);
     // Ground
-    ctx.fillStyle = '#0e1808'; fillRect(ctx, 0, CH * 0.75, CW, CH * 0.25);
+    ctx.fillStyle = p6.gnd; fillRect(ctx, 0, CH * 0.75, CW, CH * 0.25);
 
     // Wind currents
     for (let w = 0; w < 6; w++) {
@@ -458,9 +483,9 @@ class Scene6 extends BaseScene {
     ctx.fillStyle = '#c0d8ff'; ctx.font = 'bold 10px "Amiri", serif'; ctx.textAlign = 'center';
     ctx.fillText('مَا يُمْسِكُهُنَّ إِلَّا الرَّحْمَٰنُ', CW / 2, 16);
     ctx.globalAlpha = 1;
-    ctx.fillStyle = '#8898cc'; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillStyle = p6.starStr + '0.8)'; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('"None holds them up except ar-Rahman"', CW / 2, 30);
-    ctx.fillStyle = '#aaa'; ctx.font = '7px sans-serif';
+    ctx.fillStyle = p6.hint; ctx.font = '7px sans-serif';
     ctx.fillText('Click the birds', CW / 2, CH - 8);
   }
 }
@@ -482,13 +507,14 @@ class Scene7 extends BaseScene {
   }
   draw() {
     const ctx = this.ctx;
-    ctx.fillStyle = '#020610'; ctx.fillRect(0, 0, CW, CH);
-    ctx.fillStyle = '#0a1808'; fillRect(ctx, 0, CH * 0.7, CW, CH * 0.3);
+    const p7 = sceneP();
+    ctx.fillStyle = p7.sky0; ctx.fillRect(0, 0, CW, CH);
+    ctx.fillStyle = p7.gnd; fillRect(ctx, 0, CH * 0.7, CW, CH * 0.3);
 
     // Stars
     this.stars.forEach(s => {
       const br = 0.2 + 0.6 * Math.abs(Math.sin(this.t * 0.02 + s.ph));
-      ctx.fillStyle = `rgba(200,220,255,${br})`; fillRect(ctx, s.x, s.y, 2, 2);
+      ctx.fillStyle = p7.starStr + br + ')'; fillRect(ctx, s.x, s.y, 2, 2);
     });
 
     // Cycling question text
@@ -522,7 +548,7 @@ class Scene7 extends BaseScene {
     ctx.fillStyle = '#88ff88'; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('تَوَكُّل', 459, 156); ctx.fillText('"Trust"', 459, 168);
 
-    ctx.fillStyle = '#8898cc'; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillStyle = p7.hint; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('Click anywhere', CW / 2, CH - 8);
   }
 }
@@ -539,7 +565,8 @@ class Scene8 extends BaseScene {
   draw() {
     const ctx = this.ctx;
     // Top half — parched earth / night sky
-    ctx.fillStyle = '#020610'; fillRect(ctx, 0, 0, CW, CH * 0.5);
+    const p8 = sceneP();
+    ctx.fillStyle = p8.sky0; fillRect(ctx, 0, 0, CW, CH * 0.5);
     // Stars
     [[50,15],[140,8],[230,20],[380,12],[470,18],[310,6]].forEach(([sx,sy],i) => {
       const br = 0.3 + 0.5 * Math.abs(Math.sin(this.t * 0.025 + i * 1.4));
@@ -581,7 +608,7 @@ class Scene8 extends BaseScene {
     ctx.globalAlpha = 1;
     ctx.fillStyle = '#c0d0ff'; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('"Who then could bring you flowing water?"', CW / 2, 32);
-    ctx.fillStyle = '#aaa'; ctx.font = '7px sans-serif';
+    ctx.fillStyle = p8.hint; ctx.font = '7px sans-serif';
     ctx.fillText('Click anywhere', CW / 2, CH - 8);
   }
 }

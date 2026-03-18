@@ -8,6 +8,26 @@ const CW = 700;  // canvas internal width
 const CH = 200;  // canvas internal height
 const GY = 152;  // ground y level
 
+// --- THEME PALETTE ---
+function sceneP() {
+  const s = document.documentElement.dataset.theme === 'stars';
+  return s ? {
+    sky0:    '#06021a', sky1:    '#0a0422', sky2:    '#080318',
+    gnd:     '#1a0e30', gndAcc:  '#241840',
+    starStr: 'rgba(200,170,255,',
+    acStr:   'rgba(210,140,200,',
+    hint:    'rgba(210,160,220,0.85)',
+    label:   '#c898e8',
+  } : {
+    sky0:    '#1a3660', sky1:    '#122448', sky2:    '#0e1c30',
+    gnd:     '#3a8a2a', gndAcc:  '#2a5a1a',
+    starStr: 'rgba(255,255,220,',
+    acStr:   'rgba(255,215,0,',
+    hint:    'rgba(255,215,0,0.85)',
+    label:   '#ffd700',
+  };
+}
+
 // ---- DRAWING UTILITIES ----
 
 function spr(ctx, ox, oy, parts) {
@@ -487,11 +507,12 @@ class BaseScene {
 
   stars(n = 22) {
     const ctx = this.ctx;
+    const ss  = sceneP().starStr;
     for (let i = 0; i < n; i++) {
       const x  = (i * 137 * 31337) % CW;
       const y  = (i * 97  * 54321) % (GY - 30);
       const br = (Math.sin(this.t * 0.05 + i * 1.3) + 1) / 2;
-      ctx.fillStyle = `rgba(255,255,220,${0.3 + br * 0.7})`;
+      ctx.fillStyle = ss + (0.3 + br * 0.7) + ')';
       ctx.fillRect(x, y, i % 3 === 0 ? 2 : 1, i % 3 === 0 ? 2 : 1);
     }
   }
@@ -503,7 +524,7 @@ class BaseScene {
 
   hint(text, x, y) {
     if (Math.floor(this.t / 28) % 2 === 0) {
-      this.ctx.fillStyle = 'rgba(255,215,0,0.85)';
+      this.ctx.fillStyle = sceneP().hint;
       this.ctx.font = '7px "Press Start 2P", monospace';
       this.ctx.fillText(text, x, y);
     }
@@ -548,7 +569,8 @@ class Scene1 extends BaseScene {
     const ctx = this.ctx;
 
     // Sky
-    fillRect(ctx, 0, 0, CW, CH, '#1a3660');
+    const p = sceneP();
+    fillRect(ctx, 0, 0, CW, CH, p.sky0);
     this.stars(28);
 
     // Horizon glow
@@ -713,8 +735,9 @@ class Scene2 extends BaseScene {
     const ctx = this.ctx;
 
     // Dark background — the figure lives in shadow
-    fillRect(ctx, 0, 0, CW, CH, '#050510');
-    fillRect(ctx, 0, GY, CW, CH - GY, '#1a1a2a');
+    const pDb = sceneP();
+    fillRect(ctx, 0, 0, CW, CH, pDb.sky1);
+    fillRect(ctx, 0, GY, CW, CH - GY, pDb.gnd);
     for (let bx = 0; bx < CW; bx += 28) {
       fillRect(ctx, bx, GY, 28, 8, bx % 56 === 0 ? '#141422' : '#222232');
     }
@@ -842,8 +865,9 @@ class Scene2 extends BaseScene {
   // ---- SUB-SCENE B: THE HYPOCRITE ----
   _drawHypocrite() {
     const ctx = this.ctx;
-    fillRect(ctx, 0, 0, CW, CH, '#080818');
-    fillRect(ctx, 0, GY, CW, CH - GY, '#2a2a3a');
+    const pHy = sceneP();
+    fillRect(ctx, 0, 0, CW, CH, pHy.sky1);
+    fillRect(ctx, 0, GY, CW, CH - GY, pHy.gnd);
     for (let bx = 0; bx < CW; bx += 28) {
       fillRect(ctx, bx, GY, 28, 8, bx % 56 === 0 ? '#1e1e30' : '#363648');
     }
@@ -1043,10 +1067,11 @@ class Scene3 extends BaseScene {
   _drawAngels() {
     const ctx = this.ctx;
 
+    const pAng = sceneP();
     const skyG = ctx.createLinearGradient(0, 0, 0, GY);
-    skyG.addColorStop(0,   '#0d1f3c');
-    skyG.addColorStop(0.5, '#1a3a28');
-    skyG.addColorStop(1,   '#2a5a1a');
+    skyG.addColorStop(0,   pAng.sky0);
+    skyG.addColorStop(0.5, pAng.sky1);
+    skyG.addColorStop(1,   pAng.sky2);
     ctx.fillStyle = skyG;
     ctx.fillRect(0, 0, CW, GY);
 
@@ -1794,10 +1819,11 @@ class Scene7 extends BaseScene {
     const ctx = this.ctx;
     this.t++;
     // Night sky
-    ctx.fillStyle = '#0d1b2a'; fillRect(ctx, 0, 0, CW, CH * 0.7);
+    const p7 = sceneP();
+    ctx.fillStyle = p7.sky0; fillRect(ctx, 0, 0, CW, CH * 0.7);
     ctx.fillStyle = '#5d8a3c'; fillRect(ctx, 0, CH * 0.7, CW, CH * 0.3);
     // Stars
-    ctx.fillStyle = '#fffbe6';
+    ctx.fillStyle = p7.starStr + '0.9)';
     [[50,20],[100,35],[160,15],[220,40],[350,22],[420,30],[490,18],[520,40],[80,60],[450,55]].forEach(([sx,sy]) => {
       const pulse = 0.5 + 0.5 * Math.sin(this.t * 0.03 + sx);
       ctx.globalAlpha = pulse;
@@ -1878,8 +1904,9 @@ class Scene8 extends BaseScene {
     const ctx = this.ctx;
     this.t++;
     // Sky
+    const p8 = sceneP();
     const skyGrad = ctx.createLinearGradient(0,0,0,CH);
-    skyGrad.addColorStop(0, '#1a2a4a'); skyGrad.addColorStop(1, '#3a5a8a');
+    skyGrad.addColorStop(0, p8.sky0); skyGrad.addColorStop(1, p8.sky1);
     ctx.fillStyle = skyGrad; fillRect(ctx, 0, 0, CW, CH);
     ctx.fillStyle = '#5d8a3c'; fillRect(ctx, 0, CH*0.68, CW, CH*0.32);
 
@@ -1946,7 +1973,8 @@ class Scene9 extends BaseScene {
   draw() {
     const ctx = this.ctx;
     this.t++;
-    ctx.fillStyle = '#0e1c2e'; fillRect(ctx, 0, 0, CW, CH);
+    const p9 = sceneP();
+    ctx.fillStyle = p9.sky0; fillRect(ctx, 0, 0, CW, CH);
 
     // Left half: Al-Birr traits
     const traitData = [
@@ -2036,9 +2064,10 @@ class Scene10 extends BaseScene {
   draw() {
     const ctx = this.ctx;
     this.t++;
+    const p10 = sceneP();
     const phase = Math.floor(this.t / 200) % 3;
     // Sky + ground
-    const skyCol = phase === 2 ? '#2a0a0a' : '#1a2a4a';
+    const skyCol = phase === 2 ? '#2a0a0a' : p10.sky0;
     ctx.fillStyle = skyCol; fillRect(ctx, 0, 0, CW, CH * 0.65);
     ctx.fillStyle = '#4a6a30'; fillRect(ctx, 0, CH * 0.65, CW, CH * 0.35);
     // Dust particles
@@ -2140,14 +2169,15 @@ class Scene11 extends BaseScene {
     const ctx = this.ctx;
     this.t++;
     // Deep space background
-    ctx.fillStyle = '#000614'; fillRect(ctx, 0, 0, CW, CH);
+    const p11 = sceneP();
+    ctx.fillStyle = p11.sky0; fillRect(ctx, 0, 0, CW, CH);
     // Stars (many)
     const starSeeds = [11,22,37,55,70,93,110,140,170,200,230,260,300,330,360,400,430,460,500,530];
     starSeeds.forEach((s, i) => {
       const sx = (s * 37 + i * 53) % CW;
       const sy = (s * 19 + i * 31) % (CH * 0.75);
       const brightness = 0.4 + 0.6 * Math.sin(this.t * 0.02 + i * 1.3);
-      ctx.fillStyle = `rgba(255,255,240,${brightness})`;
+      ctx.fillStyle = p11.starStr + brightness + ')';
       fillRect(ctx, sx, sy, i % 3 === 0 ? 2 : 1, i % 3 === 0 ? 2 : 1);
     });
 
@@ -2325,8 +2355,9 @@ class Scene13 extends BaseScene {
     const ctx = this.ctx;
     this.t++;
     // Deep blue night
+    const p13 = sceneP();
     const nightGrad = ctx.createLinearGradient(0,0,0,CH);
-    nightGrad.addColorStop(0, '#000814'); nightGrad.addColorStop(1, '#0a1428');
+    nightGrad.addColorStop(0, p13.sky0); nightGrad.addColorStop(1, p13.sky1);
     ctx.fillStyle = nightGrad; fillRect(ctx, 0, 0, CW, CH);
     // Ground
     ctx.fillStyle = '#1a2a14'; fillRect(ctx, 0, CH*0.75, CW, CH*0.25);
@@ -2341,14 +2372,14 @@ class Scene13 extends BaseScene {
     allStars.forEach(([sx, sy], i) => {
       if (i >= litStars) return;
       const twinkle = 0.5 + 0.5 * Math.sin(this.t * 0.04 + i * 1.7);
-      ctx.fillStyle = `rgba(255,255,220,${twinkle})`;
+      ctx.fillStyle = p13.starStr + twinkle + ')';
       fillRect(ctx, sx, sy, i % 4 === 0 ? 3 : 2, i % 4 === 0 ? 3 : 2);
     });
 
     // Moon
     ctx.fillStyle = '#ffe87a';
     ctx.beginPath(); ctx.arc(480, 50, 30, 0, Math.PI*2); ctx.fill();
-    ctx.fillStyle = '#0a1428';
+    ctx.fillStyle = p13.sky0;
     ctx.beginPath(); ctx.arc(494, 44, 24, 0, Math.PI*2); ctx.fill();
 
     // Glowing du'a words appearing in sequence

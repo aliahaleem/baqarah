@@ -5,6 +5,26 @@
 
 const CW = 560, CH = 220, GY = 160, P = 4;
 
+// --- THEME PALETTE ---
+function sceneP() {
+  const s = document.documentElement.dataset.theme === 'stars';
+  return s ? {
+    sky0:    '#06021a', sky1:    '#0a0422', sky2:    '#080318',
+    gnd:     '#1a0e30', gndAcc:  '#241840',
+    starStr: 'rgba(200,170,255,',
+    acStr:   'rgba(210,140,200,',
+    label:   '#c898e8',
+    hint:    '#9870b8',
+  } : {
+    sky0:    '#100808', sky1:    '#0e0604', sky2:    '#041408',
+    gnd:     '#3a2818', gndAcc:  '#2a1808',
+    starStr: 'rgba(255,250,200,',
+    acStr:   'rgba(255,215,0,',
+    label:   '#ffcc88',
+    hint:    '#aaa',
+  };
+}
+
 function fillRect(ctx, x, y, w, h, col) {
   if (col) ctx.fillStyle = col;
   ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
@@ -147,11 +167,12 @@ class Scene1 extends BaseScene {
   draw() {
     const ctx = this.ctx;
     // Left — falsehood (dark red, crumbling deeds)
+    const p = sceneP();
     ctx.fillStyle = '#1a0408'; fillRect(ctx, 0, 0, CW*0.5, CH);
     ctx.fillStyle = '#0a0204'; fillRect(ctx, 0, GY, CW*0.5, CH-GY);
     // Right — truth (dark blue-green, rising light)
-    ctx.fillStyle = '#041408'; fillRect(ctx, CW*0.5, 0, CW*0.5, CH);
-    ctx.fillStyle = '#021008'; fillRect(ctx, CW*0.5, GY, CW*0.5, CH-GY);
+    ctx.fillStyle = p.sky0; fillRect(ctx, CW*0.5, 0, CW*0.5, CH);
+    ctx.fillStyle = p.gnd; fillRect(ctx, CW*0.5, GY, CW*0.5, CH-GY);
 
     // LEFT: disbeliever figure + crumbling deed particles falling
     const lx = CW*0.25 - 8;
@@ -168,7 +189,7 @@ class Scene1 extends BaseScene {
     ctx.fillText('FALSEHOOD', CW*0.25, 165);
     ctx.fillStyle = '#aa4444'; ctx.font = '7px sans-serif';
     ctx.fillText('Deeds crumble ↓', CW*0.25, 180);
-    ctx.fillStyle = '#ffaaaa'; ctx.font = '7px sans-serif';
+    ctx.fillStyle = p.hint; ctx.font = '7px sans-serif';
     ctx.fillText('(click)', CW*0.25, CH-8);
 
     // RIGHT: believer figure + rising golden deeds
@@ -187,7 +208,7 @@ class Scene1 extends BaseScene {
     ctx.fillText('TRUTH', CW*0.75, 165);
     ctx.fillStyle = '#44cc44'; ctx.font = '7px sans-serif';
     ctx.fillText('Deeds rise ↑', CW*0.75, 180);
-    ctx.fillStyle = '#aaffaa'; ctx.font = '7px sans-serif';
+    ctx.fillStyle = p.hint; ctx.font = '7px sans-serif';
     ctx.fillText('(click)', CW*0.75, CH-8);
 
     // Divider
@@ -213,8 +234,9 @@ class Scene2 extends BaseScene {
   }
   draw() {
     const ctx = this.ctx;
-    ctx.fillStyle = '#100808'; fillRect(ctx, 0, 0, CW, CH*0.65);
-    ctx.fillStyle = '#3a2818'; fillRect(ctx, 0, CH*0.65, CW, CH*0.35);
+    const p2 = sceneP();
+    ctx.fillStyle = p2.sky0; fillRect(ctx, 0, 0, CW, CH*0.65);
+    ctx.fillStyle = p2.gnd; fillRect(ctx, 0, CH*0.65, CW, CH*0.35);
     // Ground cracking
     ctx.strokeStyle = '#2a1008'; ctx.lineWidth = 2;
     for (let c = 0; c < 4; c++) {
@@ -246,12 +268,12 @@ class Scene2 extends BaseScene {
     ctx.fillStyle = `rgba(255,215,0,${glow})`;
     ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('FIRM FEET — ثَبِّتْ أَقْدَامَكُمْ', CW/2, 24);
-    ctx.fillStyle = '#ffcc88'; ctx.font = '7px sans-serif';
+    ctx.fillStyle = p2.hint; ctx.font = '7px sans-serif';
     ctx.fillText('Click anywhere', CW/2, CH-8);
     // Stars
     [[40,20],[520,15],[100,40],[450,35],[280,8]].forEach(([sx,sy],i) => {
       const br = 0.3 + 0.5 * Math.sin(this.t * 0.03 + i*1.4);
-      ctx.fillStyle = `rgba(255,250,200,${br})`; fillRect(ctx, sx, sy, 2, 2);
+      ctx.fillStyle = p2.starStr + br + ')'; fillRect(ctx, sx, sy, 2, 2);
     });
   }
 }
@@ -268,8 +290,9 @@ class Scene3 extends BaseScene {
   draw() {
     const ctx = this.ctx;
     // Desert sky
+    const p3 = sceneP();
     const skyGrad = ctx.createLinearGradient(0,0,0,CH);
-    skyGrad.addColorStop(0,'#1a0e08'); skyGrad.addColorStop(1,'#4a3820');
+    skyGrad.addColorStop(0, p3.sky0); skyGrad.addColorStop(1, p3.gnd);
     ctx.fillStyle = skyGrad; fillRect(ctx, 0, 0, CW, CH);
     ctx.fillStyle = '#8a6030'; fillRect(ctx, 0, 150, CW, 70);
     // Sand dunes
@@ -303,7 +326,7 @@ class Scene3 extends BaseScene {
     ctx.fillStyle = '#ffd700'; ctx.font = 'bold 9px "Amiri", serif'; ctx.textAlign = 'center';
     ctx.fillText('أَفَلَمْ يَسِيرُوا فِي الْأَرْضِ', CW/2, 22);
     ctx.globalAlpha = 1;
-    ctx.fillStyle = '#ffcc88'; ctx.font = '7px sans-serif';
+    ctx.fillStyle = p3.hint; ctx.font = '7px sans-serif';
     ctx.fillText('"Have they not traveled the earth?" — Click', CW/2, 36);
   }
 }
@@ -369,15 +392,16 @@ class Scene5 extends BaseScene {
   draw() {
     const ctx = this.ctx;
     // Deep night sky
+    const p5 = sceneP();
     const grad = ctx.createLinearGradient(0,0,0,CH);
-    grad.addColorStop(0,'#03000a'); grad.addColorStop(1,'#0e0820');
+    grad.addColorStop(0, p5.sky0); grad.addColorStop(1, p5.sky1);
     ctx.fillStyle = grad; fillRect(ctx, 0, 0, CW, CH);
-    ctx.fillStyle = '#0a1808'; fillRect(ctx, 0, CH*0.75, CW, CH*0.25);
+    ctx.fillStyle = p5.gnd; fillRect(ctx, 0, CH*0.75, CW, CH*0.25);
 
     // Stars
     [[50,25],[120,15],[200,35],[320,10],[430,20],[510,30],[80,55],[250,48],[400,52],[530,45],[160,8],[480,8]].forEach(([sx,sy],i) => {
       const br = 0.3 + 0.6 * Math.abs(Math.sin(this.t * 0.025 + i * 1.6));
-      ctx.fillStyle = `rgba(220,215,255,${br})`; fillRect(ctx, sx, sy, i%4===0?3:2, i%4===0?3:2);
+      ctx.fillStyle = p5.starStr + br + ')'; fillRect(ctx, sx, sy, i%4===0?3:2, i%4===0?3:2);
     });
 
     // لا إله إلا الله lighting up star-by-star
@@ -409,7 +433,7 @@ class Scene5 extends BaseScene {
     // "fa'lam" label
     ctx.fillStyle = '#c8b0ff'; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('فَاعْلَمْ — KNOW first, then act', CW/2, 75);
-    ctx.fillStyle = '#aaa'; ctx.font = '7px sans-serif';
+    ctx.fillStyle = p5.hint; ctx.font = '7px sans-serif';
     ctx.fillText('Click anywhere', CW/2, CH-8);
   }
 }
@@ -436,7 +460,8 @@ class Scene6 extends BaseScene {
   }
   draw() {
     const ctx = this.ctx;
-    ctx.fillStyle = '#100408'; fillRect(ctx, 0, 0, CW, CH);
+    const p6 = sceneP();
+    ctx.fillStyle = p6.sky0; fillRect(ctx, 0, 0, CW, CH);
 
     // LEFT: Locked heart
     const hx = 145, hy = 85;
@@ -458,7 +483,7 @@ class Scene6 extends BaseScene {
     ctx.fillStyle = '#ff4444'; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('أَقْفَالُهَا', hx, 155);
     ctx.fillText('"Locks on', hx, 168); ctx.fillText('their hearts"', hx, 180);
-    ctx.fillStyle = '#ffaaaa'; ctx.font = '7px sans-serif';
+    ctx.fillStyle = p6.hint; ctx.font = '7px sans-serif';
     ctx.fillText('(click)', hx, CH-8);
 
     // Light bouncing off locked heart
@@ -489,7 +514,7 @@ class Scene6 extends BaseScene {
     ctx.globalAlpha = 1;
     ctx.fillStyle = '#ffd700'; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('القرآن الكريم', qx, 155); ctx.fillText('"Reflect on the', qx, 168); ctx.fillText('Quran"', qx, 180);
-    ctx.fillStyle = '#ffeebb'; ctx.font = '7px sans-serif';
+    ctx.fillStyle = p6.hint; ctx.font = '7px sans-serif';
     ctx.fillText('(click)', qx, CH-8);
 
     // Divider
@@ -518,6 +543,7 @@ class Scene7 extends BaseScene {
     const akhirahAlpha = phase;           // 0 → 1 (grows)
 
     // LEFT — Dunya (glittery then gray)
+    const p7 = sceneP();
     ctx.fillStyle = '#181008'; fillRect(ctx, 0, 0, CW*0.5, CH);
     // Gold sparkles (fade to gray)
     for (let s = 0; s < 16; s++) {
@@ -538,7 +564,7 @@ class Scene7 extends BaseScene {
     ctx.fillText('(click)', CW*0.25, CH-8);
 
     // RIGHT — Akhirah (grows brighter)
-    ctx.fillStyle = '#080e08'; fillRect(ctx, CW*0.5, 0, CW*0.5, CH);
+    ctx.fillStyle = p7.sky0; fillRect(ctx, CW*0.5, 0, CW*0.5, CH);
     // Growing light
     const glow = 0.1 + akhirahAlpha * 0.4 + 0.1 * Math.sin(this.t * 0.04);
     ctx.fillStyle = `rgba(255,215,0,${glow * 0.4})`; ctx.beginPath(); ctx.arc(CW*0.75, 105, 60, 0, Math.PI*2); ctx.fill();
@@ -553,7 +579,7 @@ class Scene7 extends BaseScene {
     ctx.globalAlpha = 1;
     ctx.fillStyle = '#88ff88'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('AKHIRAH', CW*0.75, 170); ctx.fillText('The Real Reward', CW*0.75, 184);
-    ctx.fillStyle = '#aaffaa'; ctx.font = '7px sans-serif';
+    ctx.fillStyle = p7.hint; ctx.font = '7px sans-serif';
     ctx.fillText('(click)', CW*0.75, CH-8);
 
     // Divider
@@ -576,8 +602,9 @@ class Scene8 extends BaseScene {
   }
   draw() {
     const ctx = this.ctx;
-    ctx.fillStyle = '#0e0608'; fillRect(ctx, 0, 0, CW, CH);
-    ctx.fillStyle = '#2a1808'; fillRect(ctx, 0, CH*0.68, CW, CH*0.32);
+    const p8 = sceneP();
+    ctx.fillStyle = p8.sky0; fillRect(ctx, 0, 0, CW, CH);
+    ctx.fillStyle = p8.gnd; fillRect(ctx, 0, CH*0.68, CW, CH*0.32);
 
     // Scale beam (centre)
     const bx = CW/2, by = 90;
@@ -626,7 +653,7 @@ class Scene8 extends BaseScene {
     ctx.fillStyle = '#ffd700'; ctx.font = 'bold 9px "Amiri", serif'; ctx.textAlign = 'center';
     ctx.fillText('اللَّهُ الْغَنِيُّ وَأَنتُمُ الْفُقَرَاءُ', CW/2, 22);
     ctx.globalAlpha = 1;
-    ctx.fillStyle = '#aaa'; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillStyle = p8.hint; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('Click either side', CW/2, CH-8);
   }
 }

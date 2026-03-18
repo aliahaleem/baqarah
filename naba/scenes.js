@@ -6,6 +6,24 @@
 
 const CW = 560, CH = 220, P = 4;
 
+// --- THEME PALETTE ---
+function sceneP() {
+  const s = document.documentElement.dataset.theme === 'stars';
+  return s ? {
+    sky0:    '#06021a', sky1:    '#0a0422', sky2:    '#140830',
+    gnd:     '#1a0e30', gndAcc:  '#241840',
+    starStr: 'rgba(200,170,255,',
+    acStr:   'rgba(210,140,200,',
+    label:   '#c898e8',
+  } : {
+    sky0:    '#0e0528', sky1:    '#150830', sky2:    '#301840',
+    gnd:     '#3a2808', gndAcc:  '#5a4010',
+    starStr: 'rgba(255,240,200,',
+    acStr:   'rgba(255,170,0,',
+    label:   '#ffaa00',
+  };
+}
+
 function fillRect(ctx, x, y, w, h, col) {
   if (col) ctx.fillStyle = col;
   ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
@@ -137,7 +155,7 @@ class BaseScene {
   draw() {}
   // helpers
   _star(ctx, x, y, r, bright) {
-    ctx.fillStyle = `rgba(255,240,200,${bright})`;
+    ctx.fillStyle = sceneP().starStr + bright + ')';
     ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.fill();
   }
   _pixelFigure(ctx, x, y, bodyCol, headCol) {
@@ -169,9 +187,9 @@ class Scene1 extends BaseScene {
     ];
   }
   draw() {
-    const c = this.ctx, t = this.t;
-    // Deep purple sky
-    c.fillStyle = '#0e0528'; c.fillRect(0, 0, CW, CH);
+    const c = this.ctx, t = this.t, p = sceneP();
+    // Sky
+    c.fillStyle = p.sky0; c.fillRect(0, 0, CW, CH);
     // Animated stars
     const seed = (n) => ((n*2654435769)>>>0)/4294967296;
     for (let i = 0; i < 50; i++) {
@@ -180,8 +198,8 @@ class Scene1 extends BaseScene {
       this._star(c, sx, sy, 1+seed(i*3), br);
     }
     // Ground — sandy desert
-    fillRect(c, 0, 165, CW, 55, '#3a2808');
-    fillRect(c, 0, 165, CW, 6,  '#5a4010');
+    fillRect(c, 0, 165, CW, 55, p.gnd);
+    fillRect(c, 0, 165, CW, 6,  p.gndAcc);
 
     // === LEFT GROUP (2 figures arguing) ===
     // Figure 1 — gesturing arm
@@ -227,7 +245,7 @@ class Scene1 extends BaseScene {
     c.setLineDash([]);
 
     // Labels
-    c.fillStyle = '#ffaa00'; c.font = '7px monospace';
+    c.fillStyle = p.label; c.font = '7px monospace';
     c.fillText('👆 Click to reveal verse', 25, 76);
     c.fillText('👆 Click to reveal verse', 284, 46);
   }
@@ -245,12 +263,12 @@ class Scene2 extends BaseScene {
     ];
   }
   draw() {
-    const c = this.ctx, t = this.t;
+    const c = this.ctx, t = this.t, p = sceneP();
     // Night sky left, twilight right
     const grad = c.createLinearGradient(0, 0, CW, 0);
-    grad.addColorStop(0,   '#050118');
-    grad.addColorStop(0.5, '#150830');
-    grad.addColorStop(1,   '#301840');
+    grad.addColorStop(0,   p.sky0);
+    grad.addColorStop(0.5, p.sky1);
+    grad.addColorStop(1,   p.sky2);
     c.fillStyle = grad; c.fillRect(0, 0, CW, CH);
 
     // Stars (left side)
@@ -264,15 +282,15 @@ class Scene2 extends BaseScene {
     // Crescent moon
     const moonX = 50, moonY = 35;
     c.fillStyle = '#ffe88a'; c.beginPath(); c.arc(moonX, moonY, 18, 0, Math.PI*2); c.fill();
-    c.fillStyle = '#050118'; c.beginPath(); c.arc(moonX+8, moonY-4, 15, 0, Math.PI*2); c.fill();
+    c.fillStyle = p.sky0; c.beginPath(); c.arc(moonX+8, moonY-4, 15, 0, Math.PI*2); c.fill();
 
     // Orange sunrise glow (right)
     c.fillStyle = 'rgba(255,100,0,0.15)'; c.fillRect(350, 0, 210, 130);
     c.fillStyle = 'rgba(255,160,0,0.1)';  c.fillRect(400, 0, 160, 100);
 
     // Ground — earth as resting bed
-    fillRect(c, 0, 155, CW, 65, '#3a2808');
-    fillRect(c, 0, 155, CW, 8,  '#5a4010');
+    fillRect(c, 0, 155, CW, 65, p.gnd);
+    fillRect(c, 0, 155, CW, 8,  p.gndAcc);
 
     // Mountains as pegs
     // Left mountain
@@ -306,11 +324,11 @@ class Scene2 extends BaseScene {
     fillRect(c, 496, 126, P, P*8, '#8a6030');
 
     // Click hint borders
-    c.strokeStyle = 'rgba(255,170,0,0.2)'; c.lineWidth = 2; c.setLineDash([4,4]);
+    c.strokeStyle = p.acStr+'0.2)'; c.lineWidth = 2; c.setLineDash([4,4]);
     c.strokeRect(2, 132, 276, 86);
     c.strokeRect(282, 62, 276, 156);
     c.setLineDash([]);
-    c.fillStyle = '#ffaa00'; c.font = '7px monospace';
+    c.fillStyle = p.label; c.font = '7px monospace';
     c.fillText('👆 Earth & Mountains', 5, 145);
     c.fillText('👆 Sleep / Night / Day', 285, 75);
   }
@@ -329,15 +347,15 @@ class Scene3 extends BaseScene {
     ];
   }
   draw() {
-    const c = this.ctx, t = this.t;
+    const c = this.ctx, t = this.t, p = sceneP();
     // Seven layered heavens
     const layers = ['#0a0220','#120530','#1a0840','#220e50','#2a1460','#321a70','#3a2080'];
     layers.forEach((col, i) => {
       fillRect(c, 0, i*22, CW, 22, col);
     });
     // Ground
-    fillRect(c, 0, 165, CW, 55, '#2a3a08');
-    fillRect(c, 0, 165, CW, 6,  '#3a5010');
+    fillRect(c, 0, 165, CW, 55, p.gnd);
+    fillRect(c, 0, 165, CW, 6,  p.gndAcc);
 
     // Blazing sun (right)
     const pulse = 1 + 0.08*Math.sin(t*0.06);
@@ -386,7 +404,7 @@ class Scene3 extends BaseScene {
     fillRect(c, 46, 160, P*2, 18, '#5a3010');
 
     // Labels
-    c.fillStyle = '#ffaa00'; c.font = '7px monospace';
+    c.fillStyle = p.label; c.font = '7px monospace';
     c.fillText('👆 Seven Heavens', 5, 14);
     c.fillText('👆 Blazing Lamp (Sun)', 365, 12);
     c.fillText('👆 Rain Clouds → Crops', 105, 114);
@@ -471,7 +489,8 @@ class Scene4 extends BaseScene {
     }
 
     // Labels
-    c.fillStyle = '#ffaa00'; c.font = '7px monospace';
+    const p4 = sceneP();
+    c.fillStyle = p4.label; c.font = '7px monospace';
     c.fillText('👆 Horn Blown', 224, 52);
     c.fillText('👆 Sky Opens', 5, 12);
     c.fillText('👆 Mountains Move', 342, 12);
@@ -543,7 +562,8 @@ class Scene5 extends BaseScene {
     for (let g = 0; g < 3; g++) c.fillRect(0, 0, CW, CH);
 
     // Labels
-    c.fillStyle = '#ffaa00'; c.font = '7px monospace';
+    const p5 = sceneP();
+    c.fillStyle = p5.label; c.font = '7px monospace';
     c.fillText('👆 Hellfire Waits', 4, 14);
     c.fillText('👆 Trapped Transgressors', 144, 94);
     c.fillText('👆 Hellfire', 425, 14);
@@ -631,7 +651,8 @@ class Scene6 extends BaseScene {
     for (let i = 0; i < 5; i++) c.fillRect(0,0,CW,CH);
 
     // Labels
-    c.fillStyle = '#ffaa00'; c.font = '7px monospace';
+    const p6 = sceneP();
+    c.fillStyle = p6.label; c.font = '7px monospace';
     c.fillText('👆 Gardens & Vines', 5, 12);
     c.fillText('👆 Companions & Cup', 204, 74);
     c.fillText('👆 Thick Gardens', 404, 12);
@@ -703,7 +724,7 @@ class Scene7 extends BaseScene {
       fillRect(c, hx+2, 164, P*3, P*3, '#303880'); // body (bowed)
     }
 
-    // Labels
+    // Labels (dark text on golden bg — keep dark for readability)
     c.fillStyle = '#3a2800'; c.font = '7px monospace';
     c.fillText('👆 Angels in Rows', 4, 54);
     c.fillText('👆 The Spirit (Jibreel)', 184, 32);
@@ -730,6 +751,7 @@ class Scene8 extends BaseScene {
     c.fillStyle = '#3a2800'; c.fillRect(CW/2, 0, CW/2, CH);
 
     // Left: darkness — dull stars, dust
+    const p8 = sceneP();
     const seed = (n) => ((n*987654321)>>>0)/4294967296;
     for (let i = 0; i < 20; i++) {
       const sx = seed(i*3)*260, sy = seed(i*7)*CH;
@@ -786,7 +808,7 @@ class Scene8 extends BaseScene {
     c.fillStyle = '#8888ff'; c.font = '7px monospace';
     c.fillText('Darkness', 80, 185);
     c.fillStyle = '#88ff88'; c.fillText('Path to Allah', 345, 185);
-    c.fillStyle = '#ffaa00'; c.fillText('👆 Choose', 245, 72);
+    c.fillStyle = p8.label; c.fillText('👆 Choose', 245, 72);
   }
 }
 

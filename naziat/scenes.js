@@ -6,6 +6,25 @@
 
 const CW = 560, CH = 220, P = 4;
 
+// --- THEME PALETTE ---
+// Returns color tokens for the active theme so draw() methods stay DRY.
+function sceneP() {
+  const s = document.documentElement.dataset.theme === 'stars';
+  return s ? {
+    sky0:    '#06021a', sky1:    '#0a0422', sky2:    '#08031c',
+    gnd:     '#1a0e30', gndAcc:  '#241840',
+    starStr: 'rgba(200,170,255,',
+    acStr:   'rgba(210,140,200,',
+    label:   '#c898e8',
+  } : {
+    sky0:    '#020810', sky1:    '#060c18', sky2:    '#0e2010',
+    gnd:     '#1a2808', gndAcc:  '#2a4010',
+    starStr: 'rgba(255,240,200,',
+    acStr:   'rgba(255,187,68,',
+    label:   '#a8ffe0',
+  };
+}
+
 function fillRect(ctx, x, y, w, h, col) {
   if (col) ctx.fillStyle = col;
   ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
@@ -105,7 +124,7 @@ class BaseScene {
   _loop() { if (!this.running) return; this.draw(); this.t++; requestAnimationFrame(() => this._loop()); }
   draw()  {}
   _star(ctx, x, y, r, bright) {
-    ctx.fillStyle = `rgba(255,240,200,${bright})`;
+    ctx.fillStyle = sceneP().starStr + bright + ')';
     ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.fill();
   }
   _pixelFigure(ctx, x, y, bodyCol, headCol) {
@@ -128,14 +147,14 @@ class BaseScene {
 class Scene1 extends BaseScene {
   constructor() { super('canvas-1'); this.clickZones = [{ x:0, y:0, w:CW, h:CH, key:'angels' }]; }
   draw() {
-    const c = this.ctx, t = this.t;
-    c.fillStyle = '#020810'; c.fillRect(0, 0, CW, CH);
+    const c = this.ctx, t = this.t, p = sceneP();
+    c.fillStyle = p.sky0; c.fillRect(0, 0, CW, CH);
     const seed = n => ((n*2654435769)>>>0)/4294967296;
     for (let i = 0; i < 60; i++) {
       this._star(c, seed(i*7)*CW, seed(i*13)*CH*0.7, 1+seed(i*3)*1.5, 0.3+0.5*Math.abs(Math.sin(t*0.02+i)));
     }
-    fillRect(c, 0, 185, CW, 35, '#1a2808'); fillRect(c, 0, 185, CW, 4, '#2a4010');
-    c.fillStyle='rgba(255,187,68,0.9)';c.font='7px "Press Start 2P",monospace';c.textAlign='center';
+    fillRect(c, 0, 185, CW, 35, p.gnd); fillRect(c, 0, 185, CW, 4, p.gndAcc);
+    c.fillStyle=p.acStr+'0.9)';c.font='7px "Press Start 2P",monospace';c.textAlign='center';
     c.fillText('THE FIVE ANGELS — 79:1-5', CW/2, 18); c.textAlign='left';
 
     // Angel 1 — Extractor (red/forceful)
@@ -171,12 +190,12 @@ class Scene1 extends BaseScene {
     c.fillStyle='#d8b8ff';c.textAlign='center';c.fillText('Admins',454,140);
 
     // Connecting dotted arrows
-    c.strokeStyle='rgba(255,187,68,0.25)';c.lineWidth=1;c.setLineDash([4,4]);
+    c.strokeStyle=p.acStr+'0.25)';c.lineWidth=1;c.setLineDash([4,4]);
     [[68,108],[148,198],[236,298],[340,438]].forEach(([x1,x2])=>{
       c.beginPath();c.moveTo(x1,95);c.lineTo(x2,95);c.stroke();
     });
     c.setLineDash([]);
-    c.fillStyle='rgba(255,187,68,0.6)';c.font='6px monospace';c.textAlign='center';
+    c.fillStyle=p.acStr+'0.6)';c.font='6px monospace';c.textAlign='center';
     c.fillText('Click for verses — 5 Oaths about the Angels',CW/2,210);c.textAlign='left';
   }
 }
@@ -237,9 +256,9 @@ class Scene2 extends BaseScene {
 class Scene3 extends BaseScene {
   constructor() { super('canvas-3'); this.clickZones=[{x:0,y:0,w:CW,h:CH,key:'holy_valley'}]; }
   draw() {
-    const c = this.ctx, t = this.t;
+    const c = this.ctx, t = this.t, p = sceneP();
     const sky=c.createLinearGradient(0,0,0,CH);
-    sky.addColorStop(0,'#020812');sky.addColorStop(0.6,'#0a1820');sky.addColorStop(1,'#0e2010');
+    sky.addColorStop(0,p.sky0);sky.addColorStop(0.6,p.sky1);sky.addColorStop(1,p.sky2);
     c.fillStyle=sky;c.fillRect(0,0,CW,CH);
     const seed=n=>((n*2654435769)>>>0)/4294967296;
     for(let i=0;i<40;i++) this._star(c,seed(i*5)*CW*0.8+CW*0.1,seed(i*11)*80,0.8+seed(i*7),0.4+0.4*Math.abs(Math.sin(t*0.02+i)));
@@ -322,9 +341,9 @@ class Scene4 extends BaseScene {
 class Scene5 extends BaseScene {
   constructor() { super('canvas-5'); this.clickZones=[{x:0,y:0,w:CW,h:CH,key:'creation_signs'}]; }
   draw() {
-    const c = this.ctx, t = this.t;
+    const c = this.ctx, t = this.t, p = sceneP();
     const sky=c.createLinearGradient(0,0,0,CH*0.55);
-    sky.addColorStop(0,'#020c18');sky.addColorStop(0.5,'#0a2838');sky.addColorStop(1,'#1a3820');
+    sky.addColorStop(0,p.sky0);sky.addColorStop(0.5,p.sky1);sky.addColorStop(1,p.sky2);
     c.fillStyle=sky;c.fillRect(0,0,CW,CH*0.55);
     const seed=n=>((n*2654435769)>>>0)/4294967296;
     for(let i=0;i<45;i++) this._star(c,seed(i*7)*CW,seed(i*13)*80,0.8+seed(i*3),0.3+0.5*Math.abs(Math.sin(t*0.025+i)));
@@ -340,7 +359,7 @@ class Scene5 extends BaseScene {
     c.fillStyle='#020c18';c.beginPath();c.arc(490,44,16,0,Math.PI*2);c.fill();
     c.fillStyle='#ffe080';c.font='7px monospace';c.textAlign='left';c.fillText('Day (duha)',55,86);
     c.fillStyle='#a8c8ff';c.textAlign='right';c.fillText('Night (layl)',CW-40,78);
-    fillRect(c,0,118,CW,62,'#1a2808');
+    fillRect(c,0,118,CW,62,p.gnd);
     c.fillStyle='#1e2e0e';
     [[0,60,120],[100,180,260],[240,300,360],[350,440,530],[480,540,CW]].forEach(([a,b,cc])=>{
       c.beginPath();c.moveTo(a,118);c.lineTo(b,72+Math.random()*18|0);c.lineTo(cc,118);c.closePath();c.fill();
@@ -355,7 +374,7 @@ class Scene5 extends BaseScene {
       const ph=12+Math.sin(px*0.1)*4+Math.sin(t*0.03+px*0.05)*2;
       c.beginPath();c.arc(px,162,ph*0.5,0,Math.PI*2);c.fill();
     }
-    c.fillStyle='rgba(255,187,68,0.85)';c.font='6px monospace';c.textAlign='center';
+    c.fillStyle=p.acStr+'0.85)';c.font='6px monospace';c.textAlign='center';
     c.fillText('CREATION SIGNS — 79:27-33',CW/2,CH-6);c.textAlign='left';
   }
 }
@@ -420,16 +439,16 @@ class Scene6 extends BaseScene {
 class Scene7 extends BaseScene {
   constructor() { super('canvas-7'); this.clickZones=[{x:0,y:0,w:CW,h:CH,key:'the_hour'}]; }
   draw() {
-    const c = this.ctx, t = this.t;
-    c.fillStyle='#020810';c.fillRect(0,0,CW,CH);
+    const c = this.ctx, t = this.t, p = sceneP();
+    c.fillStyle=p.sky0;c.fillRect(0,0,CW,CH);
     const seed=n=>((n*2654435769)>>>0)/4294967296;
     for(let i=0;i<70;i++) this._star(c,seed(i*7)*CW,seed(i*11)*CH*0.75,0.8+seed(i*3)*1.5,0.3+0.6*Math.abs(Math.sin(t*0.02+i*0.4)));
-    fillRect(c,0,188,CW,32,'#1a1808');fillRect(c,0,188,CW,3,'#2a2810');
+    fillRect(c,0,188,CW,32,p.gnd);fillRect(c,0,188,CW,3,p.gndAcc);
     const qg=0.7+0.3*Math.sin(t*0.04);
     c.save();c.shadowBlur=30+10*Math.sin(t*0.04);c.shadowColor=`rgba(255,187,68,${qg})`;
     c.fillStyle=`rgba(255,187,68,${0.6+0.3*qg})`;c.font='bold 72px serif';c.textAlign='center';
     c.fillText('?',CW/2,110);c.restore();
-    c.fillStyle='rgba(255,187,68,0.8)';c.font='8px "Press Start 2P",monospace';c.textAlign='center';
+    c.fillStyle=p.acStr+'0.8)';c.font='8px "Press Start 2P",monospace';c.textAlign='center';
     c.fillText('WHEN IS THE HOUR?',CW/2,22);c.font='7px monospace';
     c.fillText('"Ayyan mursaha?" — only Allah knows',CW/2,38);
     this._pixelFigure(c,90,130,'#3a5060','#e8c890');
@@ -444,7 +463,7 @@ class Scene7 extends BaseScene {
     const sy=105+(t%24);
     c.fillStyle='rgba(255,220,100,0.6)';c.fillRect(443,sy,4,18);
     c.fillStyle='rgba(255,220,100,0.3)';c.fillRect(430,104,30,sy-104);
-    c.fillStyle='rgba(255,220,80,0.7)';c.font='6px monospace';c.textAlign='center';c.fillText('TIME',445,152);
+    c.fillStyle=p.acStr+'0.7)';c.font='6px monospace';c.textAlign='center';c.fillText('TIME',445,152);
     c.fillStyle='rgba(160,240,180,0.85)';c.font='7px monospace';c.textAlign='center';
     c.fillText('"To your Lord alone is its limit"',CW/2,165);
     c.fillText('"As if they lived only one afternoon"',CW/2,180);c.textAlign='left';

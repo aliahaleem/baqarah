@@ -340,12 +340,12 @@ html[data-theme="stars"] .card-header { text-shadow: none; font-weight: 700; }
    STORY & VERSE TEXT
    ================================================ */
 .story-text {
-  font-family: Georgia, serif; font-size: 12px;
+  font-family: var(--font-body); font-size: var(--font-size-body);
   line-height: 2; color: var(--text-dim); padding: 14px 18px;
 }
-html[data-theme="stars"] .story-text { font-size: 14px; line-height: 1.9; }
+html[data-theme="stars"] .story-text { line-height: 1.9; }
 .story-text p { margin-bottom: 12px; }
-.story-text strong { color: var(--accent); font-family: var(--font-body); font-size: 10px; }
+.story-text strong { color: var(--accent); font-size: var(--font-size-sm); }
 .story-text em { color: var(--primary-lit); font-style: italic; }
 .story-highlight {
   background: rgba(255,215,0,0.06); border-left: 4px solid var(--accent);
@@ -369,18 +369,16 @@ html[data-theme="stars"] .story-highlight { background: rgba(255,215,0,0.05); bo
   text-shadow: 0 0 10px rgba(255,187,68,0.3);
 }
 .english, .verse-translation {
-  font-family: Georgia, serif; font-size: 12px; line-height: 2;
+  font-family: var(--font-body); font-size: var(--font-size-body); line-height: 2;
   color: var(--text-dim); font-style: italic;
 }
-html[data-theme="stars"] .english,
-html[data-theme="stars"] .verse-translation { font-size: 14px; }
 .trans-source { font-size: var(--font-size-xs); color: #777; }
 
 /* ================================================
    GAME LAYOUT
    ================================================ */
 .game-instructions {
-  font-family: Georgia, serif; font-size: 12px;
+  font-family: var(--font-body); font-size: var(--font-size-sm);
   color: var(--text-dim); line-height: 2; padding: 10px 18px;
   border: 1px dashed rgba(255,255,255,0.2); margin: 0 18px 12px;
   border-radius: var(--radius);
@@ -438,8 +436,7 @@ html[data-theme="stars"] .game-instructions { border-color: rgba(255,255,255,0.1
   min-height: 56px; display: flex; flex-direction: column; gap: 4px;
   transition: background var(--transition), border-color var(--transition); margin-bottom: 4px;
 }
-.drop-zone-desc { font-family: Georgia, serif; font-size: 11px; color: var(--text-dim); line-height: 1.8; pointer-events: none; }
-html[data-theme="stars"] .drop-zone-desc { font-size: 12px; }
+.drop-zone-desc { font-family: var(--font-body); font-size: var(--font-size-sm); color: var(--text-dim); line-height: 1.8; pointer-events: none; }
 .drop-zone.drag-over  { background: rgba(255,255,255,0.06); border-color: var(--primary-lit); }
 .drop-zone.correct    { border-color: var(--success) !important; background: rgba(39,174,96,0.1); border-style: solid !important; }
 .drop-zone.incorrect  { border-color: var(--error)   !important; background: rgba(231,76,60,0.1); border-style: solid !important; }
@@ -452,21 +449,20 @@ html[data-theme="stars"] .drop-zone-desc { font-size: 12px; }
   border-radius: var(--radius); padding: 14px 18px; margin-bottom: 12px;
 }
 .question-text {
-  font-family: Georgia, serif; font-size: 12px; color: var(--text);
+  font-family: var(--font-body); font-size: var(--font-size-body); color: var(--text);
   margin-bottom: 12px; line-height: 2;
 }
-html[data-theme="stars"] .question-text { font-size: 14px; }
 .q-num { color: var(--accent); margin-right: 6px; font-family: var(--font-body); font-size: var(--font-size-sm); }
 .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
 .option-btn {
   background: var(--bg2); border: var(--border-w-sm) solid var(--primary);
   border-radius: var(--radius); box-shadow: var(--btn-shadow);
-  padding: 10px 10px; font-family: Georgia, serif; font-size: 12px;
+  padding: 10px 10px; font-family: var(--font-body); font-size: var(--font-size-sm);
   color: var(--text); cursor: pointer; line-height: 1.8; text-align: left;
   transition: all var(--transition); touch-action: manipulation;
 }
-html[data-theme="stars"] .option-btn { font-size: 13px; padding: 12px 12px; }
+html[data-theme="stars"] .option-btn { padding: 12px 12px; }
 .option-btn:hover    { background: var(--bg); border-color: var(--primary-lit); transform: translate(-1px,-1px); box-shadow: var(--card-shadow); }
 .option-btn.selected { background: var(--tile-unlocked); border-color: var(--primary-lit); }
 .option-btn.correct  { background: rgba(39,174,96,0.2);  border-color: var(--success); color: var(--success); }
@@ -489,8 +485,7 @@ html[data-theme="stars"] .option-btn { font-size: 13px; padding: 12px 12px; }
   min-width: 22px; text-align: center; background: var(--primary);
   padding: 2px 6px; border-radius: var(--radius);
 }
-.order-text { flex: 1; font-family: Georgia, serif; font-size: 11px; color: var(--text-dim); }
-html[data-theme="stars"] .order-text { font-size: 13px; }
+.order-text { flex: 1; font-family: var(--font-body); font-size: var(--font-size-sm); color: var(--text-dim); }
 .order-btns { display: flex; flex-direction: column; gap: 4px; flex-shrink: 0; }
 .order-btn {
   background: var(--bg); border: var(--border-w-sm) solid var(--primary);
@@ -522,7 +517,7 @@ html[data-theme="stars"] .order-text { font-size: 13px; }
 }
 html[data-theme="stars"] .reward-title { text-shadow: 0 0 16px rgba(255,187,68,0.5); }
 .reward-msg {
-  font-family: Georgia, serif; font-size: 13px; line-height: 1.9;
+  font-family: var(--font-body); font-size: var(--font-size-body); line-height: 1.9;
   color: var(--text-dim); margin-bottom: 20px;
 }
 .reward-xp, .reward-gems { font-size: var(--font-size-sm); margin-bottom: 6px; }
@@ -607,10 +602,10 @@ canvas {
   border-radius: 0 var(--radius) var(--radius) 0;
 }
 .vp-eng, #vp-eng {
-  font-family: Georgia, serif; font-size: 12px; line-height: 2; color: var(--text-dim); margin-bottom: 8px;
+  font-family: var(--font-body); font-size: var(--font-size-sm); line-height: 2; color: var(--text-dim); margin-bottom: 8px;
 }
 .vp-note, #vp-note {
-  font-family: Georgia, serif; font-size: 11px; line-height: 2; color: #aaa;
+  font-family: var(--font-body); font-size: var(--font-size-sm); line-height: 2; color: #aaa;
   border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px;
 }
 
@@ -655,12 +650,11 @@ html[data-theme="stars"] .portal-title { text-shadow: 0 0 12px rgba(255,215,0,0.
   font-family: var(--font-serif); font-size: 22px; color: #fff;
   direction: rtl; margin: 8px 0; text-shadow: 0 0 12px rgba(255,215,0,0.5);
 }
-.portal-desc { font-family: Georgia, serif; font-size: 12px; color: #aaa; margin-bottom: 14px; line-height: 1.8; }
-html[data-theme="stars"] .portal-desc { font-size: 13px; }
+.portal-desc { font-family: var(--font-body); font-size: var(--font-size-sm); color: #aaa; margin-bottom: 14px; line-height: 1.8; }
 .portal-separator { height: 1px; background: rgba(255,255,255,0.1); margin: 14px 0; }
 .portal-progress-label { font-size: var(--font-size-xs); color: #888; margin-bottom: 6px; }
 .portal-progress {
-  font-family: Georgia, serif; font-size: 11px; line-height: 2;
+  font-family: var(--font-body); font-size: var(--font-size-xs); line-height: 2;
   min-height: 32px; display: flex; flex-direction: column; gap: 4px;
   align-items: center; justify-content: center; margin-bottom: 16px;
 }

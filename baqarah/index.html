@@ -1206,12 +1206,14 @@
 </div>
 
 <!-- VERSE POPUP -->
-<div id="verse-popup" class="verse-popup">
-  <button class="vp-close" onclick="hideVersePopup()">✕ CLOSE</button>
-  <div class="vp-ref"    id="vp-ref"></div>
-  <div class="vp-arabic" id="vp-arabic"></div>
-  <div class="vp-eng"    id="vp-eng"></div>
-  <div class="vp-note"   id="vp-note"></div>
+<div id="verse-popup">
+  <div class="vp-box">
+    <div id="vp-ref"></div>
+    <div id="vp-arabic"></div>
+    <div id="vp-eng"></div>
+    <div id="vp-note"></div>
+    <button id="vp-close" onclick="hideVersePopup()">✕ Close</button>
+  </div>
 </div>
 
 <script src="scenes.js"></script>

@@ -6,6 +6,26 @@
 
 const CW = 560, CH = 220, GY = 160, P = 4;
 
+// --- THEME PALETTE ---
+function sceneP() {
+  const s = document.documentElement.dataset.theme === 'stars';
+  return s ? {
+    sky0:    '#06021a', sky1:    '#0a0422', sky2:    '#080318',
+    gnd:     '#1a0e30', gndAcc:  '#241840',
+    starStr: 'rgba(200,170,255,',
+    acStr:   'rgba(210,140,200,',
+    label:   '#c898e8',
+    hint:    '#9870b8',
+  } : {
+    sky0:    '#0a1a2a', sky1:    '#08101a', sky2:    '#060c18',
+    gnd:     '#1a2a10', gndAcc:  '#2a3a18',
+    starStr: 'rgba(255,250,200,',
+    acStr:   'rgba(255,215,0,',
+    label:   '#ffd700',
+    hint:    '#aaa',
+  };
+}
+
 function fillRect(ctx, x, y, w, h, col) {
   if (col) ctx.fillStyle = col;
   ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
@@ -224,8 +244,9 @@ class Scene1 extends BaseScene {
   draw() {
     const ctx = this.ctx;
     // Split background
-    ctx.fillStyle = '#0a1a2a'; fillRect(ctx, 0, 0, CW * 0.5, CH);
-    ctx.fillStyle = '#1a0a2a'; fillRect(ctx, CW * 0.5, 0, CW * 0.5, CH);
+    const p = sceneP();
+    ctx.fillStyle = p.sky0; fillRect(ctx, 0, 0, CW * 0.5, CH);
+    ctx.fillStyle = p.sky1; fillRect(ctx, CW * 0.5, 0, CW * 0.5, CH);
 
     // LEFT — Muhkam: clear glowing verses (orderly pillars of light)
     const pulse = 0.5 + 0.5 * Math.sin(this.t * 0.04);
@@ -365,9 +386,10 @@ class Scene2 extends BaseScene {
     ctx.fillText('Angel (click)', ax + 8, CH - 10);
 
     // Stars
+    const p2 = sceneP();
     [[20,15],[520,10],[480,40],[40,45],[CW/2,8]].forEach(([sx,sy],i) => {
       const br = 0.4 + 0.5 * Math.sin(this.t * 0.03 + i);
-      ctx.fillStyle = `rgba(255,250,200,${br})`; fillRect(ctx, sx, sy, 2, 2);
+      ctx.fillStyle = p2.starStr + br + ')'; fillRect(ctx, sx, sy, 2, 2);
     });
   }
 }
@@ -387,15 +409,16 @@ class Scene3 extends BaseScene {
   draw() {
     const ctx = this.ctx;
     // Desert dusk sky
+    const p3 = sceneP();
     const skyGrad = ctx.createLinearGradient(0,0,0,CH);
-    skyGrad.addColorStop(0, '#0d0820'); skyGrad.addColorStop(0.6, '#3a1840'); skyGrad.addColorStop(1, '#8a4020');
+    skyGrad.addColorStop(0, p3.sky0); skyGrad.addColorStop(0.6, p3.sky1); skyGrad.addColorStop(1, p3.gnd);
     ctx.fillStyle = skyGrad; fillRect(ctx, 0, 0, CW, CH);
-    ctx.fillStyle = '#5a3010'; fillRect(ctx, 0, CH*0.72, CW, CH*0.28);
+    ctx.fillStyle = p3.gndAcc; fillRect(ctx, 0, CH*0.72, CW, CH*0.28);
 
     // Stars
     [[30,20],[100,15],[200,30],[500,18],[460,35],[520,12]].forEach(([sx,sy],i) => {
       const br = 0.4 + 0.5 * Math.sin(this.t * 0.03 + i * 1.5);
-      ctx.fillStyle = `rgba(255,250,200,${br})`; fillRect(ctx, sx, sy, 2, 2);
+      ctx.fillStyle = p3.starStr + br + ')'; fillRect(ctx, sx, sy, 2, 2);
     });
 
     // كُن فَيَكُون — cosmic text (right sky)
@@ -473,12 +496,13 @@ class Scene4 extends BaseScene {
   draw() {
     const ctx = this.ctx;
     // Desert bg
-    ctx.fillStyle = '#1a0e08'; fillRect(ctx, 0, 0, CW, CH*0.65);
-    ctx.fillStyle = '#8a6030'; fillRect(ctx, 0, CH*0.65, CW, CH*0.35);
+    const p4 = sceneP();
+    ctx.fillStyle = p4.sky0; fillRect(ctx, 0, 0, CW, CH*0.65);
+    ctx.fillStyle = p4.gnd; fillRect(ctx, 0, CH*0.65, CW, CH*0.35);
     // Stars
     [[50,20],[150,15],[250,30],[350,18],[450,25],[500,12]].forEach(([sx,sy],i) => {
       const br = 0.3 + 0.4 * Math.sin(this.t * 0.03 + i);
-      ctx.fillStyle = `rgba(255,250,200,${br})`; fillRect(ctx, sx, sy, 2, 2);
+      ctx.fillStyle = p4.starStr + br + ')'; fillRect(ctx, sx, sy, 2, 2);
     });
 
     // Ibrahim (centre) — pure light radiating
@@ -541,9 +565,10 @@ class Scene5 extends BaseScene {
   }
   draw() {
     const ctx = this.ctx;
+    const p5 = sceneP();
     const united = (Math.floor(this.t / 180) % 2 === 0);
-    ctx.fillStyle = united ? '#0a1a0a' : '#1a0a0a'; fillRect(ctx, 0, 0, CW, CH);
-    ctx.fillStyle = '#2a4a2a'; fillRect(ctx, 0, CH*0.7, CW, CH*0.3);
+    ctx.fillStyle = united ? p5.sky0 : '#1a0a0a'; fillRect(ctx, 0, 0, CW, CH);
+    ctx.fillStyle = p5.gnd; fillRect(ctx, 0, CH*0.7, CW, CH*0.3);
 
     // The Rope (horizontal, centre)
     const ropeY = 100;
@@ -608,8 +633,9 @@ class Scene6 extends BaseScene {
   draw() {
     const ctx = this.ctx;
     // Battle-field sky
-    ctx.fillStyle = '#100810'; fillRect(ctx, 0, 0, CW, CH*0.65);
-    ctx.fillStyle = '#3a5020'; fillRect(ctx, 0, CH*0.65, CW, CH*0.35);
+    const p6 = sceneP();
+    ctx.fillStyle = p6.sky0; fillRect(ctx, 0, 0, CW, CH*0.65);
+    ctx.fillStyle = p6.gnd; fillRect(ctx, 0, CH*0.65, CW, CH*0.35);
     // Dust
     for (let i = 0; i < 5; i++) {
       ctx.fillStyle = 'rgba(150,120,60,0.18)';
@@ -677,9 +703,10 @@ class Scene7 extends BaseScene {
   }
   draw() {
     const ctx = this.ctx;
+    const p7 = sceneP();
     const phase = Math.floor(this.t / 180) % 3;
-    ctx.fillStyle = '#1a1008'; fillRect(ctx, 0, 0, CW, CH*0.65);
-    ctx.fillStyle = '#4a6020'; fillRect(ctx, 0, CH*0.65, CW, CH*0.35);
+    ctx.fillStyle = p7.sky0; fillRect(ctx, 0, 0, CW, CH*0.65);
+    ctx.fillStyle = p7.gnd; fillRect(ctx, 0, CH*0.65, CW, CH*0.35);
     // Mount Uhud (silhouette)
     ctx.fillStyle = '#2a2010';
     ctx.beginPath(); ctx.moveTo(0, CH*0.65); ctx.lineTo(100, 55); ctx.lineTo(180, 85); ctx.lineTo(240, CH*0.65); ctx.closePath(); ctx.fill();
@@ -785,9 +812,10 @@ class Scene8 extends BaseScene {
     }
 
     // Stars (Jannah stars)
+    const p8 = sceneP();
     [[40,15],[130,22],[220,10],[320,18],[420,12],[510,25]].forEach(([sx,sy],i) => {
       const br = 0.4 + 0.5 * Math.sin(this.t * 0.03 + i*1.4);
-      ctx.fillStyle = `rgba(255,250,180,${br})`; fillRect(ctx, sx, sy, i%3===0?3:2, i%3===0?3:2);
+      ctx.fillStyle = p8.starStr + br + ')'; fillRect(ctx, sx, sy, i%3===0?3:2, i%3===0?3:2);
     });
 
     // ALIVE text
@@ -831,11 +859,12 @@ class Scene9 extends BaseScene {
     ctx.fillStyle = '#3a5820'; fillRect(ctx, 0, CH*0.7, CW, CH*0.3);
 
     // Stars (night)
+    const p9 = sceneP();
     if (!isDay || transition < 0.7) {
       const starA = Math.max(0, 1 - transition);
       [[40,20],[110,15],[200,28],[300,12],[390,25],[470,18],[530,10],[80,45],[250,50],[420,48]].forEach(([sx,sy],i) => {
         const br = starA * (0.4 + 0.5 * Math.sin(this.t * 0.03 + i * 1.5));
-        ctx.fillStyle = `rgba(255,250,200,${br})`; fillRect(ctx, sx, sy, 2, 2);
+        ctx.fillStyle = p9.starStr + br + ')'; fillRect(ctx, sx, sy, 2, 2);
       });
     }
 
@@ -903,10 +932,11 @@ class Scene10 extends BaseScene {
   draw() {
     const ctx = this.ctx;
     // Deep indigo night
+    const p10 = sceneP();
     const grad = ctx.createLinearGradient(0,0,0,CH);
-    grad.addColorStop(0, '#03001a'); grad.addColorStop(1, '#0e0828');
+    grad.addColorStop(0, p10.sky0); grad.addColorStop(1, p10.sky1);
     ctx.fillStyle = grad; fillRect(ctx, 0, 0, CW, CH);
-    ctx.fillStyle = '#0a1a08'; fillRect(ctx, 0, CH*0.78, CW, CH*0.22);
+    ctx.fillStyle = p10.gnd; fillRect(ctx, 0, CH*0.78, CW, CH*0.22);
 
     // Stars lighting up
     const allStars = [[55,20],[115,14],[200,28],[285,10],[365,24],[445,16],[510,30],[90,52],[170,46],[250,58],[330,40],[410,54],[490,42],[530,18],[60,38]];
@@ -914,14 +944,14 @@ class Scene10 extends BaseScene {
     allStars.forEach(([sx,sy],i) => {
       if (i >= litCount) return;
       const br = 0.5 + 0.5 * Math.sin(this.t * 0.04 + i * 1.7);
-      ctx.fillStyle = `rgba(200,190,255,${br})`;
+      ctx.fillStyle = p10.starStr + br + ')';
       fillRect(ctx, sx, sy, i%4===0?3:2, i%4===0?3:2);
     });
 
     // Crescent moon
     ctx.fillStyle = '#ffe87a';
     ctx.beginPath(); ctx.arc(480, 45, 26, 0, Math.PI*2); ctx.fill();
-    ctx.fillStyle = '#03001a';
+    ctx.fillStyle = p10.sky0;
     ctx.beginPath(); ctx.arc(494, 39, 21, 0, Math.PI*2); ctx.fill();
 
     // Du'a words appearing in stars
