@@ -1,48 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="minecraft">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quran Quest — Choose Your Journey</title>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  /* ─── MINECRAFT THEME (default) ─── */
+  :root {
+    --hub-bg:        #020810;
+    --hub-text:      #e8f0ff;
+    --hub-title-col: #ffd700;
+    --hub-sub-col:   #aac0ff;
+    --hub-footer:    #555;
+    --hub-footer-hi: #ffd70088;
+    --font-hub:      'Press Start 2P', monospace;
+    --font-arabic:   'Amiri', serif;
+    --card-radius:   4px;
+    --card-shadow-h: 4px 4px 0 #000;
+    --star-color:    rgba(200,220,255,1);
+    --toggle-bg:     #0a1520;
+    --toggle-border: #2a3a50;
+  }
+
+  /* ─── STARS & INK THEME ─── */
+  html[data-theme="stars"] {
+    --hub-bg:        #09040f;
+    --hub-text:      #f0e8ff;
+    --hub-title-col: #d4a0ff;
+    --hub-sub-col:   #b090e0;
+    --hub-footer:    #7060a0;
+    --hub-footer-hi: #d4a0ffaa;
+    --font-hub:      'Quicksand', sans-serif;
+    --card-radius:   18px;
+    --card-shadow-h: 0 6px 28px rgba(180,100,255,0.3);
+    --star-color:    rgba(220,200,255,1);
+    --toggle-bg:     #14082a;
+    --toggle-border: #4a2880;
+  }
+
   body {
-    background: #020810;
-    color: #e8f0ff;
-    font-family: 'Press Start 2P', monospace;
+    background: var(--hub-bg);
+    color: var(--hub-text);
+    font-family: var(--font-hub);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 24px 16px 40px;
     overflow-x: hidden;
+    transition: background 0.4s, color 0.4s;
   }
 
-  /* Star canvas background */
   #star-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+  .content  { position: relative; z-index: 1; width: 100%; max-width: 860px; }
 
-  .content { position: relative; z-index: 1; width: 100%; max-width: 860px; }
+  /* ─── HEADER ─── */
+  .hub-header { text-align: center; margin-bottom: 28px; padding-top: 8px; }
+  .hub-icon {
+    font-size: 52px;
+    display: block;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 18px #ffd700aa);
+    transition: filter 0.4s;
+  }
+  html[data-theme="stars"] .hub-icon { filter: drop-shadow(0 0 24px #d4a0ffcc); }
 
-  /* Header */
-  .hub-header { text-align: center; margin-bottom: 32px; padding-top: 8px; }
-  .hub-icon { font-size: 52px; display: block; margin-bottom: 10px; filter: drop-shadow(0 0 18px #ffd700aa); }
   .hub-title {
     font-size: clamp(14px, 4vw, 24px);
-    color: #ffd700;
+    color: var(--hub-title-col);
     text-shadow: 0 0 20px #ffd700aa, 3px 3px 0 #000;
     letter-spacing: 2px;
     margin-bottom: 8px;
+    transition: color 0.4s, text-shadow 0.4s;
+  }
+  html[data-theme="stars"] .hub-title {
+    text-shadow: 0 0 30px #d4a0ffcc;
+    letter-spacing: 3px;
+    font-weight: 700;
+    font-size: clamp(18px, 5vw, 30px);
   }
   .hub-subtitle {
     font-size: clamp(7px, 2vw, 10px);
-    color: #aac0ff;
+    color: var(--hub-sub-col);
     letter-spacing: 1px;
     margin-top: 6px;
+    transition: color 0.4s;
+  }
+  html[data-theme="stars"] .hub-subtitle { font-size: clamp(11px, 2.5vw, 14px); }
+
+  /* ─── THEME TOGGLE ─── */
+  .theme-toggle-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .theme-toggle-label {
+    font-size: 7px;
+    color: var(--hub-sub-col);
+    white-space: nowrap;
+    transition: color 0.4s;
+  }
+  html[data-theme="stars"] .theme-toggle-label { font-size: 11px; }
+
+  .theme-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    font-family: var(--font-hub);
+    font-size: 7px;
+    border: 2px solid var(--toggle-border);
+    border-radius: var(--card-radius);
+    background: var(--toggle-bg);
+    color: var(--hub-sub-col);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  html[data-theme="stars"] .theme-btn { font-size: 11px; border-radius: 24px; }
+
+  .theme-btn.active {
+    border-color: var(--hub-title-col);
+    color: var(--hub-title-col);
+    box-shadow: 0 0 14px currentColor;
+  }
+  .theme-btn:not(.active):hover {
+    border-color: var(--hub-sub-col);
+    color: var(--hub-text);
   }
 
-  /* Portal grid */
+  /* ─── PORTALS ─── */
   .portals {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -52,56 +146,86 @@
 
   .portal {
     border: 3px solid transparent;
-    border-radius: 4px;
+    border-radius: var(--card-radius);
     padding: 28px 22px 24px;
     cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s, border-radius 0.4s;
     text-align: center;
     image-rendering: pixelated;
   }
+  html[data-theme="stars"] .portal { image-rendering: auto; }
   .portal:hover { transform: translateY(-4px); }
 
-  /* Baqarah — earthy green theme */
-  .baqarah-portal {
-    background: linear-gradient(160deg, #0e1e0e 0%, #1a2e12 100%);
-    border-color: #3a7a2a;
-    box-shadow: 0 0 20px #3a7a2a44, inset 0 0 40px #0e1e0e88;
-  }
-  .baqarah-portal:hover {
-    border-color: #5aaa3a;
-    box-shadow: 0 0 36px #5aaa3a66;
-  }
+  /* Per-surah portal colours */
+  .baqarah-portal  { background: linear-gradient(160deg,#0e1e0e,#1a2e12); border-color:#3a7a2a; box-shadow:0 0 20px #3a7a2a44; }
+  .baqarah-portal:hover  { border-color:#5aaa3a; box-shadow:0 0 36px #5aaa3a66; }
+  .imran-portal    { background: linear-gradient(160deg,#0e0a1e,#1e1230); border-color:#5a3aa0; box-shadow:0 0 20px #5a3aa044; }
+  .imran-portal:hover    { border-color:#8a5ad0; box-shadow:0 0 36px #8a5ad066; }
+  .muhammad-portal { background: linear-gradient(160deg,#1a0408,#2a0e18); border-color:#8a2030; box-shadow:0 0 20px #8a203044; }
+  .muhammad-portal:hover { border-color:#c03040; box-shadow:0 0 36px #c0304066; }
+  .naba-portal     { background: linear-gradient(160deg,#080215,#1a0a38); border-color:#5a20a0; box-shadow:0 0 20px #5a20a044; }
+  .naba-portal:hover     { border-color:#8840d8; box-shadow:0 0 36px #8840d866; }
+  .mulk-portal     { background: linear-gradient(160deg,#030610,#0a1428); border-color:#1e3080; box-shadow:0 0 20px #1e308044; }
+  .mulk-portal:hover     { border-color:#3050c0; box-shadow:0 0 36px #3050c066; }
+  .naziat-portal   { background: linear-gradient(160deg,#020e08,#061a10); border-color:#1a6040; box-shadow:0 0 20px #1a604044; }
+  .naziat-portal:hover   { border-color:#2a9060; box-shadow:0 0 36px #2a906066; }
 
-  /* Al-Imran — royal purple theme */
-  .imran-portal {
-    background: linear-gradient(160deg, #0e0a1e 0%, #1e1230 100%);
-    border-color: #5a3aa0;
-    box-shadow: 0 0 20px #5a3aa044, inset 0 0 40px #0e0a1e88;
-  }
-  .imran-portal:hover {
-    border-color: #8a5ad0;
-    box-shadow: 0 0 36px #8a5ad066;
-  }
+  /* Stars & Ink — softer, glowing portals */
+  html[data-theme="stars"] .portal { box-shadow: var(--card-shadow-h); }
+  html[data-theme="stars"] .baqarah-portal  { background:linear-gradient(135deg,#0a1a0a,#182a14); border-color:#4a9a3a; }
+  html[data-theme="stars"] .imran-portal    { background:linear-gradient(135deg,#100a20,#1e1436); border-color:#7a5ac8; }
+  html[data-theme="stars"] .muhammad-portal { background:linear-gradient(135deg,#1a050a,#28101a); border-color:#b03050; }
+  html[data-theme="stars"] .naba-portal     { background:linear-gradient(135deg,#0a0318,#180c30); border-color:#8838e0; }
+  html[data-theme="stars"] .mulk-portal     { background:linear-gradient(135deg,#040714,#0a1630); border-color:#3060d0; }
+  html[data-theme="stars"] .naziat-portal   { background:linear-gradient(135deg,#020e08,#081a10); border-color:#2a9060; }
 
-  .portal-icon { font-size: 48px; margin-bottom: 14px; filter: drop-shadow(0 0 10px currentColor); }
+  .portal-icon {
+    font-size: 48px;
+    margin-bottom: 14px;
+    filter: drop-shadow(0 0 10px currentColor);
+  }
+  html[data-theme="stars"] .portal-icon { font-size: 52px; }
+
   .portal-title {
     font-size: clamp(9px, 2.5vw, 13px);
     color: #ffd700;
     text-shadow: 2px 2px 0 #000;
     margin-bottom: 6px;
     letter-spacing: 1px;
+    transition: text-shadow 0.4s, font-size 0.4s;
   }
+  html[data-theme="stars"] .portal-title {
+    font-size: clamp(13px, 3vw, 17px);
+    text-shadow: 0 0 14px #ffd700aa;
+    font-weight: 700;
+  }
+
   .portal-arabic {
-    font-family: 'Amiri', serif;
+    font-family: var(--font-arabic);
     font-size: 22px;
     color: #fff;
     direction: rtl;
     margin: 8px 0;
     text-shadow: 0 0 12px #ffd70088;
   }
-  .portal-desc { font-size: 8px; color: #aaa; margin-bottom: 14px; line-height: 1.8; }
+  html[data-theme="stars"] .portal-arabic { font-size: 26px; }
+
+  .portal-desc {
+    font-size: 8px;
+    color: #aaa;
+    margin-bottom: 14px;
+    line-height: 1.8;
+  }
+  html[data-theme="stars"] .portal-desc { font-size: 12px; line-height: 1.6; }
+
   .portal-separator { height: 1px; background: #ffffff22; margin: 14px 0; }
-  .portal-progress-label { font-size: 7px; color: #888; margin-bottom: 6px; }
+  .portal-progress-label {
+    font-size: 7px;
+    color: #888;
+    margin-bottom: 6px;
+  }
+  html[data-theme="stars"] .portal-progress-label { font-size: 11px; }
+
   .portal-progress {
     font-size: 8px;
     line-height: 2;
@@ -113,6 +237,8 @@
     justify-content: center;
     margin-bottom: 16px;
   }
+  html[data-theme="stars"] .portal-progress { font-size: 12px; }
+
   .progress-bar-wrap {
     width: 100%;
     height: 8px;
@@ -121,97 +247,55 @@
     overflow: hidden;
     margin-top: 4px;
   }
+  html[data-theme="stars"] .progress-bar-wrap { height: 10px; border-radius: 8px; }
+
   .progress-bar { height: 100%; transition: width 0.4s; border-radius: 2px; }
-  .baqarah-portal .progress-bar { background: #5aaa3a; }
-  .imran-portal   .progress-bar { background: #8a5ad0; }
+  html[data-theme="stars"] .progress-bar { border-radius: 8px; }
+
+  .baqarah-portal  .progress-bar { background: #5aaa3a; }
+  .imran-portal    .progress-bar { background: #8a5ad0; }
+  .muhammad-portal .progress-bar { background: #c03040; }
+  .naba-portal     .progress-bar { background: #8840d8; }
+  .mulk-portal     .progress-bar { background: #3050c0; }
+  .naziat-portal   .progress-bar { background: #2a9060; }
 
   .portal-btn {
     display: inline-block;
     padding: 10px 20px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-hub);
     font-size: 9px;
     border: 2px solid;
     border-radius: 2px;
     cursor: pointer;
     letter-spacing: 1px;
-    transition: background 0.15s, color 0.15s;
+    transition: background 0.15s, color 0.15s, border-radius 0.4s;
   }
-  .baqarah-portal .portal-btn {
-    color: #5aaa3a;
-    border-color: #5aaa3a;
-    background: transparent;
-  }
-  .baqarah-portal:hover .portal-btn { background: #5aaa3a; color: #000; }
-  .imran-portal .portal-btn {
-    color: #8a5ad0;
-    border-color: #8a5ad0;
-    background: transparent;
-  }
-  .imran-portal:hover .portal-btn { background: #8a5ad0; color: #fff; }
+  html[data-theme="stars"] .portal-btn { font-size: 12px; border-radius: 24px; }
 
-  /* Muhammad — deep crimson theme */
-  .muhammad-portal {
-    background: linear-gradient(160deg, #1a0408 0%, #2a0e18 100%);
-    border-color: #8a2030;
-    box-shadow: 0 0 20px #8a203044, inset 0 0 40px #1a040888;
-  }
-  .muhammad-portal:hover {
-    border-color: #c03040;
-    box-shadow: 0 0 36px #c0304066;
-  }
-  .muhammad-portal .progress-bar { background: #c03040; }
-  .muhammad-portal .portal-btn {
-    color: #c03040;
-    border-color: #c03040;
-    background: transparent;
-  }
-  .muhammad-portal:hover .portal-btn { background: #c03040; color: #fff; }
+  .baqarah-portal  .portal-btn { color:#5aaa3a; border-color:#5aaa3a; background:transparent; }
+  .baqarah-portal:hover  .portal-btn { background:#5aaa3a; color:#000; }
+  .imran-portal    .portal-btn { color:#8a5ad0; border-color:#8a5ad0; background:transparent; }
+  .imran-portal:hover    .portal-btn { background:#8a5ad0; color:#fff; }
+  .muhammad-portal .portal-btn { color:#c03040; border-color:#c03040; background:transparent; }
+  .muhammad-portal:hover .portal-btn { background:#c03040; color:#fff; }
+  .naba-portal     .portal-btn { color:#8840d8; border-color:#8840d8; background:transparent; }
+  .naba-portal:hover     .portal-btn { background:#8840d8; color:#fff; }
+  .mulk-portal     .portal-btn { color:#3050c0; border-color:#3050c0; background:transparent; }
+  .mulk-portal:hover     .portal-btn { background:#3050c0; color:#fff; }
+  .naziat-portal   .portal-btn { color:#2a9060; border-color:#2a9060; background:transparent; }
+  .naziat-portal:hover   .portal-btn { background:#2a9060; color:#fff; }
 
-  /* An-Naba — deep cosmic purple / amber theme */
-  .naba-portal {
-    background: linear-gradient(160deg, #080215 0%, #1a0a38 100%);
-    border-color: #5a20a0;
-    box-shadow: 0 0 20px #5a20a044, inset 0 0 40px #08021588;
-  }
-  .naba-portal:hover {
-    border-color: #8840d8;
-    box-shadow: 0 0 36px #8840d866;
-  }
-  .naba-portal .progress-bar { background: #8840d8; }
-  .naba-portal .portal-btn {
-    color: #8840d8;
-    border-color: #8840d8;
-    background: transparent;
-  }
-  .naba-portal:hover .portal-btn { background: #8840d8; color: #fff; }
-
-  /* Al-Mulk — midnight navy / gold theme */
-  .mulk-portal {
-    background: linear-gradient(160deg, #030610 0%, #0a1428 100%);
-    border-color: #1e3080;
-    box-shadow: 0 0 20px #1e308044, inset 0 0 40px #03061088;
-  }
-  .mulk-portal:hover {
-    border-color: #3050c0;
-    box-shadow: 0 0 36px #3050c066;
-  }
-  .mulk-portal .progress-bar { background: #3050c0; }
-  .mulk-portal .portal-btn {
-    color: #3050c0;
-    border-color: #3050c0;
-    background: transparent;
-  }
-  .mulk-portal:hover .portal-btn { background: #3050c0; color: #fff; }
-
-  /* Footer note */
+  /* ─── FOOTER ─── */
   .hub-footer {
     text-align: center;
     font-size: 7px;
-    color: #555;
+    color: var(--hub-footer);
     line-height: 2;
     margin-top: 8px;
+    transition: color 0.4s;
   }
-  .hub-footer span { color: #ffd70088; }
+  html[data-theme="stars"] .hub-footer { font-size: 11px; }
+  .hub-footer span { color: var(--hub-footer-hi); }
 </style>
 </head>
 <body>
@@ -222,6 +306,17 @@
     <span class="hub-icon">🕌</span>
     <div class="hub-title">QURAN QUEST</div>
     <div class="hub-subtitle">Choose a Surah to explore its meaning</div>
+  </div>
+
+  <!-- ─── THEME TOGGLE ─── -->
+  <div class="theme-toggle-wrap">
+    <span class="theme-toggle-label">THEME:</span>
+    <button class="theme-btn active" id="btn-minecraft" onclick="setHubTheme('minecraft')">
+      ⚔️ Adventure
+    </button>
+    <button class="theme-btn" id="btn-stars" onclick="setHubTheme('stars')">
+      ✨ Stars &amp; Ink
+    </button>
   </div>
 
   <div class="portals">
@@ -296,6 +391,20 @@
       <div class="portal-btn">ENTER QUEST ▶</div>
     </div>
 
+    <!-- AN-NAZI'AT PORTAL -->
+    <div class="portal naziat-portal" onclick="window.location='naziat/index.html'">
+      <div class="portal-icon">👼</div>
+      <div class="portal-title">SURAH AN-NAZI'AT</div>
+      <div class="portal-arabic">سورة النازعات</div>
+      <div class="portal-desc">The Pullers — 46 Verses<br>7 Levels of cosmic truth</div>
+      <div class="portal-separator"></div>
+      <div class="portal-progress-label">YOUR PROGRESS</div>
+      <div class="portal-progress" id="naziat-progress">
+        <span style="color:#888">Not started yet</span>
+      </div>
+      <div class="portal-btn">ENTER QUEST ▶</div>
+    </div>
+
   </div>
 
   <div class="hub-footer">
@@ -306,39 +415,82 @@
 </div>
 
 <script>
-  // ---- Star canvas background ----
+  // ─── THEME MANAGEMENT ───
+  const THEME_KEY = 'quranQuestTheme';
+
+  function setHubTheme(t) {
+    document.documentElement.dataset.theme = t;
+    localStorage.setItem(THEME_KEY, t);
+    document.getElementById('btn-minecraft').classList.toggle('active', t === 'minecraft');
+    document.getElementById('btn-stars').classList.toggle('active', t === 'stars');
+    drawStars();
+  }
+
+  (function initTheme() {
+    const saved = localStorage.getItem(THEME_KEY) || 'minecraft';
+    document.documentElement.dataset.theme = saved;
+    document.getElementById('btn-minecraft').classList.toggle('active', saved === 'minecraft');
+    document.getElementById('btn-stars').classList.toggle('active', saved === 'stars');
+  })();
+
+  // ─── STAR CANVAS BACKGROUND ───
   const starCanvas = document.getElementById('star-bg');
   const sctx = starCanvas.getContext('2d');
   let stars = [];
+
+  function drawStars() {
+    const theme = document.documentElement.dataset.theme;
+    sctx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+
+    if (theme === 'stars') {
+      // Soft radial glow clusters
+      const glows = [
+        { x: 0.25, y: 0.3,  r: 0.35, c: 'rgba(160,80,255,' },
+        { x: 0.75, y: 0.6,  r: 0.3,  c: 'rgba(80,160,255,' },
+        { x: 0.5,  y: 0.1,  r: 0.25, c: 'rgba(220,100,255,' },
+      ];
+      glows.forEach(g => {
+        const grd = sctx.createRadialGradient(
+          g.x * starCanvas.width, g.y * starCanvas.height, 0,
+          g.x * starCanvas.width, g.y * starCanvas.height, g.r * Math.min(starCanvas.width, starCanvas.height)
+        );
+        grd.addColorStop(0, g.c + '0.08)');
+        grd.addColorStop(1, g.c + '0)');
+        sctx.fillStyle = grd;
+        sctx.fillRect(0, 0, starCanvas.width, starCanvas.height);
+      });
+    }
+
+    const t = performance.now() * 0.001;
+    stars.forEach(s => {
+      const br = 0.3 + 0.7 * Math.abs(Math.sin(t * s.sp + s.ph));
+      const alpha = theme === 'stars' ? br * 0.7 : br;
+      sctx.fillStyle = `rgba(200,220,255,${alpha})`;
+      sctx.beginPath();
+      sctx.arc(s.x, s.y, theme === 'stars' ? s.r * 1.3 : s.r, 0, Math.PI * 2);
+      sctx.fill();
+    });
+  }
+
   function resizeStars() {
     starCanvas.width  = window.innerWidth;
     starCanvas.height = window.innerHeight;
     stars = Array.from({ length: 160 }, () => ({
-      x: Math.random() * starCanvas.width,
-      y: Math.random() * starCanvas.height,
-      r: Math.random() * 1.5 + 0.3,
+      x:  Math.random() * starCanvas.width,
+      y:  Math.random() * starCanvas.height,
+      r:  Math.random() * 1.5 + 0.3,
       sp: Math.random() * 0.02 + 0.005,
       ph: Math.random() * Math.PI * 2,
     }));
   }
-  function animateStars() {
-    sctx.clearRect(0, 0, starCanvas.width, starCanvas.height);
-    const t = performance.now() * 0.001;
-    stars.forEach(s => {
-      const br = 0.3 + 0.7 * Math.abs(Math.sin(t * s.sp + s.ph));
-      sctx.fillStyle = `rgba(200,220,255,${br})`;
-      sctx.beginPath();
-      sctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      sctx.fill();
-    });
-    requestAnimationFrame(animateStars);
-  }
+
+  function animateStars() { drawStars(); requestAnimationFrame(animateStars); }
   window.addEventListener('resize', resizeStars);
   resizeStars();
   animateStars();
 
-  // ---- Read progress from localStorage ----
-  function renderProgress(storageKey, elId, totalLevels, barClass) {
+  // ─── READ PROGRESS FROM LOCALSTORAGE ───
+  function renderProgress(storageKey, elId, totalLevels) {
     const el = document.getElementById(elId);
     try {
       const raw = localStorage.getItem(storageKey);
@@ -358,11 +510,12 @@
     } catch(e) {}
   }
 
-  renderProgress('baqarahQuestSave',   'bq-progress',  13, 'baqarah');
-  renderProgress('imranQuestSave',     'im-progress',  10, 'imran');
-  renderProgress('mulkQuestSave',      'mulk-progress', 8, 'mulk');
-  renderProgress('muhammadQuestSave',  'muh-progress',  8, 'muhammad');
-  renderProgress('nabaQuestSave',      'naba-progress', 8, 'naba');
+  renderProgress('baqarahQuestSave',  'bq-progress',    13);
+  renderProgress('imranQuestSave',    'im-progress',    10);
+  renderProgress('mulkQuestSave',     'mulk-progress',   8);
+  renderProgress('muhammadQuestSave', 'muh-progress',    8);
+  renderProgress('nabaQuestSave',     'naba-progress',   8);
+  renderProgress('naziatQuestSave',   'naziat-progress', 7);
 </script>
 </body>
 </html>

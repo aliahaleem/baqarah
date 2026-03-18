@@ -1,0 +1,16 @@
+/* Surah An-Naba — deep cosmic purple / amber */
+:root {
+  --bg:             #080215;
+  --bg2:            #120830;
+  --surface:        #1a0a38;
+  --card-bg:        #1a0a38;
+  --primary:        #5a20a0;
+  --primary-lit:    #8840d8;
+  --accent:         #ffaa00;
+  --accent2:        #ff7700;
+  --text:           #f0e8ff;
+  --text-dim:       #8878aa;
+  --tile-locked:    #0a0520;
+  --tile-unlocked:  #180c34;
+  --tile-completed: #0a2010;
+}

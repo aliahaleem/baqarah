@@ -1,0 +1,16 @@
+/* Surah Muhammad — deep crimson / ruby / gold */
+:root {
+  --bg:             #1a0408;
+  --bg2:            #2a0e18;
+  --surface:        #301020;
+  --card-bg:        #301020;
+  --primary:        #8a2030;
+  --primary-lit:    #c03040;
+  --accent:         #ffd700;
+  --accent2:        #c0a000;
+  --text:           #ffe8ec;
+  --text-dim:       #b08090;
+  --tile-locked:    #100208;
+  --tile-unlocked:  #240a14;
+  --tile-completed: #142010;
+}

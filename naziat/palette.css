@@ -1,0 +1,16 @@
+/* Surah An-Nazi'at — deep teal / amber / emerald */
+:root {
+  --bg:             #020e08;
+  --bg2:            #061a10;
+  --surface:        #0a2018;
+  --card-bg:        #0a2018;
+  --primary:        #1a6040;
+  --primary-lit:    #2a9060;
+  --accent:         #ffbb44;
+  --accent2:        #ff8822;
+  --text:           #e8f8ec;
+  --text-dim:       #608878;
+  --tile-locked:    #040e08;
+  --tile-unlocked:  #0c2018;
+  --tile-completed: #0a2a14;
+}

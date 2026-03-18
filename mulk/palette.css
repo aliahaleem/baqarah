@@ -1,0 +1,16 @@
+/* Surah Al-Mulk — midnight navy / starfield blue / gold */
+:root {
+  --bg:             #030610;
+  --bg2:            #0a1428;
+  --surface:        #0f1d38;
+  --card-bg:        #0f1d38;
+  --primary:        #1e3080;
+  --primary-lit:    #3050c0;
+  --accent:         #ffd700;
+  --accent2:        #c0a000;
+  --text:           #e0e8ff;
+  --text-dim:       #808cb0;
+  --tile-locked:    #060a1a;
+  --tile-unlocked:  #0f1830;
+  --tile-completed: #0a1f14;
+}

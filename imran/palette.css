@@ -1,0 +1,16 @@
+/* Surah Al-Imran — royal purple / violet / gold */
+:root {
+  --bg:             #0e0a1e;
+  --bg2:            #1e1230;
+  --surface:        #241840;
+  --card-bg:        #241840;
+  --primary:        #5a3aa0;
+  --primary-lit:    #8a5ad0;
+  --accent:         #ffd700;
+  --accent2:        #c0a000;
+  --text:           #f0e8ff;
+  --text-dim:       #9080b8;
+  --tile-locked:    #0a0818;
+  --tile-unlocked:  #1a1230;
+  --tile-completed: #1a1035;
+}

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="minecraft">
+<head>
+  <meta charset="UTF-8"/>
+  <script>(function(){var t=localStorage.getItem('quranQuestTheme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surah An-Nazi'at Quest 👼</title>
+  <link rel="stylesheet" href="../shared/base.css"/>
+  <link rel="stylesheet" href="palette.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header id="game-header" style="display:none">
+  <div>
+    <div class="game-title">👼 SURAH AN-NAZI'AT QUEST</div>
+    <div class="header-explorer">Explorer: <span id="header-name">—</span></div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div>
+    <div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div>
+    <div class="stat-chip done-chip">✅ <span id="done-display">0</span>/7</div>
+    <button class="reset-btn" onclick="resetGame()">↺ Reset</button>
+    <a class="hub-btn" href="../index.html">🏠 Hub</a>
+  </div>
+</header>
+
+<div id="intro-screen">
+  <div class="intro-icon">👼</div>
+  <div class="intro-title">SURAH AN-NAZI'AT QUEST</div>
+  <div class="intro-arabic">سُوْرَةُ النَّازِعَات</div>
+  <div class="intro-subtitle">
+    7 Levels · The Five Angels · Hearts Tremble<br/>
+    Moses &amp; Pharaoh · Signs of Creation · At-Tammah · The Final Hour
+  </div>
+  <div class="intro-form">
+    <input class="intro-input" id="explorer-name" type="text" placeholder="Enter your name..." maxlength="20"/>
+    <div id="name-error" style="color:#ff6666;font-size:8px;min-height:12px;"></div>
+    <button class="intro-btn" onclick="startGame()">▶ BEGIN QUEST</button>
+  </div>
+</div>
+
+<div id="main-view" style="display:none">
+<div class="container">
+
+  <div class="ibn-ameen-panel">
+    <div class="character-avatar">🧙‍♂️</div>
+    <div class="speech-bubble">
+      <strong>Ibn Ameen says:</strong><br/>
+      <span id="welcome-text">As-salamu alaykum, Explorer! Surah An-Nazi'at — "The Pullers." Five cosmic angels. The trembling Day. Moses in the Holy Valley. Pharaoh's arrogance and downfall. Signs of creation. At-Tammah — the Greatest Overwhelming. And the Final Hour that only Allah knows. 7 levels await. Let's go!</span>
+    </div>
+  </div>
+
+  <h2 class="section-heading">👼 THE QUEST MAP</h2>
+  <div class="map-grid">
+    <div class="map-tile locked" id="tile-1">
+      <div class="tile-icon">👼</div>
+      <div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">The Five Angels</div>
+      <div class="tile-verses">79:1-5</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+    <div class="map-tile locked" id="tile-2">
+      <div class="tile-icon">💓</div>
+      <div class="tile-level">LEVEL 2</div>
+      <div class="tile-name">Hearts Tremble</div>
+      <div class="tile-verses">79:6-14</div>
+      <div class="tile-status" id="status-2">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-3">
+      <div class="tile-icon">🔥</div>
+      <div class="tile-level">LEVEL 3</div>
+      <div class="tile-name">The Holy Valley</div>
+      <div class="tile-verses">79:15-19</div>
+      <div class="tile-status" id="status-3">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-4">
+      <div class="tile-icon">⚡</div>
+      <div class="tile-level">LEVEL 4</div>
+      <div class="tile-name">Pharaoh's Defiance</div>
+      <div class="tile-verses">79:20-26</div>
+      <div class="tile-status" id="status-4">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-5">
+      <div class="tile-icon">🌍</div>
+      <div class="tile-level">LEVEL 5</div>
+      <div class="tile-name">Signs of Creation</div>
+      <div class="tile-verses">79:27-33</div>
+      <div class="tile-status" id="status-5">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-6">
+      <div class="tile-icon">⚖️</div>
+      <div class="tile-level">LEVEL 6</div>
+      <div class="tile-name">At-Tammah</div>
+      <div class="tile-verses">79:34-41</div>
+      <div class="tile-status" id="status-6">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-7">
+      <div class="tile-icon">🏆</div>
+      <div class="tile-level">LEVEL 7</div>
+      <div class="tile-name">The Final Hour</div>
+      <div class="tile-verses">79:42-46</div>
+      <div class="tile-status" id="status-7">🔒 LOCKED</div>
+    </div>
+  </div>
+
+  <div id="world-builder">
+    <h2 class="section-heading">🌿 BUILD THE GARDEN OF AL-MA'WA</h2>
+    <div style="border:3px solid #1a6040;margin-bottom:12px;background:#020e08;">
+      <canvas id="build-canvas" width="560" height="250" style="width:100%;image-rendering:pixelated;display:block;"></canvas>
+    </div>
+    <p style="font-family:Georgia,serif;font-size:11px;color:#2a9060;text-align:center;margin-bottom:10px;line-height:1.6;">
+      Complete each level to build the Garden — all 7 levels reveal Al-Ma'wa!<br/>
+      <em style="color:#608878;">"Fa-inna al-jannata hiya al-ma'wa" — 79:41</em>
+    </p>
+    <div class="world-preview">
+      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">The Angels</div></div>
+      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Hearts Tremble</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Holy Valley</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Pharaoh</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Creation</div></div>
+      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">At-Tammah</div></div>
+      <div class="world-chunk" id="chunk-7"><div class="chunk-emoji">⬛</div><div class="chunk-label">The Hour</div></div>
+    </div>
+  </div>
+
+  <div id="all-complete" style="display:none">
+    <div style="font-size:36px;margin-bottom:10px;">🏆</div>
+    <div style="color:#ffbb44;font-size:10px;margin-bottom:8px;">SURAH AN-NAZI'AT COMPLETE!</div>
+    <div style="font-family:Georgia,serif;font-size:13px;color:#ddd;line-height:1.9;">
+      MashAllah! All 7 levels complete.<br/>
+      <em>"Wa amma man khafa maqama Rabbihi wa naha al-nafsa 'an al-hawa — fa inna al-jannata hiya al-ma'wa."</em><br/>
+      "As for the one who feared standing before their Lord and restrained themselves from desire — indeed Paradise is their home."<br/>
+      May Allah make us from among them. Ameen!
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div id="section-view" style="display:none">
+  <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;">
+    <button class="back-btn" onclick="closeSection()">◀ Back to Map</button>
+  </header>
+
+  <!-- ==================== SECTION 1 ==================== -->
+  <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Surah An-Nazi'at opens with five oaths — five types of angels! The violent Extractors who rip out wicked souls. The gentle Releasers who draw out righteous souls like pearls off silk. The Floaters, the Racers, and the Administrators of all divine affairs. Match each angel to its description!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 1 — THE FIVE ANGELS (79:1-5)</div>
+      <div class="story-text">
+        <p>Surah An-Nazi'at opens with a series of cosmic oaths. Allah swears by <strong>five types of angels</strong> — revealing a vast, invisible system running every single moment.</p>
+        <p><strong>Al-Nazi'at gharqa</strong> — the Extractors, who pull out the souls of the wicked with violent, drowning force — like iron hooks ripping through deep water. <strong>Al-Nashitat nashtan</strong> — the Releasers, who draw out righteous souls with ease, like a pearl sliding off smooth silk.</p>
+        <p><strong>Al-Sabihat sabhan</strong> — those who float and swim freely through the heavens. <strong>Al-Sabiqat sabqan</strong> — those who race ahead at extraordinary speed. <strong>Al-Mudabbirat amran</strong> — those who administer the entire divine program of the cosmos.</p>
+        <p>Five oaths. Five categories. All pointing to one truth: <em>there is a complete, perfect system that our eyes cannot see — yet it runs constantly, by His command.</em></p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَالنَّازِعَاتِ غَرْقًا ۩ وَالنَّاشِطَاتِ نَشْطًا ۩ وَالسَّابِحَاتِ سَبْحًا</div>
+        <div class="verse-translation">"By the [angels] who extract violently / and those who remove gently / and those who float through the heavens" — An-Nazi'at 79:1-3</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">فَالسَّابِقَاتِ سَبْقًا ۩ فَالْمُدَبِّرَاتِ أَمْرًا</div>
+        <div class="verse-translation">"And those who race ahead / and those who administer the divine matters!" — An-Nazi'at 79:4-5</div>
+      </div>
+    </div>
+    <div class="card" style="margin:0 12px 14px;">
+      <div class="scene-header"><span class="scene-title">🎬 THE FIVE ANGELS</span><span style="font-size:7px;color:#608878;">Click scene for verses</span></div>
+      <div class="scene-container"><canvas id="canvas-1"></canvas></div>
+      <div class="card-header" style="font-size:8px;">🎮 GAME: DRAG &amp; DROP — Match the Five Angels</div>
+      <p class="game-instructions">Drag each angel type to its matching Quranic description from 79:1-5.</p>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-1"></div>
+        <div class="drop-zones" id="drop-zones-1"></div>
+      </div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 2 ==================== -->
+  <div class="section-panel" id="section-panel-2">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        After the oaths comes the Day itself! Two Blasts: al-Rajifa destroys everything, al-Radifa raises everything. Hearts pound. Eyes go downcast. Yet the mockers in this world laughed — "will we really be raised as decayed bones?!" And Allah answers: one single shout and everyone is at the earth's surface. Instant. Undeniable.
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 2 — HEARTS TREMBLE (79:6-14)</div>
+      <div class="story-text">
+        <p>The surah now takes us to the Day itself. <strong>Al-Rajifa</strong> — the first Blast of the Horn that shatters and destroys the entire universe. <strong>Al-Radifa</strong> — the second Blast that follows — raises everyone from the dead.</p>
+        <p>On that Day: <strong>"Qulub yawma'idhin wajifa"</strong> — hearts will be in violent, pounding trembling. <strong>"Absaruha khashi'a"</strong> — eyes will be downcast and humbled. There will be no arrogance left.</p>
+        <p>Yet in this world, mockers said: <em>"Are we really going to be returned? Even after we are hollow, decayed bones?!"</em> They thought resurrection was absurd. Allah's response: <strong>"Fa-innama hiya zajratun wahida"</strong> — it will be only a single shout — and they are all at the surface of the earth. One command. Instant resurrection.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">يَوْمَ تَرْجُفُ الرَّاجِفَةُ ۩ تَتْبَعُهَا الرَّادِفَةُ ۩ قُلُوبٌ يَوْمَئِذٍ وَاجِفَةٌ ۩ أَبْصَارُهَا خَاشِعَةٌ</div>
+        <div class="verse-translation">"On the Day the trembling one trembles and the following one follows — hearts that Day will be pounding, their eyes downcast." — 79:6-9</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">فَإِنَّمَا هِيَ زَجْرَةٌ وَاحِدَةٌ ۩ فَإِذَا هُم بِالسَّاهِرَةِ</div>
+        <div class="verse-translation">"It will be only a single shout — and behold, they are at the surface of the earth." — 79:13-14</div>
+      </div>
+    </div>
+    <div class="card" style="margin:0 12px 14px;">
+      <div class="scene-header"><span class="scene-title">🎬 HEARTS TREMBLE</span><span style="font-size:7px;color:#608878;">Click scene for verses</span></div>
+      <div class="scene-container"><canvas id="canvas-2"></canvas></div>
+      <div class="card-header" style="font-size:8px;">🎮 GAME: QUIZ — The Trembling Day (79:6-14)</div>
+      <p class="game-instructions">Answer all 4 questions about 79:6-14. Get 3/4 to claim your reward!</p>
+      <div id="quiz-2"></div>
+      <div class="game-feedback" id="feedback-2"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 3 ==================== -->
+  <div class="section-panel" id="section-panel-3">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Now Allah tells us about Moses! Allah called him in the sacred valley of Tuwa on Mount Sinai. The mission: "Go to Pharaoh — he has transgressed." But notice the message Moses is given: NOT a threat first — but an invitation! "Would you like to purify yourself?" Put the events in the right order!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 3 — MOSES IN THE HOLY VALLEY (79:15-19)</div>
+      <div class="story-text">
+        <p>After the cosmic picture of Judgment Day, Allah shifts to the story of <strong>Musa (Moses) alayhis-salam</strong>. It begins gently: <em>"Hal ataka hadeeth Musa?"</em> — "Has the story of Moses reached you?"</p>
+        <p>Moses is in <strong>Wadi Tuwa</strong> — the sacred, holy valley on the slopes of Mount Sinai. Allah calls to him personally. The mission: <strong>"Go to Pharaoh — he has transgressed all limits!"</strong></p>
+        <p>But the message to deliver is not a threat first. It is a gentle invitation: <strong>"Hal laka ila an tazakka?"</strong> — Would you like to <em>purify yourself</em>? Allah sends His messenger with mercy and an offer of purification before any warning of punishment.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">هَلْ أَتَاكَ حَدِيثُ مُوسَىٰ ۩ إِذْ نَادَاهُ رَبُّهُ بِالْوَادِ الْمُقَدَّسِ طُوًى</div>
+        <div class="verse-translation">"Has the story of Moses reached you? When his Lord called to him in the sacred valley of Tuwa." — 79:15-16</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">اذْهَبْ إِلَىٰ فِرْعَوْنَ إِنَّهُ طَغَىٰ ۩ فَقُلْ هَل لَّكَ إِلَىٰ أَن تَزَكَّىٰ ۩ وَأَهْدِيَكَ إِلَىٰ رَبِّكَ فَتَخْشَىٰ</div>
+        <div class="verse-translation">"Go to Pharaoh — he has transgressed! And say: Would you like to purify yourself? And I will guide you to your Lord, so you may fear Him." — 79:17-19</div>
+      </div>
+    </div>
+    <div class="card" style="margin:0 12px 14px;">
+      <div class="scene-header"><span class="scene-title">🎬 MOSES IN THE HOLY VALLEY</span><span style="font-size:7px;color:#608878;">Click scene for verses</span></div>
+      <div class="scene-container"><canvas id="canvas-3"></canvas></div>
+      <div class="card-header" style="font-size:8px;">🎮 GAME: STORY ORDER — Events in the Valley (79:15-19)</div>
+      <p class="game-instructions">Use ↑ ↓ to arrange the 4 events of Moses' encounter with Allah in the correct Quranic order.</p>
+      <div class="order-list" id="order-3"></div>
+      <div class="game-feedback" id="feedback-3"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection3()">✅ Check Order</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 4 ==================== -->
+  <div class="section-panel" id="section-panel-4">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Moses showed Pharaoh the GREATEST sign — al-aya al-kubra. And Pharaoh's response? He denied. He disobeyed. He turned his back hastily. He gathered his people and proclaimed: "Ana rabbukum al-A'la!" — "I AM YOUR MOST EXALTED LORD!" And then... Allah seized him. A lesson preserved for all of time.
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 4 — PHARAOH'S DEFIANCE &amp; FALL (79:20-26)</div>
+      <div class="story-text">
+        <p>Moses showed Pharaoh <strong>"al-aya al-kubra"</strong> — the greatest sign. The staff that became a living serpent. The hand that shone brilliantly white. Clear, undeniable evidence from Allah.</p>
+        <p>Pharaoh's response: <strong>"Fakadhdhaba wa 'asa"</strong> — he denied completely and disobeyed. <strong>"Thumma adbara yas'a"</strong> — then he turned his back and walked away hastily. Then he gathered all his people and declared: <strong>"Ana rabbukum al-A'la!"</strong> — "I AM YOUR MOST EXALTED LORD!"</p>
+        <p>The consequence: <strong>"Fa-akhadha-hu Allahu nakal al-akhirah wal-ula"</strong> — Allah seized him as a warning and punishment for both this world and the next. He drowned. His preserved body became a sign. His story, recorded for all of history.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">فَأَرَاهُ الْآيَةَ الْكُبْرَىٰ ۩ فَكَذَّبَ وَعَصَىٰ ۩ ثُمَّ أَدْبَرَ يَسْعَىٰ ۩ فَحَشَرَ فَنَادَىٰ</div>
+        <div class="verse-translation">"So [Moses] showed him the greatest sign. But he denied and disobeyed. Then he turned away hastily. Then he gathered his people and called out." — 79:20-23</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">فَقَالَ أَنَا رَبُّكُمُ الْأَعْلَىٰ ۩ فَأَخَذَهُ اللَّهُ نَكَالَ الْآخِرَةِ وَالْأُولَىٰ</div>
+        <div class="verse-translation">"Saying: 'I am your most exalted lord!' — So Allah seized him with the punishment of the Last and the First." — 79:24-25</div>
+      </div>
+    </div>
+    <div class="card" style="margin:0 12px 14px;">
+      <div class="scene-header"><span class="scene-title">🎬 PHARAOH'S DEFIANCE</span><span style="font-size:7px;color:#608878;">Click scene for verses</span></div>
+      <div class="scene-container"><canvas id="canvas-4"></canvas></div>
+      <div class="card-header" style="font-size:8px;">🎮 GAME: QUIZ — Pharaoh's Story (79:20-26)</div>
+      <p class="game-instructions">Answer all 4 questions about 79:20-26. Get 3/4 to claim your reward!</p>
+      <div id="quiz-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 5 ==================== -->
+  <div class="section-panel" id="section-panel-5">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        After the warning of Pharaoh's story, Allah gives us the evidence for resurrection: look at creation! "Are you harder to create — or the entire sky?" Seven firm heavens. Day and night designed for you. The earth spread out. Water and pastures from the same soil. The Creator of all this can easily recreate YOU!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 5 — SIGNS OF CREATION (79:27-33)</div>
+      <div class="story-text">
+        <p>Allah responds to the doubters of resurrection with a direct challenge: <strong>"A-antum ashaddu khalqan am al-sama'?"</strong> — Are you harder to create, or the entire sky?</p>
+        <p><strong>The sky</strong>: built, raised to incomprehensible heights, perfectly proportioned. <strong>Day and night</strong>: He darkened the night completely and extracted the daylight. Both designed for your wellbeing.</p>
+        <p><strong>The earth</strong>: "Daha-ha" — He spread it out (SubhanAllah — the word relates to an egg-shape, matching the earth's spherical form). And from it: water brought forth and pastures — every green thing, every food, for every creature. By His command alone.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">أَأَنتُمْ أَشَدُّ خَلْقًا أَمِ السَّمَاءُ ۚ بَنَاهَا ۩ رَفَعَ سَمْكَهَا فَسَوَّاهَا ۩ وَأَغْطَشَ لَيْلَهَا وَأَخْرَجَ ضُحَاهَا</div>
+        <div class="verse-translation">"Are you more difficult to create or the sky? He built it, raised its canopy and proportioned it. He darkened its night and extracted its brightness." — 79:27-29</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَالْأَرْضَ بَعْدَ ذَٰلِكَ دَحَاهَا ۩ أَخْرَجَ مِنْهَا مَاءَهَا وَمَرْعَاهَا</div>
+        <div class="verse-translation">"And the earth after that He spread out — He brought forth from it its water and its pastures." — 79:30-31</div>
+      </div>
+    </div>
+    <div class="card" style="margin:0 12px 14px;">
+      <div class="scene-header"><span class="scene-title">🎬 SIGNS OF CREATION</span><span style="font-size:7px;color:#608878;">Click scene for verses</span></div>
+      <div class="scene-container"><canvas id="canvas-5"></canvas></div>
+      <div class="card-header" style="font-size:8px;">🎮 GAME: DRAG &amp; DROP — Match Creation Signs</div>
+      <p class="game-instructions">Drag each sign of creation to its matching Quranic description from 79:27-33.</p>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-5"></div>
+        <div class="drop-zones" id="drop-zones-5"></div>
+      </div>
+      <div class="game-feedback" id="feedback-5"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection5()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 6 ==================== -->
+  <div class="section-panel" id="section-panel-6">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        When Al-Tammah al-Kubra — the Greatest Overwhelming — arrives, man will remember EVERYTHING he strove for. Hellfire is displayed. Then the great fork: one who transgressed and preferred dunya → Hellfire. One who FEARED standing before their Lord and RESTRAINED their nafs from desire → Al-Jannah is their Al-Ma'wa!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 6 — AT-TAMMAH: THE OVERWHELMING (79:34-41)</div>
+      <div class="story-text">
+        <p><strong>"Al-Tamma al-Kubra"</strong> — The Greatest Catastrophe. "Tammah" from "amma" — to overwhelm, to flood, to drown out everything else. Every disaster in human history is nothing compared to this Day.</p>
+        <p>On that Day: <strong>"Yatadhaakkar al-insanu ma sa'a"</strong> — man will remember EVERYTHING he strove for. Every choice. Every priority. Every time he chose dunya over akhira. Hellfire is brought out and displayed for all to see.</p>
+        <p>Then the two paths: <strong>Path 1</strong>: Transgressed + preferred this world = Hellfire is their permanent dwelling. <strong>Path 2</strong>: Feared the <em>standing</em> before their Lord AND restrained their nafs from <em>hawa</em> (ego, desires) = Paradise is their permanent dwelling — their <strong>al-Ma'wa</strong> — their true home.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">فَإِذَا جَاءَتِ الطَّامَّةُ الْكُبْرَىٰ ۩ يَوْمَ يَتَذَكَّرُ الْإِنسَانُ مَا سَعَىٰ</div>
+        <div class="verse-translation">"When the Greatest Catastrophe comes — the Day man will remember all he strove for." — 79:34-35</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَأَمَّا مَنْ خَافَ مَقَامَ رَبِّهِ وَنَهَى النَّفْسَ عَنِ الْهَوَىٰ ۩ فَإِنَّ الْجَنَّةَ هِيَ الْمَأْوَىٰ</div>
+        <div class="verse-translation">"And as for the one who feared standing before their Lord and restrained themselves from desire — indeed Paradise (al-ma'wa) is their refuge." — 79:40-41</div>
+      </div>
+    </div>
+    <div class="card" style="margin:0 12px 14px;">
+      <div class="scene-header"><span class="scene-title">🎬 AT-TAMMAH: THE OVERWHELMING</span><span style="font-size:7px;color:#608878;">Click scene for verses</span></div>
+      <div class="scene-container"><canvas id="canvas-6"></canvas></div>
+      <div class="card-header" style="font-size:8px;">🎮 GAME: QUIZ — At-Tammah (79:34-41)</div>
+      <p class="game-instructions">Answer all 4 questions about 79:34-41. Get 3/4 to claim your reward!</p>
+      <div id="quiz-6"></div>
+      <div class="game-feedback" id="feedback-6"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 7 ==================== -->
+  <div class="section-panel" id="section-panel-7">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        The surah closes with the most asked question: "When exactly is the Hour?" Allah's answer: "What do YOU have to do with mentioning it?" — To your Lord alone is its limit. The Prophet ﷺ is only a warner for those who FEAR it. And the most haunting verse: when they SEE that Day, this entire world will feel like one afternoon. Act now!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 7 — THE FINAL HOUR (79:42-46)</div>
+      <div class="story-text">
+        <p>The surah closes with the question everyone asked: <strong>"Yas'aloonaka 'an al-Sa'ah ayyan mursaha?"</strong> — They ask you about the Hour: when exactly will it arrive?</p>
+        <p>Allah's response: <strong>"Fima anta min dhikriha?"</strong> — What do you have to do with its mention? This is a gentle correction: knowing the Hour's exact timing is not within the Prophet's ﷺ knowledge. <strong>"Ila Rabbika muntahaha"</strong> — to your Lord ALONE belongs its ultimate limit.</p>
+        <p><strong>"Innama anta mundhiru man yakhshaha"</strong> — You are ONLY a warner for whoever FEARS it. And the final, breathtaking verse: On the Day they see it, their entire life will feel like no more than <em>an evening or its morning</em>. 80 years reduced to the feeling of one afternoon. This world is fleeting. The Akhira is forever.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">يَسْأَلُونَكَ عَنِ السَّاعَةِ أَيَّانَ مُرْسَاهَا ۩ فِيمَ أَنتَ مِن ذِكْرَاهَا ۩ إِلَىٰ رَبِّكَ مُنتَهَاهَا</div>
+        <div class="verse-translation">"They ask you about the Hour: when is its arrival? What have you to do with its mention? To your Lord is its limit." — 79:42-44</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">إِنَّمَا أَنتَ مُنذِرُ مَن يَخْشَاهَا ۩ كَأَنَّهُمْ يَوْمَ يَرَوْنَهَا لَمْ يَلْبَثُوا إِلَّا عَشِيَّةً أَوْ ضُحَاهَا</div>
+        <div class="verse-translation">"You are only a warner for whoever fears it. The Day they see it — as though they had not remained except an evening or its morning." — 79:45-46</div>
+      </div>
+    </div>
+    <div class="card" style="margin:0 12px 14px;">
+      <div class="scene-header"><span class="scene-title">🎬 THE FINAL HOUR</span><span style="font-size:7px;color:#608878;">Click scene for verses</span></div>
+      <div class="scene-container"><canvas id="canvas-7"></canvas></div>
+      <div class="card-header" style="font-size:8px;">🎮 GAME: QUIZ — The Final Hour (79:42-46)</div>
+      <p class="game-instructions">Answer all 4 questions about 79:42-46. Get 3/4 to complete Surah An-Nazi'at!</p>
+      <div id="quiz-7"></div>
+      <div class="game-feedback" id="feedback-7"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection7()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-7-btn" style="display:none" onclick="completeSection(7)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+</div>
+
+<div id="verse-popup">
+  <div class="vp-box">
+    <div id="vp-ref"></div>
+    <div id="vp-arabic"></div>
+    <div id="vp-eng"></div>
+    <div id="vp-note"></div>
+    <button id="vp-close" onclick="hideVersePopup()">✕ Close</button>
+  </div>
+</div>
+
+<div id="reward-overlay">
+  <div class="reward-box">
+    <span class="reward-icon" id="reward-icon">🏆</span>
+    <div class="reward-title" id="reward-title">LEVEL COMPLETE!</div>
+    <div class="reward-xp"   id="reward-xp">+0 XP</div>
+    <div class="reward-gems" id="reward-gems">+0 💎</div>
+    <div class="reward-msg"  id="reward-msg"></div>
+    <button class="reward-ok-btn" onclick="dismissReward()">▶ CONTINUE</button>
+  </div>
+</div>
+
+<script src="scenes.js"></script>
+<script src="../shared/engine.js"></script>
+<script src="../shared/ui.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
