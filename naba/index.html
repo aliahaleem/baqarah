@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surah An-Naba Quest ❓</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header id="game-header" style="display:none">
+  <div>
+    <div class="game-title">❓ SURAH AN-NABA QUEST</div>
+    <div class="header-explorer">Explorer: <span id="header-name">—</span></div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div>
+    <div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div>
+    <div class="stat-chip done-chip">✅ <span id="done-display">0</span>/8</div>
+    <button class="reset-btn" onclick="resetGame()">↺ Reset</button>
+    <a class="hub-btn" href="../index.html">🏠 Hub</a>
+  </div>
+</header>
+
+<!-- ===== INTRO ===== -->
+<div id="intro-screen">
+  <div class="intro-icon">❓</div>
+  <div class="intro-title">SURAH AN-NABA QUEST</div>
+  <div class="intro-arabic">سُوْرَةُ النَّبَأ</div>
+  <div class="intro-subtitle">
+    8 Levels · The Great News · Signs of Creation<br/>
+    The Day of Sorting · Hellfire · Paradise · The Final Choice
+  </div>
+  <div class="intro-form">
+    <input class="intro-input" id="explorer-name" type="text" placeholder="Enter your name..." maxlength="20"/>
+    <div id="name-error" style="color:#ff6666;font-size:8px;min-height:12px;"></div>
+    <button class="intro-btn" onclick="startGame()">▶ BEGIN QUEST</button>
+  </div>
+</div>
+
+<!-- ===== MAIN VIEW ===== -->
+<div id="main-view" style="display:none">
+<div class="container">
+
+  <div class="ibn-ameen-panel">
+    <div class="character-avatar">🧙‍♂️</div>
+    <div class="speech-bubble">
+      <strong>Ibn Ameen says:</strong><br/>
+      <span id="welcome-text">As-salamu alaykum, Explorer! Surah An-Naba — "The Great News." What were they arguing about? The Day of Resurrection. 8 levels of signs, warnings, Hellfire, Paradise, and the final choice. Let's go!</span>
+    </div>
+  </div>
+
+  <h2 class="section-heading">❓ THE QUEST MAP</h2>
+  <div class="map-grid">
+    <div class="map-tile locked" id="tile-1">
+      <div class="tile-icon">❓</div>
+      <div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">The Great News</div>
+      <div class="tile-verses">78:1-5</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+    <div class="map-tile locked" id="tile-2">
+      <div class="tile-icon">⛰️</div>
+      <div class="tile-level">LEVEL 2</div>
+      <div class="tile-name">Signs: Earth</div>
+      <div class="tile-verses">78:6-11</div>
+      <div class="tile-status" id="status-2">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-3">
+      <div class="tile-icon">🌧️</div>
+      <div class="tile-level">LEVEL 3</div>
+      <div class="tile-name">Signs: Sky & Rain</div>
+      <div class="tile-verses">78:12-16</div>
+      <div class="tile-status" id="status-3">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-4">
+      <div class="tile-icon">📯</div>
+      <div class="tile-level">LEVEL 4</div>
+      <div class="tile-name">The Day of Sorting</div>
+      <div class="tile-verses">78:17-20</div>
+      <div class="tile-status" id="status-4">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-5">
+      <div class="tile-icon">🔥</div>
+      <div class="tile-level">LEVEL 5</div>
+      <div class="tile-name">The Ambush: Hellfire</div>
+      <div class="tile-verses">78:21-30</div>
+      <div class="tile-status" id="status-5">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-6">
+      <div class="tile-icon">🌿</div>
+      <div class="tile-level">LEVEL 6</div>
+      <div class="tile-name">Gardens of Paradise</div>
+      <div class="tile-verses">78:31-36</div>
+      <div class="tile-status" id="status-6">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-7">
+      <div class="tile-icon">👑</div>
+      <div class="tile-level">LEVEL 7</div>
+      <div class="tile-name">The Rows of Angels</div>
+      <div class="tile-verses">78:37-38</div>
+      <div class="tile-status" id="status-7">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-8">
+      <div class="tile-icon">🏆</div>
+      <div class="tile-level">LEVEL 8</div>
+      <div class="tile-name">The Final Warning</div>
+      <div class="tile-verses">78:39-40</div>
+      <div class="tile-status" id="status-8">🔒 LOCKED</div>
+    </div>
+  </div>
+
+  <div id="world-builder">
+    <h2 class="section-heading">🌌 YOUR KNOWLEDGE WORLD</h2>
+    <div class="world-preview">
+      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Great News</div></div>
+      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Earth Signs</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Sky Signs</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Day of Sorting</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Hellfire</div></div>
+      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Paradise</div></div>
+      <div class="world-chunk" id="chunk-7"><div class="chunk-emoji">⬛</div><div class="chunk-label">The Rows</div></div>
+      <div class="world-chunk" id="chunk-8"><div class="chunk-emoji">⬛</div><div class="chunk-label">Final Warning</div></div>
+    </div>
+  </div>
+
+  <div id="all-complete" style="display:none">
+    <div style="font-size:36px;margin-bottom:10px;">🏆</div>
+    <div style="color:#ffaa00;font-size:10px;margin-bottom:8px;">SURAH AN-NABA COMPLETE!</div>
+    <div style="font-family:Georgia,serif;font-size:13px;color:#ddd;line-height:1.9;">
+      MashAllah! All 8 levels complete.<br/>
+      <em>"Fa-man sha'a ittakhadha ila Rabbihi ma'aba."</em><br/>
+      "So let whoever wills take a path back to his Lord."<br/>
+      May Allah make us from those who rush toward Him. Ameen!
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ===== SECTION VIEW ===== -->
+<div id="section-view" style="display:none">
+
+  <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;">
+    <button class="back-btn" onclick="closeSection()">◀ Back to Map</button>
+  </header>
+
+  <!-- ==================== SECTION 1 ==================== -->
+  <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble">
+        <strong>Ibn Ameen says:</strong><br/>
+        The surah opens with a cosmic question: "About WHAT are they arguing?" The Quraysh of Makkah disputed the Day of Resurrection. Some denied it, some mocked it. But Allah says twice: "Kalla saya'lamoon!" — No! They will know. Click the scene to explore the verses!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 1 — THE GREAT NEWS (78:1-5)</div>
+      <div class="story-text">
+        <p>The Quraysh of Makkah heard about the <strong>Day of Resurrection</strong> and began to dispute. <em>"Will we really be raised from the dead? Impossible!"</em> Some mocked, some questioned, some simply refused to believe.</p>
+        <p>Allah begins this surah by asking them back: <strong>"About WHAT are they asking each other?"</strong> As if to say — don't you see? The evidence is all around you. The truth is unmistakable.</p>
+        <p>Then comes a double warning: <em>"Kalla saya'lamoon — Thumma kalla saya'lamoon."</em> <strong>No! They will know. Then: No! They will know.</strong> The repetition in Arabic signals absolute certainty. The Day is coming. Their denial changes nothing.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">عَمَّ يَتَسَاءَلُونَ ۩ عَنِ النَّبَإِ الْعَظِيمِ</div>
+        <div class="verse-translation">"About what are they asking one another? About the Great News." — An-Naba 78:1-2 (Sahih International)</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">كَلَّا سَيَعْلَمُونَ ۩ ثُمَّ كَلَّا سَيَعْلَمُونَ</div>
+        <div class="verse-translation">"No! They are going to know. Then no! They are going to know." — An-Naba 78:4-5 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:0 12px 14px;">
+      <div class="scene-header"><span class="scene-title">🎬 THE GREAT DEBATE</span><span style="font-size:7px;color:#8878aa;">Click figures or question mark for verses</span></div>
+      <div class="scene-container"><canvas id="canvas-1"></canvas></div>
+      <div class="card-header" style="font-size:8px;">🎮 GAME: QUIZ — The Great News</div>
+      <p class="game-instructions">Answer all questions about An-Naba 78:1-5. Get 3/4 to claim your reward!</p>
+      <div id="quiz-1"></div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 2 ==================== -->
+  <div class="section-panel" id="section-panel-2">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble">
+        <strong>Ibn Ameen says:</strong><br/>
+        After asking "about WHAT are they arguing?", Allah answers: Look at what I made for you! Earth as a resting bed. Mountains as pegs. Sleep as rest. Night as a garment. Day for work. Six signs — all pointing to the same Creator!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 2 — SIGNS OF EARTH (78:6-11)</div>
+      <div class="story-text">
+        <p>Allah responds to the disputers with evidence: look at creation! <strong>The earth</strong> — does it not hold you steady? Does it not feel like a comfortable resting place? This is "mihad" — a smooth, stable cradle.</p>
+        <p><strong>The mountains</strong> are called "awtad" — pegs, like tent stakes driven deep. Scientists confirm: mountains have deep roots going kilometers underground, stabilizing the earth's tectonic plates.</p>
+        <p><strong>Your sleep</strong> is "subat" — a complete shutting down for total renewal. <strong>The night</strong> is your "libas" (garment) — it wraps you in darkness and peace. <strong>The day</strong> is your "ma'ash" — time to seek provision. Six gifts. All precisely designed for you.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">أَلَمْ نَجْعَلِ الْأَرْضَ مِهَادًا ۩ وَالْجِبَالَ أَوْتَادًا</div>
+        <div class="verse-translation">"Have We not made the earth a resting place? And the mountains as pegs?" — An-Naba 78:6-7 (Sahih International)</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَجَعَلْنَا نَوْمَكُمْ سُبَاتًا ۩ وَجَعَلْنَا اللَّيْلَ لِبَاسًا ۩ وَجَعَلْنَا النَّهَارَ مَعَاشًا</div>
+        <div class="verse-translation">"And made your sleep as rest, the night as a covering, and the day for livelihood." — An-Naba 78:9-11 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:0 12px 14px;">
+      <div class="scene-header"><span class="scene-title">🎬 SIGNS OF EARTH</span><span style="font-size:7px;color:#8878aa;">Click scene for verses</span></div>
+      <div class="scene-container"><canvas id="canvas-2"></canvas></div>
+      <div class="card-header" style="font-size:8px;">🎮 GAME: DRAG & DROP — Match the Sign</div>
+      <p class="game-instructions">Drag each of Allah's signs to its matching description from 78:6-11.</p>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-2"></div>
+        <div class="drop-zones" id="drop-zones-2"></div>
+      </div>
+      <div class="game-feedback" id="feedback-2"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection2()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 3 ==================== -->
+  <div class="section-panel" id="section-panel-3">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble">
+        <strong>Ibn Ameen says:</strong><br/>
+        Now look UP! Allah built seven strong heavens above you — "shidadan" — intensely firm. He placed a blazing lamp (the sun). He squeezed the clouds to pour down torrential rain. And from that one rain — grain, vegetation, and thick gardens of food. One chain of mercy from sky to soil!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 3 — SIGNS OF SKY & RAIN (78:12-16)</div>
+      <div class="story-text">
+        <p>Having shown the signs beneath our feet, Allah now shows the signs above our heads. <strong>Seven heavens</strong> — "shidadan" (intensely strong) — built perfectly above us. No cracks, no inconsistencies, no faults.</p>
+        <p>The <strong>sun</strong> is called "siraj wahhaj" — a blazing lamp. Functional, purposeful — not just beautiful. It gives light, warmth, and energy. The <strong>clouds</strong> — "mu'asiraat" — clouds that are squeezed and heavy with water.</p>
+        <p>Then comes the miracle chain: <strong>strong sky → blazing sun → heavy clouds → torrential rain → grain and vegetation and dense gardens</strong>. All from a single drop of water. All provision for you. "Linu'khrija bihi habban wa nabatan wa jannatin alfafa" — That We may bring forth grain, vegetation, and gardens of thick growth.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَبَنَيْنَا فَوْقَكُمْ سَبْعًا شِدَادًا ۩ وَجَعَلْنَا سِرَاجًا وَهَّاجًا</div>
+        <div class="verse-translation">"And built above you seven strong heavens? And made a blazing lamp?" — An-Naba 78:12-13 (Sahih International)</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَأَنزَلْنَا مِنَ الْمُعْصِرَاتِ مَاءً ثَجَّاجًا ۩ لِّنُخْرِجَ بِهِ حَبًّا وَنَبَاتًا وَجَنَّاتٍ أَلْفَافًا</div>
+        <div class="verse-translation">"And sent down torrential rain — that We may bring forth grain, vegetation, and gardens of thick growth." — An-Naba 78:14-16 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:0 12px 14px;">
+      <div class="scene-header"><span class="scene-title">🎬 SIGNS OF SKY & RAIN</span><span style="font-size:7px;color:#8878aa;">Click scene for verses</span></div>
+      <div class="scene-container"><canvas id="canvas-3"></canvas></div>
+      <div class="card-header" style="font-size:8px;">🎮 GAME: DRAG & DROP — Match Sky Signs</div>
+      <p class="game-instructions">Match each sign in the sky to its Quranic description from 78:12-16.</p>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-3"></div>
+        <div class="drop-zones" id="drop-zones-3"></div>
+      </div>
+      <div class="game-feedback" id="feedback-3"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection3()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 4 ==================== -->
+  <div class="section-panel" id="section-panel-4">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble">
+        <strong>Ibn Ameen says:</strong><br/>
+        Now we reach the Day itself — Yawm al-Fasl, the Day of Sorting! It has a fixed appointment. The Horn is blown. Crowds gather. The sky opens like gates. The firm mountains — those "pegs" from verse 7 — dissolve into a mirage. Everything changes in one breath. Put the events in order!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 4 — THE DAY OF SORTING (78:17-20)</div>
+      <div class="story-text">
+        <p><strong>Yawm al-Fasl</strong> — the Day of Decision/Sorting/Separation. "Kana miqatan" — it has an appointed time. Like a scheduled appointment — it will arrive exactly when it was written to arrive.</p>
+        <p>The angel <strong>Israfeel (AS)</strong> blows the Horn (as-Soor). At that sound, every human who ever lived rises from their graves and comes forth. They walk in vast crowds — "afwajan" — groups upon groups.</p>
+        <p>The <strong>sky tears open</strong> like curtains, becoming gates — the barrier between the seen and unseen worlds dissolves. And the <strong>mountains</strong> — those firm pegs that held the earth stable — are swept away and become a mirage. "Sarab" — you look at where they were and see nothing but empty air. The entire physical world transforms.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">إِنَّ يَوْمَ الْفَصْلِ كَانَ مِيقَاتًا ۩ يَوْمَ يُنفَخُ فِي الصُّورِ فَتَأْتُونَ أَفْوَاجًا</div>
+        <div class="verse-translation">"Indeed the Day of Decision is an appointed time — the Day the Horn is blown and you come in crowds." — An-Naba 78:17-18 (Sahih International)</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَفُتِحَتِ السَّمَاءُ فَكَانَتْ أَبْوَابًا ۩ وَسُيِّرَتِ الْجِبَالُ فَكَانَتْ سَرَابًا</div>
+        <div class="verse-translation">"And the sky is opened and becomes gates. And the mountains are moved and become a mirage." — An-Naba 78:19-20 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:0 12px 14px;">
+      <div class="scene-header"><span class="scene-title">🎬 THE DAY OF SORTING</span><span style="font-size:7px;color:#8878aa;">Click scene for verses</span></div>
+      <div class="scene-container"><canvas id="canvas-4"></canvas></div>
+      <div class="card-header" style="font-size:8px;">🎮 GAME: STORY ORDER — The Events of the Day</div>
+      <p class="game-instructions">Use ↑ ↓ to put the 4 events of the Day of Sorting in the correct Quranic order (78:17-20).</p>
+      <div class="order-list" id="order-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection4()">✅ Check Order</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 5 ==================== -->
+  <div class="section-panel" id="section-panel-5">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble">
+        <strong>Ibn Ameen says:</strong><br/>
+        Hellfire is described as "mirsad" — an ambush, a watch-post, lying in wait! For whom? The "tagheen" — those who transgressed all limits. No coolness there, no cold water. Only scalding hameem and dark ghassaq. Why? "They did not expect any account." May Allah protect us!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 5 — THE AMBUSH: HELLFIRE (78:21-30)</div>
+      <div class="story-text">
+        <p>Hell is described as a <strong>"mirsad"</strong> — a watch-post, an ambush. It is not passive. It is active. Waiting. Alert. Ready for those who transgressed. "Li-l-tagheen maa'ba" — for the transgressors as a place of return.</p>
+        <p>They will remain there for <strong>"ahqaban"</strong> — ages upon ages. No escape. And what do they taste? <strong>No coolness</strong>, no refreshing drink. Only <em>"hameem"</em> — scalding, boiling water — and <em>"ghassaq"</em> — a dark, putrid, nauseating fluid. This is the opposite of Paradise's full cup.</p>
+        <p>Why this fate? Verses 27-28 explain: <strong>"They did not expect any account."</strong> They lived as if there were no Day of Judgment. They denied the signs. But Allah says: "We have enumerated ALL things in a register." Nothing was missed. Every deed was recorded.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">إِنَّ جَهَنَّمَ كَانَتْ مِرْصَادًا ۩ لِّلطَّاغِينَ مَآبًا ۩ لَّابِثِينَ فِيهَا أَحْقَابًا</div>
+        <div class="verse-translation">"Indeed Hellfire has been lying in wait — for the transgressors, a place of return. They remain in it for ages." — An-Naba 78:21-23 (Sahih International)</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">إِنَّهُمْ كَانُوا لَا يَرْجُونَ حِسَابًا ۩ وَكَذَّبُوا بِآيَاتِنَا كِذَّابًا</div>
+        <div class="verse-translation">"Indeed they did not expect any account — and they denied Our signs completely." — An-Naba 78:27-28 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:0 12px 14px;">
+      <div class="scene-header"><span class="scene-title">🎬 THE AMBUSH: HELLFIRE</span><span style="font-size:7px;color:#8878aa;">Click scene for verses</span></div>
+      <div class="scene-container"><canvas id="canvas-5"></canvas></div>
+      <div class="card-header" style="font-size:8px;">🎮 GAME: QUIZ — Hellfire (78:21-30)</div>
+      <p class="game-instructions">Answer all 4 questions about 78:21-30. Get 3/4 to claim your reward!</p>
+      <div id="quiz-5"></div>
+      <div class="game-feedback" id="feedback-5"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 6 ==================== -->
+  <div class="section-panel" id="section-panel-6">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble">
+        <strong>Ibn Ameen says:</strong><br/>
+        After Hellfire comes the beautiful contrast — Paradise! "Inna lil-muttaqeena mafaza!" For the God-fearing: SUCCESS! Gardens and grape vines. Companions of equal age. A cup overflowing. And the most peaceful part: no idle talk, no lies. Pure, absolute peace. Match the rewards!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 6 — GARDENS OF PARADISE (78:31-36)</div>
+      <div class="story-text">
+        <p><strong>"Inna lil-muttaqeena mafaza"</strong> — For the God-fearing is "mafaz" — triumph, escape, success! This word means not just a reward, but a rescue — they escaped the terrible fate of the transgressors.</p>
+        <p>What awaits them? <strong>Hadaa'iq</strong> — enclosed, beautiful gardens. <strong>A'nab</strong> — grape vines specifically, lush and fruitful. <strong>Kawa'ib atrab</strong> — companions perfectly matched in age and beauty. <strong>Ka'san dihaqan</strong> — a cup filled to the brim, overflowing with pure drink.</p>
+        <p>And the most beautiful description: <strong>"La yasma'una fiha laghwan wa la kidhdhaba"</strong> — they will hear NO idle talk and NO falsehood in Paradise. Imagine: never hearing an argument, a lie, gossip, or a cruel word — forever. That is the peace of Jannah. A "jaza'an min rabbika" — a gift from your Lord.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">إِنَّ لِلْمُتَّقِينَ مَفَازًا ۩ حَدَائِقَ وَأَعْنَابًا ۩ وَكَوَاعِبَ أَتْرَابًا ۩ وَكَأْسًا دِهَاقًا</div>
+        <div class="verse-translation">"Indeed for the righteous is success — gardens and grape vines, companions of equal age, and a full cup." — An-Naba 78:31-34 (Sahih International)</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">لَّا يَسْمَعُونَ فِيهَا لَغْوًا وَلَا كِذَّابًا ۩ جَزَاءً مِّن رَّبِّكَ عَطَاءً حِسَابًا</div>
+        <div class="verse-translation">"They will not hear therein ill speech or falsehood — a reward from your Lord, an ample gift." — An-Naba 78:35-36 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:0 12px 14px;">
+      <div class="scene-header"><span class="scene-title">🎬 GARDENS OF PARADISE</span><span style="font-size:7px;color:#8878aa;">Click scene for verses</span></div>
+      <div class="scene-container"><canvas id="canvas-6"></canvas></div>
+      <div class="card-header" style="font-size:8px;">🎮 GAME: DRAG & DROP — Match Paradise Rewards</div>
+      <p class="game-instructions">Drag each reward of the righteous (78:31-36) to its matching Quranic description.</p>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-6"></div>
+        <div class="drop-zones" id="drop-zones-6"></div>
+      </div>
+      <div class="game-feedback" id="feedback-6"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection6()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 7 ==================== -->
+  <div class="section-panel" id="section-panel-7">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble">
+        <strong>Ibn Ameen says:</strong><br/>
+        Verse 37 names Allah: "Rabb al-samawati wal-ard wa ma baynahuma ar-Rahman" — Lord of ALL between the heavens and earth — the Most Merciful. On that Day, Jibreel (the Spirit) and the angels stand in rows. No one speaks without permission. And only truth is spoken. The absolute awe of that Day!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 7 — STANDING BEFORE THE LORD (78:37-38)</div>
+      <div class="story-text">
+        <p>Verse 37 establishes Who is in charge that Day: <strong>"Rabb al-samawati wal-ard wa ma baynahuma ar-Rahman"</strong> — Lord of the heavens, the earth, and all that is between them — the Most Merciful. None has authority to speak to Him without His permission.</p>
+        <p>Then comes the awe-inspiring image: <strong>"Yawma yaqoomu ar-Ruh wal-malaa'ikatu saffan"</strong> — The Day when the Spirit and the angels stand in rows. Who is "ar-Ruh"? According to many scholars including Ibn Kathir, this is Jibreel (AS) — the greatest of all angels. He fills an entire row.</p>
+        <p>On that Day of absolute silence and awe: <strong>"La yatakallamoona illa man adhina lahu ar-Rahman wa qala sawaban"</strong> — None shall speak except one whom the Most Merciful has given permission — and he will say what is correct (sawab). Perfect order. Perfect justice. Perfect mercy.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">رَّبِّ السَّمَاوَاتِ وَالْأَرْضِ وَمَا بَيْنَهُمَا الرَّحْمَٰنِ ۖ لَا يَمْلِكُونَ مِنْهُ خِطَابًا</div>
+        <div class="verse-translation">"Lord of the heavens, the earth, and whatever is between them — the Most Merciful — none will have authority to speak to Him." — An-Naba 78:37 (Sahih International)</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">يَوْمَ يَقُومُ الرُّوحُ وَالْمَلَائِكَةُ صَفًّا ۖ لَّا يَتَكَلَّمُونَ إِلَّا مَنْ أَذِنَ لَهُ الرَّحْمَٰنُ وَقَالَ صَوَابًا</div>
+        <div class="verse-translation">"The Day when the Spirit and the angels stand in rows — none shall speak except one to whom the Most Merciful grants permission, and he says what is correct." — An-Naba 78:38 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:0 12px 14px;">
+      <div class="scene-header"><span class="scene-title">🎬 STANDING BEFORE THE LORD</span><span style="font-size:7px;color:#8878aa;">Click scene for verses</span></div>
+      <div class="scene-container"><canvas id="canvas-7"></canvas></div>
+      <div class="card-header" style="font-size:8px;">🎮 GAME: QUIZ — The Day of Rows (78:37-38)</div>
+      <p class="game-instructions">Answer all 3 questions about 78:37-38. Get 2/3 to claim your reward!</p>
+      <div id="quiz-7"></div>
+      <div class="game-feedback" id="feedback-7"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection7()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-7-btn" style="display:none" onclick="completeSection(7)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 8 ==================== -->
+  <div class="section-panel" id="section-panel-8">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble">
+        <strong>Ibn Ameen says:</strong><br/>
+        The final two verses are a personal call to YOU. "Yawm al-Haqq" — the Day of Truth. It is near. The path to your Lord is open RIGHT NOW. "Fa-man sha'a ittakhadha ila rabbihi ma'aba." And the disbeliever on that Day? "Ya laytani kuntu turaban!" — "I wish I were dust!" Don't wait. Choose now!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 8 — THE FINAL WARNING (78:39-40)</div>
+      <div class="story-text">
+        <p><strong>"Dhalika al-yawm al-haqq"</strong> — That is the Day of Truth. "Haqq" — the Real, the True, the Undeniable. After 38 verses of evidence (creation, signs, descriptions of the Day, Hellfire, Paradise), the surah reaches its conclusion: it's all real.</p>
+        <p><strong>"Fa-man sha'a ittakhadha ila Rabbihi ma'aba"</strong> — So whoever wills — let him take a path back to his Lord. The door is still open. The path exists. This moment — right now — is the opportunity. "Ma'aba" means a place to return to, a path home.</p>
+        <p>Then the warning: <strong>"Inna andharnakum 'adhaban qarib"</strong> — We have warned you of a punishment that is NEAR (qarib). Not far. Not later. Near. And the final image: every person sees what their hands sent forward. And the disbeliever — overcome with regret — will say: <strong>"Ya laytani kuntu turaban!"</strong> — "I WISH I were dust!" He will wish he had never existed rather than face this Day. May Allah protect us. Ameen.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">ذَٰلِكَ الْيَوْمُ الْحَقُّ ۖ فَمَن شَاءَ اتَّخَذَ إِلَىٰ رَبِّهِ مَآبًا</div>
+        <div class="verse-translation">"That is the Day of Truth. So let whoever wills take a path back to his Lord." — An-Naba 78:39 (Sahih International)</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">إِنَّا أَنذَرْنَاكُمْ عَذَابًا قَرِيبًا ۖ يَوْمَ يَنظُرُ الْمَرْءُ مَا قَدَّمَتْ يَدَاهُ وَيَقُولُ الْكَافِرُ يَا لَيْتَنِي كُنتُ تُرَابًا</div>
+        <div class="verse-translation">"We have warned you of a punishment that is near — the Day a man sees what his hands sent forth, and the disbeliever says: I wish I were dust!" — An-Naba 78:40 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:0 12px 14px;">
+      <div class="scene-header"><span class="scene-title">🎬 THE FINAL WARNING</span><span style="font-size:7px;color:#8878aa;">Click scene for verses</span></div>
+      <div class="scene-container"><canvas id="canvas-8"></canvas></div>
+      <div class="card-header" style="font-size:8px;">🎮 GAME: QUIZ — The Final Call (78:39-40)</div>
+      <p class="game-instructions">Answer all 3 questions about 78:39-40. Get 2/3 to complete Surah An-Naba!</p>
+      <div id="quiz-8"></div>
+      <div class="game-feedback" id="feedback-8"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection8()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-8-btn" style="display:none" onclick="completeSection(8)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+</div><!-- end section-view -->
+
+<!-- ===== VERSE POPUP ===== -->
+<div id="verse-popup">
+  <div class="vp-box">
+    <div id="vp-ref"></div>
+    <div id="vp-arabic"></div>
+    <div id="vp-eng"></div>
+    <div id="vp-note"></div>
+    <button id="vp-close" onclick="hideVersePopup()">✕ Close</button>
+  </div>
+</div>
+
+<!-- ===== REWARD OVERLAY ===== -->
+<div id="reward-overlay">
+  <div class="reward-box">
+    <span class="reward-icon" id="reward-icon">🏆</span>
+    <div class="reward-title" id="reward-title">LEVEL COMPLETE!</div>
+    <div class="reward-xp"   id="reward-xp">+0 XP</div>
+    <div class="reward-gems" id="reward-gems">+0 💎</div>
+    <div class="reward-msg"  id="reward-msg"></div>
+    <button class="reward-ok-btn" onclick="dismissReward()">▶ CONTINUE</button>
+  </div>
+</div>
+
+<script src="scenes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -167,6 +167,24 @@
   }
   .muhammad-portal:hover .portal-btn { background: #c03040; color: #fff; }
 
+  /* An-Naba — deep cosmic purple / amber theme */
+  .naba-portal {
+    background: linear-gradient(160deg, #080215 0%, #1a0a38 100%);
+    border-color: #5a20a0;
+    box-shadow: 0 0 20px #5a20a044, inset 0 0 40px #08021588;
+  }
+  .naba-portal:hover {
+    border-color: #8840d8;
+    box-shadow: 0 0 36px #8840d866;
+  }
+  .naba-portal .progress-bar { background: #8840d8; }
+  .naba-portal .portal-btn {
+    color: #8840d8;
+    border-color: #8840d8;
+    background: transparent;
+  }
+  .naba-portal:hover .portal-btn { background: #8840d8; color: #fff; }
+
   /* Al-Mulk — midnight navy / gold theme */
   .mulk-portal {
     background: linear-gradient(160deg, #030610 0%, #0a1428 100%);
@@ -245,6 +263,20 @@
       <div class="portal-separator"></div>
       <div class="portal-progress-label">YOUR PROGRESS</div>
       <div class="portal-progress" id="mulk-progress">
+        <span style="color:#888">Not started yet</span>
+      </div>
+      <div class="portal-btn">ENTER QUEST ▶</div>
+    </div>
+
+    <!-- AN-NABA PORTAL -->
+    <div class="portal naba-portal" onclick="window.location='naba/index.html'">
+      <div class="portal-icon">❓</div>
+      <div class="portal-title">SURAH AN-NABA</div>
+      <div class="portal-arabic">سورة النبأ</div>
+      <div class="portal-desc">The Great News — 40 Verses<br>8 Levels of cosmic truth</div>
+      <div class="portal-separator"></div>
+      <div class="portal-progress-label">YOUR PROGRESS</div>
+      <div class="portal-progress" id="naba-progress">
         <span style="color:#888">Not started yet</span>
       </div>
       <div class="portal-btn">ENTER QUEST ▶</div>
@@ -330,6 +362,7 @@
   renderProgress('imranQuestSave',     'im-progress',  10, 'imran');
   renderProgress('mulkQuestSave',      'mulk-progress', 8, 'mulk');
   renderProgress('muhammadQuestSave',  'muh-progress',  8, 'muhammad');
+  renderProgress('nabaQuestSave',      'naba-progress', 8, 'naba');
 </script>
 </body>
 </html>
