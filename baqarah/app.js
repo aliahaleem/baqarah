@@ -570,6 +570,103 @@ document.addEventListener('drop', e => {
   dragging = null;
 });
 
+// =============================================
+//  TOUCH DRAG & DROP — iOS / Android support
+//  Native drag events don't fire on touch screens.
+//  We simulate drag-drop with touchstart/move/end.
+// =============================================
+(function () {
+  let touchEl    = null; // the real drag-item being moved
+  let touchClone = null; // floating visual clone
+  let offX = 0, offY = 0;
+
+  function zoneAt(x, y) {
+    if (touchClone) touchClone.style.visibility = 'hidden';
+    const el = document.elementFromPoint(x, y);
+    if (touchClone) touchClone.style.visibility = '';
+    return el ? el.closest('.drop-zone') : null;
+  }
+  function poolOf(el) {
+    return document.getElementById(el.dataset.pool) ||
+           el.closest('.drag-pool');
+  }
+
+  document.addEventListener('touchstart', function (e) {
+    const target = e.target.closest('.drag-item');
+    if (!target) return;
+    e.preventDefault();
+
+    touchEl = target;
+    touchEl.classList.add('dragging');
+
+    const touch = e.touches[0];
+    const rect  = target.getBoundingClientRect();
+    offX = touch.clientX - rect.left;
+    offY = touch.clientY - rect.top;
+
+    // Build a clone that floats under the finger
+    touchClone = target.cloneNode(true);
+    const cs   = window.getComputedStyle(target);
+    Object.assign(touchClone.style, {
+      position:      'fixed',
+      zIndex:        '9999',
+      pointerEvents: 'none',
+      opacity:       '0.85',
+      width:         rect.width  + 'px',
+      minHeight:     rect.height + 'px',
+      left:          (touch.clientX - offX) + 'px',
+      top:           (touch.clientY - offY) + 'px',
+      margin:        '0',
+      background:    cs.background,
+      border:        cs.border,
+      padding:       cs.padding,
+      color:         cs.color,
+      fontSize:      cs.fontSize,
+      fontFamily:    cs.fontFamily,
+      lineHeight:    cs.lineHeight,
+      whiteSpace:    'pre-line',
+      boxSizing:     'border-box',
+      transform:     'scale(1.06)',
+    });
+    document.body.appendChild(touchClone);
+  }, { passive: false });
+
+  document.addEventListener('touchmove', function (e) {
+    if (!touchEl) return;
+    e.preventDefault();
+    const touch = e.touches[0];
+    touchClone.style.left = (touch.clientX - offX) + 'px';
+    touchClone.style.top  = (touch.clientY - offY) + 'px';
+
+    document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
+    const zone = zoneAt(touch.clientX, touch.clientY);
+    if (zone) zone.classList.add('drag-over');
+  }, { passive: false });
+
+  document.addEventListener('touchend', function (e) {
+    if (!touchEl) return;
+    const touch = e.changedTouches[0];
+    document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
+
+    const zone = zoneAt(touch.clientX, touch.clientY);
+    if (zone) {
+      // Swap out any existing item in the zone back to its pool
+      const existing = zone.querySelector('.drag-item');
+      if (existing && existing !== touchEl) {
+        existing.classList.remove('placed');
+        const p = poolOf(existing);
+        if (p) p.appendChild(existing);
+      }
+      touchEl.classList.add('placed');
+      zone.appendChild(touchEl);
+    }
+
+    touchEl.classList.remove('dragging');
+    touchEl = null;
+    if (touchClone) { touchClone.remove(); touchClone = null; }
+  }, { passive: false });
+}());
+
 function checkSection1() {
   const zones    = document.querySelectorAll('#drop-zones-1 .drop-zone');
   let correct    = 0;

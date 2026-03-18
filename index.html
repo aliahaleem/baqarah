@@ -45,7 +45,7 @@
   /* Portal grid */
   .portals {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 24px;
     margin-bottom: 32px;
   }
@@ -149,6 +149,24 @@
   }
   .imran-portal:hover .portal-btn { background: #8a5ad0; color: #fff; }
 
+  /* Muhammad — deep crimson theme */
+  .muhammad-portal {
+    background: linear-gradient(160deg, #1a0408 0%, #2a0e18 100%);
+    border-color: #8a2030;
+    box-shadow: 0 0 20px #8a203044, inset 0 0 40px #1a040888;
+  }
+  .muhammad-portal:hover {
+    border-color: #c03040;
+    box-shadow: 0 0 36px #c0304066;
+  }
+  .muhammad-portal .progress-bar { background: #c03040; }
+  .muhammad-portal .portal-btn {
+    color: #c03040;
+    border-color: #c03040;
+    background: transparent;
+  }
+  .muhammad-portal:hover .portal-btn { background: #c03040; color: #fff; }
+
   /* Footer note */
   .hub-footer {
     text-align: center;
@@ -195,6 +213,20 @@
       <div class="portal-separator"></div>
       <div class="portal-progress-label">YOUR PROGRESS</div>
       <div class="portal-progress" id="im-progress">
+        <span style="color:#888">Not started yet</span>
+      </div>
+      <div class="portal-btn">ENTER QUEST ▶</div>
+    </div>
+
+    <!-- MUHAMMAD PORTAL -->
+    <div class="portal muhammad-portal" onclick="window.location='muhammad/index.html'">
+      <div class="portal-icon">⚔️</div>
+      <div class="portal-title">SURAH MUHAMMAD</div>
+      <div class="portal-arabic">سورة محمد</div>
+      <div class="portal-desc">Muhammad — 38 Verses<br>8 Levels of knowledge</div>
+      <div class="portal-separator"></div>
+      <div class="portal-progress-label">YOUR PROGRESS</div>
+      <div class="portal-progress" id="muh-progress">
         <span style="color:#888">Not started yet</span>
       </div>
       <div class="portal-btn">ENTER QUEST ▶</div>
@@ -262,8 +294,9 @@
     } catch(e) {}
   }
 
-  renderProgress('baqarahQuestSave', 'bq-progress', 13, 'baqarah');
-  renderProgress('imranQuestSave',   'im-progress', 10, 'imran');
+  renderProgress('baqarahQuestSave',   'bq-progress',  13, 'baqarah');
+  renderProgress('imranQuestSave',     'im-progress',  10, 'imran');
+  renderProgress('muhammadQuestSave',  'muh-progress',  8, 'muhammad');
 </script>
 </body>
 </html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surah Muhammad Quest 🗡️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header id="game-header" style="display:none">
+  <div>
+    <div class="game-title">⚔️ SURAH MUHAMMAD QUEST</div>
+    <div class="header-explorer">Explorer: <span id="header-name">—</span></div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div>
+    <div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div>
+    <div class="stat-chip done-chip">✅ <span id="done-display">0</span>/8</div>
+    <button class="reset-btn" onclick="resetGame()">↺ Reset</button>
+    <a class="hub-btn" href="../index.html">🏠 Hub</a>
+  </div>
+</header>
+
+<!-- ===== INTRO ===== -->
+<div id="intro-screen">
+  <div class="intro-icon">⚔️</div>
+  <div class="intro-title">SURAH MUHAMMAD QUEST</div>
+  <div class="intro-arabic">سُوْرَةُ مُحَمَّد</div>
+  <div class="intro-subtitle">
+    8 Levels · Truth vs Falsehood · Rivers of Jannah<br/>
+    Support Allah · لا إله إلا الله
+  </div>
+  <div class="intro-form">
+    <input class="intro-input" id="explorer-name" type="text" placeholder="Enter your name..." maxlength="20"/>
+    <div id="name-error" style="color:#ff6666;font-size:8px;min-height:12px;"></div>
+    <button class="intro-btn" onclick="startGame()">▶ BEGIN QUEST</button>
+  </div>
+</div>
+
+<!-- ===== MAIN VIEW ===== -->
+<div id="main-view" style="display:none">
+<div class="container">
+
+  <div class="ibn-ameen-panel">
+    <div class="character-avatar">🧙‍♂️</div>
+    <div class="speech-bubble">
+      <strong>Ibn Ameen says:</strong><br/>
+      <span id="welcome-text">As-salamu alaykum, Explorer! Surah Muhammad — the ONLY Surah in the Quran named directly after the Prophet ﷺ — opens with a powerful contrast: deeds that crumble vs deeds that rise. 8 levels await. Support Allah, and He will support you!</span>
+    </div>
+  </div>
+
+  <h2 class="section-heading">⚔️ THE QUEST MAP</h2>
+  <div class="map-grid">
+    <div class="map-tile locked" id="tile-1">
+      <div class="tile-icon">⚖️</div>
+      <div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">Two Paths</div>
+      <div class="tile-verses">47:1-4</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+    <div class="map-tile locked" id="tile-2">
+      <div class="tile-icon">🌟</div>
+      <div class="tile-level">LEVEL 2</div>
+      <div class="tile-name">Support Allah</div>
+      <div class="tile-verses">47:7-8</div>
+      <div class="tile-status" id="status-2">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-3">
+      <div class="tile-icon">🏛️</div>
+      <div class="tile-level">LEVEL 3</div>
+      <div class="tile-name">History Lesson</div>
+      <div class="tile-verses">47:10-13</div>
+      <div class="tile-status" id="status-3">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-4">
+      <div class="tile-icon">🌊</div>
+      <div class="tile-level">LEVEL 4</div>
+      <div class="tile-name">Rivers of Jannah</div>
+      <div class="tile-verses">47:15</div>
+      <div class="tile-status" id="status-4">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-5">
+      <div class="tile-icon">✨</div>
+      <div class="tile-level">LEVEL 5</div>
+      <div class="tile-name">Know لا إله إلا الله</div>
+      <div class="tile-verses">47:19</div>
+      <div class="tile-status" id="status-5">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-6">
+      <div class="tile-icon">🔒</div>
+      <div class="tile-level">LEVEL 6</div>
+      <div class="tile-name">Locked Hearts</div>
+      <div class="tile-verses">47:24-33</div>
+      <div class="tile-status" id="status-6">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-7">
+      <div class="tile-icon">🎮</div>
+      <div class="tile-level">LEVEL 7</div>
+      <div class="tile-name">Dunya vs Akhirah</div>
+      <div class="tile-verses">47:36-37</div>
+      <div class="tile-status" id="status-7">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-8">
+      <div class="tile-icon">🤲</div>
+      <div class="tile-level">LEVEL 8</div>
+      <div class="tile-name">Spend for Allah</div>
+      <div class="tile-verses">47:38</div>
+      <div class="tile-status" id="status-8">🔒 LOCKED</div>
+    </div>
+  </div>
+
+  <!-- WORLD BUILDER -->
+  <h2 class="section-heading">🌍 YOUR IMAN WORLD</h2>
+  <div id="world-builder">
+    <div class="world-preview">
+      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Two Paths</div></div>
+      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Support</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">History</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Jannah</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Laa Ilaaha</div></div>
+      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Hearts</div></div>
+      <div class="world-chunk" id="chunk-7"><div class="chunk-emoji">⬛</div><div class="chunk-label">Dunya</div></div>
+      <div class="world-chunk" id="chunk-8"><div class="chunk-emoji">⬛</div><div class="chunk-label">Spend</div></div>
+    </div>
+  </div>
+
+  <div id="all-complete" class="card" style="display:none;text-align:center;padding:20px;">
+    <div style="font-size:40px;margin-bottom:10px;">🏆</div>
+    <div style="font-size:10px;color:#ffd700;margin-bottom:8px;">SURAH MUHAMMAD COMPLETE!</div>
+    <div style="font-family:Georgia,serif;font-size:12px;color:#ddd;line-height:1.9;">"If you support Allah, He will support you and make your feet firm." (47:7)<br/>MashAllah! You have truly explored this Surah!</div>
+  </div>
+
+</div><!-- /container -->
+</div><!-- /main-view -->
+
+<!-- ===== SECTION VIEW ===== -->
+<div id="section-view" style="display:none">
+<div class="container">
+  <div style="padding:8px 0 12px;">
+    <button class="back-btn" onclick="closeSection()">◀ Back to Map</button>
+  </div>
+
+  <!-- ============================================================
+       SECTION 1 — TWO PATHS (47:1-4) — QUIZ
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-1">
+    <div class="card">
+      <div class="card-header">⚖️ LEVEL 1 — TWO PATHS (47:1-4)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">⚖️ Scene: The Two Paths</span><span style="font-size:7px;color:#888;">Click on either side</span></div>
+        <canvas id="canvas-s1" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">Surah Muhammad opens with two groups. Left: those who follow <em>falsehood</em> — their deeds crumble like ashes. Right: those who follow <em>Truth</em> — their deeds rise and their life improves. Which group are you choosing today?</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 47:1-2 — Two Fates:</strong> The Surah begins with a powerful contrast. Those who disbelieve and block Allah's way — Allah makes their deeds go astray. Those who believe, do righteous deeds, and believe in what was revealed to Muhammad ﷺ — Allah removes their bad deeds and improves their state.</p>
+        <p><strong>Verse 47:3 — The Root Cause:</strong> "That is because those who disbelieve follow <em>falsehood</em> (al-batil), and those who believe follow <em>Truth</em> (al-haqq) from their Lord." The divide is not about wealth or nationality — it is about what you follow every single day.</p>
+        <p><strong>Verse 47:4 — Prisoners of War:</strong> This verse also addresses how to deal with enemies in battle — but the deeper message is that even in the hardest of battles, justice and mercy must remain. Eventually: peace, release, or ransom — not endless war.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">ذَٰلِكَ بِأَنَّ الَّذِينَ كَفَرُوا اتَّبَعُوا الْبَاطِلَ وَأَنَّ الَّذِينَ آمَنُوا اتَّبَعُوا الْحَقَّ مِن رَّبِّهِمْ</div>
+        <div class="verse-translation">"That is because those who disbelieve follow falsehood, and those who believe follow the truth from their Lord. Thus Allah presents to the people their comparisons." — Muhammad 47:3 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: QUIZ — TWO PATHS</div>
+      <div class="game-instructions">Answer all 5 questions about the opening of Surah Muhammad. You need 80% to pass!</div>
+      <div id="quiz-1"></div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 2 — SUPPORT ALLAH (47:7) — DRAG & DROP
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-2">
+    <div class="card">
+      <div class="card-header">🌟 LEVEL 2 — SUPPORT ALLAH (47:7-8)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🌟 Scene: Firm Feet</span><span style="font-size:7px;color:#888;">Click the scene</span></div>
+        <canvas id="canvas-s2" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">One of the greatest promises in the Quran: <em>"If you support Allah, He will support you and make your feet firm"</em> (47:7). See the figure? The ground shakes — cracks everywhere. But his feet don't move. Roots holding him. That's what thabaat (firmness) looks like from Allah. Match the groups to their outcomes!</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 47:7 — The Covenant of Support:</strong> "O you who have believed — if you support Allah, He will support you and make your feet firm." What does "supporting Allah" mean? It means following His commands, standing for truth, helping His deen, being honest when it's hard, and not giving up when tested. When you do this — Allah gives you <em>thabaat</em> — a firmness that even shaking ground cannot break.</p>
+        <p><strong>Verse 47:8 — The Other Side:</strong> "And those who disbelieve — destruction is for them. He has made their deeds worthless." The contrast is real. Two roads with two very different endings. The first step on the right road is: support Allah by living according to what He revealed.</p>
+        <p><strong>Verses 47:4-5 — Honoured After Death:</strong> Those who are killed in Allah's cause — Allah does NOT let their deeds go to waste. He guides them, improves their state, and admits them to Jannah. Death in Allah's cause is not a loss — it is the ultimate gain.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">يَا أَيُّهَا الَّذِينَ آمَنُوا إِن تَنصُرُوا اللَّهَ يَنصُرْكُمْ وَيُثَبِّتْ أَقْدَامَكُمْ</div>
+        <div class="verse-translation">"O you who have believed — if you support Allah, He will support you and make your feet firm." — Muhammad 47:7 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: MATCH THE OUTCOME</div>
+      <div class="game-instructions">Drag each group to their correct outcome according to Surah Muhammad.</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-2"></div>
+        <div class="drop-zones" id="drop-zones-2"></div>
+      </div>
+      <div class="game-feedback" id="feedback-2"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection2()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 3 — HISTORY LESSON (47:10-13) — STORY ORDER
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-3">
+    <div class="card">
+      <div class="card-header">🏛️ LEVEL 3 — HISTORY LESSON (47:10-13)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🏛️ Scene: Ancient Ruins</span><span style="font-size:7px;color:#888;">Click the ruins</span></div>
+        <canvas id="canvas-s3" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">Allah asks the most powerful question in verse 10: <em>"Have they not traveled through the earth — and SEEN what happened to those before them?"</em> Those ancient civilizations? They were STRONGER than us. More powerful. More built up. And STILL Allah destroyed them. Why? They rejected the Truth. History is a warning. Put the events in order!</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 47:10 — Travel and Reflect:</strong> "Have they not traveled through the earth and seen how was the end of those before them?" This is a Quranic command: go and look. Visit ruins. Read history. See what happened to the Pharaohs, to Aad, to Thamud. Allah preserved these ruins specifically as lessons for those who come after.</p>
+        <p><strong>Verse 47:10-11 — Stronger Nations Destroyed:</strong> Those earlier nations were stronger, had more wealth, and left greater marks on the earth. And still, Allah destroyed them completely. Not one helper came to their rescue. Because power without Allah is nothing.</p>
+        <p><strong>Verse 47:13 — The Prophet's Community:</strong> "And how many a city was stronger in power than your city which drove you out? We destroyed them — and there was no helper for them." A direct message to those who drove out the Prophet ﷺ: you are walking the exact same path as those destroyed civilizations. Wake up.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">أَفَلَمْ يَسِيرُوا فِي الْأَرْضِ فَيَنظُرُوا كَيْفَ كَانَ عَاقِبَةُ الَّذِينَ مِن قَبْلِهِمْ</div>
+        <div class="verse-translation">"Have they not traveled through the earth and seen how was the end of those before them? Allah destroyed them, and for the disbelievers is something comparable." — Muhammad 47:10 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: PUT IT IN ORDER!</div>
+      <div class="game-instructions">Use ↑ ↓ arrows to arrange the history events in the correct order.</div>
+      <div class="order-list" id="order-3"></div>
+      <div class="game-feedback" id="feedback-3"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection3()">✅ Check Order</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 4 — RIVERS OF JANNAH (47:15) — DRAG & DROP
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-4">
+    <div class="card">
+      <div class="card-header">🌊 LEVEL 4 — RIVERS OF JANNAH (47:15)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🌊 Scene: The 4 Rivers</span><span style="font-size:7px;color:#888;">Click any river</span></div>
+        <canvas id="canvas-s4" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">Verse 15 is one of the most beautiful descriptions of Jannah in the whole Quran! 4 rivers — each one more amazing than anything in this world. Water that <em>never</em> stales. Milk that <em>never</em> sours. Honey <em>always</em> pure. A drink of pure delight — no harm, no loss of mind. Match each river to its description!</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 47:15 — The Description of Jannah:</strong> Allah gives a detailed, sensory description of what the righteous will enjoy. Four rivers flow through Jannah — each one representing a perfected form of what exists (but is imperfect) in this world. Water goes stale here — in Jannah it stays perfect forever. Milk sours here — in Jannah its taste never changes.</p>
+        <p><strong>The 4th River — Pure Drink:</strong> This verse mentions rivers of a "drink delightful to those who drink." In this world, Allah made wine forbidden because it harms the mind and takes away reason. But in Jannah — the same drink exists in a pure, perfected form with only delight, no intoxication, no harm. SubhanAllah.</p>
+        <p><strong>The Contrast — Boiling Water:</strong> The verse ends with the contrast: those in the Fire are given boiling water that tears their intestines. Two realities. Two choices. One determined by what we chose in this short dunya life.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">مَثَلُ الْجَنَّةِ الَّتِي وُعِدَ الْمُتَّقُونَ ۖ فِيهَا أَنْهَارٌ مِّن مَّاءٍ غَيْرِ آسِنٍ وَأَنْهَارٌ مِّن لَّبَنٍ لَّمْ يَتَغَيَّرْ طَعْمُهُ</div>
+        <div class="verse-translation">"A description of Jannah promised to the righteous: rivers of water unaltered, rivers of milk of which the taste never changes, rivers of a drink delightful to those who drink, and rivers of purified honey — in it for them is every fruit and forgiveness from their Lord." — Muhammad 47:15 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: MATCH THE RIVERS</div>
+      <div class="game-instructions">Drag each Jannah river to its correct description from verse 47:15.</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-4"></div>
+        <div class="drop-zones" id="drop-zones-4"></div>
+      </div>
+      <div class="game-feedback" id="feedback-4"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection4()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 5 — LA ILAHA ILLALLAH (47:19) — QUIZ
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-5">
+    <div class="card">
+      <div class="card-header">✨ LEVEL 5 — KNOW لا إله إلا الله (47:19)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">✨ Scene: The Stars of Tawhid</span><span style="font-size:7px;color:#888;">Click the sky</span></div>
+        <canvas id="canvas-s5" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">Verse 19 might be the most important verse in the entire Surah. The FIRST word is: <strong>فَاعْلَمْ — KNOW.</strong> Before you do anything — <em>know</em> that there is no god except Allah. Scholars say this is the foundation: <em>al-ilm qabla al-amal</em> — knowledge before action. You cannot truly worship what you don't know!</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 47:19 — Knowledge First:</strong> "So KNOW (fa'lam) that there is no deity except Allah — and seek forgiveness for your sin and for the believing men and women." This verse is remarkable because Allah commands KNOWLEDGE before any action. The greatest scholar of his time, Imam al-Bukhari, named an entire chapter of his book: "Knowledge comes before speech and action." This verse is his proof.</p>
+        <p><strong>What لا إله إلا الله Really Means:</strong> It is not just a phrase to say. It means: the ONLY one worthy of complete obedience, love, fear, hope, and worship is Allah. Not money. Not fame. Not people's approval. Not your own desires. ONLY Allah. When you truly <em>know</em> this — it changes how you make every decision.</p>
+        <p><strong>Seek Forgiveness — Then and Now:</strong> After the knowledge — Allah commands seeking forgiveness. For yourself AND for the entire believing community (men and women). Even the Prophet ﷺ was commanded to seek forgiveness — showing that humility and istighfar are the natural response to knowing how great Allah truly is.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">فَاعْلَمْ أَنَّهُ لَا إِلَٰهَ إِلَّا اللَّهُ وَاسْتَغْفِرْ لِذَنبِكَ وَلِلْمُؤْمِنِينَ وَالْمُؤْمِنَاتِ</div>
+        <div class="verse-translation">"So know that there is no deity except Allah — and seek forgiveness for your sin and for the believing men and women." — Muhammad 47:19 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: QUIZ — KNOWLEDGE FIRST</div>
+      <div class="game-instructions">Answer all 5 questions about verse 47:19 and the meaning of لا إله إلا الله.</div>
+      <div id="quiz-5"></div>
+      <div class="game-feedback" id="feedback-5"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 6 — LOCKED HEARTS / HYPOCRITES (47:24-33) — QUIZ
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-6">
+    <div class="card">
+      <div class="card-header">🔒 LEVEL 6 — LOCKED HEARTS (47:24-33)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🔒 Scene: Quran vs Locked Heart</span><span style="font-size:7px;color:#888;">Click either side</span></div>
+        <canvas id="canvas-s6" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">Verse 24 asks the most piercing question in the whole Surah: <em>"Do they not REFLECT on the Quran? Or are there LOCKS upon their hearts?"</em> The hypocrites heard the same Quran as the Companions RA — word for word. One group's hearts opened. The other's locked shut. What's the difference? <em>Sincerity</em>. Reading to submit vs reading to find excuses.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 47:20-21 — The Hypocrite's Fear:</strong> When a verse was revealed commanding the believers to fight, the hypocrites would look at the Prophet ﷺ with the look of someone about to faint from death — their fear of fighting was so overwhelming that their hypocrisy showed on their faces. They said "We believe" — but their actions revealed the truth of their hearts.</p>
+        <p><strong>Verse 47:24 — The Locked Heart:</strong> "Do they not reflect on the Quran? Or are there locks upon their hearts?" What causes a heart to lock? The scholars say: arrogance, love of dunya, following desires, and not sincerely asking Allah to open it. The solution? Tadabbur — deep reflection. Sit with a verse. Ask: what does this require of me? Let it change you.</p>
+        <p><strong>Verse 47:29 — Their Hidden Hatred:</strong> "Did those in whose hearts is disease think that Allah would not expose their hatred?" Allah sees and exposes what hearts try to hide. And verse 47:33 gives the command that protects all deeds: "Obey Allah and obey the Messenger — do not invalidate your deeds."</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">أَفَلَا يَتَدَبَّرُونَ الْقُرْآنَ أَمْ عَلَىٰ قُلُوبٍ أَقْفَالُهَا</div>
+        <div class="verse-translation">"Do they not then reflect upon the Quran? Or are there locks upon their hearts?" — Muhammad 47:24 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: QUIZ — LOCKED HEARTS</div>
+      <div class="game-instructions">Answer all 5 questions about hypocrisy and the locked heart. You need 80% to pass!</div>
+      <div id="quiz-6"></div>
+      <div class="game-feedback" id="feedback-6"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 7 — DUNYA VS AKHIRAH (47:36-37) — DRAG & DROP
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-7">
+    <div class="card">
+      <div class="card-header">🎮 LEVEL 7 — DUNYA VS AKHIRAH (47:36-37)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎮 Scene: Two Worlds</span><span style="font-size:7px;color:#888;">Click either side</span></div>
+        <canvas id="canvas-s7" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">Verse 36 says the dunya is <em>"only play and amusement."</em> Not that it's bad — it's saying it's SHORT. Like a Minecraft game that ends. When it ends, what did you build with it? The left side is glittery and then goes gray. The right side starts simple — but its light grows and grows. Which side are you building on?</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 47:36 — The Dunya is Short:</strong> "The life of this world is only play and amusement (la'ibun wa lahwun)." This is not pessimism — it is perspective. A game has rules, a time limit, and a result. The question is not "don't play" — the question is: are you playing with a winning strategy? Belief and taqwa are the winning strategy.</p>
+        <p><strong>Verse 47:36 — He Does NOT Ask for Your Wealth:</strong> "If you believe and have taqwa, He will give you your rewards and will not ask you for your wealth." SubhanAllah — Allah doesn't demand that you give everything. He asks for iman and taqwa. And for that, He gives the full, complete reward of akhirah.</p>
+        <p><strong>Verse 47:37 — The Test of Wealth:</strong> "If He were to ask you for it and press you, you would be stingy — and it would expose the miserliness in your heart." Wealth is a test of character. Asking for sadaqah shows what's in the heart. Generosity for Allah's sake is a sign of true iman.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">إِنَّمَا الْحَيَاةُ الدُّنْيَا لَعِبٌ وَلَهْوٌ ۚ وَإِن تُؤْمِنُوا وَتَتَّقُوا يُؤْتِكُمْ أُجُورَكُمْ</div>
+        <div class="verse-translation">"The life of this world is only play and amusement — and if you believe and have taqwa, He will give you your rewards and will not ask you for your wealth." — Muhammad 47:36 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: MATCH DUNYA &amp; AKHIRAH</div>
+      <div class="game-instructions">Drag each item to its correct description from Surah Muhammad 47:36-38.</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-7"></div>
+        <div class="drop-zones" id="drop-zones-7"></div>
+      </div>
+      <div class="game-feedback" id="feedback-7"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection7()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-7-btn" style="display:none" onclick="completeSection(7)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 8 — SPEND IN ALLAH'S WAY (47:38) — STORY ORDER
+       ============================================================ -->
+  <div class="section-panel" id="section-panel-8">
+    <div class="card">
+      <div class="card-header">🤲 LEVEL 8 — SPEND FOR ALLAH (47:38)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🤲 Scene: The Two Hands</span><span style="font-size:7px;color:#888;">Click the scene</span></div>
+        <canvas id="canvas-s8" width="560" height="220"></canvas>
+      </div>
+      <div class="ibn-ameen-panel" style="margin:0;border-top:none;border-left:none;border-right:none;">
+        <div class="character-avatar" style="font-size:28px;">🧙‍♂️</div>
+        <div class="speech-bubble">The Surah ends with the most powerful logic of sadaqah: when you give for Allah's sake — the reward goes to YOUR akhirah. You are giving to yourself! When you withhold — you are only harming yourself. And the closing warning: <em>"If you turn away, He will replace you with another people who will not be like you."</em> May Allah never replace us! Ameen.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">📖 THE STORY</div>
+      <div class="story-text">
+        <p><strong>Verse 47:38 — The Invitation to Spend:</strong> "You are those invited (tud'awna) to spend in the cause of Allah — but among you are those who withhold." Allah frames it as an INVITATION. Not a command given to strangers — but a call given to beloved believers. Being called to spend is itself an honour.</p>
+        <p><strong>The Logic of Generosity:</strong> "Whoever withholds only withholds against himself." The money stays in dunya — temporary, eventually gone. The reward from sadaqah goes to akhirah — eternal, always there. When you see it this way, withholding makes no sense at all.</p>
+        <p><strong>Allah is Al-Ghani — The Rich:</strong> "Allah is the Free of need (Al-Ghani), while you are the needy (al-fuqara)." This is a reminder of the true relationship: Allah needs NOTHING from us. We need everything from Him. Every breath, every heartbeat, every moment of wellbeing — all from Him. And He still asks us to spend — not because He needs it — but because WE benefit from the act of giving.</p>
+        <p><strong>The Final Warning:</strong> "And if you turn away, He will replace you with another people — who will not be like you." This verse means: the role of carrying Islam and supporting it has been given to this Ummah. If we fail this trust, Allah can raise up others. May Allah make us worthy of this honour. Ameen.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">هَا أَنتُمْ هَٰؤُلَاءِ تُدْعَوْنَ لِتُنفِقُوا فِي سَبِيلِ اللَّهِ فَمِنكُم مَّن يَبْخَلُ ۖ وَمَن يَبْخَلْ فَإِنَّمَا يَبْخَلُ عَن نَّفْسِهِ ۚ وَاللَّهُ الْغَنِيُّ وَأَنتُمُ الْفُقَرَاءُ</div>
+        <div class="verse-translation">"You are those invited to spend in the cause of Allah — but among you are those who withhold. And whoever withholds only withholds against himself. Allah is the Free of need (Al-Ghani) while you are the needy." — Muhammad 47:38 (Sahih International)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">🎮 GAME: ORDER THE STORY OF SPENDING</div>
+      <div class="game-instructions">Use ↑ ↓ to arrange the 6 events of "Spend in Allah's Way" in the correct order.</div>
+      <div class="order-list" id="order-8"></div>
+      <div class="game-feedback" id="feedback-8"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection8()">✅ Check Order</button>
+        <button class="action-btn gold" id="complete-8-btn" style="display:none" onclick="completeSection(8)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+</div><!-- /container -->
+</div><!-- /section-view -->
+
+<!-- ===== VERSE POPUP ===== -->
+<div id="verse-popup">
+  <div class="vp-box">
+    <div id="vp-ref"></div>
+    <div id="vp-arabic"></div>
+    <div id="vp-eng"></div>
+    <div id="vp-note"></div>
+    <button id="vp-close" onclick="hideVersePopup()">✕ Close</button>
+  </div>
+</div>
+
+<!-- ===== REWARD OVERLAY ===== -->
+<div id="reward-overlay">
+  <div class="reward-box">
+    <span class="reward-icon" id="reward-icon">🏆</span>
+    <div class="reward-title" id="reward-title">LEVEL COMPLETE!</div>
+    <div class="reward-xp"   id="reward-xp">+100 XP</div>
+    <div class="reward-gems" id="reward-gems">+4 💎</div>
+    <div class="reward-msg"  id="reward-msg"></div>
+    <button class="reward-ok-btn" onclick="dismissReward()">✅ Awesome! Continue</button>
+  </div>
+</div>
+
+<script src="scenes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
