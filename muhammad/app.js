@@ -45,12 +45,12 @@ const S1_QUIZ = [
   { q: 'What does Allah do for the believers who do righteous deeds? (47:2)',
     opts: ['Gives them wealth right away', 'Removes their bad deeds and improves their condition', 'Records every deed twice', 'Shows their deeds to everyone'],
     correct: 1 },
-  { q: 'What is the powerful promise of 47:7 — one of the greatest in the Quran?',
-    opts: ['"He will give you Jannah immediately"', '"If you support Allah, He will support you and make your feet firm"', '"He will remove all hardships"', '"He will never test you again"'],
+  { q: 'According to 47:3 — believers follow the Truth (al-haqq). What do DISBELIEVERS follow?',
+    opts: ['Their scholars\' opinions', 'Falsehood (al-batil)', 'Their cultural traditions', 'Their own reasoning only'],
     correct: 1 },
-  { q: 'Why are the disbelievers\' deeds made worthless according to 47:28?',
-    opts: ['They did not pray enough', 'They followed what angers Allah and disliked His pleasure', 'They did not give enough charity', 'They were born into disbelief'],
-    correct: 1 },
+  { q: 'What does 47:4 say should happen to prisoners of war AFTER they are subdued in battle?',
+    opts: ['Keep them as slaves permanently', 'Execute all of them', 'Either free them as a favour OR let them ransom themselves', 'Banish them from the land'],
+    correct: 2 },
 ];
 
 // S2: DRAG & DROP — Support Allah (outcomes)
