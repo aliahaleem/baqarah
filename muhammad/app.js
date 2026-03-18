@@ -10,7 +10,7 @@ let state = {
   xp: 0, gems: 0,
   completed: [],
   s1Answers: {}, s1Checked: false,
-  s2Checked: false,
+  s2Checked: false, s2DdChecked: false, s2Answers: {}, s2QuizChecked: false,
   s3Order: [],   s3Checked: false,
   s4Checked: false,
   s5Answers: {}, s5Checked: false,
@@ -51,6 +51,16 @@ const S1_QUIZ = [
   { q: 'What does 47:4 say should happen to prisoners of war AFTER they are subdued in battle?',
     opts: ['Keep them as slaves permanently', 'Execute all of them', 'Either free them as a favour OR let them ransom themselves', 'Banish them from the land'],
     correct: 2 },
+];
+
+// S2 BONUS QUIZ — 47:7-8 (shown after drag & drop)
+const S2_BONUS_QUIZ = [
+  { q: 'What is the powerful promise of 47:7 — one of the greatest in the Quran?',
+    opts: ['"He will give you Jannah immediately"', '"If you support Allah, He will support you and make your feet firm"', '"He will remove all hardships"', '"He will never test you again"'],
+    correct: 1 },
+  { q: 'What happens to the deeds of those who DISBELIEVE according to 47:8?',
+    opts: ['Recorded and judged on the Day of Judgement', 'Destruction is their lot and He made their deeds worthless', 'Given back to them in full', 'Transferred to their family'],
+    correct: 1 },
 ];
 
 // S2: DRAG & DROP — Support Allah (outcomes)
@@ -245,8 +255,12 @@ function _renderDragDrop(n, items, zones) {
     const el = document.createElement('div'); el.className = 'drop-zone'; el.dataset.zoneId = zone.id;
     el.innerHTML = `<span class="drop-zone-desc">${zone.desc}</span>`; zonesEl.appendChild(el);
   });
-  if (state.completed.includes(n) || state[`s${n}Checked`])
-    document.getElementById(`complete-${n}-btn`).style.display = 'inline-block';
+  const alreadyDone = state.completed.includes(n) || state[`s${n}Checked`];
+  // Section 2 needs both sub-checks
+  const showRewardBtn = n === 2
+    ? (state.s2DdChecked && state.s2QuizChecked) || state.completed.includes(2)
+    : alreadyDone;
+  if (showRewardBtn) document.getElementById(`complete-${n}-btn`).style.display = 'inline-block';
 }
 function _checkDragDrop(n, zones) {
   const dropZones = document.querySelectorAll(`#drop-zones-${n} .drop-zone`);
@@ -321,8 +335,84 @@ function _checkStoryOrder(n, data) {
 // ---- SECTION WRAPPERS ----
 function renderSection1Game() { _renderQuiz(1, S1_QUIZ); }
 function checkSection1()      { _checkQuiz(1, S1_QUIZ); }
-function renderSection2Game() { _renderDragDrop(2, S2_ITEMS, S2_ZONES); }
-function checkSection2()      { _checkDragDrop(2, S2_ZONES); }
+function renderSection2Game() {
+  _renderDragDrop(2, S2_ITEMS, S2_ZONES);
+  _renderS2BonusQuiz();
+}
+function _selectS2Bonus(qi, oi) {
+  if (state.s2QuizChecked) return;
+  document.querySelectorAll(`[data-section="2b"][data-qi="${qi}"]`).forEach(b => b.classList.remove('selected'));
+  const btn = document.querySelector(`[data-section="2b"][data-qi="${qi}"][data-oi="${oi}"]`);
+  if (btn) btn.classList.add('selected');
+  if (!state.s2Answers) state.s2Answers = {};
+  state.s2Answers[qi] = oi; saveProgress();
+}
+function _renderS2BonusQuiz() {
+  const c = document.getElementById('quiz-2b'); if (!c) return; c.innerHTML = '';
+  S2_BONUS_QUIZ.forEach((q, qi) => {
+    const qEl = document.createElement('div'); qEl.className = 'quiz-question';
+    qEl.innerHTML = `<div class="question-text"><span class="q-num">Q${qi+1}.</span>${q.q}</div><div class="options-grid" id="opts-2b-${qi}"></div>`;
+    c.appendChild(qEl);
+    q.opts.forEach((opt, oi) => {
+      const btn = document.createElement('button'); btn.className = 'option-btn';
+      btn.dataset.qi = qi; btn.dataset.oi = oi; btn.dataset.section = '2b';
+      btn.textContent = opt; btn.onclick = () => _selectS2Bonus(qi, oi);
+      qEl.querySelector(`#opts-2b-${qi}`).appendChild(btn);
+    });
+  });
+  const ans = state.s2Answers || {};
+  Object.entries(ans).forEach(([qi, oi]) => {
+    const btn = document.querySelector(`[data-section="2b"][data-qi="${qi}"][data-oi="${oi}"]`);
+    if (btn) btn.classList.add('selected');
+  });
+  if (state.s2Checked) document.getElementById('complete-2-btn').style.display = 'inline-block';
+}
+function checkSection2() {
+  // Check D&D and track its result
+  const dropZones = document.querySelectorAll('#drop-zones-2 .drop-zone');
+  let ddCorrect = 0;
+  dropZones.forEach(zone => {
+    zone.classList.remove('correct', 'incorrect');
+    const item = zone.querySelector('.drag-item');
+    if (item && item.dataset.zone === zone.dataset.zoneId) { zone.classList.add('correct'); ddCorrect++; }
+    else if (item) zone.classList.add('incorrect');
+  });
+  const ddFb = document.getElementById('feedback-2');
+  if (ddCorrect === S2_ZONES.length) {
+    ddFb.textContent = `🏆 Perfect! All ${S2_ZONES.length} matched! MashAllah!`; ddFb.className = 'game-feedback success';
+    state.s2DdChecked = true; saveProgress();
+  } else if (ddCorrect >= S2_ZONES.length - 1) {
+    ddFb.textContent = `✅ ${ddCorrect}/${S2_ZONES.length} — so close! Fix the red one.`; ddFb.className = 'game-feedback partial';
+  } else {
+    ddFb.textContent = `❌ ${ddCorrect}/${S2_ZONES.length} — re-read the story and try again.`; ddFb.className = 'game-feedback error';
+  }
+  // Also check bonus quiz
+  const ans = state.s2Answers || {};
+  if (Object.keys(ans).length < S2_BONUS_QUIZ.length) {
+    document.getElementById('feedback-2b').textContent = '⚠️ Please answer both reflection questions below too!';
+    document.getElementById('feedback-2b').className = 'game-feedback partial'; return;
+  }
+  let correct = 0;
+  S2_BONUS_QUIZ.forEach((q, qi) => {
+    const sel = ans[qi];
+    document.querySelectorAll(`[data-section="2b"][data-qi="${qi}"]`).forEach((btn, oi) => {
+      btn.disabled = true; btn.classList.remove('selected');
+      if (oi === q.correct)   btn.classList.add('correct');
+      else if (oi === sel)    btn.classList.add('incorrect');
+    });
+    if (sel === q.correct) correct++;
+  });
+  const fb = document.getElementById('feedback-2b');
+  if (correct === S2_BONUS_QUIZ.length) {
+    fb.textContent = `✅ ${correct}/${S2_BONUS_QUIZ.length} — Spot on!`; fb.className = 'game-feedback success';
+    state.s2QuizChecked = true; saveProgress();
+    if (state.s2DdChecked)
+      document.getElementById('complete-2-btn').style.display = 'inline-block';
+  } else {
+    fb.textContent = `❌ ${correct}/${S2_BONUS_QUIZ.length} — re-read and try again.`; fb.className = 'game-feedback error';
+    state.s2Answers = {}; setTimeout(_renderS2BonusQuiz, 2500);
+  }
+}
 function renderSection3Game() { _renderStoryOrder(3, S3_EVENTS_CORRECT); }
 function checkSection3()      { _checkStoryOrder(3, S3_EVENTS_CORRECT); }
 function renderSection4Game() { _renderDragDrop(4, S4_ITEMS, S4_ZONES); }
