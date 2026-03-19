@@ -10,33 +10,41 @@ const VD_ahad={ref:'Al-Ikhlas 112:1',arabic:'قُلْ هُوَ اللَّهُ أ
 const VD_samad={ref:'Al-Ikhlas 112:2',arabic:'اللَّهُ الصَّمَدُ',english:'"Allah — the Everlasting Refuge." (112:2)',note:'Al-Samad: everything depends on Him, He depends on nothing.'};
 const VD_none={ref:'Al-Ikhlas 112:3-4',arabic:'لَمْ يَلِدْ وَلَمْ يُولَدْ ۩ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ',english:'"He neither begets nor was He born. And none is equal." (112:3-4)',note:'Refutes: children of God. Refutes: God being born. Nothing equals Him.'};
 
-/* S1 — Word by Word canvas */
+/* S1 — Word by Word canvas: clean radiant scene, no word cards */
 class S1 extends BS{constructor(){super('canvas-1');}start(){
   if(!this.ctx)return;
   this.canvas.onclick=()=>showVersePopup(VD_wbw);
   const ctx=this.ctx;
-  const words=[
-    {ar:'قُلْ',en:'Say'},{ar:'هُوَ',en:'He'},{ar:'اللَّهُ',en:'Allah'},{ar:'أَحَدٌ',en:'One'},
-    {ar:'الصَّمَدُ',en:'Refuge'},{ar:'يَلِدْ',en:'beget'},{ar:'يُولَدْ',en:'born'},{ar:'كُفُوًا',en:'equal'},
-  ];
   const draw=()=>{
     this.t++;this.raf=requestAnimationFrame(draw);
-    ctx.fillStyle='#0c0c1e';ctx.fillRect(0,0,CW,CH);
-    const rg=ctx.createRadialGradient(CW/2,CH/2,10,CW/2,CH/2,120);
-    rg.addColorStop(0,'rgba(220,210,130,0.15)');rg.addColorStop(1,'transparent');
-    ctx.fillStyle=rg;ctx.fillRect(0,0,CW,CH);
-    /* Floating word cards */
     const t2=this.t;
-    words.forEach((w,i)=>{
-      const col=i%4,row=Math.floor(i/4);
-      const bx=20+col*135,by=40+row*80+Math.sin(t2*0.04+i)*5;
-      ctx.fillStyle='rgba(255,245,180,0.08)';ctx.strokeStyle='rgba(200,180,100,0.35)';
-      ctx.lineWidth=1;ctx.beginPath();ctx.roundRect?ctx.roundRect(bx,by,115,65,4):ctx.rect(bx,by,115,65);ctx.fill();ctx.stroke();
-      ctx.fillStyle='#e8e0a0';ctx.font='16px serif';ctx.textAlign='center';ctx.fillText(w.ar,bx+57,by+28);
-      ctx.fillStyle='#c0b060';ctx.font='5px "Press Start 2P",monospace';ctx.fillText(w.en,bx+57,by+52);
-      ctx.textAlign='left';
-    });
-    _lbl(ctx,'CLICK: Full Al-Ikhlas Word by Word','#fff8f0');
+    ctx.fillStyle='#060610';ctx.fillRect(0,0,CW,CH);
+    /* Pulsing radiant core */
+    const pulse=0.18+Math.sin(t2*0.03)*0.06;
+    const rg=ctx.createRadialGradient(CW/2,CH*0.52,4,CW/2,CH*0.52,90+Math.sin(t2*0.02)*8);
+    rg.addColorStop(0,`rgba(240,225,150,${pulse*1.8})`);
+    rg.addColorStop(0.45,`rgba(210,190,100,${pulse*0.7})`);
+    rg.addColorStop(1,'transparent');
+    ctx.fillStyle=rg;ctx.fillRect(0,0,CW,CH);
+    /* Rotating rays */
+    for(let i=0;i<8;i++){
+      const a=(i/8)*Math.PI*2+t2*0.004;
+      const len=55+Math.sin(t2*0.05+i)*10;
+      ctx.strokeStyle=`rgba(240,225,130,${0.12+Math.sin(t2*0.03+i)*0.04})`;
+      ctx.lineWidth=2;ctx.beginPath();
+      ctx.moveTo(CW/2,CH*0.52);
+      ctx.lineTo(CW/2+Math.cos(a)*len,CH*0.52+Math.sin(a)*len);
+      ctx.stroke();
+    }
+    /* Central Arabic word */
+    ctx.fillStyle=`rgba(240,228,160,${0.85+Math.sin(t2*0.04)*0.1})`;
+    ctx.font='28px serif';ctx.textAlign='center';
+    ctx.fillText('اللَّهُ أَحَدٌ',CW/2,CH*0.56);
+    ctx.fillStyle='rgba(200,185,120,0.6)';
+    ctx.font='5px "Press Start 2P",monospace';
+    ctx.fillText('"Allah — One." · Tap cards below to learn each word',CW/2,CH-10);
+    ctx.textAlign='left';
+    _lbl(ctx,'CLICK: Full Al-Ikhlas 112:1-4','#fff8f0');
   };draw();
 }}
 

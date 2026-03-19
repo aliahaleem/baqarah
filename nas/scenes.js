@@ -11,42 +11,52 @@ const VD_s3={ref:'An-Nas 114:4-5',arabic:'مِن شَرِّ الْوَسْوَا
 const VD_s4={ref:'An-Nas 114:5-6',arabic:'الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ۩ مِنَ الْجِنَّةِ وَالنَّاسِ',english:'"Who whispers into the chests of mankind — from jinn and men." (114:5-6)',note:'The heart is the battlefield. Dhikr is your shield!'};
 const VD_s5={ref:'An-Nas 114:1 & Al-Fatihah 1:1',arabic:'قُلْ أَعُوذُ بِرَبِّ النَّاسِ',english:'"Say: I seek refuge in the Lord of mankind." (114:1)',note:'Quran begins: seek guidance. Quran ends: seek protection. SubhanAllah!'};
 
-/* S1 — Word by Word canvas */
+/* S1 — Word by Word canvas: clean people + shield scene, no word cards */
 class S1 extends BS{constructor(){super('canvas-1');}start(){
   if(!this.ctx)return;
   this.canvas.onclick=()=>showVersePopup(VD_wbw);
   const ctx=this.ctx;
-  const words=[
-    {ar:'رَبِّ',en:'Lord of'},{ar:'مَلِكِ',en:'King of'},
-    {ar:'إِلَٰهِ',en:'God of'},{ar:'النَّاسِ',en:'mankind'},
-    {ar:'الْوَسْوَاسِ',en:'whisperer'},{ar:'الْخَنَّاسِ',en:'withdrawer'},
-    {ar:'صُدُورِ',en:'chests'},{ar:'الْجِنَّةِ',en:'Jinn'},
-  ];
+  const skinTones=['#e8c090','#c09060','#f0d0a0','#b08040','#d0a070'];
   const draw=()=>{
     this.t++;this.raf=requestAnimationFrame(draw);
-    ctx.fillStyle='#100820';ctx.fillRect(0,0,CW,CH);
-    /* Purple radiance */
-    const rg=ctx.createRadialGradient(CW/2,CH/2,10,CW/2,CH/2,110);
-    rg.addColorStop(0,'rgba(160,100,240,0.15)');rg.addColorStop(1,'transparent');
+    const t2=this.t;
+    ctx.fillStyle='#080318';ctx.fillRect(0,0,CW,CH);
+    /* Soft purple glow behind crowd */
+    const rg=ctx.createRadialGradient(CW/2,CH*0.65,5,CW/2,CH*0.65,130);
+    rg.addColorStop(0,`rgba(140,90,220,${0.18+Math.sin(t2*0.025)*0.06})`);
+    rg.addColorStop(1,'transparent');
     ctx.fillStyle=rg;ctx.fillRect(0,0,CW,CH);
-    /* Floating people at bottom */
-    const cols=['#e8c090','#c09060','#f0d0a0','#b08040'];
-    for(let i=0;i<8;i++){
-      const x=30+i*65,y=CH*0.72;const c=cols[i%4];
-      ctx.fillStyle=c;ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fill();
-      ctx.fillRect(x-4,y+5,8,14);
-    }
-    /* Word cards */
-    words.forEach((w,i)=>{
-      const col=i%4,row=Math.floor(i/4);
-      const bx=18+col*135,by=30+row*85+Math.sin(this.t*0.04+i)*4;
-      ctx.fillStyle='rgba(180,120,255,0.08)';ctx.strokeStyle='rgba(140,80,220,0.4)';
-      ctx.lineWidth=1;ctx.beginPath();ctx.roundRect?ctx.roundRect(bx,by,118,65,4):ctx.rect(bx,by,118,65);ctx.fill();ctx.stroke();
-      ctx.fillStyle='#d0a0f8';ctx.font='15px serif';ctx.textAlign='center';ctx.fillText(w.ar,bx+59,by+28);
-      ctx.fillStyle='#9060c0';ctx.font='4px "Press Start 2P",monospace';ctx.fillText(w.en,bx+59,by+50);
-      ctx.textAlign='left';
+    /* Stars */
+    [[55,20],[140,12],[250,30],[340,16],[460,25],[510,40],[75,45],[390,35],[180,50]].forEach(([x,y],i)=>{
+      const twinkle=0.4+Math.sin(t2*0.05+i)*0.25;
+      ctx.fillStyle=`rgba(220,200,255,${twinkle})`;
+      ctx.beginPath();ctx.arc(x,y,0.8,0,Math.PI*2);ctx.fill();
     });
-    _lbl(ctx,'CLICK: Full An-Nas Word by Word','#f8f0ff');
+    /* People crowd — spread across the full width */
+    const count=11;
+    for(let i=0;i<count;i++){
+      const x=28+i*(CW-56)/(count-1);
+      const bobY=CH*0.62+Math.sin(t2*0.04+i*0.7)*2;
+      const sk=skinTones[i%5];
+      /* body */
+      ctx.fillStyle=sk;
+      ctx.beginPath();ctx.arc(x,bobY,7,0,Math.PI*2);ctx.fill();
+      ctx.fillRect(x-5,bobY+7,10,16);
+    }
+    /* Protection shield arc above crowd */
+    const shieldAlpha=0.12+Math.sin(t2*0.02)*0.04;
+    const sg=ctx.createRadialGradient(CW/2,CH*0.7,60,CW/2,CH*0.7,160);
+    sg.addColorStop(0,'transparent');
+    sg.addColorStop(0.85,`rgba(180,130,255,${shieldAlpha})`);
+    sg.addColorStop(1,'transparent');
+    ctx.fillStyle=sg;ctx.fillRect(0,0,CW,CH);
+    /* Central Arabic */
+    ctx.fillStyle='rgba(208,165,248,0.92)';ctx.font='15px serif';ctx.textAlign='center';
+    ctx.fillText('قُلْ أَعُوذُ بِرَبِّ النَّاسِ',CW/2,CH*0.33);
+    ctx.fillStyle='rgba(170,130,210,0.55)';ctx.font='5px "Press Start 2P",monospace';
+    ctx.fillText('"Seek refuge in the Lord of Mankind" · Tap cards below',CW/2,CH-10);
+    ctx.textAlign='left';
+    _lbl(ctx,'CLICK: Full An-Nas 114:1-6','#f8f0ff');
   };draw();
 }}
 
