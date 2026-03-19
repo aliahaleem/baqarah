@@ -12,21 +12,12 @@
 // =============================================
 function getTheme() { return localStorage.getItem('quranQuestTheme') || 'minecraft'; }
 
-function _applyNamePlaceholder(theme) {
-  const input = document.getElementById('explorer-name');
-  if (!input) return;
-  input.placeholder = theme === 'stars'
-    ? 'Your name, e.g. Ayesha...'
-    : 'Your name, e.g. Ahmad...';
-}
-
 function setTheme(t) {
   localStorage.setItem('quranQuestTheme', t);
   document.documentElement.setAttribute('data-theme', t);
   document.querySelectorAll('.theme-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.theme === t);
   });
-  _applyNamePlaceholder(t);
 }
 
 // =============================================
@@ -34,24 +25,25 @@ function setTheme(t) {
 // =============================================
 function updateUI() {
   const cfg = window.SURAH_CONFIG;
-  if (!window.state || !window.state.explorerName) return;
+  if (!window.state) return;
 
+  const name = window.state.explorerName || 'Explorer';
   const headerName = document.getElementById('header-name');
   const xpEl       = document.getElementById('xp-display');
   const gemsEl     = document.getElementById('gems-display');
   const doneEl     = document.getElementById('done-display');
-  if (headerName) headerName.textContent = window.state.explorerName;
-  if (xpEl)       xpEl.textContent       = window.state.xp;
-  if (gemsEl)     gemsEl.textContent     = window.state.gems;
+  if (headerName) headerName.textContent = name;
+  if (xpEl)       xpEl.textContent       = window.state.xp || 0;
+  if (gemsEl)     gemsEl.textContent     = window.state.gems || 0;
   if (doneEl)     doneEl.textContent     = window.state.completed.length;
 
   // Welcome message (defined per-surah in SURAH_CONFIG.welcomeMsg)
   const welcomeEl = document.getElementById('welcome-text');
   if (welcomeEl && cfg && cfg.welcomeMsg) {
     const done = window.state.completed.length;
-    if (!done)                  welcomeEl.textContent = cfg.welcomeMsg.fresh(window.state.explorerName);
-    else if (done < cfg.totalLevels) welcomeEl.textContent = cfg.welcomeMsg.partial(window.state.explorerName, done);
-    else                        welcomeEl.textContent = cfg.welcomeMsg.complete(window.state.explorerName);
+    if (!done)                       welcomeEl.textContent = cfg.welcomeMsg.fresh(name);
+    else if (done < cfg.totalLevels) welcomeEl.textContent = cfg.welcomeMsg.partial(name, done);
+    else                             welcomeEl.textContent = cfg.welcomeMsg.complete(name);
   }
 
   // Map tiles
@@ -156,17 +148,14 @@ function closeReward()    { dismissReward(); }
 //  GAME START & RESET
 // =============================================
 function startGame() {
-  const input = document.getElementById('explorer-name') || document.getElementById('name-input');
-  const name  = input ? input.value.trim() : '';
-  const errEl = document.getElementById('name-error');
-  if (!name) { if (errEl) errEl.textContent = 'Please enter your name!'; return; }
-  if (errEl) errEl.textContent = '';
-  window.state.explorerName = name;
+  if (!window.state.explorerName) window.state.explorerName = 'Explorer';
   saveProgress();
-  document.getElementById('intro-screen').style.display = 'none';
+  const introEl = document.getElementById('intro-screen');
+  if (introEl) introEl.style.display = 'none';
   const header = document.getElementById('game-header');
   if (header) header.style.display = 'flex';
-  document.getElementById('main-view').style.display = 'block';
+  const mainEl = document.getElementById('main-view');
+  if (mainEl) mainEl.style.display = 'block';
   updateUI();
   if (typeof initScenes === 'function') initScenes();
   _renderAllSections();
@@ -196,20 +185,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.theme-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.theme === savedTheme);
   });
-  _applyNamePlaceholder(savedTheme);
 
-  // Load saved progress
+  // Load saved progress then auto-start immediately (no name required)
   loadProgress();
-
-  if (window.state && window.state.explorerName) {
-    const introEl  = document.getElementById('intro-screen');
-    const headerEl = document.getElementById('game-header');
-    const mainEl   = document.getElementById('main-view');
-    if (introEl)  introEl.style.display  = 'none';
-    if (headerEl) headerEl.style.display = 'flex';
-    if (mainEl)   mainEl.style.display   = 'block';
-    updateUI();
-    if (typeof initScenes === 'function') initScenes();
-    _renderAllSections();
+  if (window.state && !window.state.explorerName) {
+    window.state.explorerName = 'Explorer';
   }
+  startGame();
 });
