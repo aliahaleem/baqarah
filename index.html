@@ -187,6 +187,8 @@
   .ala-portal:hover { border-color:#c8a020; box-shadow:0 0 36px #c8a02066; }
   .ghashiyah-portal { background: linear-gradient(160deg,#0c0408,#180810); border-color:#8b2040; box-shadow:0 0 20px #8b204044; }
   .ghashiyah-portal:hover { border-color:#f0c040; box-shadow:0 0 36px #f0c04066; }
+  .fajr-portal { background: linear-gradient(160deg,#0e0614,#1c0c28); border-color:#7a2090; box-shadow:0 0 20px #7a209044; }
+  .fajr-portal:hover { border-color:#e8a030; box-shadow:0 0 36px #e8a03066; }
 
   /* Elegant dusk — vivid medium-bright portal cards */
   html[data-theme="stars"] .portal { box-shadow: 0 6px 28px rgba(80,60,180,0.45); }
@@ -205,6 +207,7 @@
   html[data-theme="stars"] .tariq-portal { background:linear-gradient(135deg,#101828,#243050); border-color:#d8e8ff; }
   html[data-theme="stars"] .ala-portal { background:linear-gradient(135deg,#0e2820,#224840); border-color:#f0d060; }
   html[data-theme="stars"] .ghashiyah-portal { background:linear-gradient(135deg,#1e0e18,#38202e); border-color:#f0c040; }
+  html[data-theme="stars"] .fajr-portal { background:linear-gradient(135deg,#2e2460,#4a3c90); border-color:#e8a030; }
 
   .portal-icon {
     font-size: 48px;
@@ -329,6 +332,8 @@
   .ala-portal:hover .portal-btn { background:#c8a020; color:#000; }
   .ghashiyah-portal .portal-btn { color:#f0c040; border-color:#f0c040; background:transparent; }
   .ghashiyah-portal:hover .portal-btn { background:#f0c040; color:#000; }
+  .fajr-portal .portal-btn { color:#e8a030; border-color:#e8a030; background:transparent; }
+  .fajr-portal:hover .portal-btn { background:#e8a030; color:#000; }
 
   /* ─── FOOTER ─── */
   .hub-footer {
@@ -471,6 +476,18 @@
       <div class="portal-separator"></div>
       <div class="portal-progress-label">YOUR PROGRESS</div>
       <div class="portal-progress" id="ghashiyah-progress"><span style="color:#888">Not started yet</span></div>
+      <div class="portal-btn">ENTER QUEST ▶</div>
+    </div>
+
+    <!-- AL-FAJR PORTAL -->
+    <div class="portal fajr-portal" onclick="window.location='fajr/index.html'">
+      <div class="portal-icon">🌅</div>
+      <div class="portal-title">SURAH AL-FAJR</div>
+      <div class="portal-arabic">سورة الفجر</div>
+      <div class="portal-desc">The Dawn — 30 Verses<br>6 Levels · Oaths, Nations, Tranquil Soul</div>
+      <div class="portal-separator"></div>
+      <div class="portal-progress-label">YOUR PROGRESS</div>
+      <div class="portal-progress" id="fajr-progress"><span style="color:#888">Not started yet</span></div>
       <div class="portal-btn">ENTER QUEST ▶</div>
     </div>
 
@@ -680,6 +697,7 @@
   renderProgress('tariqQuestSave',      'tariq-progress',      6);
   renderProgress('alaQuestSave',        'ala-progress',        6);
   renderProgress('ghashiyahQuestSave',  'ghashiyah-progress',  6);
+  renderProgress('fajrQuestSave',       'fajr-progress',       6);
 </script>
 </body>
 </html>

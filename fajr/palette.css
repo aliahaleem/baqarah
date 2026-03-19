@@ -1,0 +1,33 @@
+/* Surah Al-Fajr (89) — dawn crimson / deep violet / gold */
+/* ── ELEGANT: rose-gold dawn — soft peach, mauve, warm gold ── */
+html[data-theme="stars"] {
+  --bg:             #2e2460;
+  --bg2:            #3c3078;
+  --surface:        #4a3c90;
+  --card-bg:        #4a3c90;
+  --primary:        #9060d0;
+  --primary-lit:    #b080f0;
+  --accent:         #f4c840;
+  --accent2:        #d4a020;
+  --text:           #ffffff;
+  --text-dim:       #d0c4f8;
+  --tile-locked:    #261e58;
+  --tile-unlocked:  #342870;
+  --tile-completed: #423488;
+}
+
+:root {
+  --bg:             #0e0614;
+  --bg2:            #1c0c28;
+  --surface:        #2a1440;
+  --card-bg:        #2a1440;
+  --primary:        #7a2090;
+  --primary-lit:    #b040c0;
+  --accent:         #e8a030;
+  --accent2:        #c07818;
+  --text:           #ffeeff;
+  --text-dim:       #c090d0;
+  --tile-locked:    #0a0410;
+  --tile-unlocked:  #180820;
+  --tile-completed: #221030;
+}
