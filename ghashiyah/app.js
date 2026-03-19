@@ -1,15 +1,23 @@
 'use strict';
 /* Surah Al-Ghashiyah (88) — The Overwhelming */
 window.STORAGE_KEY = 'ghashiyahQuestSave';
-window.state = { currentLevel: 0, completedLevels: [], stars: 0, explorerName: '' };
+window.state = {
+  explorerName: '', xp: 0, gems: 0, completed: [],
+  s1Checked: false,
+  s2Answers: {}, s2Checked: false,
+  s3Checked: false,
+  s4Answers: {}, s4Checked: false,
+  s5Answers: {}, s5Checked: false,
+  s6Answers: {}, s6Checked: false,
+};
 
 const REWARDS = {
-  1: { title: 'Day Witness', icon: '⚡' },
-  2: { title: 'Face Keeper', icon: '😶' },
-  3: { title: 'Garden Seeker', icon: '🌸' },
-  4: { title: 'Camel Watcher', icon: '🐪' },
-  5: { title: 'Sky Ponderer', icon: '🌤️' },
-  6: { title: 'Return Knower', icon: '🔄' }
+  1: { xp: 70,  gems: 3, icon: '⚡', title: 'Day Witness',   msg: "MashAllah! Al-Ghashiyah will OVERWHELM everything — two groups, two fates. May Allah make us among the faces of delight!" },
+  2: { xp: 80,  gems: 3, icon: '😶', title: 'Face Keeper',   msg: "SubhanAllah! The wretched labor but gain nothing. Boiling water to drink, bitter thorns to eat. May Allah protect us!" },
+  3: { xp: 90,  gems: 3, icon: '🌸', title: 'Garden Seeker', msg: "MashAllah! The blessed are satisfied with their effort — in a high garden with flowing springs. May Allah grant us this! Ameen." },
+  4: { xp: 90,  gems: 3, icon: '🐪', title: 'Camel Watcher', msg: "SubhanAllah! The camel — perfectly designed by Allah. Every single feature points to its Creator!" },
+  5: { xp: 100, gems: 4, icon: '🌤️', title: 'Sky Ponderer',  msg: "MashAllah! Four signs — camel, sky, mountains, earth. Allah says: LOOK! They all point to Him. Be of the Ulu al-Albab!" },
+  6: { xp: 110, gems: 5, icon: '🔄', title: 'Return Knower', msg: "Allahu Akbar! Inna ilayna iyabahum — to US is their RETURN. Every soul will stand before Allah. May we stand with clean hearts. Ameen!" },
 };
 
 window.SURAH_CONFIG = {
@@ -18,80 +26,119 @@ window.SURAH_CONFIG = {
   surahArabic: 'الغاشية',
   totalLevels: 6,
   rewards: REWARDS,
-  tiles: [
-    { level: 1, icon: '⚡', label: 'The Overwhelming', locked: false },
-    { level: 2, icon: '😶', label: 'Faces Downcast', locked: true },
-    { level: 3, icon: '🌸', label: 'Faces Delighted', locked: true },
-    { level: 4, icon: '🐪', label: 'The Camel', locked: true },
-    { level: 5, icon: '🌤️', label: 'Sky & Mountains', locked: true },
-    { level: 6, icon: '🔄', label: 'The Return', locked: true }
-  ],
-  welcomeMessages: [
-    'The Day of Judgement is real and close!',
-    'Some faces will be in distress on that Day.',
-    'The righteous will rejoice in Paradise.',
-    'Look at the camel — how perfectly Allah created it!',
-    'The sky, mountains, earth — all signs of Allah.',
-    'To Allah is our final return — He will call us back.'
-  ]
+  welcomeMsg: {
+    fresh:    name => `As-salamu alaykum, ${name}! Welcome to Al-Ghashiyah — The Overwhelming! A stunning surah about the Day of Judgement. Two groups: faces downcast in the Fire, faces radiant in Paradise. 6 levels await!`,
+    partial:  (name, done) => `Welcome back, ${name}! ${done} level${done>1?'s':''} complete. The reckoning is near — keep going! 💪`,
+    complete: name => `MashAllah, ${name}! All 6 levels of Al-Ghashiyah done. "Inna ilayna iyabahum" — to Allah is our return. May we stand before Him with pure hearts. Ameen! 🏆`,
+  },
 };
 
-/* ── Drag & Drop Data ── */
-const DD1 = {
-  prompt: 'Match the Day of Judgement scenes:',
-  pairs: [
-    { term: 'Al-Ghashiyah', def: 'The Overwhelming Event' },
-    { term: 'Faces Downcast', def: 'The punished in Hell' },
-    { term: 'Faces Delighted', def: 'The blessed in Paradise' },
-    { term: 'Al-Camel', def: 'Sign of Allah\'s creation' }
-  ]
-};
-const DD2 = {
-  prompt: 'Match the Hereafter descriptions:',
-  pairs: [
-    { term: 'Boiling spring', def: 'Drink of the wretched' },
-    { term: 'Bitter thorns', def: 'Food of the wretched' },
-    { term: 'Raised couches', def: 'Furniture of the blessed' },
-    { term: 'Flowing springs', def: 'Water of Paradise' }
-  ]
-};
-const DD3 = {
-  prompt: 'Match the signs of Allah:',
-  pairs: [
-    { term: 'Camel', def: 'Created in wonder' },
-    { term: 'Sky', def: 'Raised without pillars' },
-    { term: 'Mountains', def: 'Set firm in earth' },
-    { term: 'Earth', def: 'Spread out flat' }
-  ]
-};
+/* ── Section 1: Drag & Drop — Day of Judgement overview (88:1-7) ── */
+const S1_ITEMS = [
+  { id: 'i1', text: 'Al-Ghashiyah',    zone: 'z1' },
+  { id: 'i2', text: 'Faces\nDowncast', zone: 'z2' },
+  { id: 'i3', text: 'Faces\nDelighted',zone: 'z3' },
+  { id: 'i4', text: 'Boiling\nSpring', zone: 'z4' },
+];
+const S1_ZONES = [
+  { id: 'z1', desc: 'The Overwhelming Event' },
+  { id: 'z2', desc: 'The punished in Hellfire' },
+  { id: 'z3', desc: 'The blessed in Paradise' },
+  { id: 'z4', desc: 'Drink of the wretched' },
+];
 
-/* ── Quiz Data ── */
-const Q4 = [
-  { q: 'What does "Al-Ghashiyah" mean?', opts: ['The Great', 'The Overwhelming', 'The Hour', 'The Fire'], ans: 1 },
-  { q: 'What will the faces of the wretched look like?', opts: ['Glowing', 'Downcast', 'Smiling', 'Hidden'], ans: 1 },
-  { q: 'What will the blessed drink in Paradise?', opts: ['Boiling water', 'Salty water', 'Sweet spring water', 'Nothing'], ans: 2 },
-  { q: 'What fruit is NOT for the wretched?', opts: ['Bitter thorns', 'Dhari', 'Dates', 'Zaqqum'], ans: 2 }
+/* ── Section 2: Quiz — Faces Downcast (88:2-7) ── */
+const S2_QUIZ = [
+  { q: 'What does "Al-Ghashiyah" mean?',
+    opts: ['The Great Darkness', 'The Blazing Fire', 'The Overwhelming Event', 'The Final Hour'],
+    correct: 2 },
+  { q: 'What does "amilah nasibah" describe?',
+    opts: ['Angels carrying good deeds', 'Wretched ones toiling, exhausted', 'Righteous believers praying', 'Children playing in Paradise'],
+    correct: 1 },
+  { q: 'What is the drink of the wretched in Hellfire?',
+    opts: ['Sweet date juice', 'Cold clear water', 'Pure flowing spring', 'Hot boiling spring'],
+    correct: 3 },
+  { q: 'What food is given to the wretched?',
+    opts: ['Bitter thorns (dhari)', 'Ripe sweet dates', 'Fresh garden fruit', 'Warm filling bread'],
+    correct: 0 },
 ];
-const Q5 = [
-  { q: 'What animal does Allah ask us to observe?', opts: ['Lion', 'Camel', 'Horse', 'Eagle'], ans: 1 },
-  { q: 'What is raised without pillars?', opts: ['Mountains', 'Sky', 'Trees', 'Rivers'], ans: 1 },
-  { q: 'What is set firm in the earth?', opts: ['Camels', 'Mountains', 'Rivers', 'Stars'], ans: 1 },
-  { q: 'How is the earth described in this surah?', opts: ['Hot', 'Spread out', 'Round', 'Shaking'], ans: 1 }
+
+/* ── Section 3: Drag & Drop — Paradise features (88:8-16) ── */
+const S3_ITEMS = [
+  { id: 'p1', text: 'Flowing\nsprings', zone: 'z1' },
+  { id: 'p2', text: 'Raised\ncouches',  zone: 'z2' },
+  { id: 'p3', text: 'Cups\nset ready', zone: 'z3' },
+  { id: 'p4', text: 'Spread\ncarpets',  zone: 'z4' },
 ];
-const Q6 = [
-  { q: 'To whom is all return?', opts: ['To the angels', 'To Allah', 'To the prophets', 'To themselves'], ans: 1 },
-  { q: 'Who is the Reminder — the Prophet ﷺ?', opts: ['A warner only', 'A controller', 'A reminder', 'A judge'], ans: 2 },
-  { q: 'Who will Allah punish on that Day?', opts: ['Everyone', 'Those who turn away and disbelieve', 'Only idolaters', 'The poor'], ans: 1 },
-  { q: 'What is the greatest punishment?', opts: ['Darkness', 'The Greatest Punishment', 'Hunger', 'Thirst'], ans: 1 }
+const S3_ZONES = [
+  { id: 'z1', desc: 'Water of Paradise' },
+  { id: 'z2', desc: 'Furniture of the blessed' },
+  { id: 'z3', desc: 'Drinking vessels in Paradise' },
+  { id: 'z4', desc: 'Floor coverings in Paradise' },
+];
+
+/* ── Section 4: Quiz — The Camel (88:17) ── */
+const S4_QUIZ = [
+  { q: 'What animal does Allah ask us to observe in 88:17?',
+    opts: ['The proud lion', 'The patient camel', 'The swift eagle', 'The strong elephant'],
+    correct: 1 },
+  { q: 'What are camels traditionally called by Arabs?',
+    opts: ['King of all beasts', 'Pride of the tribe', 'Gift from the sky', 'Ship of the desert'],
+    correct: 3 },
+  { q: "What does the camel's perfect design teach us?",
+    opts: ['Nature is very powerful', 'Animals evolved slowly', 'Allah is the perfect Creator', 'Science explains all things'],
+    correct: 2 },
+  { q: 'How many creation signs does Allah mention in 88:17-20?',
+    opts: ['Two signs only', 'Three total signs', 'Four signs: camel, sky, mountains, earth', 'Five separate signs'],
+    correct: 2 },
+];
+
+/* ── Section 5: Quiz — Sky, Mountains, Earth (88:18-20) ── */
+const S5_QUIZ = [
+  { q: 'How is the sky described in 88:18?',
+    opts: ['Filled with bright stars', 'Raised without pillars', 'Made of thick clouds', 'Always moving above'],
+    correct: 1 },
+  { q: 'What are mountains called in other Quran verses?',
+    opts: ['Pillars of solid stone', 'Barriers of the earth', 'Pegs driven into earth', 'Walls of the world'],
+    correct: 2 },
+  { q: 'What does "sutihat" (earth) mean?',
+    opts: ['Hot and burning', 'Spinning very fast', 'Spread out flat', 'Round and perfect'],
+    correct: 2 },
+  { q: 'What do all four creation signs together prove?',
+    opts: ['The earth is very ancient', 'Nature is very strong', 'Science is always true', 'Allah is the Creator'],
+    correct: 3 },
+];
+
+/* ── Section 6: Quiz — The Return (88:21-26) ── */
+const S6_QUIZ = [
+  { q: 'To whom is the final return of all people?',
+    opts: ['To the angels above', 'To the prophets', 'To themselves only', 'To Allah alone'],
+    correct: 3 },
+  { q: "What is the Prophet's ﷺ role in 88:21?",
+    opts: ['A judge over all', 'A controller of people', 'A reminder only', 'A king and ruler'],
+    correct: 2 },
+  { q: 'Who will face the Greatest Punishment?',
+    opts: ['The poor and weak', 'Those who turn away and disbelieve', 'Those who miss prayers', 'People who forget Allah'],
+    correct: 1 },
+  { q: 'What does "Inna ilayna iyabahum" mean?',
+    opts: ['Indeed We created them', 'Indeed We will judge them', 'Indeed to Us is their return', 'Indeed We watch over them'],
+    correct: 2 },
 ];
 
 /* ── Section wrappers ── */
-window.runSection1 = () => window._runDragDrop(1, DD1);
-window.runSection2 = () => window._runDragDrop(2, DD2);
-window.runSection3 = () => window._runDragDrop(3, DD3);
-window.runSection4 = () => window._runQuiz(4, Q4);
-window.runSection5 = () => window._runQuiz(5, Q5);
-window.runSection6 = () => window._runQuiz(6, Q6);
+function renderSection1Game() { renderDragDrop(1, S1_ITEMS, S1_ZONES); }
+function checkSection1()      { checkDragDrop(1, S1_ZONES); }
+function renderSection2Game() { renderQuiz(2, S2_QUIZ); }
+function checkSection2()      { checkQuiz(2, S2_QUIZ); }
+function renderSection3Game() { renderDragDrop(3, S3_ITEMS, S3_ZONES); }
+function checkSection3()      { checkDragDrop(3, S3_ZONES); }
+function renderSection4Game() { renderQuiz(4, S4_QUIZ); }
+function checkSection4()      { checkQuiz(4, S4_QUIZ); }
+function renderSection5Game() { renderQuiz(5, S5_QUIZ); }
+function checkSection5()      { checkQuiz(5, S5_QUIZ); }
+function renderSection6Game() { renderQuiz(6, S6_QUIZ); }
+function checkSection6()      { checkQuiz(6, S6_QUIZ); }
+function updateUIExtra()      { window._drawBuildCanvas(window.state.completed.length); }
 
 /* ── World Builder Canvas ── */
 window._drawBuildCanvas = function(n) {
