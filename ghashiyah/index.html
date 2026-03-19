@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="minecraft">
+<head>
+  <meta charset="UTF-8"/>
+  <script>(function(){var t=localStorage.getItem('quranQuestTheme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surah Al-Ghashiyah Quest ⚡</title>
+  <link rel="stylesheet" href="../shared/base.css"/>
+  <link rel="stylesheet" href="palette.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<header id="game-header" style="display:none">
+  <div><div class="game-title">⚡ SURAH AL-GHASHIYAH QUEST</div><div class="header-explorer">Explorer: <span id="header-name">—</span></div></div>
+  <div class="stats-row">
+    <div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div>
+    <div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div>
+    <div class="stat-chip done-chip">✅ <span id="done-display">0</span>/6</div>
+    <button class="reset-btn" onclick="resetGame()">↺ Reset</button>
+    <a class="hub-btn" href="../index.html">🏠 Hub</a>
+  </div>
+</header>
+<div id="intro-screen">
+  <div class="intro-icon">⚡</div>
+  <div class="intro-title">SURAH AL-GHASHIYAH QUEST</div>
+  <div class="intro-arabic">سُوْرَةُ الغَاشِيَة</div>
+  <div class="intro-subtitle">6 Levels · The Overwhelming Day · Two Groups · Signs of Creation<br/>Camel · Sky · Mountains · Earth · Return to Allah</div>
+  <div class="intro-form">
+    <input class="intro-input" id="explorer-name" type="text" placeholder="Enter your name..." maxlength="20"/>
+    <div id="name-error" style="color:#ff6666;font-size:8px;min-height:12px;"></div>
+    <button class="intro-btn" onclick="startGame()">▶ BEGIN QUEST</button>
+  </div>
+</div>
+<div id="main-view" style="display:none">
+<div class="container">
+  <div class="ibn-ameen-panel">
+    <div class="character-avatar">🧙‍♂️</div>
+    <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+      <span id="welcome-text">As-salamu alaykum! Surah Al-Ghashiyah — The Overwhelming Event! A stunning surah about the Day of Judgement. Two groups: faces downcast in the Fire, faces radiant in Paradise. Then Allah invites you to look at creation — the camel, the sky, the mountains, the earth. 6 levels of Quran quest await you!</span>
+    </div>
+  </div>
+  <h2 class="section-heading">⚡ THE QUEST MAP</h2>
+  <div class="map-grid">
+    <div class="map-tile locked" id="tile-1" onclick="openSection(1)"><div class="tile-icon">⚡</div><div class="tile-level">LEVEL 1</div><div class="tile-name">The Overwhelming</div><div class="tile-verses">88:1-7</div><div class="tile-status" id="status-1">▶ PLAY</div></div>
+    <div class="map-tile locked" id="tile-2" onclick="openSection(2)"><div class="tile-icon">😶</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Faces Downcast</div><div class="tile-verses">88:2-7</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-3" onclick="openSection(3)"><div class="tile-icon">🌸</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Faces Delighted</div><div class="tile-verses">88:8-16</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-4" onclick="openSection(4)"><div class="tile-icon">🐪</div><div class="tile-level">LEVEL 4</div><div class="tile-name">The Camel</div><div class="tile-verses">88:17-20</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-5" onclick="openSection(5)"><div class="tile-icon">🌤️</div><div class="tile-level">LEVEL 5</div><div class="tile-name">Sky & Mountains</div><div class="tile-verses">88:18-20</div><div class="tile-status" id="status-5">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-6" onclick="openSection(6)"><div class="tile-icon">🔄</div><div class="tile-level">LEVEL 6</div><div class="tile-name">The Return</div><div class="tile-verses">88:21-26</div><div class="tile-status" id="status-6">🔒 LOCKED</div></div>
+  </div>
+  <div id="world-builder">
+    <h2 class="section-heading">⚡ BUILD THE SCENE OF JUDGEMENT</h2>
+    <div style="border:3px solid var(--primary);margin-bottom:12px;background:#0c0408;">
+      <canvas id="build-canvas" width="560" height="250" style="width:100%;image-rendering:pixelated;display:block;"></canvas>
+    </div>
+    <p style="font-family:var(--font-body);font-size:var(--font-size-sm);color:var(--primary-lit);text-align:center;margin-bottom:10px;line-height:1.8;">Complete each level to reveal the full scene of The Overwhelming Day!<br/><em style="color:var(--text-dim);">"Has there reached you the report of the Overwhelming Event?" — 88:1</em></p>
+    <div class="world-preview">
+      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Overwhelming</div></div>
+      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Downcast</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Delighted</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Camel</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Mountains</div></div>
+      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Return</div></div>
+    </div>
+  </div>
+  <div id="all-complete">
+    <div style="font-size:36px;margin-bottom:10px;">⚡</div>
+    <div style="color:var(--accent);font-size:10px;margin-bottom:8px;">SURAH AL-GHASHIYAH COMPLETE!</div>
+    <div style="font-family:var(--font-body);font-size:var(--font-size-body);color:#ddd;line-height:1.9;">MashAllah! All 6 levels complete!<br/><em>"Inna ilayna iyabahum — thumma inna alayna hisabahum."</em><br/>Indeed to Us is their return — then upon Us is their reckoning. May we return to Allah with pure hearts! Ameen!</div>
+  </div>
+</div>
+</div>
+
+<div id="verse-popup"><div class="vp-box"><div id="vp-ref"></div><div id="vp-arabic"></div><div id="vp-eng"></div><div id="vp-note"></div><button id="vp-close" onclick="hideVersePopup()">✕ Close</button></div></div>
+<div id="reward-overlay"><div class="reward-box"><span class="reward-icon" id="reward-icon">🏆</span><div class="reward-title" id="reward-title"></div><div class="reward-xp" id="reward-xp"></div><div class="reward-gems" id="reward-gems"></div><div class="reward-msg" id="reward-msg"></div><button class="reward-ok-btn" onclick="dismissReward()">✅ Continue Quest</button></div></div>
+
+<div id="section-view" style="display:none">
+  <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></header>
+
+  <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Hal ataka hadith al-Ghashiyah?" — Has there reached you the report of THE OVERWHELMING EVENT? The surah opens with this dramatic question. Al-Ghashiyah means something that overwhelms and covers — the Day of Judgement will OVERWHELM all previous human experience. Match the descriptions!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">⚡ LEVEL 1 — THE OVERWHELMING EVENT (88:1-7)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Day Arrives — Click to reveal verse</span></div><canvas id="canvas-1" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>Surah Al-Ghashiyah opens with a dramatic rhetorical question: <strong>"Hal ataka hadith al-Ghashiyah?"</strong> — Has there reached you the report of THE OVERWHELMING EVENT?</p>
+        <p>"Al-Ghashiyah" means something that overwhelms, covers, and envelops — like a massive flood covering everything in its path. The Day of Judgement will overwhelm every previous human experience. Nothing in this world can prepare the imagination for it fully.</p>
+        <p>The surah then immediately describes two groups — those who will suffer and those who will rejoice. First, the suffering group: <strong>"Wujuh yawma'idhin khashi'ah"</strong> — faces on that Day will be DOWNCAST. And they will be <strong>"amilah nasibah"</strong> — laboring and exhausted.</p>
+        <p>They will enter <strong>"naran hamiyah"</strong> — a scorching fire. Their drink will be from a <strong>"aynin aniyah"</strong> — a boiling spring. Their food: <strong>"daree'"</strong> — bitter, thorny plants with no nourishment. This is the consequence of their choices in the world.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">هَلْ أَتَاكَ حَدِيثُ الْغَاشِيَةِ ۩ وُجُوهٌ يَوْمَئِذٍ خَاشِعَةٌ ۩ عَامِلَةٌ نَّاصِبَةٌ</div>
+        <div class="verse-translation">"Has there reached you the report of the Overwhelming Event? On that Day, faces will be downcast — laboring and exhausted." (88:1-3)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 GAME — MATCH THE DAY OF JUDGEMENT (88:1-7)</div>
+      <div class="game-instructions">Drag each term to its correct description. All must match!</div>
+      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-1"></div><div class="drop-zones" id="drop-zones-1"></div></div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <div class="section-panel" id="section-panel-2">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The wretched group in the Hereafter — "Amilah nasibah" — laboring, exhausted! They worked in this world but their work didn't help them because they didn't believe. Their drink is boiling water, their food is bitter thorns. This is what comes from turning away from Allah. Answer the questions!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">😶 LEVEL 2 — FACES DOWNCAST IN HELLFIRE (88:2-7)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Wretched — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>The first group is described in painful detail. Their faces are <strong>"khashi'ah"</strong> — downcast, humbled, overcome with shame and exhaustion. They are <strong>"amilah nasibah"</strong> — laboring and exhausted.</p>
+        <p>Scholars discuss "amilah nasibah" — some say it refers to the exhausting labor of the Day of Judgement itself (dragging chains, crawling on faces). Others say it refers to their worship in this world — they toiled in religious acts but without proper faith, so their labor produced no reward.</p>
+        <p>Their punishment: they enter a scorching fire — <strong>"naran hamiyah"</strong>. They are given to drink from <strong>"aynin aniyah"</strong> — a spring that has reached the extreme of heat, boiling. And their only food will be <strong>"daree'"</strong> — a thorny, bitter desert plant that provides no nourishment and chokes the throat. Not even the dignity of real food is given to them.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">تَصْلَىٰ نَارًا حَامِيَةً ۩ تُسْقَىٰ مِنْ عَيْنٍ آنِيَةٍ ۩ لَّيْسَ لَهُمْ طَعَامٌ إِلَّا مِن ضَرِيعٍ</div>
+        <div class="verse-translation">"They will enter a scorching fire — given to drink from a boiling spring — no food for them except bitter thorns." (88:4-6)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — FACES DOWNCAST (88:2-7)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-2"></div>
+      <div class="game-feedback" id="feedback-2"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <div class="section-panel" id="section-panel-3">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Wujuh yawma'idhin na'imah" — And other faces on that Day will be in DELIGHT! Na'imah — radiant, soft, glowing with joy. This is the opposite group. They are satisfied with their effort — "li-sa'yiha radiyah" — and they are in a high garden — "fi jannatin aliyah!" Match the descriptions of Paradise!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🌸 LEVEL 3 — FACES IN PARADISE (88:8-16)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Joyful Garden — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>Now the surah turns to the blessed group — a complete contrast. <strong>"Wujuh yawma'idhin na'imah"</strong> — faces on that Day in DELIGHT. "Na'imah" — soft, radiant, glowing with comfort and pleasure.</p>
+        <p>They are <strong>"li-sa'yiha radiyah"</strong> — satisfied with their effort. In this world, they strove — they prayed, they gave, they were patient, they worshipped. On that Day they look at their record and feel only contentment and joy. Every moment of worship will be worth it.</p>
+        <p>Their home: <strong>"fi jannatin 'aliyah"</strong> — in a HIGH garden. "Aliyah" — elevated, exalted. There will be <strong>"la tasma'u fiha laghiyah"</strong> — no vain, frivolous speech heard in it. None of the noise and nonsense of this world. Peace and dignity only.</p>
+        <p>There will be <strong>"aynun jariyah"</strong> — flowing springs. <strong>"Sururun marfu'ah"</strong> — couches raised high. <strong>"Akwabun mawdu'ah"</strong> — cups set ready. <strong>"Namaariqu masfoofah"</strong> — cushions arranged beautifully. <strong>"Zarabi mabthoothah"</strong> — carpets spread out. The picture of complete comfort, beauty, and dignity.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وُجُوهٌ يَوْمَئِذٍ نَّاعِمَةٌ ۩ لِّسَعْيِهَا رَاضِيَةٌ ۩ فِي جَنَّةٍ عَالِيَةٍ ۩ لَّا تَسْمَعُ فِيهَا لَاغِيَةً</div>
+        <div class="verse-translation">"And other faces that Day will be in delight — satisfied with their effort — in a high garden — hearing no vain talk within it." (88:8-11)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 GAME — MATCH PARADISE FEATURES (88:8-16)</div>
+      <div class="game-instructions">Drag each paradise feature to its correct description!</div>
+      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-3"></div><div class="drop-zones" id="drop-zones-3"></div></div>
+      <div class="game-feedback" id="feedback-3"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection3()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <div class="section-panel" id="section-panel-4">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Afala yanzuruna ila al-ibil kayfa khuliqat?" — Do they not LOOK at the CAMELS — how they were CREATED? After the descriptions of Judgement, Allah invites us to observe creation. The camel is amazing — perfectly designed for desert life. It's a sign of Allah's wisdom! Answer the questions!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🐪 LEVEL 4 — LOOK AT THE CAMEL (88:17-20)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Signs in Creation — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>After the vivid depictions of the Hereafter, the surah makes a sudden and beautiful shift. Allah addresses those who disbelieve: <strong>"Afala yanzuruna ila al-ibil kayfa khuliqat?"</strong> — Do they not LOOK at the camels — how they were CREATED?</p>
+        <p>The camel is specifically chosen because of its extraordinary design. It can survive for weeks without water, storing water in its blood (not its hump — that's fat for energy!). It can drink hundreds of liters in minutes. Its eyes have triple eyelids and long lashes for sandstorms. Its feet are wide and padded for sand. It can carry hundreds of kilos of weight. Its milk is nutritious. Its fur provides warmth. Its body provides meat. It was the "ship of the desert" — the essential means of transport for desert peoples.</p>
+        <p>For the Arab listeners of the Quran, the camel was their most intimate and beloved creation — they knew it deeply. Allah uses this knowledge as a gateway to recognition of the Creator. If you can see the perfect design of the camel — you can perceive the Designer.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">أَفَلَا يَنظُرُونَ إِلَى الْإِبِلِ كَيْفَ خُلِقَتْ ۩ وَإِلَى السَّمَاءِ كَيْفَ رُفِعَتْ</div>
+        <div class="verse-translation">"Do they not look at the camels — how they were created? And at the sky — how it was raised?" (88:17-18)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — THE CAMEL (88:17)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <div class="section-panel" id="section-panel-5">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Wa ila al-sama' kayfa rufi'at — wa ila al-jibal kayfa nusibat — wa ila al-ard kayfa sutihat?" Look at the SKY how it was raised! The MOUNTAINS how they were set! The EARTH how it was spread! Four signs — four gateways to belief. Every sign points to Allah!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🌤️ LEVEL 5 — SKY, MOUNTAINS, EARTH (88:18-20)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Signs in the World — Click to reveal verse</span></div><canvas id="canvas-5" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>After the camel, Allah points to three more signs: <strong>the sky, the mountains, and the earth.</strong></p>
+        <p><strong>"Wa ila al-sama' kayfa rufi'at"</strong> — And at the SKY — how it was RAISED? The sky is raised without pillars (as mentioned in Surah Ra'd 13:2). It is held up by Allah's command. Modern science tells us the atmosphere is a precise balance of gases — if it were slightly thinner or thicker, life would not exist. The sky "raises" itself — defying gravity — by Allah's design.</p>
+        <p><strong>"Wa ila al-jibal kayfa nusibat"</strong> — And at the MOUNTAINS — how they were SET? Mountains are not just decoration — they are stabilisers of the earth's crust. They prevent the tectonic plates from shaking too violently. The Quran in many places refers to them as "pegs" (awatad) — driven into the earth. The Arabic "nusibat" means set upright, erected — like pillars in the ground.</p>
+        <p><strong>"Wa ila al-ard kayfa sutihat"</strong> — And at the EARTH — how it was SPREAD OUT? "Sutihat" — spread, flattened, made accessible. The earth is spread so humans can live and travel upon it. Despite being a sphere in space, the local experience is of a flat, walkable surface — by Allah's design for human habitation.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَإِلَى الْجِبَالِ كَيْفَ نُصِبَتْ ۩ وَإِلَى الْأَرْضِ كَيْفَ سُطِحَتْ</div>
+        <div class="verse-translation">"And at the mountains — how they were set? And at the earth — how it was spread out?" (88:19-20)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — SIGNS OF CREATION (88:18-20)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-5"></div>
+      <div class="game-feedback" id="feedback-5"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <div class="section-panel" id="section-panel-6">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Inna ilayna iyabahum — thumma inna alayna hisabahum." Indeed to US is their RETURN — then upon US is their RECKONING. The surah closes with a powerful reminder: the Prophet's ﷺ role is to remind, not to force. But every person will return to Allah. None can escape. Answer the final questions!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🔄 LEVEL 6 — THE RETURN TO ALLAH (88:21-26)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 All Return — Click to reveal verse</span></div><canvas id="canvas-6" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>The surah concludes with two powerful declarations about the Prophet's ﷺ role and the certainty of the Hereafter.</p>
+        <p>First: <strong>"Fa-dhakkir innama anta mudhakkir — lasta alayhim bi-musaytir."</strong> So remind — for you are only a REMINDER. You (Muhammad ﷺ) are not a controller over them. This verse clarifies the prophetic mission: to remind, not to compel. Islam does not allow forced conversion — the Prophet's role was to deliver the message with clarity and sincerity.</p>
+        <p>Then: <strong>"Illa man tawalla wa kafar — fa-yu'adhibuhu Allah al-adhab al-akbar."</strong> Except for the one who turns away and disbelieves — Allah will punish him with the GREATEST punishment. The consequence of wilful rejection is real and severe.</p>
+        <p>The surah ends: <strong>"Inna ilayna iyabahum — thumma inna alayna hisabahum."</strong> Indeed to US is their RETURN — then upon US is their RECKONING. Two "Inna" — two emphatic certainties. The return is certain. The reckoning is certain. No one escapes either. This is the ultimate conclusion of the "Overwhelming" that opened the surah — it will overwhelm every human being without exception.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">إِنَّ إِلَيْنَا إِيَابَهُمْ ۩ ثُمَّ إِنَّ عَلَيْنَا حِسَابَهُمْ</div>
+        <div class="verse-translation">"Indeed to Us is their return — then indeed upon Us is their reckoning." (88:25-26)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 FINAL QUIZ — THE RETURN (88:21-26)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to complete Surah Al-Ghashiyah!</div>
+      <div id="quiz-6"></div>
+      <div class="game-feedback" id="feedback-6"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+</div>
+<script src="scenes.js"></script>
+<script src="../shared/engine.js"></script>
+<script src="../shared/ui.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

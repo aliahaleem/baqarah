@@ -185,6 +185,8 @@
   .tariq-portal:hover { border-color:#90b8e0; box-shadow:0 0 36px #90b8e066; }
   .ala-portal { background: linear-gradient(160deg,#041008,#081a0c); border-color:#1a6030; box-shadow:0 0 20px #1a603044; }
   .ala-portal:hover { border-color:#c8a020; box-shadow:0 0 36px #c8a02066; }
+  .ghashiyah-portal { background: linear-gradient(160deg,#0c0408,#180810); border-color:#8b2040; box-shadow:0 0 20px #8b204044; }
+  .ghashiyah-portal:hover { border-color:#f0c040; box-shadow:0 0 36px #f0c04066; }
 
   /* Elegant dusk — vivid medium-bright portal cards */
   html[data-theme="stars"] .portal { box-shadow: 0 6px 28px rgba(80,60,180,0.45); }
@@ -202,6 +204,7 @@
   html[data-theme="stars"] .buruj-portal { background:linear-gradient(135deg,#0e1840,#243070); border-color:#e0d860; }
   html[data-theme="stars"] .tariq-portal { background:linear-gradient(135deg,#101828,#243050); border-color:#d8e8ff; }
   html[data-theme="stars"] .ala-portal { background:linear-gradient(135deg,#0e2820,#224840); border-color:#f0d060; }
+  html[data-theme="stars"] .ghashiyah-portal { background:linear-gradient(135deg,#1e0e18,#38202e); border-color:#f0c040; }
 
   .portal-icon {
     font-size: 48px;
@@ -324,6 +327,8 @@
   .tariq-portal:hover .portal-btn { background:#90b8e0; color:#000; }
   .ala-portal .portal-btn { color:#c8a020; border-color:#c8a020; background:transparent; }
   .ala-portal:hover .portal-btn { background:#c8a020; color:#000; }
+  .ghashiyah-portal .portal-btn { color:#f0c040; border-color:#f0c040; background:transparent; }
+  .ghashiyah-portal:hover .portal-btn { background:#f0c040; color:#000; }
 
   /* ─── FOOTER ─── */
   .hub-footer {
@@ -454,6 +459,18 @@
       <div class="portal-separator"></div>
       <div class="portal-progress-label">YOUR PROGRESS</div>
       <div class="portal-progress" id="ala-progress"><span style="color:#888">Not started yet</span></div>
+      <div class="portal-btn">ENTER QUEST ▶</div>
+    </div>
+
+    <!-- AL-GHASHIYAH PORTAL -->
+    <div class="portal ghashiyah-portal" onclick="window.location='ghashiyah/index.html'">
+      <div class="portal-icon">⚡</div>
+      <div class="portal-title">SURAH AL-GHASHIYAH</div>
+      <div class="portal-arabic">سورة الغاشية</div>
+      <div class="portal-desc">The Overwhelming — 26 Verses<br>6 Levels of the Day of Judgement</div>
+      <div class="portal-separator"></div>
+      <div class="portal-progress-label">YOUR PROGRESS</div>
+      <div class="portal-progress" id="ghashiyah-progress"><span style="color:#888">Not started yet</span></div>
       <div class="portal-btn">ENTER QUEST ▶</div>
     </div>
 
@@ -662,6 +679,7 @@
   renderProgress('burujQuestSave',      'buruj-progress',      6);
   renderProgress('tariqQuestSave',      'tariq-progress',      6);
   renderProgress('alaQuestSave',        'ala-progress',        6);
+  renderProgress('ghashiyahQuestSave',  'ghashiyah-progress',  6);
 </script>
 </body>
 </html>

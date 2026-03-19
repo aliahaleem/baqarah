@@ -1,0 +1,11 @@
+/* Surah Al-Ghashiyah (88) — deep crimson / amber / white */
+html[data-theme="stars"] {
+  --bg:#1e0e18;--bg2:#2a1422;--surface:#38202e;--card-bg:#38202e;
+  --primary:#c06080;--primary-lit:#e080a0;--accent:#f0c040;--accent2:#d0a020;
+  --text:#ffffff;--text-dim:#f0c8d8;--tile-locked:#120810;--tile-unlocked:#1e1018;--tile-completed:#2a1822;
+}
+:root {
+  --bg:#0c0408;--bg2:#180810;--surface:#24101a;--card-bg:#24101a;
+  --primary:#8b2040;--primary-lit:#b03060;--accent:#c88020;--accent2:#a06010;
+  --text:#f0d8e0;--text-dim:#6a2040;--tile-locked:#080206;--tile-unlocked:#100608;--tile-completed:#180c12;
+}
