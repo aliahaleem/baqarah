@@ -94,10 +94,10 @@ const S2_QUIZ = [
    LEVEL 3 — Drag & Drop: Match attribute to meaning
    ──────────────────────────────────────────────────────── */
 const S3_ITEMS = [
-  {id:'i1', text:'Ahad',      zone:'z1'},
-  {id:'i2', text:'As-Samad',  zone:'z2'},
-  {id:'i3', text:'Lam yalid', zone:'z3'},
-  {id:'i4', text:'Kufuwan',   zone:'z4'},
+  {id:'i1', text:'أَحَدٌ',    zone:'z1'},
+  {id:'i2', text:'الصَّمَدُ', zone:'z2'},
+  {id:'i3', text:'لَمْ يَلِدْ', zone:'z3'},
+  {id:'i4', text:'كُفُوًا',   zone:'z4'},
 ];
 const S3_ZONES = [
   {id:'z1', desc:'One — uniquely singular, no division, no partners, no comparison (112:1)'},

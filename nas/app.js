@@ -104,10 +104,10 @@ const S2_QUIZ = [
    LEVEL 3 — Drag & Drop: Match key terms
    ──────────────────────────────────────────────────────── */
 const S3_ITEMS = [
-  {id:'n1', text:'Al-Waswas',        zone:'z1'},
-  {id:'n2', text:'Al-Khannas',       zone:'z2'},
-  {id:'n3', text:'Yuwaswisu\nfil-sudur', zone:'z3'},
-  {id:'n4', text:'Min al-jinnati\nwal-nas', zone:'z4'},
+  {id:'n1', text:'الْوَسْوَاسِ',              zone:'z1'},
+  {id:'n2', text:'الْخَنَّاسِ',              zone:'z2'},
+  {id:'n3', text:'يُوَسْوِسُ فِي صُدُورِ',   zone:'z3'},
+  {id:'n4', text:'مِنَ الْجِنَّةِ وَالنَّاسِ', zone:'z4'},
 ];
 const S3_ZONES = [
   {id:'z1', desc:'"The whisperer" — Shaytan who plants whispers of doubt and desire (114:4)'},

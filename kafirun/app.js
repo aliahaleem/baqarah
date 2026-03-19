@@ -78,10 +78,10 @@ const S2_QUIZ = [
 ];
 
 const S3_ITEMS = [
-  {id:'kf1', text:'La a\'budu\nma ta\'budun', zone:'z1'},
-  {id:'kf2', text:'La antum \'abiduna\nma a\'bud', zone:'z2'},
-  {id:'kf3', text:'Wa la ana \'abidun\nma \'abadtum', zone:'z3'},
-  {id:'kf4', text:'Lakum dinukum\nwa liya din', zone:'z4'},
+  {id:'kf1', text:'لَا أَعْبُدُ\nمَا تَعْبُدُونَ',             zone:'z1'},
+  {id:'kf2', text:'وَلَا أَنتُمْ عَابِدُونَ\nمَا أَعْبُدُ',   zone:'z2'},
+  {id:'kf3', text:'وَلَا أَنَا عَابِدٌ\nمَّا عَبَدتُّمْ',     zone:'z3'},
+  {id:'kf4', text:'لَكُمْ دِينُكُمْ\nوَلِيَ دِينِ',           zone:'z4'},
 ];
 const S3_ZONES = [
   {id:'z1', desc:'"I do not worship what you worship" — present refusal (109:2)'},

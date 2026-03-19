@@ -77,10 +77,10 @@ const S2_QUIZ = [
 ];
 
 const S3_ITEMS = [
-  {id:'m1', text:'Yukadhdhibu\nbid-din', zone:'z1'},
-  {id:'m2', text:'Yadu\' al-yatim', zone:'z2'},
-  {id:'m3', text:'La yahuddu\n\'ala ta\'am', zone:'z3'},
-  {id:'m4', text:'Yamna\'una\nal-ma\'un', zone:'z4'},
+  {id:'m1', text:'يُكَذِّبُ\nبِالدِّينِ',           zone:'z1'},
+  {id:'m2', text:'يَدُعُّ\nالْيَتِيمَ',             zone:'z2'},
+  {id:'m3', text:'لَا يَحُضُّ عَلَىٰ\nطَعَامِ الْمِسْكِينِ', zone:'z3'},
+  {id:'m4', text:'يَمْنَعُونَ\nالْمَاعُونَ',        zone:'z4'},
 ];
 const S3_ZONES = [
   {id:'z1', desc:'He denies the religion/judgement — the root attitude (107:1)'},

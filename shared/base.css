@@ -23,6 +23,11 @@
   --font-size-body: 10px;
   --font-size-sm:   8px;
   --font-size-xs:   7px;
+  /* Quiz option selected state — centralised here for all themes */
+  --option-selected-bg:     #1a6e2e;
+  --option-selected-border: #4ade80;
+  --option-selected-text:   #ffffff;
+  --option-selected-shadow: 3px 3px 0 #000;
   --card-shadow:    4px 4px 0 #000;
   --btn-shadow:     2px 2px 0 #000;
   --card-shadow-lg: 8px 8px 0 #000;
@@ -44,6 +49,11 @@ html[data-theme="stars"] {
   --font-size-body: 13px;
   --font-size-sm:   11px;
   --font-size-xs:   10px;
+  /* Quiz option selected state */
+  --option-selected-bg:     #5a30c0;
+  --option-selected-border: #c8a0f8;
+  --option-selected-text:   #ffffff;
+  --option-selected-shadow: 0 4px 16px rgba(90,48,192,0.5);
   --card-shadow:    0 4px 24px rgba(80,60,180,0.22);
   --btn-shadow:     0 2px 10px rgba(60,40,140,0.25);
   --card-shadow-lg: 0 8px 32px rgba(80,60,180,0.3);
@@ -383,9 +393,11 @@ html[data-theme="stars"] .story-highlight { background: rgba(255,215,0,0.05); bo
   text-shadow: 0 0 10px rgba(255,187,68,0.3);
 }
 .english, .verse-translation {
-  font-family: var(--font-body); font-size: var(--font-size-body); line-height: 2;
+  font-family: var(--font-body); font-size: 13px; line-height: 2;
   color: var(--text-dim); font-style: italic;
 }
+html[data-theme="stars"] .english,
+html[data-theme="stars"] .verse-translation { font-size: 15px; }
 .trans-source { font-size: var(--font-size-xs); color: #777; }
 
 /* ================================================
@@ -451,7 +463,8 @@ html[data-theme="stars"] .game-instructions { border-color: rgba(255,255,255,0.1
   min-height: 56px; display: flex; flex-direction: column; gap: 4px;
   transition: background var(--transition), border-color var(--transition); margin-bottom: 4px;
 }
-.drop-zone-desc { font-family: var(--font-body); font-size: var(--font-size-sm); color: var(--text-dim); line-height: 1.8; pointer-events: none; }
+.drop-zone-desc { font-family: var(--font-body); font-size: 12px; color: var(--text-dim); line-height: 1.9; pointer-events: none; }
+html[data-theme="stars"] .drop-zone-desc { font-size: 14px; }
 .drop-zone.drag-over  { background: rgba(255,255,255,0.06); border-color: var(--primary-lit); }
 .drop-zone.correct    { border-color: var(--success) !important; background: rgba(39,174,96,0.1); border-style: solid !important; }
 .drop-zone.incorrect  { border-color: var(--error)   !important; background: rgba(231,76,60,0.1); border-style: solid !important; }
@@ -479,7 +492,14 @@ html[data-theme="stars"] .game-instructions { border-color: rgba(255,255,255,0.1
 }
 html[data-theme="stars"] .option-btn { padding: 12px 12px; }
 .option-btn:hover    { background: var(--bg); border-color: var(--primary-lit); transform: translate(-1px,-1px); box-shadow: var(--card-shadow); }
-.option-btn.selected { background: var(--tile-unlocked); border-color: var(--primary-lit); }
+.option-btn.selected {
+  background:   var(--option-selected-bg);
+  border-color: var(--option-selected-border);
+  color:        var(--option-selected-text);
+  box-shadow:   var(--option-selected-shadow);
+  transform: translate(-2px,-2px);
+}
+.option-btn.selected::before { content: '✔ '; }
 .option-btn.correct  { background: rgba(39,174,96,0.2);  border-color: var(--success); color: var(--success); }
 .option-btn.incorrect{ background: rgba(231,76,60,0.15); border-color: var(--error);   color: var(--error); }
 .option-btn:disabled { cursor: default; }
@@ -816,9 +836,9 @@ html[data-theme="stars"] .w-meaning { font-size: 9px; }
 /* ─── FLIP WORD CARDS (Arabic front / meaning back) ─── */
 .flip-card {
   perspective: 700px;
-  min-width: 90px;
-  max-width: 140px;
-  height: 110px;
+  min-width: 130px;
+  max-width: 200px;
+  height: 150px;
   cursor: pointer;
 }
 .flip-inner {
@@ -844,9 +864,10 @@ html[data-theme="stars"] .w-meaning { font-size: 9px; }
   align-items: center;
   justify-content: center;
   gap: 4px;
-  padding: 6px 8px;
+  padding: 8px 10px;
   box-sizing: border-box;
   text-align: center;
+  overflow: hidden;
 }
 .flip-front {
   background: var(--surface);
@@ -876,22 +897,25 @@ html[data-theme="stars"] .flip-back { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
 html[data-theme="stars"] .flip-hint { font-size: 8px; }
 .flip-back .w-translit {
   font-family: var(--font-body);
-  font-size: 8px;
+  font-size: 9px;
   color: var(--primary-lit);
   font-style: italic;
+  word-break: break-word;
 }
 .flip-back .w-meaning {
   font-family: var(--font-body);
-  font-size: 9px;
+  font-size: 11px;
   color: var(--text);
   background: var(--surface);
-  padding: 3px 8px;
+  padding: 4px 8px;
   border-radius: calc(var(--radius) + 3px);
   border: 1px solid var(--primary);
-  line-height: 1.6;
+  line-height: 1.7;
+  word-break: break-word;
+  max-width: 100%;
 }
-html[data-theme="stars"] .flip-back .w-translit { font-size: 10px; }
-html[data-theme="stars"] .flip-back .w-meaning  { font-size: 11px; }
+html[data-theme="stars"] .flip-back .w-translit { font-size: 11px; }
+html[data-theme="stars"] .flip-back .w-meaning  { font-size: 13px; }
 
 /* ── Word frequency badge ── */
 .flip-freq {

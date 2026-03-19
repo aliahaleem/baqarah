@@ -37,10 +37,10 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'c1', text:'Alaq\n(Clinging clot)', zone:'z1'},
-  {id:'c2', text:'Al-Qalam\n(The Pen)',   zone:'z2'},
-  {id:'c3', text:'Istagna\n(Self-sufficient)',zone:'z3'},
-  {id:'c4', text:'An-Nasiyah\n(Forelock)',zone:'z4'},
+  {id:'c1', text:'عَلَقٍ',                zone:'z1'},
+  {id:'c2', text:'الْقَلَمُ',             zone:'z2'},
+  {id:'c3', text:'اسْتَغْنَىٰ',          zone:'z3'},
+  {id:'c4', text:'النَّاصِيَةِ',         zone:'z4'},
 ];
 const S2_ZONES = [
   {id:'z1', desc:'What man was created from — a humble biological origin (96:2)'},

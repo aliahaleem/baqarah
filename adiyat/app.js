@@ -36,10 +36,10 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'a1', text:'Kanud\n(Ungrateful)',        zone:'z1'},
-  {id:'a2', text:'Shahidun\n(Witness)',         zone:'z2'},
-  {id:'a3', text:'Shadid lil-khayr\n(Fierce for wealth)',zone:'z3'},
-  {id:'a4', text:'Tuthir al-qubur\n(Graves emptied)',    zone:'z4'},
+  {id:'a1', text:'كَنُودٌ',                    zone:'z1'},
+  {id:'a2', text:'شَهِيدٌ',                    zone:'z2'},
+  {id:'a3', text:'شَدِيدٌ لِّلْخَيْرِ',        zone:'z3'},
+  {id:'a4', text:'تُثِيرُ الْقُبُورَ',         zone:'z4'},
 ];
 const S2_ZONES = [
   {id:'z1', desc:'Human is ungrateful to his Lord — the central accusation (100:6)'},

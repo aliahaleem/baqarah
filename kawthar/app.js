@@ -70,9 +70,9 @@ const S2_QUIZ = [
 ];
 
 const S3_ITEMS = [
-  {id:'k1', text:'Inna a\'taynaka\nal-kawthar', zone:'z1'},
-  {id:'k2', text:'Fasalli li-rabbika\nwanhar', zone:'z2'},
-  {id:'k3', text:'Inna shani\'aka\nhuwul-abtar', zone:'z3'},
+  {id:'k1', text:'إِنَّا أَعْطَيْنَاكَ\nالْكَوْثَرَ',         zone:'z1'},
+  {id:'k2', text:'فَصَلِّ لِرَبِّكَ\nوَانْحَرْ',             zone:'z2'},
+  {id:'k3', text:'إِنَّ شَانِئَكَ\nهُوَ الْأَبْتَرُ',       zone:'z3'},
 ];
 const S3_ZONES = [
   {id:'z1', desc:'We have given you Al-Kawthar — the gift of abundance (108:1)'},

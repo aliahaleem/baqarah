@@ -35,10 +35,10 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'h1', text:'Hutamah',          zone:'z1'},
-  {id:'h2', text:'Tattali\' \'alal-af\'idah', zone:'z2'},
-  {id:'h3', text:'Mu\'sadah',        zone:'z3'},
-  {id:'h4', text:'\'Amad mumaddadah', zone:'z4'},
+  {id:'h1', text:'الْحُطَمَةُ',              zone:'z1'},
+  {id:'h2', text:'تَطَّلِعُ عَلَى\nالْأَفْئِدَةِ', zone:'z2'},
+  {id:'h3', text:'مُّؤْصَدَةٌ',             zone:'z3'},
+  {id:'h4', text:'عَمَدٍ\nمُّمَدَّدَةٍ',    zone:'z4'},
 ];
 const S2_ZONES = [
   {id:'z1', desc:'The Crushing Fire — "Hutamah" means something that crushes and destroys (104:4)'},

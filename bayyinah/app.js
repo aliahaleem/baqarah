@@ -36,10 +36,10 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'b1', text:'Ikhlas al-Din\n(Pure devotion)',  zone:'z1'},
-  {id:'b2', text:'Hunafa\n(Uprightly)',              zone:'z2'},
-  {id:'b3', text:'Iqamat al-Salah\n(Establish prayer)',zone:'z3'},
-  {id:'b4', text:'Ita al-Zakah\n(Give zakah)',       zone:'z4'},
+  {id:'b1', text:'مُخْلِصِينَ\nلَهُ الدِّينَ',       zone:'z1'},
+  {id:'b2', text:'حُنَفَاءَ',                        zone:'z2'},
+  {id:'b3', text:'يُقِيمُوا\nالصَّلَاةَ',            zone:'z3'},
+  {id:'b4', text:'يُؤْتُوا\nالزَّكَاةَ',             zone:'z4'},
 ];
 const S2_ZONES = [
   {id:'z1', desc:'Worship Allah with sincere devotion — no shirk, no riyaa (98:5)'},

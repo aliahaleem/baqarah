@@ -35,10 +35,10 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'q1', text:'Laylat al-Qadr',      zone:'z1'},
-  {id:'q2', text:'The Angels and Ruh',  zone:'z2'},
-  {id:'q3', text:'Alf shahr',           zone:'z3'},
-  {id:'q4', text:'Salamun',             zone:'z4'},
+  {id:'q1', text:'لَيْلَةُ الْقَدْرِ',              zone:'z1'},
+  {id:'q2', text:'الْمَلَائِكَةُ\nوَالرُّوحُ',      zone:'z2'},
+  {id:'q3', text:'أَلْفَ شَهْرٍ',                  zone:'z3'},
+  {id:'q4', text:'سَلَامٌ',                         zone:'z4'},
 ];
 const S2_ZONES = [
   {id:'z1', desc:'The Night of Power/Decree — when the Quran was first revealed'},

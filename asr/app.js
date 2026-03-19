@@ -35,10 +35,10 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'c1', text:'Amanu\n(Believed)',               zone:'z1'},
-  {id:'c2', text:'Amilu al-Salihat\n(Good deeds)',  zone:'z2'},
-  {id:'c3', text:'Tawassaw bil-Haqq\n(Urge truth)', zone:'z3'},
-  {id:'c4', text:'Tawassaw bil-Sabr\n(Urge patience)',zone:'z4'},
+  {id:'c1', text:'آمَنُوا',                           zone:'z1'},
+  {id:'c2', text:'عَمِلُوا\nالصَّالِحَاتِ',          zone:'z2'},
+  {id:'c3', text:'تَوَاصَوْا\nبِالْحَقِّ',           zone:'z3'},
+  {id:'c4', text:'تَوَاصَوْا\nبِالصَّبْرِ',          zone:'z4'},
 ];
 const S2_ZONES = [
   {id:'z1', desc:'Correct belief in Allah, His messengers, angels, books, last day (103:3)'},
