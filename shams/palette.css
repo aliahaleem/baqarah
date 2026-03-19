@@ -1,0 +1,13 @@
+/* Surah Ash-Shams (91) — warm amber / gold / solar */
+html[data-theme="stars"] {
+  --bg:#2a1808;--bg2:#3a2010;--surface:#4e2e14;--card-bg:#4e2e14;
+  --primary:#f0a030;--primary-lit:#f8c060;--accent:#f8e040;--accent2:#d0b010;
+  --text:#fff8e8;--text-dim:#e0b870;
+  --tile-locked:#1e1004;--tile-unlocked:#2e1a08;--tile-completed:#3e2410;
+}
+:root {
+  --bg:#180c02;--bg2:#241204;--surface:#361a08;--card-bg:#361a08;
+  --primary:#c87820;--primary-lit:#e09838;--accent:#e8c020;--accent2:#c0a010;
+  --text:#fff4d8;--text-dim:#b08040;
+  --tile-locked:#100800;--tile-unlocked:#1c0e04;--tile-completed:#2a1608;
+}

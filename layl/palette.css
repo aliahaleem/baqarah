@@ -1,0 +1,13 @@
+/* Surah Al-Layl (92) — deep indigo / silver / night */
+html[data-theme="stars"] {
+  --bg:#0c0828;--bg2:#1a1240;--surface:#261c54;--card-bg:#261c54;
+  --primary:#a060e0;--primary-lit:#c080ff;--accent:#e8d060;--accent2:#c0b040;
+  --text:#f0e8ff;--text-dim:#b090d0;
+  --tile-locked:#080618;--tile-unlocked:#140e30;--tile-completed:#1e1644;
+}
+:root {
+  --bg:#04020e;--bg2:#0c0820;--surface:#160e30;--card-bg:#160e30;
+  --primary:#5030a0;--primary-lit:#7048c8;--accent:#c0a820;--accent2:#a08810;
+  --text:#e8e0ff;--text-dim:#806090;
+  --tile-locked:#020108;--tile-unlocked:#0a0618;--tile-completed:#120c28;
+}
