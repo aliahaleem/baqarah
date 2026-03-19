@@ -1,0 +1,11 @@
+/* Surah Al-Inshiqaq (84) — sunset orange / amber / crimson */
+html[data-theme="stars"] {
+  --bg:#2e1a08;--bg2:#3c2410;--surface:#503018;--card-bg:#503018;
+  --primary:#c06820;--primary-lit:#e08840;--accent:#f8c060;--accent2:#e0a040;
+  --text:#ffffff;--text-dim:#f0d8b0;--tile-locked:#201008;--tile-unlocked:#2c1810;--tile-completed:#3a2018;
+}
+:root {
+  --bg:#100802;--bg2:#1a1004;--surface:#261608;--card-bg:#261608;
+  --primary:#883010;--primary-lit:#c05020;--accent:#f09030;--accent2:#c07020;
+  --text:#ffe8c8;--text-dim:#806040;--tile-locked:#0c0602;--tile-unlocked:#140a04;--tile-completed:#1e1008;
+}

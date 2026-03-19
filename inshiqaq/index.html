@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="minecraft">
+<head>
+  <meta charset="UTF-8"/>
+  <script>(function(){var t=localStorage.getItem('quranQuestTheme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surah Al-Inshiqaq Quest 🌅</title>
+  <link rel="stylesheet" href="../shared/base.css"/>
+  <link rel="stylesheet" href="palette.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<header id="game-header" style="display:none">
+  <div><div class="game-title">🌅 SURAH AL-INSHIQAQ QUEST</div><div class="header-explorer">Explorer: <span id="header-name">—</span></div></div>
+  <div class="stats-row">
+    <div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div>
+    <div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div>
+    <div class="stat-chip done-chip">✅ <span id="done-display">0</span>/6</div>
+    <button class="reset-btn" onclick="resetGame()">↺ Reset</button>
+    <a class="hub-btn" href="../index.html">🏠 Hub</a>
+  </div>
+</header>
+<div id="intro-screen">
+  <div class="intro-icon">🌅</div>
+  <div class="intro-title">SURAH AL-INSHIQAQ QUEST</div>
+  <div class="intro-arabic">سُوْرَةُ الانْشِقَاق</div>
+  <div class="intro-subtitle">6 Levels · Sky Splits · You Will Meet Your Lord<br/>Right Hand · Behind Back · Stage by Stage</div>
+  <div class="intro-form">
+    <input class="intro-input" id="explorer-name" type="text" placeholder="Enter your name..." maxlength="20"/>
+    <div id="name-error" style="color:#ff6666;font-size:8px;min-height:12px;"></div>
+    <button class="intro-btn" onclick="startGame()">▶ BEGIN QUEST</button>
+  </div>
+</div>
+<div id="main-view" style="display:none">
+<div class="container">
+  <div class="ibn-ameen-panel">
+    <div class="character-avatar">🧙‍♂️</div>
+    <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+      <span id="welcome-text">As-salamu alaykum! Surah Al-Inshiqaq — The Splitting! The sky splits apart, listening to its Lord. The earth stretches out, listening to its Lord. And YOU — you are striving toward your Lord and WILL meet Him. What will your book say? 6 levels of this profound journey await!</span>
+    </div>
+  </div>
+  <h2 class="section-heading">🌅 THE QUEST MAP</h2>
+  <div class="map-grid">
+    <div class="map-tile locked" id="tile-1" onclick="openSection(1)"><div class="tile-icon">🌅</div><div class="tile-level">LEVEL 1</div><div class="tile-name">Sky Splits</div><div class="tile-verses">84:1-5</div><div class="tile-status" id="status-1">▶ PLAY</div></div>
+    <div class="map-tile locked" id="tile-2" onclick="openSection(2)"><div class="tile-icon">🚶</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Striving</div><div class="tile-verses">84:6</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-3" onclick="openSection(3)"><div class="tile-icon">📖</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Right Hand</div><div class="tile-verses">84:7-9</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-4" onclick="openSection(4)"><div class="tile-icon">⚠️</div><div class="tile-level">LEVEL 4</div><div class="tile-name">Behind Back</div><div class="tile-verses">84:10-15</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-5" onclick="openSection(5)"><div class="tile-icon">🔄</div><div class="tile-level">LEVEL 5</div><div class="tile-name">Stages</div><div class="tile-verses">84:16-19</div><div class="tile-status" id="status-5">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-6" onclick="openSection(6)"><div class="tile-icon">🌙</div><div class="tile-level">LEVEL 6</div><div class="tile-name">Why Not Believe?</div><div class="tile-verses">84:20-25</div><div class="tile-status" id="status-6">🔒 LOCKED</div></div>
+  </div>
+  <div id="world-builder">
+    <h2 class="section-heading">🌅 BUILD THE SUNSET JOURNEY</h2>
+    <div style="border:3px solid var(--primary);margin-bottom:12px;background:#100802;">
+      <canvas id="build-canvas" width="560" height="250" style="width:100%;image-rendering:pixelated;display:block;"></canvas>
+    </div>
+    <p style="font-family:var(--font-body);font-size:var(--font-size-sm);color:var(--primary-lit);text-align:center;margin-bottom:10px;line-height:1.8;">Complete each level to reveal the sunset journey toward your Lord!<br/><em style="color:var(--text-dim);">"Innaka kadihun ila Rabbika kadhan fa-mulaqihi" — 84:6</em></p>
+    <div class="world-preview">
+      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Sky Splits</div></div>
+      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Striving</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Right Hand</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Behind Back</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Stages</div></div>
+      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Moon</div></div>
+    </div>
+  </div>
+  <div id="all-complete">
+    <div style="font-size:36px;margin-bottom:10px;">🌅</div>
+    <div style="color:var(--accent);font-size:10px;margin-bottom:8px;">SURAH AL-INSHIQAQ COMPLETE!</div>
+    <div style="font-family:var(--font-body);font-size:var(--font-size-body);color:#ddd;line-height:1.9;">MashAllah! All 6 levels complete!<br/><em>"La-tarkabunna tabaqan \'an tabaqin."</em><br/>Stage after stage — toward your Lord. May we meet Him with smiling faces. Ameen!</div>
+  </div>
+</div>
+</div>
+
+<div id="verse-popup"><div class="vp-box"><div id="vp-ref"></div><div id="vp-arabic"></div><div id="vp-eng"></div><div id="vp-note"></div><button id="vp-close" onclick="hideVersePopup()">✕ Close</button></div></div>
+<div id="reward-overlay"><div class="reward-box"><span class="reward-icon" id="reward-icon">🏆</span><div class="reward-title" id="reward-title"></div><div class="reward-xp" id="reward-xp"></div><div class="reward-gems" id="reward-gems"></div><div class="reward-msg" id="reward-msg"></div><button class="reward-ok-btn" onclick="dismissReward()">✅ Continue Quest</button></div></div>
+
+<div id="section-view" style="display:none">
+  <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></header>
+
+  <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Like At-Takwir and Al-Infitar before it, Surah Al-Inshiqaq opens with the signs of the Last Day. But here's something unique — the sky and earth don't just split and stretch — they LISTEN to their Lord. They were obligated to comply, and they did. Match the signs!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🌅 LEVEL 1 — SKY SPLITS, EARTH STRETCHES (84:1-5)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Splitting — Click to reveal verse</span></div><canvas id="canvas-1" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>Surah Al-Inshiqaq is the third in a trilogy of surahs beginning with cosmic signs (after At-Takwir and Al-Infitar). But it adds something unique: the sky and earth don't just change — they <strong>listen</strong>.</p>
+        <p><strong>"Wa adhinat li-Rabbiha wa huqqat"</strong> — the sky listened to its Lord and was OBLIGATED (or: was right to do so). This phrase appears twice — for the sky (84:2) and for the earth (84:4). The repetition is deliberate: both cosmic entities are perfectly obedient to Allah.</p>
+        <p>"Adhina" comes from "udhn" (ear) — it means to give ear to, to hear with full attention and then comply. The sky and earth HEAR Allah's command and obey without hesitation. "Wa huqqat" — and it was right for them to do so, or they were obligated to.</p>
+        <p><em>The implication: if the sky and earth — vast, powerful, eternal — obey their Lord completely, what excuse does the human being have for not listening?</em></p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">إِذَا السَّمَاءُ انشَقَّتْ ۩ وَأَذِنَتْ لِرَبِّهَا وَحُقَّتْ ۩ وَإِذَا الْأَرْضُ مُدَّتْ ۩ وَأَلْقَتْ مَا فِيهَا وَتَخَلَّتْ</div>
+        <div class="verse-translation">"When the sky has split apart and listened to its Lord and was obligated — and when the earth has been stretched out and has cast out what was within it and vacated." (84:1-4)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 GAME — MATCH THE SIGNS (84:1-5)</div>
+      <div class="game-instructions">Drag each sign to its correct description. All 4 must match!</div>
+      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-1"></div><div class="drop-zones" id="drop-zones-1"></div></div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <div class="section-panel" id="section-panel-2">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>After the cosmic signs, Allah addresses YOU personally: "Ya ayyuha al-insan, innaka kadihun ila Rabbika kadhan fa-mulaqihi." You are STRIVING toward your Lord with great effort — and you WILL meet Him. This is the most important verse for your daily life. Answer the questions!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🚶 LEVEL 2 — STRIVING TOWARD YOUR LORD (84:6)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Journey — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>One of the most powerful single verses in the Quran comes here: <strong>"Ya ayyuha al-insan, innaka kadihun ila Rabbika kadhan fa-mulaqihi."</strong></p>
+        <p>O human being. You are LABORING, STRIVING, TOILING toward your Lord with GREAT effort. "Kadh" is a word for exhausted, hard, sustained effort — like a traveler pushing through difficult terrain.</p>
+        <p>You are heading toward your Lord. Every moment of your life — sleeping, eating, working, praying, sinning, repenting — you are moving through time, and time has one direction: toward your Lord. This is unavoidable, unstoppable. You ARE striving toward Him.</p>
+        <p>And then: <strong>"Fa-mulaqihi"</strong> — then you will MEET HIM. Not "might." Not "if you're good enough." You WILL meet Him. This meeting is certain. The question is not whether it happens — it is whether you are prepared for it.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">يَا أَيُّهَا الْإِنسَانُ إِنَّكَ كَادِحٌ إِلَىٰ رَبِّكَ كَدْحًا فَمُلَاقِيهِ</div>
+        <div class="verse-translation">"O man — indeed you are laboring toward your Lord with great effort and will meet Him." (84:6)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — STRIVING (84:6)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-2"></div>
+      <div class="game-feedback" id="feedback-2"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <div class="section-panel" id="section-panel-3">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>After "you will meet Him," the surah splits into two outcomes. First: the happy outcome! "Fa-amma man utiya kitabahu bi-yaminih" — whoever is given their record in their RIGHT hand. Easy reckoning, joyful return to their people. Answer the questions about the right-hand people!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 3 — BOOK IN RIGHT HAND (84:7-9)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Joyful Return — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>The surah now presents the two outcomes of the meeting with Allah. The first: <strong>"Fa-amma man utiya kitabahu bi-yaminih"</strong> — as for he who is given his record in his RIGHT hand.</p>
+        <p>In Islamic tradition, the right hand carries honour and blessing. Receiving the record in the right hand means you are among the successful, the righteous — the Ashab al-Yamin (People of the Right).</p>
+        <p>The account: <strong>"Hisaban yasiran"</strong> — an EASY reckoning. The Prophet Muhammad ﷺ explained that whoever is brought to strict, detailed account is destroyed. A truly easy reckoning is when Allah shows you your deeds for acknowledgment without intense questioning — a merciful, light review.</p>
+        <p>The result: <strong>"Wa yanqalibu ila ahlihi masrura"</strong> — and he returns to his people OVERJOYED. "Masrura" — filled with joy, happiness, delight. The reunion after the Judgment is a celebration. Families, friends, loved ones together in bliss.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">فَأَمَّا مَنْ أُوتِيَ كِتَابَهُ بِيَمِينِهِ ۩ فَسَوْفَ يُحَاسَبُ حِسَابًا يَسِيرًا ۩ وَيَنقَلِبُ إِلَىٰ أَهْلِهِ مَسْرُورًا</div>
+        <div class="verse-translation">"As for he who is given his record in his right hand — he will be judged with an easy reckoning — and return to his people in happiness." (84:7-9)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — RIGHT HAND (84:7-9)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-3"></div>
+      <div class="game-feedback" id="feedback-3"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection3()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <div class="section-panel" id="section-panel-4">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The second outcome — worse and more frightening. "Wa amma man utiya kitabahu wara'a dhahrih" — as for he who is given his record BEHIND his back. He calls for destruction. He will enter blazing fire. Why? Because "he thought he would never return to Allah" (84:14). Answer the questions!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">⚠️ LEVEL 4 — BOOK BEHIND THE BACK (84:10-15)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Painful Outcome — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>The second outcome: <strong>"Wa amma man utiya kitabahu wara'a dhahrih"</strong> — as for he who is given his record BEHIND his back. Not in his left hand — behind his back. Scholars say his right hand is bound, and his left hand reaches behind him in shame and degradation.</p>
+        <p>His reaction: <strong>"Fa-sawfa yad'u thubura"</strong> — he will call for destruction/ruin. "Yad'u" means to call out. "Thubur" means utter ruin. He cries out: "let me be destroyed!" The anguish is so complete he wishes he could simply cease to exist rather than face what is coming.</p>
+        <p>And: <strong>"Wa yasla sa'iran"</strong> — he will enter blazing fire. "Sa'ir" — from "sa'ara" meaning to kindle and blaze intensely. The name emphasises the severity of the fire.</p>
+        <p>The cause is given in 84:13-14: he was in his worldly life among his people joyfully heedless (masrur — the same word used for the right-hand person's JOY, but misdirected worldly joy). And he thought <strong>"lan yahur"</strong> — "I will never return" to Allah. This mistaken belief — that there is no real reckoning — was his destruction.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَأَمَّا مَنْ أُوتِيَ كِتَابَهُ وَرَاءَ ظَهْرِهِ ۩ فَسَوْفَ يَدْعُو ثُبُورًا ۩ وَيَصْلَىٰ سَعِيرًا</div>
+        <div class="verse-translation">"As for he who is given his record behind his back — he will call for destruction — and he will enter a Blaze." (84:10-12)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — BEHIND THE BACK (84:10-15)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <div class="section-panel" id="section-panel-5">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Allah swears by the twilight (84:16), the night and what it envelops (84:17), and the moon as it becomes full (84:18) — before declaring: "La-tarkabunna tabaqan \'an tabaqin!" You will SURELY pass through stage after stage. Answer the questions about this powerful declaration!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🔄 LEVEL 5 — STAGE AFTER STAGE (84:16-19)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Stages of Life — Click to reveal verse</span></div><canvas id="canvas-5" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>Allah takes three oaths before a powerful declaration:</p>
+        <p><strong>"Fa-la uqsimu bi-al-shafaq"</strong> — By the twilight (84:16). The red glow of sunset — the transition between day and night.</p>
+        <p><strong>"Wa al-layl wa ma wasaq"</strong> — By the night and what it envelops/gathers (84:17). The night that brings together all living things under its darkness.</p>
+        <p><strong>"Wa al-qamar idha ittasaq"</strong> — By the moon when it becomes full (84:18). The moon that builds from crescent to fullness — stage by stage.</p>
+        <p>Then the declaration: <strong>"La-tarkabunna tabaqan 'an tabaqin!"</strong> — You will SURELY pass through stage after stage! The moon itself is evidence — it passes through phases. Human life passes through phases. The universe passes through phases. Everything moves through stages toward its meeting with Allah.</p>
+        <p>Life's stages include: the drop of fluid, the clot, the flesh, the bones, birth, infancy, childhood, youth, adulthood, old age, death, the grave, resurrection, judgment, and final destination. At each stage: accountability for that stage.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">فَلَا أُقْسِمُ بِالشَّفَقِ ۩ وَاللَّيْلِ وَمَا وَسَقَ ۩ وَالْقَمَرِ إِذَا اتَّسَقَ ۩ لَتَرْكَبُنَّ طَبَقًا عَن طَبَقٍ</div>
+        <div class="verse-translation">"By the twilight — by the night and what it envelops — by the moon as it becomes full — you will surely pass through stage after stage." (84:16-19)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — STAGE BY STAGE (84:16-19)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-5"></div>
+      <div class="game-feedback" id="feedback-5"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <div class="section-panel" id="section-panel-6">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The surah closes with a question: "Ma lahum la yu\'minun?" — What is wrong with them that they do not believe? The evidence is overwhelming! Sky splitting, earth stretching, you are striving toward your Lord. And yet some refuse. Answer the final questions to complete Surah Al-Inshiqaq!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🌙 LEVEL 6 — WHY DON'T THEY BELIEVE? (84:20-25)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Moon and the Quran — Click to reveal verse</span></div><canvas id="canvas-6" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>The surah's final section is a searching question: <strong>"Fa-ma lahum la yu'minun? Wa idha quri'a 'alayhim al-Quran la yasjudun?"</strong> — What is wrong with them that they do not believe? And when the Quran is recited to them, they do not prostrate?</p>
+        <p>The question is rhetorical — it says: there is no valid reason. The sky will split. The earth will stretch. You are striving toward your Lord and WILL meet Him. The right-hand path leads to joy, the left-hand path to destruction. Stage after stage, life moves toward the meeting. Given all this — what is stopping them?</p>
+        <p>The answer comes in the contrast of "Bal alladhina kafaru yukadhdhibun" (84:22) — but those who disbelieve simply DENY. Not because of lack of evidence — but because of willful rejection. "Wa Allahu a'lamu bima yusi'un" (84:23) — and Allah knows best what they conceal.</p>
+        <p>The surah ends with a promise: <strong>"Fa-bashshirhum bi-'adhab alim"</strong> (84:24) — give them tidings of a painful punishment. But then immediately: <strong>"Illa alladhina amanu wa 'amilu al-salihat, lahum ajrun ghayr mamnun"</strong> (84:25) — except those who believed and did good deeds — for them is an uninterrupted, never-ending reward.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">فَمَا لَهُمْ لَا يُؤْمِنُونَ ۩ وَإِذَا قُرِئَ عَلَيْهِمُ الْقُرْآنُ لَا يَسْجُدُونَ ۩ إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ لَهُمْ أَجْرٌ غَيْرُ مَمْنُونٍ</div>
+        <div class="verse-translation">"What is wrong with them that they do not believe? — Except those who believed and did good deeds — for them is a reward uninterrupted." (84:20,25)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 FINAL QUIZ — REFLECTION (84:20-25)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to complete Surah Al-Inshiqaq!</div>
+      <div id="quiz-6"></div>
+      <div class="game-feedback" id="feedback-6"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+</div>
+<script src="scenes.js"></script>
+<script src="../shared/engine.js"></script>
+<script src="../shared/ui.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

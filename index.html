@@ -177,6 +177,8 @@
   .infitar-portal:hover  { border-color:#40d0e8; box-shadow:0 0 36px #40d0e866; }
   .mutaffifin-portal { background: linear-gradient(160deg,#140408,#200810); border-color:#6a1828; box-shadow:0 0 20px #6a182844; }
   .mutaffifin-portal:hover { border-color:#c88030; box-shadow:0 0 36px #c8803066; }
+  .inshiqaq-portal { background: linear-gradient(160deg,#100802,#1a1004); border-color:#883010; box-shadow:0 0 20px #88301044; }
+  .inshiqaq-portal:hover { border-color:#f09030; box-shadow:0 0 36px #f0903066; }
 
   /* Elegant dusk — vivid medium-bright portal cards */
   html[data-theme="stars"] .portal { box-shadow: 0 6px 28px rgba(80,60,180,0.45); }
@@ -190,6 +192,7 @@
   html[data-theme="stars"] .takwir-portal   { background:linear-gradient(135deg,#1e1a4a,#363078); border-color:#e8e0a0; }
   html[data-theme="stars"] .infitar-portal  { background:linear-gradient(135deg,#1a2850,#2e4080); border-color:#80e8f8; }
   html[data-theme="stars"] .mutaffifin-portal { background:linear-gradient(135deg,#3a1a28,#5c2e48); border-color:#f0b860; }
+  html[data-theme="stars"] .inshiqaq-portal { background:linear-gradient(135deg,#2e1a08,#503018); border-color:#f8c060; }
 
   .portal-icon {
     font-size: 48px;
@@ -304,6 +307,8 @@
   .infitar-portal:hover  .portal-btn { background:#40d0e8; color:#000; }
   .mutaffifin-portal .portal-btn { color:#c88030; border-color:#c88030; background:transparent; }
   .mutaffifin-portal:hover .portal-btn { background:#c88030; color:#000; }
+  .inshiqaq-portal .portal-btn { color:#f09030; border-color:#f09030; background:transparent; }
+  .inshiqaq-portal:hover .portal-btn { background:#f09030; color:#000; }
 
   /* ─── FOOTER ─── */
   .hub-footer {
@@ -422,6 +427,18 @@
       <div class="portal-progress" id="naziat-progress">
         <span style="color:#888">Not started yet</span>
       </div>
+      <div class="portal-btn">ENTER QUEST ▶</div>
+    </div>
+
+    <!-- AL-INSHIQAQ PORTAL -->
+    <div class="portal inshiqaq-portal" onclick="window.location='inshiqaq/index.html'">
+      <div class="portal-icon">🌅</div>
+      <div class="portal-title">SURAH AL-INSHIQAQ</div>
+      <div class="portal-arabic">سورة الانشقاق</div>
+      <div class="portal-desc">The Splitting — 25 Verses<br>6 Levels of striving</div>
+      <div class="portal-separator"></div>
+      <div class="portal-progress-label">YOUR PROGRESS</div>
+      <div class="portal-progress" id="inshiqaq-progress"><span style="color:#888">Not started yet</span></div>
       <div class="portal-btn">ENTER QUEST ▶</div>
     </div>
 
@@ -590,6 +607,7 @@
   renderProgress('takwirQuestSave',   'takwir-progress', 6);
   renderProgress('infitarQuestSave',    'infitar-progress',    6);
   renderProgress('mutaffifinQuestSave', 'mutaffifin-progress', 6);
+  renderProgress('inshiqaqQuestSave',   'inshiqaq-progress',   6);
 </script>
 </body>
 </html>
