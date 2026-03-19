@@ -35,6 +35,32 @@ window.SURAH_CONFIG = {
 };
 
 /* ────────────────────────────────────────────────────────
+   LEVEL 1 — Word by Word flip cards (113:1-5)
+   ──────────────────────────────────────────────────────── */
+const WBW_DATA = [
+  {label:'Verse 1 — قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ', words:[
+    'al-falaq',
+    {ar:'بِرَبِّ', tr:'bi-rabb', en:'in the Lord of'},
+    'a-udhu','qul',
+  ]},
+  {label:'Verse 2 — مِن شَرِّ مَا خَلَقَ', words:[
+    'khalaqa','ma','sharr','min',
+  ]},
+  {label:'Verse 3 — وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ', words:[
+    'waqab','idha','ghassiq','sharr',
+    {ar:'وَمِن', tr:'wa-min', en:'and from'},
+  ]},
+  {label:'Verse 4 — وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ', words:[
+    'al-uqad','fi','al-naffathat','sharr',
+    {ar:'وَمِن', tr:'wa-min', en:'and from'},
+  ]},
+  {label:'Verse 5 — وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ', words:[
+    'hasad','idha','hasid','sharr',
+    {ar:'وَمِن', tr:'wa-min', en:'and from'},
+  ]},
+];
+
+/* ────────────────────────────────────────────────────────
    LEVEL 1 — Word by Word: Match Arabic word to English
    ──────────────────────────────────────────────────────── */
 const S1_ITEMS = [
@@ -124,7 +150,7 @@ const S5_QUIZ = [
    correct:1},
 ];
 
-function renderSection1Game(){renderDragDrop(1,S1_ITEMS,S1_ZONES);}
+function renderSection1Game(){if(window.renderWBW)renderWBW('wbw-display',WBW_DATA,'wbw-reveal-btn');renderDragDrop(1,S1_ITEMS,S1_ZONES);}
 function checkSection1(){checkDragDrop(1,S1_ZONES);}
 function renderSection2Game(){renderQuiz(2,S2_QUIZ);}
 function checkSection2(){checkQuiz(2,S2_QUIZ);}

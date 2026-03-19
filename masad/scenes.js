@@ -7,10 +7,34 @@ class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.c
 const VD_s1={ref:'Al-Masad 111:1',arabic:'تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ',english:'"May Abu Lahab\'s hands perish!" (111:1)',note:"The Prophet's uncle — fiercest enemy. Predicted: never Muslim."};
 const VD_s2={ref:'Al-Masad 111:2',arabic:'مَا أَغْنَىٰ عَنْهُ مَالُهُ وَمَا كَسَبَ',english:'"His wealth availed him nothing." (111:2)',note:"All wealth and status: useless. Allah's decree prevails."};
 const VD_s3={ref:'Al-Masad 111:4-5',arabic:'فِي جِيدِهَا حَبْلٌ مِّن مَّسَدٍ',english:'"Around her neck a rope of palm fiber." (111:5)',note:"His wife: wood-carrier on Prophet's path. In Hell: palm rope."};
-class S1 extends BS{constructor(){super('canvas-1');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s1);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#1a0404';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#381010';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('🔥',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#f07030';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('تَبَّتْ يَدَا أَبِي لَهَبٍ و',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"May Abu Lahab\'s hands perish!" (111:1)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Abu Lahab Condemned — 111:1','#fff0e8');};draw();}}
-class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s2);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#1a0404';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#381010';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('💀',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#f07030';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('مَا أَغْنَىٰ عَنْهُ مَالُهُ ',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"His wealth availed him nothing." (111:2)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Wealth Useless — 111:2','#fff0e8');};draw();}}
-class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s3);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#1a0404';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#381010';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('🌿',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#f07030';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('فِي جِيدِهَا حَبْلٌ مِّن مَّ',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Around her neck a rope of palm fiber." (111:5)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,"CLICK: His Wife's Punishment — 111:4-5",'#fff0e8');};draw();}}
+
+/* S1 — Word by Word canvas: thematic scene only */
+class S1 extends BS{constructor(){super('canvas-1');}start(){
+  if(!this.ctx)return;
+  const VD_wbw_l={ref:'AL-MASAD 111:1',arabic:'تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ ۩ مَا أَغْنَىٰ عَنْهُ مَا...',english:'"May the hands of Abu Lahab perish, and he has perished! His wealth and what he ...',note:'Learn every word — tap the flip cards below!'};
+  this.canvas.onclick=()=>showVersePopup(VD_wbw_l);
+  const ctx=this.ctx;
+  const draw=()=>{
+    this.t++;this.raf=requestAnimationFrame(draw);
+    const t2=this.t;
+    ctx.fillStyle='#100200';ctx.fillRect(0,0,CW,CH);
+    const rg=ctx.createRadialGradient(CW/2,CH*0.5,5,CW/2,CH*0.5,100+Math.sin(t2*0.025)*10);
+    rg.addColorStop(0,`rgba(240,100,40,{0.15+Math.sin(t2*0.03)*0.06})`);
+    rg.addColorStop(1,'transparent');
+    ctx.fillStyle=rg;ctx.fillRect(0,0,CW,CH);
+    ctx.fillStyle='rgba(240,130,70,0.92)';ctx.font='18px serif';ctx.textAlign='center';
+    ctx.fillText('تَبَّتْ يَدَا أَبِي لَهَبٍ',CW/2,CH*0.48);
+    ctx.fillStyle='rgba(180,180,180,0.55)';ctx.font='5px "Press Start 2P",monospace';
+    ctx.fillText('"May the hands of Abu Lahab perish" · Tap cards below',CW/2,CH-10);
+    ctx.textAlign='left';
+    _lbl(ctx,'CLICK: Full Al-Masad 111:1-5','#fff8f0');
+  };draw();
+}}
+
+class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s1);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#1a0404';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#381010';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('🔥',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#f07030';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('تَبَّتْ يَدَا أَبِي لَهَبٍ و',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"May Abu Lahab\'s hands perish!" (111:1)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Abu Lahab Condemned — 111:1','#fff0e8');};draw();}}
+class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s2);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#1a0404';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#381010';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('💀',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#f07030';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('مَا أَغْنَىٰ عَنْهُ مَالُهُ ',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"His wealth availed him nothing." (111:2)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Wealth Useless — 111:2','#fff0e8');};draw();}}
+class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s3);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#1a0404';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#381010';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('🌿',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#f07030';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('فِي جِيدِهَا حَبْلٌ مِّن مَّ',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Around her neck a rope of palm fiber." (111:5)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,"CLICK: His Wife's Punishment — 111:4-5",'#fff0e8');};draw();}}
 const scenes={};
-function initScenes(){scenes[1]=new S1();scenes[2]=new S2();scenes[3]=new S3();}
+function initScenes(){scenes[1]=new S1();scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();}
 function startScene(n){if(scenes[n])scenes[n].start();}
 function stopAllScenes(){Object.values(scenes).forEach(s=>s.stop());}

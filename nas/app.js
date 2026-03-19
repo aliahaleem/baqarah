@@ -35,6 +35,34 @@ window.SURAH_CONFIG = {
 };
 
 /* ────────────────────────────────────────────────────────
+   LEVEL 1 — Word by Word flip cards (114:1-6)
+   ──────────────────────────────────────────────────────── */
+const WBW_DATA = [
+  {label:'Verse 1 — قُلْ أَعُوذُ بِرَبِّ النَّاسِ', words:[
+    'al-nas',
+    {ar:'بِرَبِّ', tr:'bi-rabb', en:'in the Lord of'},
+    'a-udhu','qul',
+  ]},
+  {label:'Verse 2 — مَلِكِ النَّاسِ', words:[
+    'al-nas','malik',
+  ]},
+  {label:'Verse 3 — إِلَٰهِ النَّاسِ', words:[
+    'al-nas','ilah',
+  ]},
+  {label:'Verse 4 — مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ', words:[
+    'al-khannas','al-waswas','sharr','min',
+  ]},
+  {label:'Verse 5 — الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ', words:[
+    'al-nas','fi-sudur','yuwas-wis','alladhi',
+  ]},
+  {label:'Verse 6 — مِنَ الْجِنَّةِ وَالنَّاسِ', words:[
+    {ar:'وَالنَّاسِ', tr:'wal-nās', en:'and mankind'},
+    'al-jinn',
+    {ar:'مِنَ', tr:'mina', en:'from among'},
+  ]},
+];
+
+/* ────────────────────────────────────────────────────────
    LEVEL 1 — Word by Word: Match Arabic word to English
    ──────────────────────────────────────────────────────── */
 const S1_ITEMS = [
@@ -124,7 +152,7 @@ const S5_QUIZ = [
    correct:2},
 ];
 
-function renderSection1Game(){renderDragDrop(1,S1_ITEMS,S1_ZONES);}
+function renderSection1Game(){if(window.renderWBW)renderWBW('wbw-display',WBW_DATA,'wbw-reveal-btn');renderDragDrop(1,S1_ITEMS,S1_ZONES);}
 function checkSection1(){checkDragDrop(1,S1_ZONES);}
 function renderSection2Game(){renderQuiz(2,S2_QUIZ);}
 function checkSection2(){checkQuiz(2,S2_QUIZ);}

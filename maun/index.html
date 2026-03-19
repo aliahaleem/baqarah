@@ -12,25 +12,50 @@
 <body>
 <header id="game-header" style="display:none">
   <div><div class="game-title">🤲 SURAH AL-MAUN QUEST</div><div class="header-explorer">Explorer: <span id="header-name">—</span></div></div>
-  <div class="stats-row"><div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div><div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div><div class="stat-chip done-chip">✅ <span id="done-display">0</span>/3</div><button class="reset-btn" onclick="resetGame()">↺ Reset</button><a class="hub-btn" href="../index.html">🏠 Hub</a></div>
+  <div class="stats-row"><div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div><div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div><div class="stat-chip done-chip">✅ <span id="done-display">0</span>/4</div><button class="reset-btn" onclick="resetGame()">↺ Reset</button><a class="hub-btn" href="../index.html">🏠 Hub</a></div>
 </header>
 <div id="intro-screen">
   <div class="intro-icon">🤲</div>
   <div class="intro-title">SURAH AL-MAUN QUEST</div>
   <div class="intro-arabic">الماعون</div>
-  <div class="intro-subtitle">3 Levels · Denier of Deen · Hollow Prayer · Small Kindness</div>
+  <div class="intro-subtitle">4 Levels · Word by Word Arabic · Denier of Deen · Small Kindnesses</div>
 </div>
 <div id="main-view" style="display:none">
 <div class="container">
   <div class="ibn-ameen-panel"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/><span id="welcome-text">As-salamu alaykum! Welcome to Surah Al-Maun!</span></div></div>
   <h2 class="section-heading">🤲 THE QUEST MAP</h2>
   <div class="map-grid">
-    <div class="map-tile unlocked" id="tile-1"><div class="tile-icon">😢</div><div class="tile-level">LEVEL 1</div><div class="tile-name">Denier Exposed</div><div class="tile-verses">107:1-3</div><div class="tile-status" id="status-1">▶ PLAY</div></div>
+    <div class="map-tile unlocked" id="tile-1" onclick="openSection(1)">
+      <div class="tile-icon">📖</div><div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">Word by Word</div><div class="tile-verses">107:1-2</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+    <div class="map-tile locked" id="tile-2" onclick="openSection(2)">
+      <div class="tile-icon">😢</div><div class="tile-level">LEVEL 2</div>
+      <div class="tile-name">The Denier</div><div class="tile-verses">107:1-3</div>
+      <div class="tile-status" id="status-2">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-3" onclick="openSection(3)">
+      <div class="tile-icon">🙏</div><div class="tile-level">LEVEL 3</div>
+      <div class="tile-name">Hypocrisy</div><div class="tile-verses">107:4-6</div>
+      <div class="tile-status" id="status-3">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-4" onclick="openSection(4)">
+      <div class="tile-icon">🤲</div><div class="tile-level">LEVEL 4</div>
+      <div class="tile-name">Small Kindness</div><div class="tile-verses">107:7</div>
+      <div class="tile-status" id="status-4">🔒 LOCKED</div>
+    </div>
+  </div>
+  </div>
     <div class="map-tile locked" id="tile-2"><div class="tile-icon">🙏</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Match the Signs</div><div class="tile-verses">107:1-7</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
     <div class="map-tile locked" id="tile-3"><div class="tile-icon">🤲</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Al-Maun Complete</div><div class="tile-verses">107:5-7</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
   </div>
   <div id="world-builder"><h2 class="section-heading">🤲 WORLD BUILDER</h2><div style="border:3px solid var(--primary);margin-bottom:12px;"><canvas id="build-canvas" width="560" height="180" style="width:100%;image-rendering:pixelated;display:block;"></canvas></div><div class="world-preview">
-      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Denier Exposed</div></div>
+      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Words</div></div>
+      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">The Denier</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Hypocrisy</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Small Kindness</div></div>
+      </div></div>
       <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Match the Signs</div></div>
       <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Al-Maun Complete</div></div>
   </div></div>
@@ -42,25 +67,124 @@
   <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></header>
 
   <div class="section-panel" id="section-panel-1">
-    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>He pushes away the orphan and doesn't urge feeding the poor! Answer the quiz!</div></div>
-    <div class="card" style="margin:14px 12px 0"><div class="card-header">😢 LEVEL 1 — Denier Exposed (107:1-3)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Denier Exposed — Click to reveal verse</span></div><canvas id="canvas-1" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">أَرَأَيْتَ الَّذِي يُكَذِّبُ بِالدِّينِ</div><div class="verse-translation">"Did you see the one who denies the deen?" (107:1)</div></div></div>
-    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 QUIZ — DENIER OF THE DEEN</div><div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div><div id="quiz-1"></div><div class="game-feedback" id="feedback-1"></div><div class="game-footer"><button class="action-btn" onclick="checkSection1()">✅ Check Answers</button><button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button></div></div>
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Before diving into the story and quizzes, let's learn EVERY ARABIC WORD of Surah Al-Maun! Study the full verse first, then tap each Arabic card to reveal its meaning. When ready, match the key words below!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0">
+      <div class="card-header">📖 LEVEL 1 — WORD BY WORD (107:1-2)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Al-Maun — Click to reveal full translation</span></div>
+        <canvas id="canvas-1" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <div class="verse-block">
+          <div class="arabic-text">أَرَأَيْتَ الَّذِي يُكَذِّبُ بِالدِّينِ ۩ فَذَٰلِكَ الَّذِي يَدُعُّ الْيَتِيمَ ۩ وَلَا يَحُضُّ عَلَىٰ طَعَامِ الْمِسْكِينِ ۩ فَوَيْلٌ لِّلْمُصَلِّينَ ۩ الَّذِينَ هُمْ عَن صَلَاتِهِمْ سَاهُونَ ۩ الَّذِينَ هُمْ يُرَاءُونَ ۩ وَيَمْنَعُونَ الْمَاعُونَ</div>
+          <div class="verse-translation">"Have you seen the one who denies the deen? He is the one who pushes away the orphan, and does not urge feeding the poor. Woe to those who pray — those who are heedless of their prayer — those who show off, and withhold small kindnesses." (107:1-7)</div>
+        </div>
+        <p class="word-grid-intro">Now explore each word — <strong>tap a card to reveal its meaning</strong>. Cards shown RIGHT to LEFT, as Arabic is read.</p>
+                <button id="wbw-reveal-btn" class="wbw-reveal-btn">👁 Reveal All Meanings</button>
+        <div id="wbw-display"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin:8px 12px 0">
+      <div class="card-header">🎮 MATCH — ARABIC WORD TO ENGLISH MEANING</div>
+      <div class="game-instructions">Drag each <strong>Arabic word</strong> to its correct <strong>English meaning</strong>. All 6 must be correct!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-1"></div>
+        <div class="drop-zones" id="drop-zones-1"></div>
+      </div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
+
   <div class="section-panel" id="section-panel-2">
-    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>From denying the orphan to withholding small kindness. Match the signs of hollow religion!</div></div>
-    <div class="card" style="margin:14px 12px 0"><div class="card-header">🙏 LEVEL 2 — Match the Signs (107:1-7)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Match the Signs — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">يَدُعُّ الْيَتِيمَ ۩ وَلَا يَحُضُّ عَلَىٰ طَعَامِ الْمِسْكِينِ</div><div class="verse-translation">"He pushes away the orphan and doesn't urge feeding the poor." (107:2-3)</div></div></div>
-    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 MATCH — SIGNS OF HOLLOW RELIGION</div><div class="game-instructions">Drag each sign to its description!</div><div class="drag-game-container"><div class="drag-pool" id="drag-pool-2"></div><div class="drop-zones" id="drop-zones-2"></div></div><div class="game-feedback" id="feedback-2"></div><div class="game-footer"><button class="action-btn" onclick="checkSection2()">✅ Check Matches</button><button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button></div></div>
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The one who denies the deen pushes the orphan away and ignores the poor! True iman shows in how we treat the vulnerable. Answer the quiz!</div>
+    </div>
+    <div class="card" style="margin:14px 12px 0">
+      <div class="card-header">😢 LEVEL 2 — THE DENIER OF DEEN (107:1-3)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Denier — Click to reveal verse</span></div>
+        <canvas id="canvas-2" width="560" height="220"></canvas></div>
+      <div class="verse-block"><div class="arabic-text">أَرَأَيْتَ الَّذِي يُكَذِّبُ بِالدِّينِ</div>
+        <div class="verse-translation">"Have you seen the one who denies the deen?" (107:1)</div></div>
+    </div>
+    <div class="card" style="margin:8px 12px 0">
+      <div class="card-header">🎮 QUIZ — THE DENIER OF DEEN</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-2"></div>
+      <div class="game-feedback" id="feedback-2"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+      </div>
+    </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
+
   <div class="section-panel" id="section-panel-3">
-    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Hollow prayer + withholding small kindness. Final quiz!</div></div>
-    <div class="card" style="margin:14px 12px 0"><div class="card-header">🤲 LEVEL 3 — Al-Maun Complete (107:5-7)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Al-Maun Complete — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">وَيَمْنَعُونَ الْمَاعُونَ</div><div class="verse-translation">"And they withhold small kindnesses." (107:7)</div></div></div>
-    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 QUIZ — AL-MAUN FINAL</div><div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div><div id="quiz-3"></div><div class="game-feedback" id="feedback-3"></div><div class="game-footer"><button class="action-btn" onclick="checkSection3()">✅ Check Answers</button><button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button></div></div>
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Woe to those who pray heedlessly and to be seen! Match each phrase of hypocrisy to its meaning!</div>
+    </div>
+    <div class="card" style="margin:14px 12px 0">
+      <div class="card-header">🙏 LEVEL 3 — HYPOCRISY IN PRAYER (107:4-6)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Hollow Prayer — Click to reveal verse</span></div>
+        <canvas id="canvas-3" width="560" height="220"></canvas></div>
+      <div class="verse-block"><div class="arabic-text">فَوَيْلٌ لِّلْمُصَلِّينَ الَّذِينَ هُمْ عَن صَلَاتِهِمْ سَاهُونَ</div>
+        <div class="verse-translation">"Woe to those who pray — those heedless of their prayer." (107:4-5)</div></div>
+    </div>
+    <div class="card" style="margin:8px 12px 0">
+      <div class="card-header">🎮 MATCH — SIGNS OF HYPOCRISY</div>
+      <div class="game-instructions">Match each phrase to its meaning. All 4 must match!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-3"></div>
+        <div class="drop-zones" id="drop-zones-3"></div>
+      </div>
+      <div class="game-feedback" id="feedback-3"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection3()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+      </div>
+    </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
+
+  <div class="section-panel" id="section-panel-4">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>And they withhold even the smallest kindnesses! If your deen is inward emptiness, it shows in every little action. Final quiz!</div>
+    </div>
+    <div class="card" style="margin:14px 12px 0">
+      <div class="card-header">🤲 LEVEL 4 — AL-MAUN COMPLETE (107:7)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Al-Maun Complete — Click to reveal verse</span></div>
+        <canvas id="canvas-4" width="560" height="220"></canvas></div>
+      <div class="verse-block"><div class="arabic-text">وَيَمْنَعُونَ الْمَاعُونَ</div>
+        <div class="verse-translation">"And they withhold small kindnesses." (107:7)</div></div>
+    </div>
+    <div class="card" style="margin:8px 12px 0">
+      <div class="card-header">🎮 FINAL QUIZ — AL-MAUN</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
 </div>
 <script src="scenes.js"></script>
+<script src="../shared/arabic-words.js"></script>
 <script src="../shared/engine.js"></script>
 <script src="../shared/ui.js"></script>
 <script src="app.js"></script>

@@ -4,22 +4,65 @@ window.STORAGE_KEY = 'kafirunQuestSave';
 window.state = { explorerName:'', xp:0, gems:0, completed:[], s1Answers:{}, s1Checked:false, s2Checked:false, s3Answers:{}, s3Checked:false };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'🚫', title:'No Compromise',  msg:"SubhanAllah! The Quraysh proposed: 'Worship our gods for one year, we\'ll worship yours for one year.' Allah revealed Al-Kafirun: absolute NO. This surah is called 'Al-Bara\'ah' — the declaration of disavowal from shirk. No negotiation on tawhid!"},
-  2:{xp:80, gems:3, icon:'🔄', title:'Repetition Known', msg:"MashAllah! The surah repeats 'la a\'budu ma ta\'budun' — I do not worship what you worship — multiple times. Scholars explain: it refutes PAST, PRESENT, and FUTURE worship of their gods. Triple refusal!"},
-  3:{xp:90, gems:4, icon:'✨', title:'Al-Kafirun Complete', msg:"Allahu Akbar! Al-Kafirun complete! 'Lakum dinukum wa liya din.' For you is your religion and for me is mine. A declaration of absolute clarity. No mixing. No compromise. May we hold our deen firmly! Ameen! 🏆"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:"MashAllah! You know every word of Surah Al-Kafirun! قُلْ يَا أَيُّهَا الْكَافِرُونَ — Say: O disbelievers! Six verses of absolute clarity — no compromise on tawhid. Now every time you recite it, you understand the bold declaration!"},
+
+  2:{xp:70, gems:3, icon:'🚫', title:'No Compromise',  msg:"SubhanAllah! The Quraysh proposed: 'Worship our gods for one year, we\'ll worship yours for one year.' Allah revealed Al-Kafirun: absolute NO. This surah is called 'Al-Bara\'ah' — the declaration of disavowal from shirk. No negotiation on tawhid!"},
+  3:{xp:80, gems:3, icon:'🔄', title:'Repetition Known', msg:"MashAllah! The surah repeats 'la a\'budu ma ta\'budun' — I do not worship what you worship — multiple times. Scholars explain: it refutes PAST, PRESENT, and FUTURE worship of their gods. Triple refusal!"},
+  4:{xp:90, gems:4, icon:'✨', title:'Al-Kafirun Complete', msg:"Allahu Akbar! Al-Kafirun complete! 'Lakum dinukum wa liya din.' For you is your religion and for me is mine. A declaration of absolute clarity. No mixing. No compromise. May we hold our deen firmly! Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s109', surahName:'Al-Kafirun', surahArabic:'الكافرون', totalLevels:3, rewards:REWARDS,
-  tileIcons:['🚫','🔄','✨'], tileLabels:['Declaration','No Compromise','Clear Deen'],
+  id:'s109', surahName:'Al-Kafirun', surahArabic:'الكافرون', totalLevels:4, rewards:REWARDS,
+  tileIcons:['📖','🚫','🔄','✨'], tileLabels:['Word by Word','Declaration','No Compromise','Clear Deen'],
   welcomeMsg:{
-    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Kafirun — The Disbelievers! A clear, firm, bold declaration: I do not worship what you worship. No compromise on tawhid. The Prophet ﷺ recited this in Fajr and before sleeping. 3 levels!`,
-    partial: (n,d)=>`Welcome back, ${n}! ${d}/3 done. Hold firm! 🚫`,
+    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Kafirun — The Disbelievers! A clear, firm, bold declaration: I do not worship what you worship. No compromise on tawhid. The Prophet ﷺ recited this in Fajr and before sleeping. 4 levels!`,
+    partial: (n,d)=>`Welcome back, ${n}! ${d}/4 done. Hold firm! 🚫`,
     complete:n=>`MashAllah, ${n}! Al-Kafirun complete! "Lakum dinukum wa liya din." Crystal clarity in deen! 🏆`,
   },
 };
 
-const S1_QUIZ = [
+
+/* ─── LEVEL 1: Word by Word flip-card data (uses shared arabic-words.js) ─── */
+const WBW_DATA = [
+  {label:'Verses 1-2 — قُلْ يَا أَيُّهَا الْكَافِرُونَ · لَا أَعْبُدُ مَا تَعْبُدُونَ', words:[
+    'ta-budun','ma','a-budu','la',
+    'al-kafirun',
+    {ar:'يَا أَيُّهَا',tr:'yā ayyuhā',en:'O you'},
+    'qul',
+  ]},
+  {label:'Verses 3-5 — وَلَا أَنتُمْ عَابِدُونَ · وَلَا أَنَا عَابِدٌ مَّا عَبَدتُّمْ', words:[
+    'abidun-pl',
+    {ar:'أَنتُمْ',tr:'antum',en:'you (are)'},
+    'wala',
+    'abadttum','ma','abidun',
+    {ar:'أَنَا',tr:'anā',en:'I (am)'},
+    'wala',
+  ]},
+  {label:'Verse 6 — لَكُمْ دِينُكُمْ وَلِيَ دِينِ', words:[
+    'dini','waliya','dinukum','lakum',
+  ]},
+];
+
+/* ─── LEVEL 1: Word by Word matching ─── */
+const S1_ITEMS = [
+  {id:'w1', text:'الْكَافِرُونَ',  zone:'z1'},
+  {id:'w2', text:'أَعْبُدُ',  zone:'z2'},
+  {id:'w3', text:'تَعْبُدُونَ',  zone:'z3'},
+  {id:'w4', text:'عَابِدٌ',  zone:'z4'},
+  {id:'w5', text:'عَبَدتُّمْ',  zone:'z5'},
+  {id:'w6', text:'دِينُكُمْ',  zone:'z6'}
+];
+const S1_ZONES = [
+  {id:'z1', desc:"The disbelievers — those who reject Allah's message and worship others (109:1)"},
+  {id:'z2', desc:"I worship — present tense declaration of the Prophet's ﷺ worship (109:2)"},
+  {id:'z3', desc:"You worship — what the disbelievers direct their worship toward (109:2)"},
+  {id:'z4', desc:"A worshipper — one who worships; 'nor will I BE a worshipper' (109:4)"},
+  {id:'z5', desc:"What you have worshipped — their past and habitual objects of worship (109:4)"},
+  {id:'z6', desc:"Your religion — Al-Kafirun establishes complete separation of faith (109:6)"}
+];
+
+const S2_QUIZ = [
   {q:'Why was Surah Al-Kafirun revealed?',
    opts:['A new prayer was being introduced','The Quraysh proposed a year-year worship exchange — worship their gods and they would worship Allah','A disbeliever asked about Islam','The companions needed clarity about interfaith'],
    correct:1},
@@ -34,20 +77,20 @@ const S1_QUIZ = [
    correct:2},
 ];
 
-const S2_ITEMS = [
+const S3_ITEMS = [
   {id:'kf1', text:'La a\'budu\nma ta\'budun', zone:'z1'},
   {id:'kf2', text:'La antum \'abiduna\nma a\'bud', zone:'z2'},
   {id:'kf3', text:'Wa la ana \'abidun\nma \'abadtum', zone:'z3'},
   {id:'kf4', text:'Lakum dinukum\nwa liya din', zone:'z4'},
 ];
-const S2_ZONES = [
+const S3_ZONES = [
   {id:'z1', desc:'"I do not worship what you worship" — present refusal (109:2)'},
   {id:'z2', desc:'"Nor are you worshippers of what I worship" — their state (109:3)'},
   {id:'z3', desc:'"Nor will I be a worshipper of what you worship" — future refusal (109:4)'},
   {id:'z4', desc:'"For you is your religion and for me is mine" — final declaration (109:6)'},
 ];
 
-const S3_QUIZ = [
+const S4_QUIZ = [
   {q:'Why is Surah Al-Kafirun called "Al-Bara\'ah" (Declaration of Disavowal)?',
    opts:['Because it mentions the Day of Judgement','Because it declares complete disavowal from worshipping anything other than Allah','Because it was revealed at the start of Islam','Because it contains a prohibition on speaking to disbelievers'],
    correct:1},
@@ -62,9 +105,12 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
+
+function renderSection1Game(){if(window.renderWBW)renderWBW('wbw-display',WBW_DATA,'wbw-reveal-btn');renderDragDrop(1,S1_ITEMS,S1_ZONES);}
+function checkSection1(){checkDragDrop(1,S1_ZONES);}
+function renderSection2Game(){renderQuiz(2,S2_QUIZ);}function checkSection2(){checkQuiz(2,S2_QUIZ);}
+function renderSection3Game(){renderDragDrop(3,S3_ITEMS,S3_ZONES);}function checkSection3(){checkDragDrop(3,S3_ZONES);}
+function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -75,5 +121,5 @@ window._drawBuildCanvas = function(n) {
   ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);
   if(n>=1){ctx.fillStyle=acc;ctx.font='10px serif';ctx.textAlign='center';ctx.fillText('لَكُمْ دِينُكُمْ وَلِيَ دِينِ',W/2,H*0.45);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"For you is your religion, for me is mine"',W/2,H*0.6);ctx.textAlign='left';}
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
-  ctx.fillText(n>=3?'AL-KAFIRUN COMPLETE! 🚫':`Al-Kafirun — ${n}/3 levels`,W/2,14);ctx.textAlign='left';
+  ctx.fillText(n>=4?'AL-KAFIRUN COMPLETE! 🚫':`Al-Kafirun — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
 };

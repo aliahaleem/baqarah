@@ -4,22 +4,64 @@ window.STORAGE_KEY = 'maunQuestSave';
 window.state = { explorerName:'', xp:0, gems:0, completed:[], s1Answers:{}, s1Checked:false, s2Checked:false, s3Answers:{}, s3Checked:false };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'😢', title:'Denier Exposed',  msg:"SubhanAllah! 'Ara\'aytal-ladhi yukadhdhibu bid-din?' Did you see the one who denies the DEEN? He pushes away the orphan harshly and doesn't encourage feeding the poor. Denying the deen shows up in HOW you treat people!"},
-  2:{xp:80, gems:3, icon:'🙏', title:'Hypocrisy Warned', msg:"MashAllah! 'Waylul lil-musallin alladhina hum \'an salatihim sahun.' Woe to the musalliin (prayer-performers) — those who are HEEDLESS of their prayer and pray to be seen! Prayer without heart or humility = showing off!"},
-  3:{xp:90, gems:4, icon:'🤲', title:'Al-Maun Complete', msg:"Allahu Akbar! Al-Maun complete! The surah ends with 'wa yamna\'una al-ma\'un' — they withhold small kindnesses! If you deny your deen inwardly, it shows in NOT giving even the smallest help. May we be generous and sincere! Ameen! 🏆"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:"MashAllah! You know every key word of Surah Al-Maun! أَرَأَيْتَ الَّذِي يُكَذِّبُ بِالدِّينِ — Have you seen the one who denies the deen? Now you know what Allah connects: denying deen → harming orphans → hollow prayer → withholding kindness. SubhanAllah!"},
+
+  2:{xp:70, gems:3, icon:'😢', title:'Denier Exposed',  msg:"SubhanAllah! 'Ara\'aytal-ladhi yukadhdhibu bid-din?' Did you see the one who denies the DEEN? He pushes away the orphan harshly and doesn't encourage feeding the poor. Denying the deen shows up in HOW you treat people!"},
+  3:{xp:80, gems:3, icon:'🙏', title:'Hypocrisy Warned', msg:"MashAllah! 'Waylul lil-musallin alladhina hum \'an salatihim sahun.' Woe to the musalliin (prayer-performers) — those who are HEEDLESS of their prayer and pray to be seen! Prayer without heart or humility = showing off!"},
+  4:{xp:90, gems:4, icon:'🤲', title:'Al-Maun Complete', msg:"Allahu Akbar! Al-Maun complete! The surah ends with 'wa yamna\'una al-ma\'un' — they withhold small kindnesses! If you deny your deen inwardly, it shows in NOT giving even the smallest help. May we be generous and sincere! Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s107', surahName:'Al-Maun', surahArabic:'الماعون', totalLevels:3, rewards:REWARDS,
-  tileIcons:['😢','🙏','🤲'], tileLabels:['Denier','Hypocrite','Small Kindness'],
+  id:'s107', surahName:'Al-Maun', surahArabic:'الماعون', totalLevels:4, rewards:REWARDS,
+  tileIcons:['📖','😢','🙏','🤲'], tileLabels:['Word by Word','The Denier','Hypocrisy','Small Kindness'],
   welcomeMsg:{
-    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Maun — Small Kindnesses! 7 verses that connect RELIGION to SOCIAL action. Denying the orphan and withholding small kindnesses = denying the deen. And hollow prayer without heart = hypocrisy! 3 levels!`,
-    partial: (n,d)=>`Welcome back, ${n}! ${d}/3 done. Be generous! 🤲`,
+    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Maun — Small Kindnesses! 7 verses that connect RELIGION to SOCIAL action. Denying the orphan and withholding small kindnesses = denying the deen. And hollow prayer without heart = hypocrisy! 4 levels!`,
+    partial: (n,d)=>`Welcome back, ${n}! ${d}/4 done. Be generous! 🤲`,
     complete:n=>`MashAllah, ${n}! Al-Maun complete! Help the orphan, feed the poor, pray sincerely, share small kindnesses! 🏆`,
   },
 };
 
-const S1_QUIZ = [
+
+/* ─── LEVEL 1: Word by Word flip-card data (uses shared arabic-words.js) ─── */
+const WBW_DATA = [
+  {label:'Verses 1-3 — أَرَأَيْتَ الَّذِي يُكَذِّبُ بِالدِّينِ · يَدُعُّ الْيَتِيمَ · لَا يَحُضُّ عَلَىٰ طَعَامِ الْمِسْكِينِ', words:[
+    'al-miskeen','ta-am','yahudd',
+    {ar:'عَلَىٰ',tr:'ʿalā',en:'upon / to'},
+    'la','al-yateem','yad-u',
+    {ar:'فَذَٰلِكَ',tr:'fadhālika',en:'so that is the one'},
+    'al-deen','yukadhdhibu','a-rayta',
+  ]},
+  {label:'Verses 4-7 — فَوَيْلٌ لِّلْمُصَلِّينَ · سَاهُونَ · يُرَاءُونَ · يَمْنَعُونَ الْمَاعُونَ', words:[
+    'al-maun',
+    {ar:'وَيَمْنَعُونَ',tr:'wa-yamnaʿūn',en:'and they withhold'},
+    'yura-un','sahun','salatihim',
+    {ar:'عَن',tr:'ʿan',en:'of'},
+    {ar:'هُمْ',tr:'hum',en:'they (are)'},
+    {ar:'الَّذِينَ',tr:'alladhīna',en:'those who'},
+    'lil-musalin','waylun',
+  ]},
+];
+
+/* ─── LEVEL 1: Word by Word matching ─── */
+const S1_ITEMS = [
+  {id:'w1', text:'يُكَذِّبُ',  zone:'z1'},
+  {id:'w2', text:'الْيَتِيمَ',  zone:'z2'},
+  {id:'w3', text:'الْمِسْكِينِ',  zone:'z3'},
+  {id:'w4', text:'سَاهُونَ',  zone:'z4'},
+  {id:'w5', text:'يُرَاءُونَ',  zone:'z5'},
+  {id:'w6', text:'الْمَاعُونَ',  zone:'z6'}
+];
+const S1_ZONES = [
+  {id:'z1', desc:"Denies/rejects — the root attitude of disconnection from deen (107:1)"},
+  {id:'z2', desc:"The orphan — the one he pushes away harshly (107:2)"},
+  {id:'z3', desc:"The poor/needy — whose feeding he does not encourage (107:3)"},
+  {id:'z4', desc:"Heedless/neglectful — praying while being completely inattentive (107:5)"},
+  {id:'z5', desc:"Show off / riya — praying only to be seen by people (107:6)"},
+  {id:'z6', desc:"Small kindnesses — basic neighbourly help they withhold (107:7)"}
+];
+
+const S2_QUIZ = [
   {q:'Who is the one who denies the deen (religion) according to 107:1?',
    opts:['The one who never prays','The one who pushes away the orphan and doesn\'t encourage feeding the poor','The one who breaks his promises','The one who refuses to fast in Ramadan'],
    correct:1},
@@ -34,20 +76,20 @@ const S1_QUIZ = [
    correct:1},
 ];
 
-const S2_ITEMS = [
+const S3_ITEMS = [
   {id:'m1', text:'Yukadhdhibu\nbid-din', zone:'z1'},
   {id:'m2', text:'Yadu\' al-yatim', zone:'z2'},
   {id:'m3', text:'La yahuddu\n\'ala ta\'am', zone:'z3'},
   {id:'m4', text:'Yamna\'una\nal-ma\'un', zone:'z4'},
 ];
-const S2_ZONES = [
+const S3_ZONES = [
   {id:'z1', desc:'He denies the religion/judgement — the root attitude (107:1)'},
   {id:'z2', desc:'He harshly pushes away the orphan (107:2)'},
   {id:'z3', desc:'He does not urge feeding the poor (107:3)'},
   {id:'z4', desc:'They withhold even small kindnesses/utensils from neighbours (107:7)'},
 ];
 
-const S3_QUIZ = [
+const S4_QUIZ = [
   {q:'Who are "al-musallin" warned in 107:4?',
    opts:['Non-Muslims who deny prayer','Those who perform the prayer but are heedless of it','People who pray too quickly','Those who pray only sometimes'],
    correct:1},
@@ -62,9 +104,12 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
+
+function renderSection1Game(){if(window.renderWBW)renderWBW('wbw-display',WBW_DATA,'wbw-reveal-btn');renderDragDrop(1,S1_ITEMS,S1_ZONES);}
+function checkSection1(){checkDragDrop(1,S1_ZONES);}
+function renderSection2Game(){renderQuiz(2,S2_QUIZ);}function checkSection2(){checkQuiz(2,S2_QUIZ);}
+function renderSection3Game(){renderDragDrop(3,S3_ITEMS,S3_ZONES);}function checkSection3(){checkDragDrop(3,S3_ZONES);}
+function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -75,5 +120,5 @@ window._drawBuildCanvas = function(n) {
   ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);
   if(n>=1){ctx.fillStyle=acc;ctx.font='18px serif';ctx.textAlign='center';ctx.fillText('🤲',W/2,H*0.45);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Give even the smallest kindness"',W/2,H*0.6);ctx.textAlign='left';}
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
-  ctx.fillText(n>=3?'AL-MAUN COMPLETE! 🤲':`Al-Maun — ${n}/3 levels`,W/2,14);ctx.textAlign='left';
+  ctx.fillText(n>=4?'AL-MAUN COMPLETE! 🤲':`Al-Maun — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
 };

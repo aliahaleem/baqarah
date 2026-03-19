@@ -7,10 +7,34 @@ class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.c
 const VD_s1={ref:'An-Nasr 110:1',arabic:'إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ',english:'"When Allah\'s help and the conquest comes." (110:1)',note:'Conquest of Mecca. 8 AH. The turning point.'};
 const VD_s2={ref:'An-Nasr 110:2',arabic:'يَدْخُلُونَ فِي دِينِ اللَّهِ أَفْوَاجًا',english:'"People entering the religion in crowds." (110:2)',note:'Afwaja — masses! After years of small numbers.'};
 const VD_s3={ref:'An-Nasr 110:3',arabic:'فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُ',english:'"Glorify your Lord and seek forgiveness." (110:3)',note:'Victory answered with tasbih and istighfar. Humility.'};
-class S1 extends BS{constructor(){super('canvas-1');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s1);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#060e08';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#162818';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('🏆',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#80e090';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('إِذَا جَاءَ نَصْرُ اللَّهِ و',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"When Allah\'s help and the conquest comes." (110:1)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Victory Arrives — 110:1','#e8fff0');};draw();}}
-class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s2);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#060e08';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#162818';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('👥',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#80e090';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('يَدْخُلُونَ فِي دِينِ اللَّه',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"People entering the religion in crowds." (110:2)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Masses Enter Islam — 110:2','#e8fff0');};draw();}}
-class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s3);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#060e08';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#162818';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('🤲',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#80e090';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('فَسَبِّحْ بِحَمْدِ رَبِّكَ و',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Glorify your Lord and seek forgiveness." (110:3)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Glorify and Forgive — 110:3','#e8fff0');};draw();}}
+
+/* S1 — Word by Word canvas: thematic scene only */
+class S1 extends BS{constructor(){super('canvas-1');}start(){
+  if(!this.ctx)return;
+  const VD_wbw_l={ref:'AN-NASR 110:1',arabic:'إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ ۩ وَرَأَيْتَ النَّاسَ...',english:"When Allah\\'s help and the conquest come, and you see people entering the religi...",note:'Learn every word — tap the flip cards below!'};
+  this.canvas.onclick=()=>showVersePopup(VD_wbw_l);
+  const ctx=this.ctx;
+  const draw=()=>{
+    this.t++;this.raf=requestAnimationFrame(draw);
+    const t2=this.t;
+    ctx.fillStyle='#020804';ctx.fillRect(0,0,CW,CH);
+    const rg=ctx.createRadialGradient(CW/2,CH*0.5,5,CW/2,CH*0.5,100+Math.sin(t2*0.025)*10);
+    rg.addColorStop(0,`rgba(80,200,100,{0.15+Math.sin(t2*0.03)*0.06})`);
+    rg.addColorStop(1,'transparent');
+    ctx.fillStyle=rg;ctx.fillRect(0,0,CW,CH);
+    ctx.fillStyle='rgba(130,220,140,0.92)';ctx.font='18px serif';ctx.textAlign='center';
+    ctx.fillText('نَصْرُ اللَّهِ وَالْفَتْحُ',CW/2,CH*0.48);
+    ctx.fillStyle='rgba(180,180,180,0.55)';ctx.font='5px "Press Start 2P",monospace';
+    ctx.fillText('"The help of Allah and the conquest" · Tap cards below',CW/2,CH-10);
+    ctx.textAlign='left';
+    _lbl(ctx,'CLICK: Full An-Nasr 110:1-3','#fff8f0');
+  };draw();
+}}
+
+class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s1);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#060e08';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#162818';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('🏆',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#80e090';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('إِذَا جَاءَ نَصْرُ اللَّهِ و',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"When Allah\'s help and the conquest comes." (110:1)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Victory Arrives — 110:1','#e8fff0');};draw();}}
+class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s2);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#060e08';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#162818';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('👥',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#80e090';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('يَدْخُلُونَ فِي دِينِ اللَّه',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"People entering the religion in crowds." (110:2)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Masses Enter Islam — 110:2','#e8fff0');};draw();}}
+class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s3);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#060e08';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#162818';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('🤲',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#80e090';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('فَسَبِّحْ بِحَمْدِ رَبِّكَ و',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Glorify your Lord and seek forgiveness." (110:3)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Glorify and Forgive — 110:3','#e8fff0');};draw();}}
 const scenes={};
-function initScenes(){scenes[1]=new S1();scenes[2]=new S2();scenes[3]=new S3();}
+function initScenes(){scenes[1]=new S1();scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();}
 function startScene(n){if(scenes[n])scenes[n].start();}
 function stopAllScenes(){Object.values(scenes).forEach(s=>s.stop());}

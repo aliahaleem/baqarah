@@ -7,10 +7,34 @@ class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.c
 const VD_s1={ref:'Al-Fil 105:1',arabic:'أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ',english:'"Did you not see how your Lord dealt..." (105:1)',note:'Abraha: 60,000 soldiers + 13 elephants to destroy the Kaaba.'};
 const VD_s2={ref:'Al-Fil 105:3-4',arabic:'وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ',english:'"He sent against them birds in flocks." (105:3)',note:'Birds carrying sijjil stones. Allah needs no army.'};
 const VD_s3={ref:'Al-Fil 105:5',arabic:'فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُولٍ',english:'"He made them like eaten straw." (105:5)',note:'60,000 soldiers reduced to nothing. Mecca protected.'};
-class S1 extends BS{constructor(){super('canvas-1');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s1);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#101418';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#202a30';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('🐘',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#a0b8d0';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('أَلَمْ تَرَ كَيْفَ فَعَلَ رَ',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Did you not see how your Lord dealt..." (105:1)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Army of Elephant — 105:1','#f0f4ff');};draw();}}
-class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s2);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#101418';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#202a30';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('🐦',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#a0b8d0';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('وَأَرْسَلَ عَلَيْهِمْ طَيْرً',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"He sent against them birds in flocks." (105:3)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Birds of Ababil — 105:3-4','#f0f4ff');};draw();}}
-class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s3);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#101418';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#202a30';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('🌾',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#a0b8d0';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('فَجَعَلَهُمْ كَعَصْفٍ مَّأْك',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"He made them like eaten straw." (105:5)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Like Eaten Straw — 105:5','#f0f4ff');};draw();}}
+
+/* S1 — Word by Word canvas: thematic scene only */
+class S1 extends BS{constructor(){super('canvas-1');}start(){
+  if(!this.ctx)return;
+  const VD_wbw_l={ref:'FIL 105:1',arabic:'أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ ۩ أَل...',english:'"Did you not see how your Lord dealt with the companions of the elephant? Did He...',note:'Learn every word — tap the flip cards below!'};
+  this.canvas.onclick=()=>showVersePopup(VD_wbw_l);
+  const ctx=this.ctx;
+  const draw=()=>{
+    this.t++;this.raf=requestAnimationFrame(draw);
+    const t2=this.t;
+    ctx.fillStyle='#080a0c';ctx.fillRect(0,0,CW,CH);
+    const rg=ctx.createRadialGradient(CW/2,CH*0.5,5,CW/2,CH*0.5,100+Math.sin(t2*0.025)*10);
+    rg.addColorStop(0,`rgba(160,180,200,{0.15+Math.sin(t2*0.03)*0.06})`);
+    rg.addColorStop(1,'transparent');
+    ctx.fillStyle=rg;ctx.fillRect(0,0,CW,CH);
+    ctx.fillStyle='rgba(180,210,230,0.9)';ctx.font='18px serif';ctx.textAlign='center';
+    ctx.fillText('أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ',CW/2,CH*0.48);
+    ctx.fillStyle='rgba(180,180,180,0.55)';ctx.font='5px "Press Start 2P",monospace';
+    ctx.fillText('"Did you not see what your Lord did?" · Tap cards below',CW/2,CH-10);
+    ctx.textAlign='left';
+    _lbl(ctx,'CLICK: Full Al-Fil 105:1-5','#fff8f0');
+  };draw();
+}}
+
+class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s1);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#101418';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#202a30';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('🐘',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#a0b8d0';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('أَلَمْ تَرَ كَيْفَ فَعَلَ رَ',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Did you not see how your Lord dealt..." (105:1)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Army of Elephant — 105:1','#f0f4ff');};draw();}}
+class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s2);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#101418';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#202a30';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('🐦',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#a0b8d0';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('وَأَرْسَلَ عَلَيْهِمْ طَيْرً',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"He sent against them birds in flocks." (105:3)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Birds of Ababil — 105:3-4','#f0f4ff');};draw();}}
+class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_s3);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#101418';ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#202a30';ctx.fillRect(0,CH*0.65,CW,CH*0.35);ctx.font='26px serif';ctx.textAlign='center';ctx.fillText('🌾',CW/2,CH*0.5);ctx.textAlign='left';ctx.fillStyle='#a0b8d0';ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('فَجَعَلَهُمْ كَعَصْفٍ مَّأْك',CW/2,CH*0.28);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"He made them like eaten straw." (105:5)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Like Eaten Straw — 105:5','#f0f4ff');};draw();}}
 const scenes={};
-function initScenes(){scenes[1]=new S1();scenes[2]=new S2();scenes[3]=new S3();}
+function initScenes(){scenes[1]=new S1();scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();}
 function startScene(n){if(scenes[n])scenes[n].start();}
 function stopAllScenes(){Object.values(scenes).forEach(s=>s.stop());}

@@ -4,22 +4,60 @@ window.STORAGE_KEY = 'qurayshQuestSave';
 window.state = { explorerName:'', xp:0, gems:0, completed:[], s1Checked:false, s2Answers:{}, s2Checked:false, s3Answers:{}, s3Checked:false };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'🕋', title:'Trade Known',   msg:"SubhanAllah! The Quraysh had the honour of two great journeys every year — winter to Yemen and summer to Sham (Syria). This was their livelihood: trade. And it was all made possible by their guardianship of the Kaaba!"},
-  2:{xp:80, gems:3, icon:'🙏', title:'Gratitude Commanded', msg:"MashAllah! Allah commands the Quraysh: worship the Lord of THIS HOUSE — the Kaaba — who fed you from hunger and gave you safety from fear. The Kaaba is the centre of their world and must be the centre of their worship!"},
-  3:{xp:90, gems:4, icon:'🌟', title:'Quraysh Complete', msg:"Allahu Akbar! Quraysh complete! Allah is saying: I gave you trade routes, safety, food — so WORSHIP ME ALONE. Gratitude expressed in worship! May we always link Allah's blessings to worship! Ameen! 🏆"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:"MashAllah! You know every word of Surah Quraysh! لِإِيلَافِ قُرَيْشٍ — for the tradition of the Quraysh! Their two journeys, their sacred status, and the blessings of food and safety. Now when you recite it, you understand every word!"},
+
+  2:{xp:70, gems:3, icon:'🕋', title:'Trade Known',   msg:"SubhanAllah! The Quraysh had the honour of two great journeys every year — winter to Yemen and summer to Sham (Syria). This was their livelihood: trade. And it was all made possible by their guardianship of the Kaaba!"},
+  3:{xp:80, gems:3, icon:'🙏', title:'Gratitude Commanded', msg:"MashAllah! Allah commands the Quraysh: worship the Lord of THIS HOUSE — the Kaaba — who fed you from hunger and gave you safety from fear. The Kaaba is the centre of their world and must be the centre of their worship!"},
+  4:{xp:90, gems:4, icon:'🌟', title:'Quraysh Complete', msg:"Allahu Akbar! Quraysh complete! Allah is saying: I gave you trade routes, safety, food — so WORSHIP ME ALONE. Gratitude expressed in worship! May we always link Allah's blessings to worship! Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s106', surahName:'Quraysh', surahArabic:'قريش', totalLevels:3, rewards:REWARDS,
-  tileIcons:['🕋','🙏','🌟'], tileLabels:['Two Journeys','Worship the Lord','Quraysh'],
+  id:'s106', surahName:'Quraysh', surahArabic:'قريش', totalLevels:4, rewards:REWARDS,
+  tileIcons:['📖','🕋','🙏','🌟'], tileLabels:['Word by Word','Two Journeys','Worship the Lord','Quraysh'],
   welcomeMsg:{
-    fresh:   n=>`As-salamu alaykum, ${n}! Surah Quraysh! For the Quraysh's tradition of two trade journeys, let them worship the Lord of this House — who fed them and gave them safety. 3 levels!`,
-    partial: (n,d)=>`Welcome back, ${n}! ${d}/3 done. The caravans travel on! 🕋`,
+    fresh:   n=>`As-salamu alaykum, ${n}! Surah Quraysh! For the Quraysh's tradition of two trade journeys, let them worship the Lord of this House — who fed them and gave them safety. 4 levels!`,
+    partial: (n,d)=>`Welcome back, ${n}! ${d}/4 done. The caravans travel on! 🕋`,
     complete:n=>`MashAllah, ${n}! Quraysh complete! May we always be grateful for Allah's blessings! 🏆`,
   },
 };
 
-const S1_QUIZ = [
+
+/* ─── LEVEL 1: Word by Word flip-card data (uses shared arabic-words.js) ─── */
+const WBW_DATA = [
+  {label:'Verses 1-2 — لِإِيلَافِ قُرَيْشٍ · إِيلَافِهِمْ رِحْلَةَ الشِّتَاءِ وَالصَّيْفِ', words:[
+    'al-sayf',{ar:'وَ',tr:'wa',en:'and'},'al-shitaa','rihlata','ilafihim',
+    {ar:'قُرَيْشٍ',tr:'Quraysh',en:'(of) Quraysh'},
+    {ar:'لِـ',tr:'li',en:'for the'},
+    'ilaf',
+  ]},
+  {label:'Verse 3 — فَلْيَعْبُدُوا رَبَّ هَٰذَا الْبَيْتِ', words:[
+    'al-bayt',{ar:'هَٰذَا',tr:'hādhā',en:'this'},'rabba','fa-yabudo',
+  ]},
+  {label:'Verse 4 — الَّذِي أَطْعَمَهُم مِّن جُوعٍ وَآمَنَهُم مِّنْ خَوْفٍ', words:[
+    'khawf','min2','amanahum','ju','min2','at-amahum','alladhi',
+  ]},
+];
+
+/* ─── LEVEL 1: Word by Word matching ─── */
+const S1_ITEMS = [
+  {id:'w1', text:'إِيلَافِ',  zone:'z1'},
+  {id:'w2', text:'رِحْلَةَ',  zone:'z2'},
+  {id:'w3', text:'الشِّتَاءِ',  zone:'z3'},
+  {id:'w4', text:'الصَّيْفِ',  zone:'z4'},
+  {id:'w5', text:'الْبَيْتِ',  zone:'z5'},
+  {id:'w6', text:'جُوعٍ',  zone:'z6'}
+];
+const S1_ZONES = [
+  {id:'z1', desc:"Tradition / accustomed journey — the special status Allah gave the Quraysh (106:1)"},
+  {id:'z2', desc:"Journey / travel — the annual trading expedition (106:2)"},
+  {id:'z3', desc:"Winter — the winter journey south to Yemen (106:2)"},
+  {id:'z4', desc:"Summer — the summer journey north to Sham/Syria (106:2)"},
+  {id:'z5', desc:"The House — the Kaaba; source of their honour and safe passage (106:3)"},
+  {id:'z6', desc:"Hunger — Allah fed them from hunger; their blessings come from Him (106:4)"}
+];
+
+const S2_QUIZ = [
   {q:'What is the "ilaf" of the Quraysh mentioned in 106:1-2?',
    opts:['Their military strength and armor','Their tradition of two annual trade journeys','Their holy status as keepers of Mecca','Their unity as a tribe'],
    correct:1},
@@ -34,18 +72,18 @@ const S1_QUIZ = [
    correct:2},
 ];
 
-const S2_ITEMS = [
+const S3_ITEMS = [
   {id:'q1', text:'Rabb hadhil-bayt\n(Lord of this House)', zone:'z1'},
   {id:'q2', text:'At\'amahum min ju\'\n(Fed them from hunger)', zone:'z2'},
   {id:'q3', text:'Amanahum min khawf\n(Safety from fear)', zone:'z3'},
 ];
-const S2_ZONES = [
+const S3_ZONES = [
   {id:'z1', desc:'Allah is "Lord of this House" — the Kaaba — so worship HIM alone (106:3)'},
   {id:'z2', desc:'He fed them when they were hungry — provided their food and sustenance (106:4)'},
   {id:'z3', desc:'He gave them safety from fear — security to travel and trade (106:4)'},
 ];
 
-const S3_QUIZ = [
+const S4_QUIZ = [
   {q:'Who is "Rabb hadhil-bayt" (106:3)?',
    opts:['The chief of the Quraysh tribe','The guardian of the Kaaba','Allah — Lord of the Kaaba','The angel who guards the house'],
    correct:2},
@@ -60,10 +98,13 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-function renderSection1Game(){renderDragDrop(1,[{id:'j1',text:'Winter\nJourney',zone:'z1'},{id:'j2',text:'Summer\nJourney',zone:'z2'}],[{id:'z1',desc:'To Yemen — trade in the warm south during winter months'},{id:'z2',desc:'To Sham (Syria) — trade in the north during cooler summer months'}]);}
-function checkSection1(){checkDragDrop(1,[{id:'z1'},{id:'z2'}]);}
-function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
+
+function renderSection1Game(){if(window.renderWBW)renderWBW('wbw-display',WBW_DATA,'wbw-reveal-btn');renderDragDrop(1,S1_ITEMS,S1_ZONES);}
+function checkSection1(){checkDragDrop(1,S1_ZONES);}
+function renderSection2Game(){renderDragDrop(2,[{id:'j1',text:'Winter\nJourney',zone:'z1'},{id:'j2',text:'Summer\nJourney',zone:'z2'}],[{id:'z1',desc:'To Yemen — trade in the warm south during winter months'},{id:'z2',desc:'To Sham (Syria) — trade in the north during cooler summer months'}]);}
+function checkSection2(){checkDragDrop(2,[{id:'z1'},{id:'z2'}]);}
+function renderSection3Game(){renderDragDrop(3,S3_ITEMS,S3_ZONES);}function checkSection3(){checkDragDrop(3,S3_ZONES);}
+function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -76,5 +117,5 @@ window._drawBuildCanvas = function(n) {
   if(n>=1){ctx.fillStyle=acc;ctx.font='18px serif';ctx.textAlign='center';ctx.fillText('🕋',W/2,H*0.45);ctx.textAlign='left';}
   if(n>=2){ctx.fillStyle=acc;ctx.font='8px serif';ctx.textAlign='center';ctx.fillText('رَبِّ هَٰذَا الْبَيْتِ',W/2,H*0.7);ctx.textAlign='left';}
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
-  ctx.fillText(n>=3?'QURAYSH COMPLETE! 🕋':`Quraysh — ${n}/3 levels`,W/2,14);ctx.textAlign='left';
+  ctx.fillText(n>=4?'QURAYSH COMPLETE! 🕋':`Quraysh — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
 };

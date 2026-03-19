@@ -32,6 +32,27 @@ window.SURAH_CONFIG = {
 };
 
 /* ────────────────────────────────────────────────────────
+   LEVEL 1 — Word by Word flip cards (112:1-4)
+   ──────────────────────────────────────────────────────── */
+const WBW_DATA = [
+  {label:'Verse 1 — قُلْ هُوَ اللَّهُ أَحَدٌ', words:[
+    'ahad','allahu','huwa','qul',
+  ]},
+  {label:'Verse 2 — اللَّهُ الصَّمَدُ', words:[
+    'al-samad','allahu',
+  ]},
+  {label:'Verse 3 — لَمْ يَلِدْ وَلَمْ يُولَدْ', words:[
+    'yulad','walam','yalid','lam',
+  ]},
+  {label:'Verse 4 — وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ', words:[
+    'ahad','kufuwan',
+    {ar:'لَّهُ',   tr:'lahu',   en:'for/to Him'},
+    {ar:'يَكُن',  tr:'yakun',  en:'be / exist'},
+    'walam',
+  ]},
+];
+
+/* ────────────────────────────────────────────────────────
    LEVEL 1 — Word by Word: Match Arabic word to English
    ──────────────────────────────────────────────────────── */
 const S1_ITEMS = [
@@ -103,7 +124,7 @@ const S4_QUIZ = [
    correct:1},
 ];
 
-function renderSection1Game(){renderDragDrop(1,S1_ITEMS,S1_ZONES);}
+function renderSection1Game(){if(window.renderWBW)renderWBW('wbw-display',WBW_DATA,'wbw-reveal-btn');renderDragDrop(1,S1_ITEMS,S1_ZONES);}
 function checkSection1(){checkDragDrop(1,S1_ZONES);}
 function renderSection2Game(){renderQuiz(2,S2_QUIZ);}
 function checkSection2(){checkQuiz(2,S2_QUIZ);}

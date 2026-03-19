@@ -196,7 +196,9 @@ function renderDragDrop(n, items, zones) {
   pool.innerHTML = ''; zonesEl.innerHTML = '';
   shuffle(items).forEach(item => {
     const el = document.createElement('div');
-    el.className      = 'drag-item'; el.draggable = true;
+    const isArabic = /[\u0600-\u06FF]/.test(item.text);
+    el.className      = isArabic ? 'drag-item drag-item-ar' : 'drag-item';
+    el.draggable = true;
     el.dataset.itemId = item.id; el.dataset.zone = item.zone;
     el.dataset.pool   = `drag-pool-${n}`; el.textContent = item.text;
     pool.appendChild(el);

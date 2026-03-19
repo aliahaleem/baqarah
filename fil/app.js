@@ -4,22 +4,64 @@ window.STORAGE_KEY = 'filQuestSave';
 window.state = { explorerName:'', xp:0, gems:0, completed:[], s1Answers:{}, s1Checked:false, s2Order:[], s2Checked:false, s3Answers:{}, s3Checked:false };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'🐘', title:'Elephant Witnessed', msg:"SubhanAllah! 570 CE — the Year of the Elephant. Abraha, governor of Yemen, marched 60,000 soldiers and 13 elephants to destroy the Kaaba. The Quraysh fled to the mountains. No army could stop them — only Allah!"},
-  2:{xp:80, gems:3, icon:'🐦', title:'Birds Sent',        msg:"MashAllah! You ordered the story of Al-Fil correctly! Allah sent flocks of birds (Ababil) each carrying three stones — one in each claw, one in the beak — and pelted Abraha\'s army. They were left like eaten straw!"},
-  3:{xp:90, gems:4, icon:'✨', title:'Al-Fil Complete',   msg:"Allahu Akbar! Al-Fil complete! Prophet Muhammad ﷺ was born in the Year of the Elephant — the very year Allah protected Mecca. Allah was already preparing the world for His Prophet's birth! SubhanAllah! Ameen! 🏆"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:"MashAllah! You know every word of Surah Al-Fil! أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ — Did you not see how your Lord dealt with them? Now every time you recite this surah, you know EXACTLY what Allah is describing!"},
+
+  2:{xp:70, gems:3, icon:'🐘', title:'Elephant Witnessed', msg:"SubhanAllah! 570 CE — the Year of the Elephant. Abraha, governor of Yemen, marched 60,000 soldiers and 13 elephants to destroy the Kaaba. The Quraysh fled to the mountains. No army could stop them — only Allah!"},
+  3:{xp:80, gems:3, icon:'🐦', title:'Birds Sent',        msg:"MashAllah! You ordered the story of Al-Fil correctly! Allah sent flocks of birds (Ababil) each carrying three stones — one in each claw, one in the beak — and pelted Abraha\'s army. They were left like eaten straw!"},
+  4:{xp:90, gems:4, icon:'✨', title:'Al-Fil Complete',   msg:"Allahu Akbar! Al-Fil complete! Prophet Muhammad ﷺ was born in the Year of the Elephant — the very year Allah protected Mecca. Allah was already preparing the world for His Prophet's birth! SubhanAllah! Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s105', surahName:'Al-Fil', surahArabic:'الفيل', totalLevels:3, rewards:REWARDS,
-  tileIcons:['🐘','🐦','✨'], tileLabels:['The Army','Birds Attack','Al-Fil'],
+  id:'s105', surahName:'Al-Fil', surahArabic:'الفيل', totalLevels:4, rewards:REWARDS,
+  tileIcons:['📖','🐘','🐦','✨'], tileLabels:['Word by Word','Army of Elephant','Story Order','Al-Fil Complete'],
   welcomeMsg:{
-    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Fil — The Elephant! Did you not see how your Lord dealt with the people of the Elephant? 60,000 soldiers, 13 war elephants — destroyed by tiny birds carrying stones. 3 levels!`,
-    partial: (n,d)=>`Welcome back, ${n}! ${d}/3 done. The birds are coming! 🐦`,
+    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Fil — The Elephant! Did you not see how your Lord dealt with the people of the Elephant? 60,000 soldiers, 13 war elephants — destroyed by tiny birds carrying stones. 4 levels!`,
+    partial: (n,d)=>`Welcome back, ${n}! ${d}/4 done. The birds are coming! 🐦`,
     complete:n=>`MashAllah, ${n}! Al-Fil complete! Allah protects His house. No army can defeat His decree! 🏆`,
   },
 };
 
-const S1_QUIZ = [
+
+/* ─── LEVEL 1: Word by Word flip-card data (uses shared arabic-words.js) ─── */
+const WBW_DATA = [
+  {label:'Verse 1 — أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ', words:[
+    'al-fil','bi-ashab','rabbuka','fa-ala','kayfa',
+    {ar:'تَرَ',tr:'tara',en:'you see'},
+    {ar:'أَلَمْ',tr:'alam',en:'did you not'},
+  ]},
+  {label:'Verse 2 — أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ', words:[
+    'tadleel','fi','kaydahum',
+    {ar:'يَجْعَلْ',tr:'yajʿal',en:'make / place'},
+  ]},
+  {label:'Verses 3-4 — طَيْرًا أَبَابِيلَ · تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ', words:[
+    'sijjeel','min2','hijara','tarmihim','ababeel','tayran',
+  ]},
+  {label:'Verse 5 — فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُولٍ', words:[
+    'makool','ka-asf',
+    {ar:'فَجَعَلَهُمْ',tr:'fajaʿalahum',en:'and He made them'},
+  ]},
+];
+
+/* ─── LEVEL 1: Word by Word matching ─── */
+const S1_ITEMS = [
+  {id:'w1', text:'الْفِيلِ',  zone:'z1'},
+  {id:'w2', text:'كَيْدَهُمْ',  zone:'z2'},
+  {id:'w3', text:'تَضْلِيلٍ',  zone:'z3'},
+  {id:'w4', text:'أَبَابِيلَ',  zone:'z4'},
+  {id:'w5', text:'سِجِّيلٍ',  zone:'z5'},
+  {id:'w6', text:'كَعَصْفٍ',  zone:'z6'}
+];
+const S1_ZONES = [
+  {id:'z1', desc:"The elephant — Abraha's war elephant 'Mahmud' that refused to march (105:1)"},
+  {id:'z2', desc:"Their plot/scheme — Abraha's plan to destroy the Kaaba (105:2)"},
+  {id:'z3', desc:"Going astray / ruin — Allah made their plot backfire completely (105:2)"},
+  {id:'z4', desc:"Flocks — the Ababil birds Allah sent in successive waves (105:3)"},
+  {id:'z5', desc:"Baked clay — the sijjil stones carried by the birds (105:4)"},
+  {id:'z6', desc:"Like straw — the destroyed army left like devoured, trampled straw (105:5)"}
+];
+
+const S2_QUIZ = [
   {q:'Who was Abraha and what did he want to do?',
    opts:['A general who protected Mecca from the Romans','The governor of Yemen who marched to DESTROY the Kaaba','A Qurayshi leader who rebuilt the Kaaba','A prophet sent to warn the people of Mecca'],
    correct:1},
@@ -34,7 +76,7 @@ const S1_QUIZ = [
    correct:1},
 ];
 
-const S2_EVENTS_CORRECT = [
+const S3_EVENTS_CORRECT = [
   {id:'f1', text:'🐘 Abraha builds a church in Yemen to rival the Kaaba, then marches to destroy it (570 CE)'},
   {id:'f2', text:'🏔️ The Quraysh flee to the mountains — no army can face 60,000 soldiers and elephants'},
   {id:'f3', text:'🐘 The lead elephant "Mahmud" refuses to march towards Mecca — kept turning back'},
@@ -42,9 +84,9 @@ const S2_EVENTS_CORRECT = [
   {id:'f5', text:'💥 Each stone strikes like a missile — the mighty army is reduced to eaten straw'},
   {id:'f6', text:'✨ Abraha himself is struck, retreats, and dies in disgrace. Mecca is saved by Allah alone!'},
 ];
-window._S2_EVENTS = S2_EVENTS_CORRECT;
+window._S3_EVENTS = S3_EVENTS_CORRECT;
 
-const S3_QUIZ = [
+const S4_QUIZ = [
   {q:'What does "ka\'asfin ma\'kul" (105:5) compare the destroyed army to?',
    opts:['Ashes from a fire','Scattered sand in the wind','Eaten/devoured straw','Dried leaves in autumn'],
    correct:2},
@@ -59,9 +101,12 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderStoryOrder(2,S2_EVENTS_CORRECT);}function checkSection2(){checkStoryOrder(2,S2_EVENTS_CORRECT);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
+
+function renderSection1Game(){if(window.renderWBW)renderWBW('wbw-display',WBW_DATA,'wbw-reveal-btn');renderDragDrop(1,S1_ITEMS,S1_ZONES);}
+function checkSection1(){checkDragDrop(1,S1_ZONES);}
+function renderSection2Game(){renderQuiz(2,S2_QUIZ);}function checkSection2(){checkQuiz(2,S2_QUIZ);}
+function renderSection3Game(){renderStoryOrder(3,S3_EVENTS_CORRECT);}function checkSection3(){checkStoryOrder(3,S3_EVENTS_CORRECT);}
+function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -75,5 +120,5 @@ window._drawBuildCanvas = function(n) {
     ctx.fillStyle=acc;ctx.fillRect(W*0.55,H*0.4,50,28);ctx.fillRect(W*0.8,H*0.32,10,16);ctx.fillRect(W*0.8,H*0.44,8,20);ctx.fillRect(W*0.82,H*0.27,16,10);ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillRect(W*0.58,H*0.66,8,14);ctx.fillRect(W*0.68,H*0.66,8,14);}
   if(n>=2){ctx.fillStyle='#c87030';ctx.font='14px serif';ctx.textAlign='center';ctx.fillText('🐦🐦🐦',W/2,H*0.35);ctx.textAlign='left';}
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
-  ctx.fillText(n>=3?'AL-FIL COMPLETE! 🐘':`Al-Fil — ${n}/3 levels`,W/2,14);ctx.textAlign='left';
+  ctx.fillText(n>=4?'AL-FIL COMPLETE! 🐘':`Al-Fil — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
 };

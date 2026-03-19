@@ -12,25 +12,50 @@
 <body>
 <header id="game-header" style="display:none">
   <div><div class="game-title">🐘 SURAH AL-FIL QUEST</div><div class="header-explorer">Explorer: <span id="header-name">—</span></div></div>
-  <div class="stats-row"><div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div><div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div><div class="stat-chip done-chip">✅ <span id="done-display">0</span>/3</div><button class="reset-btn" onclick="resetGame()">↺ Reset</button><a class="hub-btn" href="../index.html">🏠 Hub</a></div>
+  <div class="stats-row"><div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div><div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div><div class="stat-chip done-chip">✅ <span id="done-display">0</span>/4</div><button class="reset-btn" onclick="resetGame()">↺ Reset</button><a class="hub-btn" href="../index.html">🏠 Hub</a></div>
 </header>
 <div id="intro-screen">
   <div class="intro-icon">🐘</div>
   <div class="intro-title">SURAH AL-FIL QUEST</div>
   <div class="intro-arabic">الفيل</div>
-  <div class="intro-subtitle">3 Levels · Army of Elephant · Birds of Ababil · Like Eaten Straw</div>
+  <div class="intro-subtitle">4 Levels · Word by Word Arabic · Army of Elephants · Birds of Ababil</div>
 </div>
 <div id="main-view" style="display:none">
 <div class="container">
   <div class="ibn-ameen-panel"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/><span id="welcome-text">As-salamu alaykum! Welcome to Surah Al-Fil!</span></div></div>
   <h2 class="section-heading">🐘 THE QUEST MAP</h2>
   <div class="map-grid">
-    <div class="map-tile unlocked" id="tile-1"><div class="tile-icon">🐘</div><div class="tile-level">LEVEL 1</div><div class="tile-name">Army of Elephant</div><div class="tile-verses">105:1</div><div class="tile-status" id="status-1">▶ PLAY</div></div>
+    <div class="map-tile unlocked" id="tile-1" onclick="openSection(1)">
+      <div class="tile-icon">📖</div><div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">Word by Word</div><div class="tile-verses">105:1-4</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+    <div class="map-tile locked" id="tile-2" onclick="openSection(2)">
+      <div class="tile-icon">🐘</div><div class="tile-level">LEVEL 2</div>
+      <div class="tile-name">Army of Elephant</div><div class="tile-verses">105:1</div>
+      <div class="tile-status" id="status-2">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-3" onclick="openSection(3)">
+      <div class="tile-icon">🐦</div><div class="tile-level">LEVEL 3</div>
+      <div class="tile-name">Story Order</div><div class="tile-verses">105:1-5</div>
+      <div class="tile-status" id="status-3">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-4" onclick="openSection(4)">
+      <div class="tile-icon">✨</div><div class="tile-level">LEVEL 4</div>
+      <div class="tile-name">Al-Fil Complete</div><div class="tile-verses">105:5</div>
+      <div class="tile-status" id="status-4">🔒 LOCKED</div>
+    </div>
+  </div>
+  </div>
     <div class="map-tile locked" id="tile-2"><div class="tile-icon">🐦</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Story Order</div><div class="tile-verses">105:1-5</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
     <div class="map-tile locked" id="tile-3"><div class="tile-icon">✨</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Al-Fil Complete</div><div class="tile-verses">105:5</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
   </div>
   <div id="world-builder"><h2 class="section-heading">🐘 WORLD BUILDER</h2><div style="border:3px solid var(--primary);margin-bottom:12px;"><canvas id="build-canvas" width="560" height="180" style="width:100%;image-rendering:pixelated;display:block;"></canvas></div><div class="world-preview">
-      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Army of Elephant</div></div>
+      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Words</div></div>
+      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Army of Elephant</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Story Order</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Al-Fil Complete</div></div>
+      </div></div>
       <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Story Order</div></div>
       <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Al-Fil Complete</div></div>
   </div></div>
@@ -42,25 +67,121 @@
   <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></header>
 
   <div class="section-panel" id="section-panel-1">
-    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Did you not see what your Lord did? 60,000 soldiers + 13 elephants! Answer the quiz!</div></div>
-    <div class="card" style="margin:14px 12px 0"><div class="card-header">🐘 LEVEL 1 — Army of Elephant (105:1)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Army of Elephant — Click to reveal verse</span></div><canvas id="canvas-1" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ</div><div class="verse-translation">"Did you not see how your Lord dealt with the people of the Elephant?" (105:1)</div></div></div>
-    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 QUIZ — ARMY OF ELEPHANT</div><div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div><div id="quiz-1"></div><div class="game-feedback" id="feedback-1"></div><div class="game-footer"><button class="action-btn" onclick="checkSection1()">✅ Check Answers</button><button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button></div></div>
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Before diving into the story and quizzes, let's learn EVERY ARABIC WORD of Surah Al-Fil! Study the full verse first, then tap each Arabic card to reveal its meaning. When ready, match the key words below!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0">
+      <div class="card-header">📖 LEVEL 1 — WORD BY WORD (105:1-4)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Al-Fil — Click to reveal full translation</span></div>
+        <canvas id="canvas-1" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <div class="verse-block">
+          <div class="arabic-text">أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ ۩ أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ ۩ وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ ۩ تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ ۩ فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُولٍ</div>
+          <div class="verse-translation">"Did you not see how your Lord dealt with the companions of the elephant? Did He not make their plot go astray? He sent against them birds in flocks, pelting them with stones of baked clay. And He made them like eaten straw." (105:1-5)</div>
+        </div>
+        <p class="word-grid-intro">Now explore each word — <strong>tap a card to reveal its meaning</strong>. Cards shown RIGHT to LEFT, as Arabic is read.</p>
+                <button id="wbw-reveal-btn" class="wbw-reveal-btn">👁 Reveal All Meanings</button>
+        <div id="wbw-display"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin:8px 12px 0">
+      <div class="card-header">🎮 MATCH — ARABIC WORD TO ENGLISH MEANING</div>
+      <div class="game-instructions">Drag each <strong>Arabic word</strong> to its correct <strong>English meaning</strong>. All 6 must be correct!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-1"></div>
+        <div class="drop-zones" id="drop-zones-1"></div>
+      </div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
+
   <div class="section-panel" id="section-panel-2">
-    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>From Abraha's march to the birds to eaten straw. Put the story in order!</div></div>
-    <div class="card" style="margin:14px 12px 0"><div class="card-header">🐦 LEVEL 2 — Story Order (105:1-5)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Story Order — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ</div><div class="verse-translation">"He sent against them birds in flocks." (105:3)</div></div></div>
-    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 STORY ORDER — AL-FIL</div><div class="game-instructions">Put the story of the Elephant in correct order!</div><div class="story-order-container" id="story-order-2"></div><div class="game-feedback" id="feedback-2"></div><div class="game-footer"><button class="action-btn" onclick="checkSection2()">✅ Check Order</button><button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button></div></div>
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>60,000 soldiers and 13 war elephants! But did you not see what your Lord did? Answer the quiz!</div>
+    </div>
+    <div class="card" style="margin:14px 12px 0">
+      <div class="card-header">🐘 LEVEL 2 — ARMY OF THE ELEPHANT (105:1)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Army of Elephant — Click to reveal verse</span></div>
+        <canvas id="canvas-2" width="560" height="220"></canvas></div>
+      <div class="verse-block"><div class="arabic-text">أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ</div>
+        <div class="verse-translation">"Did you not see how your Lord dealt with the people of the Elephant?" (105:1)</div></div>
+    </div>
+    <div class="card" style="margin:8px 12px 0">
+      <div class="card-header">🎮 QUIZ — ARMY OF THE ELEPHANT</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-2"></div>
+      <div class="game-feedback" id="feedback-2"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+      </div>
+    </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
+
   <div class="section-panel" id="section-panel-3">
-    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Like eaten straw! Allah protects His house. Final quiz!</div></div>
-    <div class="card" style="margin:14px 12px 0"><div class="card-header">✨ LEVEL 3 — Al-Fil Complete (105:5)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Al-Fil Complete — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُولٍ</div><div class="verse-translation">"He made them like eaten/devoured straw." (105:5)</div></div></div>
-    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 QUIZ — AL-FIL FINAL</div><div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div><div id="quiz-3"></div><div class="game-feedback" id="feedback-3"></div><div class="game-footer"><button class="action-btn" onclick="checkSection3()">✅ Check Answers</button><button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button></div></div>
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>From Abraha's march to the birds to eaten straw. Put the events in correct order!</div>
+    </div>
+    <div class="card" style="margin:14px 12px 0">
+      <div class="card-header">🐦 LEVEL 3 — STORY ORDER (105:1-5)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Birds of Ababil — Click to reveal verse</span></div>
+        <canvas id="canvas-3" width="560" height="220"></canvas></div>
+      <div class="verse-block"><div class="arabic-text">وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ</div>
+        <div class="verse-translation">"He sent against them birds in flocks." (105:3)</div></div>
+    </div>
+    <div class="card" style="margin:8px 12px 0">
+      <div class="card-header">🎮 STORY ORDER — AL-FIL</div>
+      <div class="game-instructions">Put the story of the Elephant in correct order!</div>
+      <div class="story-order-container" id="story-order-3"></div>
+      <div class="game-feedback" id="feedback-3"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection3()">✅ Check Order</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+      </div>
+    </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
+
+  <div class="section-panel" id="section-panel-4">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Like eaten straw! Allah protects His house with tiny birds. Final quiz!</div>
+    </div>
+    <div class="card" style="margin:14px 12px 0">
+      <div class="card-header">✨ LEVEL 4 — AL-FIL COMPLETE (105:5)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Al-Fil Complete — Click to reveal verse</span></div>
+        <canvas id="canvas-4" width="560" height="220"></canvas></div>
+      <div class="verse-block"><div class="arabic-text">فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُولٍ</div>
+        <div class="verse-translation">"He made them like eaten/devoured straw." (105:5)</div></div>
+    </div>
+    <div class="card" style="margin:8px 12px 0">
+      <div class="card-header">🎮 FINAL QUIZ — AL-FIL</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
 </div>
 <script src="scenes.js"></script>
+<script src="../shared/arabic-words.js"></script>
 <script src="../shared/engine.js"></script>
 <script src="../shared/ui.js"></script>
 <script src="app.js"></script>
