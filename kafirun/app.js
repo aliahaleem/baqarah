@@ -28,15 +28,15 @@ const WBW_DATA = [
   {label:'Verses 1-2 — قُلْ يَا أَيُّهَا الْكَافِرُونَ · لَا أَعْبُدُ مَا تَعْبُدُونَ', words:[
     'ta-budun','ma','a-budu','la',
     'al-kafirun',
-    {ar:'يَا أَيُّهَا',tr:'yā ayyuhā',en:'O you'},
+    {ar:'يَا أَيُّهَا',tr:'yā ayyuhā',en:'O you', freq:70},
     'qul',
   ]},
   {label:'Verses 3-5 — وَلَا أَنتُمْ عَابِدُونَ · وَلَا أَنَا عَابِدٌ مَّا عَبَدتُّمْ', words:[
     'abidun-pl',
-    {ar:'أَنتُمْ',tr:'antum',en:'you (are)'},
+    {ar:'أَنتُمْ',tr:'antum',en:'you (are)', freq:120},
     'wala',
     'abadttum','ma','abidun',
-    {ar:'أَنَا',tr:'anā',en:'I (am)'},
+    {ar:'أَنَا',tr:'anā',en:'I (am)', freq:100},
     'wala',
   ]},
   {label:'Verse 6 — لَكُمْ دِينُكُمْ وَلِيَ دِينِ', words:[

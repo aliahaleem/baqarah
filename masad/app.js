@@ -27,23 +27,23 @@ window.SURAH_CONFIG = {
 const WBW_DATA = [
   {label:'Verses 1-2 — تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ · مَا أَغْنَىٰ عَنْهُ مَالُهُ وَمَا كَسَبَ', words:[
     'kasaba',
-    {ar:'وَمَا',tr:'wa-mā',en:'and what'},
+    {ar:'وَمَا',tr:'wa-mā',en:'and what', freq:500},
     'maluhu',
-    {ar:'عَنْهُ',tr:'ʿanhu',en:'him / from him'},
-    {ar:'أَغْنَىٰ',tr:'aghnā',en:'availed / benefited'},
-    {ar:'مَا',tr:'mā',en:'did not'},
+    {ar:'عَنْهُ',tr:'ʿanhu',en:'him / from him', freq:70},
+    {ar:'أَغْنَىٰ',tr:'aghnā',en:'availed / benefited', freq:7},
+    {ar:'مَا',tr:'mā',en:'did not', freq:2005},
     'wa-tabb','lahab-n','abi','yada','tabbat',
   ]},
   {label:'Verses 3-4 — سَيَصْلَىٰ نَارًا ذَاتَ لَهَبٍ · وَامْرَأَتُهُ حَمَّالَةَ الْحَطَبِ', words:[
     'al-hatab','hammalata',
-    {ar:'وَامْرَأَتُهُ',tr:'wa-mraʾatuhu',en:'and his wife'},
-    'lahab-n',{ar:'ذَاتَ',tr:'dhāta',en:'full of'},
-    {ar:'نَارًا',tr:'nāran',en:'a fire'},
-    {ar:'سَيَصْلَىٰ',tr:'sayaṣlā',en:'he will burn in'},
+    {ar:'وَامْرَأَتُهُ',tr:'wa-mraʾatuhu',en:'and his wife', freq:2},
+    'lahab-n',{ar:'ذَاتَ',tr:'dhāta',en:'full of', freq:20},
+    {ar:'نَارًا',tr:'nāran',en:'a fire', freq:20},
+    {ar:'سَيَصْلَىٰ',tr:'sayaṣlā',en:'he will burn in', freq:3},
   ]},
   {label:'Verse 5 — فِي جِيدِهَا حَبْلٌ مِّن مَّسَدٍ', words:[
     'masad-n','min2','hablun','jidiha',
-    {ar:'فِي',tr:'fī',en:'around'},
+    {ar:'فِي',tr:'fī',en:'around', freq:1714},
   ]},
 ];
 

@@ -27,19 +27,19 @@ window.SURAH_CONFIG = {
 const WBW_DATA = [
   {label:'Verse 1 — أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ', words:[
     'al-fil','bi-ashab','rabbuka','fa-ala','kayfa',
-    {ar:'تَرَ',tr:'tara',en:'you see'},
-    {ar:'أَلَمْ',tr:'alam',en:'did you not'},
+    {ar:'تَرَ',tr:'tara',en:'you see', freq:15},
+    {ar:'أَلَمْ',tr:'alam',en:'did you not', freq:40},
   ]},
   {label:'Verse 2 — أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ', words:[
     'tadleel','fi','kaydahum',
-    {ar:'يَجْعَلْ',tr:'yajʿal',en:'make / place'},
+    {ar:'يَجْعَلْ',tr:'yajʿal',en:'make / place', freq:30},
   ]},
   {label:'Verses 3-4 — طَيْرًا أَبَابِيلَ · تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ', words:[
     'sijjeel','min2','hijara','tarmihim','ababeel','tayran',
   ]},
   {label:'Verse 5 — فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُولٍ', words:[
     'makool','ka-asf',
-    {ar:'فَجَعَلَهُمْ',tr:'fajaʿalahum',en:'and He made them'},
+    {ar:'فَجَعَلَهُمْ',tr:'fajaʿalahum',en:'and He made them', freq:5},
   ]},
 ];
 

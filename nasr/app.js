@@ -26,17 +26,17 @@ window.SURAH_CONFIG = {
 /* ─── LEVEL 1: Word by Word flip-card data (uses shared arabic-words.js) ─── */
 const WBW_DATA = [
   {label:'Verse 1 — إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ', words:[
-    {ar:'وَالْفَتْحُ',tr:'wal-fatḥ',en:'and the conquest'},
+    {ar:'وَالْفَتْحُ',tr:'wal-fatḥ',en:'and the conquest', freq:6},
     'allah','nasru','ja-a','idha',
   ]},
   {label:'Verse 2 — وَرَأَيْتَ النَّاسَ يَدْخُلُونَ فِي دِينِ اللَّهِ أَفْوَاجًا', words:[
     'afwaja','din-allah','fi','yadkhulun','al-nas-n',
-    {ar:'وَرَأَيْتَ',tr:'wa-raʾayta',en:'and you see'},
+    {ar:'وَرَأَيْتَ',tr:'wa-raʾayta',en:'and you see', freq:15},
   ]},
   {label:'Verse 3 — فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُ إِنَّهُ كَانَ تَوَّابًا', words:[
     'tawwaban',
-    {ar:'كَانَ',tr:'kāna',en:'He has been / He is (always)'},
-    {ar:'إِنَّهُ',tr:'innahu',en:'Indeed He'},
+    {ar:'كَانَ',tr:'kāna',en:'He has been / He is (always)', freq:1350},
+    {ar:'إِنَّهُ',tr:'innahu',en:'Indeed He', freq:100},
     'wastaghfirhu','rabbika','bihamd','fasabbih',
   ]},
 ];

@@ -40,7 +40,7 @@ window.SURAH_CONFIG = {
 const WBW_DATA = [
   {label:'Verse 1 — قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ', words:[
     'al-falaq',
-    {ar:'بِرَبِّ', tr:'bi-rabb', en:'in the Lord of'},
+    {ar:'بِرَبِّ', tr:'bi-rabb', en:'in the Lord of', freq:15},
     'a-udhu','qul',
   ]},
   {label:'Verse 2 — مِن شَرِّ مَا خَلَقَ', words:[
@@ -48,15 +48,15 @@ const WBW_DATA = [
   ]},
   {label:'Verse 3 — وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ', words:[
     'waqab','idha','ghassiq','sharr',
-    {ar:'وَمِن', tr:'wa-min', en:'and from'},
+    {ar:'وَمِن', tr:'wa-min', en:'and from', freq:200},
   ]},
   {label:'Verse 4 — وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ', words:[
     'al-uqad','fi','al-naffathat','sharr',
-    {ar:'وَمِن', tr:'wa-min', en:'and from'},
+    {ar:'وَمِن', tr:'wa-min', en:'and from', freq:200},
   ]},
   {label:'Verse 5 — وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ', words:[
     'hasad','idha','hasid','sharr',
-    {ar:'وَمِن', tr:'wa-min', en:'and from'},
+    {ar:'وَمِن', tr:'wa-min', en:'and from', freq:200},
   ]},
 ];
 

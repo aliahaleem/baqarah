@@ -40,7 +40,7 @@ window.SURAH_CONFIG = {
 const WBW_DATA = [
   {label:'Verse 1 — قُلْ أَعُوذُ بِرَبِّ النَّاسِ', words:[
     'al-nas',
-    {ar:'بِرَبِّ', tr:'bi-rabb', en:'in the Lord of'},
+    {ar:'بِرَبِّ', tr:'bi-rabb', en:'in the Lord of', freq:15},
     'a-udhu','qul',
   ]},
   {label:'Verse 2 — مَلِكِ النَّاسِ', words:[
@@ -56,9 +56,9 @@ const WBW_DATA = [
     'al-nas','fi-sudur','yuwas-wis','alladhi',
   ]},
   {label:'Verse 6 — مِنَ الْجِنَّةِ وَالنَّاسِ', words:[
-    {ar:'وَالنَّاسِ', tr:'wal-nās', en:'and mankind'},
+    {ar:'وَالنَّاسِ', tr:'wal-nās', en:'and mankind', freq:10},
     'al-jinn',
-    {ar:'مِنَ', tr:'mina', en:'from among'},
+    {ar:'مِنَ', tr:'mina', en:'from among', freq:360},
   ]},
 ];
 

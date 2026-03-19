@@ -27,18 +27,18 @@ window.SURAH_CONFIG = {
 const WBW_DATA = [
   {label:'Verses 1-3 — أَرَأَيْتَ الَّذِي يُكَذِّبُ بِالدِّينِ · يَدُعُّ الْيَتِيمَ · لَا يَحُضُّ عَلَىٰ طَعَامِ الْمِسْكِينِ', words:[
     'al-miskeen','ta-am','yahudd',
-    {ar:'عَلَىٰ',tr:'ʿalā',en:'upon / to'},
+    {ar:'عَلَىٰ',tr:'ʿalā',en:'upon / to', freq:1390},
     'la','al-yateem','yad-u',
-    {ar:'فَذَٰلِكَ',tr:'fadhālika',en:'so that is the one'},
+    {ar:'فَذَٰلِكَ',tr:'fadhālika',en:'so that is the one', freq:5},
     'al-deen','yukadhdhibu','a-rayta',
   ]},
   {label:'Verses 4-7 — فَوَيْلٌ لِّلْمُصَلِّينَ · سَاهُونَ · يُرَاءُونَ · يَمْنَعُونَ الْمَاعُونَ', words:[
     'al-maun',
-    {ar:'وَيَمْنَعُونَ',tr:'wa-yamnaʿūn',en:'and they withhold'},
+    {ar:'وَيَمْنَعُونَ',tr:'wa-yamnaʿūn',en:'and they withhold', freq:5},
     'yura-un','sahun','salatihim',
-    {ar:'عَن',tr:'ʿan',en:'of'},
-    {ar:'هُمْ',tr:'hum',en:'they (are)'},
-    {ar:'الَّذِينَ',tr:'alladhīna',en:'those who'},
+    {ar:'عَن',tr:'ʿan',en:'of', freq:330},
+    {ar:'هُمْ',tr:'hum',en:'they (are)', freq:300},
+    {ar:'الَّذِينَ',tr:'alladhīna',en:'those who', freq:1450},
     'lil-musalin','waylun',
   ]},
 ];

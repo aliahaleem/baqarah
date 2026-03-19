@@ -46,8 +46,8 @@ const WBW_DATA = [
   ]},
   {label:'Verse 4 — وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ', words:[
     'ahad','kufuwan',
-    {ar:'لَّهُ',   tr:'lahu',   en:'for/to Him'},
-    {ar:'يَكُن',  tr:'yakun',  en:'be / exist'},
+    {ar:'لَّهُ',   tr:'lahu',   en:'for/to Him', freq:860},
+    {ar:'يَكُن',  tr:'yakun',  en:'be / exist', freq:200},
     'walam',
   ]},
 ];
