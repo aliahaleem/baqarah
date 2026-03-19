@@ -1,0 +1,11 @@
+/* Surah Al-Mutaffifin (83) — deep maroon / bronze / copper */
+html[data-theme="stars"] {
+  --bg:#3a1a28;--bg2:#4a2238;--surface:#5c2e48;--card-bg:#5c2e48;
+  --primary:#c04878;--primary-lit:#e06898;--accent:#f0b860;--accent2:#d09040;
+  --text:#ffffff;--text-dim:#f0c8d8;--tile-locked:#2a1020;--tile-unlocked:#381830;--tile-completed:#482040;
+}
+:root {
+  --bg:#140408;--bg2:#200810;--surface:#2c0e18;--card-bg:#2c0e18;
+  --primary:#6a1828;--primary-lit:#9a2840;--accent:#c88030;--accent2:#a06020;
+  --text:#ffe8d8;--text-dim:#906858;--tile-locked:#0e0408;--tile-unlocked:#180610;--tile-completed:#200a18;
+}
