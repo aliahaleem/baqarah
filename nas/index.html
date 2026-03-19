@@ -12,62 +12,343 @@
 <body>
 <header id="game-header" style="display:none">
   <div><div class="game-title">🌍 SURAH AN-NAS QUEST</div><div class="header-explorer">Explorer: <span id="header-name">—</span></div></div>
-  <div class="stats-row"><div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div><div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div><div class="stat-chip done-chip">✅ <span id="done-display">0</span>/4</div><button class="reset-btn" onclick="resetGame()">↺ Reset</button><a class="hub-btn" href="../index.html">🏠 Hub</a></div>
+  <div class="stats-row">
+    <div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div>
+    <div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div>
+    <div class="stat-chip done-chip">✅ <span id="done-display">0</span>/5</div>
+    <button class="reset-btn" onclick="resetGame()">↺ Reset</button>
+    <a class="hub-btn" href="../index.html">🏠 Hub</a>
+  </div>
 </header>
+
 <div id="intro-screen">
   <div class="intro-icon">🌍</div>
   <div class="intro-title">SURAH AN-NAS QUEST</div>
-  <div class="intro-arabic">الناس</div>
-  <div class="intro-subtitle">4 Levels · Three Titles · The Whisperer · Jinn and Men · Juz Amma Complete!</div>
+  <div class="intro-arabic">سُوْرَةُ النَّاس</div>
+  <div class="intro-subtitle">5 Levels · Word by Word Arabic · Three Titles · The Whisperer · Quran Complete!</div>
 </div>
+
 <div id="main-view" style="display:none">
 <div class="container">
-  <div class="ibn-ameen-panel"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/><span id="welcome-text">As-salamu alaykum! Welcome to Surah An-Nas!</span></div></div>
+
+  <div class="ibn-ameen-panel">
+    <div class="character-avatar">🧙‍♂️</div>
+    <div class="speech-bubble">
+      <strong>Ibn Ameen says:</strong><br/>
+      <span id="welcome-text">As-salamu alaykum, Explorer! Surah An-Nas — The LAST SURAH of the entire Quran! Three titles of Allah, one enemy: the withdrawing whisperer. Learn every word then complete the Quran quest!</span>
+    </div>
+  </div>
+
   <h2 class="section-heading">🌍 THE QUEST MAP</h2>
   <div class="map-grid">
-    <div class="map-tile unlocked" id="tile-1"><div class="tile-icon">🌍</div><div class="tile-level">LEVEL 1</div><div class="tile-name">Three Titles</div><div class="tile-verses">114:1-3</div><div class="tile-status" id="status-1">▶ PLAY</div></div>
-    <div class="map-tile locked" id="tile-2"><div class="tile-icon">😈</div><div class="tile-level">LEVEL 2</div><div class="tile-name">The Whisperer</div><div class="tile-verses">114:4-5</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-3"><div class="tile-icon">🛡️</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Jinn and Men</div><div class="tile-verses">114:6</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-4"><div class="tile-icon">✨</div><div class="tile-level">LEVEL 4</div><div class="tile-name">JUZ AMMA COMPLETE!</div><div class="tile-verses">114:1-6</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
+    <div class="map-tile unlocked" id="tile-1" onclick="openSection(1)">
+      <div class="tile-icon">📖</div><div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">Word by Word</div><div class="tile-verses">114:1-6</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+    <div class="map-tile locked" id="tile-2" onclick="openSection(2)">
+      <div class="tile-icon">🌍</div><div class="tile-level">LEVEL 2</div>
+      <div class="tile-name">Three Titles</div><div class="tile-verses">114:1-3</div>
+      <div class="tile-status" id="status-2">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-3" onclick="openSection(3)">
+      <div class="tile-icon">😈</div><div class="tile-level">LEVEL 3</div>
+      <div class="tile-name">The Whisperer</div><div class="tile-verses">114:4-6</div>
+      <div class="tile-status" id="status-3">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-4" onclick="openSection(4)">
+      <div class="tile-icon">🛡️</div><div class="tile-level">LEVEL 4</div>
+      <div class="tile-name">The Chests</div><div class="tile-verses">114:5-6</div>
+      <div class="tile-status" id="status-4">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-5" onclick="openSection(5)">
+      <div class="tile-icon">✨</div><div class="tile-level">LEVEL 5</div>
+      <div class="tile-name">Quran Complete!</div><div class="tile-verses">114:1-6</div>
+      <div class="tile-status" id="status-5">🔒 LOCKED</div>
+    </div>
   </div>
-  <div id="world-builder"><h2 class="section-heading">🌍 WORLD BUILDER</h2><div style="border:3px solid var(--primary);margin-bottom:12px;"><canvas id="build-canvas" width="560" height="180" style="width:100%;image-rendering:pixelated;display:block;"></canvas></div><div class="world-preview">
-      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Three Titles</div></div>
-      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">The Whisperer</div></div>
-      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Jinn and Men</div></div>
-      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">JUZ AMMA COMPLETE!</div></div>
-  </div></div>
-  <div id="all-complete" style="display:none"><div style="font-size:36px">🌍</div><div style="color:var(--accent);font-size:10px">SURAH AN-NAS COMPLETE!</div></div>
-</div></div>
-<div id="verse-popup"><div class="vp-box"><div id="vp-ref"></div><div id="vp-arabic"></div><div id="vp-eng"></div><div id="vp-note"></div><button id="vp-close" onclick="hideVersePopup()">✕ Close</button></div></div>
-<div id="reward-overlay"><div class="reward-box"><span class="reward-icon" id="reward-icon">🏆</span><div class="reward-title" id="reward-title"></div><div class="reward-xp" id="reward-xp"></div><div class="reward-gems" id="reward-gems"></div><div class="reward-msg" id="reward-msg"></div><button class="reward-ok-btn" onclick="dismissReward()">✅ Continue Quest</button></div></div>
-<div id="section-view" style="display:none">
-  <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></header>
 
-  <div class="section-panel" id="section-panel-1">
-    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Lord, King, God of Mankind — three aspects of Allah's authority! Answer the quiz!</div></div>
-    <div class="card" style="margin:14px 12px 0"><div class="card-header">🌍 LEVEL 1 — Three Titles (114:1-3)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Three Titles — Click to reveal verse</span></div><canvas id="canvas-1" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">قُلْ أَعُوذُ بِرَبِّ النَّاسِ ۩ مَلِكِ النَّاسِ ۩ إِلَٰهِ النَّاسِ</div><div class="verse-translation">"Lord of Mankind, King of Mankind, God of Mankind." (114:1-3)</div></div></div>
-    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 QUIZ — THREE TITLES</div><div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div><div id="quiz-1"></div><div class="game-feedback" id="feedback-1"></div><div class="game-footer"><button class="action-btn" onclick="checkSection1()">✅ Check Answers</button><button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button></div></div>
-    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  <div id="world-builder">
+    <h2 class="section-heading">🌍 THE WORLD BUILDER</h2>
+    <div style="border:3px solid var(--primary);margin-bottom:12px;">
+      <canvas id="build-canvas" width="560" height="220" style="width:100%;image-rendering:pixelated;display:block;"></canvas>
+    </div>
+    <p style="font-family:var(--font-body);font-size:var(--font-size-sm);color:var(--primary-lit);text-align:center;margin-bottom:10px;line-height:1.8;">
+      Complete each level to reveal the shield of humanity!<br/>
+      <em style="color:var(--text-dim);">"Qul a'udhu bi-rabb il-nas" — 114:1</em>
+    </p>
+    <div class="world-preview">
+      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Words</div></div>
+      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">3 Titles</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Whisperer</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Chests</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Quran ✓</div></div>
+    </div>
   </div>
-  <div class="section-panel" id="section-panel-2">
-    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Al-waswas al-khannas — the withdrawing whisperer. Match the terms!</div></div>
-    <div class="card" style="margin:14px 12px 0"><div class="card-header">😈 LEVEL 2 — The Whisperer (114:4-5)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Whisperer — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ۩ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ</div><div class="verse-translation">"The whisperer who withdraws — who whispers into the chests of mankind." (114:4-5)</div></div></div>
-    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 MATCH — AN-NAS TERMS</div><div class="game-instructions">Drag each term to its description!</div><div class="drag-game-container"><div class="drag-pool" id="drag-pool-2"></div><div class="drop-zones" id="drop-zones-2"></div></div><div class="game-feedback" id="feedback-2"></div><div class="game-footer"><button class="action-btn" onclick="checkSection2()">✅ Check Matches</button><button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button></div></div>
-    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+
+  <div id="all-complete">
+    <div style="font-size:36px;margin-bottom:10px;">🎊</div>
+    <div style="color:var(--accent);font-size:10px;margin-bottom:8px;">AN-NAS COMPLETE — JUZ AMMA DONE! 🏆</div>
+    <div style="font-family:var(--font-body);font-size:var(--font-size-body);color:#ddd;line-height:1.9;">
+      MashAllah! You have completed Surah An-Nas and the entire Juz Amma quest!<br/>
+      You learned every Arabic word — and the depth of protection in these verses!<br/>
+      <em>"Qul a'udhu bi-rabb il-nas."</em><br/>
+      May Allah protect you from the whisperer and all evil! Ameen! 🏆
+    </div>
   </div>
-  <div class="section-panel" id="section-panel-3">
-    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Evil from both jinn and humans. Seek refuge! Answer the quiz!</div></div>
-    <div class="card" style="margin:14px 12px 0"><div class="card-header">🛡️ LEVEL 3 — Jinn and Men (114:6)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Jinn and Men — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">مِنَ الْجِنَّةِ وَالنَّاسِ</div><div class="verse-translation">"From among jinn and men." (114:6)</div></div></div>
-    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 QUIZ — JINN AND MEN</div><div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div><div id="quiz-3"></div><div class="game-feedback" id="feedback-3"></div><div class="game-footer"><button class="action-btn" onclick="checkSection3()">✅ Check Answers</button><button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button></div></div>
-    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
-  </div>
-  <div class="section-panel" id="section-panel-4">
-    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The FINAL surah of the Quran! Final quiz to complete Juz Amma!</div></div>
-    <div class="card" style="margin:14px 12px 0"><div class="card-header">✨ LEVEL 4 — JUZ AMMA COMPLETE! (114:1-6)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 JUZ AMMA COMPLETE! — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">قُلْ أَعُوذُ بِرَبِّ النَّاسِ</div><div class="verse-translation">"Say: I seek refuge in the Lord of Mankind." (114:1)</div></div></div>
-    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 QUIZ — AN-NAS FINAL — JUZ AMMA COMPLETE!</div><div class="game-instructions">Answer all 4 questions to complete the entire Juz Amma quest!</div><div id="quiz-4"></div><div class="game-feedback" id="feedback-4"></div><div class="game-footer"><button class="action-btn" onclick="checkSection4()">✅ Check Answers</button><button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button></div></div>
-    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
-  </div>
+
 </div>
+</div>
+
+<!-- ===================== VERSE POPUP ===================== -->
+<div id="verse-popup"><div class="vp-box"><div id="vp-ref"></div><div id="vp-arabic"></div><div id="vp-eng"></div><div id="vp-note"></div><button id="vp-close" onclick="hideVersePopup()">✕ Close</button></div></div>
+
+<!-- ===================== REWARD OVERLAY ===================== -->
+<div id="reward-overlay"><div class="reward-box"><span class="reward-icon" id="reward-icon">🏆</span><div class="reward-title" id="reward-title">LEVEL COMPLETE!</div><div class="reward-xp" id="reward-xp"></div><div class="reward-gems" id="reward-gems"></div><div class="reward-msg" id="reward-msg"></div><button class="reward-ok-btn" onclick="dismissReward()">✅ Continue Quest</button></div></div>
+
+<!-- ===================== SECTION VIEW ===================== -->
+<div id="section-view" style="display:none">
+  <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;">
+    <button class="back-btn" onclick="closeSection()">◀ Back to Map</button>
+  </header>
+
+  <!-- ==================== SECTION 1 — WORD BY WORD ==================== -->
+  <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Surah An-Nas — the final surah of the Quran! It has just 20 words but they are the most powerful words a believer can say for protection. Let's learn EVERY ARABIC WORD before we explore its deep meaning!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 1 — WORD BY WORD (114:1-6)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 An-Nas — Click to reveal full translation</span></div>
+        <canvas id="canvas-1" width="560" height="220"></canvas>
+      </div>
+
+      <div class="story-text">
+        <p class="word-grid-intro">Study every Arabic word of Surah An-Nas. Cards are displayed RIGHT to LEFT — the direction Arabic is read.</p>
+
+        <!-- VERSE 1 -->
+        <div class="word-grid">
+          <div class="word-verse-label">Verse 1 — قُلْ أَعُوذُ بِرَبِّ النَّاسِ</div>
+          <div class="word-card"><span class="w-arabic">النَّاسِ</span><span class="w-translit">al-nās</span><span class="w-meaning">mankind</span></div>
+          <div class="word-card"><span class="w-arabic">بِرَبِّ</span><span class="w-translit">bi-rabbi</span><span class="w-meaning">in the Lord of</span></div>
+          <div class="word-card"><span class="w-arabic">أَعُوذُ</span><span class="w-translit">a'ūdhu</span><span class="w-meaning">I seek refuge</span></div>
+          <div class="word-card"><span class="w-arabic">قُلْ</span><span class="w-translit">Qul</span><span class="w-meaning">Say</span></div>
+        </div>
+
+        <!-- VERSE 2 -->
+        <div class="word-grid">
+          <div class="word-verse-label">Verse 2 — مَلِكِ النَّاسِ</div>
+          <div class="word-card"><span class="w-arabic">النَّاسِ</span><span class="w-translit">al-nās</span><span class="w-meaning">of mankind</span></div>
+          <div class="word-card"><span class="w-arabic">مَلِكِ</span><span class="w-translit">maliki</span><span class="w-meaning">King</span></div>
+        </div>
+
+        <!-- VERSE 3 -->
+        <div class="word-grid">
+          <div class="word-verse-label">Verse 3 — إِلَٰهِ النَّاسِ</div>
+          <div class="word-card"><span class="w-arabic">النَّاسِ</span><span class="w-translit">al-nās</span><span class="w-meaning">of mankind</span></div>
+          <div class="word-card"><span class="w-arabic">إِلَٰهِ</span><span class="w-translit">ilāhi</span><span class="w-meaning">God of</span></div>
+        </div>
+
+        <!-- VERSE 4 -->
+        <div class="word-grid">
+          <div class="word-verse-label">Verse 4 — مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ</div>
+          <div class="word-card"><span class="w-arabic">الْخَنَّاسِ</span><span class="w-translit">al-khannās</span><span class="w-meaning">the withdrawer</span></div>
+          <div class="word-card"><span class="w-arabic">الْوَسْوَاسِ</span><span class="w-translit">al-waswās</span><span class="w-meaning">the whisperer</span></div>
+          <div class="word-card"><span class="w-arabic">شَرِّ</span><span class="w-translit">sharri</span><span class="w-meaning">evil of</span></div>
+          <div class="word-card"><span class="w-arabic">مِن</span><span class="w-translit">min</span><span class="w-meaning">from</span></div>
+        </div>
+
+        <!-- VERSE 5 -->
+        <div class="word-grid">
+          <div class="word-verse-label">Verse 5 — الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ</div>
+          <div class="word-card"><span class="w-arabic">النَّاسِ</span><span class="w-translit">al-nās</span><span class="w-meaning">of mankind</span></div>
+          <div class="word-card"><span class="w-arabic">صُدُورِ</span><span class="w-translit">sudūr</span><span class="w-meaning">chests/hearts</span></div>
+          <div class="word-card"><span class="w-arabic">فِي</span><span class="w-translit">fī</span><span class="w-meaning">into</span></div>
+          <div class="word-card"><span class="w-arabic">يُوَسْوِسُ</span><span class="w-translit">yuwaswisu</span><span class="w-meaning">whispers</span></div>
+          <div class="word-card"><span class="w-arabic">الَّذِي</span><span class="w-translit">alladhī</span><span class="w-meaning">who</span></div>
+        </div>
+
+        <!-- VERSE 6 -->
+        <div class="word-grid">
+          <div class="word-verse-label">Verse 6 — مِنَ الْجِنَّةِ وَالنَّاسِ</div>
+          <div class="word-card"><span class="w-arabic">وَالنَّاسِ</span><span class="w-translit">wa al-nās</span><span class="w-meaning">and mankind</span></div>
+          <div class="word-card"><span class="w-arabic">الْجِنَّةِ</span><span class="w-translit">al-jinnati</span><span class="w-meaning">the Jinn</span></div>
+          <div class="word-card"><span class="w-arabic">مِنَ</span><span class="w-translit">mina</span><span class="w-meaning">from among</span></div>
+        </div>
+
+        <div class="verse-block">
+          <div class="arabic-text">قُلْ أَعُوذُ بِرَبِّ النَّاسِ ۩ مَلِكِ النَّاسِ ۩ إِلَٰهِ النَّاسِ ۩ مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ۩ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ۩ مِنَ الْجِنَّةِ وَالنَّاسِ</div>
+          <div class="verse-translation">"Say: I seek refuge in the Lord of mankind, the King of mankind, the God of mankind — from the evil of the retreating whisperer, who whispers into the chests of mankind, from among the jinn and mankind." (114:1-6)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 MATCH — ARABIC WORD TO ENGLISH MEANING</div>
+      <div class="game-instructions">Drag each <strong>Arabic word</strong> to its correct <strong>English meaning</strong>. All 6 must be correct to claim your reward!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-1"></div>
+        <div class="drop-zones" id="drop-zones-1"></div>
+      </div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 2 — Three Titles ==================== -->
+  <div class="section-panel" id="section-panel-2">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Three titles of Allah — all of mankind! Rabb al-Nas (Lord), Malik al-Nas (King), Ilah al-Nas (God). Each one frames our relationship to Allah from a different angle. Why three? Because no single word captures the fullness of who He is to us!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🌍 LEVEL 2 — THREE TITLES (114:1-3)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 Three Titles of Allah — Click to reveal verse</span></div>
+        <canvas id="canvas-2" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        <p><strong>Rabb al-Nas</strong> — He who creates, sustains, nourishes, and guides mankind. He is our Rabb — the One who raised us from nothing to existence.</p>
+        <p><strong>Malik al-Nas</strong> — The King and Sovereign of all mankind. No human king truly owns — but Allah owns every soul and every moment of every life.</p>
+        <p><strong>Ilah al-Nas</strong> — The God of mankind — the only One worthy of worship. This is the core of tawhid: there is no ilah (god) except Allah.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">قُلْ أَعُوذُ بِرَبِّ النَّاسِ ۩ مَلِكِ النَّاسِ ۩ إِلَٰهِ النَّاسِ</div>
+        <div class="verse-translation">"Say: I seek refuge in the Lord of mankind, the King of mankind, the God of mankind." (114:1-3)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — THREE TITLES OF ALLAH</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-2"></div>
+      <div class="game-feedback" id="feedback-2"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 3 — The Whisperer ==================== -->
+  <div class="section-panel" id="section-panel-3">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Al-waswas al-khannas — the whisperer who slinks away! He whispers when you forget Allah, then retreats when you remember. Match each term to its meaning. Understanding the enemy is how you defeat him!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">😈 LEVEL 3 — THE WHISPERER (114:4-6)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 Al-Waswas al-Khannas — Click to reveal verse</span></div>
+        <canvas id="canvas-3" width="560" height="220"></canvas>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ۩ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ۩ مِنَ الْجِنَّةِ وَالنَّاسِ</div>
+        <div class="verse-translation">"From the evil of the retreating whisperer — who whispers into the chests of mankind — from among the jinn and mankind." (114:4-6)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 MATCH — THE WHISPERER'S NAMES</div>
+      <div class="game-instructions">Drag each key term to its correct description. All 4 must match!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-3"></div>
+        <div class="drop-zones" id="drop-zones-3"></div>
+      </div>
+      <div class="game-feedback" id="feedback-3"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection3()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 4 — The Chests ==================== -->
+  <div class="section-panel" id="section-panel-4">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        'Yuwaswisu fi sudur il-nas' — he whispers into the CHESTS of mankind. The battleground is the heart and mind. Waswas comes from both jinn AND humans — bad friends, harmful media, corrupting ideas. Answer these questions about the greatest hidden battle!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🛡️ LEVEL 4 — THE CHESTS (114:5-6)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 The Heart's Battlefield — Click to reveal verse</span></div>
+        <canvas id="canvas-4" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        <p><strong>Sudur</strong> (chests) — in Arabic, the chest/heart is the seat of consciousness, intention, and emotion. The whisperer targets the most important part of you: your inner world.</p>
+        <p>Notice it says <strong>"from among the jinn AND men"</strong> (114:6). The Quran is honest: humans can also be sources of harmful whispers — peer pressure, doubt-spreading, corrupting friendships. Seek refuge from ALL of them!</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ۩ مِنَ الْجِنَّةِ وَالنَّاسِ</div>
+        <div class="verse-translation">"Who whispers into the chests of mankind — from among the jinn and mankind." (114:5-6)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — THE HEART'S BATTLE</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 5 — QURAN COMPLETE ==================== -->
+  <div class="section-panel" id="section-panel-5">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        FINAL LEVEL of An-Nas — and of the ENTIRE QURAN QUEST! The Quran begins with Al-Fatihah asking for guidance and ends with An-Nas asking for protection. The whole of a believer's life is captured in those two surahs! Answer these final questions to complete your quest!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">✨ LEVEL 5 — QURAN COMPLETE! (114:1-6)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 Juz Amma Complete — Click to reveal verse</span></div>
+        <canvas id="canvas-5" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        <p>Al-Falaq and An-Nas together are called <strong>Al-Mu'awwidhatan</strong> — the two protection surahs. The Prophet ﷺ recited both morning and evening, blowing on his hands and wiping his body.</p>
+        <p>The Quran opens with <strong>Al-Fatihah</strong> — "Guide us to the straight path" — and closes with <strong>An-Nas</strong> — "I seek refuge from the whisperer." This is the arc of a believer's life: seek guidance, then seek protection. SubhanAllah!</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">قُلْ أَعُوذُ بِرَبِّ النَّاسِ</div>
+        <div class="verse-translation">"Say: I seek refuge in the Lord of mankind." (114:1)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 FINAL QUIZ — AN-NAS &amp; QURAN COMPLETE</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to complete the entire Quran Quest!</div>
+      <div id="quiz-5"></div>
+      <div class="game-feedback" id="feedback-5"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+</div><!-- end section-view -->
+
 <script src="scenes.js"></script>
 <script src="../shared/engine.js"></script>
 <script src="../shared/ui.js"></script>

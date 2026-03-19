@@ -1,16 +1,101 @@
 'use strict';
-/* scenes.js */
+/* scenes.js — Surah Al-Ikhlas (112) */
 const CW=560,CH=220,P=4;
 function _lbl(ctx,t,c,y){ctx.fillStyle=c||'#ffffff';ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(t,CW/2,y||15);ctx.textAlign='left';}
 function _fig(ctx,x,y,hc,bc,pc,r){const S=document.documentElement.getAttribute('data-theme')==='stars';ctx.fillStyle=hc;if(S&&r){ctx.beginPath();if(ctx.roundRect)ctx.roundRect(x+P,y,P*3,P*3,2);else ctx.rect(x+P,y,P*3,P*3);ctx.fill();}else ctx.fillRect(x+P,y,P*3,P*3);ctx.fillStyle=bc;ctx.fillRect(x,y+P*3,P*5,P*4);ctx.fillStyle=pc;ctx.fillRect(x,y+P*7,P*2,P*4);ctx.fillRect(x+P*3,y+P*7,P*2,P*4);}
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
+
+const VD_wbw={ref:'Al-Ikhlas 112:1-4',arabic:'قُلْ هُوَ اللَّهُ أَحَدٌ ۩ اللَّهُ الصَّمَدُ ۩ لَمْ يَلِدْ وَلَمْ يُولَدْ ۩ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ',english:'"Say: He is Allah, One. Allah — the Eternal Refuge. He did not beget, nor was He begotten. And there is none equal to Him." (112:1-4)',note:'15 words. Each one a universe of meaning. Learn them all!'};
 const VD_ahad={ref:'Al-Ikhlas 112:1',arabic:'قُلْ هُوَ اللَّهُ أَحَدٌ',english:'"Say: He is Allah, One." (112:1)',note:'Ahad — uniquely singular. No division, no parts, nothing comparable.'};
 const VD_samad={ref:'Al-Ikhlas 112:2',arabic:'اللَّهُ الصَّمَدُ',english:'"Allah — the Everlasting Refuge." (112:2)',note:'Al-Samad: everything depends on Him, He depends on nothing.'};
-const VD_none={ref:'Al-Ikhlas 112:3-4',arabic:'لَمْ يَلِدْ وَلَمْ يُولَدْ ۩ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ',english:'"He neither begets nor was He born. And none is equal." (112:3-4)',note:'Refutes: children of God concept. Refutes: God being born. Nothing equals Him.'};
-class S1 extends BS{constructor(){super('canvas-1');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_ahad);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#0c0c1e';ctx.fillRect(0,0,CW,CH);const t2=this.t;const glow=0.15+Math.sin(t2*0.04)*0.08;const rg=ctx.createRadialGradient(CW/2,CH*0.5,5,CW/2,CH*0.5,80+Math.sin(t2*0.03)*8);rg.addColorStop(0,`rgba(230,220,140,${glow*2})`);rg.addColorStop(1,'transparent');ctx.fillStyle=rg;ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#e8e0a0';ctx.font='22px serif';ctx.textAlign='center';ctx.fillText('اللَّهُ أَحَدٌ',CW/2,CH*0.5);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Allah is ONE" — unique and singular (112:1)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Allah is One — 112:1','#fff8f0');};draw();}}
-class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_samad);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#0c0c1e';ctx.fillRect(0,0,CW,CH);const items=['🌍','🌙','🌟','💫'];items.forEach((e,i)=>{ctx.font='14px serif';ctx.textAlign='center';const a=i*Math.PI/2+this.t*0.01;ctx.fillText(e,CW/2+60*Math.cos(a),CH*0.5+50*Math.sin(a));ctx.textAlign='left';});ctx.fillStyle='#e8e0a0';ctx.font='9px serif';ctx.textAlign='center';ctx.fillText('الصَّمَدُ',CW/2,CH*0.5);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('All depend on Him — He needs nothing (112:2)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: Al-Samad — 112:2','#fff8f0');};draw();}}
-class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_none);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#0c0c1e';ctx.fillRect(0,0,CW,CH);const glow=0.15+Math.sin(this.t*0.04)*0.08;const rg=ctx.createRadialGradient(CW/2,CH*0.5,5,CW/2,CH*0.5,90);rg.addColorStop(0,`rgba(230,220,140,${glow*2})`);rg.addColorStop(1,'transparent');ctx.fillStyle=rg;ctx.fillRect(0,0,CW,CH);ctx.fillStyle='#e8e0a0';ctx.font='8px serif';ctx.textAlign='center';ctx.fillText('وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ',CW/2,CH*0.45);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Nothing is equal to Allah" — Pure Tawhid! (112:4)',CW/2,CH-8);ctx.textAlign='left';_lbl(ctx,'CLICK: None Equal — 112:3-4','#fff8f0');};draw();}}
+const VD_none={ref:'Al-Ikhlas 112:3-4',arabic:'لَمْ يَلِدْ وَلَمْ يُولَدْ ۩ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ',english:'"He neither begets nor was He born. And none is equal." (112:3-4)',note:'Refutes: children of God. Refutes: God being born. Nothing equals Him.'};
+
+/* S1 — Word by Word canvas */
+class S1 extends BS{constructor(){super('canvas-1');}start(){
+  if(!this.ctx)return;
+  this.canvas.onclick=()=>showVersePopup(VD_wbw);
+  const ctx=this.ctx;
+  const words=[
+    {ar:'قُلْ',en:'Say'},{ar:'هُوَ',en:'He'},{ar:'اللَّهُ',en:'Allah'},{ar:'أَحَدٌ',en:'One'},
+    {ar:'الصَّمَدُ',en:'Refuge'},{ar:'يَلِدْ',en:'beget'},{ar:'يُولَدْ',en:'born'},{ar:'كُفُوًا',en:'equal'},
+  ];
+  const draw=()=>{
+    this.t++;this.raf=requestAnimationFrame(draw);
+    ctx.fillStyle='#0c0c1e';ctx.fillRect(0,0,CW,CH);
+    const rg=ctx.createRadialGradient(CW/2,CH/2,10,CW/2,CH/2,120);
+    rg.addColorStop(0,'rgba(220,210,130,0.15)');rg.addColorStop(1,'transparent');
+    ctx.fillStyle=rg;ctx.fillRect(0,0,CW,CH);
+    /* Floating word cards */
+    const t2=this.t;
+    words.forEach((w,i)=>{
+      const col=i%4,row=Math.floor(i/4);
+      const bx=20+col*135,by=40+row*80+Math.sin(t2*0.04+i)*5;
+      ctx.fillStyle='rgba(255,245,180,0.08)';ctx.strokeStyle='rgba(200,180,100,0.35)';
+      ctx.lineWidth=1;ctx.beginPath();ctx.roundRect?ctx.roundRect(bx,by,115,65,4):ctx.rect(bx,by,115,65);ctx.fill();ctx.stroke();
+      ctx.fillStyle='#e8e0a0';ctx.font='16px serif';ctx.textAlign='center';ctx.fillText(w.ar,bx+57,by+28);
+      ctx.fillStyle='#c0b060';ctx.font='5px "Press Start 2P",monospace';ctx.fillText(w.en,bx+57,by+52);
+      ctx.textAlign='left';
+    });
+    _lbl(ctx,'CLICK: Full Al-Ikhlas Word by Word','#fff8f0');
+  };draw();
+}}
+
+/* S2 — Ahad & Samad */
+class S2 extends BS{constructor(){super('canvas-2');}start(){
+  if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_ahad);
+  const ctx=this.ctx;
+  const draw=()=>{
+    this.t++;this.raf=requestAnimationFrame(draw);
+    ctx.fillStyle='#0c0c1e';ctx.fillRect(0,0,CW,CH);
+    const glow=0.15+Math.sin(this.t*0.04)*0.08;
+    const rg=ctx.createRadialGradient(CW/2,CH*0.5,5,CW/2,CH*0.5,80+Math.sin(this.t*0.03)*8);
+    rg.addColorStop(0,`rgba(230,220,140,${glow*2})`);rg.addColorStop(1,'transparent');
+    ctx.fillStyle=rg;ctx.fillRect(0,0,CW,CH);
+    ctx.fillStyle='#e8e0a0';ctx.font='24px serif';ctx.textAlign='center';ctx.fillText('اللَّهُ أَحَدٌ',CW/2,CH*0.5);
+    ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Allah is ONE" — unique and singular (112:1)',CW/2,CH-8);
+    ctx.textAlign='left';_lbl(ctx,'CLICK: Allahu Ahad — 112:1','#fff8f0');
+  };draw();
+}}
+
+/* S3 — Four Attributes drag */
+class S3 extends BS{constructor(){super('canvas-3');}start(){
+  if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_samad);
+  const ctx=this.ctx;
+  const draw=()=>{
+    this.t++;this.raf=requestAnimationFrame(draw);
+    ctx.fillStyle='#0c0c1e';ctx.fillRect(0,0,CW,CH);
+    const items=['🌍','🌙','🌟','💫'];
+    items.forEach((e,i)=>{
+      ctx.font='14px serif';ctx.textAlign='center';
+      const a=i*Math.PI/2+this.t*0.01;
+      ctx.fillText(e,CW/2+60*Math.cos(a),CH*0.5+50*Math.sin(a));ctx.textAlign='left';
+    });
+    ctx.fillStyle='#e8e0a0';ctx.font='10px serif';ctx.textAlign='center';
+    ctx.fillText('الصَّمَدُ',CW/2,CH*0.5);
+    ctx.font='5px "Press Start 2P",monospace';ctx.fillText('All depend on Him — He needs nothing (112:2)',CW/2,CH-8);
+    ctx.textAlign='left';_lbl(ctx,'CLICK: Al-Samad — 112:2','#fff8f0');
+  };draw();
+}}
+
+/* S4 — Pure Tawhid final */
+class S4 extends BS{constructor(){super('canvas-4');}start(){
+  if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_none);
+  const ctx=this.ctx;
+  const draw=()=>{
+    this.t++;this.raf=requestAnimationFrame(draw);
+    ctx.fillStyle='#0c0c1e';ctx.fillRect(0,0,CW,CH);
+    const glow=0.15+Math.sin(this.t*0.04)*0.08;
+    const rg=ctx.createRadialGradient(CW/2,CH*0.5,5,CW/2,CH*0.5,90);
+    rg.addColorStop(0,`rgba(230,220,140,${glow*2})`);rg.addColorStop(1,'transparent');
+    ctx.fillStyle=rg;ctx.fillRect(0,0,CW,CH);
+    ctx.fillStyle='#e8e0a0';ctx.font='9px serif';ctx.textAlign='center';
+    ctx.fillText('وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ',CW/2,CH*0.45);
+    ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Nothing is equal to Allah" — Pure Tawhid! (112:4)',CW/2,CH-8);
+    ctx.textAlign='left';_lbl(ctx,'CLICK: None Equal — 112:3-4','#fff8f0');
+  };draw();
+}}
+
 const scenes={};
-function initScenes(){scenes[1]=new S1();scenes[2]=new S2();scenes[3]=new S3();}
+function initScenes(){scenes[1]=new S1();scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();}
 function startScene(n){if(scenes[n])scenes[n].start();}
 function stopAllScenes(){Object.values(scenes).forEach(s=>s.stop());}
