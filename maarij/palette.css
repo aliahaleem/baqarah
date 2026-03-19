@@ -1,0 +1,7 @@
+/* Surah Al-Maarij (70) — palette */
+html[data-theme="stars"] {
+  --bg:#041418;--bg2:#082028;--surface:#10303c;--card-bg:#10303c;--primary:#1080a0;--primary-lit:#20a0c0;--accent:#f0c040;--accent2:#b08800;--text:#e0f4f8;--text-dim:#6090a0;--tile-locked:#020c10;--tile-unlocked:#061820;--tile-completed:#0e2830;
+}
+:root {
+  --bg:#020c10;--bg2:#040e14;--surface:#081824;--card-bg:#081824;--primary:#0870a0;--primary-lit:#1090c0;--accent:#e0b030;--accent2:#907000;--text:#d8f0f8;--text-dim:#406070;--tile-locked:#020608;--tile-unlocked:#040c10;--tile-completed:#08161e;
+}

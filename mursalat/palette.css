@@ -1,0 +1,7 @@
+/* Surah Al-Mursalat (77) — palette */
+html[data-theme="stars"] {
+  --bg:#0c0818;--bg2:#181428;--surface:#26203c;--card-bg:#26203c;--primary:#6040a0;--primary-lit:#8060c0;--accent:#40d0c0;--accent2:#108878;--text:#f0ecff;--text-dim:#8070a8;--tile-locked:#080410;--tile-unlocked:#100c1c;--tile-completed:#1c1830;
+}
+:root {
+  --bg:#060410;--bg2:#0c0818;--surface:#141028;--card-bg:#141028;--primary:#4028a0;--primary-lit:#5838b8;--accent:#28b8a8;--accent2:#087068;--text:#e8e4ff;--text-dim:#605088;--tile-locked:#040208;--tile-unlocked:#080610;--tile-completed:#100e20;
+}

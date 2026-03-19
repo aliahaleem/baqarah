@@ -1,0 +1,7 @@
+/* Surah Nuh (71) — palette */
+html[data-theme="stars"] {
+  --bg:#040e1c;--bg2:#0a1a30;--surface:#102440;--card-bg:#102440;--primary:#1858a0;--primary-lit:#2878c0;--accent:#60d0c0;--accent2:#208070;--text:#d8f0ff;--text-dim:#6088a8;--tile-locked:#02080e;--tile-unlocked:#081020;--tile-completed:#0e1e34;
+}
+:root {
+  --bg:#020810;--bg2:#040e1a;--surface:#08182c;--card-bg:#08182c;--primary:#104888;--primary-lit:#1868a8;--accent:#40c0b0;--accent2:#106860;--text:#d0ecff;--text-dim:#407080;--tile-locked:#020608;--tile-unlocked:#060e18;--tile-completed:#0c1828;
+}

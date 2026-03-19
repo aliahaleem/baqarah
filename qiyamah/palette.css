@@ -1,0 +1,7 @@
+/* Surah Al-Qiyamah (75) — palette */
+html[data-theme="stars"] {
+  --bg:#1a1008;--bg2:#2c1e10;--surface:#3e2c1c;--card-bg:#3e2c1c;--primary:#b08030;--primary-lit:#d0a050;--accent:#f8f0c0;--accent2:#e0c060;--text:#fffff0;--text-dim:#c0a870;--tile-locked:#100c04;--tile-unlocked:#1e1808;--tile-completed:#2c2210;
+}
+:root {
+  --bg:#0e0a04;--bg2:#180e06;--surface:#261a0c;--card-bg:#261a0c;--primary:#907020;--primary-lit:#b09040;--accent:#f0e8b0;--accent2:#c8a840;--text:#fffff0;--text-dim:#a08050;--tile-locked:#080604;--tile-unlocked:#100804;--tile-completed:#1c1408;
+}

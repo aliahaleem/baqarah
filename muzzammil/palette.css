@@ -1,0 +1,7 @@
+/* Surah Al-Muzzammil (73) — palette */
+html[data-theme="stars"] {
+  --bg:#080c1e;--bg2:#101a30;--surface:#1a2440;--card-bg:#1a2440;--primary:#4060b0;--primary-lit:#6080d0;--accent:#c0d8f8;--accent2:#8098c0;--text:#e8eeff;--text-dim:#7080a0;--tile-locked:#040810;--tile-unlocked:#0c1220;--tile-completed:#141c34;
+}
+:root {
+  --bg:#04060e;--bg2:#080c18;--surface:#101828;--card-bg:#101828;--primary:#3050a0;--primary-lit:#5070c0;--accent:#a8c8f0;--accent2:#6080a8;--text:#e0e8ff;--text-dim:#506078;--tile-locked:#020408;--tile-unlocked:#060a14;--tile-completed:#0e1420;
+}

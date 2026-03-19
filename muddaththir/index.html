@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="minecraft">
+<head>
+  <meta charset="UTF-8"/>
+  <script>(function(){var t=localStorage.getItem('quranQuestTheme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SURAH AL-MUDDATHTHIR QUEST 📯</title>
+  <link rel="stylesheet" href="../shared/base.css"/>
+  <link rel="stylesheet" href="palette.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header id="game-header" style="display:none">
+  <div>
+    <div class="game-title">📯 SURAH AL-MUDDATHTHIR QUEST</div>
+    <div class="header-explorer">Explorer: <span id="header-name">—</span></div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div>
+    <div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div>
+    <div class="stat-chip done-chip">✅ <span id="done-display">0</span>/4</div>
+    <button class="reset-btn" onclick="resetGame()">↺ Reset</button>
+    <a class="hub-btn" href="../index.html">🏠 Hub</a>
+  </div>
+</header>
+
+<div id="intro-screen">
+  <div class="intro-icon">📯</div>
+  <div class="intro-title">SURAH AL-MUDDATHTHIR QUEST</div>
+  <div class="intro-arabic">سُوْرَةُ الْمُدَّثِّر</div>
+  <div class="intro-subtitle">4 Levels · Arise & Warn · Saqar · The Rejector · Cosmic Signs</div>
+</div>
+
+<div id="main-view" style="display:none">
+<div class="container">
+
+  <div class="ibn-ameen-panel">
+    <div class="character-avatar">🧙‍♂️</div>
+    <div class="speech-bubble">
+      <strong>Ibn Ameen says:</strong><br/>
+      <span id="welcome-text">As-salamu alaykum, Explorer! 4 Levels · Arise & Warn · Saqar · The Rejector · Cosmic Signs</span>
+    </div>
+  </div>
+
+  <h2 class="section-heading">📯 THE QUEST MAP</h2>
+  <div class="map-grid">
+    <div class="map-tile" id="tile-1" onclick="openSection(1)">
+      <div class="tile-icon">📯</div>
+      <div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">Arise & Warn</div>
+      <div class="tile-verses">74:1-7</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+    <div class="map-tile locked" id="tile-2" onclick="openSection(2)">
+      <div class="tile-icon">🔥</div>
+      <div class="tile-level">LEVEL 2</div>
+      <div class="tile-name">Saqar</div>
+      <div class="tile-verses">74:26-48</div>
+      <div class="tile-status" id="status-2">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-3" onclick="openSection(3)">
+      <div class="tile-icon">🌙</div>
+      <div class="tile-level">LEVEL 3</div>
+      <div class="tile-name">The Rejector</div>
+      <div class="tile-verses">74:11-26</div>
+      <div class="tile-status" id="status-3">🔒 LOCKED</div>
+    </div>
+    <div class="map-tile locked" id="tile-4" onclick="openSection(4)">
+      <div class="tile-icon">✨</div>
+      <div class="tile-level">LEVEL 4</div>
+      <div class="tile-name">Cosmic Signs</div>
+      <div class="tile-verses">74:32-56</div>
+      <div class="tile-status" id="status-4">🔒 LOCKED</div>
+    </div>
+  </div>
+
+  <div id="world-builder">
+    <h2 class="section-heading">📯 THE WORLD BUILDER</h2>
+    <div style="border:3px solid var(--primary);margin-bottom:12px;background:#0a0602;">
+      <canvas id="build-canvas" width="560" height="250" style="width:100%;image-rendering:pixelated;display:block;"></canvas>
+    </div>
+    <p style="font-family:var(--font-body);font-size:var(--font-size-sm);color:var(--primary-lit);text-align:center;margin-bottom:10px;line-height:1.8;">
+      Complete each level to build the world — all 4 levels reveal the full picture!
+    </p>
+    <div class="world-preview">
+      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Arise & Warn</div></div>
+      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Saqar</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">The Rejector</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Cosmic Signs</div></div>
+    </div>
+  </div>
+
+  <div id="all-complete">
+    <div style="font-size:36px;margin-bottom:10px;">📯</div>
+    <div style="color:var(--accent);font-size:10px;margin-bottom:8px;">SURAH AL-MUDDATHTHIR QUEST COMPLETE!</div>
+    <div style="font-family:var(--font-body);font-size:var(--font-size-body);color:#ddd;line-height:1.9;">
+      MashAllah! All 4 levels complete!<br/>
+      May Allah accept our learning and grant us understanding. Ameen!
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ===================== VERSE POPUP ===================== -->
+<div id="verse-popup">
+  <div class="vp-box">
+    <div id="vp-ref"></div>
+    <div id="vp-arabic"></div>
+    <div id="vp-eng"></div>
+    <div id="vp-note"></div>
+    <button id="vp-close" onclick="hideVersePopup()">✕ Close</button>
+  </div>
+</div>
+
+<!-- ===================== REWARD OVERLAY ===================== -->
+<div id="reward-overlay">
+  <div class="reward-box">
+    <span class="reward-icon" id="reward-icon">🏆</span>
+    <div class="reward-title" id="reward-title">LEVEL COMPLETE!</div>
+    <div class="reward-xp"   id="reward-xp"></div>
+    <div class="reward-gems" id="reward-gems"></div>
+    <div class="reward-msg"  id="reward-msg"></div>
+    <button class="reward-ok-btn" onclick="dismissReward()">✅ Continue Quest</button>
+  </div>
+</div>
+
+<!-- ===================== SECTION VIEW ===================== -->
+<div id="section-view" style="display:none">
+  <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;">
+    <button class="back-btn" onclick="closeSection()">◀ Back to Map</button>
+  </header>
+
+
+  <!-- ==================== SECTION 1 — Arise & Warn ==================== -->
+  <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Level 1: <strong>Arise & Warn</strong> — 74:1-7. Engage with the verses below, then answer the quiz to claim your reward!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📯 LEVEL 1 — Arise & Warn (74:1-7)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 Click the scene to reveal verses</span></div>
+        <canvas id="canvas-1" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        <p>Study the verses for <strong>Arise & Warn</strong> (74:1-7) carefully. Reflect on the meaning, then complete the activity below.</p>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — Arise & Warn (74:1-7)</div>
+      <div class="game-instructions">Complete the activity below. You need to score well to claim your reward!</div>
+      <div id="quiz-1"></div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 2 — Saqar ==================== -->
+  <div class="section-panel" id="section-panel-2">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Level 2: <strong>Saqar</strong> — 74:26-48. Engage with the verses below, then answer the match to claim your reward!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🔥 LEVEL 2 — Saqar (74:26-48)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 Click the scene to reveal verses</span></div>
+        <canvas id="canvas-2" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        <p>Study the verses for <strong>Saqar</strong> (74:26-48) carefully. Reflect on the meaning, then complete the activity below.</p>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 MATCH — Saqar (74:26-48)</div>
+      <div class="game-instructions">Complete the activity below. You need to score well to claim your reward!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-2"></div>
+        <div class="drop-zones" id="drop-zones-2"></div>
+      </div>
+      <div class="game-feedback" id="feedback-2"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection2()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 3 — The Rejector ==================== -->
+  <div class="section-panel" id="section-panel-3">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Level 3: <strong>The Rejector</strong> — 74:11-26. Engage with the verses below, then answer the quiz to claim your reward!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🌙 LEVEL 3 — The Rejector (74:11-26)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 Click the scene to reveal verses</span></div>
+        <canvas id="canvas-3" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        <p>Study the verses for <strong>The Rejector</strong> (74:11-26) carefully. Reflect on the meaning, then complete the activity below.</p>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — The Rejector (74:11-26)</div>
+      <div class="game-instructions">Complete the activity below. You need to score well to claim your reward!</div>
+      <div id="quiz-3"></div>
+      <div class="game-feedback" id="feedback-3"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection3()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- ==================== SECTION 4 — Cosmic Signs ==================== -->
+  <div class="section-panel" id="section-panel-4">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Level 4: <strong>Cosmic Signs</strong> — 74:32-56. Engage with the verses below, then answer the order to claim your reward to complete the Surah!
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">✨ LEVEL 4 — Cosmic Signs (74:32-56)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 Click the scene to reveal verses</span></div>
+        <canvas id="canvas-4" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        <p>Study the verses for <strong>Cosmic Signs</strong> (74:32-56) carefully. Reflect on the meaning, then complete the activity below.</p>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 ORDER — Cosmic Signs (74:32-56)</div>
+      <div class="game-instructions">Complete the activity below. You need to score well to claim your reward!</div>
+      <div class="order-list" id="order-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection4()">✅ Check Order</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+</div><!-- end section-view -->
+
+<script src="scenes.js"></script>
+<script src="../shared/engine.js"></script>
+<script src="../shared/ui.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

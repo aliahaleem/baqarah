@@ -1,0 +1,7 @@
+/* Surah Al-Jinn (72) — palette */
+html[data-theme="stars"] {
+  --bg:#0c0418;--bg2:#180830;--surface:#240c44;--card-bg:#240c44;--primary:#7030b0;--primary-lit:#9050d0;--accent:#40e090;--accent2:#10a050;--text:#f0e8ff;--text-dim:#9070c0;--tile-locked:#080010;--tile-unlocked:#100420;--tile-completed:#1c0838;
+}
+:root {
+  --bg:#060210;--bg2:#0c0418;--surface:#140828;--card-bg:#140828;--primary:#5020a0;--primary-lit:#7040c0;--accent:#30c070;--accent2:#087040;--text:#e8e0ff;--text-dim:#705090;--tile-locked:#040008;--tile-unlocked:#080210;--tile-completed:#100620;
+}

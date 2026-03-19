@@ -1,0 +1,7 @@
+/* Surah Al-Muddaththir (74) — palette */
+html[data-theme="stars"] {
+  --bg:#180a02;--bg2:#2e1408;--surface:#441e0e;--card-bg:#441e0e;--primary:#c05020;--primary-lit:#e07030;--accent:#f8c040;--accent2:#c08000;--text:#fff0e0;--text-dim:#c07040;--tile-locked:#100400;--tile-unlocked:#1e0c04;--tile-completed:#301408;
+}
+:root {
+  --bg:#0e0400;--bg2:#180a02;--surface:#280e04;--card-bg:#280e04;--primary:#a03810;--primary-lit:#c05828;--accent:#e8a830;--accent2:#a07000;--text:#ffe8d8;--text-dim:#904830;--tile-locked:#080200;--tile-unlocked:#100602;--tile-completed:#1c0c04;
+}

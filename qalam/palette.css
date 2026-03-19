@@ -1,0 +1,7 @@
+/* Surah Al-Qalam (68) — palette */
+html[data-theme="stars"] {
+  --bg:#06101e;--bg2:#0e1c30;--surface:#182a44;--card-bg:#182a44;--primary:#4080c0;--primary-lit:#60a0e0;--accent:#f0c030;--accent2:#c09010;--text:#e8f0ff;--text-dim:#8090b0;--tile-locked:#040c18;--tile-unlocked:#0c1828;--tile-completed:#162438;
+}
+:root {
+  --bg:#02080e;--bg2:#060e18;--surface:#0e1a28;--card-bg:#0e1a28;--primary:#3070b0;--primary-lit:#4090d0;--accent:#e0b020;--accent2:#a07808;--text:#e0e8f8;--text-dim:#607090;--tile-locked:#020608;--tile-unlocked:#080e18;--tile-completed:#101c2c;
+}

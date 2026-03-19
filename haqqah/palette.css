@@ -1,0 +1,7 @@
+/* Surah Al-Haqqah (69) — palette */
+html[data-theme="stars"] {
+  --bg:#1e0606;--bg2:#300e0e;--surface:#442020;--card-bg:#442020;--primary:#c04040;--primary-lit:#e06060;--accent:#f8d040;--accent2:#c09000;--text:#fff0e8;--text-dim:#d08070;--tile-locked:#140202;--tile-unlocked:#200808;--tile-completed:#301414;
+}
+:root {
+  --bg:#0e0202;--bg2:#1a0606;--surface:#300e0e;--card-bg:#300e0e;--primary:#a02828;--primary-lit:#c04040;--accent:#e8c030;--accent2:#a08000;--text:#ffe8e0;--text-dim:#905050;--tile-locked:#080000;--tile-unlocked:#100404;--tile-completed:#200c0c;
+}

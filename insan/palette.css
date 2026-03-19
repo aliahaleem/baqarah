@@ -1,0 +1,7 @@
+/* Surah Al-Insan (76) — palette */
+html[data-theme="stars"] {
+  --bg:#040e04;--bg2:#0a1c0a;--surface:#102810;--card-bg:#102810;--primary:#308040;--primary-lit:#50a060;--accent:#c0e8f0;--accent2:#60a0b0;--text:#e8fff0;--text-dim:#70a080;--tile-locked:#020802;--tile-unlocked:#081408;--tile-completed:#0e2010;
+}
+:root {
+  --bg:#020602;--bg2:#060e06;--surface:#0a180a;--card-bg:#0a180a;--primary:#206830;--primary-lit:#307040;--accent:#a0d8e8;--accent2:#408898;--text:#e0f8e8;--text-dim:#508060;--tile-locked:#010401;--tile-unlocked:#060c06;--tile-completed:#0c1a0c;
+}
