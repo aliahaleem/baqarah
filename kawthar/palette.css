@@ -1,0 +1,13 @@
+/* Surah palette — river blue/pearl */
+html[data-theme="stars"] {
+  --bg:#040c18;--bg2:#081428;--surface:#101e38;--card-bg:#101e38;
+  --primary:#2060a8;--primary-lit:#4080c8;--accent:#90d0f8;--accent2:#60b0e8;
+  --text:#e8f8ff;--text-dim:#70b0d8;
+  --tile-locked:#040c18;--tile-unlocked:#081428;--tile-completed:#101e38;
+}
+:root {
+  --bg:#020408;--bg2:#04080e;--surface:#080c18;--card-bg:#080c18;
+  --primary:#103068;--primary-lit:#1a5090;--accent:#60a0d8;--accent2:#3878c0;
+  --text:#d8f0ff;--text-dim:#4070a0;
+  --tile-locked:#020408;--tile-unlocked:#04080e;--tile-completed:#080c18;
+}

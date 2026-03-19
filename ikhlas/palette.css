@@ -1,0 +1,13 @@
+/* Surah palette — pure gold/divine */
+html[data-theme="stars"] {
+  --bg:#0c0c1e;--bg2:#141428;--surface:#1e1e38;--card-bg:#1e1e38;
+  --primary:#5048a0;--primary-lit:#7068c0;--accent:#e8e0a0;--accent2:#c0b870;
+  --text:#fff8f0;--text-dim:#b0a870;
+  --tile-locked:#0c0c1e;--tile-unlocked:#141428;--tile-completed:#1e1e38;
+}
+:root {
+  --bg:#060608;--bg2:#0c0c14;--surface:#141422;--card-bg:#141422;
+  --primary:#281a70;--primary-lit:#402888;--accent:#c0b060;--accent2:#a09040;
+  --text:#fff8e8;--text-dim:#807040;
+  --tile-locked:#060608;--tile-unlocked:#0c0c14;--tile-completed:#141422;
+}

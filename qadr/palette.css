@@ -1,0 +1,13 @@
+/* Surah palette — deep silver/night */
+html[data-theme="stars"] {
+  --bg:#080c1e;--bg2:#101828;--surface:#182438;--card-bg:#182438;
+  --primary:#4060b0;--primary-lit:#6080d0;--accent:#c0d0f8;--accent2:#a0b8e8;
+  --text:#f0f4ff;--text-dim:#90a8d8;
+  --tile-locked:#080c1e;--tile-unlocked:#101828;--tile-completed:#182438;
+}
+:root {
+  --bg:#02040c;--bg2:#060810;--surface:#0a0e1a;--card-bg:#0a0e1a;
+  --primary:#202870;--primary-lit:#304090;--accent:#90a8d8;--accent2:#6888c8;
+  --text:#e0e8ff;--text-dim:#5070a0;
+  --tile-locked:#02040c;--tile-unlocked:#060810;--tile-completed:#0a0e1a;
+}

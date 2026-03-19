@@ -1,0 +1,13 @@
+/* Surah palette — warm divine purple */
+html[data-theme="stars"] {
+  --bg:#100820;--bg2:#1c1030;--surface:#281848;--card-bg:#281848;
+  --primary:#6038b0;--primary-lit:#8058d0;--accent:#d0a0f8;--accent2:#b070e0;
+  --text:#f8f0ff;--text-dim:#b888e8;
+  --tile-locked:#100820;--tile-unlocked:#1c1030;--tile-completed:#281848;
+}
+:root {
+  --bg:#080414;--bg2:#100820;--surface:#1a1030;--card-bg:#1a1030;
+  --primary:#381060;--primary-lit:#501878;--accent:#b080d0;--accent2:#8048b0;
+  --text:#ece0ff;--text-dim:#6840a0;
+  --tile-locked:#080414;--tile-unlocked:#100820;--tile-completed:#1a1030;
+}

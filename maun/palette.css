@@ -1,0 +1,13 @@
+/* Surah palette — compassionate blue */
+html[data-theme="stars"] {
+  --bg:#060e20;--bg2:#0e1a30;--surface:#162640;--card-bg:#162640;
+  --primary:#2060a8;--primary-lit:#4080c8;--accent:#80b8f0;--accent2:#60a0d8;
+  --text:#e8f4ff;--text-dim:#70a0c8;
+  --tile-locked:#060e20;--tile-unlocked:#0e1a30;--tile-completed:#162640;
+}
+:root {
+  --bg:#020608;--bg2:#060a10;--surface:#0a1020;--card-bg:#0a1020;
+  --primary:#103868;--primary-lit:#1a5088;--accent:#5088c8;--accent2:#3870a8;
+  --text:#d8eeff;--text-dim:#4068a0;
+  --tile-locked:#020608;--tile-unlocked:#060a10;--tile-completed:#0a1020;
+}

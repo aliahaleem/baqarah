@@ -1,0 +1,13 @@
+/* Surah palette — bronze/racing */
+html[data-theme="stars"] {
+  --bg:#180c02;--bg2:#241404;--surface:#301c08;--card-bg:#301c08;
+  --primary:#b07020;--primary-lit:#d09040;--accent:#e8c040;--accent2:#c0a020;
+  --text:#fff8e0;--text-dim:#c09050;
+  --tile-locked:#180c02;--tile-unlocked:#241404;--tile-completed:#301c08;
+}
+:root {
+  --bg:#0e0800;--bg2:#180c02;--surface:#221004;--card-bg:#221004;
+  --primary:#806010;--primary-lit:#a08020;--accent:#d0b030;--accent2:#b09010;
+  --text:#fff4d0;--text-dim:#906030;
+  --tile-locked:#0e0800;--tile-unlocked:#180c02;--tile-completed:#221004;
+}

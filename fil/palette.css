@@ -1,0 +1,13 @@
+/* Surah palette — stone grey/army */
+html[data-theme="stars"] {
+  --bg:#101418;--bg2:#181e24;--surface:#202a30;--card-bg:#202a30;
+  --primary:#405870;--primary-lit:#607090;--accent:#a0b8d0;--accent2:#8098b0;
+  --text:#f0f4ff;--text-dim:#8090a8;
+  --tile-locked:#101418;--tile-unlocked:#181e24;--tile-completed:#202a30;
+}
+:root {
+  --bg:#080a0c;--bg2:#0e1214;--surface:#14181e;--card-bg:#14181e;
+  --primary:#283848;--primary-lit:#3a5060;--accent:#708898;--accent2:#507080;
+  --text:#e8ecf0;--text-dim:#506070;
+  --tile-locked:#080a0c;--tile-unlocked:#0e1214;--tile-completed:#14181e;
+}

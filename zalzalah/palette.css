@@ -1,0 +1,13 @@
+/* Surah palette — earthquake orange */
+html[data-theme="stars"] {
+  --bg:#1a0c04;--bg2:#281408;--surface:#381e10;--card-bg:#381e10;
+  --primary:#c04018;--primary-lit:#e06030;--accent:#f8a040;--accent2:#d07820;
+  --text:#fff0d8;--text-dim:#d08040;
+  --tile-locked:#1a0c04;--tile-unlocked:#281408;--tile-completed:#381e10;
+}
+:root {
+  --bg:#100800;--bg2:#180c04;--surface:#221008;--card-bg:#221008;
+  --primary:#902010;--primary-lit:#c03820;--accent:#e08030;--accent2:#b06010;
+  --text:#ffe8d0;--text-dim:#904030;
+  --tile-locked:#100800;--tile-unlocked:#180c04;--tile-completed:#221008;
+}

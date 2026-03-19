@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="minecraft">
+<head>
+  <meta charset="UTF-8"/>
+  <script>(function(){var t=localStorage.getItem('quranQuestTheme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surah Al-Ikhlas Quest ✨</title>
+  <link rel="stylesheet" href="../shared/base.css"/>
+  <link rel="stylesheet" href="palette.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<header id="game-header" style="display:none">
+  <div><div class="game-title">✨ SURAH AL-IKHLAS QUEST</div><div class="header-explorer">Explorer: <span id="header-name">—</span></div></div>
+  <div class="stats-row"><div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div><div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div><div class="stat-chip done-chip">✅ <span id="done-display">0</span>/3</div><button class="reset-btn" onclick="resetGame()">↺ Reset</button><a class="hub-btn" href="../index.html">🏠 Hub</a></div>
+</header>
+<div id="intro-screen">
+  <div class="intro-icon">✨</div>
+  <div class="intro-title">SURAH AL-IKHLAS QUEST</div>
+  <div class="intro-arabic">الإخلاص</div>
+  <div class="intro-subtitle">3 Levels · Allah is One · Al-Samad · Nothing Equal</div>
+</div>
+<div id="main-view" style="display:none">
+<div class="container">
+  <div class="ibn-ameen-panel"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/><span id="welcome-text">As-salamu alaykum! Welcome to Surah Al-Ikhlas!</span></div></div>
+  <h2 class="section-heading">✨ THE QUEST MAP</h2>
+  <div class="map-grid">
+    <div class="map-tile unlocked" id="tile-1"><div class="tile-icon">✨</div><div class="tile-level">LEVEL 1</div><div class="tile-name">Allah is One</div><div class="tile-verses">112:1</div><div class="tile-status" id="status-1">▶ PLAY</div></div>
+    <div class="map-tile locked" id="tile-2"><div class="tile-icon">🌟</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Al-Samad</div><div class="tile-verses">112:2</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-3"><div class="tile-icon">💎</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Nothing Equal</div><div class="tile-verses">112:3-4</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
+  </div>
+  <div id="world-builder"><h2 class="section-heading">✨ WORLD BUILDER</h2><div style="border:3px solid var(--primary);margin-bottom:12px;"><canvas id="build-canvas" width="560" height="180" style="width:100%;image-rendering:pixelated;display:block;"></canvas></div><div class="world-preview">
+      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Allah is One</div></div>
+      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Al-Samad</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Nothing Equal</div></div>
+  </div></div>
+  <div id="all-complete" style="display:none"><div style="font-size:36px">✨</div><div style="color:var(--accent);font-size:10px">SURAH AL-IKHLAS COMPLETE!</div></div>
+</div></div>
+<div id="verse-popup"><div class="vp-box"><div id="vp-ref"></div><div id="vp-arabic"></div><div id="vp-eng"></div><div id="vp-note"></div><button id="vp-close" onclick="hideVersePopup()">✕ Close</button></div></div>
+<div id="reward-overlay"><div class="reward-box"><span class="reward-icon" id="reward-icon">🏆</span><div class="reward-title" id="reward-title"></div><div class="reward-xp" id="reward-xp"></div><div class="reward-gems" id="reward-gems"></div><div class="reward-msg" id="reward-msg"></div><button class="reward-ok-btn" onclick="dismissReward()">✅ Continue Quest</button></div></div>
+<div id="section-view" style="display:none">
+  <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></header>
+
+  <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Allahu Ahad — uniquely singular! Answer the quiz!</div></div>
+    <div class="card" style="margin:14px 12px 0"><div class="card-header">✨ LEVEL 1 — Allah is One (112:1)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Allah is One — Click to reveal verse</span></div><canvas id="canvas-1" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">قُلْ هُوَ اللَّهُ أَحَدٌ</div><div class="verse-translation">"Say: He is Allah, One." (112:1)</div></div></div>
+    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 QUIZ — ALLAHU AHAD</div><div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div><div id="quiz-1"></div><div class="game-feedback" id="feedback-1"></div><div class="game-footer"><button class="action-btn" onclick="checkSection1()">✅ Check Answers</button><button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button></div></div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+  <div class="section-panel" id="section-panel-2">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Allah the Everlasting Refuge — all depend on Him! Match the four attributes!</div></div>
+    <div class="card" style="margin:14px 12px 0"><div class="card-header">🌟 LEVEL 2 — Al-Samad (112:2)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Al-Samad — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">اللَّهُ الصَّمَدُ</div><div class="verse-translation">"Allah — the Everlasting Refuge." (112:2)</div></div></div>
+    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 MATCH — FOUR DIVINE ATTRIBUTES</div><div class="game-instructions">Drag each attribute to its meaning!</div><div class="drag-game-container"><div class="drag-pool" id="drag-pool-2"></div><div class="drop-zones" id="drop-zones-2"></div></div><div class="game-feedback" id="feedback-2"></div><div class="game-footer"><button class="action-btn" onclick="checkSection2()">✅ Check Matches</button><button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button></div></div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+  <div class="section-panel" id="section-panel-3">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>He did not beget, was not born, nothing equals Him! Final quiz!</div></div>
+    <div class="card" style="margin:14px 12px 0"><div class="card-header">💎 LEVEL 3 — Nothing Equal (112:3-4)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Nothing Equal — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">لَمْ يَلِدْ وَلَمْ يُولَدْ ۩ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ</div><div class="verse-translation">"He did not beget, nor was He begotten. None is equal to Him." (112:3-4)</div></div></div>
+    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 QUIZ — AL-IKHLAS FINAL</div><div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div><div id="quiz-3"></div><div class="game-feedback" id="feedback-3"></div><div class="game-footer"><button class="action-btn" onclick="checkSection3()">✅ Check Answers</button><button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button></div></div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+</div>
+<script src="scenes.js"></script>
+<script src="../shared/engine.js"></script>
+<script src="../shared/ui.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

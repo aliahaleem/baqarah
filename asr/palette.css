@@ -1,0 +1,13 @@
+/* Surah palette — deep amber/time */
+html[data-theme="stars"] {
+  --bg:#1e0e02;--bg2:#2e1608;--surface:#401e10;--card-bg:#401e10;
+  --primary:#c07820;--primary-lit:#e09840;--accent:#f8c050;--accent2:#d0a020;
+  --text:#fff8e0;--text-dim:#c09050;
+  --tile-locked:#1e0e02;--tile-unlocked:#2e1608;--tile-completed:#401e10;
+}
+:root {
+  --bg:#120800;--bg2:#1c0e02;--surface:#281408;--card-bg:#281408;
+  --primary:#986018;--primary-lit:#c08028;--accent:#e8b030;--accent2:#c09010;
+  --text:#fff4d0;--text-dim:#a07030;
+  --tile-locked:#120800;--tile-unlocked:#1c0e02;--tile-completed:#281408;
+}

@@ -1,0 +1,13 @@
+/* Surah palette — blood red/crimson */
+html[data-theme="stars"] {
+  --bg:#1a0404;--bg2:#280808;--surface:#381010;--card-bg:#381010;
+  --primary:#c03030;--primary-lit:#e05050;--accent:#f06040;--accent2:#d04020;
+  --text:#fff0e8;--text-dim:#d07060;
+  --tile-locked:#1a0404;--tile-unlocked:#280808;--tile-completed:#381010;
+}
+:root {
+  --bg:#100002;--bg2:#1a0404;--surface:#260808;--card-bg:#260808;
+  --primary:#800818;--primary-lit:#a01020;--accent:#d03010;--accent2:#b02000;
+  --text:#ffe8e0;--text-dim:#904040;
+  --tile-locked:#100002;--tile-unlocked:#1a0404;--tile-completed:#260808;
+}

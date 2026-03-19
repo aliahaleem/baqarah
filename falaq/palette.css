@@ -1,0 +1,13 @@
+/* Surah palette — dawn violet */
+html[data-theme="stars"] {
+  --bg:#100828;--bg2:#1c1038;--surface:#281850;--card-bg:#281850;
+  --primary:#7040c0;--primary-lit:#9060e0;--accent:#e0a0f0;--accent2:#c070d8;
+  --text:#fff0ff;--text-dim:#c080d0;
+  --tile-locked:#100828;--tile-unlocked:#1c1038;--tile-completed:#281850;
+}
+:root {
+  --bg:#080414;--bg2:#100820;--surface:#1a1030;--card-bg:#1a1030;
+  --primary:#401880;--primary-lit:#6030a8;--accent:#c090e0;--accent2:#9060c0;
+  --text:#ece0ff;--text-dim:#7050a0;
+  --tile-locked:#080414;--tile-unlocked:#100820;--tile-completed:#1a1030;
+}

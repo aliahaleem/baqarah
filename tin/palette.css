@@ -1,0 +1,13 @@
+/* Surah palette — olive/green/earth */
+html[data-theme="stars"] {
+  --bg:#0c1804;--bg2:#162408;--surface:#1e300e;--card-bg:#1e300e;
+  --primary:#608030;--primary-lit:#80a848;--accent:#c8d040;--accent2:#a0b020;
+  --text:#f0ffd8;--text-dim:#90b850;
+  --tile-locked:#0c1804;--tile-unlocked:#162408;--tile-completed:#1e300e;
+}
+:root {
+  --bg:#040c02;--bg2:#081404;--surface:#0e1e08;--card-bg:#0e1e08;
+  --primary:#3a5018;--primary-lit:#507030;--accent:#a0c018;--accent2:#809010;
+  --text:#e8ffd0;--text-dim:#4a6820;
+  --tile-locked:#040c02;--tile-unlocked:#081404;--tile-completed:#0e1e08;
+}

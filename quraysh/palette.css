@@ -1,0 +1,13 @@
+/* Surah palette — desert gold */
+html[data-theme="stars"] {
+  --bg:#1e1204;--bg2:#2e1c08;--surface:#3e2610;--card-bg:#3e2610;
+  --primary:#b07828;--primary-lit:#d09848;--accent:#e8c040;--accent2:#c0a020;
+  --text:#fff8e0;--text-dim:#c09050;
+  --tile-locked:#1e1204;--tile-unlocked:#2e1c08;--tile-completed:#3e2610;
+}
+:root {
+  --bg:#120c00;--bg2:#1c1204;--surface:#281a08;--card-bg:#281a08;
+  --primary:#806018;--primary-lit:#a07828;--accent:#d0a830;--accent2:#b09010;
+  --text:#fff4d0;--text-dim:#906030;
+  --tile-locked:#120c00;--tile-unlocked:#1c1204;--tile-completed:#281a08;
+}

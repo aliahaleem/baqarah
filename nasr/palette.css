@@ -1,0 +1,13 @@
+/* Surah palette — victory green */
+html[data-theme="stars"] {
+  --bg:#060e08;--bg2:#0e1c10;--surface:#162818;--card-bg:#162818;
+  --primary:#308048;--primary-lit:#50a860;--accent:#80e090;--accent2:#50c060;
+  --text:#e8fff0;--text-dim:#70b880;
+  --tile-locked:#060e08;--tile-unlocked:#0e1c10;--tile-completed:#162818;
+}
+:root {
+  --bg:#020804;--bg2:#040e06;--surface:#08180a;--card-bg:#08180a;
+  --primary:#185828;--primary-lit:#208040;--accent:#50b050;--accent2:#309030;
+  --text:#d8ffd8;--text-dim:#308040;
+  --tile-locked:#020804;--tile-unlocked:#040e06;--tile-completed:#08180a;
+}

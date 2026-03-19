@@ -1,0 +1,13 @@
+/* Surah palette — cruel gold/fire */
+html[data-theme="stars"] {
+  --bg:#180a04;--bg2:#281208;--surface:#381a10;--card-bg:#381a10;
+  --primary:#c04018;--primary-lit:#e06030;--accent:#f8a040;--accent2:#d07820;
+  --text:#fff0d8;--text-dim:#d08040;
+  --tile-locked:#180a04;--tile-unlocked:#281208;--tile-completed:#381a10;
+}
+:root {
+  --bg:#100600;--bg2:#1a0e04;--surface:#241408;--card-bg:#241408;
+  --primary:#902808;--primary-lit:#c04018;--accent:#e08020;--accent2:#c06010;
+  --text:#ffe8c0;--text-dim:#905030;
+  --tile-locked:#100600;--tile-unlocked:#1a0e04;--tile-completed:#241408;
+}

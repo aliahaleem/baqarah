@@ -1,0 +1,13 @@
+/* Surah palette — dusty green/grave */
+html[data-theme="stars"] {
+  --bg:#081408;--bg2:#102010;--surface:#182e18;--card-bg:#182e18;
+  --primary:#307040;--primary-lit:#40905a;--accent:#70c040;--accent2:#509030;
+  --text:#f0ffe8;--text-dim:#70a860;
+  --tile-locked:#081408;--tile-unlocked:#102010;--tile-completed:#182e18;
+}
+:root {
+  --bg:#040a04;--bg2:#080e08;--surface:#0c1a0c;--card-bg:#0c1a0c;
+  --primary:#185028;--primary-lit:#207040;--accent:#50a020;--accent2:#407018;
+  --text:#e8ffd8;--text-dim:#386030;
+  --tile-locked:#040a04;--tile-unlocked:#080e08;--tile-completed:#0c1a0c;
+}

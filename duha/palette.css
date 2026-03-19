@@ -1,0 +1,13 @@
+/* Surah palette — warm gold/dawn */
+html[data-theme="stars"] {
+  --bg:#1e0c06;--bg2:#2e1408;--surface:#3e1e10;--card-bg:#3e1e10;
+  --primary:#f08030;--primary-lit:#f8b050;--accent:#f0e050;--accent2:#d0b820;
+  --text:#fff4e0;--text-dim:#d09050;
+  --tile-locked:#1e0c06;--tile-unlocked:#2e1408;--tile-completed:#3e1e10;
+}
+:root {
+  --bg:#120800;--bg2:#1c0c04;--surface:#2a1408;--card-bg:#2a1408;
+  --primary:#c06020;--primary-lit:#e08038;--accent:#d0c018;--accent2:#b0a010;
+  --text:#ffe8d0;--text-dim:#906030;
+  --tile-locked:#120800;--tile-unlocked:#1c0c04;--tile-completed:#2a1408;
+}

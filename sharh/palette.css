@@ -1,0 +1,13 @@
+/* Surah palette — soft teal/relief */
+html[data-theme="stars"] {
+  --bg:#061820;--bg2:#0e2430;--surface:#163040;--card-bg:#163040;
+  --primary:#2090a0;--primary-lit:#40b8c8;--accent:#40d8c0;--accent2:#20b0a0;
+  --text:#e0f8ff;--text-dim:#80c8d8;
+  --tile-locked:#061820;--tile-unlocked:#0e2430;--tile-completed:#163040;
+}
+:root {
+  --bg:#020c10;--bg2:#060e18;--surface:#0c1828;--card-bg:#0c1828;
+  --primary:#106080;--primary-lit:#188898;--accent:#18c0a0;--accent2:#108880;
+  --text:#d0f0ff;--text-dim:#407090;
+  --tile-locked:#020c10;--tile-unlocked:#060e18;--tile-completed:#0c1828;
+}

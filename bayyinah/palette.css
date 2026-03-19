@@ -1,0 +1,13 @@
+/* Surah palette — purple/scroll */
+html[data-theme="stars"] {
+  --bg:#100820;--bg2:#1a1030;--surface:#262040;--card-bg:#262040;
+  --primary:#7040b0;--primary-lit:#9060d0;--accent:#d0a8f8;--accent2:#b080e0;
+  --text:#f4e8ff;--text-dim:#b090d8;
+  --tile-locked:#100820;--tile-unlocked:#1a1030;--tile-completed:#262040;
+}
+:root {
+  --bg:#080414;--bg2:#100820;--surface:#1a1030;--card-bg:#1a1030;
+  --primary:#401888;--primary-lit:#6028a8;--accent:#b090d8;--accent2:#8060b8;
+  --text:#ece0ff;--text-dim:#7050a0;
+  --tile-locked:#080414;--tile-unlocked:#100820;--tile-completed:#1a1030;
+}
