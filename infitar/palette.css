@@ -1,0 +1,11 @@
+/* Surah Al-Infitar (82) — sky-blue / cyan / silver */
+html[data-theme="stars"] {
+  --bg:#1a2850;--bg2:#223268;--surface:#2e4080;--card-bg:#2e4080;
+  --primary:#4870d0;--primary-lit:#6898f0;--accent:#80e8f8;--accent2:#50c0d8;
+  --text:#ffffff;--text-dim:#b8d8f8;--tile-locked:#141e40;--tile-unlocked:#1e2c58;--tile-completed:#283a70;
+}
+:root {
+  --bg:#020818;--bg2:#051428;--surface:#0a1e38;--card-bg:#0a1e38;
+  --primary:#1848a0;--primary-lit:#2868c8;--accent:#40d0e8;--accent2:#20a8c0;
+  --text:#d8f0ff;--text-dim:#5080a0;--tile-locked:#040c18;--tile-unlocked:#081420;--tile-completed:#0c1c30;
+}
