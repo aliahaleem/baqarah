@@ -1,0 +1,11 @@
+/* Surah Al-Ala (87) — forest green / golden / white */
+html[data-theme="stars"] {
+  --bg:#0e2820;--bg2:#183830;--surface:#224840;--card-bg:#224840;
+  --primary:#30a070;--primary-lit:#50c090;--accent:#f0d060;--accent2:#d0b040;
+  --text:#ffffff;--text-dim:#b0f0d8;--tile-locked:#081810;--tile-unlocked:#102818;--tile-completed:#183828;
+}
+:root {
+  --bg:#041008;--bg2:#081a0c;--surface:#0c2410;--card-bg:#0c2410;
+  --primary:#1a6030;--primary-lit:#288048;--accent:#c8a020;--accent2:#a08018;
+  --text:#d8f8e0;--text-dim:#306040;--tile-locked:#040c06;--tile-unlocked:#081408;--tile-completed:#0c1c10;
+}
