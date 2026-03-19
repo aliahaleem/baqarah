@@ -1,0 +1,31 @@
+/* Surah At-Takwir (81) — deep indigo / silver-star / cosmic */
+html[data-theme="stars"] {
+  --bg:             #1e1a4a;
+  --bg2:            #2a2460;
+  --surface:        #363078;
+  --card-bg:        #363078;
+  --primary:        #7060d0;
+  --primary-lit:    #9888f0;
+  --accent:         #e8e0a0;
+  --accent2:        #c8c080;
+  --text:           #ffffff;
+  --text-dim:       #c8c0f0;
+  --tile-locked:    #181440;
+  --tile-unlocked:  #221e58;
+  --tile-completed: #2e2870;
+}
+:root {
+  --bg:             #04040e;
+  --bg2:            #08081c;
+  --surface:        #0c0c28;
+  --card-bg:        #0c0c28;
+  --primary:        #2828a0;
+  --primary-lit:    #4444c8;
+  --accent:         #c8c070;
+  --accent2:        #a8a050;
+  --text:           #e8e8ff;
+  --text-dim:       #8888aa;
+  --tile-locked:    #060610;
+  --tile-unlocked:  #0a0a20;
+  --tile-completed: #0e0e2a;
+}

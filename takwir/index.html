@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="minecraft">
+<head>
+  <meta charset="UTF-8"/>
+  <script>(function(){var t=localStorage.getItem('quranQuestTheme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surah At-Takwir Quest ⭐</title>
+  <link rel="stylesheet" href="../shared/base.css"/>
+  <link rel="stylesheet" href="palette.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<header id="game-header" style="display:none">
+  <div>
+    <div class="game-title">⭐ SURAH AT-TAKWIR QUEST</div>
+    <div class="header-explorer">Explorer: <span id="header-name">—</span></div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div>
+    <div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div>
+    <div class="stat-chip done-chip">✅ <span id="done-display">0</span>/6</div>
+    <button class="reset-btn" onclick="resetGame()">↺ Reset</button>
+    <a class="hub-btn" href="../index.html">🏠 Hub</a>
+  </div>
+</header>
+<div id="intro-screen">
+  <div class="intro-icon">⭐</div>
+  <div class="intro-title">SURAH AT-TAKWIR QUEST</div>
+  <div class="intro-arabic">سُوْرَةُ التَّكْوِير</div>
+  <div class="intro-subtitle">6 Levels · The 12 Cosmic Signs · The Buried Girl<br/>The Noble Angel · The Prophet Defended · Where Are You Going?</div>
+  <div class="intro-form">
+    <input class="intro-input" id="explorer-name" type="text" placeholder="Enter your name..." maxlength="20"/>
+    <div id="name-error" style="color:#ff6666;font-size:8px;min-height:12px;"></div>
+    <button class="intro-btn" onclick="startGame()">▶ BEGIN QUEST</button>
+  </div>
+</div>
+<div id="main-view" style="display:none">
+<div class="container">
+  <div class="ibn-ameen-panel">
+    <div class="character-avatar">🧙‍♂️</div>
+    <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+      <span id="welcome-text">As-salamu alaykum, Explorer! Surah At-Takwir — "The Overthrowing." The sun rolled up, stars falling, mountains in motion, the buried baby girl vindicated, the noble Angel Jibril, the Prophet ﷺ defended against slanders, and the great question: Where are you going? 6 levels await!</span>
+    </div>
+  </div>
+  <h2 class="section-heading">⭐ THE QUEST MAP</h2>
+  <div class="map-grid">
+    <div class="map-tile locked" id="tile-1" onclick="openSection(1)"><div class="tile-icon">⭐</div><div class="tile-level">LEVEL 1</div><div class="tile-name">12 Signs</div><div class="tile-verses">81:1-7</div><div class="tile-status" id="status-1">▶ PLAY</div></div>
+    <div class="map-tile locked" id="tile-2" onclick="openSection(2)"><div class="tile-icon">👼</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Buried Girl</div><div class="tile-verses">81:8-9</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-3" onclick="openSection(3)"><div class="tile-icon">📜</div><div class="tile-level">LEVEL 3</div><div class="tile-name">What Prepared</div><div class="tile-verses">81:10-14</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-4" onclick="openSection(4)"><div class="tile-icon">👁️</div><div class="tile-level">LEVEL 4</div><div class="tile-name">Noble Angel</div><div class="tile-verses">81:19-21</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-5" onclick="openSection(5)"><div class="tile-icon">🌟</div><div class="tile-level">LEVEL 5</div><div class="tile-name">Not Mad</div><div class="tile-verses">81:22-25</div><div class="tile-status" id="status-5">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-6" onclick="openSection(6)"><div class="tile-icon">🌌</div><div class="tile-level">LEVEL 6</div><div class="tile-name">Where Going?</div><div class="tile-verses">81:26-29</div><div class="tile-status" id="status-6">🔒 LOCKED</div></div>
+  </div>
+  <div id="world-builder">
+    <h2 class="section-heading">🌌 BUILD THE CELESTIAL CANVAS</h2>
+    <div style="border:3px solid var(--primary);margin-bottom:12px;background:#04040e;">
+      <canvas id="build-canvas" width="560" height="250" style="width:100%;image-rendering:pixelated;display:block;"></canvas>
+    </div>
+    <p style="font-family:var(--font-body);font-size:var(--font-size-sm);color:var(--primary-lit);text-align:center;margin-bottom:10px;line-height:1.8;">Complete each level to reveal the celestial canvas — all 6 levels reveal the cosmic scene!<br/><em style="color:var(--text-dim);">"Fa-ayna tadh-habun?" — 81:26</em></p>
+    <div class="world-preview">
+      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">12 Signs</div></div>
+      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Buried Girl</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Prepared</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Noble Angel</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Not Mad</div></div>
+      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Where Going?</div></div>
+    </div>
+  </div>
+  <div id="all-complete">
+    <div style="font-size:36px;margin-bottom:10px;">🌌</div>
+    <div style="color:var(--accent);font-size:10px;margin-bottom:8px;">SURAH AT-TAKWIR COMPLETE!</div>
+    <div style="font-family:var(--font-body);font-size:var(--font-size-body);color:#ddd;line-height:1.9;">
+      MashAllah! All 6 levels of Surah At-Takwir complete!<br/>
+      <em>"Fa-ayna tadh-habun? Inna huwa illa dhikrun lil-'alamin."</em><br/>
+      "So where are you going? It is nothing but a reminder to the worlds."<br/>May Allah guide us to the straight path. Ameen!
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="verse-popup"><div class="vp-box"><div id="vp-ref"></div><div id="vp-arabic"></div><div id="vp-eng"></div><div id="vp-note"></div><button id="vp-close" onclick="hideVersePopup()">✕ Close</button></div></div>
+<div id="reward-overlay"><div class="reward-box"><span class="reward-icon" id="reward-icon">🏆</span><div class="reward-title" id="reward-title">LEVEL COMPLETE!</div><div class="reward-xp" id="reward-xp"></div><div class="reward-gems" id="reward-gems"></div><div class="reward-msg" id="reward-msg"></div><button class="reward-ok-btn" onclick="dismissReward()">✅ Continue Quest</button></div></div>
+
+<div id="section-view" style="display:none">
+  <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;">
+    <button class="back-btn" onclick="closeSection()">◀ Back to Map</button>
+  </header>
+
+  <!-- S1: 12 Signs -->
+  <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Surah At-Takwir opens with twelve "Idha" (When) statements — twelve cosmic events of the Day of Judgment. The sun rolled up. Stars falling. Mountains moved. The most precious she-camels abandoned. Wild animals gathered. Seas overflowing. Match each sign to its description!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">⭐ LEVEL 1 — THE 12 COSMIC SIGNS (81:1-7)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Cosmic Signs — Click to reveal verses</span></div><canvas id="canvas-1" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>Surah At-Takwir opens with one of the most dramatic descriptions of the Day of Judgment in the entire Quran — twelve impossible events listed one after another, each beginning with <strong>"Idha"</strong> (When).</p>
+        <p>The Arabic word <strong>"Kuwwirat"</strong> — "is rolled up" — for the sun comes from "kawwara," meaning to wrap a turban. The sun, that massive burning star that sustains all life on Earth, will be dimmed and wrapped away like a cloth.</p>
+        <p>The stars <strong>"inkadarat"</strong> — scatter and fall. Mountains <strong>"suyyirat"</strong> — set in motion, floating like wool. The most precious Arabian possessions — ten-month pregnant she-camels <strong>"'uttilat"</strong> — abandoned and neglected. Even wild animals are <strong>"hushirat"</strong> — gathered together.</p>
+        <p>These twelve signs build toward one conclusion in verse 14: <em>"Alimat nafsun ma ahdharat"</em> — A soul will know what it has prepared. Every cosmic structure designed for this world will be undone — and only your deeds remain.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">إِذَا الشَّمْسُ كُوِّرَتْ ۩ وَإِذَا النُّجُومُ انكَدَرَتْ ۩ وَإِذَا الْجِبَالُ سُيِّرَتْ</div>
+        <div class="verse-translation">"When the sun is rolled up — when the stars fall scattered — when the mountains are set in motion." (81:1-3) — Three of the twelve cosmic signs. The permanence of the universe — dismantled.</div>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَإِذَا الْعِشَارُ عُطِّلَتْ ۩ وَإِذَا الْوُحُوشُ حُشِرَتْ ۩ وَإِذَا الْبِحَارُ سُجِّرَتْ</div>
+        <div class="verse-translation">"When the pregnant she-camels are abandoned — when the wild animals are gathered — when the seas overflow/are set ablaze." (81:4-6) — Wealth abandoned, animals gathered, oceans overflow. No priority remains except standing before Allah.</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 GAME — MATCH THE SIGNS (81:1-7)</div>
+      <div class="game-instructions">Drag each cosmic sign to its correct description. All 5 must be correct!</div>
+      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-1"></div><div class="drop-zones" id="drop-zones-1"></div></div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- S2: Buried Girl -->
+  <div class="section-panel" id="section-panel-2">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>One of the most powerful verses in the Quran: the buried baby girl is asked on the Day of Judgment. Not her murderer — SHE is asked. "For what sin were you killed?" The question IS the answer. Islam came to abolish this practice forever. Answer these questions about this profound verse.</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">👼 LEVEL 2 — THE BURIED GIRL (81:8-9)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Vindication — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>Among the twelve signs of the Day of Judgment, Allah inserts the most human of them — the case of <strong>Al-Maw'udah</strong>: the girl who was buried alive.</p>
+        <p>In pre-Islamic Arabia, some tribes — particularly those fearing poverty or feeling shame at a daughter's birth — would bury their newborn daughters alive. The Quran mentions this horror to condemn it in the strongest terms.</p>
+        <p>On the Day of Judgment, that buried girl will stand before Allah. And she will be asked: <strong>"Bi-ayyi dhanbin qutilat?"</strong> — For what SIN was she killed? The question is its own answer. There was no sin. She committed no crime. She only had the "fault" of being female and being born into a cruel household.</p>
+        <p>Allah gives her a voice before all of creation. Her testimony will stand against her killers. This is divine justice — the innocent given dignity, the oppressor held accountable.</p>
+        <p><em>Islam came to destroy this practice entirely — and elevated the status of daughters to be a source of barakah and mercy for the parents who raise them well.</em></p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَإِذَا الْمَوْءُودَةُ سُئِلَتْ ۩ بِأَيِّ ذَنبٍ قُتِلَتْ</div>
+        <div class="verse-translation">"And when the girl buried alive is asked — for what sin was she killed?" (81:8-9) — The girl is the one asked, not her killer. She is given voice and dignity. The very question is the indictment of those who murdered her.</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — THE BURIED GIRL (81:8-9)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-2"></div>
+      <div class="game-feedback" id="feedback-2"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- S3: What Prepared -->
+  <div class="section-panel" id="section-panel-3">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Four final events, then the conclusion of the whole sequence: Records unrolled. Sky stripped. Hell blazing. Paradise brought near. THEN — a soul will know what it prepared. Put these four events in the correct order, then claim your reward!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📜 LEVEL 3 — WHAT HAS BEEN PREPARED (81:10-14)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Final Revelation — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>The twelve "Idha" statements continue — four more cosmic events leading to the climax of the entire surah.</p>
+        <p><strong>"Wa idha al-suhuf nushirat"</strong> — the records are unrolled. Every deed ever done, every thought, every choice — exposed and spread open like an unrolled scroll.</p>
+        <p><strong>"Wa idha al-sama' kushitat"</strong> — the sky is stripped away. The heavens themselves are peeled back, like removing a covering. Nothing is hidden anymore.</p>
+        <p><strong>"Wa idha al-Jahim su''irat"</strong> — Hell is set ablaze. And <strong>"wa idha al-Jannah uzlifat"</strong> — Paradise is brought near, close enough to see and feel its proximity.</p>
+        <p>After all twelve events — <em>"Alimat nafsun ma ahdharat"</em> — A soul will KNOW what it has brought forward. All ambiguity, all excuses, all distractions — gone. The clarity of that moment is what drives a person to act NOW, while there is still time.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَإِذَا الصُّحُفُ نُشِرَتْ ۩ وَإِذَا السَّمَاءُ كُشِطَتْ ۩ وَإِذَا الْجَحِيمُ سُعِّرَتْ ۩ وَإِذَا الْجَنَّةُ أُزْلِفَتْ ۩ عَلِمَتْ نَفْسٌ مَّا أَحْضَرَتْ</div>
+        <div class="verse-translation">"When the records are laid open — when the sky is stripped away — when Hell is set ablaze — when Paradise is brought near — a soul will know what it has brought forward." (81:10-14) — The climax: KNOWING. Every soul gets a moment of complete, unchallengeable clarity.</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 ORDER THE EVENTS — (81:10-14)</div>
+      <div class="game-instructions">Use ↑ ↓ arrows to put the 5 events in the correct Quranic order!</div>
+      <div class="order-list" id="order-3"></div>
+      <div class="game-feedback" id="feedback-3"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection3()">✅ Check Order</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- S4: Noble Angel -->
+  <div class="section-panel" id="section-panel-4">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Before defending the Prophet ﷺ, Allah first establishes the nobility of his source. The Quran came through Jibril (AS) — noble, powerful, high-ranking, obeyed by all angels, and completely trustworthy. Answer these questions about the Angel of Revelation!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">👁️ LEVEL 4 — THE NOBLE ANGEL (81:19-21)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Jibril the Noble — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>After describing the cosmic signs and the Day of Judgment, Allah now addresses the question the Quraysh kept asking: <em>where does this Quran come from?</em></p>
+        <p>Allah establishes the chain of transmission: <strong>"Innahu la-qawlu rasulin karim"</strong> — Indeed it is the word of a noble Messenger. This "noble Messenger" is <strong>Jibril (AS)</strong>, the Angel of Revelation.</p>
+        <p>He is described with four qualities: <strong>Karim</strong> (noble, generous in dignity), <strong>Dhi quwwah</strong> (of great power — he destroyed entire nations with one wing-beat), <strong>Maki'n 'inda dhi al-'Arsh</strong> (secure, established in high rank with the Owner of the Throne), and <strong>Muta' thamm amin</strong> (obeyed there, and trustworthy).</p>
+        <p><em>The message of the Quran comes through the most noble carrier possible. Think of how carefully we verify the chain of transmission for even a hadith — now imagine the care Allah placed in the carrier of His own direct words!</em></p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">إِنَّهُ لَقَوْلُ رَسُولٍ كَرِيمٍ ۩ ذِي قُوَّةٍ عِندَ ذِي الْعَرْشِ مَكِينٍ ۩ مُّطَاعٍ ثَمَّ أَمِينٍ</div>
+        <div class="verse-translation">"Indeed it is the word of a noble Messenger — of great power, secure in rank with the Owner of the Throne — obeyed there, and trustworthy." (81:19-21) — Four qualities of Jibril (AS): noble, powerful, high-ranked, obeyed by all angels, and trusted.</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — THE NOBLE ANGEL (81:19-21)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- S5: Not Mad -->
+  <div class="section-panel" id="section-panel-5">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The Quraysh had three main accusations against the Prophet ﷺ: he was mad (majnun), he was making it up from his own desires, and it came from Shaytan. Allah refutes ALL THREE in just four verses — with historical evidence and logical arguments! Let's explore each defence.</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🌟 LEVEL 5 — YOUR COMPANION IS NOT MAD (81:22-25)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Prophet Defended — Click to reveal verse</span></div><canvas id="canvas-5" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>Having established that the Quran comes through a noble, trustworthy angel, Allah now directly defends the Prophet ﷺ against the slanders of Quraysh.</p>
+        <p><strong>Defence 1: "Wa ma sahibukum bi-majnun"</strong> — Your COMPANION is not mad. Allah uses "sahibukum" — your companion, the one you know, who grew up among you, whose character you witnessed for 40 years before revelation. They knew he was not mad. Their accusation was dishonest.</p>
+        <p><strong>Defence 2: "Wa la-qad ra'ahu bi-al-ufuq al-mubin"</strong> — He truly SAW Jibril on the clear, bright horizon. This was a real, verified sighting — not a hallucination or dream.</p>
+        <p><strong>Defence 3: "Wa ma huwa 'ala al-ghayb bi-dhannin"</strong> — He is not withholding or miserly with knowledge of the unseen. He shares everything Allah reveals. He has no personal agenda.</p>
+        <p><strong>Defence 4: "Wa ma huwa bi-qawli Shaytan rajim"</strong> — And it is NOT the word of a cursed devil. Shaytan is expelled, cursed, far from Allah. The Quran comes through Jibril — blessed, honoured, close to Allah. The contrast is total.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَمَا صَاحِبُكُمْ بِمَجْنُونٍ ۩ وَلَقَدْ رَآهُ بِالْأُفُقِ الْمُبِينِ ۩ وَمَا هُوَ عَلَى الْغَيْبِ بِضَنِينٍ ۩ وَمَا هُوَ بِقَوْلِ شَيْطَانٍ رَّجِيمٍ</div>
+        <div class="verse-translation">"Your companion is not mad — he certainly saw him on the clear horizon — he is not withholding knowledge of the unseen — and it is not the word of a cursed devil." (81:22-25) — Four defences, four slanders refuted in four sentences.</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — THE PROPHET DEFENDED (81:22-25)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-5"></div>
+      <div class="game-feedback" id="feedback-5"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <!-- S6: Where Going? -->
+  <div class="section-panel" id="section-panel-6">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The surah ends with the most direct challenge in all of scripture: "Fa-ayna tadh-habun?" — Where are you GOING? The Quran is a reminder for all worlds. The door is open for whoever WILLS to enter the straight path. But even your will is within Allah's will. Profound!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🌌 LEVEL 6 — WHERE ARE YOU GOING? (81:26-29)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Straight Path — Click to reveal verse</span></div><canvas id="canvas-6" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>The surah closes with one of the most compelling challenges in the Quran: <strong>"Fa-ayna tadh-habun?"</strong> — So where are you going?</p>
+        <p>It is not a geographical question. It is a question about direction of heart and life. You've been shown the cosmic signs of the Last Day. You've been told about the buried girl's vindication. You know what your records will show. You know the Quran comes through a noble angel to a truthful prophet. After ALL this — where exactly are you heading if not toward the truth?</p>
+        <p><strong>"In huwa illa dhikrun lil-'alamin"</strong> — It is nothing but a reminder for ALL the worlds. Not just Arabs. Not just the 7th century. For all of creation, for all time.</p>
+        <p><strong>"Li-man sha'a minkum an yastaqim"</strong> — For whoever WILLS among you to take the straight path. The will is yours. The choice is yours. The door is open.</p>
+        <p>Then the most humbling closing: <strong>"Wa ma tasha'una illa an yasha' Allah"</strong> — But you cannot will unless Allah wills. Your freedom is real — and it exists within Allah's greater will. This is not contradiction but completion: you have genuine choice, but you are not independent of your Creator.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">فَأَيْنَ تَذْهَبُونَ ۩ إِنْ هُوَ إِلَّا ذِكْرٌ لِّلْعَالَمِينَ ۩ لِمَن شَاءَ مِنكُمْ أَن يَسْتَقِيمَ ۩ وَمَا تَشَاءُونَ إِلَّا أَن يَشَاءَ اللَّهُ رَبُّ الْعَالَمِينَ</div>
+        <div class="verse-translation">"So where are you going? It is nothing but a reminder to the worlds — for whoever wills among you to take a straight path. But you cannot will unless Allah wills — Lord of the Worlds." (81:26-29) — The surah's final call: choose the path, knowing your choice is within His will.</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 FINAL QUIZ — WHERE ARE YOU GOING? (81:26-29)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to complete Surah At-Takwir!</div>
+      <div id="quiz-6"></div>
+      <div class="game-feedback" id="feedback-6"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+</div>
+<script src="scenes.js"></script>
+<script src="../shared/engine.js"></script>
+<script src="../shared/ui.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -171,6 +171,8 @@
   .naziat-portal:hover   { border-color:#2a9060; box-shadow:0 0 36px #2a906066; }
   .abasa-portal    { background: linear-gradient(160deg,#100802,#241408); border-color:#8a3a10; box-shadow:0 0 20px #8a3a1044; }
   .abasa-portal:hover    { border-color:#c05820; box-shadow:0 0 36px #c0582066; }
+  .takwir-portal   { background: linear-gradient(160deg,#04040e,#0a0a28); border-color:#2828a0; box-shadow:0 0 20px #2828a044; }
+  .takwir-portal:hover   { border-color:#4444c8; box-shadow:0 0 36px #4444c866; }
 
   /* Elegant dusk — vivid medium-bright portal cards */
   html[data-theme="stars"] .portal { box-shadow: 0 6px 28px rgba(80,60,180,0.45); }
@@ -181,6 +183,7 @@
   html[data-theme="stars"] .mulk-portal     { background:linear-gradient(135deg,#203068,#384c96); border-color:#78a0ff; }
   html[data-theme="stars"] .naziat-portal   { background:linear-gradient(135deg,#223070,#3a4c9e); border-color:#88a8ff; }
   html[data-theme="stars"] .abasa-portal    { background:linear-gradient(135deg,#2e2460,#4a3c90); border-color:#d4a020; }
+  html[data-theme="stars"] .takwir-portal   { background:linear-gradient(135deg,#1e1a4a,#363078); border-color:#e8e0a0; }
 
   .portal-icon {
     font-size: 48px;
@@ -289,6 +292,8 @@
   .naziat-portal:hover   .portal-btn { background:#2a9060; color:#fff; }
   .abasa-portal    .portal-btn { color:#c05820; border-color:#c05820; background:transparent; }
   .abasa-portal:hover    .portal-btn { background:#c05820; color:#fff; }
+  .takwir-portal   .portal-btn { color:#4444c8; border-color:#4444c8; background:transparent; }
+  .takwir-portal:hover   .portal-btn { background:#4444c8; color:#fff; }
 
   /* ─── FOOTER ─── */
   .hub-footer {
@@ -407,6 +412,18 @@
       <div class="portal-progress" id="naziat-progress">
         <span style="color:#888">Not started yet</span>
       </div>
+      <div class="portal-btn">ENTER QUEST ▶</div>
+    </div>
+
+    <!-- AT-TAKWIR PORTAL -->
+    <div class="portal takwir-portal" onclick="window.location='takwir/index.html'">
+      <div class="portal-icon">⭐</div>
+      <div class="portal-title">SURAH AT-TAKWIR</div>
+      <div class="portal-arabic">سورة التكوير</div>
+      <div class="portal-desc">The Overthrowing — 29 Verses<br>6 Levels of cosmic truth</div>
+      <div class="portal-separator"></div>
+      <div class="portal-progress-label">YOUR PROGRESS</div>
+      <div class="portal-progress" id="takwir-progress"><span style="color:#888">Not started yet</span></div>
       <div class="portal-btn">ENTER QUEST ▶</div>
     </div>
 
@@ -536,6 +553,7 @@
   renderProgress('nabaQuestSave',     'naba-progress',   8);
   renderProgress('naziatQuestSave',   'naziat-progress', 7);
   renderProgress('abasaQuestSave',    'abasa-progress',  6);
+  renderProgress('takwirQuestSave',   'takwir-progress', 6);
 </script>
 </body>
 </html>
