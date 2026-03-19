@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="minecraft">
+<head>
+  <meta charset="UTF-8"/>
+  <script>(function(){var t=localStorage.getItem('quranQuestTheme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surah Al-Buruj Quest ⭐</title>
+  <link rel="stylesheet" href="../shared/base.css"/>
+  <link rel="stylesheet" href="palette.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<header id="game-header" style="display:none">
+  <div><div class="game-title">⭐ SURAH AL-BURUJ QUEST</div><div class="header-explorer">Explorer: <span id="header-name">—</span></div></div>
+  <div class="stats-row">
+    <div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div>
+    <div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div>
+    <div class="stat-chip done-chip">✅ <span id="done-display">0</span>/6</div>
+    <button class="reset-btn" onclick="resetGame()">↺ Reset</button>
+    <a class="hub-btn" href="../index.html">🏠 Hub</a>
+  </div>
+</header>
+<div id="intro-screen">
+  <div class="intro-icon">⭐</div>
+  <div class="intro-title">SURAH AL-BURUJ QUEST</div>
+  <div class="intro-arabic">سُوْرَةُ الْبُرُوج</div>
+  <div class="intro-subtitle">6 Levels · Constellations · People of the Ditch<br/>Only Crime: Faith · The Great Attainment · Preserved Tablet</div>
+  <div class="intro-form">
+    <input class="intro-input" id="explorer-name" type="text" placeholder="Enter your name..." maxlength="20"/>
+    <div id="name-error" style="color:#ff6666;font-size:8px;min-height:12px;"></div>
+    <button class="intro-btn" onclick="startGame()">▶ BEGIN QUEST</button>
+  </div>
+</div>
+<div id="main-view" style="display:none">
+<div class="container">
+  <div class="ibn-ameen-panel">
+    <div class="character-avatar">🧙‍♂️</div>
+    <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+      <span id="welcome-text">As-salamu alaykum! Surah Al-Buruj — The Constellations! By the sky, by the Promised Day. The People of the Ditch burned for believing. Their only crime? Faith in Allah. The great attainment awaits believers. Allah's grip is severe. And the Quran is preserved forever. 6 profound levels await!</span>
+    </div>
+  </div>
+  <h2 class="section-heading">⭐ THE QUEST MAP</h2>
+  <div class="map-grid">
+    <div class="map-tile locked" id="tile-1" onclick="openSection(1)"><div class="tile-icon">⭐</div><div class="tile-level">LEVEL 1</div><div class="tile-name">The Oaths</div><div class="tile-verses">85:1-3</div><div class="tile-status" id="status-1">▶ PLAY</div></div>
+    <div class="map-tile locked" id="tile-2" onclick="openSection(2)"><div class="tile-icon">🔥</div><div class="tile-level">LEVEL 2</div><div class="tile-name">The Ditch</div><div class="tile-verses">85:4-10</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-3" onclick="openSection(3)"><div class="tile-icon">✊</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Their Crime</div><div class="tile-verses">85:8-9</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-4" onclick="openSection(4)"><div class="tile-icon">🌿</div><div class="tile-level">LEVEL 4</div><div class="tile-name">Great Attainment</div><div class="tile-verses">85:11</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-5" onclick="openSection(5)"><div class="tile-icon">⚡</div><div class="tile-level">LEVEL 5</div><div class="tile-name">Allah's Grip</div><div class="tile-verses">85:12-20</div><div class="tile-status" id="status-5">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-6" onclick="openSection(6)"><div class="tile-icon">📜</div><div class="tile-level">LEVEL 6</div><div class="tile-name">Preserved Tablet</div><div class="tile-verses">85:21-22</div><div class="tile-status" id="status-6">🔒 LOCKED</div></div>
+  </div>
+  <div id="world-builder">
+    <h2 class="section-heading">⭐ BUILD THE CONSTELLATION SKY</h2>
+    <div style="border:3px solid var(--primary);margin-bottom:12px;background:#04080e;">
+      <canvas id="build-canvas" width="560" height="250" style="width:100%;image-rendering:pixelated;display:block;"></canvas>
+    </div>
+    <p style="font-family:var(--font-body);font-size:var(--font-size-sm);color:var(--primary-lit);text-align:center;margin-bottom:10px;line-height:1.8;">Complete each level to reveal the constellation sky with the Preserved Tablet!<br/><em style="color:var(--text-dim);">"Bal huwa Quranun Majid — fi Lawhin Mahfudh" — 85:21-22</em></p>
+    <div class="world-preview">
+      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Constellations</div></div>
+      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Ditch</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Their Crime</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Attainment</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Allah's Grip</div></div>
+      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Tablet</div></div>
+    </div>
+  </div>
+  <div id="all-complete">
+    <div style="font-size:36px;margin-bottom:10px;">⭐</div>
+    <div style="color:var(--accent);font-size:10px;margin-bottom:8px;">SURAH AL-BURUJ COMPLETE!</div>
+    <div style="font-family:var(--font-body);font-size:var(--font-size-body);color:#ddd;line-height:1.9;">MashAllah! All 6 levels complete!<br/><em>"Bal huwa Quranun Majid — fi Lawhin Mahfudh."</em><br/>Glorious Quran, Preserved forever. Ameen!</div>
+  </div>
+</div>
+</div>
+
+<div id="verse-popup"><div class="vp-box"><div id="vp-ref"></div><div id="vp-arabic"></div><div id="vp-eng"></div><div id="vp-note"></div><button id="vp-close" onclick="hideVersePopup()">✕ Close</button></div></div>
+<div id="reward-overlay"><div class="reward-box"><span class="reward-icon" id="reward-icon">🏆</span><div class="reward-title" id="reward-title"></div><div class="reward-xp" id="reward-xp"></div><div class="reward-gems" id="reward-gems"></div><div class="reward-msg" id="reward-msg"></div><button class="reward-ok-btn" onclick="dismissReward()">✅ Continue Quest</button></div></div>
+
+<div id="section-view" style="display:none">
+  <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></header>
+
+  <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Surah Al-Buruj opens with three powerful oaths from Allah — by the sky with its constellations, by the Promised Day, and by the witness and the witnessed. Allah swears these oaths to certify the truth of what follows. Match each oath to its meaning!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">⭐ LEVEL 1 — THE THREE OATHS (85:1-3)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Constellation Sky — Click to reveal verse</span></div><canvas id="canvas-1" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>Surah Al-Buruj begins with three divine oaths — sworn by Allah Himself — certifying the truth of everything that follows. When Allah swears, the oath carries infinite weight.</p>
+        <p><strong>"Wa al-sama' dhat al-buruj"</strong> — By the sky possessing the constellations. Al-buruj are the great star formations — the towers of heaven. The vast, ordered, permanent constellations that humans have navigated by, worshipped wrongly, and marvelled at throughout history.</p>
+        <p><strong>"Wa al-yawm al-maw'ud"</strong> — By the Promised Day. Allah swears by the very Day of Judgment that He promised — "maw'ud" means promised, guaranteed. If Allah swears by His own promise, how certain must that Day be?</p>
+        <p><strong>"Wa shahidin wa mashhud"</strong> — By the witness and the witnessed. The most common interpretation: Friday (witness) and the Day of Arafah (witnessed); others say: the Prophet ﷺ (witness) and his community; or the angels (witness) and the deeds (witnessed). Human existence is being witnessed at every level.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَالسَّمَاءِ ذَاتِ الْبُرُوجِ ۩ وَالْيَوْمِ الْمَوْعُودِ ۩ وَشَاهِدٍ وَمَشْهُودٍ</div>
+        <div class="verse-translation">"By the sky with its constellations — by the Promised Day — by the witness and the witnessed." (85:1-3)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 GAME — MATCH THE THREE OATHS (85:1-3)</div>
+      <div class="game-instructions">Drag each oath to its correct meaning. All 3 must match!</div>
+      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-1"></div><div class="drop-zones" id="drop-zones-1"></div></div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <div class="section-panel" id="section-panel-2">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The oaths certify the following story: "Qutila ashab al-ukhdud!" — DESTROYED were the People of the Ditch! One of the most heart-wrenching events in Islamic history. Believers thrown into pits of fire for refusing to abandon their faith. Answer the questions about this chilling episode!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🔥 LEVEL 2 — THE PEOPLE OF THE DITCH (85:4-10)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Burning Trenches — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>The surah introduces one of the most powerful stories in the Quran about persecution of believers. Historical accounts identify this event as occurring in Yemen (around 525 CE), when the Jewish convert king Dhunuwas ordered that all Christians/monotheist believers be killed unless they apostatised.</p>
+        <p><strong>"Qutila ashab al-ukhdud"</strong> — Destroyed/cursed were the People of the Ditch. "Ukhdud" is a deep trench dug into the earth — filled with fuel and fire. The believers were brought to the edge of these flaming trenches and given a choice: renounce your faith, or burn.</p>
+        <p>The believers chose the fire. They were thrown into the burning trenches. They died in flames rather than betray their faith in Allah.</p>
+        <p>What makes the description so chilling: <strong>"Idh hum 'alayha qu'ud — wa hum 'ala ma yaf'aluna bi-al-mu'minina shuhud"</strong> — while the persecutors sat over the ditches, WATCHING and WITNESSING what they were doing to the believers. They watched the burning with deliberate, calm witnessing. Their evil was conscious, purposeful, and public.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">قُتِلَ أَصْحَابُ الْأُخْدُودِ ۩ النَّارِ ذَاتِ الْوَقُودِ ۩ إِذْ هُمْ عَلَيْهَا قُعُودٌ ۩ وَهُمْ عَلَىٰ مَا يَفْعَلُونَ بِالْمُؤْمِنِينَ شُهُودٌ</div>
+        <div class="verse-translation">"Destroyed were the People of the Ditch — of the fire with burning fuel — while they were sitting over it — witnesses to what they were doing to the believers." (85:4-7)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — THE PEOPLE OF THE DITCH (85:4-10)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-2"></div>
+      <div class="game-feedback" id="feedback-2"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <div class="section-panel" id="section-panel-3">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>After describing the persecution, the Quran asks: WHY did they resent the believers? The answer is one of the most powerful verses in the Quran. "Wa ma naqamu minhum illa an yu\'minu bi-Allah al-Aziz al-Hamid." Answer the questions about this verse!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">✊ LEVEL 3 — THEIR ONLY CRIME: FAITH (85:8-9)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Only Crime — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>After describing the horrific persecution, the Quran asks the question that exposes the ultimate injustice: WHY did the persecutors hate the believers? What had they done?</p>
+        <p><strong>"Wa ma naqamu minhum illa an yu'minu bi-Allah al-'Aziz al-Hamid."</strong> — They resented them for NOTHING — except that they believed in Allah, the Exalted in Might, the Praiseworthy.</p>
+        <p>That's it. No crime. No violence. No sedition. No harm to others. Just faith.</p>
+        <p>The divine names chosen are significant: <strong>Al-'Aziz</strong> — the Exalted in Might, the Invincible. The believers held onto the Most Powerful Being in existence, even as they faced apparent powerlessness. <strong>Al-Hamid</strong> — the Praiseworthy. They praised and glorified Allah even while being thrown into fire.</p>
+        <p><strong>"Wa Allah 'ala kulli shay'in shahid"</strong> — Allah is witness over everything (85:9). The persecutors committed their evil thinking perhaps Allah was far away. He is not. He is witness over every single thing.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">وَمَا نَقَمُوا مِنْهُمْ إِلَّا أَن يُؤْمِنُوا بِاللَّهِ الْعَزِيزِ الْحَمِيدِ ۩ الَّذِي لَهُ مُلْكُ السَّمَاوَاتِ وَالْأَرْضِ ۚ وَاللَّهُ عَلَىٰ كُلِّ شَيْءٍ شَهِيدٌ</div>
+        <div class="verse-translation">"They resented them for nothing except that they believed in Allah, the Exalted in Might, the Praiseworthy — to whom belongs the dominion of the heavens and earth — and Allah is witness over everything." (85:8-9)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — THEIR ONLY CRIME (85:8-9)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-3"></div>
+      <div class="game-feedback" id="feedback-3"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection3()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <div class="section-panel" id="section-panel-4">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The believers were burned alive for their faith. But where did they go? Straight to "Al-Fawz al-Kabir" — THE GREAT ATTAINMENT! "Lahum jannatun tajri min tahtiha al-anhar." The contrast is complete: earthly fire → heavenly rivers! Answer the questions about the Great Attainment!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">🌿 LEVEL 4 — THE GREAT ATTAINMENT (85:11)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Gardens of Paradise — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>Immediately after describing the terrible persecution, Allah declares the outcome for the believers: <strong>"Inna alladhina amanu wa 'amilu al-salihat lahum jannatun tajri min tahtiha al-anhar — dhalika al-fawz al-kabir."</strong></p>
+        <p>Indeed those who believed and did righteous deeds will have gardens beneath which rivers flow — and that is <strong>AL-FAWZ AL-KABIR</strong> — the GREAT ATTAINMENT.</p>
+        <p>The word "fawz" means success, winning, attainment — getting what you sought. "Kabir" means great, vast, magnificent. Allah did not say small success, or partial success, or even just "success." He said <strong>GREAT</strong> success.</p>
+        <p>The contrast with the People of the Ditch is deliberate and powerful: The believers were thrown into fire on earth. In the next life, they receive gardens with RIVERS beneath them. Fire below → Water below. Earthly burning → Heavenly flowing. The reversal is complete and perfect.</p>
+        <p><em>The believers who were martyred in the Ditch did not lose. They won. They won the greatest possible victory.</em></p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">إِنَّ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ لَهُمْ جَنَّاتٌ تَجْرِي مِن تَحْتِهَا الْأَنْهَارُ ۚ ذَٰلِكَ الْفَوْزُ الْكَبِيرُ</div>
+        <div class="verse-translation">"Indeed those who believed and did righteous deeds will have gardens beneath which rivers flow — that is the GREAT ATTAINMENT." (85:11)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — THE GREAT ATTAINMENT (85:11)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <div class="section-panel" id="section-panel-5">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Inna batsha Rabbika la-shadid." Indeed, the GRIP of your Lord is SEVERE. What happened to Pharaoh? Destroyed. What happened to Thamud? Wiped out. What about the People of the Ditch? "Wa Allahu min wara'ihim muhit" — Allah surrounded them completely. Answer the questions about Allah's grip!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">⚡ LEVEL 5 — ALLAH'S GRIP IS SEVERE (85:12-20)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Severe Grip — Click to reveal verse</span></div><canvas id="canvas-5" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>The surah now pivots to Allah's response to the oppressors: <strong>"Inna batsha Rabbika la-shadid."</strong> — Indeed the GRIP/SEIZURE of your Lord is SEVERE.</p>
+        <p>"Batsh" is a powerful word — the seizing, grasping, taking hold. When Allah takes hold of an oppressor, His grip is "shadid" — severe, intense, inescapable. History proves this:</p>
+        <p><strong>Pharaoh (Fir'awn)</strong> — with his vast army, his divine claims, his absolute power in Egypt — was destroyed. He drowned in the very sea he commanded. <strong>Thamud</strong> — the powerful people who carved mountains into dwellings — were wiped out by a single blast when they killed the prophet's she-camel.</p>
+        <p>And regarding the persecutors of the believers: <strong>"Wa Allahu min wara'ihim muhit"</strong> (85:20) — Allah surrounds/encompasses them from behind. They think they are free, powerful, beyond accountability. But Allah's knowledge and power completely surrounds them. There is no escape from His muhit (encompassing power).</p>
+        <p><em>For believers facing oppression, this verse provides certainty: you are not forgotten, the oppressor is not free. Allah's grip will come.</em></p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">إِنَّ بَطْشَ رَبِّكَ لَشَدِيدٌ ۩ إِنَّهُ هُوَ يُبْدِئُ وَيُعِيدُ ۩ وَاللَّهُ مِن وَرَائِهِم مُّحِيطٌ</div>
+        <div class="verse-translation">"Indeed the grip of your Lord is severe — Indeed it is He who begins and repeats — and Allah from behind them is encompassing." (85:12-13,20)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 QUIZ — ALLAH'S GRIP (85:12-20)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
+      <div id="quiz-5"></div>
+      <div class="game-feedback" id="feedback-5"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+  <div class="section-panel" id="section-panel-6">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The final declaration — after all the persecution, all the oppression, all the attacks on the believers: "Bal huwa Quranun Majid — fi Lawhin Mahfudh." But it is a GLORIOUS Quran — preserved in a PRESERVED TABLET! The attackers are dust, the Quran endures forever! Answer the final questions!</div></div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📜 LEVEL 6 — THE PRESERVED TABLET (85:21-22)</div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Glorious Quran — Click to reveal verse</span></div><canvas id="canvas-6" width="560" height="220"></canvas></div>
+      <div class="story-text">
+        <p>The surah concludes with a triumphant declaration that answers all persecution with one unassailable fact:</p>
+        <p><strong>"Bal huwa Quranun Majid — fi Lawhin Mahfudh."</strong></p>
+        <p><strong>"Bal"</strong> — Rather/but. A word of strong contrast and correction. Rather than what the persecutors thought — that they could silence, destroy, or eliminate the message — the TRUTH is:</p>
+        <p><strong>"Quranun Majid"</strong> — A GLORIOUS QURAN. "Majid" from "majd" meaning glory, honour, nobility, greatness. Not a book that can be burned or silenced — but a Glorious Quran.</p>
+        <p><strong>"Fi Lawhin Mahfudh"</strong> — In a PRESERVED TABLET. "Mahfudh" from "hafiza" — protected, preserved, kept safe. The Lawh al-Mahfudh is the primordial, original record of Allah's decree and all His revelations — preserved with Him, beyond all harm, before the universe existed.</p>
+        <p>The People of the Ditch burned the bodies of believers. The Makkans persecuted the early Muslims. But the Quran — the book for which they suffered — is PRESERVED perfectly in the most secure place in existence. Their suffering was not in vain. The Quran endures.</p>
+      </div>
+      <div class="verse-block">
+        <div class="arabic-text">بَلْ هُوَ قُرْآنٌ مَّجِيدٌ ۩ فِي لَوْحٍ مَّحْفُوظٍ</div>
+        <div class="verse-translation">"But this is a Glorious Quran — preserved in a Preserved Tablet." (85:21-22)</div>
+      </div>
+    </div>
+    <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 FINAL QUIZ — THE PRESERVED TABLET (85:21-22)</div>
+      <div class="game-instructions">Answer all 4 questions. You need 3/4 to complete Surah Al-Buruj!</div>
+      <div id="quiz-6"></div>
+      <div class="game-feedback" id="feedback-6"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+</div>
+<script src="scenes.js"></script>
+<script src="../shared/engine.js"></script>
+<script src="../shared/ui.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

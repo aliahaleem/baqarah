@@ -179,6 +179,8 @@
   .mutaffifin-portal:hover { border-color:#c88030; box-shadow:0 0 36px #c8803066; }
   .inshiqaq-portal { background: linear-gradient(160deg,#100802,#1a1004); border-color:#883010; box-shadow:0 0 20px #88301044; }
   .inshiqaq-portal:hover { border-color:#f09030; box-shadow:0 0 36px #f0903066; }
+  .buruj-portal { background: linear-gradient(160deg,#04080e,#080e18); border-color:#182880; box-shadow:0 0 20px #18288044; }
+  .buruj-portal:hover { border-color:#c8b030; box-shadow:0 0 36px #c8b03066; }
 
   /* Elegant dusk — vivid medium-bright portal cards */
   html[data-theme="stars"] .portal { box-shadow: 0 6px 28px rgba(80,60,180,0.45); }
@@ -193,6 +195,7 @@
   html[data-theme="stars"] .infitar-portal  { background:linear-gradient(135deg,#1a2850,#2e4080); border-color:#80e8f8; }
   html[data-theme="stars"] .mutaffifin-portal { background:linear-gradient(135deg,#3a1a28,#5c2e48); border-color:#f0b860; }
   html[data-theme="stars"] .inshiqaq-portal { background:linear-gradient(135deg,#2e1a08,#503018); border-color:#f8c060; }
+  html[data-theme="stars"] .buruj-portal { background:linear-gradient(135deg,#0e1840,#243070); border-color:#e0d860; }
 
   .portal-icon {
     font-size: 48px;
@@ -309,6 +312,8 @@
   .mutaffifin-portal:hover .portal-btn { background:#c88030; color:#000; }
   .inshiqaq-portal .portal-btn { color:#f09030; border-color:#f09030; background:transparent; }
   .inshiqaq-portal:hover .portal-btn { background:#f09030; color:#000; }
+  .buruj-portal .portal-btn { color:#c8b030; border-color:#c8b030; background:transparent; }
+  .buruj-portal:hover .portal-btn { background:#c8b030; color:#000; }
 
   /* ─── FOOTER ─── */
   .hub-footer {
@@ -427,6 +432,18 @@
       <div class="portal-progress" id="naziat-progress">
         <span style="color:#888">Not started yet</span>
       </div>
+      <div class="portal-btn">ENTER QUEST ▶</div>
+    </div>
+
+    <!-- AL-BURUJ PORTAL -->
+    <div class="portal buruj-portal" onclick="window.location='buruj/index.html'">
+      <div class="portal-icon">⭐</div>
+      <div class="portal-title">SURAH AL-BURUJ</div>
+      <div class="portal-arabic">سورة البروج</div>
+      <div class="portal-desc">The Constellations — 22 Verses<br>6 Levels of endurance</div>
+      <div class="portal-separator"></div>
+      <div class="portal-progress-label">YOUR PROGRESS</div>
+      <div class="portal-progress" id="buruj-progress"><span style="color:#888">Not started yet</span></div>
       <div class="portal-btn">ENTER QUEST ▶</div>
     </div>
 
@@ -608,6 +625,7 @@
   renderProgress('infitarQuestSave',    'infitar-progress',    6);
   renderProgress('mutaffifinQuestSave', 'mutaffifin-progress', 6);
   renderProgress('inshiqaqQuestSave',   'inshiqaq-progress',   6);
+  renderProgress('burujQuestSave',      'buruj-progress',      6);
 </script>
 </body>
 </html>

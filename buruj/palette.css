@@ -1,0 +1,11 @@
+/* Surah Al-Buruj (85) — midnight blue / silver constellations / fire */
+html[data-theme="stars"] {
+  --bg:#0e1840;--bg2:#182458;--surface:#243070;--card-bg:#243070;
+  --primary:#4060c0;--primary-lit:#6080e0;--accent:#e0d860;--accent2:#c0b840;
+  --text:#ffffff;--text-dim:#c0d0f8;--tile-locked:#080e28;--tile-unlocked:#101838;--tile-completed:#182448;
+}
+:root {
+  --bg:#04080e;--bg2:#080e18;--surface:#0e1828;--card-bg:#0e1828;
+  --primary:#182880;--primary-lit:#2840a0;--accent:#c8b030;--accent2:#a09020;
+  --text:#d8e8ff;--text-dim:#405880;--tile-locked:#040608;--tile-unlocked:#080c14;--tile-completed:#0c1220;
+}
