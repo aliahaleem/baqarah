@@ -146,9 +146,9 @@ window._drawBuildCanvas = function(n) {
   if (!cv) return;
   const ctx = cv.getContext('2d'), W = cv.width, H = cv.height;
   const st = document.documentElement.getAttribute('data-theme') === 'stars';
-  const sky = st ? '#3d1a28' : '#1a0810';
-  const grd = st ? '#5a2e40' : '#2e1020';
-  const acc = st ? '#f0c040' : '#c88020';
+  const sky = st ? '#3a1248' : '#2a0820';
+  const grd = st ? '#5a2270' : '#4e1c38';
+  const acc = st ? '#f0c040' : '#e09030';
 
   ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H);
 
