@@ -811,3 +811,102 @@ html[data-theme="stars"] .w-meaning { font-size: 9px; }
   margin: 4px 0;
   order: 0;
 }
+
+/* ─── FLIP WORD CARDS (Arabic front / meaning back) ─── */
+.flip-card {
+  perspective: 600px;
+  min-width: 72px;
+  max-width: 120px;
+  height: 90px;
+  cursor: pointer;
+  /* Remove old word-card styles; flip-card replaces .word-card */
+}
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.38s ease;
+}
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-front,
+.flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border: var(--border-w-sm) solid var(--primary);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 8px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.flip-front {
+  background: var(--surface);
+}
+html:not([data-theme="stars"]) .flip-front { box-shadow: 2px 2px 0 #000; }
+html[data-theme="stars"] .flip-front { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+.flip-back {
+  background: var(--bg);
+  transform: rotateY(180deg);
+  border-color: var(--accent);
+}
+html:not([data-theme="stars"]) .flip-back { box-shadow: 2px 2px 0 #000; }
+html[data-theme="stars"] .flip-back { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+.flip-front .w-arabic {
+  font-family: 'Amiri', 'Traditional Arabic', serif;
+  font-size: 24px;
+  color: var(--accent);
+  direction: rtl;
+  line-height: 1.3;
+}
+.flip-hint {
+  font-family: var(--font-body);
+  font-size: 6px;
+  color: var(--text-dim);
+  opacity: 0.7;
+}
+html[data-theme="stars"] .flip-hint { font-size: 8px; }
+.flip-back .w-translit {
+  font-family: var(--font-body);
+  font-size: 7px;
+  color: var(--primary-lit);
+  font-style: italic;
+}
+.flip-back .w-meaning {
+  font-family: var(--font-body);
+  font-size: 7px;
+  color: var(--text);
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: calc(var(--radius) + 3px);
+  border: 1px solid var(--primary);
+  line-height: 1.5;
+}
+html[data-theme="stars"] .flip-back .w-translit { font-size: 9px; }
+html[data-theme="stars"] .flip-back .w-meaning  { font-size: 9px; }
+/* "Reveal all" button */
+.wbw-reveal-btn {
+  font-family: var(--font-body);
+  font-size: var(--font-size-xs);
+  color: var(--primary-lit);
+  background: transparent;
+  border: 1px solid var(--primary);
+  border-radius: calc(var(--radius) + 3px);
+  padding: 4px 12px;
+  cursor: pointer;
+  margin: 8px auto 2px;
+  display: block;
+  transition: background var(--transition), color var(--transition);
+}
+.wbw-reveal-btn:hover {
+  background: var(--primary);
+  color: #fff;
+}
