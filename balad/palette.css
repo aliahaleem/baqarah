@@ -1,0 +1,31 @@
+/* Surah Al-Balad (90) — city ochre / desert gold / deep brown */
+html[data-theme="stars"] {
+  --bg:             #2e2460;
+  --bg2:            #3c3078;
+  --surface:        #4a3c90;
+  --card-bg:        #4a3c90;
+  --primary:        #9060d0;
+  --primary-lit:    #b080f0;
+  --accent:         #f4c840;
+  --accent2:        #d4a020;
+  --text:           #ffffff;
+  --text-dim:       #d0c4f8;
+  --tile-locked:    #261e58;
+  --tile-unlocked:  #342870;
+  --tile-completed: #423488;
+}
+:root {
+  --bg:             #120a04;
+  --bg2:            #1e1008;
+  --surface:        #2c1a0a;
+  --card-bg:        #2c1a0a;
+  --primary:        #8a5010;
+  --primary-lit:    #c07820;
+  --accent:         #e8b030;
+  --accent2:        #c08018;
+  --text:           #fff4e0;
+  --text-dim:       #c09060;
+  --tile-locked:    #0e0804;
+  --tile-unlocked:  #1c1008;
+  --tile-completed: #281808;
+}

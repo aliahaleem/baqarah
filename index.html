@@ -189,6 +189,8 @@
   .ghashiyah-portal:hover { border-color:#f0c040; box-shadow:0 0 36px #f0c04066; }
   .fajr-portal { background: linear-gradient(160deg,#0e0614,#1c0c28); border-color:#7a2090; box-shadow:0 0 20px #7a209044; }
   .fajr-portal:hover { border-color:#e8a030; box-shadow:0 0 36px #e8a03066; }
+  .balad-portal { background: linear-gradient(160deg,#120a04,#1e1008); border-color:#8a5010; box-shadow:0 0 20px #8a501044; }
+  .balad-portal:hover { border-color:#e8b030; box-shadow:0 0 36px #e8b03066; }
 
   /* Elegant dusk — vivid medium-bright portal cards */
   html[data-theme="stars"] .portal { box-shadow: 0 6px 28px rgba(80,60,180,0.45); }
@@ -208,6 +210,7 @@
   html[data-theme="stars"] .ala-portal { background:linear-gradient(135deg,#0e2820,#224840); border-color:#f0d060; }
   html[data-theme="stars"] .ghashiyah-portal { background:linear-gradient(135deg,#1e0e18,#38202e); border-color:#f0c040; }
   html[data-theme="stars"] .fajr-portal { background:linear-gradient(135deg,#2e2460,#4a3c90); border-color:#e8a030; }
+  html[data-theme="stars"] .balad-portal { background:linear-gradient(135deg,#2e2460,#4a3c90); border-color:#e8b030; }
 
   .portal-icon {
     font-size: 48px;
@@ -334,6 +337,8 @@
   .ghashiyah-portal:hover .portal-btn { background:#f0c040; color:#000; }
   .fajr-portal .portal-btn { color:#e8a030; border-color:#e8a030; background:transparent; }
   .fajr-portal:hover .portal-btn { background:#e8a030; color:#000; }
+  .balad-portal .portal-btn { color:#e8b030; border-color:#e8b030; background:transparent; }
+  .balad-portal:hover .portal-btn { background:#e8b030; color:#000; }
 
   /* ─── FOOTER ─── */
   .hub-footer {
@@ -488,6 +493,18 @@
       <div class="portal-separator"></div>
       <div class="portal-progress-label">YOUR PROGRESS</div>
       <div class="portal-progress" id="fajr-progress"><span style="color:#888">Not started yet</span></div>
+      <div class="portal-btn">ENTER QUEST ▶</div>
+    </div>
+
+    <!-- AL-BALAD PORTAL -->
+    <div class="portal balad-portal" onclick="window.location='balad/index.html'">
+      <div class="portal-icon">🕋</div>
+      <div class="portal-title">SURAH AL-BALAD</div>
+      <div class="portal-arabic">سورة البلد</div>
+      <div class="portal-desc">The City — 20 Verses<br>6 Levels · The Steep Path · Two Groups</div>
+      <div class="portal-separator"></div>
+      <div class="portal-progress-label">YOUR PROGRESS</div>
+      <div class="portal-progress" id="balad-progress"><span style="color:#888">Not started yet</span></div>
       <div class="portal-btn">ENTER QUEST ▶</div>
     </div>
 
@@ -698,6 +715,7 @@
   renderProgress('alaQuestSave',        'ala-progress',        6);
   renderProgress('ghashiyahQuestSave',  'ghashiyah-progress',  6);
   renderProgress('fajrQuestSave',       'fajr-progress',       6);
+  renderProgress('baladQuestSave',      'balad-progress',      6);
 </script>
 </body>
 </html>
