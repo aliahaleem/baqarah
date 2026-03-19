@@ -62,8 +62,10 @@ function hideVersePopup() {
 }
 
 // =============================================
-//  QUIZ
+//  QUIZ  (options are shuffled on each fresh render)
 // =============================================
+window._quizShuffleCache = window._quizShuffleCache || {};
+
 function selectOption(n, qi, oi) {
   if (window.state[`s${n}Checked`]) return;
   document.querySelectorAll(`[data-section="${n}"][data-qi="${qi}"]`).forEach(b => b.classList.remove('selected'));
@@ -80,10 +82,36 @@ function selectOption(n, qi, oi) {
   });
 }
 
+function _buildShuffledQuiz(n, data) {
+  // Build a shuffled-options version and cache it in memory.
+  // Cache is cleared on wrong answer so each retry gets a new shuffle.
+  if (!window._quizShuffleCache[n]) {
+    window._quizShuffleCache[n] = data.map(q => {
+      const indexed = q.opts.map((opt, i) => ({ opt, orig: i }));
+      const sh = shuffle(indexed);
+      return {
+        q: q.q,
+        opts: sh.map(x => x.opt),
+        correct: sh.findIndex(x => x.orig === q.correct)
+      };
+    });
+  }
+  return window._quizShuffleCache[n];
+}
+
 function renderQuiz(n, data) {
   const c = document.getElementById(`quiz-${n}`); if (!c) return;
   c.innerHTML = '';
-  data.forEach((q, qi) => {
+  // Clear any stale saved answers that predate this shuffle (e.g. from a previous session)
+  const cached = window._quizShuffleCache[n];
+  if (!cached) {
+    const stale = window.state[`s${n}Answers`] || {};
+    if (Object.keys(stale).length > 0 && !window.state[`s${n}Checked`]) {
+      window.state[`s${n}Answers`] = {}; saveProgress();
+    }
+  }
+  const qData = _buildShuffledQuiz(n, data);
+  qData.forEach((q, qi) => {
     const qEl = document.createElement('div');
     qEl.className = 'quiz-question';
     qEl.innerHTML = `<div class="question-text"><span class="q-num">Q${qi+1}.</span>${q.q}</div>
@@ -116,14 +144,16 @@ function renderQuiz(n, data) {
 }
 
 function checkQuiz(n, data) {
+  // Use the same shuffled data that was rendered
+  const qData = (window._quizShuffleCache && window._quizShuffleCache[n]) || data;
   const ans = window.state[`s${n}Answers`] || {};
   const fb  = document.getElementById(`feedback-${n}`);
-  if (Object.keys(ans).length < data.length) {
-    if (fb) { fb.textContent = `⚠️ Please answer all ${data.length} questions first!`; fb.className = 'game-feedback partial'; }
+  if (Object.keys(ans).length < qData.length) {
+    if (fb) { fb.textContent = `⚠️ Please answer all ${qData.length} questions first!`; fb.className = 'game-feedback partial'; }
     return;
   }
   let correct = 0;
-  data.forEach((q, qi) => {
+  qData.forEach((q, qi) => {
     const sel = ans[qi];
     document.querySelectorAll(`[data-section="${n}"][data-qi="${qi}"]`).forEach((btn, oi) => {
       btn.disabled = true; btn.classList.remove('selected');
@@ -132,7 +162,7 @@ function checkQuiz(n, data) {
     });
     if (sel === q.correct) correct++;
   });
-  const total = data.length, pass = Math.ceil(total * 0.75);
+  const total = qData.length, pass = Math.ceil(total * 0.75);
   if (!fb) return;
   if (correct >= pass) {
     fb.textContent = `🏆 ${correct}/${total} correct! Excellent work! MashAllah!`;
@@ -144,11 +174,14 @@ function checkQuiz(n, data) {
     fb.textContent = `📚 ${correct}/${total} — almost! Re-read and try again.`;
     fb.className   = 'game-feedback partial';
     window.state[`s${n}Answers`] = {};
+    // Clear cache so next attempt gets a freshly shuffled order
+    if (window._quizShuffleCache) delete window._quizShuffleCache[n];
     setTimeout(() => renderQuiz(n, data), 2500);
   } else {
     fb.textContent = `❌ ${correct}/${total} — re-read the story carefully and try again.`;
     fb.className   = 'game-feedback error';
     window.state[`s${n}Answers`] = {};
+    if (window._quizShuffleCache) delete window._quizShuffleCache[n];
     setTimeout(() => renderQuiz(n, data), 2500);
   }
 }
