@@ -23,10 +23,30 @@ window.SURAH_CONFIG={
 };
 
 const S1_QUIZ=[
-  {q:'What does "al-mutaffifin" (المُطَفِّفِين) mean?',opts:['The generous merchants who give extra','Those who DEFRAUD by giving slightly less — from "tatfif" meaning to cheat with small amounts. They take a full measure but give a slightly short one in return.','Those who refuse to trade','Those who charge too much for goods'],correct:1},
-  {q:'What does the surah say the defrauders do when receiving vs giving (83:2-3)?',opts:['They give equally in both cases but ask for discounts','When they RECEIVE: take full measure (yastawfun). When they GIVE: give less (yukhsirun). The contrast is deliberate — they know exactly what a full measure looks like but choose to cheat when it costs them.','They always measure incorrectly due to poor equipment','They give more to friends and less to strangers'],correct:1},
-  {q:'What question does Allah ask about these defrauders in 83:4-5?',opts:['"Do they not know that Allah sees them?"','"A-la yadhunnu ula\'ika annahum mab\'uthun — li-yawmin \'adhim?" Do they not THINK that they will be RESURRECTED — for a Great Day?','Do they not fear the market inspectors?','Do they not remember the Day of Judgment?'],correct:1},
-  {q:'Why does Allah address marketplace cheating in a surah about the Day of Judgment?',opts:['Because economic crime was more important than spiritual crimes in the Quraysh era','Because cheating in weights IS a form of not believing in the Last Day — if you truly believed you would be weighed perfectly on That Day, you would be scrupulously fair in your OWN weighing of others now.','Because merchants needed specific economic guidance','Because the market was a form of worship in Islam'],correct:1},
+  {q:'What does "al-mutaffifin" (المُطَفِّفِين) mean?',
+   opts:['Those who refuse to trade or sell their goods',
+         'Those who charge unfairly high prices for their goods',
+         'Those who defraud by giving slightly less than the full measure',
+         'The generous merchants who always give a little extra'],
+   correct:2},
+  {q:'What do the defrauders do when receiving vs giving (83:2-3)?',
+   opts:['They always measure incorrectly due to poor equipment',
+         'Receive: take full measure. Give: give less. Deliberate cheating.',
+         'They give more to friends and give less to strangers',
+         'They always give equally but demand discounts when buying'],
+   correct:1},
+  {q:'What question does Allah ask about these defrauders in 83:4-5?',
+   opts:['"Do they not know that Allah watches all of them?"',
+         '"Do they not fear the market inspectors of their city?"',
+         '"Do they not THINK they will be RESURRECTED for a Great Day?"',
+         '"Do they not remember the promise of the Day of Judgment?"'],
+   correct:2},
+  {q:'Why does Allah link marketplace cheating to the Day of Judgment?',
+   opts:['Because economic crimes were more common than spiritual sins',
+         'Cheating in weights reveals disbelief in being perfectly weighed',
+         'Because merchants needed specific and detailed economic guidance',
+         'Because the marketplace was considered a form of worship'],
+   correct:1},
 ];
 
 const S2_ITEMS=[{id:'s1',text:'📕 Sijjin\nسِجِّين',zone:'z1'},{id:'s2',text:'⬇️ Lowest of\nthe Low',zone:'z2'},{id:'s3',text:'📜 Kitab\nMarqum',zone:'z3'}];
