@@ -1,0 +1,14 @@
+/* Surah At-Tariq — scene overrides */
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);}
+.container{max-width:640px;margin:0 auto;padding:8px 12px 40px;}
+#intro-screen{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 16px;background:radial-gradient(ellipse at center,#101828 0%,#040810 70%);}
+.ibn-ameen-panel{display:flex;align-items:flex-start;gap:12px;background:var(--bg2);border:var(--border-w) solid var(--primary);padding:14px;margin-bottom:14px;}
+.scene-container{background:#000;border-bottom:var(--border-w) solid var(--primary);overflow:hidden;}
+.scene-header{background:var(--bg2);padding:6px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:var(--border-w-sm) solid var(--primary);}
+.scene-title{font-size:8px;color:var(--primary-lit);}
+canvas{display:block;width:100%;image-rendering:pixelated;}
+#world-builder{margin-bottom:18px;}
+.back-btn-bottom{text-align:center;padding:12px 18px 18px;}
+#all-complete{display:none;text-align:center;padding:20px;border:var(--border-w) solid var(--accent);background:var(--bg2);margin-top:16px;}
+.section-panel{display:none;}.section-panel.active{display:block;}
+@media(max-width:480px){.options-grid{grid-template-columns:1fr;}.drag-game-container{grid-template-columns:1fr;}}

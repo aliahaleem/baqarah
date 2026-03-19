@@ -1,0 +1,11 @@
+/* Surah At-Tariq (86) — deep navy / silver / pulsing white star */
+html[data-theme="stars"] {
+  --bg:#101828;--bg2:#182438;--surface:#243050;--card-bg:#243050;
+  --primary:#3858a0;--primary-lit:#5878c0;--accent:#d8e8ff;--accent2:#a8c8f0;
+  --text:#ffffff;--text-dim:#b8d0f8;--tile-locked:#0a1020;--tile-unlocked:#101828;--tile-completed:#182438;
+}
+:root {
+  --bg:#040810;--bg2:#080c1a;--surface:#0c1428;--card-bg:#0c1428;
+  --primary:#102060;--primary-lit:#203080;--accent:#90b8e0;--accent2:#607090;
+  --text:#c8e0ff;--text-dim:#304060;--tile-locked:#04060c;--tile-unlocked:#080a12;--tile-completed:#0c1020;
+}
