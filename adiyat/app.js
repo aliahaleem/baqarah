@@ -48,24 +48,7 @@ const WBW_DATA = [
   ]},
 ];
 
-
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'ضَبْحًا', zone:'wz1'},
-  {id:'w2', text:'وَالْعَادِيَاتِ', zone:'wz2'},
-  {id:'w3', text:'لَكَنُودٌ', zone:'wz3'},
-  {id:'w4', text:'لِرَبِّهِ', zone:'wz4'},
-  {id:'w5', text:'الْإِنسَانَ', zone:'wz5'},
-  {id:'w6', text:'الْقُبُورِ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'panting'},
-  {id:'wz2', desc:'by the charging steeds'},
-  {id:'wz3', desc:'truly ungrateful'},
-  {id:'wz4', desc:'to his Lord'},
-  {id:'wz5', desc:'mankind'},
-  {id:'wz6', desc:'the graves'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_QUIZ = [
   {q:'What are "al-adiyat" in 100:1?',
@@ -119,9 +102,6 @@ const S4_QUIZ = [
    opts:['What is in the mountains','What is in the sea','What is hidden in the chests (hearts)','What is written in the books'],
    correct:2},
 ];
-
-
-
 
 function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
 function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}

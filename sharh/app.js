@@ -45,24 +45,7 @@ const WBW_DATA = [
   ]},
 ];
 
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'صَدْرَكَ', zone:'wz1'},
-  {id:'w2', text:'لَكَ', zone:'wz2'},
-  {id:'w3', text:'نَشْرَحْ', zone:'wz3'},
-  {id:'w4', text:'أَلَمْ', zone:'wz4'},
-  {id:'w5', text:'يُسْرًا', zone:'wz5'},
-  {id:'w6', text:'الْعُسْرِ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'your chest/heart'},
-  {id:'wz2', desc:'for you'},
-  {id:'wz3', desc:'We expanded'},
-  {id:'wz4', desc:'did We not'},
-  {id:'wz5', desc:'ease'},
-  {id:'wz6', desc:'hardship'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
-
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS = [
   {id:'a1', text:'Expanded your\nchest for you', zone:'z1'},
@@ -104,9 +87,6 @@ const S3_QUIZ = [
    opts:['Hardship eventually ends — ease always follows','Pray longer to avoid difficulty','Give more charity when things are hard','Study the Quran every day'],
    correct:0},
 ];
-
-
-
 
 function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
 function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}

@@ -68,24 +68,7 @@ const WBW_DATA = [
   ]},
 ];
 
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'الْأَعْمَىٰ', zone:'wz1'},
-  {id:'w2', text:'جَاءَهُ', zone:'wz2'},
-  {id:'w3', text:'أَن', zone:'wz3'},
-  {id:'w4', text:'وَتَوَلَّىٰ', zone:'wz4'},
-  {id:'w5', text:'عَبَسَ', zone:'wz5'},
-  {id:'w6', text:'طَعَامِهِ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'the blind man'},
-  {id:'wz2', desc:'came to him'},
-  {id:'wz3', desc:'because'},
-  {id:'wz4', desc:'and turned away'},
-  {id:'wz5', desc:'he frowned'},
-  {id:'wz6', desc:'his food'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
-
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS = [
   { id: 'i1', text: '👁️ Abdullah ibn\nUmm Maktum',  zone: 'z1' },
@@ -214,8 +197,6 @@ const S6_QUIZ = [
 // =============================================
 //  SECTION WRAPPERS
 // =============================================
-
-
 
 function renderSection2Game() { renderDragDrop(2, S1_ITEMS, S1_ZONES); }
 function checkSection2()      { checkDragDrop(2, S1_ZONES); }

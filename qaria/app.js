@@ -55,24 +55,7 @@ const WBW_DATA = [
   ]},
 ];
 
-
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'الْقَارِعَةُ', zone:'wz1'},
-  {id:'w2', text:'وَمَا أَدْرَاكَ', zone:'wz2'},
-  {id:'w3', text:'الْمَبْثُوثِ', zone:'wz3'},
-  {id:'w4', text:'كَالْفَرَاشِ', zone:'wz4'},
-  {id:'w5', text:'النَّاسُ', zone:'wz5'},
-  {id:'w6', text:'يَكُونُ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'the Striking Hour'},
-  {id:'wz2', desc:'and what will make you know'},
-  {id:'wz3', desc:'scattered'},
-  {id:'wz4', desc:'like moths'},
-  {id:'wz5', desc:'the people'},
-  {id:'wz6', desc:'will be'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_QUIZ = [
   {q:'What does "Al-Qaria" mean?',
@@ -128,9 +111,6 @@ const S4_QUIZ = [
    opts:['Focus only on avoiding major sins','Fill your scales with good deeds now — they will be weighed!','Worry only about the last days before death','Trust that all Muslims will have heavy scales'],
    correct:1},
 ];
-
-
-
 
 function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
 function renderSection3Game(){renderStoryOrder(3,S2_EVENTS_CORRECT);}function checkSection3(){checkStoryOrder(3,S2_EVENTS_CORRECT);}

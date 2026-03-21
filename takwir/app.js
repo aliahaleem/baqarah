@@ -46,24 +46,7 @@ const WBW_DATA = [
   ]},
 ];
 
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'سُيِّرَتْ', zone:'wz1'},
-  {id:'w2', text:'الْجِبَالُ', zone:'wz2'},
-  {id:'w3', text:'انكَدَرَتْ', zone:'wz3'},
-  {id:'w4', text:'النُّجُومُ', zone:'wz4'},
-  {id:'w5', text:'كُوِّرَتْ', zone:'wz5'},
-  {id:'w6', text:'الشَّمْسُ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'are moved away'},
-  {id:'wz2', desc:'the mountains'},
-  {id:'wz3', desc:'fall/lose light'},
-  {id:'wz4', desc:'the stars'},
-  {id:'wz5', desc:'is wound round'},
-  {id:'wz6', desc:'the sun'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
-
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS=[
   {id:'sg1',text:'☀️ Al-Shams\nKuwwirat',zone:'z1'},
@@ -201,9 +184,6 @@ const S6_QUIZ=[
          'Human choice is ultimately an illusion with no real effect'],
    correct:1},
 ];
-
-
-
 
 function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}
 function checkSection2(){checkDragDrop(2,S1_ZONES);}

@@ -48,24 +48,7 @@ const WBW_DATA = [
   ]},
 ];
 
-
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'لُّمَزَةٍ', zone:'wz1'},
-  {id:'w2', text:'هُمَزَةٍ', zone:'wz2'},
-  {id:'w3', text:'لِّكُلِّ', zone:'wz3'},
-  {id:'w4', text:'وَعَدَّدَهُ', zone:'wz4'},
-  {id:'w5', text:'مَالًا', zone:'wz5'},
-  {id:'w6', text:'جَمَعَ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'backbiter'},
-  {id:'wz2', desc:'slanderer'},
-  {id:'wz3', desc:'to every'},
-  {id:'wz4', desc:'and counted it'},
-  {id:'wz5', desc:'wealth'},
-  {id:'wz6', desc:'who amassed'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_QUIZ = [
   {q:'What does "waylun" at the start of 104:1 express?',
@@ -109,9 +92,6 @@ const S3_QUIZ = [
    opts:['Wealth should be invested wisely','Wealth is a test — it should not make us forget death','Rich Muslims are blessed with extra time','Wealth helps us worship Allah better'],
    correct:1},
 ];
-
-
-
 
 function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
 function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}

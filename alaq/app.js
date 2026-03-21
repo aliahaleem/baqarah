@@ -53,24 +53,7 @@ const WBW_DATA = [
   ]},
 ];
 
-
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'خَلَقَ', zone:'wz1'},
-  {id:'w2', text:'الَّذِي', zone:'wz2'},
-  {id:'w3', text:'رَبِّكَ', zone:'wz3'},
-  {id:'w4', text:'بِاسْمِ', zone:'wz4'},
-  {id:'w5', text:'اقْرَأْ', zone:'wz5'},
-  {id:'w6', text:'عَلَقٍ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'created'},
-  {id:'wz2', desc:'who'},
-  {id:'wz3', desc:'your Lord'},
-  {id:'wz4', desc:'in the name of'},
-  {id:'wz5', desc:'Read! / Recite!'},
-  {id:'wz6', desc:'a clinging clot'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_QUIZ = [
   {q:'What was the first word revealed to Prophet Muhammad ﷺ?',
@@ -139,9 +122,6 @@ const S5_QUIZ = [
    opts:['Knowledge leads to arrogance and pride','Read and learn in Allah\'s name — but stay humble and close to Allah','Only scholars need to read','Knowledge is only for the wealthy'],
    correct:1},
 ];
-
-
-
 
 function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
 function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}

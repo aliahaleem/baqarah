@@ -61,6 +61,58 @@ window.AW = {
   'dini'       : {ar:'دِينِ',           tr:'dīni',           en:'my religion',                      freq:5},
   'din-allah'  : {ar:'دِينِ اللَّهِ',  tr:'dīn Allāh',      en:'religion of Allah',                freq:3},
 
+  /* ── Common particles / grammar ── */
+  'kalla'      : {ar:'كَلَّا',            tr:'kallā',          en:'No! / Nay!',                       freq:33},
+  'thumma'     : {ar:'ثُمَّ',             tr:'thumma',         en:'then',                             freq:340},
+  'illa'       : {ar:'إِلَّا',            tr:'illā',           en:'except',                           freq:663},
+  'alam'       : {ar:'أَلَمْ',            tr:'alam',           en:'have We not / did not',            freq:40},
+  'ila'        : {ar:'إِلَىٰ',            tr:'ilā',            en:'to / towards',                     freq:742},
+  'bihi'       : {ar:'بِهِ',             tr:'bihi',           en:'with it / thereby',                freq:190},
+  'fiiha'      : {ar:'فِيهَا',           tr:'fīhā',           en:'therein / in it',                  freq:183},
+  'hum'        : {ar:'هُمْ',             tr:'hum',            en:'they',                             freq:850},
+  'man'        : {ar:'مَنْ',             tr:'man',            en:'who / whoever',                    freq:350},
+  'kulla'      : {ar:'كُلَّ',            tr:'kulla',          en:'every / all',                      freq:330},
+  'dhalika'    : {ar:'ذَٰلِكَ',          tr:'dhālika',        en:'that (is)',                        freq:382},
+  'ya'         : {ar:'يَا',              tr:'yā',             en:'O!',                               freq:293},
+  'kaana'      : {ar:'كَانَ',            tr:'kāna',           en:'was / is',                         freq:1358},
+  'kaanat'     : {ar:'كَانَتْ',          tr:'kānat',          en:'was (fem.)',                       freq:120},
+  'kaanu'      : {ar:'كَانُوا',          tr:'kānū',           en:'they were',                        freq:226},
+  'qala'       : {ar:'وَقَالَ',          tr:'wa-qāla',        en:'and he said',                      freq:528},
+  'shay'       : {ar:'شَيْءٍ',           tr:'shayʾ',          en:'thing',                            freq:283},
+
+  /* ── Nature / Creation ── */
+  'al-ard'     : {ar:'الْأَرْضَ',        tr:'al-arḍ',         en:'the earth',                        freq:461},
+  'al-ard-i'   : {ar:'الْأَرْضِ',        tr:'al-arḍ',         en:'(of) the earth',                   freq:461},
+  'al-sama'    : {ar:'السَّمَاءُ',       tr:'al-samāʾ',       en:'the sky / heaven',                 freq:310},
+  'al-samawat' : {ar:'السَّمَاوَاتِ',    tr:'al-samāwāt',     en:'the heavens',                      freq:190},
+  'wal-ard'    : {ar:'وَالْأَرْضِ',      tr:'wal-arḍ',        en:'and the earth',                    freq:95},
+  'al-jibal'   : {ar:'الْجِبَالَ',       tr:'al-jibāl',       en:'the mountains',                    freq:33},
+  'al-jibal-u' : {ar:'الْجِبَالُ',       tr:'al-jibāl',       en:'the mountains',                    freq:33},
+  'al-layl'    : {ar:'اللَّيْلَ',        tr:'al-layl',        en:'the night',                        freq:73},
+  'al-nahar'   : {ar:'النَّهَارَ',       tr:'al-nahār',       en:'the daytime',                      freq:57},
+  'maa'        : {ar:'مَاءً',            tr:'māʾ',            en:'water',                            freq:63},
+  'wa-ja-alna' : {ar:'وَجَعَلْنَا',     tr:'wa-jaʿalnā',     en:'And We made',                      freq:30},
+  'wa-anzalna' : {ar:'وَأَنزَلْنَا',    tr:'wa-anzalnā',     en:'And We sent down',                 freq:20},
+
+  /* ── Time / Judgement ── */
+  'yawma'      : {ar:'يَوْمَ',           tr:'yawma',          en:'(on) the Day',                     freq:365},
+  'al-yawm'    : {ar:'الْيَوْمُ',        tr:'al-yawm',        en:'the Day',                          freq:365},
+  'al-fasl'    : {ar:'الْفَصْلِ',        tr:'al-faṣl',        en:'of Judgement / Decision',           freq:5},
+  'al-sur'     : {ar:'الصُّورِ',         tr:'al-ṣūr',         en:'the Horn / Trumpet',               freq:10},
+  'jahannam'   : {ar:'جَهَنَّمَ',        tr:'jahannam',       en:'Hell / Jahannam',                  freq:77},
+  'adhaab'     : {ar:'عَذَابًا',         tr:'ʿadhāb',         en:'punishment / torment',             freq:373},
+  'jazaa'      : {ar:'جَزَاءً',          tr:'jazāʾ',          en:'recompense / reward',              freq:42},
+  'hisaab'     : {ar:'حِسَابًا',         tr:'ḥisāb',          en:'account / reckoning',              freq:32},
+  'al-haqq'    : {ar:'الْحَقُّ',         tr:'al-ḥaqq',        en:'the Truth',                        freq:287},
+
+  /* ── Beings ── */
+  'al-malaika' : {ar:'الْمَلَائِكَةُ',  tr:'al-malāʾika',   en:'the angels',                       freq:88},
+  'al-ruh'     : {ar:'الرُّوحُ',         tr:'al-rūḥ',         en:'the Spirit (Jibreel)',             freq:21},
+  'al-rahman'  : {ar:'الرَّحْمَٰنِ',    tr:'al-Raḥmān',      en:'the Most Merciful',                freq:57},
+  'al-rahman-u': {ar:'الرَّحْمَٰنُ',    tr:'al-Raḥmān',      en:'the Most Merciful',                freq:57},
+  'al-kaafir'  : {ar:'الْكَافِرُ',       tr:'al-kāfir',       en:'the disbeliever',                  freq:525},
+  'al-muttaqin': {ar:'لِلْمُتَّقِينَ',  tr:'lil-muttaqīn',   en:'for the righteous',                freq:26},
+
   /* ── Evil / Protection ── */
   'sharr'      : {ar:'شَرِّ',           tr:'sharr',          en:'evil (of)',                         freq:30},
   'a-udhu'     : {ar:'أَعُوذُ',         tr:'aʿūdhu',         en:'I seek refuge',                    freq:3},
@@ -248,19 +300,209 @@ window.WBWScene.prototype.start = function() {
 };
 
 /**
- * Default renderSection1Game / checkSection1 for WBW levels.
- * Call from app.js: window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
- * This wires up the standard render + check functions so each app.js doesn't repeat them.
+ * Wire up WBW Level 1 with chunked rendering (flip cards + matching every N verses).
+ *
+ * Usage in app.js:
+ *   window.setupWBWLevel(WBW_DATA, 10);
+ *
+ * No need for S1_MATCH_ITEMS / S1_MATCH_ZONES — matches auto-generate from WBW_DATA.
+ *
+ * @param {Array}  wbwData    — [{label, words}] for every verse
+ * @param {number} [chunk]    — verses per chunk (default 10)
  */
-window.setupWBWLevel = function(wbwData, matchItems, matchZones) {
+window.setupWBWLevel = function(wbwData, chunk) {
+  var sz = (typeof chunk === 'number') ? chunk : 10;
   window.renderSection1Game = function() {
-    if (window.renderWBW) window.renderWBW('wbw-display', wbwData, 'wbw-reveal-btn');
-    if (matchItems && matchZones) renderDragDrop(1, matchItems, matchZones);
+    window.renderWBWChunked('wbw-display', wbwData, sz);
   };
   window.checkSection1 = function() {
-    if (matchItems && matchZones) checkDragDrop(1, matchZones);
-    else completeSection(1);
+    window._checkAllWBWChunks(1);
   };
+};
+
+/* ── Chunked WBW Renderer ─────────────────────────────────────── */
+
+window._wbwChunkStatus = {};
+
+/**
+ * Render WBW flip cards in chunks of `chunkSize`, each followed by a tap-to-match quiz.
+ */
+window.renderWBWChunked = function(containerId, wbwData, chunkSize) {
+  var el = document.getElementById(containerId);
+  if (!el) return;
+  chunkSize = chunkSize || 10;
+  window._wbwChunkStatus = {};
+
+  var chunks = [];
+  for (var i = 0; i < wbwData.length; i += chunkSize) {
+    chunks.push(wbwData.slice(i, Math.min(i + chunkSize, wbwData.length)));
+  }
+
+  var html = '';
+  chunks.forEach(function(chunk, ci) {
+    var first = chunk[0].label, last = chunk[chunk.length - 1].label;
+    var fv = first.match(/(\d+:\d+\w?)/), lv = last.match(/(\d+:\d+\w?)/);
+    var range = (fv && lv) ? fv[1] + ' – ' + lv[1] : 'Part ' + (ci + 1);
+
+    html += '<div class="wbw-chunk" id="wbw-chunk-' + ci + '">';
+    html += '<div class="wbw-chunk-header">📖 ' + range + '</div>';
+
+    chunk.forEach(function(g, gi) {
+      html += window.wbwGroup(g.label, g.words, ci === 0 && gi === 0);
+    });
+
+    var pairs = window._extractMatchPairs(chunk, 8);
+    if (pairs.length >= 3) {
+      html += window._renderMatchWidget(ci, pairs, range);
+    }
+    window._wbwChunkStatus[ci] = false;
+    html += '</div>';
+  });
+
+  el.innerHTML = html;
+
+  chunks.forEach(function(chunk, ci) {
+    window._initMatchWidget(ci);
+  });
+};
+
+/**
+ * Extract up to `count` unique {ar, en} pairs from a chunk for the matching quiz.
+ */
+window._extractMatchPairs = function(chunk, count) {
+  var seen = {}, pairs = [];
+  for (var g = 0; g < chunk.length; g++) {
+    var words = chunk[g].words;
+    for (var w = 0; w < words.length; w++) {
+      var item = words[w];
+      var word = (typeof item === 'string') ? (window.AW[item] || null) : item;
+      if (!word || !word.ar || !word.en) continue;
+      if (seen[word.ar]) continue;
+      if (word.en.length > 30) continue;
+      seen[word.ar] = true;
+      pairs.push({ar: word.ar, en: word.en});
+      if (pairs.length >= count) return pairs;
+    }
+  }
+  return pairs;
+};
+
+/**
+ * Build HTML for a tap-to-match widget.
+ */
+window._renderMatchWidget = function(chunkIdx, pairs, rangeLabel) {
+  var shuffledEn = pairs.slice();
+  for (var i = shuffledEn.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = shuffledEn[i]; shuffledEn[i] = shuffledEn[j]; shuffledEn[j] = tmp;
+  }
+
+  var html = '<div class="wbw-match" id="wbw-match-' + chunkIdx + '">';
+  html += '<div class="wbw-match-title">🎮 Match Arabic to English (' + rangeLabel + ')</div>';
+  html += '<div class="wbw-match-grid">';
+
+  html += '<div class="wbw-match-col">';
+  for (var a = 0; a < pairs.length; a++) {
+    html += '<button class="wbw-match-btn ar-btn" data-chunk="' + chunkIdx + '" data-side="ar" data-idx="' + a + '">' + pairs[a].ar + '</button>';
+  }
+  html += '</div>';
+
+  html += '<div class="wbw-match-col">';
+  for (var e = 0; e < shuffledEn.length; e++) {
+    var origIdx = pairs.indexOf(shuffledEn[e]);
+    html += '<button class="wbw-match-btn" data-chunk="' + chunkIdx + '" data-side="en" data-idx="' + origIdx + '">' + shuffledEn[e].en + '</button>';
+  }
+  html += '</div>';
+
+  html += '</div>';
+  html += '<div class="wbw-match-feedback" id="wbw-mfb-' + chunkIdx + '"></div>';
+  html += '</div>';
+  return html;
+};
+
+/**
+ * Attach click handlers for a tap-to-match widget.
+ */
+window._initMatchWidget = function(chunkIdx) {
+  var container = document.getElementById('wbw-match-' + chunkIdx);
+  if (!container) return;
+  var selectedAr = null;
+
+  container.addEventListener('click', function(ev) {
+    var btn = ev.target.closest('.wbw-match-btn');
+    if (!btn || btn.classList.contains('matched')) return;
+
+    var side = btn.dataset.side, idx = parseInt(btn.dataset.idx, 10);
+
+    if (side === 'ar') {
+      container.querySelectorAll('.ar-btn').forEach(function(b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      selectedAr = idx;
+    } else if (side === 'en' && selectedAr !== null) {
+      var arBtn = container.querySelector('.ar-btn[data-idx="' + selectedAr + '"]');
+      if (idx === selectedAr) {
+        btn.classList.add('matched');
+        if (arBtn) arBtn.classList.add('matched');
+        arBtn && arBtn.classList.remove('selected');
+        selectedAr = null;
+        var total = container.querySelectorAll('.ar-btn').length;
+        var done = container.querySelectorAll('.ar-btn.matched').length;
+        var fb = document.getElementById('wbw-mfb-' + chunkIdx);
+        if (done === total) {
+          if (fb) { fb.textContent = '🏆 All matched! MashAllah!'; fb.className = 'wbw-match-feedback success'; }
+          window._wbwChunkStatus[chunkIdx] = true;
+          window._checkAllWBWChunksDone();
+        } else {
+          if (fb) { fb.textContent = done + '/' + total + ' matched'; fb.className = 'wbw-match-feedback partial'; }
+        }
+      } else {
+        btn.classList.add('wrong');
+        if (arBtn) arBtn.classList.add('wrong');
+        setTimeout(function() { btn.classList.remove('wrong'); if (arBtn) arBtn.classList.remove('wrong', 'selected'); }, 500);
+        selectedAr = null;
+      }
+    }
+  });
+};
+
+/**
+ * Check if all chunks are matched — if so, enable the Claim button.
+ */
+window._checkAllWBWChunksDone = function() {
+  var all = true;
+  for (var k in window._wbwChunkStatus) {
+    if (!window._wbwChunkStatus[k]) { all = false; break; }
+  }
+  if (all) {
+    window.state.s1Checked = true;
+    if (typeof saveProgress === 'function') saveProgress();
+    var btn = document.getElementById('complete-1-btn');
+    if (btn) btn.style.display = 'inline-block';
+  }
+};
+
+/**
+ * Called by checkSection1 — shows overall feedback.
+ */
+window._checkAllWBWChunks = function(sectionNum) {
+  var total = 0, done = 0;
+  for (var k in window._wbwChunkStatus) {
+    total++;
+    if (window._wbwChunkStatus[k]) done++;
+  }
+  var fb = document.getElementById('feedback-' + sectionNum);
+  if (!fb) return;
+  if (done === total) {
+    fb.textContent = '🏆 All sections matched! MashAllah!';
+    fb.className = 'game-feedback success';
+    window.state['s' + sectionNum + 'Checked'] = true;
+    if (typeof saveProgress === 'function') saveProgress();
+    var btn = document.getElementById('complete-' + sectionNum + '-btn');
+    if (btn) btn.style.display = 'inline-block';
+  } else {
+    fb.textContent = done + ' of ' + total + ' sections complete — keep matching!';
+    fb.className = 'game-feedback';
+  }
 };
 
 /* ── HELPERS ───────────────────────────────────────────────────── */

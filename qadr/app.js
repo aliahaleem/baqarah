@@ -53,24 +53,7 @@ const WBW_DATA = [
   ]},
 ];
 
-
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'الْقَدْرِ', zone:'wz1'},
-  {id:'w2', text:'لَيْلَةِ', zone:'wz2'},
-  {id:'w3', text:'فِي', zone:'wz3'},
-  {id:'w4', text:'أَنزَلْنَاهُ', zone:'wz4'},
-  {id:'w5', text:'شَهْرٍ', zone:'wz5'},
-  {id:'w6', text:'أَلْفِ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'Decree / Power'},
-  {id:'wz2', desc:'the Night of'},
-  {id:'wz3', desc:'in'},
-  {id:'wz4', desc:'We sent it down'},
-  {id:'wz5', desc:'months'},
-  {id:'wz6', desc:'a thousand'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_QUIZ = [
   {q:'What was sent down on Laylat al-Qadr? (97:1)',
@@ -114,9 +97,6 @@ const S3_QUIZ = [
    opts:['Until midnight','Until the Fajr prayer','Until sunrise','Until the Isha prayer'],
    correct:1},
 ];
-
-
-
 
 function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
 function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}

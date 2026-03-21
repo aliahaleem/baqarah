@@ -56,24 +56,7 @@ const WBW_DATA = [
   ]},
 ];
 
-
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'زِلْزَالَهَا', zone:'wz1'},
-  {id:'w2', text:'الْأَرْضُ', zone:'wz2'},
-  {id:'w3', text:'أَثْقَالَهَا', zone:'wz3'},
-  {id:'w4', text:'وَأَخْرَجَتِ', zone:'wz4'},
-  {id:'w5', text:'أَخْبَارَهَا', zone:'wz5'},
-  {id:'w6', text:'تُحَدِّثُ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'its [ultimate] earthquake'},
-  {id:'wz2', desc:'the earth'},
-  {id:'wz3', desc:'its burdens'},
-  {id:'wz4', desc:'and brings forth'},
-  {id:'wz5', desc:'its stories/news'},
-  {id:'wz6', desc:'it will report'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_QUIZ = [
   {q:'What is the Arabic word "zalzalah" translated as?',
@@ -114,9 +97,6 @@ const S3_QUIZ = [
    opts:['Only big good deeds matter','Every single deed — even the smallest — is recorded and will be seen','Pray five times and you will be fine','Focus only on Ramadan worship'],
    correct:1},
 ];
-
-
-
 
 function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
 function renderSection3Game(){renderStoryOrder(3,S2_EVENTS_CORRECT);}function checkSection3(){checkStoryOrder(3,S2_EVENTS_CORRECT);}

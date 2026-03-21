@@ -57,24 +57,7 @@ const WBW_DATA = [
   ]},
 ];
 
-
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'تَلَاهَا', zone:'wz1'},
-  {id:'w2', text:'وَالْقَمَرِ', zone:'wz2'},
-  {id:'w3', text:'وَضُحَاهَا', zone:'wz3'},
-  {id:'w4', text:'وَالشَّمْسِ', zone:'wz4'},
-  {id:'w5', text:'وَتَقْوَاهَا', zone:'wz5'},
-  {id:'w6', text:'فُجُورَهَا', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'follows it'},
-  {id:'wz2', desc:'and the moon'},
-  {id:'wz3', desc:'and its brightness'},
-  {id:'wz4', desc:'by the sun'},
-  {id:'wz5', desc:'and its righteousness'},
-  {id:'wz6', desc:'its wickedness'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_QUIZ = [
   {q:'How many oaths does Allah take in Surah Ash-Shams?',
@@ -135,9 +118,6 @@ const S4_EVENTS_CORRECT = [
   {id:'t6', text:'😔 Allah has no fear of the consequence — arrogance against Him always ends in ruin (91:15)'},
 ];
 window._S4_EVENTS = S4_EVENTS_CORRECT;
-
-
-
 
 function renderSection2Game(){renderQuiz(2,S1_QUIZ);}
 function checkSection2(){checkQuiz(2,S1_QUIZ);}

@@ -46,24 +46,7 @@ const WBW_DATA = [
   ]},
 ];
 
-
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'لِّلْمُطَفِّفِينَ', zone:'wz1'},
-  {id:'w2', text:'سِجِّينٍ', zone:'wz2'},
-  {id:'w3', text:'لَفِي', zone:'wz3'},
-  {id:'w4', text:'الْفُجَّارِ', zone:'wz4'},
-  {id:'w5', text:'كِتَابَ', zone:'wz5'},
-  {id:'w6', text:'كَلَّا', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'to those who give less'},
-  {id:'wz2', desc:'Sijjin (prison-record)'},
-  {id:'wz3', desc:'is in'},
-  {id:'wz4', desc:'the wicked'},
-  {id:'wz5', desc:'the record of'},
-  {id:'wz6', desc:'No! Indeed'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_QUIZ=[
   {q:'What does "al-mutaffifin" (المُطَفِّفِين) mean?',
@@ -178,9 +161,6 @@ const S6_QUIZ=[
          'It has no modern relevance since we now use digital scales'],
    correct:2},
 ];
-
-
-
 
 function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
 function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}

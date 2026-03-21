@@ -39,24 +39,7 @@ const WBW_DATA = [
   ]},
 ];
 
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'الثَّاقِبُ', zone:'wz1'},
-  {id:'w2', text:'النَّجْمُ', zone:'wz2'},
-  {id:'w3', text:'الطَّارِقِ', zone:'wz3'},
-  {id:'w4', text:'وَالسَّمَاءِ', zone:'wz4'},
-  {id:'w5', text:'دَافِقٍ', zone:'wz5'},
-  {id:'w6', text:'مَّاءٍ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'the piercing'},
-  {id:'wz2', desc:'the star'},
-  {id:'wz3', desc:'the night-visitor'},
-  {id:'wz4', desc:'by the sky'},
-  {id:'wz5', desc:'ejected / gushing'},
-  {id:'wz6', desc:'water/fluid'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
-
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS=[{id:'i1',text:'🌙 Al-Tariq\nNight Comer',zone:'z1'},{id:'i2',text:'💫 Al-Najm\nAl-Thaqib',zone:'z2'},{id:'i3',text:'👁️ Hafidh\nGuardian',zone:'z3'}];
 const S1_ZONES=[{id:'z1',desc:'"Wa al-sama\' wa al-Tariq" (86:1) — By the sky and the night comer. "Tariq" from "tariqa" — to knock on a door at night, to come by night. The "tariq" comes unexpectedly in darkness. Applied to the piercing star — it appears in the night sky and knocks on the eye with its brilliance.'},{id:'z2',desc:'"Al-najm al-thaqib" (86:3) — The PIERCING star. "Thaqib" from "thaqaba" — to pierce, drill through, penetrate. A star so brilliant it pierces through the darkness of night. Modern understanding: this may refer to a pulsar — a neutron star that pulses brilliantly. 1400 years before pulsars were discovered!'},{id:'z3',desc:'"In kullu nafsin lamma alayha hafidh" (86:4) — There is no soul except that it has over it a GUARDIAN. "Hafidh" — a protector, preserver, guardian. Every human being has a guardian angel watching over them — their deeds recorded, their life preserved by Allah\'s command.'}];
@@ -195,9 +178,6 @@ const S6_QUIZ=[
          'The believer pierces through a heedless world with the light of faith'],
    correct:3},
 ];
-
-
-
 
 function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
 function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}

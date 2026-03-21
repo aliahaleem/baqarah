@@ -59,48 +59,273 @@ window.SURAH_CONFIG = {
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1-2 — عَمَّ يَتَسَاءَلُونَ · عَنِ النَّبَإِ الْعَظِيمِ', words:[
+  {label:'78:1 — عَمَّ يَتَسَاءَلُونَ', words:[
+    {ar:'يَتَسَاءَلُونَ', tr:'yatasāʾalūn', en:'they are asking one another', freq:3},
+    {ar:'عَمَّ', tr:'ʿamma', en:'about what', freq:2},
+  ]},
+  {label:'78:2 — عَنِ النَّبَإِ الْعَظِيمِ', words:[
     {ar:'الْعَظِيمِ', tr:'al-ʿaẓīm', en:'the great', freq:79},
     {ar:'النَّبَإِ', tr:'al-nabaʾ', en:'the news', freq:6},
     {ar:'عَنِ', tr:'ʿan', en:'about', freq:330},
-    {ar:'يَتَسَاءَلُونَ', tr:'yatasāʾalūn', en:'they are asking', freq:3},
-    {ar:'عَمَّ', tr:'ʿamma', en:'about what', freq:2},
   ]},
-  {label:'Verse 6-7 — أَلَمْ نَجْعَلِ الْأَرْضَ مِهَادًا · وَالْجِبَالَ أَوْتَادًا', words:[
-    {ar:'أَوْتَادًا', tr:'awtādan', en:'as pegs/stakes', freq:3},
-    {ar:'وَالْجِبَالَ', tr:'wal-jibāl', en:'and the mountains', freq:33},
+  {label:'78:3 — الَّذِي هُمْ فِيهِ مُخْتَلِفُونَ', words:[
+    {ar:'مُخْتَلِفُونَ', tr:'mukhtalifūn', en:'in disagreement', freq:7},
+    'fiiha',
+    'hum',
+    'alladhi',
+  ]},
+  {label:'78:4 — كَلَّا سَيَعْلَمُونَ', words:[
+    {ar:'سَيَعْلَمُونَ', tr:'sa-yaʿlamūn', en:'they will come to know', freq:12},
+    'kalla',
+  ]},
+  {label:'78:5 — ثُمَّ كَلَّا سَيَعْلَمُونَ', words:[
+    {ar:'سَيَعْلَمُونَ', tr:'sa-yaʿlamūn', en:'they will come to know', freq:12},
+    'kalla',
+    'thumma',
+  ]},
+  {label:'78:6 — أَلَمْ نَجْعَلِ الْأَرْضَ مِهَادًا', words:[
     {ar:'مِهَادًا', tr:'mihādan', en:'a resting place', freq:2},
-    {ar:'الْأَرْضَ', tr:'al-arḍ', en:'the earth', freq:461},
-    {ar:'نَجْعَلِ', tr:'najʿal', en:'did We not make', freq:30},
-    {ar:'أَلَمْ', tr:'alam', en:'did We not', freq:40},
+    'al-ard',
+    {ar:'نَجْعَلِ', tr:'najʿal', en:'We made', freq:30},
+    'alam',
   ]},
-  {label:'Verse 31-32 — إِنَّ لِلْمُتَّقِينَ مَفَازًا · حَدَائِقَ وَأَعْنَابًا', words:[
-    {ar:'وَأَعْنَابًا', tr:'wa-aʿnāban', en:'and grapes', freq:11},
-    {ar:'حَدَائِقَ', tr:'ḥadāʾiq', en:'gardens', freq:3},
-    {ar:'مَفَازًا', tr:'mafāzan', en:'a place of success', freq:1},
-    {ar:'لِلْمُتَّقِينَ', tr:'lil-muttaqīn', en:'for the righteous', freq:26},
+  {label:'78:7 — وَالْجِبَالَ أَوْتَادًا', words:[
+    {ar:'أَوْتَادًا', tr:'awtādan', en:'as stakes / pegs', freq:3},
+    'al-jibal',
+  ]},
+  {label:'78:8 — وَخَلَقْنَاكُمْ أَزْوَاجًا', words:[
+    {ar:'أَزْوَاجًا', tr:'azwājan', en:'in pairs', freq:20},
+    {ar:'وَخَلَقْنَاكُمْ', tr:'wa-khalaqnākum', en:'And We created you', freq:5},
+  ]},
+  {label:'78:9 — وَجَعَلْنَا نَوْمَكُمْ سُبَاتًا', words:[
+    {ar:'سُبَاتًا', tr:'subātan', en:'a means of rest', freq:1},
+    {ar:'نَوْمَكُمْ', tr:'nawmakum', en:'your sleep', freq:1},
+    'wa-ja-alna',
+  ]},
+  {label:'78:10 — وَجَعَلْنَا اللَّيْلَ لِبَاسًا', words:[
+    {ar:'لِبَاسًا', tr:'libāsan', en:'a covering', freq:5},
+    'al-layl',
+    'wa-ja-alna',
+  ]},
+  {label:'78:11 — وَجَعَلْنَا النَّهَارَ مَعَاشًا', words:[
+    {ar:'مَعَاشًا', tr:'maʿāshan', en:'for livelihood', freq:1},
+    'al-nahar',
+    'wa-ja-alna',
+  ]},
+  {label:'78:12 — وَبَنَيْنَا فَوْقَكُمْ سَبْعًا شِدَادًا', words:[
+    {ar:'شِدَادًا', tr:'shidādan', en:'strong / mighty', freq:1},
+    {ar:'سَبْعًا', tr:'sabʿan', en:'seven', freq:24},
+    {ar:'فَوْقَكُمْ', tr:'fawqakum', en:'above you', freq:3},
+    {ar:'وَبَنَيْنَا', tr:'wa-banaynā', en:'And We built', freq:2},
+  ]},
+  {label:'78:13 — وَجَعَلْنَا سِرَاجًا وَهَّاجًا', words:[
+    {ar:'وَهَّاجًا', tr:'wahhājan', en:'blazing / glowing', freq:1},
+    {ar:'سِرَاجًا', tr:'sirājan', en:'a lamp (the sun)', freq:4},
+    'wa-ja-alna',
+  ]},
+  {label:'78:14 — وَأَنزَلْنَا مِنَ الْمُعْصِرَاتِ مَاءً ثَجَّاجًا', words:[
+    {ar:'ثَجَّاجًا', tr:'thajjājan', en:'pouring abundantly', freq:1},
+    'maa',
+    {ar:'الْمُعْصِرَاتِ', tr:'al-muʿṣirāt', en:'the rain clouds', freq:1},
+    'min',
+    'wa-anzalna',
+  ]},
+  {label:'78:15 — لِّنُخْرِجَ بِهِ حَبًّا وَنَبَاتًا', words:[
+    {ar:'وَنَبَاتًا', tr:'wa-nabātan', en:'and vegetation', freq:2},
+    {ar:'حَبًّا', tr:'ḥabban', en:'grain', freq:5},
+    'bihi',
+    {ar:'لِّنُخْرِجَ', tr:'li-nukhrija', en:'that We may bring forth', freq:7},
+  ]},
+  {label:'78:16 — وَجَنَّاتٍ أَلْفَافًا', words:[
+    {ar:'أَلْفَافًا', tr:'alfāfan', en:'of dense growth', freq:1},
+    {ar:'وَجَنَّاتٍ', tr:'wa-jannātin', en:'and gardens', freq:20},
+  ]},
+  {label:'78:17 — إِنَّ يَوْمَ الْفَصْلِ كَانَ مِيقَاتًا', words:[
+    {ar:'مِيقَاتًا', tr:'mīqātan', en:'an appointed time', freq:3},
+    'kaana',
+    'al-fasl',
+    'yawma',
     'inna',
   ]},
+  {label:'78:18 — يَوْمَ يُنفَخُ فِي الصُّورِ فَتَأْتُونَ أَفْوَاجًا', words:[
+    'afwaja',
+    {ar:'فَتَأْتُونَ', tr:'fa-taʾtūna', en:'and you will come forth', freq:1},
+    'al-sur',
+    'fi',
+    {ar:'يُنفَخُ', tr:'yunfakhu', en:'it is blown', freq:4},
+    'yawma',
+  ]},
+  {label:'78:19 — وَفُتِحَتِ السَّمَاءُ فَكَانَتْ أَبْوَابًا', words:[
+    {ar:'أَبْوَابًا', tr:'abwāban', en:'gateways', freq:8},
+    {ar:'فَكَانَتْ', tr:'fa-kānat', en:'and becomes', freq:3},
+    'al-sama',
+    {ar:'وَفُتِحَتِ', tr:'wa-futiḥat', en:'And is opened', freq:2},
+  ]},
+  {label:'78:20 — وَسُيِّرَتِ الْجِبَالُ فَكَانَتْ سَرَابًا', words:[
+    {ar:'سَرَابًا', tr:'sarāban', en:'a mirage', freq:2},
+    {ar:'فَكَانَتْ', tr:'fa-kānat', en:'and becomes', freq:3},
+    'al-jibal-u',
+    {ar:'وَسُيِّرَتِ', tr:'wa-suyyirat', en:'And are removed', freq:1},
+  ]},
+  {label:'78:21 — إِنَّ جَهَنَّمَ كَانَتْ مِرْصَادًا', words:[
+    {ar:'مِرْصَادًا', tr:'mirṣādan', en:'lying in wait', freq:1},
+    'kaanat',
+    'jahannam',
+    'inna',
+  ]},
+  {label:'78:22 — لِّلطَّاغِينَ مَآبًا', words:[
+    {ar:'مَآبًا', tr:'maʾāban', en:'a place of return', freq:3},
+    {ar:'لِّلطَّاغِينَ', tr:'lil-ṭāghīn', en:'for the transgressors', freq:3},
+  ]},
+  {label:'78:23 — لَّابِثِينَ فِيهَا أَحْقَابًا', words:[
+    {ar:'أَحْقَابًا', tr:'aḥqāban', en:'for ages / eons', freq:1},
+    'fiiha',
+    {ar:'لَّابِثِينَ', tr:'lābithīn', en:'remaining / dwelling', freq:1},
+  ]},
+  {label:'78:24 — لَّا يَذُوقُونَ فِيهَا بَرْدًا وَلَا شَرَابًا', words:[
+    {ar:'شَرَابًا', tr:'sharāban', en:'drink', freq:5},
+    'wala',
+    {ar:'بَرْدًا', tr:'bardan', en:'coolness', freq:2},
+    'fiiha',
+    {ar:'يَذُوقُونَ', tr:'yadhūqūna', en:'they will taste', freq:4},
+    'la',
+  ]},
+  {label:'78:25 — إِلَّا حَمِيمًا وَغَسَّاقًا', words:[
+    {ar:'وَغَسَّاقًا', tr:'wa-ghassāqan', en:'and purulence (foul fluid)', freq:2},
+    {ar:'حَمِيمًا', tr:'ḥamīman', en:'scalding water', freq:5},
+    'illa',
+  ]},
+  {label:'78:26 — جَزَاءً وِفَاقًا', words:[
+    {ar:'وِفَاقًا', tr:'wifāqan', en:'appropriate / fitting', freq:1},
+    'jazaa',
+  ]},
+  {label:'78:27 — إِنَّهُمْ كَانُوا لَا يَرْجُونَ حِسَابًا', words:[
+    'hisaab',
+    {ar:'يَرْجُونَ', tr:'yarjūna', en:'expecting', freq:5},
+    'la',
+    'kaanu',
+    {ar:'إِنَّهُمْ', tr:'innahum', en:'Indeed they', freq:50},
+  ]},
+  {label:'78:28 — وَكَذَّبُوا بِآيَاتِنَا كِذَّابًا', words:[
+    {ar:'كِذَّابًا', tr:'kidhdhāban', en:'(emphatic) denial', freq:2},
+    {ar:'بِآيَاتِنَا', tr:'bi-āyātinā', en:'Our verses / signs', freq:40},
+    {ar:'وَكَذَّبُوا', tr:'wa-kadhdhabū', en:'And they denied', freq:25},
+  ]},
+  {label:'78:29 — وَكُلَّ شَيْءٍ أَحْصَيْنَاهُ كِتَابًا', words:[
+    {ar:'كِتَابًا', tr:'kitāban', en:'in writing', freq:230},
+    {ar:'أَحْصَيْنَاهُ', tr:'aḥṣaynāhu', en:'We have recorded it', freq:1},
+    'shay',
+    {ar:'وَكُلَّ', tr:'wa-kulla', en:'And every', freq:330},
+  ]},
+  {label:'78:30 — فَذُوقُوا فَلَن نَّزِيدَكُمْ إِلَّا عَذَابًا', words:[
+    'adhaab',
+    'illa',
+    {ar:'نَّزِيدَكُمْ', tr:'nazīdakum', en:'We will increase you', freq:1},
+    {ar:'فَلَن', tr:'fa-lan', en:'for never will', freq:15},
+    {ar:'فَذُوقُوا', tr:'fa-dhūqū', en:'So taste!', freq:5},
+  ]},
+  {label:'78:31 — إِنَّ لِلْمُتَّقِينَ مَفَازًا', words:[
+    {ar:'مَفَازًا', tr:'mafāzan', en:'triumph / success', freq:1},
+    'al-muttaqin',
+    'inna',
+  ]},
+  {label:'78:32 — حَدَائِقَ وَأَعْنَابًا', words:[
+    {ar:'وَأَعْنَابًا', tr:'wa-aʿnāban', en:'and grapevines', freq:11},
+    {ar:'حَدَائِقَ', tr:'ḥadāʾiq', en:'gardens (enclosed)', freq:3},
+  ]},
+  {label:'78:33 — وَكَوَاعِبَ أَتْرَابًا', words:[
+    {ar:'أَتْرَابًا', tr:'atrāban', en:'of equal age', freq:3},
+    {ar:'وَكَوَاعِبَ', tr:'wa-kawāʿib', en:'and companions', freq:1},
+  ]},
+  {label:'78:34 — وَكَأْسًا دِهَاقًا', words:[
+    {ar:'دِهَاقًا', tr:'dihāqan', en:'full / overflowing', freq:1},
+    {ar:'وَكَأْسًا', tr:'wa-kaʾsan', en:'and a cup', freq:3},
+  ]},
+  {label:'78:35 — لَّا يَسْمَعُونَ فِيهَا لَغْوًا وَلَا كِذَّابًا', words:[
+    {ar:'كِذَّابًا', tr:'kidhdhāban', en:'any falsehood', freq:2},
+    'wala',
+    {ar:'لَغْوًا', tr:'laghwan', en:'vain / ill speech', freq:5},
+    'fiiha',
+    {ar:'يَسْمَعُونَ', tr:'yasmaʿūna', en:'they will hear', freq:10},
+    'la',
+  ]},
+  {label:'78:36 — جَزَاءً مِّن رَّبِّكَ عَطَاءً حِسَابًا', words:[
+    'hisaab',
+    {ar:'عَطَاءً', tr:'ʿaṭāʾan', en:'a generous gift', freq:5},
+    'rabbika',
+    'min',
+    'jazaa',
+  ]},
+  {label:'78:37 — رَّبِّ السَّمَاوَاتِ وَالْأَرْضِ وَمَا بَيْنَهُمَا الرَّحْمَٰنِ', words:[
+    'al-rahman',
+    {ar:'بَيْنَهُمَا', tr:'baynahumā', en:'between them', freq:21},
+    'ma',
+    'wal-ard',
+    'al-samawat',
+    'rabb',
+  ]},
+  {label:'78:37b — لَا يَمْلِكُونَ مِنْهُ خِطَابًا', words:[
+    {ar:'خِطَابًا', tr:'khiṭāban', en:'(authority for) speech', freq:2},
+    {ar:'مِنْهُ', tr:'minhu', en:'from Him', freq:50},
+    {ar:'يَمْلِكُونَ', tr:'yamlikūna', en:'they possess', freq:5},
+    'la',
+  ]},
+  {label:'78:38 — يَوْمَ يَقُومُ الرُّوحُ وَالْمَلَائِكَةُ صَفًّا', words:[
+    {ar:'صَفًّا', tr:'ṣaffan', en:'in rows', freq:3},
+    'al-malaika',
+    'al-ruh',
+    {ar:'يَقُومُ', tr:'yaqūmu', en:'will stand', freq:9},
+    'yawma',
+  ]},
+  {label:'78:38b — لَّا يَتَكَلَّمُونَ إِلَّا مَنْ أَذِنَ لَهُ الرَّحْمَٰنُ وَقَالَ صَوَابًا', words:[
+    {ar:'صَوَابًا', tr:'ṣawāban', en:'what is correct', freq:1},
+    'qala',
+    'al-rahman-u',
+    {ar:'لَهُ', tr:'lahu', en:'for him', freq:460},
+    {ar:'أَذِنَ', tr:'adhina', en:'permits', freq:4},
+    'man',
+    'illa',
+    {ar:'يَتَكَلَّمُونَ', tr:'yatakallamūna', en:'they will speak', freq:3},
+    'la',
+  ]},
+  {label:'78:39 — ذَٰلِكَ الْيَوْمُ الْحَقُّ', words:[
+    'al-haqq',
+    'al-yawm',
+    'dhalika',
+  ]},
+  {label:'78:39b — فَمَن شَاءَ اتَّخَذَ إِلَىٰ رَبِّهِ مَآبًا', words:[
+    {ar:'مَآبًا', tr:'maʾāban', en:'a way of return', freq:3},
+    {ar:'رَبِّهِ', tr:'rabbihi', en:'his Lord', freq:95},
+    'ila',
+    {ar:'اتَّخَذَ', tr:'ittakhadha', en:'may take', freq:15},
+    {ar:'شَاءَ', tr:'shāʾa', en:'wills', freq:30},
+    {ar:'فَمَن', tr:'fa-man', en:'so whoever', freq:40},
+  ]},
+  {label:'78:40 — إِنَّا أَنذَرْنَاكُمْ عَذَابًا قَرِيبًا', words:[
+    {ar:'قَرِيبًا', tr:'qarīban', en:'near / imminent', freq:10},
+    'adhaab',
+    {ar:'أَنذَرْنَاكُمْ', tr:'andharnākum', en:'We have warned you', freq:2},
+    'innaa',
+  ]},
+  {label:'78:40b — يَوْمَ يَنظُرُ الْمَرْءُ مَا قَدَّمَتْ يَدَاهُ', words:[
+    {ar:'يَدَاهُ', tr:'yadāhu', en:'his hands', freq:35},
+    {ar:'قَدَّمَتْ', tr:'qaddamat', en:'have put forth', freq:5},
+    'ma',
+    {ar:'الْمَرْءُ', tr:'al-marʾ', en:'a person', freq:7},
+    {ar:'يَنظُرُ', tr:'yanẓuru', en:'will observe', freq:6},
+    'yawma',
+  ]},
+  {label:'78:40c — وَيَقُولُ الْكَافِرُ يَا لَيْتَنِي كُنتُ تُرَابًا', words:[
+    {ar:'تُرَابًا', tr:'turāban', en:'dust', freq:5},
+    {ar:'كُنتُ', tr:'kuntu', en:'I had been', freq:70},
+    {ar:'لَيْتَنِي', tr:'laytanī', en:'I wish that I', freq:7},
+    'ya',
+    'al-kaafir',
+    {ar:'وَيَقُولُ', tr:'wa-yaqūlu', en:'and will say', freq:20},
+  ]},
 ];
 
-
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'الْعَظِيمِ', zone:'wz1'},
-  {id:'w2', text:'النَّبَإِ', zone:'wz2'},
-  {id:'w3', text:'عَنِ', zone:'wz3'},
-  {id:'w4', text:'يَتَسَاءَلُونَ', zone:'wz4'},
-  {id:'w5', text:'عَمَّ', zone:'wz5'},
-  {id:'w6', text:'أَوْتَادًا', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'the great'},
-  {id:'wz2', desc:'the news'},
-  {id:'wz3', desc:'about'},
-  {id:'wz4', desc:'they are asking'},
-  {id:'wz5', desc:'about what'},
-  {id:'wz6', desc:'as pegs/stakes'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_QUIZ = [
   { q: "What is \"An-Naba Al-Atheem\" (The Great News) that the Quraysh disputed?",
@@ -130,31 +355,31 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  { id: 'e1', text: '🌍 Earth made as\na resting place',    zone: 'z1' },
-  { id: 'e2', text: '⛰️ Mountains set as\nfirm pegs',        zone: 'z2' },
-  { id: 'e3', text: '😴 Sleep given as\ncomplete rest',       zone: 'z3' },
-  { id: 'e4', text: '🌙 Night made as\na covering garment',  zone: 'z4' },
-  { id: 'e5', text: '☀️ Day made for\nseeking livelihood',   zone: 'z5' },
+  { id: 'e1', text: 'مِهَادًا',    zone: 'z1' },
+  { id: 'e2', text: 'أَوْتَادًا',  zone: 'z2' },
+  { id: 'e3', text: 'سُبَاتًا',   zone: 'z3' },
+  { id: 'e4', text: 'لِبَاسًا',   zone: 'z4' },
+  { id: 'e5', text: 'مَعَاشًا',   zone: 'z5' },
 ];
 const S2_ZONES = [
-  { id: 'z1', desc: '"Have We not made the earth a resting place (mihadan)?" (78:6)' },
-  { id: 'z2', desc: '"And the mountains as pegs (awtadan)?" (78:7)' },
-  { id: 'z3', desc: '"And made your sleep as rest (subatan)?" (78:9)' },
-  { id: 'z4', desc: '"And made the night as a covering (libasan)?" (78:10)' },
-  { id: 'z5', desc: '"And made the day for livelihood (ma\'asha)?" (78:11)' },
+  { id: 'z1', desc: 'a resting place — "the earth a resting place" (78:6)' },
+  { id: 'z2', desc: 'as stakes / pegs — "the mountains as pegs" (78:7)' },
+  { id: 'z3', desc: 'a means of rest — "your sleep as rest" (78:9)' },
+  { id: 'z4', desc: 'a covering — "the night as a covering" (78:10)' },
+  { id: 'z5', desc: 'for livelihood — "the day for livelihood" (78:11)' },
 ];
 
 const S3_ITEMS = [
-  { id: 's1', text: '7️⃣ Seven strong\nheavens built above', zone: 'z1' },
-  { id: 's2', text: '🔆 Blazing lamp\n(the sun) set alight', zone: 'z2' },
-  { id: 's3', text: '🌧️ Rain clouds squeezed\n— torrents of water', zone: 'z3' },
-  { id: 's4', text: '🌾 Grain, gardens\n& thick vegetation',   zone: 'z4' },
+  { id: 's1', text: 'شِدَادًا',   zone: 'z1' },
+  { id: 's2', text: 'سِرَاجًا وَهَّاجًا', zone: 'z2' },
+  { id: 's3', text: 'ثَجَّاجًا',  zone: 'z3' },
+  { id: 's4', text: 'حَبًّا وَنَبَاتًا', zone: 'z4' },
 ];
 const S3_ZONES = [
-  { id: 'z1', desc: '"And built above you seven strong (shidadan) heavens?" (78:12)' },
-  { id: 'z2', desc: '"And made a blazing lamp (siraj wahhaj)?" (78:13)' },
-  { id: 'z3', desc: '"And sent down from rain-clouds water in torrents (thajjaj)?" (78:14)' },
-  { id: 'z4', desc: '"That We may bring forth grain, vegetation, and gardens of thick growth." (78:15-16)' },
+  { id: 'z1', desc: 'strong / mighty — "seven strong heavens" (78:12)' },
+  { id: 'z2', desc: 'a blazing lamp — "a burning lamp (the sun)" (78:13)' },
+  { id: 'z3', desc: 'pouring abundantly — "water in torrents" (78:14)' },
+  { id: 'z4', desc: 'grain and vegetation — "grain, plants, and gardens" (78:15-16)' },
 ];
 
 const S4_EVENTS_CORRECT = [
@@ -193,16 +418,16 @@ const S5_QUIZ = [
 ];
 
 const S6_ITEMS = [
-  { id: 'p1', text: '🌿 Gardens and\ngrape vines',            zone: 'z1' },
-  { id: 'p2', text: '👫 Companions of\nequal age (atrab)',    zone: 'z2' },
-  { id: 'p3', text: '🥛 A full cup,\noverflowing (dihaq)',    zone: 'z3' },
-  { id: 'p4', text: '🚫 No idle talk\nor falsehood heard',    zone: 'z4' },
+  { id: 'p1', text: 'حَدَائِقَ وَأَعْنَابًا', zone: 'z1' },
+  { id: 'p2', text: 'أَتْرَابًا',              zone: 'z2' },
+  { id: 'p3', text: 'دِهَاقًا',               zone: 'z3' },
+  { id: 'p4', text: 'لَغْوًا وَلَا كِذَّابًا', zone: 'z4' },
 ];
 const S6_ZONES = [
-  { id: 'z1', desc: '"Indeed for the righteous is success (mafaza) — gardens and grape vines." (78:31-32)' },
-  { id: 'z2', desc: '"And companions of equal age (kawa\'ib atrab)." (78:33)' },
-  { id: 'z3', desc: '"And a cup (ka\'san) full to the brim (dihaqan)." (78:34)' },
-  { id: 'z4', desc: '"They will not hear therein ill speech (laghw) or any falsehood (kidhdhab)." (78:35)' },
+  { id: 'z1', desc: 'gardens and grapevines — reward for the righteous (78:31-32)' },
+  { id: 'z2', desc: 'of equal age — companions in Paradise (78:33)' },
+  { id: 'z3', desc: 'full / overflowing — a brimming cup (78:34)' },
+  { id: 'z4', desc: 'no vain speech or falsehood — peace in Paradise (78:35)' },
 ];
 
 const S7_QUIZ = [

@@ -48,24 +48,7 @@ const WBW_DATA = [
   ]},
 ];
 
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'الْأَعْلَى', zone:'wz1'},
-  {id:'w2', text:'رَبِّكَ', zone:'wz2'},
-  {id:'w3', text:'اسْمَ', zone:'wz3'},
-  {id:'w4', text:'سَبِّحِ', zone:'wz4'},
-  {id:'w5', text:'فَهَدَىٰ', zone:'wz5'},
-  {id:'w6', text:'قَدَّرَ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'the Most High'},
-  {id:'wz2', desc:'your Lord'},
-  {id:'wz3', desc:'the name of'},
-  {id:'wz4', desc:'glorify'},
-  {id:'wz5', desc:'and then guided'},
-  {id:'wz6', desc:'measured/destined'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
-
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS=[{id:'i1',text:'🌿 Khalq\n& Taswiya',zone:'z1'},{id:'i2',text:'🎯 Qadr\n& Huda',zone:'z2'},{id:'i3',text:'🌾 Pasture\n& Debris',zone:'z3'}];
 const S1_ZONES=[{id:'z1',desc:'"Alladhi khalaqa fa-sawwa" (87:2) — Who CREATED and then PROPORTIONED. "Khalaqa" — brought into existence from nothing. "Sawwa" — balanced, proportioned, made even. Every creation of Allah is complete and perfectly proportioned — nothing missing, nothing excess.'},{id:'z2',desc:'"Wa alladhi qaddara fa-hada" (87:3) — Who DESTINED and then GUIDED. "Qaddara" — decreed, fixed the measure of all things. "Hada" — guided each thing to fulfil its purpose. The bee is guided to its hive, the seed to its growth, the human to what benefits them — if they listen.'},{id:'z3',desc:'"Wa alladhi akhraja al-mar\'a — fa-ja\'alahu ghuthaan ahwa" (87:4-5) — Who brought out the pasture — then made it dark debris. Green, thriving pasture becomes dry, withered, dark debris. The world\'s cycles of growth and decay — all under Allah\'s command.'}];
@@ -204,9 +187,6 @@ const S6_QUIZ=[
          'Orient toward Allah — glorify, trust, purify, pray, prefer the Hereafter'],
    correct:3},
 ];
-
-
-
 
 function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
 function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}

@@ -955,3 +955,43 @@ html[data-theme="stars"] .flip-freq-unique { color: #e8b84b; font-size: 14px; }
   background: var(--primary);
   color: #fff;
 }
+
+/* ── WBW Chunked sections ── */
+.wbw-chunk { margin: 18px 0 24px; }
+.wbw-chunk-header {
+  font-family: var(--font-heading);
+  font-size: 13px; color: var(--primary-lit);
+  text-align: center; padding: 8px 0 4px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 12px; letter-spacing: 0.5px;
+}
+.wbw-chunk:first-child .wbw-chunk-header { border-top: none; margin-top: 0; }
+
+/* ── Tap-to-Match widget ── */
+.wbw-match { margin: 16px 0 8px; padding: 12px; background: var(--bg2); border-radius: var(--radius); }
+.wbw-match-title {
+  font-family: var(--font-heading); font-size: 11px;
+  color: var(--text-dim); text-align: center; margin-bottom: 10px;
+}
+.wbw-match-grid { display: flex; gap: 10px; justify-content: center; }
+.wbw-match-col { display: flex; flex-direction: column; gap: 6px; flex: 1; max-width: 200px; }
+.wbw-match-btn {
+  font-family: var(--font-body); font-size: var(--font-size-sm);
+  padding: 8px 10px; border-radius: var(--radius);
+  border: 2px solid rgba(255,255,255,0.12); background: var(--bg);
+  color: var(--text); cursor: pointer; transition: all 0.2s;
+  text-align: center; line-height: 1.4;
+}
+.wbw-match-btn.ar-btn {
+  font-family: var(--font-arabic); font-size: 22px;
+  direction: rtl; line-height: 1.5; padding: 10px 12px;
+}
+.wbw-match-btn.selected { border-color: var(--primary-lit); background: rgba(255,255,255,0.06); }
+.wbw-match-btn.matched  { border-color: var(--success); background: rgba(39,174,96,0.12); opacity: 0.7; pointer-events: none; }
+.wbw-match-btn.wrong    { border-color: var(--error); background: rgba(231,76,60,0.15); }
+.wbw-match-feedback {
+  text-align: center; font-family: var(--font-body);
+  font-size: var(--font-size-sm); margin-top: 8px; min-height: 20px;
+}
+.wbw-match-feedback.success { color: var(--success); }
+.wbw-match-feedback.partial { color: var(--text-dim); }

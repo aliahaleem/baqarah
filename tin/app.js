@@ -51,24 +51,7 @@ const WBW_DATA = [
   ]},
 ];
 
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'سِينِينَ', zone:'wz1'},
-  {id:'w2', text:'وَطُورِ', zone:'wz2'},
-  {id:'w3', text:'وَالزَّيْتُونِ', zone:'wz3'},
-  {id:'w4', text:'وَالتِّينِ', zone:'wz4'},
-  {id:'w5', text:'تَقْوِيمٍ', zone:'wz5'},
-  {id:'w6', text:'أَحْسَنِ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'Sinai'},
-  {id:'wz2', desc:'and [Mount] Tur'},
-  {id:'wz3', desc:'and the olive'},
-  {id:'wz4', desc:'by the fig'},
-  {id:'wz5', desc:'form / stature'},
-  {id:'wz6', desc:'the best'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
-
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS = [
   {id:'o1', text:'🫐 At-Tin\n(The Fig)',       zone:'z1'},
@@ -112,9 +95,6 @@ const S3_QUIZ = [
    opts:['Man was created in the best form and must use it by believing and doing good','Man must eat figs and olives daily','Man must travel to the four blessed lands','Man must memorise all of Juz Amma'],
    correct:0},
 ];
-
-
-
 
 function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
 function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}

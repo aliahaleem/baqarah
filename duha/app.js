@@ -55,24 +55,7 @@ const WBW_DATA = [
   ]},
 ];
 
-
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'سَجَىٰ', zone:'wz1'},
-  {id:'w2', text:'إِذَا', zone:'wz2'},
-  {id:'w3', text:'وَاللَّيْلِ', zone:'wz3'},
-  {id:'w4', text:'وَالضُّحَىٰ', zone:'wz4'},
-  {id:'w5', text:'قَلَىٰ', zone:'wz5'},
-  {id:'w6', text:'وَمَا', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'covers with darkness'},
-  {id:'wz2', desc:'when'},
-  {id:'wz3', desc:'and the night'},
-  {id:'wz4', desc:'by the morning brightness'},
-  {id:'wz5', desc:'(nor) hated'},
-  {id:'wz6', desc:'and not'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_QUIZ = [
   {q:'Why was Surah Ad-Duha revealed?',
@@ -124,9 +107,6 @@ const S4_EVENTS_CORRECT = [
   {id:'e6', text:'🙏 Three duties given: protect orphans, welcome askers, proclaim Allah\'s blessings (93:9-11)'},
 ];
 window._S4_EVENTS = S4_EVENTS_CORRECT;
-
-
-
 
 function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
 function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}

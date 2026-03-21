@@ -42,24 +42,7 @@ const WBW_DATA = [
   ]},
 ];
 
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'وَحُقَّتْ', zone:'wz1'},
-  {id:'w2', text:'لِرَبِّهَا', zone:'wz2'},
-  {id:'w3', text:'وَأَذِنَتْ', zone:'wz3'},
-  {id:'w4', text:'انشَقَّتْ', zone:'wz4'},
-  {id:'w5', text:'السَّمَاءُ', zone:'wz5'},
-  {id:'w6', text:'كَدْحًا', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'as it must'},
-  {id:'wz2', desc:'its Lord'},
-  {id:'wz3', desc:'and obeyed'},
-  {id:'wz4', desc:'has split open'},
-  {id:'wz5', desc:'the sky'},
-  {id:'wz6', desc:'a striving'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
-
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS=[{id:'i1',text:'🌅 Sky\nAnshaqqa',zone:'z1'},{id:'i2',text:'🌍 Earth\nMuddat',zone:'z2'},{id:'i3',text:'👂 "Listened\nto its Lord"',zone:'z3'},{id:'i4',text:'⚖️ Both\nObligated',zone:'z4'}];
 const S1_ZONES=[{id:'z1',desc:'"Idha al-sama\' anshaqqa" (84:1) — When the sky SPLITS/CLEAVES. "Inshaqqa" — broke open, split apart. This is the same root as the surah\'s name. The entire sky, the universe\'s ceiling, cracks and opens.'},{id:'z2',desc:'"Wa idha al-ardhu muddat" (84:3) — When the earth is STRETCHED. "Muddat" — stretched flat, spread out. The earth that contains mountains and depths is stretched smooth and flat for the resurrection.'},{id:'z3',desc:'"Wa adhinat li-Rabbiha" (84:2,4) — The sky AND earth LISTENED to their Lord and obeyed. "Adhina" means to give ear to, to obey, to comply. The sky and earth hear Allah\'s command and respond.'},{id:'z4',desc:'"Wa huqqat" (84:2,4) — They were OBLIGATED/RIGHT to do so — or "it was the right thing for them." Allah is saying: of course they obeyed — how could they not? And how could we humans not also comply?'}];
@@ -198,9 +181,6 @@ const S6_QUIZ=[
          'You are striving stage by stage toward a certain meeting with Allah'],
    correct:3},
 ];
-
-
-
 
 function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
 function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}

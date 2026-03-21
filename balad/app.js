@@ -58,24 +58,7 @@ const WBW_DATA = [
   ]},
 ];
 
-
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'الْبَلَدِ', zone:'wz1'},
-  {id:'w2', text:'بِهَٰذَا', zone:'wz2'},
-  {id:'w3', text:'أُقْسِمُ', zone:'wz3'},
-  {id:'w4', text:'لَا', zone:'wz4'},
-  {id:'w5', text:'وَشَفَتَيْنِ', zone:'wz5'},
-  {id:'w6', text:'وَلِسَانًا', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'the city (Mecca)'},
-  {id:'wz2', desc:'by this'},
-  {id:'wz3', desc:'I swear'},
-  {id:'wz4', desc:'no / I do'},
-  {id:'wz5', desc:'and two lips'},
-  {id:'wz6', desc:'and a tongue'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_QUIZ = [
   {q:'What city does Allah swear by in 90:1?',
@@ -162,9 +145,6 @@ const S6_QUIZ = [
    opts:['Darkness and cold','Closing fire all around them','Loud punishment and noise','Heavy chains and shackles'],
    correct:1},
 ];
-
-
-
 
 function renderSection2Game(){renderQuiz(2,S1_QUIZ);}
 function checkSection2(){checkQuiz(2,S1_QUIZ);}

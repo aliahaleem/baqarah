@@ -42,24 +42,7 @@ const WBW_DATA = [
   ]},
 ];
 
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'وَمَشْهُودٍ', zone:'wz1'},
-  {id:'w2', text:'وَشَاهِدٍ', zone:'wz2'},
-  {id:'w3', text:'الْمَوْعُودِ', zone:'wz3'},
-  {id:'w4', text:'الْبُرُوجِ', zone:'wz4'},
-  {id:'w5', text:'وَالسَّمَاءِ', zone:'wz5'},
-  {id:'w6', text:'وَيُعِيدُ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'and what is witnessed'},
-  {id:'wz2', desc:'and a witness'},
-  {id:'wz3', desc:'the Promised [Day]'},
-  {id:'wz4', desc:'the great constellations'},
-  {id:'wz5', desc:'by the sky'},
-  {id:'wz6', desc:'and repeats'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
-
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS=[{id:'i1',text:'⭐ Sky with\nBuruj',zone:'z1'},{id:'i2',text:'📅 Promised\nDay',zone:'z2'},{id:'i3',text:'👁️ Witness &\nWitnessed',zone:'z3'}];
 const S1_ZONES=[{id:'z1',desc:'"Wa al-sama\' dhat al-buruj" (85:1) — By the sky possessing constellations. "Al-buruj" are the great star formations, the towers of the sky. A vast, ordered sky with permanent, majestic constellations — evidence of Allah\'s perfect creation and power.'},{id:'z2',desc:'"Wa al-yawm al-maw\'ud" (85:2) — By the Promised Day. The Day of Judgment — "maw\'ud" means promised, guaranteed. Allah swears by the certainty of the Day He Himself promised. If Allah swears by it — how real must it be?'},{id:'z3',desc:'"Wa shahedin wa mashhud" (85:3) — By the witness and the witnessed. Scholars interpret this as: Friday (witness) and Arafah (witnessed); the Prophet ﷺ (witness) and his community (witnessed); or the recording angels (witness) and the deeds (witnessed). All of human reality is being observed.'}];
@@ -198,9 +181,6 @@ const S6_QUIZ=[
          'The sky witnesses, the Day is certain, the Quran is preserved — hold on'],
    correct:3},
 ];
-
-
-
 
 function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
 function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}

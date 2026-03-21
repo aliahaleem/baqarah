@@ -40,24 +40,7 @@ const WBW_DATA = [
   ]},
 ];
 
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'انتَثَرَتْ', zone:'wz1'},
-  {id:'w2', text:'الْكَوَاكِبُ', zone:'wz2'},
-  {id:'w3', text:'انفَطَرَتْ', zone:'wz3'},
-  {id:'w4', text:'السَّمَاءُ', zone:'wz4'},
-  {id:'w5', text:'الْكَرِيمِ', zone:'wz5'},
-  {id:'w6', text:'بِرَبِّكَ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'scatter'},
-  {id:'wz2', desc:'the stars'},
-  {id:'wz3', desc:'has broken apart'},
-  {id:'wz4', desc:'the sky'},
-  {id:'wz5', desc:'the Generous'},
-  {id:'wz6', desc:'concerning your Lord'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
-
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS=[{id:'i1',text:'🌌 Sky\nInfatarat',zone:'z1'},{id:'i2',text:'⭐ Stars\nIntatharat',zone:'z2'},{id:'i3',text:'🌊 Seas\nFujjirat',zone:'z3'},{id:'i4',text:'⚰️ Graves\nBu\'thirat',zone:'z4'}];
 const S1_ZONES=[{id:'z1',desc:'"Idha al-sama\' infatarat" (82:1) — When the sky is CLEFT/split asunder. "Infatara" means to split open with force. The sky that seems permanent above us will be torn apart.'},{id:'z2',desc:'"Wa idha al-kawakib intatharat" (82:2) — When the stars are scattered/fall. "Intathara" means to scatter in every direction like scattered seeds.'},{id:'z3',desc:'"Wa idha al-bihar fujjirat" (82:3) — When the seas are burst forth/set flowing. Water merges, boundaries between seas dissolve, the ocean overflows. Everything orderly becomes chaotic.'},{id:'z4',desc:'"Wa idha al-qubur bu\'thirat" (82:4) — When the graves are overturned/stirred up. Their contents are thrown up — the dead emerge for resurrection. No one stays buried.'}];
@@ -172,9 +155,6 @@ const S6_QUIZ=[
          'Both use karim/kiram — divine nobility runs through this surah'],
    correct:3},
 ];
-
-
-
 
 function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
 function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}

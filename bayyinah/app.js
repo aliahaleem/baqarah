@@ -48,24 +48,7 @@ const WBW_DATA = [
   ]},
 ];
 
-
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'كَفَرُوا', zone:'wz1'},
-  {id:'w2', text:'الَّذِينَ', zone:'wz2'},
-  {id:'w3', text:'يَكُنِ', zone:'wz3'},
-  {id:'w4', text:'مُّطَهَّرَةً', zone:'wz4'},
-  {id:'w5', text:'صُحُفًا', zone:'wz5'},
-  {id:'w6', text:'يَتْلُو', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'disbelieved'},
-  {id:'wz2', desc:'those who'},
-  {id:'wz3', desc:'were'},
-  {id:'wz4', desc:'purified'},
-  {id:'wz5', desc:'scriptures/pages'},
-  {id:'wz6', desc:'reciting'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_QUIZ = [
   {q:'Who are the two groups that would not leave their ways until the Clear Evidence came? (98:1)',
@@ -124,9 +107,6 @@ const S4_QUIZ = [
    opts:['It is the lowest level of Paradise','It is one name for Paradise — a garden of eternal dwelling','It is only for prophets','It is a temporary resting place'],
    correct:1},
 ];
-
-
-
 
 function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
 function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}

@@ -47,24 +47,7 @@ const WBW_DATA = [
   ]},
 ];
 
-
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'وَالْعَصْرِ', zone:'wz1'},
-  {id:'w2', text:'خُسْرٍ', zone:'wz2'},
-  {id:'w3', text:'لَفِي', zone:'wz3'},
-  {id:'w4', text:'الْإِنسَانَ', zone:'wz4'},
-  {id:'w5', text:'الصَّالِحَاتِ', zone:'wz5'},
-  {id:'w6', text:'وَعَمِلُوا', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'by Time'},
-  {id:'wz2', desc:'loss'},
-  {id:'wz3', desc:'surely in'},
-  {id:'wz4', desc:'mankind'},
-  {id:'wz5', desc:'righteous deeds'},
-  {id:'wz6', desc:'and did'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_QUIZ = [
   {q:'What does Allah swear by in 103:1?',
@@ -108,9 +91,6 @@ const S3_QUIZ = [
    opts:['Time is the most precious resource — wasting it is the loss','Time will end on the Day of Judgement','Time is worth more than wealth','Time heals all wounds'],
    correct:0},
 ];
-
-
-
 
 function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
 function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}

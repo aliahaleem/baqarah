@@ -61,24 +61,7 @@ const WBW_DATA = [
   ]},
 ];
 
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'عَشْرٍ', zone:'wz1'},
-  {id:'w2', text:'وَلَيَالٍ', zone:'wz2'},
-  {id:'w3', text:'وَالْفَجْرِ', zone:'wz3'},
-  {id:'w4', text:'لَبِالْمِرْصَادِ', zone:'wz4'},
-  {id:'w5', text:'رَبَّكَ', zone:'wz5'},
-  {id:'w6', text:'مَّرْضِيَّةً', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'ten'},
-  {id:'wz2', desc:'and ten nights'},
-  {id:'wz3', desc:'by the dawn'},
-  {id:'wz4', desc:'is ever watchful'},
-  {id:'wz5', desc:'your Lord'},
-  {id:'wz6', desc:'pleasing [to Him]'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
-
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS = [
   { id: 'o1', text: 'Wal-Fajr',      zone: 'z1' },
@@ -173,8 +156,6 @@ const S6_QUIZ = [
 ];
 
 /* ── Section wrappers ── */
-
-
 
 function renderSection2Game() { renderDragDrop(2, S1_ITEMS, S1_ZONES); }
 function checkSection2()      { checkDragDrop(2, S1_ZONES); }

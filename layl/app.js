@@ -49,24 +49,7 @@ const WBW_DATA = [
   ]},
 ];
 
-
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'تَجَلَّىٰ', zone:'wz1'},
-  {id:'w2', text:'وَالنَّهَارِ', zone:'wz2'},
-  {id:'w3', text:'يَغْشَىٰ', zone:'wz3'},
-  {id:'w4', text:'وَاللَّيْلِ', zone:'wz4'},
-  {id:'w5', text:'لِلْيُسْرَىٰ', zone:'wz5'},
-  {id:'w6', text:'فَسَنُيَسِّرُهُ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'it appears'},
-  {id:'wz2', desc:'and the day'},
-  {id:'wz3', desc:'it covers'},
-  {id:'wz4', desc:'by the night'},
-  {id:'wz5', desc:'to ease'},
-  {id:'wz6', desc:'We will ease him'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_QUIZ = [
   {q:'What are the three oaths in Surah Al-Layl?',
@@ -118,9 +101,6 @@ const S4_EVENTS_CORRECT = [
   {id:'p6', text:'🔥 The conclusion: the Fire is for those who denied and turned away (92:14-16)'},
 ];
 window._S4_EVENTS = S4_EVENTS_CORRECT;
-
-
-
 
 function renderSection2Game(){renderQuiz(2,S1_QUIZ);}
 function checkSection2(){checkQuiz(2,S1_QUIZ);}

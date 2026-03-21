@@ -48,24 +48,7 @@ const WBW_DATA = [
   ]},
 ];
 
-
-const S1_MATCH_ITEMS = [
-  {id:'w1', text:'التَّكَاثُرُ', zone:'wz1'},
-  {id:'w2', text:'أَلْهَاكُمُ', zone:'wz2'},
-  {id:'w3', text:'الْمَقَابِرَ', zone:'wz3'},
-  {id:'w4', text:'زُرْتُمُ', zone:'wz4'},
-  {id:'w5', text:'حَتَّىٰ', zone:'wz5'},
-  {id:'w6', text:'الْيَقِينِ', zone:'wz6'}
-];
-const S1_MATCH_ZONES = [
-  {id:'wz1', desc:'competition for more'},
-  {id:'wz2', desc:'has diverted you'},
-  {id:'wz3', desc:'the graves'},
-  {id:'wz4', desc:'you visited'},
-  {id:'wz5', desc:'until'},
-  {id:'wz6', desc:'certainty'}
-];
-window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_QUIZ = [
   {q:'What does "al-hakumut-takathur" (102:1) mean?',
@@ -107,9 +90,6 @@ const S3_QUIZ = [
    opts:['On Fridays as a Sunnah','When you die — the grave is the final stop','When you pray janazah for others','As a reminder on Eid'],
    correct:1},
 ];
-
-
-
 
 function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
 function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}
