@@ -1,21 +1,11 @@
 'use strict';
-// SURAH AL-BURUJ (85) — scenes.js
-const CW=560,CH=220,P=4;
-function sceneP(){const s=document.documentElement.dataset.theme==='stars';return s?{sky0:'#0e1840',sky1:'#182458',sky2:'#243070',gnd:'#304080',gndAcc:'#405090',starStr:'rgba(200,216,255,',acStr:'rgba(224,216,96,',label:'#e0d860',hint:'#c0b840'}:{sky0:'#04080e',sky1:'#080e18',sky2:'#0e1828',gnd:'#121e30',gndAcc:'#182838',starStr:'rgba(100,140,220,',acStr:'rgba(200,176,48,',label:'#c8b030',hint:'#a09020'};}
-function fillRect(ctx,x,y,w,h,col){if(col)ctx.fillStyle=col;const rx=Math.round(x),ry=Math.round(y),rw=Math.round(w),rh=Math.round(h);if(document.documentElement.dataset.theme==='stars'&&rw<120&&rh<120&&rw>4&&rh>4){const r=Math.min(rw*0.3,rh*0.3,7);ctx.shadowColor='rgba(64,96,192,0.2)';ctx.shadowBlur=3;ctx.beginPath();if(ctx.roundRect)ctx.roundRect(rx,ry,rw,rh,r);else ctx.rect(rx,ry,rw,rh);ctx.fill();ctx.shadowBlur=0;}else{ctx.fillRect(rx,ry,rw,rh);}}
-function _sky(ctx){const p=sceneP();const g=ctx.createLinearGradient(0,0,0,CH);g.addColorStop(0,p.sky0);g.addColorStop(0.6,p.sky1);g.addColorStop(1,p.sky2);ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);}
-function _ground(ctx,y=170){const p=sceneP();fillRect(ctx,0,y,CW,CH-y,p.gnd);fillRect(ctx,0,y,CW,5,p.gndAcc);}
-function _label(ctx,txt,y=18){ctx.fillStyle=sceneP().label;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(txt,CW/2,y);ctx.textAlign='left';}
-function _stars(ctx,n=15){const p=sceneP();const pts=[[40,15],[90,8],[160,22],[220,5],[300,18],[380,10],[440,25],[510,8],[70,45],[200,38],[330,42],[460,35],[140,55],[290,60],[420,50]];pts.slice(0,n).forEach(([x,y],i)=>{ctx.fillStyle=p.starStr+(0.4+i%4*0.15)+')';ctx.beginPath();ctx.arc(x,y,i%3===0?2:1.2,0,Math.PI*2);ctx.fill();});}
-function _fig(ctx,x,y,hc,bc,pc){fillRect(ctx,x+P,y,P*3,P*3,hc);fillRect(ctx,x,y+P*3,P*5,P*4,bc);fillRect(ctx,x-P,y+P*3,P,P*3,hc);fillRect(ctx,x+P*5,y+P*3,P,P*3,hc);fillRect(ctx,x,y+P*7,P*2,P*4,pc);fillRect(ctx,x+P*3,y+P*7,P*2,P*4,pc);}
-
-const VD={
-  oath:{ref:'Al-Buruj 85:1-3',arabic:'وَالسَّمَاءِ ذَاتِ الْبُرُوجِ ۩ وَالْيَوْمِ الْمَوْعُودِ ۩ وَشَاهِدٍ وَمَشْهُودٍ',english:'"By the sky with its constellations — by the Promised Day — by the witness and the witnessed." (85:1-3)',note:'"Al-buruj" — the constellations, the great star formations. Three oaths: the sky with its constellations (vast, ordered, magnificent), the Promised Day (Yawm al-Qiyamah, which is certain), and the witness and the witnessed (scholars interpret as: Friday and the day of Arafah; the Prophet ﷺ and his community; or the recording angels and the deeds witnessed). Three powerful oaths of certainty.'},
-  ditch:{ref:'Al-Buruj 85:4-7',arabic:'قُتِلَ أَصْحَابُ الْأُخْدُودِ ۩ النَّارِ ذَاتِ الْوَقُودِ ۩ إِذْ هُمْ عَلَيْهَا قُعُودٌ ۩ وَهُمْ عَلَىٰ مَا يَفْعَلُونَ بِالْمُؤْمِنِينَ شُهُودٌ',english:'"Destroyed were the People of the Ditch — of the fire with burning fuel — while they were sitting over it — and they were witnesses to what they were doing to the believers." (85:4-7)',note:'"Ukhdud" — a trench, a ditch. Historically: the tyrant Dhunuwas of Yemen dug trenches filled with burning fire and threw believers into them for refusing to abandon their faith in Allah. The persecutors sat by the ditches and WATCHED, witnessing their own atrocity. This is evil at its most deliberate and public.'},
-  reason:{ref:'Al-Buruj 85:8-9',arabic:'وَمَا نَقَمُوا مِنْهُمْ إِلَّا أَن يُؤْمِنُوا بِاللَّهِ الْعَزِيزِ الْحَمِيدِ ۩ الَّذِي لَهُ مُلْكُ السَّمَاوَاتِ وَالْأَرْضِ',english:'"And they resented them for nothing except that they believed in Allah, the Exalted in Might, the Praiseworthy — to whom belongs the dominion of the heavens and earth." (85:8-9)',note:'The only "crime" of the believers? Faith. "Ma naqamu minhum illa an yu\'minu bi-Allah al-Aziz al-Hamid." They were thrown into fire for BELIEVING in Allah — specifically, Allah the Exalted in Might (al-Aziz) and the Praiseworthy (al-Hamid). These two divine names are chosen deliberately: the believers believed in the Most Powerful and Most Worthy of Praise — and were destroyed for it.'},
-  watching:{ref:'Al-Buruj 85:11',arabic:'إِنَّ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ لَهُمْ جَنَّاتٌ تَجْرِي مِن تَحْتِهَا الْأَنْهَارُ ۚ ذَٰلِكَ الْفَوْزُ الْكَبِيرُ',english:'"Indeed those who believed and did righteous deeds will have gardens beneath which rivers flow — that is the great attainment." (85:11)',note:'"Al-Fawz al-kabir" — the GREAT attainment/success. Not small. Not average. GREAT. Jannatin tajri min tahtiha al-anhar — gardens with rivers flowing beneath them. This comes immediately after describing the People of the Ditch — showing that the believers who were burned alive entered directly into the greatest success. Their deaths were not defeats — they were entries into victory.'},
-  tablet:{ref:'Al-Buruj 85:21-22',arabic:'بَلْ هُوَ قُرْآنٌ مَّجِيدٌ ۩ فِي لَوْحٍ مَّحْفُوظٍ',english:'"But this is a glorious Quran — preserved in a Tablet." (85:21-22)',note:'"Quranun Majid" — a GLORIOUS Quran. "Majid" from "majd" meaning glory, honour, greatness. "Fi lawhin mahfudh" — in a Preserved/Protected Tablet. The Lawh al-Mahfudh — the original source of all revelation, preserved with Allah before it was ever revealed to the Prophet ﷺ. The persecutors attacked the believers. The tyrants burned the faithful. But the Quran? It is PRESERVED — untouchable, immutable, glorious — in a Tablet beyond all harm.'},
+window.SCENE_PALETTE = {
+  minecraft: {sky0:'#04080e',sky1:'#080e18',sky2:'#0e1828',gnd:'#121e30',gndAcc:'#182838',starStr:'rgba(100,140,220,',acStr:'rgba(200,176,48,',label:'#c8b030',hint:'#a09020'},
+  stars: {sky0:'#0e1840',sky1:'#182458',sky2:'#243070',gnd:'#304080',gndAcc:'#405090',starStr:'rgba(200,216,255,',acStr:'rgba(224,216,96,',label:'#e0d860',hint:'#c0b840'},
 };
+
+// SURAH AL-BURUJ (85) — scenes.js
+;
 
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 
@@ -80,8 +70,6 @@ ctx.fillStyle=`rgba(200,176,48,0.05)`;ctx.beginPath();ctx.arc(CW/2,100,80,0,Math
 ctx.textAlign='left';_label(ctx,'"Quran Majid — fi Lawhin Mahfudh" (85:21-22)',CH-5);};draw();}}
 
 const scenes={};
-
-
 
 
 const VD_wbw={ref:'Al-Buruj (85)',arabic:'وَالسَّمَاءِ ذَاتِ الْبُرُوجِ ۩ وَالْيَوْمِ الْمَوْعُودِ ۩ إِنَّ بَطْشَ رَبِّكَ لَشَدِيدٌ ۩ إِنَّهُ هُوَ يُبْدِئُ وَيُعِيدُ',english:'"By the sky full of great constellations, and the Promised Day — indeed the grip of your Lord is severe. It is He who originates and repeats." (85:1-2, 12-13)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};

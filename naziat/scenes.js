@@ -4,43 +4,23 @@
 //  Palette: deep teal / warm amber / emerald
 // =============================================
 
-const CW = 560, CH = 220, P = 4;
 
-// --- THEME PALETTE ---
-// Returns color tokens for the active theme so draw() methods stay DRY.
-function sceneP() {
-  const s = document.documentElement.dataset.theme === 'stars';
-  return s ? {
-    sky0:    '#223070', sky1:    '#2e3e88', sky2:    '#3a4c9e',
-    gnd:     '#4658aa', gndAcc:  '#5668bc',
-    starStr: 'rgba(190,200,255,',
-    acStr:   'rgba(208,176,80,',
-    label:   '#d0b050',
-  } : {
+window.SCENE_PALETTE = {
+  minecraft: {
     sky0:    '#020810', sky1:    '#060c18', sky2:    '#0e2010',
     gnd:     '#1a2808', gndAcc:  '#2a4010',
     starStr: 'rgba(255,240,200,',
     acStr:   'rgba(255,187,68,',
     label:   '#a8ffe0',
-  };
-}
-
-function fillRect(ctx, x, y, w, h, col) {
-  if (col) ctx.fillStyle = col;
-  const rx = Math.round(x), ry = Math.round(y), rw = Math.round(w), rh = Math.round(h);
-  if (document.documentElement.dataset.theme === 'stars' && rw < 120 && rh < 120 && rw > 4 && rh > 4) {
-    const r = Math.min(rw * 0.3, rh * 0.3, 7);
-    ctx.shadowColor = 'rgba(100,80,200,0.2)';
-    ctx.shadowBlur  = 3;
-    ctx.beginPath();
-    if (ctx.roundRect) ctx.roundRect(rx, ry, rw, rh, r); else ctx.rect(rx, ry, rw, rh);
-    ctx.fill();
-    ctx.shadowBlur = 0;
-  } else {
-    ctx.fillRect(rx, ry, rw, rh);
-  }
-}
-
+  },
+  stars: {
+    sky0:    '#223070', sky1:    '#2e3e88', sky2:    '#3a4c9e',
+    gnd:     '#4658aa', gndAcc:  '#5668bc',
+    starStr: 'rgba(190,200,255,',
+    acStr:   'rgba(208,176,80,',
+    label:   '#d0b050',
+  },
+};
 // =============================================
 //  VERSES
 // =============================================
@@ -88,69 +68,6 @@ const VERSES = {
     note: "'Yas'aloonaka 'an al-Sa'ah' — They ask you [O Muhammad ﷺ] about the Hour: 'Ayyan mursaha?' — When exactly will it drop anchor? A demanding, sometimes taunting question. Allah's response: 'Fima anta min dhikriha?' — What do you have to do with mentioning it? That knowledge is above your rank. 'Ila Rabbika muntahaha' — To your Lord ALONE belongs its ultimate limit. No angel, no prophet, no human being knows. 'Innama anta mundhiru man yakhshaha' — You are ONLY a warner for those who FEAR it. And the final, breathtaking verse: when they SEE that Day — all of this world's life will feel like no more than an evening or its morning. A lifetime of 80 years reduced to the feeling of a single afternoon. This world is fleeting. The Akhira is forever.",
   },
 };
-
-// =============================================
-//  POPUP
-// =============================================
-function showVersePopup(v) {
-  const p = document.getElementById('verse-popup'); if (!p) return;
-  document.getElementById('vp-ref').textContent    = v.ref;
-  document.getElementById('vp-arabic').textContent = v.arabic;
-  document.getElementById('vp-eng').textContent    = v.english;
-  document.getElementById('vp-note').textContent   = v.note || '';
-  p.classList.add('visible');
-}
-function hideVersePopup() {
-  const p = document.getElementById('verse-popup'); if (p) p.classList.remove('visible');
-}
-
-// =============================================
-//  BASE SCENE
-// =============================================
-class BaseScene {
-  constructor(canvasId) {
-    this.canvas = document.getElementById(canvasId);
-    if (!this.canvas) return;
-    this.ctx = this.canvas.getContext('2d');
-    this.canvas.width = CW; this.canvas.height = CH;
-    this.t = 0; this.running = false; this.clickZones = [];
-    this._bindClick();
-  }
-  _bindClick() {
-    if (!this.canvas) return;
-    this.canvas.style.cursor = 'pointer';
-    this.canvas.addEventListener('click', e => {
-      const r = this.canvas.getBoundingClientRect();
-      const cx = (e.clientX - r.left) * (CW / r.width);
-      const cy = (e.clientY - r.top)  * (CH / r.height);
-      for (const z of this.clickZones) {
-        if (cx >= z.x && cx <= z.x + z.w && cy >= z.y && cy <= z.y + z.h) {
-          showVersePopup(VERSES[z.key]); return;
-        }
-      }
-    });
-  }
-  start() { if (this.running || !this.canvas) return; this.running = true; this._loop(); }
-  stop()  { this.running = false; }
-  _loop() { if (!this.running) return; this.draw(); this.t++; requestAnimationFrame(() => this._loop()); }
-  draw()  {}
-  _star(ctx, x, y, r, bright) {
-    ctx.fillStyle = sceneP().starStr + bright + ')';
-    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.fill();
-  }
-  _pixelFigure(ctx, x, y, bodyCol, headCol) {
-    fillRect(ctx, x,    y,      P*3, P*3, headCol  || '#f5d8b0');
-    fillRect(ctx, x-P,  y+P*3,  P*5, P*4, bodyCol || '#1a6040');
-    fillRect(ctx, x,    y+P*7,  P*2, P*3, '#333');
-    fillRect(ctx, x+P*2,y+P*7,  P*2, P*3, '#333');
-  }
-  _pixelAngel(ctx, x, y, col) {
-    fillRect(ctx, x+P,   y,     P*2, P*2, '#fff8e0');
-    fillRect(ctx, x,     y+P*2, P*4, P*3, col || '#c8f0d8');
-    fillRect(ctx, x-P*3, y+P,   P*3, P*2, '#fff8e0');
-    fillRect(ctx, x+P*4, y+P,   P*3, P*2, '#fff8e0');
-  }
-}
 
 // =============================================
 //  SCENE 1 — THE FIVE ANGELS (79:1-5)
@@ -485,8 +402,6 @@ class Scene7 extends BaseScene {
 //  SCENE MANAGER
 // =============================================
 const _scenes = {};
-
-
 
 
 const VD_wbw={ref:'An-Naziat (79)',arabic:'وَالنَّازِعَاتِ غَرْقًا ۩ وَالنَّاشِطَاتِ نَشْطًا ۩ وَالسَّابِحَاتِ سَبْحًا',english:'"By those [angels] who extract with violence, and those who draw out gently, and those who glide [through the sky]." (79:1-3)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};

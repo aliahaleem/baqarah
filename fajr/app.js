@@ -13,14 +13,14 @@ window.state = {
 };
 
 const REWARDS = {
-  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
-     msg:'MashAllah! You learned the key Arabic words of this surah!'},
-  1: { xp: 70,  gems: 3, icon: '🌅', title: 'Oath Keeper',      msg: "SubhanAllah! Allah swears by the Fajr — the Dawn is a sign of His power. The ten nights of Dhul-Hijjah are the best days of the year. MashAllah!" },
-  2: { xp: 80,  gems: 3, icon: '🏛️', title: 'History Reader',   msg: "MashAllah! \'Aad, Thamud, Pharaoh — three mighty civilisations, all destroyed. Tyranny never endures. Remember this always." },
-  3: { xp: 90,  gems: 3, icon: '⚖️', title: 'Test Understander', msg: "SubhanAllah! Both wealth AND poverty are tests from Allah. Man is not honoured by wealth — he is tested by it. May Allah help us pass every test!" },
-  4: { xp: 90,  gems: 3, icon: '💔', title: 'Wrong Spotter',     msg: "MashAllah! Not honouring orphans, not feeding the poor, consuming inheritance greedily — three wrongs Allah calls out by name. May we be of those who correct them!" },
-  5: { xp: 100, gems: 4, icon: '💫', title: 'Day Witness',       msg: "Allahu Akbar! The Day of Regret — when the earth is levelled, when Allah manifests, when Jahannam is brought near. May we be ready. Ameen!" },
-  6: { xp: 120, gems: 5, icon: '🕊️', title: 'Soul of Peace',    msg: "MashAllah! \"Ya ayyatuha an-nafs al-mutma'inna\" — O soul at rest! This is the highest honour: to be called back to Allah in peace, satisfied and pleasing. May we earn this. Ameen!" },
+  1: { xp: 60,  gems: 3, icon: '📖', title: 'Words Learned!',
+       msg: 'MashAllah! You learned the key Arabic words of this surah!' },
+  2: { xp: 70,  gems: 3, icon: '🌅', title: 'Oath Keeper',      msg: "SubhanAllah! Allah swears by the Fajr — the Dawn is a sign of His power. The ten nights of Dhul-Hijjah are the best days of the year. MashAllah!" },
+  3: { xp: 80,  gems: 3, icon: '🏛️', title: 'History Reader',   msg: "MashAllah! \'Aad, Thamud, Pharaoh — three mighty civilisations, all destroyed. Tyranny never endures. Remember this always." },
+  4: { xp: 90,  gems: 3, icon: '⚖️', title: 'Test Understander', msg: "SubhanAllah! Both wealth AND poverty are tests from Allah. Man is not honoured by wealth — he is tested by it. May Allah help us pass every test!" },
+  5: { xp: 90,  gems: 3, icon: '💔', title: 'Wrong Spotter',     msg: "MashAllah! Not honouring orphans, not feeding the poor, consuming inheritance greedily — three wrongs Allah calls out by name. May we be of those who correct them!" },
+  6: { xp: 100, gems: 4, icon: '💫', title: 'Day Witness',       msg: "Allahu Akbar! The Day of Regret — when the earth is levelled, when Allah manifests, when Jahannam is brought near. May we be ready. Ameen!" },
+  7: { xp: 120, gems: 5, icon: '🕊️', title: 'Soul of Peace',    msg: "MashAllah! \"Ya ayyatuha an-nafs al-mutma'inna\" — O soul at rest! This is the highest honour: to be called back to Allah in peace, satisfied and pleasing. May we earn this. Ameen!" },
 };
 
 window.SURAH_CONFIG = {

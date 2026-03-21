@@ -1,18 +1,11 @@
 'use strict';
-/* scenes.js — Surah Ash-Shams (91) */
-const CW=560,CH=220,P=4;
-function sceneP(){const s=document.documentElement.getAttribute('data-theme')==='stars';return s?{sky0:'#2a1808',sky1:'#3a2010',gnd:'#4e2e14',acc:'#f8c060',label:'#fff8e8',hint:'#e0b870'}:{sky0:'#180c02',sky1:'#241204',gnd:'#361a08',acc:'#e8c020',label:'#fff4d8',hint:'#b08040'};}
-function fillRect(ctx,x,y,w,h,col){if(col)ctx.fillStyle=col;const s=document.documentElement.getAttribute('data-theme')==='stars',rx=Math.round(x),ry=Math.round(y),rw=Math.round(w),rh=Math.round(h);if(s&&rw>4&&rh>4&&rw<120){const r=Math.min(rw,rh)*0.25;ctx.shadowColor='rgba(248,192,96,0.2)';ctx.shadowBlur=3;ctx.beginPath();if(ctx.roundRect)ctx.roundRect(rx,ry,rw,rh,r);else ctx.rect(rx,ry,rw,rh);ctx.fill();ctx.shadowBlur=0;}else ctx.fillRect(rx,ry,rw,rh);}
-function _sky(ctx){const p=sceneP(),g=ctx.createLinearGradient(0,0,0,CH);g.addColorStop(0,p.sky0);g.addColorStop(1,p.sky1);ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);}
-function _ground(ctx,y=170){const p=sceneP();fillRect(ctx,0,y,CW,CH-y,p.gnd);}
-function _label(ctx,txt,y=16){const p=sceneP();ctx.fillStyle=p.label;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(txt,CW/2,y);ctx.textAlign='left';}
-function _fig(ctx,x,y,hc,bc,pc){fillRect(ctx,x+P,y,P*3,P*3,hc);fillRect(ctx,x,y+P*3,P*5,P*4,bc);fillRect(ctx,x,y+P*7,P*2,P*4,pc);fillRect(ctx,x+P*3,y+P*7,P*2,P*4,pc);}
-
-const VD={
-  oaths:{ref:'Ash-Shams 91:1-6',arabic:'وَالشَّمْسِ وَضُحَاهَا ۩ وَالْقَمَرِ إِذَا تَلَاهَا ۩ وَالنَّهَارِ إِذَا جَلَّاهَا',english:'"By the sun in its morning brightness, by the moon when it follows it, by the day when it reveals it." (91:1-3)',note:'Eleven oaths — the most in the Quran — all leading to one point: the soul and its choice. Allah draws our eyes to the cosmos to make us look inward.'},
-  soul:{ref:'Ash-Shams 91:7-10',arabic:'وَنَفْسٍ وَمَا سَوَّاهَا ۩ فَأَلْهَمَهَا فُجُورَهَا وَتَقْوَاهَا ۩ قَدْ أَفْلَحَ مَن زَكَّاهَا',english:'"By the soul and He who formed it perfectly — He inspired it with its wickedness and its piety. He who purifies it succeeds; he who corrupts it fails." (91:7-10)',note:'"Zakkaha" — to purify, to grow. The soul knows right from wrong. The test is whether you develop that awareness or bury it. This is the entire purpose of the eleven oaths above.'},
-  thamud:{ref:'Ash-Shams 91:11-15',arabic:'كَذَّبَتْ ثَمُودُ بِطَغْوَاهَا ۩ إِذِ انبَعَثَ أَشْقَاهَا',english:'"Thamud rejected by reason of their transgression — when the worst of them rose up." (91:11-12)',note:'The worst ONE of them rose up to hamstring the camel. But Allah destroyed ALL of Thamud — showing that when a community permits transgression without stopping it, collective punishment follows. The soul corrupted, then society corrupted.'},
+window.SCENE_PALETTE = {
+  minecraft: {sky0:'#180c02',sky1:'#241204',gnd:'#361a08',acc:'#e8c020',label:'#fff4d8',hint:'#b08040'},
+  stars: {sky0:'#2a1808',sky1:'#3a2010',gnd:'#4e2e14',acc:'#f8c060',label:'#fff8e8',hint:'#e0b870'},
 };
+
+/* scenes.js — Surah Ash-Shams (91) */
+;
 
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 
@@ -70,8 +63,6 @@ _fig(ctx,CW/2-10,100,'#f0d090','#2050a0','#102870');
 ctx.fillStyle=p.acc;ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('قَدْ أَفْلَحَ مَن زَكَّاهَا',CW/2,90);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"He who purifies his soul succeeds"',CW/2,CH-8);ctx.textAlign='left';};draw();}}
 
 const scenes={};
-
-
 
 
 const VD_wbw={ref:'Ash-Shams (91)',arabic:'وَالشَّمْسِ وَضُحَاهَا ۩ وَنَفْسٍ وَمَا سَوَّاهَا ۩ فَأَلْهَمَهَا فُجُورَهَا وَتَقْوَاهَا ۩ قَدْ أَفْلَحَ مَن زَكَّاهَا',english:'"By the sun and its brightness. And [by] the soul and He who proportioned it, then inspired it with its wickedness and its righteousness. He has succeeded who purifies it." (91:1, 7-9)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};

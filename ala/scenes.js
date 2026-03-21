@@ -1,20 +1,11 @@
 'use strict';
-// SURAH AL-ALA (87) — scenes.js
-const CW=560,CH=220,P=4;
-function sceneP(){const s=document.documentElement.dataset.theme==='stars';return s?{sky0:'#0e2820',sky1:'#183830',sky2:'#224840',gnd:'#2c5840',gndAcc:'#3c6850',starStr:'rgba(160,240,200,',acStr:'rgba(240,208,96,',label:'#f0d060',hint:'#d0b040'}:{sky0:'#041008',sky1:'#081a0c',sky2:'#0c2410',gnd:'#10280c',gndAcc:'#183014',starStr:'rgba(80,180,100,',acStr:'rgba(200,160,32,',label:'#c8a020',hint:'#a08018'};}
-function fillRect(ctx,x,y,w,h,col){if(col)ctx.fillStyle=col;const rx=Math.round(x),ry=Math.round(y),rw=Math.round(w),rh=Math.round(h);if(document.documentElement.dataset.theme==='stars'&&rw<120&&rh<120&&rw>4&&rh>4){const r=Math.min(rw*0.3,rh*0.3,7);ctx.shadowColor='rgba(48,160,112,0.2)';ctx.shadowBlur=3;ctx.beginPath();if(ctx.roundRect)ctx.roundRect(rx,ry,rw,rh,r);else ctx.rect(rx,ry,rw,rh);ctx.fill();ctx.shadowBlur=0;}else{ctx.fillRect(rx,ry,rw,rh);}}
-function _sky(ctx){const p=sceneP();const g=ctx.createLinearGradient(0,0,0,CH);g.addColorStop(0,p.sky0);g.addColorStop(0.6,p.sky1);g.addColorStop(1,p.sky2);ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);}
-function _ground(ctx,y=170){const p=sceneP();fillRect(ctx,0,y,CW,CH-y,p.gnd);fillRect(ctx,0,y,CW,5,p.gndAcc);}
-function _label(ctx,txt,y=18){ctx.fillStyle=sceneP().label;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(txt,CW/2,y);ctx.textAlign='left';}
-function _fig(ctx,x,y,hc,bc,pc){fillRect(ctx,x+P,y,P*3,P*3,hc);fillRect(ctx,x,y+P*3,P*5,P*4,bc);fillRect(ctx,x-P,y+P*3,P,P*3,hc);fillRect(ctx,x+P*5,y+P*3,P,P*3,hc);fillRect(ctx,x,y+P*7,P*2,P*4,pc);fillRect(ctx,x+P*3,y+P*7,P*2,P*4,pc);}
-
-const VD={
-  glorify:{ref:'Al-Ala 87:1-5',arabic:'سَبِّحِ اسْمَ رَبِّكَ الْأَعْلَى ۩ الَّذِي خَلَقَ فَسَوَّىٰ ۩ وَالَّذِي قَدَّرَ فَهَدَىٰ ۩ وَالَّذِي أَخْرَجَ الْمَرْعَىٰ ۩ فَجَعَلَهُ غُثَاءً أَحْوَىٰ',english:'"Glorify the name of your Lord, the Most High — who created and proportioned — who destined and guided — who brought out the pasture — then made it dark debris." (87:1-5)',note:'"Sabbihi isma Rabbika al-A\'la!" — The first word is a command: GLORIFY! The name, "Sabbihi" — "Subhana" comes from this — SubhanAllah. Glorify the NAME of your Lord — His name itself, Al-A\'la — the Most High. When you say "Subhana Rabbiya Al-A\'la" in sujood, you are directly reciting this verse! The Prophet ﷺ commanded this after this surah was revealed. Each attribute: He created AND proportioned. He destined AND guided. Perfect completeness in every act.'},
-  recite:{ref:'Al-Ala 87:6-7',arabic:'سَنُقْرِئُكَ فَلَا تَنسَىٰ ۩ إِلَّا مَا شَاءَ اللَّهُ ۚ إِنَّهُ يَعْلَمُ الْجَهْرَ وَمَا يَخْفَىٰ',english:'"We will make you recite, and you will not forget — except what Allah wills. Indeed He knows the declared and what is hidden." (87:6-7)',note:'"Sanuqri\'uka fa-la tansa." — We will make you RECITE and you will NOT FORGET. This is a divine promise to the Prophet ﷺ. The Quran will be preserved in his memory — and in the Ummah\'s memory across generations. "Illa ma sha\' Allah" — except what Allah wills (i.e., whatever was later abrogated in revelation). "Innahu ya\'lam al-jahra wa ma yakhfa" — He knows the declared and the hidden. The One who promises this memory is All-Knowing.'},
-  fear:{ref:'Al-Ala 87:9-10',arabic:'فَذَكِّرْ إِن نَّفَعَتِ الذِّكْرَىٰ ۩ سَيَذَّكَّرُ مَن يَخْشَىٰ',english:'"So remind, if the reminder should benefit — the one who fears will be reminded." (87:9-10)',note:'"Fa-dhakkir in nafa\'at al-dhikra." So remind — if the reminder is beneficial. "Sayyadhdhakkaru man yakhsha" — the one who FEARS (yakhsha — fears Allah with awe) will be reminded. This sets up a classification: those who fear Allah are open, receptive, benefited by reminder. The following verse shows the opposite case. Khashyah (awe/fear of Allah) is the key that opens the heart to benefit from reminder.'},
-  purify:{ref:'Al-Ala 87:14-15',arabic:'قَدْ أَفْلَحَ مَن تَزَكَّىٰ ۩ وَذَكَرَ اسْمَ اللَّهِ فَصَلَّىٰ',english:'"He has certainly succeeded who purifies himself — and mentions the name of his Lord and prays." (87:14-15)',note:'"Qad aflaha man tazakka — wa dhakara isma Rabbih fa-salla." He has CERTAINLY SUCCEEDED — "aflaha" — who PURIFIES himself. "Tazakka" is to purify oneself — from shirk, from wrong beliefs, from spiritual impurities. And then: mentioned the name of Allah and PRAYED. The sequence: purification of the heart first, then prayer. Prayer without purification is incomplete. This is the path of success.'},
-  dunya:{ref:'Al-Ala 87:16-17',arabic:'بَلْ تُؤْثِرُونَ الْحَيَاةَ الدُّنْيَا ۩ وَالْآخِرَةُ خَيْرٌ وَأَبْقَىٰ',english:'"But you prefer the life of this world — while the Hereafter is better and more lasting." (87:16-17)',note:'"Bal tu\'thirun al-hayat al-dunya." But you PREFER the worldly life. "Tu\'thirun" — you give it priority, you choose it over the other option. Then the contrast: "wa al-akhiratu khayrun wa abqa" — the Hereafter is BETTER (khayr) AND MORE LASTING (abqa). Better in quality. More lasting in duration. Both dimensions: quality and time. The world is lower in quality AND temporary. The Hereafter is higher in quality AND eternal.'},
+window.SCENE_PALETTE = {
+  minecraft: {sky0:'#041008',sky1:'#081a0c',sky2:'#0c2410',gnd:'#10280c',gndAcc:'#183014',starStr:'rgba(80,180,100,',acStr:'rgba(200,160,32,',label:'#c8a020',hint:'#a08018'},
+  stars: {sky0:'#0e2820',sky1:'#183830',sky2:'#224840',gnd:'#2c5840',gndAcc:'#3c6850',starStr:'rgba(160,240,200,',acStr:'rgba(240,208,96,',label:'#f0d060',hint:'#d0b040'},
 };
+
+// SURAH AL-ALA (87) — scenes.js
+;
 
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 
@@ -80,8 +71,6 @@ class S7 extends BS{constructor(){super('canvas-7');}start(){if(!this.ctx)return
 ctx.fillStyle=p.acStr+'0.8)';ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('"This was in the earlier scriptures — of Ibrahim and Musa" (87:18-19)',CW/2,CH-8);ctx.textAlign='left';};draw();}}
 
 const scenes={};
-
-
 
 
 const VD_wbw={ref:'Al-Ala (87)',arabic:'سَبِّحِ اسْمَ رَبِّكَ الْأَعْلَى ۩ الَّذِي خَلَقَ فَسَوَّىٰ ۩ قَدْ أَفْلَحَ مَن تَزَكَّىٰ ۩ وَذَكَرَ اسْمَ رَبِّهِ فَصَلَّىٰ',english:'"Glorify the name of your Lord, the Most High, who created and proportioned. He has succeeded who purifies himself and remembers the name of his Lord and prays." (87:1-2, 14-15)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};

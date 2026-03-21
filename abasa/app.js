@@ -18,6 +18,7 @@ window.state = {
 };
 
 const REWARDS = {
+  1: {xp:60, gems:3, icon:'📖', title:'Words Learned!', msg:'MashAllah! You learned the key Arabic words of this surah!'},
   2: { xp: 80,  gems: 3, icon: '🙈', title: 'THE LESSON OF THE BLIND MAN!',
        msg: "SubhanAllah! The Prophet ﷺ turned away from Abdullah ibn Umm Maktum — and Allah gently corrected him. Not a harsh rebuke, but a divine lesson: the one who comes EAGERLY to learn matters more than the indifferent powerful. 'Wa amma man ja\'aka yas\'a wa huwa yakhsha — fa anta anhu talahhha.' Don't be distracted from those who truly seek Allah!" },
   3: { xp: 80,  gems: 3, icon: '📜', title: 'THE NOBLE QURAN UNDERSTOOD!',

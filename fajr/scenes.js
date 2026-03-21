@@ -10,22 +10,6 @@ const VERSES_FAJR = {
   6: { ref:'89:27-30', ar:'يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ ۩ ارْجِعِي إِلَىٰ رَبِّكِ رَاضِيَةً مَّرْضِيَّةً', en:'"O tranquil soul — return to your Lord, satisfied and pleasing — and enter among My servants — and enter My Paradise!" (89:27-30) — The ultimate honour.', note:'"Nafs mutma\'inna" — the soul at complete peace with its Lord. This is the goal of all our worship.' },
 };
 
-function sceneP() {
-  const st = document.documentElement.getAttribute('data-theme') === 'stars';
-  return st ? {
-    sky1:'#3d2870', sky2:'#5a3a90', ground:'#4a3060', accent:'#f4c840',
-    pri:'#9060d0', lit:'#c090f0', body:'#d4b8f0',
-    sun1:'#f4a0c0', sun2:'#e8c840',
-    pillar:'#8060a0', sand:'#6a4880',
-    char1:'#f0d0c0', char2:'#d4a0b0', robe:'#7040a0',
-  } : {
-    sky1:'#0e0614', sky2:'#1c0c28', ground:'#2a1440', accent:'#e8a030',
-    pri:'#7a2090', lit:'#b040c0', body:'#ffeeff',
-    sun1:'#c04080', sun2:'#e85020',
-    pillar:'#5a2080', sand:'#3a1860',
-    char1:'#f0d0c0', char2:'#c07050', robe:'#4a1870',
-  };
-}
 
 function spr(ctx, x, y, w, h, col, rx) {
   ctx.fillStyle = col;
@@ -191,8 +175,6 @@ function stopAllScenes() {
   _activeScene = null; }
 
 
-
-
 const VD_wbw={ref:'Al-Fajr (89)',arabic:'وَالْفَجْرِ ۩ وَلَيَالٍ عَشْرٍ ۩ إِنَّ رَبَّكَ لَبِالْمِرْصَادِ ۩ يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ ۩ ارْجِعِي إِلَىٰ رَبِّكِ رَاضِيَةً مَّرْضِيَّةً',english:'"By the dawn, and ten nights — your Lord is ever watchful. O tranquil soul, return to your Lord, pleased and pleasing." (89:1-2, 14, 27-28)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};
 const _s1wbw = new window.WBWScene('canvas-1', {emoji:'🌄',label:'THE DAWN',verse:VD_wbw});
 function initScenes() { for (let i = 2; i <= 7; i++) { const cv = document.getElementById(`canvas-${i}`); if (cv) { const fn = SCENE_FNS[i]; if (fn) fn(cv.getContext('2d'), cv.width, cv.height); } } }
@@ -205,6 +187,4 @@ function showVerse(n) {
   if (el('vp-note'))   el('vp-note').textContent   = v.note || '';
   const popup = el('verse-popup'); if (popup) popup.classList.add('visible');
 }
-function hideVersePopup() {
-  const p = document.getElementById('verse-popup'); if (p) p.classList.remove('visible');
-}
+

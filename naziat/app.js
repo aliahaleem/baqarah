@@ -18,21 +18,21 @@ window.state = {
 };
 
 const REWARDS = {
-  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
-     msg:'MashAllah! You learned the key Arabic words of this surah!'},
-  1: { xp: 80,  gems: 3, icon: '👼', title: 'THE FIVE ANGELS KNOWN!',
+  1: { xp: 60,  gems: 3, icon: '📖', title: 'Words Learned!',
+       msg: 'MashAllah! You learned the key Arabic words of this surah!' },
+  2: { xp: 80,  gems: 3, icon: '👼', title: 'THE FIVE ANGELS KNOWN!',
        msg: "SubhanAllah! Five types of angels — extractors, releasers, floaters, racers, administrators — all swearing oaths in Allah's name. There is a vast cosmic system running every moment that our eyes cannot see. On to the Day of Trembling!" },
-  2: { xp: 90,  gems: 3, icon: '💓', title: 'THE DAY UNDERSTOOD!',
+  3: { xp: 90,  gems: 3, icon: '💓', title: 'THE DAY UNDERSTOOD!',
        msg: "Allahu Akbar! Two Blasts: al-Rajifa (the destroyer) and al-Radifa (the resurrecter). Hearts pound with fear. Eyes cast downward. The mockers will discover their error in an instant — 'a single shout and they are at the earth's surface.' SubhanAllah!" },
-  3: { xp: 90,  gems: 3, icon: '🔥', title: 'HOLY VALLEY REACHED!',
+  4: { xp: 90,  gems: 3, icon: '🔥', title: 'HOLY VALLEY REACHED!',
        msg: "MashAllah! The sacred valley of Tuwa. Allah calls Moses personally. The mission: go to Pharaoh. And the message: not a threat first — but an invitation: 'Would you like to purify yourself?' This is how Allah invites: with mercy and tazkiyah before punishment. Beautiful!" },
-  4: { xp: 100, gems: 4, icon: '⚡', title: "PHARAOH'S LESSON LEARNED!",
+  5: { xp: 100, gems: 4, icon: '⚡', title: "PHARAOH'S LESSON LEARNED!",
        msg: "SubhanAllah! Greatest signs shown. Pharaoh denied and disobeyed. Turned his back. Gathered his people. Proclaimed 'I am your most exalted lord!' — and Allah seized him as a punishment for both worlds. His body preserved as a sign for all of history. Never be like Pharaoh!" },
-  5: { xp: 100, gems: 4, icon: '🌍', title: 'CREATION SIGNS SEEN!',
+  6: { xp: 100, gems: 4, icon: '🌍', title: 'CREATION SIGNS SEEN!',
        msg: "MashAllah! 'Are you harder to create — or the entire sky?' Seven strong heavens built and proportioned. Day and night designed. Earth spread out (daha). Water and pastures brought forth. He who created all of THIS can easily recreate YOU. SubhanAllah!" },
-  6: { xp: 120, gems: 5, icon: '⚖️', title: 'AT-TAMMAH MAPPED!',
+  7: { xp: 120, gems: 5, icon: '⚖️', title: 'AT-TAMMAH MAPPED!',
        msg: "Allahu Akbar! The Greatest Overwhelming comes. Two paths, two eternal destinations. One: transgress + prefer dunya = Hellfire. Two: fear your Lord's standing + restrain your nafs = Paradise al-Ma'wa. The choice is made in this life. Choose wisely!" },
-  7: { xp: 150, gems: 7, icon: '🏆', title: "SURAH AN-NAZI'AT COMPLETE!",
+  8: { xp: 150, gems: 7, icon: '🏆', title: "SURAH AN-NAZI'AT COMPLETE!",
        msg: "ALLAHUMMA BARIK! All 8 levels of Surah An-Nazi'at — The Pullers — complete! 'Wa amma man khafa maqama Rabbihi wa naha al-nafsa 'an al-hawa — fa inna al-jannata hiya al-ma'wa.' For the one who feared standing before their Lord and restrained themselves: Paradise is their home. May we be among them. Ameen!" },
 };
 

@@ -1,19 +1,11 @@
 'use strict';
-/* scenes.js — Surah Al-Layl (92) */
-const CW=560,CH=220,P=4;
-function sceneP(){const s=document.documentElement.getAttribute('data-theme')==='stars';return s?{sky0:'#0c0828',sky1:'#1a1240',gnd:'#261c54',acc:'#e8d060',label:'#f0e8ff',hint:'#b090d0'}:{sky0:'#04020e',sky1:'#0c0820',gnd:'#160e30',acc:'#c0a820',label:'#e8e0ff',hint:'#806090'};}
-function fillRect(ctx,x,y,w,h,col){if(col)ctx.fillStyle=col;const s=document.documentElement.getAttribute('data-theme')==='stars',rx=Math.round(x),ry=Math.round(y),rw=Math.round(w),rh=Math.round(h);if(s&&rw>4&&rh>4&&rw<120){const r=Math.min(rw,rh)*0.25;ctx.shadowColor='rgba(160,96,224,0.2)';ctx.shadowBlur=3;ctx.beginPath();if(ctx.roundRect)ctx.roundRect(rx,ry,rw,rh,r);else ctx.rect(rx,ry,rw,rh);ctx.fill();ctx.shadowBlur=0;}else ctx.fillRect(rx,ry,rw,rh);}
-function _sky(ctx){const p=sceneP(),g=ctx.createLinearGradient(0,0,0,CH);g.addColorStop(0,p.sky0);g.addColorStop(1,p.sky1);ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);}
-function _stars(ctx,t){[[50,20],[110,10],[200,25],[320,8],[420,18],[510,12],[80,50],[280,40],[450,45]].forEach(([x,y],i)=>{const p=sceneP();const br=0.4+Math.sin((t||0)*0.04+i)*0.3;ctx.fillStyle=`rgba(200,180,255,${br})`;ctx.beginPath();ctx.arc(x,y,1.5,0,Math.PI*2);ctx.fill();});}
-function _ground(ctx,y=170){fillRect(ctx,0,y,CW,CH-y,sceneP().gnd);}
-function _label(ctx,txt,y=16){const p=sceneP();ctx.fillStyle=p.label;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(txt,CW/2,y);ctx.textAlign='left';}
-function _fig(ctx,x,y,hc,bc,pc){fillRect(ctx,x+P,y,P*3,P*3,hc);fillRect(ctx,x,y+P*3,P*5,P*4,bc);fillRect(ctx,x,y+P*7,P*2,P*4,pc);fillRect(ctx,x+P*3,y+P*7,P*2,P*4,pc);}
-
-const VD={
-  oaths:{ref:'Al-Layl 92:1-4',arabic:'وَاللَّيْلِ إِذَا يَغْشَىٰ ۩ وَالنَّهَارِ إِذَا تَجَلَّىٰ ۩ وَمَا خَلَقَ الذَّكَرَ وَالْأُنثَىٰ',english:'"By the night when it covers, by the day when it shines, by the creation of male and female." (92:1-3)',note:'These three oaths frame the question of 92:4: "Inna sa\'yakum la-shatta" — your strivings are indeed varied/scattered. What are YOU striving for?'},
-  giver:{ref:'Al-Layl 92:5-7',arabic:'فَأَمَّا مَنْ أَعْطَىٰ وَاتَّقَىٰ ۩ وَصَدَّقَ بِالْحُسْنَىٰ ۩ فَسَنُيَسِّرُهُ لِلْيُسْرَىٰ',english:'"As for he who gives and fears Allah, and believes in the best — We shall ease his way to ease." (92:5-7)',note:'Three qualities: gives (a\'ta), has taqwa (ittaqa), believes in Al-Husna (the best / Paradise / goodness). The result: Allah makes everything EASIER for them. Giving opens doors.'},
-  miser:{ref:'Al-Layl 92:8-11',arabic:'وَأَمَّا مَنْ بَخِلَ وَاسْتَغْنَىٰ ۩ وَكَذَّبَ بِالْحُسْنَىٰ ۩ فَسَنُيَسِّرُهُ لِلْعُسْرَىٰ',english:'"And as for he who is stingy and considers himself self-sufficient, and denies the best — We shall ease his way to difficulty." (92:8-10)',note:'"Istagna" — felt self-sufficient, independent of Allah. The greatest spiritual danger. Wealth that makes you feel you don\'t need Allah is the worst wealth. His wealth will avail him nothing when he falls.'},
+window.SCENE_PALETTE = {
+  minecraft: {sky0:'#04020e',sky1:'#0c0820',gnd:'#160e30',acc:'#c0a820',label:'#e8e0ff',hint:'#806090'},
+  stars: {sky0:'#0c0828',sky1:'#1a1240',gnd:'#261c54',acc:'#e8d060',label:'#f0e8ff',hint:'#b090d0'},
 };
+
+/* scenes.js — Surah Al-Layl (92) */
+;
 
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 
@@ -69,8 +61,6 @@ _fig(ctx,CW-120,90,'#a08060','#502010','#380808');ctx.fillStyle='#ff8080';ctx.fi
 ctx.fillStyle=p.label;ctx.fillText('"Inna alayna lal-huda" — Guidance is from Allah',CW/2,CH-8);ctx.textAlign='left';};draw();}}
 
 const scenes={};
-
-
 
 
 const VD_wbw={ref:'Al-Layl (92)',arabic:'وَاللَّيْلِ إِذَا يَغْشَىٰ ۩ وَالنَّهَارِ إِذَا تَجَلَّىٰ ۩ فَأَمَّا مَنْ أَعْطَىٰ وَاتَّقَىٰ ۩ فَسَنُيَسِّرُهُ لِلْيُسْرَىٰ',english:'"By the night when it covers, and the day when it appears — as for he who gives and fears Allah, We will ease him to ease." (92:1-2, 5, 7)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};

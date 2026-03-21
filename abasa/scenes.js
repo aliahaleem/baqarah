@@ -4,39 +4,25 @@
 //  He Frowned · earth / amber / harvest gold
 // =============================================
 
-const CW = 560, CH = 220, P = 4;
 
-function sceneP() {
-  const s = document.documentElement.dataset.theme === 'stars';
-  return s ? {
-    sky0: '#2e2460', sky1: '#3c3078', sky2: '#4a3c90',
-    gnd:  '#5a4898', gndAcc: '#6a58a8',
-    starStr: 'rgba(200,185,255,',
-    acStr:   'rgba(244,200,64,',
-    label:   '#f4c840',
-    hint:    '#d4a820',
-  } : {
+window.SCENE_PALETTE = {
+  minecraft: {
     sky0: '#0e0402', sky1: '#1a0a04', sky2: '#261206',
     gnd:  '#3a1c08', gndAcc: '#4a2810',
     starStr: 'rgba(255,220,150,',
     acStr:   'rgba(232,160,48,',
     label:   '#e8a030',
     hint:    '#c07818',
-  };
-}
-
-function fillRect(ctx, x, y, w, h, col) {
-  if (col) ctx.fillStyle = col;
-  const rx = Math.round(x), ry = Math.round(y), rw = Math.round(w), rh = Math.round(h);
-  if (document.documentElement.dataset.theme === 'stars' && rw < 120 && rh < 120 && rw > 4 && rh > 4) {
-    const r = Math.min(rw * 0.3, rh * 0.3, 7);
-    ctx.shadowColor = 'rgba(100,80,200,0.2)'; ctx.shadowBlur = 3;
-    ctx.beginPath();
-    if (ctx.roundRect) ctx.roundRect(rx, ry, rw, rh, r); else ctx.rect(rx, ry, rw, rh);
-    ctx.fill(); ctx.shadowBlur = 0;
-  } else { ctx.fillRect(rx, ry, rw, rh); }
-}
-
+  },
+  stars: {
+    sky0: '#2e2460', sky1: '#3c3078', sky2: '#4a3c90',
+    gnd:  '#5a4898', gndAcc: '#6a58a8',
+    starStr: 'rgba(200,185,255,',
+    acStr:   'rgba(244,200,64,',
+    label:   '#f4c840',
+    hint:    '#d4a820',
+  },
+};
 // =============================================
 //  VERSES
 // =============================================
@@ -84,56 +70,6 @@ const VERSES = {
     note: '"Wujuhun yawma\'idhin musfirah" — Faces glowing with light, laughing, full of joy. These are the believers who pleased their Lord. Then "wujuhun alayhā ghabarah tarhaqu-ha qatarah" — faces covered in dust and darkness. The contrast is total. Which face do you want on that Day? Your choices today determine which group you\'re in.',
   },
 };
-
-// =============================================
-//  BASE SCENE
-// =============================================
-class BaseScene {
-  constructor(id) {
-    this.canvas = document.getElementById(id);
-    this.ctx    = this.canvas ? this.canvas.getContext('2d') : null;
-    this.raf    = null; this.t = 0;
-  }
-  stop() { if (this.raf) { cancelAnimationFrame(this.raf); this.raf = null; } }
-  _star(ctx, x, y, r, bright) {
-    ctx.fillStyle = sceneP().starStr + bright + ')';
-    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
-  }
-  _sky(ctx) {
-    const p = sceneP();
-    const g = ctx.createLinearGradient(0, 0, 0, CH);
-    g.addColorStop(0, p.sky0); g.addColorStop(0.6, p.sky1); g.addColorStop(1, p.sky2);
-    ctx.fillStyle = g; ctx.fillRect(0, 0, CW, CH);
-  }
-  _ground(ctx, y = 170) {
-    const p = sceneP();
-    fillRect(ctx, 0, y, CW, CH - y, p.gnd);
-    fillRect(ctx, 0, y, CW, 5, p.gndAcc);
-  }
-  _stars(ctx) {
-    [[80,22],[150,40],[260,15],[340,30],[440,18],[510,42],[60,60],[200,55],[390,48],[520,20]].forEach(([x,y],i)=>{
-      this._star(ctx, x, y, i%3===0 ? 1.5 : 1, 0.4 + (i%4)*0.15);
-    });
-  }
-  _label(ctx, text, y = 20) {
-    ctx.fillStyle = sceneP().label; ctx.font = '7px "Press Start 2P",monospace';
-    ctx.textAlign = 'center'; ctx.fillText(text, CW/2, y); ctx.textAlign = 'left';
-  }
-  _figure(ctx, x, y, headCol, bodyCol, pantsCol) {
-    fillRect(ctx, x+P, y,      P*3, P*3, headCol);
-    fillRect(ctx, x,   y+P*3,  P*5, P*4, bodyCol);
-    fillRect(ctx, x-P, y+P*3,  P,   P*3, headCol);
-    fillRect(ctx, x+P*5, y+P*3, P,  P*3, headCol);
-    fillRect(ctx, x,   y+P*7,  P*2, P*4, pantsCol);
-    fillRect(ctx, x+P*3, y+P*7, P*2, P*4, pantsCol);
-  }
-  _blindMan(ctx, x, y) {
-    const sk = '#e8c39a', robe = '#5a7a5a';
-    this._figure(ctx, x, y, sk, robe, '#3a4a3a');
-    fillRect(ctx, x+P*2, y+P*10, P, P*2, '#8a6a3a');
-    fillRect(ctx, x+P*3, y+P*12, P, P*2, '#8a6a3a');
-  }
-}
 
 // =============================================
 //  SCENE 1 — He Frowned (80:1-10)
@@ -404,8 +340,6 @@ class Scene6 extends BaseScene {
 //  ENGINE
 // =============================================
 const scenes = {};
-
-
 
 
 const VD_wbw={ref:'Abasa (80)',arabic:'عَبَسَ وَتَوَلَّىٰ ۩ أَن جَاءَهُ الْأَعْمَىٰ ۩ وَمَا يُدْرِيكَ لَعَلَّهُ يَزَّكَّىٰ',english:'"He frowned and turned away because there came to him the blind man. But what would make you perceive that perhaps he might be purified?" (80:1-3)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};

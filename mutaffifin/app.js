@@ -4,6 +4,7 @@ window.STORAGE_KEY='mutaffifinQuestSave';
 window.state={explorerName:'',xp:0,gems:0,completed:[],s2Answers:{},s2Checked:false,s3Checked:false,s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false,s7Answers:{},s7Checked:false};
 
 const REWARDS={
+  1: {xp:60, gems:3, icon:'📖', title:'Words Learned!', msg:'MashAllah! You learned the key Arabic words of this surah!'},
   2:{xp:80,gems:3,icon:'⚖️',title:'THE DEFRAUDERS EXPOSED!',msg:"SubhanAllah! 'Waylun lil-mutaffifin!' Woe to those who take full measure for themselves but give less to others. This surah was revealed to fix an economic injustice. The lesson? Every transaction — with people, with time, with effort — should be honest. What you expect from others, give to them too."},
   3:{xp:80,gems:3,icon:'📕',title:'SIJJIN MAPPED!',msg:"Allahu Akbar! The record of the wicked is in Sijjin — the lowest, most confining place. 'Kitab marqum' — a clearly inscribed, sealed record. The deeds of the Fujjar are filed away in the most degraded place in existence. Contrast this with the record of the Abrar — filed in Illiyyin above!"},
   4:{xp:90,gems:3,icon:'📗',title:'ILLIYYIN REACHED!',msg:"MashAllah! The record of the righteous is in Illiyyin — the highest, most elevated register. Witnessed by the Muqarrabun — angels closest to Allah! Your good deeds are preserved in the most honoured location in all of creation. Let this motivate you to add more good deeds to that register today!"},

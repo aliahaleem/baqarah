@@ -1,7 +1,10 @@
 'use strict';
+window.SCENE_PALETTE = {
+  minecraft: {sky0:'var(--bg)',sky1:'var(--bg2)',gnd:'var(--surface)',acc:'var(--accent)',label:'var(--text)',hint:'var(--text-dim)'},
+  stars: {sky0:'var(--bg)',sky1:'var(--bg2)',gnd:'var(--surface)',acc:'var(--accent)',label:'var(--text)',hint:'var(--text-dim)'},
+};
+
 /* scenes.js — duha */
-const CW=560,CH=220,P=4;
-function sceneP(){const s=document.documentElement.getAttribute('data-theme')==='stars';return s?{sky0:'var(--bg)',sky1:'var(--bg2)',gnd:'var(--surface)',acc:'var(--accent)',label:'var(--text)',hint:'var(--text-dim)'}:{sky0:'var(--bg)',sky1:'var(--bg2)',gnd:'var(--surface)',acc:'var(--accent)',label:'var(--text)',hint:'var(--text-dim)'};}
 function _sky(ctx,c0,c1){const g=ctx.createLinearGradient(0,0,0,CH);g.addColorStop(0,c0);g.addColorStop(1,c1);ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);}
 function _label(ctx,t,col,y=15){ctx.fillStyle=col;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(t,CW/2,y);ctx.textAlign='left';}
 function _fig(ctx,x,y,hc,bc,pc){ctx.fillStyle=hc;ctx.fillRect(x+P,y,P*3,P*3);ctx.fillStyle=bc;ctx.fillRect(x,y+P*3,P*5,P*4);ctx.fillStyle=pc;ctx.fillRect(x,y+P*7,P*2,P*4);ctx.fillRect(x+P*3,y+P*7,P*2,P*4);}
@@ -19,8 +22,6 @@ class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return
 
 class S5 extends BS{constructor(){super('canvas-5');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD_reassurance);const ctx=this.ctx;const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);ctx.fillStyle='#1e0c06';ctx.fillRect(0,0,CW,CH);const glow=0.15+Math.sin(this.t*0.04)*0.08;const rg=ctx.createRadialGradient(CW/2,CH*0.5,5,CW/2,CH*0.5,100);rg.addColorStop(0,`rgba(248,176,80,${glow*3})`);rg.addColorStop(1,'transparent');ctx.fillStyle=rg;ctx.fillRect(0,0,CW,CH);_fig(ctx,CW/2-10,100,'#f0d090','#204080','#102060');ctx.fillStyle='#f8b050';ctx.font='8px serif';ctx.textAlign='center';ctx.fillText('مَا وَدَّعَكَ رَبُّكَ',CW/2,85);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Your Lord has not forsaken you"',CW/2,CH-8);ctx.textAlign='left';_label(ctx,'CLICK: Never Forsaken — 93:3-5','#fff4e0');};draw();}}
 const scenes={};
-
-
 
 
 const VD_wbw={ref:'Ad-Duha (93)',arabic:'وَالضُّحَىٰ ۩ وَاللَّيْلِ إِذَا سَجَىٰ ۩ مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ ۩ فَأَمَّا الْيَتِيمَ فَلَا تَقْهَرْ',english:'"By the morning brightness, and the night when it covers with darkness — your Lord has not forsaken you nor hated you. So as for the orphan, do not oppress." (93:1-3, 9)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};

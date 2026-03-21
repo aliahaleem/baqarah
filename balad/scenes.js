@@ -10,16 +10,6 @@ const VERSES_BALAD = {
   6: { ref:'90:17-20', ar:'ثُمَّ كَانَ مِنَ الَّذِينَ آمَنُوا وَتَوَاصَوْا بِالصَّبْرِ وَتَوَاصَوْا بِالْمَرْحَمَةِ', en:'"Then he should be of those who believe, urge each other to patience, and urge each other to mercy — those are the companions of the right." (90:17-18)', note:'"Ashaab al-maymana" — companions of the right hand (Jannah). The left: those who rejected Our signs — fire will be upon them.' },
 };
 
-function sceneP() {
-  const st = document.documentElement.getAttribute('data-theme') === 'stars';
-  return st ? {
-    sky:'#3d2870', ground:'#4a3060', sand:'#6a4880', pri:'#9060d0',
-    acc:'#f4c840', wall:'#7050a0', char:'#f0d0c0', robe:'#7040a0',
-  } : {
-    sky:'#120a04', ground:'#1e1008', sand:'#4a2c10', pri:'#8a5010',
-    acc:'#e8b030', wall:'#6a3810', char:'#f0d0b0', robe:'#5a2810',
-  };
-}
 
 function spr(ctx, x, y, w, h, col) { ctx.fillStyle=col; ctx.fillRect(x,y,w,h); }
 
@@ -106,11 +96,9 @@ function stopAllScenes() {
   }
 
 
-
-
 const VD_wbw={ref:'Al-Balad (90)',arabic:'لَا أُقْسِمُ بِهَٰذَا الْبَلَدِ ۩ أَلَمْ نَجْعَل لَّهُ عَيْنَيْنِ ۩ وَلِسَانًا وَشَفَتَيْنِ ۩ فَلَا اقْتَحَمَ الْعَقَبَةَ',english:'"I swear by this city (Mecca). Did We not make for him two eyes, a tongue and two lips? But he has not attempted the steep path." (90:1, 8-9, 11)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};
 const _s1wbw = new window.WBWScene('canvas-1', {emoji:'🏙️',label:'THE CITY',verse:VD_wbw});
 
 function initScenes(){scenes[1]=_s1wbw;for(let i=2;i<=7;i++){const cv=document.getElementById(`canvas-${i}`);if(cv){const fn=SCENE_FNS[i];if(fn)fn(cv.getContext('2d'),cv.width,cv.height);}}}
 function showVerse(n){const v=VERSES_BALAD[n];if(!v)return;const el=id=>document.getElementById(id);if(el('vp-ref'))el('vp-ref').textContent=v.ref;if(el('vp-arabic'))el('vp-arabic').textContent=v.ar;if(el('vp-eng'))el('vp-eng').textContent=v.en;if(el('vp-note'))el('vp-note').textContent=v.note||'';const p=el('verse-popup');if(p)p.classList.add('visible');}
-function hideVersePopup(){const p=document.getElementById('verse-popup');if(p)p.classList.remove('visible');}
+

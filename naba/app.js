@@ -21,23 +21,23 @@ window.state = {
 };
 
 const REWARDS = {
-  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
-     msg:'MashAllah! You learned the key Arabic words of this surah!'},
-  1: { xp: 90,  gems: 3, icon: '❓', title: 'THE GREAT NEWS KNOWN!',
+  1: { xp: 60,  gems: 3, icon: '📖', title: 'Words Learned!',
+       msg: 'MashAllah! You learned the key Arabic words of this surah!' },
+  2: { xp: 90,  gems: 3, icon: '❓', title: 'THE GREAT NEWS KNOWN!',
        msg: 'SubhanAllah! "An-Naba Al-Atheem" — The Great News. They argued about it. But Allah says twice: "Kalla saya\'lamoon!" — They are going to know. On to the Signs of Creation!' },
-  2: { xp: 100, gems: 4, icon: '⛰️', title: 'EARTH SIGNS UNLOCKED!',
+  3: { xp: 100, gems: 4, icon: '⛰️', title: 'EARTH SIGNS UNLOCKED!',
        msg: 'MashAllah! Earth as a resting bed. Mountains as pegs. Sleep as rest. Night as a covering. Day for livelihood. Six gifts, six signs — all custom-designed for YOU.' },
-  3: { xp: 100, gems: 4, icon: '🌧️', title: 'SKY SIGNS DISCOVERED!',
+  4: { xp: 100, gems: 4, icon: '🌧️', title: 'SKY SIGNS DISCOVERED!',
        msg: 'SubhanAllah! Seven strong heavens. A blazing lamp. Torrential rain. Dense gardens. One chain of mercy — from sky to soil.' },
-  4: { xp: 110, gems: 4, icon: '📯', title: 'THE DAY UNDERSTOOD!',
+  5: { xp: 110, gems: 4, icon: '📯', title: 'THE DAY UNDERSTOOD!',
        msg: 'Allahu Akbar! Yawm al-Fasl — the Day of Sorting. The Horn is blown. You come in crowds. The sky opens as gates. The mountains become a mirage. Prepare now!' },
-  5: { xp: 110, gems: 4, icon: '🔥', title: 'THE AMBUSH MAPPED!',
+  6: { xp: 110, gems: 4, icon: '🔥', title: 'THE AMBUSH MAPPED!',
        msg: 'MashAllah! Hellfire is a "mirsad" — waiting, watching. "They did not expect any account." Let us never be like them.' },
-  6: { xp: 120, gems: 5, icon: '🌿', title: 'PARADISE ENTERED!',
+  7: { xp: 120, gems: 5, icon: '🌿', title: 'PARADISE ENTERED!',
        msg: 'SubhanAllah! "Inna lil-muttaqeena mafaza!" — For the righteous is success! Gardens, vines, companions, a full cup. No idle talk, no lies. Pure peace.' },
-  7: { xp: 100, gems: 3, icon: '👑', title: 'THE ROWS WITNESSED!',
+  8: { xp: 100, gems: 3, icon: '👑', title: 'THE ROWS WITNESSED!',
        msg: 'Allahu Akbar! Only those given permission may speak — and only truth. The absolute sovereignty of Allah.' },
-  8: { xp: 160, gems: 8, icon: '🏆', title: 'SURAH AN-NABA COMPLETE!',
+  9: { xp: 160, gems: 8, icon: '🏆', title: 'SURAH AN-NABA COMPLETE!',
        msg: "ALLAHUMMA BARIK! All 9 levels complete! \"Fa-man sha'a ittakhadha ila rabbihi ma'aba.\" May Allah make us from those who rush toward Him. Ameen!" },
 };
 

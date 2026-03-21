@@ -4,6 +4,7 @@ window.STORAGE_KEY='burujQuestSave';
 window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Answers:{},s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false,s7Answers:{},s7Checked:false};
 
 const REWARDS={
+  1: {xp:60, gems:3, icon:'📖', title:'Words Learned!', msg:'MashAllah! You learned the key Arabic words of this surah!'},
   2:{xp:80,gems:3,icon:'⭐',title:'THE OATHS UNDERSTOOD!',msg:"SubhanAllah! Three powerful oaths: By the sky with its constellations — by the Promised Day — by the witness and the witnessed. Allah swears by the vast, ordered sky; by the certain Day of Judgment; by the witnesses of this world and the next. These oaths certify: everything you are about to read is TRUTH."},
   3:{xp:80,gems:3,icon:'🔥',title:'THE DITCH EXPOSED!',msg:"Allahu Akbar! The People of the Ditch — 'Ashab al-Ukhdud.' The tyrant Dhunuwas dug trenches of fire in Yemen and threw believers in for refusing to abandon their faith. The persecutors sat watching, witnessing their own evil. They were 'DESTROYED.' But the believers? They entered the gardens of the Greatest Success."},
   4:{xp:90,gems:3,icon:'✊',title:'THE TRUE CRIME REVEALED!',msg:"MashAllah! 'Wa ma naqamu minhum illa an yu\'minu bi-Allah al-Aziz al-Hamid.' Their ONLY crime was believing in Allah — the Most Powerful and Most Praiseworthy. No worldly crime. No harm done to others. Just faith. This is the highest form of persecution — and the highest form of martyrdom."},

@@ -3,19 +3,11 @@
 //  SURAH AT-TAKWIR (81) — scenes.js
 //  The Overthrowing · indigo / silver-star / cosmic
 // =============================================
-const CW=560,CH=220,P=4;
-function sceneP(){
-  const s=document.documentElement.dataset.theme==='stars';
-  return s?{sky0:'#1e1a4a',sky1:'#2a2460',sky2:'#363078',gnd:'#42389a',gndAcc:'#524aa8',starStr:'rgba(220,215,255,',acStr:'rgba(232,224,160,',label:'#e8e0a0',hint:'#c8c080'}:{sky0:'#04040e',sky1:'#08081c',sky2:'#0c0c28',gnd:'#12123a',gndAcc:'#1c1c4a',starStr:'rgba(200,200,255,',acStr:'rgba(200,192,112,',label:'#c8c070',hint:'#a8a050'};
-}
-function fillRect(ctx,x,y,w,h,col){
-  if(col)ctx.fillStyle=col;
-  const rx=Math.round(x),ry=Math.round(y),rw=Math.round(w),rh=Math.round(h);
-  if(document.documentElement.dataset.theme==='stars'&&rw<120&&rh<120&&rw>4&&rh>4){
-    const r=Math.min(rw*0.3,rh*0.3,7);ctx.shadowColor='rgba(100,80,200,0.2)';ctx.shadowBlur=3;
-    ctx.beginPath();if(ctx.roundRect)ctx.roundRect(rx,ry,rw,rh,r);else ctx.rect(rx,ry,rw,rh);ctx.fill();ctx.shadowBlur=0;
-  }else{ctx.fillRect(rx,ry,rw,rh);}
-}
+
+window.SCENE_PALETTE = {
+  minecraft: {sky0:'#04040e',sky1:'#08081c',sky2:'#0c0c28',gnd:'#12123a',gndAcc:'#1c1c4a',starStr:'rgba(200,200,255,',acStr:'rgba(200,192,112,',label:'#c8c070',hint:'#a8a050'},
+  stars: {sky0:'#1e1a4a',sky1:'#2a2460',sky2:'#363078',gnd:'#42389a',gndAcc:'#524aa8',starStr:'rgba(220,215,255,',acStr:'rgba(232,224,160,',label:'#e8e0a0',hint:'#c8c080'},
+};
 function _sky(ctx){const p=sceneP();const g=ctx.createLinearGradient(0,0,0,CH);g.addColorStop(0,p.sky0);g.addColorStop(0.6,p.sky1);g.addColorStop(1,p.sky2);ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);}
 function _stars(ctx){const p=sceneP();[[80,22],[150,40],[260,15],[340,30],[440,18],[510,42],[60,60],[200,55],[390,48],[520,20],[100,10],[300,5],[460,35]].forEach(([x,y],i)=>{ctx.fillStyle=p.starStr+(0.3+(i%4)*0.18)+')';ctx.beginPath();ctx.arc(x,y,i%3===0?1.5:1,0,Math.PI*2);ctx.fill();});}
 function _ground(ctx,y=170){const p=sceneP();fillRect(ctx,0,y,CW,CH-y,p.gnd);fillRect(ctx,0,y,CW,5,p.gndAcc);}
@@ -32,46 +24,6 @@ const VD={
   will:{ref:'At-Takwir 81:26-29',arabic:'فَأَيْنَ تَذْهَبُونَ ۩ إِنْ هُوَ إِلَّا ذِكْرٌ لِّلْعَالَمِينَ ۩ لِمَن شَاءَ مِنكُمْ أَن يَسْتَقِيمَ ۩ وَمَا تَشَاءُونَ إِلَّا أَن يَشَاءَ اللَّهُ',english:'"So where are you going? It is nothing but a reminder to the worlds — for whoever wills among you to take a straight path. But you cannot will unless Allah wills — the Lord of the worlds." (81:26-29)',note:'"Fa-ayna tadh-habun?" — WHERE are you going? A divine question. The Quran is a reminder for ALL creation. But it requires your WILL to act. And even your will is within Allah\'s will. Humbling and empowering at the same time.'},
 };
 
-class BaseScene{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
-
-class Scene1 extends BaseScene{
-  constructor(){super('canvas-2');}
-  start(){
-    if(!this.ctx)return;
-    this.canvas.onclick=()=>showVersePopup(VD.signs);
-    const draw=()=>{
-      this.t++;this.raf=requestAnimationFrame(draw);
-      const ctx=this.ctx,p=sceneP();
-      _sky(ctx);_stars(ctx);
-      _label(ctx,'CLICK: The 12 Signs of the Hour (81:1-7)');
-      // Rolling sun - dims over time
-      const sunAlpha=Math.max(0.1,1-this.t*0.003);
-      ctx.globalAlpha=sunAlpha;
-      const sg=ctx.createRadialGradient(CW/2,90,0,CW/2,90,50);
-      sg.addColorStop(0,'#ffffa0');sg.addColorStop(0.5,'#ffcc00');sg.addColorStop(1,'rgba(255,180,0,0)');
-      ctx.fillStyle=sg;ctx.beginPath();ctx.arc(CW/2,90,50,0,Math.PI*2);ctx.fill();
-      ctx.globalAlpha=1;
-      // Stars falling
-      for(let i=0;i<5;i++){
-        const sx=(i*130+this.t*0.8+(i*50))%CW;
-        const sy=(this.t*0.6+i*40)%CH;
-        ctx.fillStyle=p.acStr+'0.9)';
-        ctx.beginPath();ctx.arc(sx,sy,2,0,Math.PI*2);ctx.fill();
-        ctx.strokeStyle=p.acStr+'0.4)';ctx.lineWidth=1;
-        ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(sx-8,sy-8);ctx.stroke();
-      }
-      _ground(ctx,170);
-      // Mountains moving
-      [[50,170,80],[180,160,60],[380,168,70],[480,162,55]].forEach(([mx,my,mw])=>{
-        const off=Math.sin(this.t*0.015)*3;
-        ctx.fillStyle=p.gnd;
-        ctx.beginPath();ctx.moveTo(mx+off,my);ctx.lineTo(mx+mw/2+off,my-40);ctx.lineTo(mx+mw+off,my);ctx.fill();
-      });
-      _label(ctx,'"When the sun is rolled up...when stars fall..." (81:1-2)',CH-15);
-    };
-    draw();
-  }
-}
 class Scene2 extends BaseScene{
   constructor(){super('canvas-3');}
   start(){
@@ -242,8 +194,6 @@ class Scene6 extends BaseScene{
 }
 
 const scenes={};
-
-
 
 
 const VD_wbw={ref:'At-Takwir (81)',arabic:'إِذَا الشَّمْسُ كُوِّرَتْ ۩ وَإِذَا النُّجُومُ انكَدَرَتْ ۩ وَإِذَا الْجِبَالُ سُيِّرَتْ',english:'"When the sun is wound round, when the stars fall losing their light, when the mountains are made to move." (81:1-3)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};

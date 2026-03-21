@@ -1,29 +1,6 @@
 'use strict';
 /* scenes.js — Surah Al-Ghashiyah (88) — The Overwhelming */
-const CW = 560, CH = 220, P = 4;
 
-function sceneP() {
-  const st = document.documentElement.getAttribute('data-theme') === 'stars';
-  return st
-    ? { sky0:'#3a1848', sky1:'#4a2060', sky2:'#5a2870', gnd:'#6a3480', gndAcc:'#8040a0',
-        starStr:'rgba(255,200,240,', acStr:'rgba(255,220,248,', label:'#ffe0f8', hint:'#e0a0d0',
-        fireR:'rgba(255,100,80,', fireY:'rgba(255,220,80,' }
-    : { sky0:'#1c0820', sky1:'#2a1030', sky2:'#380c28', gnd:'#3c1428', gndAcc:'#501830',
-        starStr:'rgba(255,120,160,', acStr:'rgba(255,200,200,', label:'#ffd8e8', hint:'#d08090',
-        fireR:'rgba(255,80,40,', fireY:'rgba(255,180,40,' };
-}
-
-function fillRect(ctx, x, y, w, h, col) {
-  if (col) ctx.fillStyle = col;
-  const rx = Math.round(x), ry = Math.round(y), rw = Math.round(w), rh = Math.round(h);
-  if (document.documentElement.getAttribute('data-theme') === 'stars' && rw < 120 && rh < 120 && rw > 4 && rh > 4) {
-    const r = Math.min(rw * 0.3, rh * 0.3, 7);
-    ctx.shadowColor = 'rgba(200,100,220,0.25)'; ctx.shadowBlur = 4;
-    ctx.beginPath();
-    if (ctx.roundRect) ctx.roundRect(rx, ry, rw, rh, r); else ctx.rect(rx, ry, rw, rh);
-    ctx.fill(); ctx.shadowBlur = 0;
-  } else { ctx.fillRect(rx, ry, rw, rh); }
-}
 
 function _sky(ctx) {
   const p = sceneP();
@@ -367,8 +344,6 @@ class S7 extends BS {
 
 /* ── Scene Lifecycle ── */
 const scenes = {};
-
-
 
 
 const VD_wbw={ref:'Al-Ghashiyah (88)',arabic:'هَلْ أَتَاكَ حَدِيثُ الْغَاشِيَةِ ۩ وُجُوهٌ يَوْمَئِذٍ نَّاعِمَةٌ ۩ لِّسَعْيِهَا رَاضِيَةٌ ۩ أَفَلَا يَنظُرُونَ إِلَى الْإِبِلِ كَيْفَ خُلِقَتْ',english:'"Has the story of the Overwhelming reached you? Some faces that Day will be joyful, satisfied with their effort. Do they not look at the camels — how they are created?" (88:1, 8-9, 17)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};

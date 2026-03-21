@@ -132,7 +132,11 @@ function markSectionComplete(n) {
   if (overlay) overlay.classList.add('visible');
 }
 function completeSection(n) {
-  if (!window.state || window.state.completed.includes(n)) return;
+  if (!window.state) return;
+  if (window.state.completed.includes(n)) {
+    markSectionComplete(n);
+    return;
+  }
   const cfg = window.SURAH_CONFIG;
   const r   = cfg && cfg.rewards[n];
   if (r) { window.state.xp += r.xp; window.state.gems += r.gems; }

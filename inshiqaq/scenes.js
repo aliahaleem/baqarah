@@ -1,20 +1,11 @@
 'use strict';
-// SURAH AL-INSHIQAQ (84) — scenes.js
-const CW=560,CH=220,P=4;
-function sceneP(){const s=document.documentElement.dataset.theme==='stars';return s?{sky0:'#2e1a08',sky1:'#3c2410',sky2:'#503018',gnd:'#604020',gndAcc:'#7a5030',starStr:'rgba(255,220,180,',acStr:'rgba(248,192,96,',label:'#f8c060',hint:'#e0a040'}:{sky0:'#100802',sky1:'#1a1004',sky2:'#261608',gnd:'#301a08',gndAcc:'#401e08',starStr:'rgba(200,160,100,',acStr:'rgba(240,144,48,',label:'#f09030',hint:'#c07020'};}
-function fillRect(ctx,x,y,w,h,col){if(col)ctx.fillStyle=col;const rx=Math.round(x),ry=Math.round(y),rw=Math.round(w),rh=Math.round(h);if(document.documentElement.dataset.theme==='stars'&&rw<120&&rh<120&&rw>4&&rh>4){const r=Math.min(rw*0.3,rh*0.3,7);ctx.shadowColor='rgba(200,104,32,0.2)';ctx.shadowBlur=3;ctx.beginPath();if(ctx.roundRect)ctx.roundRect(rx,ry,rw,rh,r);else ctx.rect(rx,ry,rw,rh);ctx.fill();ctx.shadowBlur=0;}else{ctx.fillRect(rx,ry,rw,rh);}}
-function _sky(ctx){const p=sceneP();const g=ctx.createLinearGradient(0,0,0,CH);g.addColorStop(0,p.sky0);g.addColorStop(0.5,p.sky1);g.addColorStop(1,p.sky2);ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);}
-function _ground(ctx,y=170){const p=sceneP();fillRect(ctx,0,y,CW,CH-y,p.gnd);fillRect(ctx,0,y,CW,5,p.gndAcc);}
-function _label(ctx,txt,y=18){ctx.fillStyle=sceneP().label;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(txt,CW/2,y);ctx.textAlign='left';}
-function _fig(ctx,x,y,hc,bc,pc){fillRect(ctx,x+P,y,P*3,P*3,hc);fillRect(ctx,x,y+P*3,P*5,P*4,bc);fillRect(ctx,x-P,y+P*3,P,P*3,hc);fillRect(ctx,x+P*5,y+P*3,P,P*3,hc);fillRect(ctx,x,y+P*7,P*2,P*4,pc);fillRect(ctx,x+P*3,y+P*7,P*2,P*4,pc);}
-
-const VD={
-  split:{ref:'Al-Inshiqaq 84:1-5',arabic:'إِذَا السَّمَاءُ انشَقَّتْ ۩ وَأَذِنَتْ لِرَبِّهَا وَحُقَّتْ ۩ وَإِذَا الْأَرْضُ مُدَّتْ ۩ وَأَلْقَتْ مَا فِيهَا وَتَخَلَّتْ ۩ وَأَذِنَتْ لِرَبِّهَا وَحُقَّتْ',english:'"When the sky has split apart — and listened to its Lord and was obligated — and when the earth has been stretched out — and has cast out what was within it and vacated — and listened to its Lord and was obligated." (84:1-5)',note:'Two cosmic events: sky splits, earth stretches. But notice the unique phrase: "Wa adhimat li-Rabbiha wa huqqat" — it LISTENED to its Lord and was obligated/was right to do so. The sky and earth obey Allah completely. They have no choice — and they joyfully comply. What are we doing?'},
-  strive:{ref:'Al-Inshiqaq 84:6',arabic:'يَا أَيُّهَا الْإِنسَانُ إِنَّكَ كَادِحٌ إِلَىٰ رَبِّكَ كَدْحًا فَمُلَاقِيهِ',english:'"O man — indeed you are laboring/striving toward your Lord with [great] effort and will meet Him." (84:6)',note:'"Kadihun ila Rabbika kadhan fa-mulaqihi." — "Kadh" means to strive, labour, toil, exhausted effort. You are laboring toward your Lord — whether you know it or not. Every step of your life is a step toward meeting Him. And you WILL meet Him. "Fa-mulaqihi" — then you will MEET HIM. This is the most important meeting of your existence.'},
-  right:{ref:'Al-Inshiqaq 84:7-9',arabic:'فَأَمَّا مَنْ أُوتِيَ كِتَابَهُ بِيَمِينِهِ ۩ فَسَوْفَ يُحَاسَبُ حِسَابًا يَسِيرًا ۩ وَيَنقَلِبُ إِلَىٰ أَهْلِهِ مَسْرُورًا',english:'"As for he who is given his record in his right hand — he will be judged with an easy reckoning — and return to his people in happiness." (84:7-9)',note:'"Hisaban yasiran" — an EASY reckoning. Not "forgiven" but "easy" — a light, quick account. The Prophet ﷺ said whoever is brought to strict account is destroyed — truly easy reckoning is when Allah just shows you your deeds without detailed questioning. And "yanqalibu ila ahlihi masrura" — returns to his family JOYFUL. The reunion will be celebration.'},
-  left:{ref:'Al-Inshiqaq 84:10-12',arabic:'وَأَمَّا مَنْ أُوتِيَ كِتَابَهُ وَرَاءَ ظَهْرِهِ ۩ فَسَوْفَ يَدْعُو ثُبُورًا ۩ وَيَصْلَىٰ سَعِيرًا',english:'"But as for he who is given his record behind his back — he will cry out for destruction — and he will enter a Blaze." (84:10-12)',note:'The book behind the back — "wara\'a dhahrihi." Scholars say his right hand is shackled, so his left hand reaches behind him. He will cry "thubura" — destruction, ruin. And he will enter "sa\'ir" — intense, blazing fire. The contrast with the right-hand person is total: joy vs. despair, easy account vs. destruction.'},
-  stages:{ref:'Al-Inshiqaq 84:19',arabic:'لَتَرْكَبُنَّ طَبَقًا عَن طَبَقٍ',english:'"You will surely pass through stage after stage." (84:19)',note:'"La-tarkabunna tabaqan \'an tabaqin" — You will SURELY ride stage upon stage. Stage after stage: womb, infancy, childhood, youth, old age, death, grave, resurrection, judgment. Some scholars say "tabaq" means different states: rich and poor, health and sickness, ease and hardship. Life is a journey of stages — and Meeting Allah is the final destination.'},
+window.SCENE_PALETTE = {
+  minecraft: {sky0:'#100802',sky1:'#1a1004',sky2:'#261608',gnd:'#301a08',gndAcc:'#401e08',starStr:'rgba(200,160,100,',acStr:'rgba(240,144,48,',label:'#f09030',hint:'#c07020'},
+  stars: {sky0:'#2e1a08',sky1:'#3c2410',sky2:'#503018',gnd:'#604020',gndAcc:'#7a5030',starStr:'rgba(255,220,180,',acStr:'rgba(248,192,96,',label:'#f8c060',hint:'#e0a040'},
 };
+
+// SURAH AL-INSHIQAQ (84) — scenes.js
+;
 
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 
@@ -84,8 +75,6 @@ ctx.fillStyle='#ff8888';ctx.font='10px "Press Start 2P",monospace';ctx.textAlign
 _label(ctx,'"Ma lahum la yu\'minun?" — What is with them that they do not believe? (84:20)',CH-10);};draw();}}
 
 const scenes={};
-
-
 
 
 const VD_wbw={ref:'Al-Inshiqaq (84)',arabic:'إِذَا السَّمَاءُ انشَقَّتْ ۩ وَأَذِنَتْ لِرَبِّهَا وَحُقَّتْ ۩ يَا أَيُّهَا الْإِنسَانُ إِنَّكَ كَادِحٌ إِلَىٰ رَبِّكَ كَدْحًا فَمُلَاقِيهِ',english:'"When the sky has split open and obeyed its Lord as it must — O mankind, you are labouring toward your Lord, and you will meet Him." (84:1-2, 6)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};

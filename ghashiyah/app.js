@@ -13,14 +13,14 @@ window.state = {
 };
 
 const REWARDS = {
-  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
-     msg:'MashAllah! You learned the key Arabic words of this surah!'},
-  1: { xp: 70,  gems: 3, icon: '⚡', title: 'Day Witness',   msg: "MashAllah! Al-Ghashiyah will OVERWHELM everything — two groups, two fates. May Allah make us among the faces of delight!" },
-  2: { xp: 80,  gems: 3, icon: '😶', title: 'Face Keeper',   msg: "SubhanAllah! The wretched labor but gain nothing. Boiling water to drink, bitter thorns to eat. May Allah protect us!" },
-  3: { xp: 90,  gems: 3, icon: '🌸', title: 'Garden Seeker', msg: "MashAllah! The blessed are satisfied with their effort — in a high garden with flowing springs. May Allah grant us this! Ameen." },
-  4: { xp: 90,  gems: 3, icon: '🐪', title: 'Camel Watcher', msg: "SubhanAllah! The camel — perfectly designed by Allah. Every single feature points to its Creator!" },
-  5: { xp: 100, gems: 4, icon: '🌤️', title: 'Sky Ponderer',  msg: "MashAllah! Four signs — camel, sky, mountains, earth. Allah says: LOOK! They all point to Him. Be of the Ulu al-Albab!" },
-  6: { xp: 110, gems: 5, icon: '🔄', title: 'Return Knower', msg: "Allahu Akbar! Inna ilayna iyabahum — to US is their RETURN. Every soul will stand before Allah. May we stand with clean hearts. Ameen!" },
+  1: { xp: 60,  gems: 3, icon: '📖', title: 'Words Learned!',
+       msg: 'MashAllah! You learned the key Arabic words of this surah!' },
+  2: { xp: 70,  gems: 3, icon: '⚡', title: 'Day Witness',   msg: "MashAllah! Al-Ghashiyah will OVERWHELM everything — two groups, two fates. May Allah make us among the faces of delight!" },
+  3: { xp: 80,  gems: 3, icon: '😶', title: 'Face Keeper',   msg: "SubhanAllah! The wretched labor but gain nothing. Boiling water to drink, bitter thorns to eat. May Allah protect us!" },
+  4: { xp: 90,  gems: 3, icon: '🌸', title: 'Garden Seeker', msg: "MashAllah! The blessed are satisfied with their effort — in a high garden with flowing springs. May Allah grant us this! Ameen." },
+  5: { xp: 90,  gems: 3, icon: '🐪', title: 'Camel Watcher', msg: "SubhanAllah! The camel — perfectly designed by Allah. Every single feature points to its Creator!" },
+  6: { xp: 100, gems: 4, icon: '🌤️', title: 'Sky Ponderer',  msg: "MashAllah! Four signs — camel, sky, mountains, earth. Allah says: LOOK! They all point to Him. Be of the Ulu al-Albab!" },
+  7: { xp: 110, gems: 5, icon: '🔄', title: 'Return Knower', msg: "Allahu Akbar! Inna ilayna iyabahum — to US is their RETURN. Every soul will stand before Allah. May we stand with clean hearts. Ameen!" },
 };
 
 window.SURAH_CONFIG = {

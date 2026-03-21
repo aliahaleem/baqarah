@@ -7,6 +7,7 @@ window.STORAGE_KEY='takwirQuestSave';
 window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Order:[],s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false,s7Answers:{},s7Checked:false};
 
 const REWARDS={
+  1: {xp:60, gems:3, icon:'📖', title:'Words Learned!', msg:'MashAllah! You learned the key Arabic words of this surah!'},
   2:{xp:80,gems:3,icon:'⭐',title:'THE 12 SIGNS KNOWN!',msg:"SubhanAllah! Twelve cosmic events will happen on the Day of Judgment — the sun rolled up, stars falling, mountains set in motion, seas overflowing! Each 'Idha' (when) builds towards one conclusion: your soul will know what it brought forward. Are you ready for that Day?"},
   3:{xp:80,gems:3,icon:'👼',title:'THE BURIED GIRL VINDICATED!',msg:"Allahu Akbar! Al-Maw'udah — the girl buried alive in pre-Islamic Arabia. On the Day of Judgment, Allah will ask HER: 'For what sin were you killed?' Not her killer — HER. The innocent victim testifying against her murderers. Islam completely abolished this practice. Every life is sacred."},
   4:{xp:90,gems:3,icon:'📜',title:'WHAT YOU PREPARED REVEALED!',msg:"MashAllah! The records unroll, the sky is stripped, Hell blazes, Paradise draws near — and THEN: 'Alimat nafsun ma ahdharat.' A soul will know exactly what it brought. This is the moment of total clarity. What are you preparing NOW to bring to that Day?"},

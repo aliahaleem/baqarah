@@ -4,6 +4,7 @@ window.STORAGE_KEY='infitarQuestSave';
 window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false,s7Answers:{},s7Checked:false};
 
 const REWARDS={
+  1: {xp:60, gems:3, icon:'📖', title:'Words Learned!', msg:'MashAllah! You learned the key Arabic words of this surah!'},
   2:{xp:80,gems:3,icon:'🌌',title:'THE SKY HAS SPLIT!',msg:"SubhanAllah! The sky splits. Stars scatter. Seas burst. Graves overturn. And then — 'Alimat nafsun ma qaddamat wa akhkharat.' A soul will know what it put forward AND what it left behind. Both matter: what you did AND what you failed to do. Start building your record today!"},
   3:{xp:80,gems:3,icon:'🤔',title:'THE DECEPTION EXPOSED!',msg:"Allahu Akbar! 'Ya ayyuha al-insan — ma gharraka bi-Rabbika al-Karim?' What DECEIVED you? Allah calls Himself 'al-Karim' — the Generous. We took His generosity and thought it meant no accountability. We were deceived by His kindness. SubhanAllah — use His generosity as motivation, not as false security!"},
   4:{xp:90,gems:3,icon:'✍️',title:'THE RECORDING ANGELS KNOWN!',msg:"MashAllah! 'Kiraman Katibin' — Noble Recorders. They are NOBLE — not threatening agents, but honoured beings doing an honourable task. And they know EVERYTHING. Every whisper, every secret thought that leads to action. Your record is being written right now. Make it a record you'd be proud to show."},

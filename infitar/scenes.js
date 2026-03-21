@@ -1,21 +1,11 @@
 'use strict';
-// SURAH AL-INFITAR (82) — scenes.js
-const CW=560,CH=220,P=4;
-function sceneP(){const s=document.documentElement.dataset.theme==='stars';return s?{sky0:'#1a2850',sky1:'#223268',sky2:'#2e4080',gnd:'#3a4e90',gndAcc:'#4a5ea0',starStr:'rgba(180,220,255,',acStr:'rgba(128,232,248,',label:'#80e8f8',hint:'#50c0d8'}:{sky0:'#020818',sky1:'#051428',sky2:'#0a1e38',gnd:'#0f2840',gndAcc:'#183050',starStr:'rgba(100,180,255,',acStr:'rgba(64,208,232,',label:'#40d0e8',hint:'#20a8c0'};}
-function fillRect(ctx,x,y,w,h,col){if(col)ctx.fillStyle=col;const rx=Math.round(x),ry=Math.round(y),rw=Math.round(w),rh=Math.round(h);if(document.documentElement.dataset.theme==='stars'&&rw<120&&rh<120&&rw>4&&rh>4){const r=Math.min(rw*0.3,rh*0.3,7);ctx.shadowColor='rgba(80,120,200,0.2)';ctx.shadowBlur=3;ctx.beginPath();if(ctx.roundRect)ctx.roundRect(rx,ry,rw,rh,r);else ctx.rect(rx,ry,rw,rh);ctx.fill();ctx.shadowBlur=0;}else{ctx.fillRect(rx,ry,rw,rh);}}
-function _sky(ctx){const p=sceneP();const g=ctx.createLinearGradient(0,0,0,CH);g.addColorStop(0,p.sky0);g.addColorStop(0.6,p.sky1);g.addColorStop(1,p.sky2);ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);}
-function _stars(ctx){const p=sceneP();[[80,22],[150,40],[260,15],[340,30],[440,18],[510,42],[60,60],[200,55],[390,48]].forEach(([x,y],i)=>{ctx.fillStyle=p.starStr+(0.3+i%4*0.18)+')';ctx.beginPath();ctx.arc(x,y,i%3===0?1.5:1,0,Math.PI*2);ctx.fill();});}
-function _ground(ctx,y=170){const p=sceneP();fillRect(ctx,0,y,CW,CH-y,p.gnd);fillRect(ctx,0,y,CW,5,p.gndAcc);}
-function _label(ctx,txt,y=18){ctx.fillStyle=sceneP().label;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(txt,CW/2,y);ctx.textAlign='left';}
-function _fig(ctx,x,y,hc,bc,pc){fillRect(ctx,x+P,y,P*3,P*3,hc);fillRect(ctx,x,y+P*3,P*5,P*4,bc);fillRect(ctx,x-P,y+P*3,P,P*3,hc);fillRect(ctx,x+P*5,y+P*3,P,P*3,hc);fillRect(ctx,x,y+P*7,P*2,P*4,pc);fillRect(ctx,x+P*3,y+P*7,P*2,P*4,pc);}
-
-const VD={
-  signs:{ref:'Al-Infitar 82:1-5',arabic:'إِذَا السَّمَاءُ انفَطَرَتْ ۩ وَإِذَا الْكَوَاكِبُ انتَثَرَتْ ۩ وَإِذَا الْبِحَارُ فُجِّرَتْ ۩ وَإِذَا الْقُبُورُ بُعْثِرَتْ ۩ عَلِمَتْ نَفْسٌ مَّا قَدَّمَتْ وَأَخَّرَتْ',english:'"When the sky is cleft asunder — when the stars are scattered — when the seas are burst forth — when the graves are overturned — a soul will know what it has put forward and left behind." (82:1-5)',note:'"Infatarat" — split open, cleaved apart. The sky cracks open. Stars "intatharat" — scattered in every direction. Seas "fujjirat" — burst through their bounds and overflow. Graves "bu\'thirat" — overturned, their contents thrown up. And THEN: a soul knows what it prepared.'},
-  deceived:{ref:'Al-Infitar 82:6-8',arabic:'يَا أَيُّهَا الْإِنسَانُ مَا غَرَّكَ بِرَبِّكَ الْكَرِيمِ ۩ الَّذِي خَلَقَكَ فَسَوَّاكَ فَعَدَلَكَ ۩ فِي أَيِّ صُورَةٍ مَّا شَاءَ رَكَّبَكَ',english:'"O man! What has deceived you about your generous Lord — who created you, proportioned you, and assembled you? In whatever form He willed, He assembled you." (82:6-8)',note:'"Ma gharraka bi-Rabbika al-Karim?" — What DECEIVED you? The word "gharraka" means deception, false confidence. And notice: He calls Himself "al-Karim" — the Generous. You took His generosity for granted and thought it meant you would never be held accountable.'},
-  angels:{ref:'Al-Infitar 82:10-12',arabic:'وَإِنَّ عَلَيْكُمْ لَحَافِظِينَ ۩ كِرَامًا كَاتِبِينَ ۩ يَعْلَمُونَ مَا تَفْعَلُونَ',english:'"Indeed over you are guardians — noble recorders — who know everything you do." (82:10-12)',note:'Three descriptions of the Kiraman Katibin (noble recording angels): 1) Hafizin — guardians, protectors (not spies, but custodians of your record). 2) Kiraman Katibin — noble recorders — NOBLE. They are honoured beings. 3) They KNOW everything you do. Nothing is missed. This is complete, perfect accountability.'},
-  destiny:{ref:'Al-Infitar 82:13-16',arabic:'إِنَّ الْأَبْرَارَ لَفِي نَعِيمٍ ۩ وَإِنَّ الْفُجَّارَ لَفِي جَحِيمٍ ۩ يَصْلَوْنَهَا يَوْمَ الدِّينِ ۩ وَمَا هُمْ عَنْهَا بِغَائِبِينَ',english:'"Indeed the righteous will be in bliss — and indeed the wicked will be in Hell — they will enter it on the Day of Recompense — and they will not be absent from it." (82:13-16)',note:'"Al-Abrar" — the righteous, the God-fearing. "Al-Fujjar" — the wicked, the sinners. The contrast is absolute. And the end of 82:16 is chilling: "Wa ma hum anha bi-gha\'ibin" — they will NOT be absent from it. No escape, no temporary reprieve.'},
-  yawm:{ref:'Al-Infitar 82:17-19',arabic:'وَمَا أَدْرَاكَ مَا يَوْمُ الدِّينِ ۩ ثُمَّ مَا أَدْرَاكَ مَا يَوْمُ الدِّينِ ۩ يَوْمَ لَا تَمْلِكُ نَفْسٌ لِّنَفْسٍ شَيْئًا وَالْأَمْرُ يَوْمَئِذٍ لِّلَّهِ',english:'"And what would make you know what the Day of Recompense is? Then what would make you know what the Day of Recompense is? It is the Day when no soul will have power for another soul at all, and the command that Day is entirely for Allah." (82:17-19)',note:'The repeated question — "Wa ma adraka ma yawm al-din?" twice — is a rhetorical device of enormity. It says: the Day is so beyond comprehension that asking once is not enough. Then the definition: no soul helps another. No intercession by permission given. Allah alone commands.'},
+window.SCENE_PALETTE = {
+  minecraft: {sky0:'#020818',sky1:'#051428',sky2:'#0a1e38',gnd:'#0f2840',gndAcc:'#183050',starStr:'rgba(100,180,255,',acStr:'rgba(64,208,232,',label:'#40d0e8',hint:'#20a8c0'},
+  stars: {sky0:'#1a2850',sky1:'#223268',sky2:'#2e4080',gnd:'#3a4e90',gndAcc:'#4a5ea0',starStr:'rgba(180,220,255,',acStr:'rgba(128,232,248,',label:'#80e8f8',hint:'#50c0d8'},
 };
+
+// SURAH AL-INFITAR (82) — scenes.js
+;
 
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 
@@ -92,8 +82,6 @@ class S7 extends BS{constructor(){super('canvas-7');}start(){if(!this.ctx)return
 ctx.fillStyle=p.label;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('"No soul has power for another — ALONE before Allah"',CW/2,CH-15);ctx.textAlign='left';};draw();}}
 
 const scenes={};
-
-
 
 
 const VD_wbw={ref:'Al-Infitar (82)',arabic:'إِذَا السَّمَاءُ انفَطَرَتْ ۩ وَإِذَا الْكَوَاكِبُ انتَثَرَتْ ۩ يَا أَيُّهَا الْإِنسَانُ مَا غَرَّكَ بِرَبِّكَ الْكَرِيمِ',english:'"When the sky breaks apart, when the stars scatter — O mankind, what has deceived you concerning your Lord, the Generous?" (82:1-2, 6)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};

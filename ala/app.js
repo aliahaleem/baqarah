@@ -4,6 +4,7 @@ window.STORAGE_KEY='alaQuestSave';
 window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Answers:{},s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false,s7Answers:{},s7Checked:false};
 
 const REWARDS={
+  1: {xp:60, gems:3, icon:'📖', title:'Words Learned!', msg:'MashAllah! You learned the key Arabic words of this surah!'},
   2:{xp:80,gems:3,icon:'🌿',title:'GLORIFY THE MOST HIGH!',msg:"SubhanAllah — Subhana Rabbiya Al-A\'la! When you say these words in sujood (prostration), you are directly reciting Surah Al-Ala verse 1! The Prophet ﷺ commanded this du'a in sujood after this surah was revealed. Every sajdah, every prayer — you glorify the Most High with His own words. SubhanAllah!"},
   3:{xp:80,gems:3,icon:'📿',title:'THE PROMISE OF MEMORY!',msg:"Allahu Akbar! 'Sanuqri\'uka fa-la tansa!' We will make you RECITE and you will NOT FORGET. This was a divine promise to Prophet Muhammad ﷺ — the Quran would be preserved in his memory perfectly. And through him and the Ummah: the Quran has been memorised by millions across 1400+ years! The promise is fulfilled daily."},
   4:{xp:90,gems:3,icon:'🤲',title:'KHASHYAH OPENS THE HEART!',msg:"MashAllah! 'Sayyadhdhakkaru man yakhsha.' The one who FEARS Allah with awe will be reminded. Khashyah — not just fear but awe, reverence, awareness. This is the key that opens the heart to benefit from the Quran and reminder. A heart with khashyah absorbs every reminder. Cultivate khashyah and every reminder will benefit you!"},

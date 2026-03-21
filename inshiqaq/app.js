@@ -4,6 +4,7 @@ window.STORAGE_KEY='inshiqaqQuestSave';
 window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Answers:{},s4Checked:false,s5Answers:{},s5Checked:false,s6Checked:false,s7Answers:{},s7Checked:false};
 
 const REWARDS={
+  1: {xp:60, gems:3, icon:'📖', title:'Words Learned!', msg:'MashAllah! You learned the key Arabic words of this surah!'},
   2:{xp:80,gems:3,icon:'🌅',title:'SKY SPLITS, EARTH STRETCHES!',msg:"SubhanAllah! The sky splits and listens to its Lord. The earth stretches and listens to its Lord. 'Wa adhinat li-Rabbiha wa huqqat' — it was RIGHT for them to do so! The entire universe obeys Allah completely. How about us — do we listen to our Lord and comply?"},
   3:{xp:80,gems:3,icon:'🚶',title:'THE JOURNEY UNDERSTOOD!',msg:"Allahu Akbar! 'Ya ayyuha al-insan, innaka kadihun ila Rabbika kadhan fa-mulaqihi.' You are STRIVING toward your Lord — every breath, every heartbeat, every step is part of this journey. And you WILL meet Him. 'Fa-mulaqihi' — you will meet Him. Prepare well for that meeting!"},
   4:{xp:90,gems:3,icon:'📖',title:'RIGHT HAND PEOPLE KNOWN!',msg:"MashAllah! The right-hand people receive their book joyfully. 'Hisaban yasiran' — an EASY reckoning! And then: 'yanqalibu ila ahlihi masrura' — they return to their people OVERJOYED. The reunion of believers in Paradise is a celebration! May Allah make us among them. Ameen!"},
