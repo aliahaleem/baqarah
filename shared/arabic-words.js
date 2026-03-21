@@ -313,62 +313,148 @@ window.WBWScene.prototype.start = function() {
 window.setupWBWLevel = function(wbwData, chunk) {
   var sz = (typeof chunk === 'number') ? chunk : 10;
   window.renderSection1Game = function() {
-    window.renderWBWChunked('wbw-display', wbwData, sz);
+    window.renderWBWPaginated('wbw-display', wbwData, sz);
   };
   window.checkSection1 = function() {
-    window._checkAllWBWChunks(1);
+    window._checkWBWPage(1);
   };
 };
 
-/* ── Chunked WBW Renderer ─────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════
+   PAGINATED WBW — shows one chunk at a time with persistent progress.
+   ═══════════════════════════════════════════════════════════════════ */
 
-window._wbwChunkStatus = {};
+window._wbwChunks     = [];
+window._wbwChunkSize  = 10;
+window._wbwContainerId = '';
 
-/**
- * Render WBW flip cards in chunks of `chunkSize`, each followed by a tap-to-match quiz.
- */
-window.renderWBWChunked = function(containerId, wbwData, chunkSize) {
+window._wbwSavedChunks = function() {
+  return (window.state && window.state.wbwDone) || [];
+};
+
+window._wbwSaveChunk = function(ci) {
+  if (!window.state) return;
+  if (!window.state.wbwDone) window.state.wbwDone = [];
+  if (window.state.wbwDone.indexOf(ci) === -1) {
+    window.state.wbwDone.push(ci);
+    if (typeof saveProgress === 'function') saveProgress();
+  }
+};
+
+window._wbwCurrentPage = function() {
+  var done = window._wbwSavedChunks();
+  for (var i = 0; i < window._wbwChunks.length; i++) {
+    if (done.indexOf(i) === -1) return i;
+  }
+  return window._wbwChunks.length - 1;
+};
+
+window.renderWBWPaginated = function(containerId, wbwData, chunkSize) {
   var el = document.getElementById(containerId);
   if (!el) return;
   chunkSize = chunkSize || 10;
-  window._wbwChunkStatus = {};
+  window._wbwContainerId = containerId;
+  window._wbwChunkSize = chunkSize;
 
   var chunks = [];
   for (var i = 0; i < wbwData.length; i += chunkSize) {
     chunks.push(wbwData.slice(i, Math.min(i + chunkSize, wbwData.length)));
   }
+  window._wbwChunks = chunks;
+
+  var page = window._wbwCurrentPage();
+  window._wbwRenderPage(el, page);
+};
+
+window._wbwChunkRange = function(chunk) {
+  var first = chunk[0].label, last = chunk[chunk.length - 1].label;
+  var fv = first.match(/(\d+:\d+\w?)/), lv = last.match(/(\d+:\d+\w?)/);
+  return (fv && lv) ? fv[1] + ' – ' + lv[1] : '';
+};
+
+window._wbwRenderPage = function(el, pageIdx) {
+  var chunks = window._wbwChunks;
+  var total = chunks.length;
+  var done = window._wbwSavedChunks();
+  var doneCount = done.length;
+  var allDone = doneCount >= total;
+  var thisDone = done.indexOf(pageIdx) !== -1;
 
   var html = '';
-  chunks.forEach(function(chunk, ci) {
-    var first = chunk[0].label, last = chunk[chunk.length - 1].label;
-    var fv = first.match(/(\d+:\d+\w?)/), lv = last.match(/(\d+:\d+\w?)/);
-    var range = (fv && lv) ? fv[1] + ' – ' + lv[1] : 'Part ' + (ci + 1);
 
-    html += '<div class="wbw-chunk" id="wbw-chunk-' + ci + '">';
-    html += '<div class="wbw-chunk-header">📖 ' + range + '</div>';
+  html += '<div class="wbw-pager">';
+  html += '<div class="wbw-pager-bar">';
+  for (var b = 0; b < total; b++) {
+    var cls = 'wbw-pager-dot';
+    if (done.indexOf(b) !== -1) cls += ' done';
+    if (b === pageIdx) cls += ' active';
+    html += '<button class="' + cls + '" data-page="' + b + '" title="Section ' + (b+1) + '">' + (b+1) + '</button>';
+  }
+  html += '</div>';
+  html += '<div class="wbw-pager-label">' + doneCount + ' of ' + total + ' sections complete</div>';
+  html += '</div>';
 
-    chunk.forEach(function(g, gi) {
-      html += window.wbwGroup(g.label, g.words, ci === 0 && gi === 0);
-    });
+  var chunk = chunks[pageIdx];
+  var range = window._wbwChunkRange(chunk);
 
+  html += '<div class="wbw-chunk" id="wbw-chunk-0">';
+  html += '<div class="wbw-chunk-header">📖 ' + range + ' (' + (pageIdx+1) + '/' + total + ')</div>';
+
+  chunk.forEach(function(g, gi) {
+    html += window.wbwGroup(g.label, g.words, gi === 0);
+  });
+
+  if (thisDone) {
+    html += '<div class="wbw-match-feedback success">🏆 Section complete! MashAllah!</div>';
+  } else {
     var pairs = window._extractMatchPairs(chunk, 8);
     if (pairs.length >= 3) {
-      html += window._renderMatchWidget(ci, pairs, range);
+      html += window._renderMatchWidget(0, pairs, range);
     }
-    window._wbwChunkStatus[ci] = false;
-    html += '</div>';
-  });
+  }
+  html += '</div>';
+
+  html += '<div class="wbw-nav">';
+  if (pageIdx > 0) {
+    html += '<button class="wbw-nav-btn" data-dir="prev">◀ Previous</button>';
+  } else {
+    html += '<span></span>';
+  }
+  if (thisDone && pageIdx < total - 1) {
+    html += '<button class="wbw-nav-btn wbw-nav-next" data-dir="next">Next verses →</button>';
+  } else if (allDone) {
+    html += '<span class="wbw-nav-done">All sections complete!</span>';
+  } else {
+    html += '<span></span>';
+  }
+  html += '</div>';
 
   el.innerHTML = html;
 
-  chunks.forEach(function(chunk, ci) {
-    window._initMatchWidget(ci);
+  if (!thisDone) {
+    window._initMatchWidgetPaged(0, pageIdx);
+  }
+
+  el.querySelectorAll('.wbw-pager-dot').forEach(function(dot) {
+    dot.addEventListener('click', function() {
+      var p = parseInt(dot.dataset.page, 10);
+      window._wbwRenderPage(el, p);
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   });
+  el.querySelectorAll('.wbw-nav-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var next = btn.dataset.dir === 'next' ? pageIdx + 1 : pageIdx - 1;
+      if (next >= 0 && next < total) {
+        window._wbwRenderPage(el, next);
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  window._wbwCheckAllDone();
 };
 
-/**
- * Extract up to `count` unique {ar, en} pairs from a chunk for the matching quiz.
- */
 window._extractMatchPairs = function(chunk, count) {
   var seen = {}, pairs = [];
   for (var g = 0; g < chunk.length; g++) {
@@ -387,9 +473,6 @@ window._extractMatchPairs = function(chunk, count) {
   return pairs;
 };
 
-/**
- * Build HTML for a tap-to-match widget.
- */
 window._renderMatchWidget = function(chunkIdx, pairs, rangeLabel) {
   var shuffledEn = pairs.slice();
   for (var i = shuffledEn.length - 1; i > 0; i--) {
@@ -410,7 +493,7 @@ window._renderMatchWidget = function(chunkIdx, pairs, rangeLabel) {
   html += '<div class="wbw-match-col">';
   for (var e = 0; e < shuffledEn.length; e++) {
     var origIdx = pairs.indexOf(shuffledEn[e]);
-    html += '<button class="wbw-match-btn" data-chunk="' + chunkIdx + '" data-side="en" data-idx="' + origIdx + '">' + shuffledEn[e].en + '</button>';
+    html += '<button class="wbw-match-btn en-btn" data-chunk="' + chunkIdx + '" data-side="en" data-idx="' + origIdx + '">' + shuffledEn[e].en + '</button>';
   }
   html += '</div>';
 
@@ -420,11 +503,8 @@ window._renderMatchWidget = function(chunkIdx, pairs, rangeLabel) {
   return html;
 };
 
-/**
- * Attach click handlers for a tap-to-match widget.
- */
-window._initMatchWidget = function(chunkIdx) {
-  var container = document.getElementById('wbw-match-' + chunkIdx);
+window._initMatchWidgetPaged = function(widgetIdx, realChunkIdx) {
+  var container = document.getElementById('wbw-match-' + widgetIdx);
   if (!container) return;
   var selectedAr = null;
 
@@ -446,14 +526,17 @@ window._initMatchWidget = function(chunkIdx) {
         arBtn && arBtn.classList.remove('selected');
         selectedAr = null;
         var total = container.querySelectorAll('.ar-btn').length;
-        var done = container.querySelectorAll('.ar-btn.matched').length;
-        var fb = document.getElementById('wbw-mfb-' + chunkIdx);
-        if (done === total) {
+        var matched = container.querySelectorAll('.ar-btn.matched').length;
+        var fb = document.getElementById('wbw-mfb-' + widgetIdx);
+        if (matched === total) {
           if (fb) { fb.textContent = '🏆 All matched! MashAllah!'; fb.className = 'wbw-match-feedback success'; }
-          window._wbwChunkStatus[chunkIdx] = true;
-          window._checkAllWBWChunksDone();
+          window._wbwSaveChunk(realChunkIdx);
+          var el = document.getElementById(window._wbwContainerId);
+          if (el) {
+            setTimeout(function() { window._wbwRenderPage(el, realChunkIdx); }, 800);
+          }
         } else {
-          if (fb) { fb.textContent = done + '/' + total + ' matched'; fb.className = 'wbw-match-feedback partial'; }
+          if (fb) { fb.textContent = matched + '/' + total + ' matched'; fb.className = 'wbw-match-feedback partial'; }
         }
       } else {
         btn.classList.add('wrong');
@@ -465,15 +548,10 @@ window._initMatchWidget = function(chunkIdx) {
   });
 };
 
-/**
- * Check if all chunks are matched — if so, enable the Claim button.
- */
-window._checkAllWBWChunksDone = function() {
-  var all = true;
-  for (var k in window._wbwChunkStatus) {
-    if (!window._wbwChunkStatus[k]) { all = false; break; }
-  }
-  if (all) {
+window._wbwCheckAllDone = function() {
+  var chunks = window._wbwChunks;
+  var done = window._wbwSavedChunks();
+  if (done.length >= chunks.length && chunks.length > 0) {
     window.state.s1Checked = true;
     if (typeof saveProgress === 'function') saveProgress();
     var btn = document.getElementById('complete-1-btn');
@@ -481,26 +559,20 @@ window._checkAllWBWChunksDone = function() {
   }
 };
 
-/**
- * Called by checkSection1 — shows overall feedback.
- */
-window._checkAllWBWChunks = function(sectionNum) {
-  var total = 0, done = 0;
-  for (var k in window._wbwChunkStatus) {
-    total++;
-    if (window._wbwChunkStatus[k]) done++;
-  }
+window._checkWBWPage = function(sectionNum) {
+  var chunks = window._wbwChunks;
+  var done = window._wbwSavedChunks();
   var fb = document.getElementById('feedback-' + sectionNum);
   if (!fb) return;
-  if (done === total) {
-    fb.textContent = '🏆 All sections matched! MashAllah!';
+  if (done.length >= chunks.length && chunks.length > 0) {
+    fb.textContent = '🏆 All ' + chunks.length + ' sections complete! MashAllah!';
     fb.className = 'game-feedback success';
     window.state['s' + sectionNum + 'Checked'] = true;
     if (typeof saveProgress === 'function') saveProgress();
     var btn = document.getElementById('complete-' + sectionNum + '-btn');
     if (btn) btn.style.display = 'inline-block';
   } else {
-    fb.textContent = done + ' of ' + total + ' sections complete — keep matching!';
+    fb.textContent = done.length + ' of ' + chunks.length + ' sections complete — keep going!';
     fb.className = 'game-feedback';
   }
 };
