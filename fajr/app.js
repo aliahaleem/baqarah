@@ -39,41 +39,217 @@ window.SURAH_CONFIG = {
 /* ── Level 1: Drag & Drop — The Oaths (89:1-5) ── */
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1-2 — وَالْفَجْرِ · وَلَيَالٍ عَشْرٍ', words:[
-    {ar:'عَشْرٍ', tr:'ʿashr', en:'ten', freq:10},
-    {ar:'وَلَيَالٍ', tr:'wa-layālin', en:'and ten nights', freq:8},
+  {label:'89:1 — وَالْفَجْرِ', words:[
     {ar:'وَالْفَجْرِ', tr:'wal-fajr', en:'by the dawn', freq:6},
   ]},
-  {label:'Verse 14 — إِنَّ رَبَّكَ لَبِالْمِرْصَادِ', words:[
+  {label:'89:2 — وَلَيَالٍ عَشْرٍ', words:[
+    {ar:'عَشْرٍ', tr:'ʿashr', en:'ten', freq:10},
+    {ar:'وَلَيَالٍ', tr:'wa-layālin', en:'and nights', freq:8},
+  ]},
+  {label:'89:3 — وَالشَّفْعِ وَالْوَتْرِ', words:[
+    {ar:'وَالْوَتْرِ', tr:'wal-watr', en:'and the odd', freq:1},
+    {ar:'وَالشَّفْعِ', tr:'wash-shafʿ', en:'and the even', freq:1},
+  ]},
+  {label:'89:4 — وَاللَّيْلِ إِذَا يَسْرِ', words:[
+    {ar:'يَسْرِ', tr:'yasri', en:'passes / departs', freq:1},
+    'idha',
+    {ar:'وَاللَّيْلِ', tr:'wal-layl', en:'and by the night', freq:73},
+  ]},
+  {label:'89:5 — هَلْ فِي ذَٰلِكَ قَسَمٌ لِّذِي حِجْرٍ', words:[
+    {ar:'حِجْرٍ', tr:'ḥijr', en:'understanding / intellect', freq:5},
+    {ar:'لِّذِي', tr:'li-dhī', en:'for one of', freq:47},
+    {ar:'قَسَمٌ', tr:'qasam', en:'an oath', freq:7},
+    'dhalika', 'fi',
+    {ar:'هَلْ', tr:'hal', en:'is there', freq:73},
+  ]},
+  {label:'89:6 — أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِعَادٍ', words:[
+    {ar:'بِعَادٍ', tr:'bi-ʿĀd', en:'with ʿAad', freq:24},
+    'rabbuka',
+    {ar:'فَعَلَ', tr:'faʿala', en:'dealt', freq:172},
+    {ar:'كَيْفَ', tr:'kayfa', en:'how', freq:89},
+    {ar:'تَرَ', tr:'tara', en:'you seen', freq:50},
+    'alam',
+  ]},
+  {label:'89:7 — إِرَمَ ذَاتِ الْعِمَادِ', words:[
+    {ar:'الْعِمَادِ', tr:'al-ʿimād', en:'the lofty pillars', freq:1},
+    {ar:'ذَاتِ', tr:'dhāt', en:'possessors of', freq:45},
+    {ar:'إِرَمَ', tr:'Iram', en:'Iram (the city)', freq:1},
+  ]},
+  {label:'89:8 — الَّتِي لَمْ يُخْلَقْ مِثْلُهَا فِي الْبِلَادِ', words:[
+    {ar:'الْبِلَادِ', tr:'al-bilād', en:'the lands', freq:10},
+    'fi',
+    {ar:'مِثْلُهَا', tr:'mithlu-hā', en:'the like of it', freq:25},
+    {ar:'يُخْلَقْ', tr:'yukhlaq', en:'was created', freq:250},
+    'lam',
+    {ar:'الَّتِي', tr:'allatī', en:'which', freq:78},
+  ]},
+  {label:'89:9 — وَثَمُودَ الَّذِينَ جَابُوا الصَّخْرَ بِالْوَادِ', words:[
+    {ar:'بِالْوَادِ', tr:'bil-wād', en:'in the valley', freq:5},
+    {ar:'الصَّخْرَ', tr:'al-ṣakhr', en:'the rocks', freq:3},
+    {ar:'جَابُوا', tr:'jābū', en:'carved', freq:1},
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'who', freq:1283},
+    {ar:'وَثَمُودَ', tr:'wa-Thamūd', en:'and Thamud', freq:26},
+  ]},
+  {label:'89:10 — وَفِرْعَوْنَ ذِي الْأَوْتَادِ', words:[
+    {ar:'الْأَوْتَادِ', tr:'al-awtād', en:'the stakes / pegs', freq:2},
+    {ar:'ذِي', tr:'dhī', en:'possessor of', freq:47},
+    {ar:'وَفِرْعَوْنَ', tr:'wa-Firʿawn', en:'and Pharaoh', freq:74},
+  ]},
+  {label:'89:11 — الَّذِينَ طَغَوْا فِي الْبِلَادِ', words:[
+    {ar:'الْبِلَادِ', tr:'al-bilād', en:'the lands', freq:10},
+    'fi',
+    {ar:'طَغَوْا', tr:'ṭaghaw', en:'transgressed', freq:39},
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'who', freq:1283},
+  ]},
+  {label:'89:12 — فَأَكْثَرُوا فِيهَا الْفَسَادَ', words:[
+    {ar:'الْفَسَادَ', tr:'al-fasād', en:'corruption', freq:50},
+    'fiiha',
+    {ar:'فَأَكْثَرُوا', tr:'fa-aktharū', en:'and increased', freq:5},
+  ]},
+  {label:'89:13 — فَصَبَّ عَلَيْهِمْ رَبُّكَ سَوْطَ عَذَابٍ', words:[
+    {ar:'عَذَابٍ', tr:'ʿadhāb', en:'of punishment', freq:373},
+    {ar:'سَوْطَ', tr:'sawṭa', en:'a whip / lash', freq:1},
+    'rabbuka',
+    {ar:'عَلَيْهِمْ', tr:'ʿalayhim', en:'upon them', freq:300},
+    {ar:'فَصَبَّ', tr:'fa-ṣabba', en:'so He poured', freq:1},
+  ]},
+  {label:'89:14 — إِنَّ رَبَّكَ لَبِالْمِرْصَادِ', words:[
     {ar:'لَبِالْمِرْصَادِ', tr:'la-bil-mirṣād', en:'is ever watchful', freq:1},
-    {ar:'رَبَّكَ', tr:'rabbaka', en:'your Lord', freq:49},
+    'rabbika',
     'inna',
   ]},
-  {label:'Verse 27-28 — يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ · ارْجِعِي إِلَىٰ رَبِّكِ رَاضِيَةً مَّرْضِيَّةً', words:[
+  {label:'89:15 — فَأَمَّا الْإِنسَانُ إِذَا مَا ابْتَلَاهُ رَبُّهُ فَأَكْرَمَهُ وَنَعَّمَهُ', words:[
+    {ar:'وَنَعَّمَهُ', tr:'wa-naʿʿamahu', en:'and gave him luxury', freq:1},
+    {ar:'فَأَكْرَمَهُ', tr:'fa-akramahu', en:'and honoured him', freq:1},
+    {ar:'رَبُّهُ', tr:'rabbuhu', en:'his Lord', freq:49},
+    {ar:'ابْتَلَاهُ', tr:'ibtalāhu', en:'tests him', freq:5},
+    'ma', 'idha',
+    {ar:'الْإِنسَانُ', tr:'al-insān', en:'man', freq:65},
+    {ar:'فَأَمَّا', tr:'fa-ammā', en:'as for', freq:20},
+  ]},
+  {label:'89:15b — فَيَقُولُ رَبِّي أَكْرَمَنِ', words:[
+    {ar:'أَكْرَمَنِ', tr:'akraman', en:'has honoured me', freq:1},
+    'rabb',
+    {ar:'فَيَقُولُ', tr:'fa-yaqūlu', en:'he says', freq:30},
+  ]},
+  {label:'89:16 — وَأَمَّا إِذَا مَا ابْتَلَاهُ فَقَدَرَ عَلَيْهِ رِزْقَهُ', words:[
+    {ar:'رِزْقَهُ', tr:'rizqahu', en:'his provision', freq:120},
+    {ar:'عَلَيْهِ', tr:'ʿalayhi', en:'upon him', freq:300},
+    {ar:'فَقَدَرَ', tr:'fa-qadara', en:'and restricts', freq:30},
+    {ar:'ابْتَلَاهُ', tr:'ibtalāhu', en:'tests him', freq:5},
+    'ma', 'idha',
+    {ar:'وَأَمَّا', tr:'wa-ammā', en:'but as for', freq:20},
+  ]},
+  {label:'89:16b — فَيَقُولُ رَبِّي أَهَانَنِ', words:[
+    {ar:'أَهَانَنِ', tr:'ahānan', en:'has humiliated me', freq:1},
+    'rabb',
+    {ar:'فَيَقُولُ', tr:'fa-yaqūlu', en:'he says', freq:30},
+  ]},
+  {label:'89:17 — كَلَّا بَل لَّا تُكْرِمُونَ الْيَتِيمَ', words:[
+    'al-yateem',
+    {ar:'تُكْرِمُونَ', tr:'tukrimūn', en:'you honour', freq:3},
+    'la',
+    {ar:'بَل', tr:'bal', en:'rather / nay', freq:112},
+    'kalla',
+  ]},
+  {label:'89:18 — وَلَا تَحَاضُّونَ عَلَىٰ طَعَامِ الْمِسْكِينِ', words:[
+    'al-miskeen',
+    {ar:'طَعَامِ', tr:'ṭaʿām', en:'food of', freq:48},
+    {ar:'عَلَىٰ', tr:'ʿalā', en:'upon / for', freq:1445},
+    {ar:'تَحَاضُّونَ', tr:'taḥāḍḍūn', en:'you urge one another', freq:2},
+    'wala',
+  ]},
+  {label:'89:19 — وَتَأْكُلُونَ التُّرَاثَ أَكْلًا لَّمًّا', words:[
+    {ar:'لَّمًّا', tr:'lamman', en:'greedily / combined', freq:1},
+    {ar:'أَكْلًا', tr:'aklan', en:'consuming', freq:18},
+    {ar:'التُّرَاثَ', tr:'al-turāth', en:'the inheritance', freq:1},
+    {ar:'وَتَأْكُلُونَ', tr:'wa-taʾkulūn', en:'and you consume', freq:23},
+  ]},
+  {label:'89:20 — وَتُحِبُّونَ الْمَالَ حُبًّا جَمًّا', words:[
+    {ar:'جَمًّا', tr:'jamman', en:'immense / excessive', freq:1},
+    {ar:'حُبًّا', tr:'ḥubban', en:'a love', freq:76},
+    {ar:'الْمَالَ', tr:'al-māl', en:'wealth', freq:86},
+    {ar:'وَتُحِبُّونَ', tr:'wa-tuḥibbūn', en:'and you love', freq:76},
+  ]},
+  {label:'89:21 — كَلَّا إِذَا دُكَّتِ الْأَرْضُ دَكًّا دَكًّا', words:[
+    {ar:'دَكًّا', tr:'dakkan', en:'a levelling (blow)', freq:2},
+    {ar:'الْأَرْضُ', tr:'al-arḍ', en:'the earth', freq:461},
+    {ar:'دُكَّتِ', tr:'dukkat', en:'is levelled', freq:2},
+    'idha', 'kalla',
+  ]},
+  {label:'89:22 — وَجَاءَ رَبُّكَ وَالْمَلَكُ صَفًّا صَفًّا', words:[
+    {ar:'صَفًّا', tr:'ṣaffan', en:'row upon row', freq:5},
+    {ar:'وَالْمَلَكُ', tr:'wal-malak', en:'and the angels', freq:88},
+    'rabbuka',
+    {ar:'وَجَاءَ', tr:'wa-jāʾa', en:'and your Lord comes', freq:130},
+  ]},
+  {label:'89:23 — وَجِيءَ يَوْمَئِذٍ بِجَهَنَّمَ يَوْمَئِذٍ يَتَذَكَّرُ الْإِنسَانُ وَأَنَّىٰ لَهُ الذِّكْرَىٰ', words:[
+    {ar:'الذِّكْرَىٰ', tr:'al-dhikrā', en:'the reminder', freq:25},
+    {ar:'لَهُ', tr:'lahu', en:'for him', freq:500},
+    {ar:'وَأَنَّىٰ', tr:'wa-annā', en:'and how', freq:7},
+    {ar:'الْإِنسَانُ', tr:'al-insān', en:'man', freq:65},
+    {ar:'يَتَذَكَّرُ', tr:'yatadhakkaru', en:'will remember', freq:9},
+    {ar:'يَوْمَئِذٍ', tr:'yawmaʾidhin', en:'that Day', freq:70},
+    'jahannam',
+    {ar:'وَجِيءَ', tr:'wa-jīʾa', en:'and brought forth is', freq:130},
+  ]},
+  {label:'89:24 — يَقُولُ يَا لَيْتَنِي قَدَّمْتُ لِحَيَاتِي', words:[
+    {ar:'لِحَيَاتِي', tr:'li-ḥayātī', en:'for my life', freq:76},
+    {ar:'قَدَّمْتُ', tr:'qaddamtu', en:'I had sent ahead', freq:6},
+    {ar:'لَيْتَنِي', tr:'laytanī', en:'I wish', freq:9},
+    'ya',
+    {ar:'يَقُولُ', tr:'yaqūlu', en:'he will say', freq:528},
+  ]},
+  {label:'89:25 — فَيَوْمَئِذٍ لَّا يُعَذِّبُ عَذَابَهُ أَحَدٌ', words:[
+    {ar:'أَحَدٌ', tr:'aḥad', en:'anyone', freq:86},
+    {ar:'عَذَابَهُ', tr:'ʿadhābahu', en:'His punishment', freq:373},
+    {ar:'يُعَذِّبُ', tr:'yuʿadhdhibu', en:'can punish', freq:373},
+    'la',
+    {ar:'فَيَوْمَئِذٍ', tr:'fa-yawmaʾidhin', en:'so that Day', freq:70},
+  ]},
+  {label:'89:26 — وَلَا يُوثِقُ وَثَاقَهُ أَحَدٌ', words:[
+    {ar:'أَحَدٌ', tr:'aḥad', en:'anyone', freq:86},
+    {ar:'وَثَاقَهُ', tr:'wathāqahu', en:'His binding', freq:1},
+    {ar:'يُوثِقُ', tr:'yūthiqu', en:'can bind', freq:1},
+    'wala',
+  ]},
+  {label:'89:27 — يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ', words:[
+    {ar:'الْمُطْمَئِنَّةُ', tr:'al-muṭmaʾinnah', en:'at peace / tranquil', freq:1},
+    {ar:'النَّفْسُ', tr:'al-nafs', en:'the soul', freq:295},
+    {ar:'أَيَّتُهَا', tr:'ayyatuhā', en:'O you', freq:70},
+    'ya',
+  ]},
+  {label:'89:28 — ارْجِعِي إِلَىٰ رَبِّكِ رَاضِيَةً مَّرْضِيَّةً', words:[
     {ar:'مَّرْضِيَّةً', tr:'marḍiyyah', en:'pleasing [to Him]', freq:1},
     {ar:'رَاضِيَةً', tr:'rāḍiyah', en:'satisfied', freq:3},
-    {ar:'رَبِّكِ', tr:'rabbiki', en:'your Lord', freq:49},
-    {ar:'إِلَىٰ', tr:'ilā', en:'to', freq:189},
-    {ar:'ارْجِعِي', tr:'irjiʿī', en:'return', freq:1},
-    {ar:'الْمُطْمَئِنَّةُ', tr:'al-muṭmaʾinnah', en:'at peace', freq:1},
-    {ar:'النَّفْسُ', tr:'al-nafs', en:'O soul', freq:295},
-    {ar:'يَا أَيَّتُهَا', tr:'yā ayyatuhā', en:'O you', freq:70},
+    'rabbika',
+    'ila',
+    {ar:'ارْجِعِي', tr:'irjiʿī', en:'return!', freq:1},
+  ]},
+  {label:'89:29 — فَادْخُلِي فِي عِبَادِي', words:[
+    {ar:'عِبَادِي', tr:'ʿibādī', en:'My servants', freq:66},
+    'fi',
+    {ar:'فَادْخُلِي', tr:'fa-dkhulī', en:'so enter', freq:20},
+  ]},
+  {label:'89:30 — وَادْخُلِي جَنَّتِي', words:[
+    {ar:'جَنَّتِي', tr:'jannatī', en:'My Paradise', freq:66},
+    {ar:'وَادْخُلِي', tr:'wa-dkhulī', en:'and enter', freq:20},
   ]},
 ];
 
 window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS = [
-  { id: 'o1', text: 'Wal-Fajr',      zone: 'z1' },
-  { id: 'o2', text: 'Wayal-in \'ashr', zone: 'z2' },
-  { id: 'o3', text: 'Wash-shaf\'',    zone: 'z3' },
-  { id: 'o4', text: 'Wal-watr',       zone: 'z4' },
+  { id: 'o1', text: 'وَالْفَجْرِ',      zone: 'z1' },
+  { id: 'o2', text: 'وَلَيَالٍ عَشْرٍ', zone: 'z2' },
+  { id: 'o3', text: 'وَالشَّفْعِ',    zone: 'z3' },
+  { id: 'o4', text: 'وَالْوَتْرِ',       zone: 'z4' },
 ];
 const S1_ZONES = [
-  { id: 'z1', desc: 'By the Dawn — Allah swears by the Fajr prayer time' },
-  { id: 'z2', desc: 'By the Ten Nights — first 10 nights of Dhul-Hijjah' },
-  { id: 'z3', desc: 'By the Even — paired numbers in creation' },
-  { id: 'z4', desc: 'By the Odd — especially the witr prayer' },
+  { id: 'z1', desc: '"By the dawn (wal-fajr)" — (89:1). Allah swears by the Fajr, the break of day — a sign of His power to bring light after darkness.' },
+  { id: 'z2', desc: '"By the ten nights (wa-layalin \'ashr)" — (89:2). The blessed first 10 nights of Dhul-Hijjah, the best days of the year.' },
+  { id: 'z3', desc: '"By the even (wash-shaf\')" — (89:3). The even — pairs in creation. Some say the Day of Arafah (9th Dhul-Hijjah).' },
+  { id: 'z4', desc: '"By the odd (wal-watr)" — (89:3). The odd — Allah is Witr (One). Some say the Day of Eid (10th Dhul-Hijjah).' },
 ];
 
 /* ── Level 2: Quiz — Three Destroyed Nations (89:6-14) ── */
@@ -108,10 +284,10 @@ window._S3_EVENTS = S3_EVENTS_CORRECT;
 
 /* ── Level 4: Drag & Drop — What Man Does Wrong (89:17-20) ── */
 const S4_ITEMS = [
-  { id: 'w1', text: 'Not\nhonouring\northans',   zone: 'z1' },
-  { id: 'w2', text: 'Not feeding\nthe poor',     zone: 'z2' },
-  { id: 'w3', text: 'Consuming\ninheritance',    zone: 'z3' },
-  { id: 'w4', text: 'Loving\nwealth obsessively',zone: 'z4' },
+  { id: 'w1', text: 'لَا تُكْرِمُونَ\nالْيَتِيمَ',   zone: 'z1' },
+  { id: 'w2', text: 'لَا تَحَاضُّونَ\nطَعَامِ الْمِسْكِينِ',     zone: 'z2' },
+  { id: 'w3', text: 'تَأْكُلُونَ التُّرَاثَ\nأَكْلًا لَّمًّا',    zone: 'z3' },
+  { id: 'w4', text: 'تُحِبُّونَ الْمَالَ\nحُبًّا جَمًّا',zone: 'z4' },
 ];
 const S4_ZONES = [
   { id: 'z1', desc: '"You do not honour the orphan" — the weak and vulnerable deserve care (89:17)' },

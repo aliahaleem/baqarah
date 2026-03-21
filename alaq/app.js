@@ -25,31 +25,115 @@ window.SURAH_CONFIG = {
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1 — اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ', words:[
+  {label:'96:1 — اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ', words:[
     {ar:'خَلَقَ', tr:'khalaqa', en:'created', freq:29},
-    {ar:'الَّذِي', tr:'alladhī', en:'who', freq:1283},
-    {ar:'رَبِّكَ', tr:'rabbika', en:'your Lord', freq:49},
+    'alladhi',
+    'rabbika',
     {ar:'بِاسْمِ', tr:'bismi', en:'in the name of', freq:22},
     {ar:'اقْرَأْ', tr:'iqraʾ', en:'Read! / Recite!', freq:3},
   ]},
-  {label:'Verse 2 — خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ', words:[
+  {label:'96:2 — خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ', words:[
     {ar:'عَلَقٍ', tr:'ʿalaq', en:'a clinging clot', freq:2},
-    {ar:'مِنْ', tr:'min', en:'from', freq:1891},
+    'min',
     {ar:'الْإِنسَانَ', tr:'al-insān', en:'mankind', freq:65},
     {ar:'خَلَقَ', tr:'khalaqa', en:'He created', freq:29},
   ]},
-  {label:'Verse 3-4 — اقْرَأْ وَرَبُّكَ الْأَكْرَمُ · الَّذِي عَلَّمَ بِالْقَلَمِ', words:[
+  {label:'96:3 — اقْرَأْ وَرَبُّكَ الْأَكْرَمُ', words:[
+    {ar:'الْأَكْرَمُ', tr:'al-akram', en:'the Most Generous', freq:1},
+    'rabbuka',
+    {ar:'اقْرَأْ', tr:'iqraʾ', en:'Read! / Recite!', freq:3},
+  ]},
+  {label:'96:4 — الَّذِي عَلَّمَ بِالْقَلَمِ', words:[
     {ar:'بِالْقَلَمِ', tr:'bil-qalam', en:'by the pen', freq:2},
     {ar:'عَلَّمَ', tr:'ʿallama', en:'taught', freq:20},
-    {ar:'الْأَكْرَمُ', tr:'al-akram', en:'the Most Generous', freq:1},
-    {ar:'وَرَبُّكَ', tr:'wa-rabbuka', en:'and your Lord is', freq:30},
+    'alladhi',
   ]},
-  {label:'Verse 19 — كَلَّا لَا تُطِعْهُ وَاسْجُدْ وَاقْتَرِب', words:[
-    {ar:'وَاقْتَرِب', tr:'waqtarib', en:'and draw near', freq:2},
+  {label:'96:5 — عَلَّمَ الْإِنسَانَ مَا لَمْ يَعْلَمْ', words:[
+    {ar:'يَعْلَمْ', tr:'yaʿlam', en:'he knew', freq:382},
+    'lam',
+    'ma',
+    {ar:'الْإِنسَانَ', tr:'al-insān', en:'mankind', freq:65},
+    {ar:'عَلَّمَ', tr:'ʿallama', en:'taught', freq:20},
+  ]},
+  {label:'96:6 — كَلَّا إِنَّ الْإِنسَانَ لَيَطْغَىٰ', words:[
+    {ar:'لَيَطْغَىٰ', tr:'la-yaṭghā', en:'surely transgresses', freq:9},
+    {ar:'الْإِنسَانَ', tr:'al-insān', en:'man', freq:65},
+    'inna',
+    'kalla',
+  ]},
+  {label:'96:7 — أَن رَّآهُ اسْتَغْنَىٰ', words:[
+    {ar:'اسْتَغْنَىٰ', tr:'istaghnā', en:'sees himself rich', freq:2},
+    {ar:'رَّآهُ', tr:'raʾāhu', en:'he sees himself', freq:9},
+    {ar:'أَن', tr:'an', en:'because', freq:680},
+  ]},
+  {label:'96:8 — إِنَّ إِلَىٰ رَبِّكَ الرُّجْعَىٰ', words:[
+    {ar:'الرُّجْعَىٰ', tr:'al-rujʿā', en:'is the return', freq:1},
+    'rabbika',
+    'ila',
+    'inna',
+  ]},
+  {label:'96:9 — أَرَأَيْتَ الَّذِي يَنْهَىٰ', words:[
+    {ar:'يَنْهَىٰ', tr:'yanhā', en:'forbids', freq:8},
+    'alladhi',
+    {ar:'أَرَأَيْتَ', tr:'araʾayta', en:'have you seen', freq:9},
+  ]},
+  {label:'96:10 — عَبْدًا إِذَا صَلَّىٰ', words:[
+    {ar:'صَلَّىٰ', tr:'ṣallā', en:'prays', freq:83},
+    'idha',
+    {ar:'عَبْدًا', tr:'ʿabdan', en:'a servant', freq:275},
+  ]},
+  {label:'96:11 — أَرَأَيْتَ إِن كَانَ عَلَى الْهُدَىٰ', words:[
+    {ar:'الْهُدَىٰ', tr:'al-hudā', en:'the guidance', freq:80},
+    {ar:'عَلَى', tr:'ʿalā', en:'upon', freq:471},
+    {ar:'كَانَ', tr:'kāna', en:'he was', freq:1358},
+    {ar:'إِن', tr:'in', en:'if', freq:743},
+    {ar:'أَرَأَيْتَ', tr:'araʾayta', en:'have you seen', freq:9},
+  ]},
+  {label:'96:12 — أَوْ أَمَرَ بِالتَّقْوَىٰ', words:[
+    {ar:'بِالتَّقْوَىٰ', tr:'bil-taqwā', en:'righteousness', freq:15},
+    {ar:'أَمَرَ', tr:'amara', en:'commanded', freq:40},
+    {ar:'أَوْ', tr:'aw', en:'or', freq:280},
+  ]},
+  {label:'96:13 — أَرَأَيْتَ إِن كَذَّبَ وَتَوَلَّىٰ', words:[
+    {ar:'وَتَوَلَّىٰ', tr:'wa-tawallā', en:'and turned away', freq:30},
+    {ar:'كَذَّبَ', tr:'kadhdhaba', en:'denied', freq:25},
+    {ar:'إِن', tr:'in', en:'if', freq:743},
+    {ar:'أَرَأَيْتَ', tr:'araʾayta', en:'have you seen', freq:9},
+  ]},
+  {label:'96:14 — أَلَمْ يَعْلَم بِأَنَّ اللَّهَ يَرَىٰ', words:[
+    {ar:'يَرَىٰ', tr:'yarā', en:'sees', freq:328},
+    {ar:'اللَّهَ', tr:'Allāha', en:'Allah', freq:2699},
+    {ar:'بِأَنَّ', tr:'bi-anna', en:'that', freq:100},
+    {ar:'يَعْلَم', tr:'yaʿlam', en:'does he know', freq:382},
+    'alam',
+  ]},
+  {label:'96:15 — كَلَّا لَئِن لَّمْ يَنتَهِ لَنَسْفَعًا بِالنَّاصِيَةِ', words:[
+    {ar:'بِالنَّاصِيَةِ', tr:'bil-nāṣiya', en:'by the forelock', freq:1},
+    {ar:'لَنَسْفَعًا', tr:'la-nasfaʿan', en:'We will drag', freq:1},
+    {ar:'يَنتَهِ', tr:'yantahi', en:'he desists', freq:2},
+    {ar:'لَّمْ', tr:'lam', en:'does not', freq:234},
+    {ar:'لَئِن', tr:'laʾin', en:'surely if', freq:26},
+    'kalla',
+  ]},
+  {label:'96:16 — نَاصِيَةٍ كَاذِبَةٍ خَاطِئَةٍ', words:[
+    {ar:'خَاطِئَةٍ', tr:'khāṭiʾa', en:'sinful', freq:1},
+    {ar:'كَاذِبَةٍ', tr:'kādhibatin', en:'lying', freq:2},
+    {ar:'نَاصِيَةٍ', tr:'nāṣiyatin', en:'a forelock', freq:1},
+  ]},
+  {label:'96:17 — فَلْيَدْعُ نَادِيَهُ', words:[
+    {ar:'نَادِيَهُ', tr:'nādiyahu', en:'his associates', freq:1},
+    {ar:'فَلْيَدْعُ', tr:'fal-yadʿu', en:'then let him call', freq:7},
+  ]},
+  {label:'96:18 — سَنَدْعُ الزَّبَانِيَةَ', words:[
+    {ar:'الزَّبَانِيَةَ', tr:'al-zabāniya', en:'the angels of Hell', freq:1},
+    {ar:'سَنَدْعُ', tr:'sanadʿu', en:'We will call', freq:1},
+  ]},
+  {label:'96:19 — كَلَّا لَا تُطِعْهُ وَاسْجُدْ وَاقْتَرِبْ', words:[
+    {ar:'وَاقْتَرِبْ', tr:'waqtarib', en:'and draw near', freq:2},
     {ar:'وَاسْجُدْ', tr:'wasjud', en:'and prostrate', freq:34},
     {ar:'تُطِعْهُ', tr:'tuṭiʿhu', en:'obey him', freq:10},
-    {ar:'لَا', tr:'lā', en:'do not', freq:1069},
-    {ar:'كَلَّا', tr:'kallā', en:'No! Indeed', freq:33},
+    'la',
+    'kalla',
   ]},
 ];
 

@@ -28,32 +28,174 @@ window.SURAH_CONFIG={
 // S1 — Drag & Drop: 5 of the 12 Signs
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1-3 — إِذَا الشَّمْسُ كُوِّرَتْ · وَإِذَا النُّجُومُ انكَدَرَتْ · وَإِذَا الْجِبَالُ سُيِّرَتْ', words:[
-    {ar:'سُيِّرَتْ', tr:'suyyirat', en:'are moved away', freq:1},
-    {ar:'الْجِبَالُ', tr:'al-jibāl', en:'the mountains', freq:33},
-    {ar:'انكَدَرَتْ', tr:'inkadarat', en:'fall/lose light', freq:1},
-    {ar:'النُّجُومُ', tr:'al-nujūm', en:'the stars', freq:13},
-    {ar:'كُوِّرَتْ', tr:'kuwwirat', en:'is wound round', freq:1},
+  {label:'81:1 — إِذَا الشَّمْسُ كُوِّرَتْ', words:[
+    {ar:'كُوِّرَتْ', tr:'kuwwirat', en:'is wound round / folded up', freq:1},
     {ar:'الشَّمْسُ', tr:'al-shams', en:'the sun', freq:33},
     'idha',
   ]},
-  {label:'Verse 8-9 — وَإِذَا الْمَوْءُودَةُ سُئِلَتْ · بِأَيِّ ذَنبٍ قُتِلَتْ', words:[
+  {label:'81:2 — وَإِذَا النُّجُومُ انكَدَرَتْ', words:[
+    {ar:'انكَدَرَتْ', tr:'inkadarat', en:'fall / lose light', freq:1},
+    {ar:'النُّجُومُ', tr:'al-nujūm', en:'the stars', freq:13},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'81:3 — وَإِذَا الْجِبَالُ سُيِّرَتْ', words:[
+    {ar:'سُيِّرَتْ', tr:'suyyirat', en:'are set in motion', freq:1},
+    'al-jibal-u',
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'81:4 — وَإِذَا الْعِشَارُ عُطِّلَتْ', words:[
+    {ar:'عُطِّلَتْ', tr:'ʿuṭṭilat', en:'are abandoned', freq:1},
+    {ar:'الْعِشَارُ', tr:'al-ʿishār', en:'pregnant she-camels', freq:1},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'81:5 — وَإِذَا الْوُحُوشُ حُشِرَتْ', words:[
+    {ar:'حُشِرَتْ', tr:'ḥushirat', en:'are gathered', freq:19},
+    {ar:'الْوُحُوشُ', tr:'al-wuḥūsh', en:'the wild beasts', freq:1},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'81:6 — وَإِذَا الْبِحَارُ سُجِّرَتْ', words:[
+    {ar:'سُجِّرَتْ', tr:'sujjirat', en:'are set on fire', freq:1},
+    {ar:'الْبِحَارُ', tr:'al-biḥār', en:'the seas', freq:5},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'81:7 — وَإِذَا النُّفُوسُ زُوِّجَتْ', words:[
+    {ar:'زُوِّجَتْ', tr:'zuwwijat', en:'are paired', freq:20},
+    {ar:'النُّفُوسُ', tr:'al-nufūs', en:'the souls', freq:295},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'81:8 — وَإِذَا الْمَوْءُودَةُ سُئِلَتْ', words:[
+    {ar:'سُئِلَتْ', tr:'suʾilat', en:'is asked', freq:2},
+    {ar:'الْمَوْءُودَةُ', tr:'al-mawʾūdah', en:'the girl buried alive', freq:1},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'81:9 — بِأَيِّ ذَنبٍ قُتِلَتْ', words:[
     {ar:'قُتِلَتْ', tr:'qutilat', en:'she was killed', freq:39},
     {ar:'ذَنبٍ', tr:'dhanb', en:'sin', freq:35},
-    {ar:'بِأَيِّ', tr:'bi-ayy', en:'for what', freq:8},
-    {ar:'سُئِلَتْ', tr:'suʾilat', en:'is asked', freq:2},
-    {ar:'الْمَوْءُودَةُ', tr:'al-mawʾūdah', en:'the buried alive girl', freq:1},
+    {ar:'بِأَيِّ', tr:'bi-ayyi', en:'for what', freq:8},
+  ]},
+  {label:'81:10 — وَإِذَا الصُّحُفُ نُشِرَتْ', words:[
+    {ar:'نُشِرَتْ', tr:'nushirat', en:'are laid open', freq:3},
+    {ar:'الصُّحُفُ', tr:'al-ṣuḥuf', en:'the records / scrolls', freq:8},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'81:11 — وَإِذَا السَّمَاءُ كُشِطَتْ', words:[
+    {ar:'كُشِطَتْ', tr:'kushiṭat', en:'is stripped away', freq:1},
+    'al-sama',
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'81:12 — وَإِذَا الْجَحِيمُ سُعِّرَتْ', words:[
+    {ar:'سُعِّرَتْ', tr:'suʿʿirat', en:'is set ablaze', freq:2},
+    {ar:'الْجَحِيمُ', tr:'al-jaḥīm', en:'the Hellfire', freq:26},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'81:13 — وَإِذَا الْجَنَّةُ أُزْلِفَتْ', words:[
+    {ar:'أُزْلِفَتْ', tr:'uzlifat', en:'is brought near', freq:3},
+    {ar:'الْجَنَّةُ', tr:'al-jannah', en:'Paradise', freq:66},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'81:14 — عَلِمَتْ نَفْسٌ مَّا أَحْضَرَتْ', words:[
+    {ar:'أَحْضَرَتْ', tr:'aḥḍarat', en:'it has brought forward', freq:4},
+    'ma',
+    {ar:'نَفْسٌ', tr:'nafs', en:'a soul', freq:295},
+    {ar:'عَلِمَتْ', tr:'ʿalimat', en:'will know', freq:382},
+  ]},
+  {label:'81:15 — فَلَا أُقْسِمُ بِالْخُنَّسِ', words:[
+    {ar:'بِالْخُنَّسِ', tr:'bil-khunnas', en:'by the retreating stars', freq:1},
+    {ar:'أُقْسِمُ', tr:'uqsimu', en:'I swear', freq:7},
+    {ar:'فَلَا', tr:'fa-lā', en:'so I do indeed', freq:99},
+  ]},
+  {label:'81:16 — الْجَوَارِ الْكُنَّسِ', words:[
+    {ar:'الْكُنَّسِ', tr:'al-kunnas', en:'the hiding / sweeping ones', freq:1},
+    {ar:'الْجَوَارِ', tr:'al-jawāri', en:'those that run their courses', freq:2},
+  ]},
+  {label:'81:17 — وَاللَّيْلِ إِذَا عَسْعَسَ', words:[
+    {ar:'عَسْعَسَ', tr:'ʿasʿas', en:'departs / darkens', freq:1},
+    'idha',
+    {ar:'وَاللَّيْلِ', tr:'wal-layl', en:'and by the night', freq:73},
+  ]},
+  {label:'81:18 — وَالصُّبْحِ إِذَا تَنَفَّسَ', words:[
+    {ar:'تَنَفَّسَ', tr:'tanaffas', en:'breathes forth / dawns', freq:1},
+    'idha',
+    {ar:'وَالصُّبْحِ', tr:'waṣ-ṣubḥ', en:'and by the morning', freq:7},
+  ]},
+  {label:'81:19 — إِنَّهُ لَقَوْلُ رَسُولٍ كَرِيمٍ', words:[
+    {ar:'كَرِيمٍ', tr:'karīm', en:'noble / honoured', freq:27},
+    {ar:'رَسُولٍ', tr:'rasūl', en:'a messenger', freq:332},
+    {ar:'لَقَوْلُ', tr:'la-qawlu', en:'surely the word of', freq:50},
+    {ar:'إِنَّهُ', tr:'innahu', en:'indeed it is', freq:40},
+  ]},
+  {label:'81:20 — ذِي قُوَّةٍ عِندَ ذِي الْعَرْشِ مَكِينٍ', words:[
+    {ar:'مَكِينٍ', tr:'makīn', en:'secure in position', freq:2},
+    {ar:'الْعَرْشِ', tr:'al-ʿarsh', en:'the Throne', freq:26},
+    {ar:'عِندَ', tr:'ʿinda', en:'near / with', freq:200},
+    {ar:'قُوَّةٍ', tr:'quwwah', en:'power / strength', freq:42},
+    {ar:'ذِي', tr:'dhī', en:'possessor of', freq:47},
+  ]},
+  {label:'81:21 — مُّطَاعٍ ثَمَّ أَمِينٍ', words:[
+    {ar:'أَمِينٍ', tr:'amīn', en:'trustworthy', freq:14},
+    {ar:'ثَمَّ', tr:'thamma', en:'there (in the heavens)', freq:20},
+    {ar:'مُّطَاعٍ', tr:'muṭāʿ', en:'obeyed', freq:1},
+  ]},
+  {label:'81:22 — وَمَا صَاحِبُكُم بِمَجْنُونٍ', words:[
+    {ar:'بِمَجْنُونٍ', tr:'bi-majnūn', en:'a madman', freq:2},
+    {ar:'صَاحِبُكُم', tr:'ṣāḥibukum', en:'your companion', freq:5},
+    'ma', 'wa',
+  ]},
+  {label:'81:23 — وَلَقَدْ رَآهُ بِالْأُفُقِ الْمُبِينِ', words:[
+    {ar:'الْمُبِينِ', tr:'al-mubīn', en:'the clear', freq:119},
+    {ar:'بِالْأُفُقِ', tr:'bil-ufuqi', en:'on the horizon', freq:2},
+    {ar:'رَآهُ', tr:'raʾāhu', en:'he saw him', freq:50},
+    {ar:'وَلَقَدْ', tr:'wa-laqad', en:'and indeed', freq:90},
+  ]},
+  {label:'81:24 — وَمَا هُوَ عَلَى الْغَيْبِ بِضَنِينٍ', words:[
+    {ar:'بِضَنِينٍ', tr:'bi-ḍanīn', en:'a withholder', freq:1},
+    {ar:'الْغَيْبِ', tr:'al-ghayb', en:'the unseen', freq:49},
+    {ar:'عَلَى', tr:'ʿalā', en:'regarding', freq:1445},
+    'huwa', 'ma', 'wa',
+  ]},
+  {label:'81:25 — وَمَا هُوَ بِقَوْلِ شَيْطَانٍ رَّجِيمٍ', words:[
+    {ar:'رَّجِيمٍ', tr:'rajīm', en:'accursed / outcast', freq:6},
+    {ar:'شَيْطَانٍ', tr:'shayṭān', en:'a devil', freq:68},
+    {ar:'بِقَوْلِ', tr:'bi-qawli', en:'the word of', freq:50},
+    'huwa', 'ma', 'wa',
+  ]},
+  {label:'81:26 — فَأَيْنَ تَذْهَبُونَ', words:[
+    {ar:'تَذْهَبُونَ', tr:'tadh-habūn', en:'are you going', freq:5},
+    {ar:'فَأَيْنَ', tr:'fa-ayna', en:'so where', freq:3},
+  ]},
+  {label:'81:27 — إِنْ هُوَ إِلَّا ذِكْرٌ لِّلْعَالَمِينَ', words:[
+    {ar:'لِّلْعَالَمِينَ', tr:'lil-ʿālamīn', en:'for all the worlds', freq:73},
+    {ar:'ذِكْرٌ', tr:'dhikr', en:'a reminder', freq:78},
+    'illa', 'huwa',
+    {ar:'إِنْ', tr:'in', en:'not (it is)', freq:663},
+  ]},
+  {label:'81:28 — لِمَن شَاءَ مِنكُمْ أَن يَسْتَقِيمَ', words:[
+    {ar:'يَسْتَقِيمَ', tr:'yastaqīm', en:'to be upright', freq:46},
+    {ar:'أَن', tr:'an', en:'to', freq:1000},
+    {ar:'مِنكُمْ', tr:'minkum', en:'among you', freq:100},
+    {ar:'شَاءَ', tr:'shāʾa', en:'wills', freq:236},
+    {ar:'لِمَن', tr:'li-man', en:'for whoever', freq:50},
+  ]},
+  {label:'81:29 — وَمَا تَشَاءُونَ إِلَّا أَن يَشَاءَ اللَّهُ رَبُّ الْعَالَمِينَ', words:[
+    {ar:'الْعَالَمِينَ', tr:'al-ʿālamīn', en:'the worlds', freq:73},
+    {ar:'رَبُّ', tr:'rabb', en:'Lord of', freq:950},
+    'allahu',
+    {ar:'يَشَاءَ', tr:'yashāʾa', en:'(He) wills', freq:236},
+    {ar:'أَن', tr:'an', en:'that', freq:1000},
+    'illa',
+    {ar:'تَشَاءُونَ', tr:'tashāʾūn', en:'you will', freq:10},
+    'ma', 'wa',
   ]},
 ];
 
 window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS=[
-  {id:'sg1',text:'☀️ Al-Shams\nKuwwirat',zone:'z1'},
-  {id:'sg2',text:'⭐ Al-Nujum\nInkadarat',zone:'z2'},
-  {id:'sg3',text:'⛰️ Al-Jibaal\nSuyyirat',zone:'z3'},
-  {id:'sg4',text:'🐪 Al-Ishar\n\'Uttilat',zone:'z4'},
-  {id:'sg5',text:'🦁 Al-Wuhush\nHushirat',zone:'z5'},
+  {id:'sg1',text:'الشَّمْسُ\nكُوِّرَتْ',zone:'z1'},
+  {id:'sg2',text:'النُّجُومُ\nانكَدَرَتْ',zone:'z2'},
+  {id:'sg3',text:'الْجِبَالُ\nسُيِّرَتْ',zone:'z3'},
+  {id:'sg4',text:'الْعِشَارُ\nعُطِّلَتْ',zone:'z4'},
+  {id:'sg5',text:'الْوُحُوشُ\nحُشِرَتْ',zone:'z5'},
 ];
 const S1_ZONES=[
   {id:'z1',desc:'"When the sun is rolled up (kuwwirat)" — (81:1). The word is from "kawwara" — to wrap a turban. The sun will be dimmed and folded away like a cloth. Its light extinguished.'},

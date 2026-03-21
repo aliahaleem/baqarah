@@ -24,24 +24,106 @@ window.SURAH_CONFIG={
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1-3 — وَالسَّمَاءِ وَالطَّارِقِ · وَمَا أَدْرَاكَ مَا الطَّارِقُ · النَّجْمُ الثَّاقِبُ', words:[
+  {label:'86:1 — وَالسَّمَاءِ وَالطَّارِقِ', words:[
+    {ar:'وَالطَّارِقِ', tr:'wal-ṭāriq', en:'and the night-comer', freq:2},
+    {ar:'وَالسَّمَاءِ', tr:'wal-samāʾi', en:'by the sky', freq:120},
+  ]},
+  {label:'86:2 — وَمَا أَدْرَاكَ مَا الطَّارِقُ', words:[
+    {ar:'الطَّارِقُ', tr:'al-ṭāriq', en:'the night-comer', freq:2},
+    'ma',
+    {ar:'أَدْرَاكَ', tr:'adrāka', en:'will make you know', freq:13},
+    {ar:'وَمَا', tr:'wa-mā', en:'and what', freq:2005},
+  ]},
+  {label:'86:3 — النَّجْمُ الثَّاقِبُ', words:[
     {ar:'الثَّاقِبُ', tr:'al-thāqib', en:'the piercing', freq:2},
     {ar:'النَّجْمُ', tr:'al-najm', en:'the star', freq:4},
-    {ar:'الطَّارِقِ', tr:'al-ṭāriq', en:'the night-visitor', freq:2},
-    {ar:'وَالسَّمَاءِ', tr:'wal-samāʾ', en:'by the sky', freq:120},
   ]},
-  {label:'Verse 5-6 — فَلْيَنظُرِ الْإِنسَانُ مِمَّ خُلِقَ · خُلِقَ مِن مَّاءٍ دَافِقٍ', words:[
-    {ar:'دَافِقٍ', tr:'dāfiq', en:'ejected / gushing', freq:1},
-    {ar:'مَّاءٍ', tr:'māʾ', en:'water/fluid', freq:63},
+  {label:'86:4 — إِن كُلُّ نَفْسٍ لَّمَّا عَلَيْهَا حَافِظٌ', words:[
+    {ar:'حَافِظٌ', tr:'ḥāfiẓ', en:'a guardian', freq:10},
+    {ar:'عَلَيْهَا', tr:'ʿalayhā', en:'over it', freq:34},
+    {ar:'لَّمَّا', tr:'lammā', en:'except', freq:4},
+    {ar:'نَفْسٍ', tr:'nafsin', en:'soul', freq:295},
+    {ar:'كُلُّ', tr:'kullu', en:'every', freq:330},
+    {ar:'إِن', tr:'in', en:'there is no', freq:743},
+  ]},
+  {label:'86:5 — فَلْيَنظُرِ الْإِنسَانُ مِمَّ خُلِقَ', words:[
     {ar:'خُلِقَ', tr:'khuliqa', en:'he was created', freq:29},
+    {ar:'مِمَّ', tr:'mimma', en:'from what', freq:8},
     {ar:'الْإِنسَانُ', tr:'al-insān', en:'man', freq:65},
     {ar:'فَلْيَنظُرِ', tr:'fal-yanẓur', en:'so let him look', freq:33},
+  ]},
+  {label:'86:6 — خُلِقَ مِن مَّاءٍ دَافِقٍ', words:[
+    {ar:'دَافِقٍ', tr:'dāfiq', en:'gushing', freq:1},
+    {ar:'مَّاءٍ', tr:'māʾ', en:'water / fluid', freq:63},
+    'min',
+    {ar:'خُلِقَ', tr:'khuliqa', en:'he was created', freq:29},
+  ]},
+  {label:'86:7 — يَخْرُجُ مِن بَيْنِ الصُّلْبِ وَالتَّرَائِبِ', words:[
+    {ar:'وَالتَّرَائِبِ', tr:'wal-tarāʾib', en:'and the ribs', freq:1},
+    {ar:'الصُّلْبِ', tr:'al-ṣulb', en:'the backbone', freq:1},
+    {ar:'بَيْنِ', tr:'bayni', en:'between', freq:160},
+    'min',
+    {ar:'يَخْرُجُ', tr:'yakhruju', en:'it comes forth', freq:30},
+  ]},
+  {label:'86:8 — إِنَّهُ عَلَىٰ رَجْعِهِ لَقَادِرٌ', words:[
+    {ar:'لَقَادِرٌ', tr:'la-qādir', en:'surely Able', freq:45},
+    {ar:'رَجْعِهِ', tr:'rajʿihi', en:'his return', freq:3},
+    {ar:'عَلَىٰ', tr:'ʿalā', en:'upon', freq:471},
+    {ar:'إِنَّهُ', tr:'innahu', en:'indeed He', freq:98},
+  ]},
+  {label:'86:9 — يَوْمَ تُبْلَى السَّرَائِرُ', words:[
+    {ar:'السَّرَائِرُ', tr:'al-sarāʾir', en:'the secrets', freq:1},
+    {ar:'تُبْلَى', tr:'tublā', en:'are examined', freq:1},
+    'yawma',
+  ]},
+  {label:'86:10 — فَمَا لَهُ مِن قُوَّةٍ وَلَا نَاصِرٍ', words:[
+    {ar:'نَاصِرٍ', tr:'nāṣir', en:'helper', freq:14},
+    'wala',
+    {ar:'قُوَّةٍ', tr:'quwwatin', en:'strength', freq:42},
+    'min',
+    {ar:'لَهُ', tr:'lahu', en:'for him', freq:860},
+    {ar:'فَمَا', tr:'fa-mā', en:'then not', freq:2005},
+  ]},
+  {label:'86:11 — وَالسَّمَاءِ ذَاتِ الرَّجْعِ', words:[
+    {ar:'الرَّجْعِ', tr:'al-rajʿ', en:'the return (rain)', freq:3},
+    {ar:'ذَاتِ', tr:'dhāti', en:'possessor of', freq:38},
+    {ar:'وَالسَّمَاءِ', tr:'wal-samāʾi', en:'by the sky', freq:120},
+  ]},
+  {label:'86:12 — وَالْأَرْضِ ذَاتِ الصَّدْعِ', words:[
+    {ar:'الصَّدْعِ', tr:'al-ṣadʿ', en:'the splitting', freq:1},
+    {ar:'ذَاتِ', tr:'dhāti', en:'possessor of', freq:38},
+    {ar:'وَالْأَرْضِ', tr:'wal-arḍi', en:'and the earth', freq:95},
+  ]},
+  {label:'86:13 — إِنَّهُ لَقَوْلٌ فَصْلٌ', words:[
+    {ar:'فَصْلٌ', tr:'faṣl', en:'decisive', freq:5},
+    {ar:'لَقَوْلٌ', tr:'la-qawlun', en:'surely a word', freq:92},
+    {ar:'إِنَّهُ', tr:'innahu', en:'indeed it', freq:98},
+  ]},
+  {label:'86:14 — وَمَا هُوَ بِالْهَزْلِ', words:[
+    {ar:'بِالْهَزْلِ', tr:'bil-hazl', en:'in jest', freq:1},
+    'huwa',
+    {ar:'وَمَا', tr:'wa-mā', en:'and not', freq:2005},
+  ]},
+  {label:'86:15 — إِنَّهُمْ يَكِيدُونَ كَيْدًا', words:[
+    {ar:'كَيْدًا', tr:'kaydan', en:'a plot', freq:35},
+    {ar:'يَكِيدُونَ', tr:'yakīdūna', en:'they are plotting', freq:3},
+    {ar:'إِنَّهُمْ', tr:'innahum', en:'indeed they', freq:50},
+  ]},
+  {label:'86:16 — وَأَكِيدُ كَيْدًا', words:[
+    {ar:'كَيْدًا', tr:'kaydan', en:'a plan', freq:35},
+    {ar:'وَأَكِيدُ', tr:'wa-akīdu', en:'and I plan', freq:1},
+  ]},
+  {label:'86:17 — فَمَهِّلِ الْكَافِرِينَ أَمْهِلْهُمْ رُوَيْدًا', words:[
+    {ar:'رُوَيْدًا', tr:'ruwaydan', en:'a little while', freq:1},
+    {ar:'أَمْهِلْهُمْ', tr:'amhilhum', en:'give them respite', freq:1},
+    {ar:'الْكَافِرِينَ', tr:'al-kāfirīn', en:'the disbelievers', freq:525},
+    {ar:'فَمَهِّلِ', tr:'fa-mahhil', en:'so allow time', freq:1},
   ]},
 ];
 
 window.setupWBWLevel(WBW_DATA, 10);
 
-const S1_ITEMS=[{id:'i1',text:'🌙 Al-Tariq\nNight Comer',zone:'z1'},{id:'i2',text:'💫 Al-Najm\nAl-Thaqib',zone:'z2'},{id:'i3',text:'👁️ Hafidh\nGuardian',zone:'z3'}];
+const S1_ITEMS=[{id:'i1',text:'الطَّارِقِ',zone:'z1'},{id:'i2',text:'النَّجْمُ\nالثَّاقِبُ',zone:'z2'},{id:'i3',text:'حَافِظٌ',zone:'z3'}];
 const S1_ZONES=[{id:'z1',desc:'"Wa al-sama\' wa al-Tariq" (86:1) — By the sky and the night comer. "Tariq" from "tariqa" — to knock on a door at night, to come by night. The "tariq" comes unexpectedly in darkness. Applied to the piercing star — it appears in the night sky and knocks on the eye with its brilliance.'},{id:'z2',desc:'"Al-najm al-thaqib" (86:3) — The PIERCING star. "Thaqib" from "thaqaba" — to pierce, drill through, penetrate. A star so brilliant it pierces through the darkness of night. Modern understanding: this may refer to a pulsar — a neutron star that pulses brilliantly. 1400 years before pulsars were discovered!'},{id:'z3',desc:'"In kullu nafsin lamma alayha hafidh" (86:4) — There is no soul except that it has over it a GUARDIAN. "Hafidh" — a protector, preserver, guardian. Every human being has a guardian angel watching over them — their deeds recorded, their life preserved by Allah\'s command.'}];
 
 const S2_QUIZ=[

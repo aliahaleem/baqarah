@@ -24,25 +24,239 @@ window.SURAH_CONFIG={
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1 — وَيْلٌ لِّلْمُطَفِّفِينَ', words:[
+  {label:'83:1 — وَيْلٌ لِّلْمُطَفِّفِينَ', words:[
     {ar:'لِّلْمُطَفِّفِينَ', tr:'lil-muṭaffifīn', en:'to those who give less', freq:1},
     'waylun',
   ]},
-  {label:'Verse 7 — كَلَّا إِنَّ كِتَابَ الْفُجَّارِ لَفِي سِجِّينٍ', words:[
+  {label:'83:2 — الَّذِينَ إِذَا اكْتَالُوا عَلَى النَّاسِ يَسْتَوْفُونَ', words:[
+    {ar:'يَسْتَوْفُونَ', tr:'yastawfūn', en:'they take full measure', freq:1},
+    'al-nas',
+    {ar:'عَلَى', tr:'ʿalā', en:'from', freq:1445},
+    {ar:'اكْتَالُوا', tr:'iktalū', en:'they take by measure', freq:1},
+    'idha',
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'those who', freq:1283},
+  ]},
+  {label:'83:3 — وَإِذَا كَالُوهُمْ أَو وَّزَنُوهُمْ يُخْسِرُونَ', words:[
+    {ar:'يُخْسِرُونَ', tr:'yukhsirūn', en:'they give less', freq:1},
+    {ar:'وَّزَنُوهُمْ', tr:'wazanūhum', en:'they weigh for them', freq:1},
+    {ar:'أَو', tr:'aw', en:'or', freq:280},
+    {ar:'كَالُوهُمْ', tr:'kālūhum', en:'they measure for them', freq:1},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'83:4 — أَلَا يَظُنُّ أُولَٰئِكَ أَنَّهُم مَّبْعُوثُونَ', words:[
+    {ar:'مَّبْعُوثُونَ', tr:'mabʿūthūn', en:'will be resurrected', freq:7},
+    {ar:'أَنَّهُم', tr:'annahum', en:'that they', freq:80},
+    {ar:'أُولَٰئِكَ', tr:'ulāʾika', en:'those people', freq:88},
+    {ar:'يَظُنُّ', tr:'yaẓunnu', en:'think', freq:67},
+    {ar:'أَلَا', tr:'alā', en:'do not', freq:13},
+  ]},
+  {label:'83:5 — لِيَوْمٍ عَظِيمٍ', words:[
+    {ar:'عَظِيمٍ', tr:'ʿaẓīm', en:'a tremendous / great', freq:105},
+    {ar:'لِيَوْمٍ', tr:'li-yawm', en:'for a Day', freq:365},
+  ]},
+  {label:'83:6 — يَوْمَ يَقُومُ النَّاسُ لِرَبِّ الْعَالَمِينَ', words:[
+    {ar:'الْعَالَمِينَ', tr:'al-ʿālamīn', en:'the worlds', freq:73},
+    {ar:'لِرَبِّ', tr:'li-rabb', en:'before the Lord of', freq:950},
+    {ar:'النَّاسُ', tr:'al-nās', en:'mankind', freq:241},
+    {ar:'يَقُومُ', tr:'yaqūmu', en:'will stand', freq:42},
+    'yawma',
+  ]},
+  {label:'83:7 — كَلَّا إِنَّ كِتَابَ الْفُجَّارِ لَفِي سِجِّينٍ', words:[
     {ar:'سِجِّينٍ', tr:'sijjīn', en:'Sijjin (prison-record)', freq:3},
-    {ar:'لَفِي', tr:'la-fī', en:'is in', freq:1714},
+    {ar:'لَفِي', tr:'la-fī', en:'is surely in', freq:1714},
     {ar:'الْفُجَّارِ', tr:'al-fujjār', en:'the wicked', freq:3},
     {ar:'كِتَابَ', tr:'kitāba', en:'the record of', freq:255},
-    {ar:'كَلَّا', tr:'kallā', en:'No! Indeed', freq:33},
-    'inna',
+    'inna', 'kalla',
   ]},
-  {label:'Verse 18 — كَلَّا إِنَّ كِتَابَ الْأَبْرَارِ لَفِي عِلِّيِّينَ', words:[
+  {label:'83:8 — وَمَا أَدْرَاكَ مَا سِجِّينٌ', words:[
+    {ar:'سِجِّينٌ', tr:'sijjīn', en:'Sijjin', freq:3},
+    'ma',
+    {ar:'أَدْرَاكَ', tr:'adrāka', en:'would make you know', freq:13},
+    'ma', 'wa',
+  ]},
+  {label:'83:9 — كِتَابٌ مَّرْقُومٌ', words:[
+    {ar:'مَّرْقُومٌ', tr:'marqūm', en:'inscribed / written', freq:2},
+    {ar:'كِتَابٌ', tr:'kitāb', en:'a record', freq:255},
+  ]},
+  {label:'83:10 — وَيْلٌ يَوْمَئِذٍ لِّلْمُكَذِّبِينَ', words:[
+    {ar:'لِّلْمُكَذِّبِينَ', tr:'lil-mukadhdhibīn', en:'to the deniers', freq:16},
+    {ar:'يَوْمَئِذٍ', tr:'yawmaʾidhin', en:'that Day', freq:70},
+    'waylun',
+  ]},
+  {label:'83:11 — الَّذِينَ يُكَذِّبُونَ بِيَوْمِ الدِّينِ', words:[
+    {ar:'الدِّينِ', tr:'al-dīn', en:'the Judgement', freq:92},
+    {ar:'بِيَوْمِ', tr:'bi-yawmi', en:'in the Day of', freq:365},
+    {ar:'يُكَذِّبُونَ', tr:'yukadhdhibūn', en:'deny', freq:16},
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'those who', freq:1283},
+  ]},
+  {label:'83:12 — وَمَا يُكَذِّبُ بِهِ إِلَّا كُلُّ مُعْتَدٍ أَثِيمٍ', words:[
+    {ar:'أَثِيمٍ', tr:'athīm', en:'sinful', freq:5},
+    {ar:'مُعْتَدٍ', tr:'muʿtad', en:'transgressor', freq:5},
+    {ar:'كُلُّ', tr:'kullu', en:'every', freq:330},
+    'illa', 'bihi',
+    {ar:'يُكَذِّبُ', tr:'yukadhdhibu', en:'denies', freq:16},
+    'ma', 'wa',
+  ]},
+  {label:'83:13 — إِذَا تُتْلَىٰ عَلَيْهِ آيَاتُنَا قَالَ أَسَاطِيرُ الْأَوَّلِينَ', words:[
+    {ar:'الْأَوَّلِينَ', tr:'al-awwalīn', en:'the former peoples', freq:24},
+    {ar:'أَسَاطِيرُ', tr:'asāṭīr', en:'tales / legends of', freq:9},
+    {ar:'قَالَ', tr:'qāla', en:'he says', freq:528},
+    {ar:'آيَاتُنَا', tr:'āyātunā', en:'Our verses', freq:382},
+    {ar:'عَلَيْهِ', tr:'ʿalayhi', en:'to him', freq:300},
+    {ar:'تُتْلَىٰ', tr:'tutlā', en:'are recited', freq:63},
+    'idha',
+  ]},
+  {label:'83:14 — كَلَّا بَلْ رَانَ عَلَىٰ قُلُوبِهِم مَّا كَانُوا يَكْسِبُونَ', words:[
+    {ar:'يَكْسِبُونَ', tr:'yaksibūn', en:'they used to earn', freq:67},
+    'kaanu', 'ma',
+    {ar:'قُلُوبِهِم', tr:'qulūbihim', en:'their hearts', freq:168},
+    {ar:'عَلَىٰ', tr:'ʿalā', en:'upon', freq:1445},
+    {ar:'رَانَ', tr:'rāna', en:'has covered / rusted', freq:1},
+    {ar:'بَلْ', tr:'bal', en:'rather / nay', freq:112},
+    'kalla',
+  ]},
+  {label:'83:15 — كَلَّا إِنَّهُمْ عَن رَّبِّهِمْ يَوْمَئِذٍ لَّمَحْجُوبُونَ', words:[
+    {ar:'لَّمَحْجُوبُونَ', tr:'la-maḥjūbūn', en:'surely veiled / screened', freq:1},
+    {ar:'يَوْمَئِذٍ', tr:'yawmaʾidhin', en:'that Day', freq:70},
+    {ar:'رَّبِّهِمْ', tr:'rabbihim', en:'their Lord', freq:49},
+    {ar:'عَن', tr:'ʿan', en:'from', freq:385},
+    {ar:'إِنَّهُمْ', tr:'innahum', en:'indeed they', freq:80},
+    'kalla',
+  ]},
+  {label:'83:16 — ثُمَّ إِنَّهُمْ لَصَالُو الْجَحِيمِ', words:[
+    {ar:'الْجَحِيمِ', tr:'al-jaḥīm', en:'the Hellfire', freq:26},
+    {ar:'لَصَالُو', tr:'la-ṣālū', en:'will surely burn in', freq:5},
+    {ar:'إِنَّهُمْ', tr:'innahum', en:'indeed they', freq:80},
+    'thumma',
+  ]},
+  {label:'83:17 — ثُمَّ يُقَالُ هَٰذَا الَّذِي كُنتُم بِهِ تُكَذِّبُونَ', words:[
+    {ar:'تُكَذِّبُونَ', tr:'tukadhdhibūn', en:'you used to deny', freq:16},
+    'bihi',
+    {ar:'كُنتُم', tr:'kuntum', en:'you were', freq:226},
+    'alladhi',
+    {ar:'هَٰذَا', tr:'hādhā', en:'this is', freq:307},
+    {ar:'يُقَالُ', tr:'yuqālu', en:'it will be said', freq:528},
+    'thumma',
+  ]},
+  {label:'83:18 — كَلَّا إِنَّ كِتَابَ الْأَبْرَارِ لَفِي عِلِّيِّينَ', words:[
     {ar:'عِلِّيِّينَ', tr:'ʿilliyyīn', en:'Illiyyun (highest heights)', freq:2},
-    {ar:'لَفِي', tr:'la-fī', en:'is in', freq:1714},
+    {ar:'لَفِي', tr:'la-fī', en:'is surely in', freq:1714},
     {ar:'الْأَبْرَارِ', tr:'al-abrār', en:'the righteous', freq:6},
     {ar:'كِتَابَ', tr:'kitāba', en:'the record of', freq:255},
-    {ar:'كَلَّا', tr:'kallā', en:'No! Indeed', freq:33},
+    'inna', 'kalla',
+  ]},
+  {label:'83:19 — وَمَا أَدْرَاكَ مَا عِلِّيُّونَ', words:[
+    {ar:'عِلِّيُّونَ', tr:'ʿilliyyūn', en:'Illiyyun', freq:2},
+    'ma',
+    {ar:'أَدْرَاكَ', tr:'adrāka', en:'would make you know', freq:13},
+    'ma', 'wa',
+  ]},
+  {label:'83:20 — كِتَابٌ مَّرْقُومٌ', words:[
+    {ar:'مَّرْقُومٌ', tr:'marqūm', en:'inscribed / written', freq:2},
+    {ar:'كِتَابٌ', tr:'kitāb', en:'a record', freq:255},
+  ]},
+  {label:'83:21 — يَشْهَدُهُ الْمُقَرَّبُونَ', words:[
+    {ar:'الْمُقَرَّبُونَ', tr:'al-muqarrabūn', en:'those brought nearest', freq:4},
+    {ar:'يَشْهَدُهُ', tr:'yash-haduhu', en:'witnessed by', freq:35},
+  ]},
+  {label:'83:22 — إِنَّ الْأَبْرَارَ لَفِي نَعِيمٍ', words:[
+    {ar:'نَعِيمٍ', tr:'naʿīm', en:'bliss / delight', freq:17},
+    {ar:'لَفِي', tr:'la-fī', en:'are surely in', freq:1714},
+    {ar:'الْأَبْرَارَ', tr:'al-abrār', en:'the righteous', freq:6},
     'inna',
+  ]},
+  {label:'83:23 — عَلَى الْأَرَائِكِ يَنظُرُونَ', words:[
+    {ar:'يَنظُرُونَ', tr:'yanẓurūn', en:'looking / observing', freq:60},
+    {ar:'الْأَرَائِكِ', tr:'al-arāʾik', en:'adorned couches', freq:2},
+    {ar:'عَلَى', tr:'ʿalā', en:'upon', freq:1445},
+  ]},
+  {label:'83:24 — تَعْرِفُ فِي وُجُوهِهِمْ نَضْرَةَ النَّعِيمِ', words:[
+    {ar:'النَّعِيمِ', tr:'al-naʿīm', en:'of bliss', freq:17},
+    {ar:'نَضْرَةَ', tr:'naḍrata', en:'radiance', freq:2},
+    {ar:'وُجُوهِهِمْ', tr:'wujūhihim', en:'their faces', freq:73},
+    'fi',
+    {ar:'تَعْرِفُ', tr:'taʿrifu', en:'you will recognize', freq:71},
+  ]},
+  {label:'83:25 — يُسْقَوْنَ مِن رَّحِيقٍ مَّخْتُومٍ', words:[
+    {ar:'مَّخْتُومٍ', tr:'makhtūm', en:'sealed', freq:1},
+    {ar:'رَّحِيقٍ', tr:'raḥīq', en:'pure nectar', freq:1},
+    'min',
+    {ar:'يُسْقَوْنَ', tr:'yusqawna', en:'they are given to drink', freq:5},
+  ]},
+  {label:'83:26 — خِتَامُهُ مِسْكٌ وَفِي ذَٰلِكَ فَلْيَتَنَافَسِ الْمُتَنَافِسُونَ', words:[
+    {ar:'الْمُتَنَافِسُونَ', tr:'al-mutanāfisūn', en:'the competitors', freq:1},
+    {ar:'فَلْيَتَنَافَسِ', tr:'fal-yatanāfas', en:'let compete', freq:1},
+    'dhalika', 'fi', 'wa',
+    {ar:'مِسْكٌ', tr:'misk', en:'musk', freq:1},
+    {ar:'خِتَامُهُ', tr:'khitāmuhu', en:'its seal is', freq:1},
+  ]},
+  {label:'83:27 — وَمِزَاجُهُ مِن تَسْنِيمٍ', words:[
+    {ar:'تَسْنِيمٍ', tr:'tasnīm', en:'Tasnim (a spring)', freq:1},
+    'min',
+    {ar:'وَمِزَاجُهُ', tr:'wa-mizājuhu', en:'and its mixture is from', freq:1},
+  ]},
+  {label:'83:28 — عَيْنًا يَشْرَبُ بِهَا الْمُقَرَّبُونَ', words:[
+    {ar:'الْمُقَرَّبُونَ', tr:'al-muqarrabūn', en:'those brought nearest', freq:4},
+    {ar:'بِهَا', tr:'bihā', en:'from it', freq:183},
+    {ar:'يَشْرَبُ', tr:'yashrabu', en:'drink', freq:10},
+    {ar:'عَيْنًا', tr:'ʿaynan', en:'a spring', freq:25},
+  ]},
+  {label:'83:29 — إِنَّ الَّذِينَ أَجْرَمُوا كَانُوا مِنَ الَّذِينَ آمَنُوا يَضْحَكُونَ', words:[
+    {ar:'يَضْحَكُونَ', tr:'yaḍḥakūn', en:'they used to laugh', freq:3},
+    {ar:'آمَنُوا', tr:'āmanū', en:'believed', freq:811},
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'those who', freq:1283},
+    'min', 'kaanu',
+    {ar:'أَجْرَمُوا', tr:'ajramū', en:'committed crimes', freq:30},
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'those who', freq:1283},
+    'inna',
+  ]},
+  {label:'83:30 — وَإِذَا مَرُّوا بِهِمْ يَتَغَامَزُونَ', words:[
+    {ar:'يَتَغَامَزُونَ', tr:'yataghamazūn', en:'they would wink mockingly', freq:1},
+    {ar:'بِهِمْ', tr:'bihim', en:'by them', freq:190},
+    {ar:'مَرُّوا', tr:'marrū', en:'they passed', freq:25},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'83:31 — وَإِذَا انقَلَبُوا إِلَىٰ أَهْلِهِمُ انقَلَبُوا فَكِهِينَ', words:[
+    {ar:'فَكِهِينَ', tr:'fakihīn', en:'jesting / amused', freq:2},
+    {ar:'انقَلَبُوا', tr:'inqalabū', en:'they returned', freq:5},
+    {ar:'أَهْلِهِمُ', tr:'ahlihim', en:'their people', freq:120},
+    'ila',
+    {ar:'انقَلَبُوا', tr:'inqalabū', en:'they returned', freq:5},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'83:32 — وَإِذَا رَأَوْهُمْ قَالُوا إِنَّ هَٰؤُلَاءِ لَضَالُّونَ', words:[
+    {ar:'لَضَالُّونَ', tr:'la-ḍāllūn', en:'surely astray', freq:33},
+    {ar:'هَٰؤُلَاءِ', tr:'hāʾulāʾi', en:'these people', freq:20},
+    'inna',
+    {ar:'قَالُوا', tr:'qālū', en:'they said', freq:528},
+    {ar:'رَأَوْهُمْ', tr:'raʾawhum', en:'they saw them', freq:50},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'83:33 — وَمَا أُرْسِلُوا عَلَيْهِمْ حَافِظِينَ', words:[
+    {ar:'حَافِظِينَ', tr:'ḥāfiẓīn', en:'as guardians', freq:12},
+    {ar:'عَلَيْهِمْ', tr:'ʿalayhim', en:'over them', freq:300},
+    {ar:'أُرْسِلُوا', tr:'ursilū', en:'they were sent', freq:75},
+    'ma', 'wa',
+  ]},
+  {label:'83:34 — فَالْيَوْمَ الَّذِينَ آمَنُوا مِنَ الْكُفَّارِ يَضْحَكُونَ', words:[
+    {ar:'يَضْحَكُونَ', tr:'yaḍḥakūn', en:'are laughing', freq:3},
+    {ar:'الْكُفَّارِ', tr:'al-kuffār', en:'the disbelievers', freq:525},
+    'min',
+    {ar:'آمَنُوا', tr:'āmanū', en:'believed', freq:811},
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'those who', freq:1283},
+    {ar:'فَالْيَوْمَ', tr:'fal-yawma', en:'so Today', freq:365},
+  ]},
+  {label:'83:35 — عَلَى الْأَرَائِكِ يَنظُرُونَ', words:[
+    {ar:'يَنظُرُونَ', tr:'yanẓurūn', en:'looking / observing', freq:60},
+    {ar:'الْأَرَائِكِ', tr:'al-arāʾik', en:'adorned couches', freq:2},
+    {ar:'عَلَى', tr:'ʿalā', en:'upon', freq:1445},
+  ]},
+  {label:'83:36 — هَلْ ثُوِّبَ الْكُفَّارُ مَا كَانُوا يَفْعَلُونَ', words:[
+    {ar:'يَفْعَلُونَ', tr:'yafʿalūn', en:'they used to do', freq:172},
+    'kaanu', 'ma',
+    {ar:'الْكُفَّارُ', tr:'al-kuffār', en:'the disbelievers', freq:525},
+    {ar:'ثُوِّبَ', tr:'thuwwiba', en:'have been repaid', freq:1},
+    {ar:'هَلْ', tr:'hal', en:'have / were', freq:73},
   ]},
 ];
 
@@ -75,10 +289,10 @@ const S1_QUIZ=[
    correct:1},
 ];
 
-const S2_ITEMS=[{id:'s1',text:'📕 Sijjin\nسِجِّين',zone:'z1'},{id:'s2',text:'⬇️ Lowest of\nthe Low',zone:'z2'},{id:'s3',text:'📜 Kitab\nMarqum',zone:'z3'}];
+const S2_ITEMS=[{id:'s1',text:'كِتَابَ الْفُجَّارِ\nسِجِّينٍ',zone:'z1'},{id:'s2',text:'وَمَا أَدْرَاكَ\nمَا سِجِّينٌ',zone:'z2'},{id:'s3',text:'كِتَابٌ\nمَّرْقُومٌ',zone:'z3'}];
 const S2_ZONES=[{id:'z1',desc:'"Inna kitab al-fujjar la-fi Sijjin" (83:7) — The record of the wicked (al-fujjar) is in Sijjin. Scholars say Sijjin is in the lowest earth — beneath all creation, the most confined and degraded location.'},{id:'z2',desc:'"Wa ma adraka ma Sijjin?" (83:8) — What would make you know what Sijjin is? Its enormity is signalled by the rhetorical question. It is below the seven earths, in the furthest possible place from Allah\'s mercy.'},{id:'z3',desc:'"Kitabun marqumun" (83:9) — A marked, inscribed record. "Marqum" means clearly written, well-defined, sealed. The record of the wicked is specific, complete, marked, and permanently recorded.'}];
 
-const S3_ITEMS=[{id:'i1',text:'📗 Illiyyin\nعِلِّيُّون',zone:'z1'},{id:'i2',text:'⬆️ Highest of\nthe High',zone:'z2'},{id:'i3',text:'👁️ Witnessed by\nMuqarrabun',zone:'z3'}];
+const S3_ITEMS=[{id:'i1',text:'كِتَابَ الْأَبْرَارِ\nعِلِّيِّينَ',zone:'z1'},{id:'i2',text:'وَمَا أَدْرَاكَ\nمَا عِلِّيُّونَ',zone:'z2'},{id:'i3',text:'يَشْهَدُهُ\nالْمُقَرَّبُونَ',zone:'z3'}];
 const S3_ZONES=[{id:'z1',desc:'"Inna kitab al-abrar la-fi Illiyyin" (83:18) — The record of the righteous (al-abrar) is in Illiyyin. From \'ala (high). The highest register — elevated above all creation. Your good deeds go up, up, up to the most exalted location.'},{id:'z2',desc:'"Wa ma adraka ma Illiyyun?" (83:19) — The same rhetorical question as Sijjin — but now signalling something magnificent. What could this elevated place be? Far beyond human comprehension.'},{id:'z3',desc:'"Yash-haduhu al-muqarrabun" (83:21) — Witnessed by the Muqarrabun — those brought closest to Allah. The highest angels attend and witness the records of the Abrar. Your good deeds are watched by the most noble beings in existence.'}];
 
 const S4_QUIZ=[

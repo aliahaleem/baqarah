@@ -32,20 +32,118 @@ window.SURAH_CONFIG = {
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1-2 — وَاللَّيْلِ إِذَا يَغْشَىٰ · وَالنَّهَارِ إِذَا تَجَلَّىٰ', words:[
-    {ar:'تَجَلَّىٰ', tr:'tajallā', en:'it appears', freq:2},
-    {ar:'وَالنَّهَارِ', tr:'wal-nahār', en:'and the day', freq:57},
+  {label:'92:1 — وَاللَّيْلِ إِذَا يَغْشَىٰ', words:[
     {ar:'يَغْشَىٰ', tr:'yaghshā', en:'it covers', freq:3},
+    'idha',
     {ar:'وَاللَّيْلِ', tr:'wal-layl', en:'by the night', freq:72},
   ]},
-  {label:'Verse 5-7 — فَأَمَّا مَنْ أَعْطَىٰ وَاتَّقَىٰ · وَصَدَّقَ بِالْحُسْنَىٰ · فَسَنُيَسِّرُهُ لِلْيُسْرَىٰ', words:[
-    {ar:'لِلْيُسْرَىٰ', tr:'lil-yusrā', en:'to ease', freq:5},
-    {ar:'فَسَنُيَسِّرُهُ', tr:'fa-sanuyassiruhu', en:'We will ease him', freq:2},
-    {ar:'بِالْحُسْنَىٰ', tr:'bil-ḥusnā', en:'the best [reward]', freq:12},
-    {ar:'وَصَدَّقَ', tr:'wa-ṣaddaqa', en:'and believed in', freq:20},
+  {label:'92:2 — وَالنَّهَارِ إِذَا تَجَلَّىٰ', words:[
+    {ar:'تَجَلَّىٰ', tr:'tajallā', en:'it appears', freq:2},
+    'idha',
+    {ar:'وَالنَّهَارِ', tr:'wal-nahār', en:'and the day', freq:57},
+  ]},
+  {label:'92:3 — وَمَا خَلَقَ الذَّكَرَ وَالْأُنثَىٰ', words:[
+    {ar:'وَالْأُنثَىٰ', tr:'wal-unthā', en:'and the female', freq:21},
+    {ar:'الذَّكَرَ', tr:'al-dhakara', en:'the male', freq:18},
+    {ar:'خَلَقَ', tr:'khalaqa', en:'He created', freq:29},
+    {ar:'وَمَا', tr:'wa mā', en:'and what', freq:2005},
+  ]},
+  {label:'92:4 — إِنَّ سَعْيَكُمْ لَشَتَّىٰ', words:[
+    {ar:'لَشَتَّىٰ', tr:'la-shattā', en:'surely diverse', freq:2},
+    {ar:'سَعْيَكُمْ', tr:'saʿyakum', en:'your efforts', freq:2},
+    'inna',
+  ]},
+  {label:'92:5 — فَأَمَّا مَنْ أَعْطَىٰ وَاتَّقَىٰ', words:[
     {ar:'وَاتَّقَىٰ', tr:'wattaqā', en:'and feared Allah', freq:64},
     {ar:'أَعْطَىٰ', tr:'aʿṭā', en:'gives', freq:10},
-    {ar:'فَأَمَّا مَنْ', tr:'fa-ammā man', en:'as for he who', freq:18},
+    'man',
+    {ar:'فَأَمَّا', tr:'fa-ammā', en:'as for', freq:18},
+  ]},
+  {label:'92:6 — وَصَدَّقَ بِالْحُسْنَىٰ', words:[
+    {ar:'بِالْحُسْنَىٰ', tr:'bil-ḥusnā', en:'in the best [reward]', freq:12},
+    {ar:'وَصَدَّقَ', tr:'wa-ṣaddaqa', en:'and believed in', freq:20},
+  ]},
+  {label:'92:7 — فَسَنُيَسِّرُهُ لِلْيُسْرَىٰ', words:[
+    {ar:'لِلْيُسْرَىٰ', tr:'lil-yusrā', en:'to ease', freq:5},
+    {ar:'فَسَنُيَسِّرُهُ', tr:'fa-sanuyassiruhu', en:'We will ease him', freq:2},
+  ]},
+  {label:'92:8 — وَأَمَّا مَن بَخِلَ وَاسْتَغْنَىٰ', words:[
+    {ar:'وَاسْتَغْنَىٰ', tr:'wastaghna', en:'and felt self-sufficient', freq:3},
+    {ar:'بَخِلَ', tr:'bakhila', en:'withheld / was stingy', freq:5},
+    'man',
+    {ar:'وَأَمَّا', tr:'wa-ammā', en:'but as for', freq:18},
+  ]},
+  {label:'92:9 — وَكَذَّبَ بِالْحُسْنَىٰ', words:[
+    {ar:'بِالْحُسْنَىٰ', tr:'bil-ḥusnā', en:'in the best [reward]', freq:12},
+    {ar:'وَكَذَّبَ', tr:'wa-kadhdhaba', en:'and denied', freq:20},
+  ]},
+  {label:'92:10 — فَسَنُيَسِّرُهُ لِلْعُسْرَىٰ', words:[
+    {ar:'لِلْعُسْرَىٰ', tr:'lil-ʿusrā', en:'to difficulty', freq:2},
+    {ar:'فَسَنُيَسِّرُهُ', tr:'fa-sanuyassiruhu', en:'We will ease him', freq:2},
+  ]},
+  {label:'92:11 — وَمَا يُغْنِي عَنْهُ مَالُهُ إِذَا تَرَدَّىٰ', words:[
+    {ar:'تَرَدَّىٰ', tr:'taraddā', en:'he falls / perishes', freq:1},
+    'idha',
+    {ar:'مَالُهُ', tr:'māluhu', en:'his wealth', freq:15},
+    {ar:'عَنْهُ', tr:'ʿanhu', en:'from him', freq:122},
+    {ar:'يُغْنِي', tr:'yughnī', en:'will avail', freq:7},
+    {ar:'وَمَا', tr:'wa mā', en:'and not', freq:2005},
+  ]},
+  {label:'92:12 — إِنَّ عَلَيْنَا لَلْهُدَىٰ', words:[
+    {ar:'لَلْهُدَىٰ', tr:'lal-hudā', en:'surely is guidance', freq:80},
+    {ar:'عَلَيْنَا', tr:'ʿalaynā', en:'upon Us', freq:37},
+    'inna',
+  ]},
+  {label:'92:13 — وَإِنَّ لَنَا لَلْآخِرَةَ وَالْأُولَىٰ', words:[
+    {ar:'وَالْأُولَىٰ', tr:'wal-ūlā', en:'and the first [life]', freq:20},
+    {ar:'لَلْآخِرَةَ', tr:'lal-ākhirah', en:'surely the Hereafter', freq:115},
+    {ar:'لَنَا', tr:'lanā', en:'to Us belongs', freq:92},
+    {ar:'وَإِنَّ', tr:'wa inna', en:'and indeed', freq:743},
+  ]},
+  {label:'92:14 — فَأَنذَرْتُكُمْ نَارًا تَلَظَّىٰ', words:[
+    {ar:'تَلَظَّىٰ', tr:'talaẓẓā', en:'blazing', freq:1},
+    {ar:'نَارًا', tr:'nāran', en:'a Fire', freq:145},
+    {ar:'فَأَنذَرْتُكُمْ', tr:'fa-andhartukum', en:'so I have warned you', freq:1},
+  ]},
+  {label:'92:15 — لَا يَصْلَاهَا إِلَّا الْأَشْقَى', words:[
+    {ar:'الْأَشْقَى', tr:'al-ashqā', en:'the most wretched', freq:1},
+    'illa',
+    {ar:'يَصْلَاهَا', tr:'yaṣlāhā', en:'will burn in it', freq:3},
+    'la',
+  ]},
+  {label:'92:16 — الَّذِي كَذَّبَ وَتَوَلَّىٰ', words:[
+    {ar:'وَتَوَلَّىٰ', tr:'wa tawallā', en:'and turned away', freq:12},
+    {ar:'كَذَّبَ', tr:'kadhdhaba', en:'denied', freq:79},
+    'alladhi',
+  ]},
+  {label:'92:17 — وَسَيُجَنَّبُهَا الْأَتْقَى', words:[
+    {ar:'الْأَتْقَى', tr:'al-atqā', en:'the most righteous', freq:1},
+    {ar:'وَسَيُجَنَّبُهَا', tr:'wa sa-yujannabuhā', en:'will be kept away from it', freq:1},
+  ]},
+  {label:'92:18 — الَّذِي يُؤْتِي مَالَهُ يَتَزَكَّىٰ', words:[
+    {ar:'يَتَزَكَّىٰ', tr:'yatazakkā', en:'to purify himself', freq:2},
+    {ar:'مَالَهُ', tr:'mālahu', en:'his wealth', freq:15},
+    {ar:'يُؤْتِي', tr:'yuʾtī', en:'who gives', freq:34},
+    'alladhi',
+  ]},
+  {label:'92:19 — وَمَا لِأَحَدٍ عِندَهُ مِن نِّعْمَةٍ تُجْزَىٰ', words:[
+    {ar:'تُجْزَىٰ', tr:'tujzā', en:'to be repaid', freq:1},
+    {ar:'نِّعْمَةٍ', tr:'niʿmatin', en:'a favour', freq:34},
+    'min',
+    {ar:'عِندَهُ', tr:'ʿindahu', en:'with him', freq:52},
+    {ar:'لِأَحَدٍ', tr:'li-aḥadin', en:'for anyone', freq:86},
+    {ar:'وَمَا', tr:'wa mā', en:'and not', freq:2005},
+  ]},
+  {label:'92:20 — إِلَّا ابْتِغَاءَ وَجْهِ رَبِّهِ الْأَعْلَىٰ', words:[
+    {ar:'الْأَعْلَىٰ', tr:'al-aʿlā', en:'the Most High', freq:2},
+    {ar:'رَبِّهِ', tr:'rabbihi', en:'his Lord', freq:49},
+    {ar:'وَجْهِ', tr:'wajhi', en:'the face of', freq:72},
+    {ar:'ابْتِغَاءَ', tr:'ibtighāʾa', en:'seeking', freq:5},
+    'illa',
+  ]},
+  {label:'92:21 — وَلَسَوْفَ يَرْضَىٰ', words:[
+    {ar:'يَرْضَىٰ', tr:'yarḍā', en:'he will be satisfied', freq:3},
+    {ar:'وَلَسَوْفَ', tr:'wa la-sawfa', en:'and surely he will', freq:1},
   ]},
 ];
 
@@ -67,14 +165,14 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'g1', text:'Gives charity\nand spends',  zone:'z1'},
-  {id:'g2', text:'Has taqwa\nand God-consciousness', zone:'z2'},
-  {id:'g3', text:'Believes in\nAl-Husna',      zone:'z3'},
+  {id:'g1', text:'أَعْطَىٰ',  zone:'z1'},
+  {id:'g2', text:'وَاتَّقَىٰ', zone:'z2'},
+  {id:'g3', text:'وَصَدَّقَ\nبِالْحُسْنَىٰ', zone:'z3'},
 ];
 const S2_ZONES = [
-  {id:'z1', desc:'First quality: "A\'ta" — he gives freely in charity (92:5)'},
-  {id:'z2', desc:'Second quality: "Ittaqa" — he has taqwa, consciousness of Allah (92:5)'},
-  {id:'z3', desc:'Third quality: "Saddaqa bil-husna" — confirms what is best (92:6)'},
+  {id:'z1', desc:'gives — he gives freely in charity (92:5)'},
+  {id:'z2', desc:'and feared Allah — taqwa, consciousness of Allah (92:5)'},
+  {id:'z3', desc:'and believed in the best [reward] — confirms Al-Husna (92:6)'},
 ];
 
 const S3_QUIZ = [

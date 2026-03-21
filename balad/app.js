@@ -35,26 +35,127 @@ window.SURAH_CONFIG = {
 /* Level 1: Quiz — The Sacred City & Man in Hardship (90:1-4) */
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1-2 — لَا أُقْسِمُ بِهَٰذَا الْبَلَدِ · وَأَنتَ حِلٌّ بِهَٰذَا الْبَلَدِ', words:[
+  {label:'90:1 — لَا أُقْسِمُ بِهَٰذَا الْبَلَدِ', words:[
     {ar:'الْبَلَدِ', tr:'al-balad', en:'the city (Mecca)', freq:19},
     {ar:'بِهَٰذَا', tr:'bi-hādhā', en:'by this', freq:70},
     {ar:'أُقْسِمُ', tr:'uqsimu', en:'I swear', freq:8},
-    {ar:'لَا', tr:'lā', en:'no / I do', freq:1069},
+    'la',
   ]},
-  {label:'Verse 8-9 — أَلَمْ نَجْعَل لَّهُ عَيْنَيْنِ · وَلِسَانًا وَشَفَتَيْنِ', words:[
-    {ar:'وَشَفَتَيْنِ', tr:'wa-shafatayn', en:'and two lips', freq:1},
-    {ar:'وَلِسَانًا', tr:'wa-lisānan', en:'and a tongue', freq:25},
+  {label:'90:2 — وَأَنتَ حِلٌّ بِهَٰذَا الْبَلَدِ', words:[
+    {ar:'الْبَلَدِ', tr:'al-balad', en:'the city', freq:19},
+    {ar:'بِهَٰذَا', tr:'bi-hādhā', en:'in this', freq:70},
+    {ar:'حِلٌّ', tr:'ḥill', en:'free / lawful', freq:1},
+    {ar:'وَأَنتَ', tr:'wa-anta', en:'and you are', freq:105},
+  ]},
+  {label:'90:3 — وَوَالِدٍ وَمَا وَلَدَ', words:[
+    {ar:'وَلَدَ', tr:'walad', en:'he fathered', freq:56},
+    {ar:'وَمَا', tr:'wa-mā', en:'and what', freq:2005},
+    {ar:'وَوَالِدٍ', tr:'wa-wālidin', en:'and (by) a father', freq:3},
+  ]},
+  {label:'90:4 — لَقَدْ خَلَقْنَا الْإِنسَانَ فِي كَبَدٍ', words:[
+    {ar:'كَبَدٍ', tr:'kabad', en:'hardship', freq:1},
+    'fi',
+    {ar:'الْإِنسَانَ', tr:'al-insān', en:'man', freq:65},
+    {ar:'خَلَقْنَا', tr:'khalaqnā', en:'We created', freq:29},
+    {ar:'لَقَدْ', tr:'laqad', en:'certainly', freq:406},
+  ]},
+  {label:'90:5 — أَيَحْسَبُ أَن لَّن يَقْدِرَ عَلَيْهِ أَحَدٌ', words:[
+    {ar:'أَحَدٌ', tr:'aḥadun', en:'anyone', freq:86},
+    {ar:'عَلَيْهِ', tr:'ʿalayhi', en:'over him', freq:34},
+    {ar:'يَقْدِرَ', tr:'yaqdira', en:'has power', freq:45},
+    {ar:'لَّن', tr:'lan', en:'never', freq:69},
+    {ar:'أَن', tr:'an', en:'that', freq:680},
+    {ar:'أَيَحْسَبُ', tr:'ayaḥsabu', en:'does he think', freq:8},
+  ]},
+  {label:'90:6 — يَقُولُ أَهْلَكْتُ مَالًا لُّبَدًا', words:[
+    {ar:'لُّبَدًا', tr:'lubadan', en:'in abundance', freq:1},
+    {ar:'مَالًا', tr:'mālan', en:'wealth', freq:86},
+    {ar:'أَهْلَكْتُ', tr:'ahlaktu', en:'I have spent', freq:5},
+    {ar:'يَقُولُ', tr:'yaqūlu', en:'he says', freq:528},
+  ]},
+  {label:'90:7 — أَيَحْسَبُ أَن لَّمْ يَرَهُ أَحَدٌ', words:[
+    {ar:'أَحَدٌ', tr:'aḥadun', en:'anyone', freq:86},
+    {ar:'يَرَهُ', tr:'yarahu', en:'has seen him', freq:328},
+    'lam',
+    {ar:'أَن', tr:'an', en:'that', freq:680},
+    {ar:'أَيَحْسَبُ', tr:'ayaḥsabu', en:'does he think', freq:8},
+  ]},
+  {label:'90:8 — أَلَمْ نَجْعَل لَّهُ عَيْنَيْنِ', words:[
     {ar:'عَيْنَيْنِ', tr:'ʿaynayn', en:'two eyes', freq:7},
     {ar:'لَّهُ', tr:'lahu', en:'for him', freq:860},
     {ar:'نَجْعَل', tr:'najʿal', en:'did We not make', freq:30},
-    {ar:'أَلَمْ', tr:'alam', en:'did We not', freq:40},
+    'alam',
   ]},
-  {label:'Verse 11-12 — فَلَا اقْتَحَمَ الْعَقَبَةَ · وَمَا أَدْرَاكَ مَا الْعَقَبَةُ', words:[
-    {ar:'الْعَقَبَةُ', tr:'al-ʿaqabah', en:'the difficult path', freq:2},
-    {ar:'وَمَا أَدْرَاكَ', tr:'wa-mā adrāka', en:'and what will make you know', freq:13},
-    {ar:'الْعَقَبَةَ', tr:'al-ʿaqabah', en:'the steep path', freq:2},
+  {label:'90:9 — وَلِسَانًا وَشَفَتَيْنِ', words:[
+    {ar:'وَشَفَتَيْنِ', tr:'wa-shafatayn', en:'and two lips', freq:1},
+    {ar:'وَلِسَانًا', tr:'wa-lisānan', en:'and a tongue', freq:25},
+  ]},
+  {label:'90:10 — وَهَدَيْنَاهُ النَّجْدَيْنِ', words:[
+    {ar:'النَّجْدَيْنِ', tr:'al-najdayn', en:'the two paths', freq:1},
+    {ar:'وَهَدَيْنَاهُ', tr:'wa-hadaynāhu', en:'and We showed him', freq:3},
+  ]},
+  {label:'90:11 — فَلَا اقْتَحَمَ الْعَقَبَةَ', words:[
+    {ar:'الْعَقَبَةَ', tr:'al-ʿaqaba', en:'the steep path', freq:2},
     {ar:'اقْتَحَمَ', tr:'iqtaḥama', en:'attempted', freq:1},
     {ar:'فَلَا', tr:'fa-lā', en:'but he has not', freq:1069},
+  ]},
+  {label:'90:12 — وَمَا أَدْرَاكَ مَا الْعَقَبَةُ', words:[
+    {ar:'الْعَقَبَةُ', tr:'al-ʿaqaba', en:'the steep path', freq:2},
+    'ma',
+    {ar:'أَدْرَاكَ', tr:'adrāka', en:'will make you know', freq:13},
+    {ar:'وَمَا', tr:'wa-mā', en:'and what', freq:2005},
+  ]},
+  {label:'90:13 — فَكُّ رَقَبَةٍ', words:[
+    {ar:'رَقَبَةٍ', tr:'raqabatin', en:'a slave / neck', freq:8},
+    {ar:'فَكُّ', tr:'fakku', en:'freeing', freq:1},
+  ]},
+  {label:'90:14 — أَوْ إِطْعَامٌ فِي يَوْمٍ ذِي مَسْغَبَةٍ', words:[
+    {ar:'مَسْغَبَةٍ', tr:'masghaba', en:'severe hunger', freq:1},
+    {ar:'ذِي', tr:'dhī', en:'of / possessing', freq:38},
+    {ar:'يَوْمٍ', tr:'yawmin', en:'a day', freq:365},
+    'fi',
+    {ar:'إِطْعَامٌ', tr:'iṭʿām', en:'feeding', freq:4},
+    {ar:'أَوْ', tr:'aw', en:'or', freq:280},
+  ]},
+  {label:'90:15 — يَتِيمًا ذَا مَقْرَبَةٍ', words:[
+    {ar:'مَقْرَبَةٍ', tr:'maqraba', en:'relationship', freq:1},
+    {ar:'ذَا', tr:'dhā', en:'possessing', freq:38},
+    {ar:'يَتِيمًا', tr:'yatīman', en:'an orphan', freq:22},
+  ]},
+  {label:'90:16 — أَوْ مِسْكِينًا ذَا مَتْرَبَةٍ', words:[
+    {ar:'مَتْرَبَةٍ', tr:'matraba', en:'destitution', freq:1},
+    {ar:'ذَا', tr:'dhā', en:'possessing', freq:38},
+    {ar:'مِسْكِينًا', tr:'miskīnan', en:'a needy person', freq:25},
+    {ar:'أَوْ', tr:'aw', en:'or', freq:280},
+  ]},
+  {label:'90:17 — ثُمَّ كَانَ مِنَ الَّذِينَ آمَنُوا وَتَوَاصَوْا بِالصَّبْرِ وَتَوَاصَوْا بِالْمَرْحَمَةِ', words:[
+    {ar:'بِالْمَرْحَمَةِ', tr:'bil-marḥama', en:'to mercy', freq:1},
+    {ar:'وَتَوَاصَوْا', tr:'wa-tawāṣaw', en:'and urged each other', freq:2},
+    {ar:'بِالصَّبْرِ', tr:'bil-ṣabr', en:'to patience', freq:7},
+    {ar:'وَتَوَاصَوْا', tr:'wa-tawāṣaw', en:'and urged each other', freq:2},
+    {ar:'آمَنُوا', tr:'āmanū', en:'believed', freq:537},
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'those who', freq:1283},
+    {ar:'مِنَ', tr:'mina', en:'of / among', freq:1891},
+    'kaana',
+    'thumma',
+  ]},
+  {label:'90:18 — أُولَٰئِكَ أَصْحَابُ الْمَيْمَنَةِ', words:[
+    {ar:'الْمَيْمَنَةِ', tr:'al-maymana', en:'the right (hand)', freq:3},
+    {ar:'أَصْحَابُ', tr:'aṣḥābu', en:'companions of', freq:40},
+    {ar:'أُولَٰئِكَ', tr:'ulāʾika', en:'those are', freq:160},
+  ]},
+  {label:'90:19 — وَالَّذِينَ كَفَرُوا بِآيَاتِنَا هُمْ أَصْحَابُ الْمَشْأَمَةِ', words:[
+    {ar:'الْمَشْأَمَةِ', tr:'al-mashʾama', en:'the left (hand)', freq:3},
+    {ar:'أَصْحَابُ', tr:'aṣḥābu', en:'companions of', freq:40},
+    'hum',
+    {ar:'بِآيَاتِنَا', tr:'bi-āyātinā', en:'in Our signs', freq:38},
+    {ar:'كَفَرُوا', tr:'kafarū', en:'disbelieved', freq:525},
+    {ar:'وَالَّذِينَ', tr:'walladhīna', en:'and those who', freq:1283},
+  ]},
+  {label:'90:20 — عَلَيْهِمْ نَارٌ مُّؤْصَدَةٌ', words:[
+    {ar:'مُّؤْصَدَةٌ', tr:'muʾṣada', en:'closed over them', freq:2},
+    {ar:'نَارٌ', tr:'nārun', en:'a fire', freq:145},
+    {ar:'عَلَيْهِمْ', tr:'ʿalayhim', en:'upon them', freq:44},
   ]},
 ];
 
@@ -77,16 +178,16 @@ const S1_QUIZ = [
 
 /* Level 2: Drag & Drop — Eyes, Tongue, Two Paths (90:8-10) */
 const S2_ITEMS = [
-  {id:'b1', text:'Two eyes',   zone:'z1'},
-  {id:'b2', text:'A tongue',   zone:'z2'},
-  {id:'b3', text:'Two lips',   zone:'z3'},
-  {id:'b4', text:'Two paths',  zone:'z4'},
+  {id:'b1', text:'عَيْنَيْنِ',   zone:'z1'},
+  {id:'b2', text:'لِسَانًا',   zone:'z2'},
+  {id:'b3', text:'شَفَتَيْنِ',   zone:'z3'},
+  {id:'b4', text:'النَّجْدَيْنِ',  zone:'z4'},
 ];
 const S2_ZONES = [
-  {id:'z1', desc:'For seeing and observing the world Allah created'},
-  {id:'z2', desc:'For speech — communication and dhikr of Allah'},
-  {id:'z3', desc:'For shaping speech and eating provision from Allah'},
-  {id:'z4', desc:'"Al-najdayn" — the two highways: good and evil'},
+  {id:'z1', desc:'"Alam naj\'al lahu \'aynayn" (90:8) — Two eyes for seeing and observing Allah\'s creation'},
+  {id:'z2', desc:'"Wa lisānan" (90:9) — A tongue for speech, communication and dhikr of Allah'},
+  {id:'z3', desc:'"Wa shafatayn" (90:9) — Two lips for shaping speech and eating provision'},
+  {id:'z4', desc:'"Wa hadaynāhu al-najdayn" (90:10) — The two paths: good and evil'},
 ];
 
 /* Level 3: Quiz — Al-Aqabah (90:11-16) */
@@ -107,10 +208,10 @@ const S3_QUIZ = [
 
 /* Level 4: Drag & Drop — Acts of the Aqabah */
 const S4_ITEMS = [
-  {id:'a1', text:'Freeing\na slave',       zone:'z1'},
-  {id:'a2', text:'Feeding an orphan\nnear relative', zone:'z2'},
-  {id:'a3', text:'Feeding a person\nin dire poverty', zone:'z3'},
-  {id:'a4', text:'Urging others to\ndo all this too', zone:'z4'},
+  {id:'a1', text:'فَكُّ رَقَبَةٍ',       zone:'z1'},
+  {id:'a2', text:'يَتِيمًا\nذَا مَقْرَبَةٍ', zone:'z2'},
+  {id:'a3', text:'مِسْكِينًا\nذَا مَتْرَبَةٍ', zone:'z3'},
+  {id:'a4', text:'تَوَاصَوْا\nبِالْمَرْحَمَةِ', zone:'z4'},
 ];
 const S4_ZONES = [
   {id:'z1', desc:'"Fakku raqabatin" — liberating an enslaved person from bondage (90:13)'},

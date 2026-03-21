@@ -23,28 +23,40 @@ window.SURAH_CONFIG = {
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1 — إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ', words:[
+  {label:'97:1 — إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ', words:[
     {ar:'الْقَدْرِ', tr:'al-qadr', en:'Decree / Power', freq:3},
     {ar:'لَيْلَةِ', tr:'laylati', en:'the Night of', freq:8},
-    {ar:'فِي', tr:'fī', en:'in', freq:1714},
+    'fi',
     {ar:'أَنزَلْنَاهُ', tr:'anzalnāhu', en:'We sent it down', freq:15},
     'innaa',
   ]},
-  {label:'Verse 3 — لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ', words:[
+  {label:'97:2 — وَمَا أَدْرَاكَ مَا لَيْلَةُ الْقَدْرِ', words:[
+    {ar:'الْقَدْرِ', tr:'al-qadr', en:'Decree / Power', freq:3},
+    {ar:'لَيْلَةُ', tr:'laylatu', en:'the Night of', freq:8},
+    'ma',
+    {ar:'أَدْرَاكَ', tr:'adrāka', en:'will make you know', freq:4},
+    {ar:'وَمَا', tr:'wa-mā', en:'and what', freq:2005},
+  ]},
+  {label:'97:3 — لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ', words:[
     {ar:'شَهْرٍ', tr:'shahr', en:'months', freq:13},
     {ar:'أَلْفِ', tr:'alf', en:'a thousand', freq:6},
     {ar:'مِّنْ', tr:'min', en:'than', freq:1891},
-    {ar:'خَيْرٌ', tr:'khayr', en:'better', freq:189},
+    'khayr',
     {ar:'الْقَدْرِ', tr:'al-qadr', en:'Decree', freq:3},
     {ar:'لَيْلَةُ', tr:'laylatu', en:'the Night of', freq:8},
   ]},
-  {label:'Verse 4 — تَنَزَّلُ الْمَلَائِكَةُ وَالرُّوحُ فِيهَا', words:[
-    {ar:'فِيهَا', tr:'fīhā', en:'therein', freq:142},
+  {label:'97:4 — تَنَزَّلُ الْمَلَائِكَةُ وَالرُّوحُ فِيهَا بِإِذْنِ رَبِّهِم مِّن كُلِّ أَمْرٍ', words:[
+    {ar:'أَمْرٍ', tr:'amr', en:'matter / decree', freq:149},
+    {ar:'كُلِّ', tr:'kulli', en:'every', freq:330},
+    {ar:'مِّن', tr:'min', en:'of / from', freq:1891},
+    {ar:'رَبِّهِم', tr:'rabbihim', en:'their Lord', freq:49},
+    {ar:'بِإِذْنِ', tr:'bi-idhni', en:'by permission of', freq:7},
+    'fiiha',
     {ar:'وَالرُّوحُ', tr:'wal-rūḥ', en:'and the Spirit (Jibreel)', freq:21},
-    {ar:'الْمَلَائِكَةُ', tr:'al-malāʾikah', en:'the angels', freq:88},
+    'al-malaika',
     {ar:'تَنَزَّلُ', tr:'tanazzalu', en:'descend', freq:5},
   ]},
-  {label:'Verse 5 — سَلَامٌ هِيَ حَتَّىٰ مَطْلَعِ الْفَجْرِ', words:[
+  {label:'97:5 — سَلَامٌ هِيَ حَتَّىٰ مَطْلَعِ الْفَجْرِ', words:[
     {ar:'الْفَجْرِ', tr:'al-fajr', en:'dawn', freq:6},
     {ar:'مَطْلَعِ', tr:'maṭlaʿ', en:'the emergence of', freq:2},
     {ar:'حَتَّىٰ', tr:'ḥattā', en:'until', freq:129},

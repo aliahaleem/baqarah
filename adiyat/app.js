@@ -24,27 +24,66 @@ window.SURAH_CONFIG = {
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1 — وَالْعَادِيَاتِ ضَبْحًا', words:[
+  {label:'100:1 — وَالْعَادِيَاتِ ضَبْحًا', words:[
     {ar:'ضَبْحًا', tr:'ḍabḥan', en:'panting', freq:1},
     {ar:'وَالْعَادِيَاتِ', tr:'wal-ʿādiyāt', en:'by the charging steeds', freq:1},
   ]},
-  {label:'Verse 6 — إِنَّ الْإِنسَانَ لِرَبِّهِ لَكَنُودٌ', words:[
+  {label:'100:2 — فَالْمُورِيَاتِ قَدْحًا', words:[
+    {ar:'قَدْحًا', tr:'qadḥan', en:'striking sparks', freq:1},
+    {ar:'فَالْمُورِيَاتِ', tr:'fal-mūriyāt', en:'producing sparks (with hooves)', freq:1},
+  ]},
+  {label:'100:3 — فَالْمُغِيرَاتِ صُبْحًا', words:[
+    {ar:'صُبْحًا', tr:'ṣubḥan', en:'at dawn', freq:4},
+    {ar:'فَالْمُغِيرَاتِ', tr:'fal-mughīrāt', en:'raiding at morning', freq:1},
+  ]},
+  {label:'100:4 — فَأَثَرْنَ بِهِ نَقْعًا', words:[
+    {ar:'نَقْعًا', tr:'naqʿan', en:'clouds of dust', freq:1},
+    'bihi',
+    {ar:'فَأَثَرْنَ', tr:'fa-atharna', en:'then raised / stirred up', freq:1},
+  ]},
+  {label:'100:5 — فَوَسَطْنَ بِهِ جَمْعًا', words:[
+    {ar:'جَمْعًا', tr:'jamʿan', en:'a body [of enemies]', freq:8},
+    'bihi',
+    {ar:'فَوَسَطْنَ', tr:'fa-wasaṭna', en:'then penetrated the centre', freq:1},
+  ]},
+  {label:'100:6 — إِنَّ الْإِنسَانَ لِرَبِّهِ لَكَنُودٌ', words:[
     {ar:'لَكَنُودٌ', tr:'la-kanūd', en:'truly ungrateful', freq:1},
     {ar:'لِرَبِّهِ', tr:'li-rabbihi', en:'to his Lord', freq:10},
     {ar:'الْإِنسَانَ', tr:'al-insān', en:'mankind', freq:65},
     'inna',
   ]},
-  {label:'Verse 9 — أَفَلَا يَعْلَمُ إِذَا بُعْثِرَ مَا فِي الْقُبُورِ', words:[
+  {label:'100:7 — وَإِنَّهُ عَلَىٰ ذَٰلِكَ لَشَهِيدٌ', words:[
+    {ar:'لَشَهِيدٌ', tr:'la-shahīd', en:'surely a witness', freq:1},
+    'dhalika',
+    {ar:'عَلَىٰ', tr:'ʿalā', en:'to / upon', freq:1445},
+    {ar:'وَإِنَّهُ', tr:'wa-innahu', en:'and indeed he', freq:15},
+  ]},
+  {label:'100:8 — وَإِنَّهُ لِحُبِّ الْخَيْرِ لَشَدِيدٌ', words:[
+    {ar:'لَشَدِيدٌ', tr:'la-shadīd', en:'surely intense', freq:1},
+    {ar:'الْخَيْرِ', tr:'al-khayr', en:'wealth / good', freq:189},
+    {ar:'لِحُبِّ', tr:'li-ḥubbi', en:'in love of', freq:4},
+    {ar:'وَإِنَّهُ', tr:'wa-innahu', en:'and indeed he', freq:15},
+  ]},
+  {label:'100:9 — أَفَلَا يَعْلَمُ إِذَا بُعْثِرَ مَا فِي الْقُبُورِ', words:[
     {ar:'الْقُبُورِ', tr:'al-qubūr', en:'the graves', freq:7},
-    {ar:'مَا فِي', tr:'mā fī', en:'what is in', freq:2005},
+    'fi',
+    'ma',
     {ar:'بُعْثِرَ', tr:'buʿthira', en:'is scattered/overturned', freq:1},
     'idha',
     {ar:'أَفَلَا يَعْلَمُ', tr:'afalā yaʿlamu', en:'does he not know', freq:50},
   ]},
-  {label:'Verse 10 — وَحُصِّلَ مَا فِي الصُّدُورِ', words:[
+  {label:'100:10 — وَحُصِّلَ مَا فِي الصُّدُورِ', words:[
     {ar:'الصُّدُورِ', tr:'al-ṣudūr', en:'the chests/hearts', freq:5},
-    {ar:'مَا فِي', tr:'mā fī', en:'what is in', freq:2005},
+    'fi',
+    'ma',
     {ar:'وَحُصِّلَ', tr:'wa-ḥuṣṣila', en:'and is made apparent', freq:1},
+  ]},
+  {label:'100:11 — إِنَّ رَبَّهُم بِهِمْ يَوْمَئِذٍ لَّخَبِيرٌ', words:[
+    {ar:'لَّخَبِيرٌ', tr:'la-khabīr', en:'surely All-Aware', freq:1},
+    {ar:'يَوْمَئِذٍ', tr:'yawmaʾidhin', en:'that Day', freq:20},
+    {ar:'بِهِمْ', tr:'bihim', en:'of them', freq:30},
+    {ar:'رَبَّهُم', tr:'rabbahum', en:'their Lord', freq:20},
+    'inna',
   ]},
 ];
 

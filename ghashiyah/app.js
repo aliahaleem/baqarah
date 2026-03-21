@@ -39,42 +39,165 @@ window.SURAH_CONFIG = {
 /* ── Section 1: Drag & Drop — Day of Judgement overview (88:1-7) ── */
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1 — هَلْ أَتَاكَ حَدِيثُ الْغَاشِيَةِ', words:[
+  {label:'88:1 — هَلْ أَتَاكَ حَدِيثُ الْغَاشِيَةِ', words:[
     {ar:'الْغَاشِيَةِ', tr:'al-ghāshiyah', en:'the Overwhelming', freq:2},
-    {ar:'حَدِيثُ', tr:'ḥadīth', en:'the story of', freq:36},
+    {ar:'حَدِيثُ', tr:'ḥadīthu', en:'the story of', freq:36},
     {ar:'أَتَاكَ', tr:'atāka', en:'reached you', freq:130},
     {ar:'هَلْ', tr:'hal', en:'has', freq:101},
   ]},
-  {label:'Verse 8-9 — وُجُوهٌ يَوْمَئِذٍ نَّاعِمَةٌ · لِّسَعْيِهَا رَاضِيَةٌ', words:[
-    {ar:'رَاضِيَةٌ', tr:'rāḍiyah', en:'satisfied', freq:3},
-    {ar:'لِّسَعْيِهَا', tr:'li-saʿyihā', en:'with their effort', freq:2},
+  {label:'88:2 — وُجُوهٌ يَوْمَئِذٍ خَاشِعَةٌ', words:[
+    {ar:'خَاشِعَةٌ', tr:'khāshiʿah', en:'humbled', freq:4},
+    {ar:'يَوْمَئِذٍ', tr:'yawmaʾidhin', en:'that Day', freq:37},
+    {ar:'وُجُوهٌ', tr:'wujūh', en:'[some] faces', freq:34},
+  ]},
+  {label:'88:3 — عَامِلَةٌ نَّاصِبَةٌ', words:[
+    {ar:'نَّاصِبَةٌ', tr:'nāṣibah', en:'exhausted', freq:1},
+    {ar:'عَامِلَةٌ', tr:'ʿāmilah', en:'labouring', freq:1},
+  ]},
+  {label:'88:4 — تَصْلَىٰ نَارًا حَامِيَةً', words:[
+    {ar:'حَامِيَةً', tr:'ḥāmiyah', en:'intensely hot', freq:1},
+    {ar:'نَارًا', tr:'nāran', en:'a Fire', freq:145},
+    {ar:'تَصْلَىٰ', tr:'taṣlā', en:'they will burn in', freq:3},
+  ]},
+  {label:'88:5 — تُسْقَىٰ مِنْ عَيْنٍ آنِيَةٍ', words:[
+    {ar:'آنِيَةٍ', tr:'āniyah', en:'boiling', freq:1},
+    {ar:'عَيْنٍ', tr:'ʿayn', en:'a spring', freq:21},
+    'min',
+    {ar:'تُسْقَىٰ', tr:'tusqā', en:'given to drink', freq:2},
+  ]},
+  {label:'88:6 — لَّيْسَ لَهُمْ طَعَامٌ إِلَّا مِن ضَرِيعٍ', words:[
+    {ar:'ضَرِيعٍ', tr:'ḍarīʿ', en:'bitter thorns', freq:1},
+    'min',
+    'illa',
+    {ar:'طَعَامٌ', tr:'ṭaʿām', en:'food', freq:48},
+    {ar:'لَهُمْ', tr:'lahum', en:'for them', freq:850},
+    {ar:'لَّيْسَ', tr:'laysa', en:'there is not', freq:89},
+  ]},
+  {label:'88:7 — لَّا يُسْمِنُ وَلَا يُغْنِي مِن جُوعٍ', words:[
+    {ar:'جُوعٍ', tr:'jūʿ', en:'hunger', freq:3},
+    'min',
+    {ar:'يُغْنِي', tr:'yughnī', en:'avails', freq:7},
+    'wala',
+    {ar:'يُسْمِنُ', tr:'yusminu', en:'nourishes', freq:1},
+    'la',
+  ]},
+  {label:'88:8 — وُجُوهٌ يَوْمَئِذٍ نَّاعِمَةٌ', words:[
     {ar:'نَّاعِمَةٌ', tr:'nāʿimah', en:'joyful', freq:2},
     {ar:'يَوْمَئِذٍ', tr:'yawmaʾidhin', en:'that Day', freq:37},
     {ar:'وُجُوهٌ', tr:'wujūh', en:'[other] faces', freq:34},
   ]},
-  {label:'Verse 17 — أَفَلَا يَنظُرُونَ إِلَى الْإِبِلِ كَيْفَ خُلِقَتْ', words:[
+  {label:'88:9 — لِّسَعْيِهَا رَاضِيَةٌ', words:[
+    {ar:'رَاضِيَةٌ', tr:'rāḍiyah', en:'satisfied', freq:3},
+    {ar:'لِّسَعْيِهَا', tr:'li-saʿyihā', en:'with their effort', freq:2},
+  ]},
+  {label:'88:10 — فِي جَنَّةٍ عَالِيَةٍ', words:[
+    {ar:'عَالِيَةٍ', tr:'ʿāliyah', en:'elevated', freq:5},
+    {ar:'جَنَّةٍ', tr:'jannah', en:'a garden', freq:147},
+    'fi',
+  ]},
+  {label:'88:11 — لَّا تَسْمَعُ فِيهَا لَاغِيَةً', words:[
+    {ar:'لَاغِيَةً', tr:'lāghiyah', en:'ill speech', freq:1},
+    'fiiha',
+    {ar:'تَسْمَعُ', tr:'tasmaʿu', en:'you will hear', freq:42},
+    'la',
+  ]},
+  {label:'88:12 — فِيهَا عَيْنٌ جَارِيَةٌ', words:[
+    {ar:'جَارِيَةٌ', tr:'jāriyah', en:'flowing', freq:4},
+    {ar:'عَيْنٌ', tr:'ʿayn', en:'a spring', freq:21},
+    'fiiha',
+  ]},
+  {label:'88:13 — فِيهَا سُرُرٌ مَّرْفُوعَةٌ', words:[
+    {ar:'مَّرْفُوعَةٌ', tr:'marfūʿah', en:'raised', freq:2},
+    {ar:'سُرُرٌ', tr:'surur', en:'couches', freq:5},
+    'fiiha',
+  ]},
+  {label:'88:14 — وَأَكْوَابٌ مَّوْضُوعَةٌ', words:[
+    {ar:'مَّوْضُوعَةٌ', tr:'mawḍūʿah', en:'set in place', freq:1},
+    {ar:'وَأَكْوَابٌ', tr:'wa akwāb', en:'and cups', freq:3},
+  ]},
+  {label:'88:15 — وَنَمَارِقُ مَصْفُوفَةٌ', words:[
+    {ar:'مَصْفُوفَةٌ', tr:'maṣfūfah', en:'lined up', freq:2},
+    {ar:'وَنَمَارِقُ', tr:'wa namāriqu', en:'and cushions', freq:1},
+  ]},
+  {label:'88:16 — وَزَرَابِيُّ مَبْثُوثَةٌ', words:[
+    {ar:'مَبْثُوثَةٌ', tr:'mabthūthah', en:'spread around', freq:2},
+    {ar:'وَزَرَابِيُّ', tr:'wa zarābiyy', en:'and carpets', freq:1},
+  ]},
+  {label:'88:17 — أَفَلَا يَنظُرُونَ إِلَى الْإِبِلِ كَيْفَ خُلِقَتْ', words:[
     {ar:'خُلِقَتْ', tr:'khuliqat', en:'they were created', freq:29},
     {ar:'كَيْفَ', tr:'kayfa', en:'how', freq:89},
     {ar:'الْإِبِلِ', tr:'al-ibil', en:'the camels', freq:1},
-    {ar:'إِلَى', tr:'ilā', en:'at', freq:189},
+    'ila',
     {ar:'يَنظُرُونَ', tr:'yanẓurūn', en:'they look', freq:33},
     {ar:'أَفَلَا', tr:'afalā', en:'do they not', freq:50},
+  ]},
+  {label:'88:18 — وَإِلَى السَّمَاءِ كَيْفَ رُفِعَتْ', words:[
+    {ar:'رُفِعَتْ', tr:'rufiʿat', en:'it was raised', freq:2},
+    {ar:'كَيْفَ', tr:'kayfa', en:'how', freq:89},
+    {ar:'السَّمَاءِ', tr:'al-samāʾ', en:'the sky', freq:120},
+    {ar:'وَإِلَى', tr:'wa ilā', en:'and at', freq:189},
+  ]},
+  {label:'88:19 — وَإِلَى الْجِبَالِ كَيْفَ نُصِبَتْ', words:[
+    {ar:'نُصِبَتْ', tr:'nuṣibat', en:'they were set up', freq:1},
+    {ar:'كَيْفَ', tr:'kayfa', en:'how', freq:89},
+    {ar:'الْجِبَالِ', tr:'al-jibāl', en:'the mountains', freq:33},
+    {ar:'وَإِلَى', tr:'wa ilā', en:'and at', freq:189},
+  ]},
+  {label:'88:20 — وَإِلَى الْأَرْضِ كَيْفَ سُطِحَتْ', words:[
+    {ar:'سُطِحَتْ', tr:'suṭiḥat', en:'it was spread out', freq:1},
+    {ar:'كَيْفَ', tr:'kayfa', en:'how', freq:89},
+    {ar:'الْأَرْضِ', tr:'al-arḍ', en:'the earth', freq:461},
+    {ar:'وَإِلَى', tr:'wa ilā', en:'and at', freq:189},
+  ]},
+  {label:'88:21 — فَذَكِّرْ إِنَّمَا أَنتَ مُذَكِّرٌ', words:[
+    {ar:'مُذَكِّرٌ', tr:'mudhakkir', en:'a reminder', freq:2},
+    {ar:'أَنتَ', tr:'anta', en:'you are', freq:153},
+    {ar:'إِنَّمَا', tr:'innamā', en:'only', freq:139},
+    {ar:'فَذَكِّرْ', tr:'fa-dhakkir', en:'so remind', freq:6},
+  ]},
+  {label:'88:22 — لَّسْتَ عَلَيْهِم بِمُصَيْطِرٍ', words:[
+    {ar:'بِمُصَيْطِرٍ', tr:'bi-muṣayṭir', en:'a controller', freq:1},
+    {ar:'عَلَيْهِم', tr:'ʿalayhim', en:'over them', freq:108},
+    {ar:'لَّسْتَ', tr:'lasta', en:'you are not', freq:15},
+  ]},
+  {label:'88:23 — إِلَّا مَن تَوَلَّىٰ وَكَفَرَ', words:[
+    {ar:'وَكَفَرَ', tr:'wa kafara', en:'and disbelieved', freq:525},
+    {ar:'تَوَلَّىٰ', tr:'tawallā', en:'turns away', freq:12},
+    'man',
+    'illa',
+  ]},
+  {label:'88:24 — فَيُعَذِّبُهُ اللَّهُ الْعَذَابَ الْأَكْبَرَ', words:[
+    {ar:'الْأَكْبَرَ', tr:'al-akbar', en:'the greatest', freq:52},
+    {ar:'الْعَذَابَ', tr:'al-ʿadhāb', en:'the punishment', freq:373},
+    'allahu',
+    {ar:'فَيُعَذِّبُهُ', tr:'fa-yuʿadhdhibuhu', en:'then will punish him', freq:1},
+  ]},
+  {label:'88:25 — إِنَّ إِلَيْنَا إِيَابَهُمْ', words:[
+    {ar:'إِيَابَهُمْ', tr:'iyābahum', en:'their return', freq:1},
+    {ar:'إِلَيْنَا', tr:'ilaynā', en:'to Us', freq:42},
+    'inna',
+  ]},
+  {label:'88:26 — ثُمَّ إِنَّ عَلَيْنَا حِسَابَهُمْ', words:[
+    {ar:'حِسَابَهُمْ', tr:'ḥisābahum', en:'their reckoning', freq:32},
+    {ar:'عَلَيْنَا', tr:'ʿalaynā', en:'upon Us', freq:37},
+    'inna',
+    'thumma',
   ]},
 ];
 
 window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS = [
-  { id: 'i1', text: 'Al-Ghashiyah',    zone: 'z1' },
-  { id: 'i2', text: 'Faces\nDowncast', zone: 'z2' },
-  { id: 'i3', text: 'Faces\nDelighted',zone: 'z3' },
-  { id: 'i4', text: 'Boiling\nSpring', zone: 'z4' },
+  {id:'i1', text:'الْغَاشِيَةِ', zone:'z1'},
+  {id:'i2', text:'وُجُوهٌ\nخَاشِعَةٌ', zone:'z2'},
+  {id:'i3', text:'وُجُوهٌ\nنَّاعِمَةٌ', zone:'z3'},
+  {id:'i4', text:'عَيْنٍ آنِيَةٍ', zone:'z4'},
 ];
 const S1_ZONES = [
-  { id: 'z1', desc: 'The Overwhelming Event' },
-  { id: 'z2', desc: 'The punished in Hellfire' },
-  { id: 'z3', desc: 'The blessed in Paradise' },
-  { id: 'z4', desc: 'Drink of the wretched' },
+  {id:'z1', desc:'The Overwhelming Event — (88:1)'},
+  {id:'z2', desc:'Faces humbled in the Fire — (88:2)'},
+  {id:'z3', desc:'Faces joyful in Paradise — (88:8)'},
+  {id:'z4', desc:'Boiling spring, drink of the wretched — (88:5)'},
 ];
 
 /* ── Section 2: Quiz — Faces Downcast (88:2-7) ── */
@@ -95,16 +218,16 @@ const S2_QUIZ = [
 
 /* ── Section 3: Drag & Drop — Paradise features (88:8-16) ── */
 const S3_ITEMS = [
-  { id: 'p1', text: 'Flowing\nsprings', zone: 'z1' },
-  { id: 'p2', text: 'Raised\ncouches',  zone: 'z2' },
-  { id: 'p3', text: 'Cups\nset ready', zone: 'z3' },
-  { id: 'p4', text: 'Spread\ncarpets',  zone: 'z4' },
+  {id:'p1', text:'عَيْنٌ جَارِيَةٌ', zone:'z1'},
+  {id:'p2', text:'سُرُرٌ\nمَّرْفُوعَةٌ', zone:'z2'},
+  {id:'p3', text:'أَكْوَابٌ\nمَّوْضُوعَةٌ', zone:'z3'},
+  {id:'p4', text:'زَرَابِيُّ\nمَبْثُوثَةٌ', zone:'z4'},
 ];
 const S3_ZONES = [
-  { id: 'z1', desc: 'Water of Paradise' },
-  { id: 'z2', desc: 'Furniture of the blessed' },
-  { id: 'z3', desc: 'Drinking vessels in Paradise' },
-  { id: 'z4', desc: 'Floor coverings in Paradise' },
+  {id:'z1', desc:'Flowing spring — water of Paradise — (88:12)'},
+  {id:'z2', desc:'Raised couches — furniture of the blessed — (88:13)'},
+  {id:'z3', desc:'Cups set in place — drinking vessels — (88:14)'},
+  {id:'z4', desc:'Spread carpets — floor coverings — (88:16)'},
 ];
 
 /* ── Section 4: Quiz — The Camel (88:17) ── */

@@ -23,30 +23,54 @@ window.SURAH_CONFIG = {
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1-2 — وَالتِّينِ وَالزَّيْتُونِ · وَطُورِ سِينِينَ', words:[
-    {ar:'سِينِينَ', tr:'sīnīn', en:'Sinai', freq:2},
-    {ar:'وَطُورِ', tr:'wa-ṭūr', en:'and [Mount] Tur', freq:10},
+  {label:'95:1 — وَالتِّينِ وَالزَّيْتُونِ', words:[
     {ar:'وَالزَّيْتُونِ', tr:'wal-zaytūn', en:'and the olive', freq:6},
     {ar:'وَالتِّينِ', tr:'wal-tīn', en:'by the fig', freq:1},
   ]},
-  {label:'Verse 4 — لَقَدْ خَلَقْنَا الْإِنسَانَ فِي أَحْسَنِ تَقْوِيمٍ', words:[
+  {label:'95:2 — وَطُورِ سِينِينَ', words:[
+    {ar:'سِينِينَ', tr:'sīnīn', en:'Sinai', freq:2},
+    {ar:'وَطُورِ', tr:'wa-ṭūr', en:'and [Mount] Tur', freq:10},
+  ]},
+  {label:'95:3 — وَهَٰذَا الْبَلَدِ الْأَمِينِ', words:[
+    {ar:'الْأَمِينِ', tr:'al-amīn', en:'the secure / trustworthy', freq:7},
+    {ar:'الْبَلَدِ', tr:'al-balad', en:'the city', freq:9},
+    {ar:'وَهَٰذَا', tr:'wa-hādhā', en:'and this', freq:55},
+  ]},
+  {label:'95:4 — لَقَدْ خَلَقْنَا الْإِنسَانَ فِي أَحْسَنِ تَقْوِيمٍ', words:[
     {ar:'تَقْوِيمٍ', tr:'taqwīm', en:'form / stature', freq:1},
     {ar:'أَحْسَنِ', tr:'aḥsani', en:'the best', freq:35},
-    {ar:'فِي', tr:'fī', en:'in', freq:1714},
+    'fi',
     {ar:'الْإِنسَانَ', tr:'al-insān', en:'mankind', freq:65},
     {ar:'خَلَقْنَا', tr:'khalaqnā', en:'We created', freq:29},
     {ar:'لَقَدْ', tr:'laqad', en:'certainly', freq:84},
   ]},
-  {label:'Verse 5 — ثُمَّ رَدَدْنَاهُ أَسْفَلَ سَافِلِينَ', words:[
+  {label:'95:5 — ثُمَّ رَدَدْنَاهُ أَسْفَلَ سَافِلِينَ', words:[
     {ar:'سَافِلِينَ', tr:'sāfilīn', en:'the lowest [of low]', freq:1},
     {ar:'أَسْفَلَ', tr:'asfala', en:'the lowest', freq:4},
     {ar:'رَدَدْنَاهُ', tr:'radadnāhu', en:'We returned him', freq:2},
-    {ar:'ثُمَّ', tr:'thumma', en:'then', freq:340},
+    'thumma',
   ]},
-  {label:'Verse 8 — أَلَيْسَ اللَّهُ بِأَحْكَمِ الْحَاكِمِينَ', words:[
+  {label:'95:6 — إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ فَلَهُمْ أَجْرٌ غَيْرُ مَمْنُونٍ', words:[
+    {ar:'مَمْنُونٍ', tr:'mamnūn', en:'ending / interrupted', freq:3},
+    {ar:'غَيْرُ', tr:'ghayru', en:'without / never', freq:148},
+    {ar:'أَجْرٌ', tr:'ajrun', en:'reward', freq:105},
+    {ar:'فَلَهُمْ', tr:'falahum', en:'then for them is', freq:9},
+    {ar:'الصَّالِحَاتِ', tr:'al-ṣāliḥāt', en:'righteous deeds', freq:62},
+    {ar:'وَعَمِلُوا', tr:'wa-ʿamilū', en:'and did', freq:360},
+    {ar:'آمَنُوا', tr:'āmanū', en:'believed', freq:537},
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'those who', freq:1450},
+    'illa',
+  ]},
+  {label:'95:7 — فَمَا يُكَذِّبُكَ بَعْدُ بِالدِّينِ', words:[
+    'al-deen',
+    {ar:'بَعْدُ', tr:'baʿdu', en:'after (this)', freq:199},
+    {ar:'يُكَذِّبُكَ', tr:'yukadhdhibuka', en:'causes you to deny', freq:1},
+    {ar:'فَمَا', tr:'fa-mā', en:'then what', freq:2005},
+  ]},
+  {label:'95:8 — أَلَيْسَ اللَّهُ بِأَحْكَمِ الْحَاكِمِينَ', words:[
     {ar:'الْحَاكِمِينَ', tr:'al-ḥākimīn', en:'the judges', freq:4},
     {ar:'بِأَحْكَمِ', tr:'bi-aḥkami', en:'the Most Just', freq:1},
-    {ar:'اللَّهُ', tr:'Allāh', en:'Allah', freq:2699},
+    'allahu',
     {ar:'أَلَيْسَ', tr:'alaysa', en:'is not', freq:25},
   ]},
 ];
@@ -54,16 +78,16 @@ const WBW_DATA = [
 window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS = [
-  {id:'o1', text:'🫐 At-Tin\n(The Fig)',       zone:'z1'},
-  {id:'o2', text:'🫒 Az-Zaytun\n(The Olive)',   zone:'z2'},
-  {id:'o3', text:'⛰️ Tur Sineen\n(Mt Sinai)',   zone:'z3'},
-  {id:'o4', text:'🕋 Al-Balad\n(The City)',     zone:'z4'},
+  {id:'o1', text:'وَالتِّينِ',                zone:'z1'},
+  {id:'o2', text:'وَالزَّيْتُونِ',            zone:'z2'},
+  {id:'o3', text:'وَطُورِ سِينِينَ',           zone:'z3'},
+  {id:'o4', text:'الْبَلَدِ الْأَمِينِ',       zone:'z4'},
 ];
 const S1_ZONES = [
-  {id:'z1', desc:'A blessed land — associated with the prophets of Sham (Greater Syria)'},
-  {id:'z2', desc:'Symbol of the blessed land of Jerusalem and the olive of Palestine'},
-  {id:'z3', desc:'The mountain where Allah spoke directly to Musa (Moses) (AS)'},
-  {id:'z4', desc:'"Al-Balad al-Amin" — the city of security: Mecca al-Mukarramah'},
+  {id:'z1', desc:'The Fig — blessed land of the prophets of Sham / Greater Syria (95:1)'},
+  {id:'z2', desc:'The Olive — blessed land of Jerusalem and Palestine (95:1)'},
+  {id:'z3', desc:'Mount Sinai — where Allah spoke directly to Musa (Moses) AS (95:2)'},
+  {id:'z4', desc:'The Secure City — "Al-Balad al-Amin": Mecca al-Mukarramah (95:3)'},
 ];
 
 const S2_QUIZ = [

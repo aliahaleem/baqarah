@@ -24,34 +24,67 @@ window.SURAH_CONFIG = {
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1-2 — وَالضُّحَىٰ · وَاللَّيْلِ إِذَا سَجَىٰ', words:[
-    {ar:'سَجَىٰ', tr:'sajā', en:'covers with darkness', freq:1},
-    {ar:'إِذَا', tr:'idhā', en:'when', freq:406},
-    {ar:'وَاللَّيْلِ', tr:'wal-layl', en:'and the night', freq:72},
-    {ar:'وَالضُّحَىٰ', tr:'wal-ḍuḥā', en:'by the morning brightness', freq:3},
+  {label:'93:1 — وَالضُّحَىٰ', words:[
+    {ar:'وَالضُّحَىٰ', tr:'waḍ-ḍuḥā', en:'by the morning brightness', freq:3},
   ]},
-  {label:'Verse 3 — مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ', words:[
+  {label:'93:2 — وَاللَّيْلِ إِذَا سَجَىٰ', words:[
+    {ar:'سَجَىٰ', tr:'sajā', en:'covers with darkness', freq:1},
+    'idha',
+    {ar:'وَاللَّيْلِ', tr:'wal-layl', en:'and the night', freq:72},
+  ]},
+  {label:'93:3 — مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ', words:[
     {ar:'قَلَىٰ', tr:'qalā', en:'(nor) hated', freq:1},
     {ar:'وَمَا', tr:'wa-mā', en:'and not', freq:500},
-    {ar:'رَبُّكَ', tr:'rabbuka', en:'your Lord', freq:30},
+    'rabbuka',
     {ar:'وَدَّعَكَ', tr:'waddaʿaka', en:'forsaken you', freq:1},
-    'ma',
+    {ar:'مَا', tr:'mā', en:'not (negation)', freq:2005},
   ]},
-  {label:'Verse 4 — وَلَلْآخِرَةُ خَيْرٌ لَّكَ مِنَ الْأُولَىٰ', words:[
+  {label:'93:4 — وَلَلْآخِرَةُ خَيْرٌ لَّكَ مِنَ الْأُولَىٰ', words:[
     {ar:'الْأُولَىٰ', tr:'al-ūlā', en:'the first [life]', freq:37},
     {ar:'مِنَ', tr:'min', en:'than', freq:1891},
     {ar:'لَّكَ', tr:'laka', en:'for you', freq:202},
     {ar:'خَيْرٌ', tr:'khayr', en:'better', freq:189},
     {ar:'وَلَلْآخِرَةُ', tr:'wal-ākhirah', en:'and the Hereafter', freq:115},
   ]},
-  {label:'Verse 9-10 — فَأَمَّا الْيَتِيمَ فَلَا تَقْهَرْ · وَأَمَّا السَّائِلَ فَلَا تَنْهَرْ', words:[
+  {label:'93:5 — وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰ', words:[
+    {ar:'فَتَرْضَىٰ', tr:'fa-tarḍā', en:'and you will be satisfied', freq:1},
+    'rabbuka',
+    {ar:'يُعْطِيكَ', tr:'yuʿṭīka', en:'will give you', freq:1},
+    {ar:'وَلَسَوْفَ', tr:'wa-la-sawfa', en:'and surely', freq:2},
+  ]},
+  {label:'93:6 — أَلَمْ يَجِدْكَ يَتِيمًا فَآوَىٰ', words:[
+    {ar:'فَآوَىٰ', tr:'fa-āwā', en:'and gave shelter', freq:2},
+    {ar:'يَتِيمًا', tr:'yatīman', en:'an orphan', freq:22},
+    {ar:'يَجِدْكَ', tr:'yajidka', en:'find you', freq:1},
+    'alam',
+  ]},
+  {label:'93:7 — وَوَجَدَكَ ضَالًّا فَهَدَىٰ', words:[
+    {ar:'فَهَدَىٰ', tr:'fa-hadā', en:'and guided [you]', freq:4},
+    {ar:'ضَالًّا', tr:'ḍāllan', en:'lost / unaware', freq:10},
+    {ar:'وَوَجَدَكَ', tr:'wa-wajadaka', en:'and He found you', freq:1},
+  ]},
+  {label:'93:8 — وَوَجَدَكَ عَائِلًا فَأَغْنَىٰ', words:[
+    {ar:'فَأَغْنَىٰ', tr:'fa-aghnā', en:'and made self-sufficient', freq:3},
+    {ar:'عَائِلًا', tr:'ʿāʾilan', en:'in need / poor', freq:1},
+    {ar:'وَوَجَدَكَ', tr:'wa-wajadaka', en:'and He found you', freq:1},
+  ]},
+  {label:'93:9 — فَأَمَّا الْيَتِيمَ فَلَا تَقْهَرْ', words:[
+    {ar:'تَقْهَرْ', tr:'taqhar', en:'oppress', freq:1},
+    {ar:'فَلَا', tr:'fa-lā', en:'then do not', freq:1069},
+    'al-yateem',
+    {ar:'فَأَمَّا', tr:'fa-ammā', en:'so as for', freq:18},
+  ]},
+  {label:'93:10 — وَأَمَّا السَّائِلَ فَلَا تَنْهَرْ', words:[
     {ar:'تَنْهَرْ', tr:'tanhar', en:'repel', freq:1},
     {ar:'فَلَا', tr:'fa-lā', en:'then do not', freq:1069},
     {ar:'السَّائِلَ', tr:'al-sāʾil', en:'the one who asks', freq:5},
-    {ar:'تَقْهَرْ', tr:'taqhar', en:'oppress', freq:1},
-    {ar:'فَلَا', tr:'fa-lā', en:'then do not', freq:1069},
-    {ar:'الْيَتِيمَ', tr:'al-yatīm', en:'the orphan', freq:22},
-    {ar:'فَأَمَّا', tr:'fa-ammā', en:'so as for', freq:18},
+    {ar:'وَأَمَّا', tr:'wa-ammā', en:'but as for', freq:18},
+  ]},
+  {label:'93:11 — وَأَمَّا بِنِعْمَةِ رَبِّكَ فَحَدِّثْ', words:[
+    {ar:'فَحَدِّثْ', tr:'fa-ḥaddith', en:'then proclaim', freq:1},
+    'rabbika',
+    {ar:'بِنِعْمَةِ', tr:'bi-niʿmati', en:'about the blessing of', freq:9},
+    {ar:'وَأَمَّا', tr:'wa-ammā', en:'but as for', freq:18},
   ]},
 ];
 
@@ -73,14 +106,14 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'b1', text:'Found as\nan orphan', zone:'z1'},
-  {id:'b2', text:'Found\nwandering', zone:'z2'},
-  {id:'b3', text:'Found\nin need', zone:'z3'},
+  {id:'b1', text:'يَتِيمًا', zone:'z1'},
+  {id:'b2', text:'ضَالًّا', zone:'z2'},
+  {id:'b3', text:'عَائِلًا', zone:'z3'},
 ];
 const S2_ZONES = [
-  {id:'z1', desc:'Allah gave him shelter — lost his father before birth (93:6)'},
-  {id:'z2', desc:'Allah gave him guidance — before prophethood (93:7)'},
-  {id:'z3', desc:'Allah enriched him — from poverty to contentment (93:8)'},
+  {id:'z1', desc:'An orphan — Allah gave him shelter (93:6)'},
+  {id:'z2', desc:'Lost / unaware — Allah guided him (93:7)'},
+  {id:'z3', desc:'Poor / in need — Allah enriched him (93:8)'},
 ];
 
 const S3_QUIZ = [

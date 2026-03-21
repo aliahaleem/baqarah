@@ -24,32 +24,61 @@ window.SURAH_CONFIG = {
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verses 1-3 — الْقَارِعَةُ مَا الْقَارِعَةُ', words:[
+  {label:'101:1 — الْقَارِعَةُ', words:[
+    {ar:'الْقَارِعَةُ', tr:'al-qāriʿah', en:'the Striking Hour', freq:4},
+  ]},
+  {label:'101:2 — مَا الْقَارِعَةُ', words:[
     {ar:'الْقَارِعَةُ', tr:'al-qāriʿah', en:'the Striking Hour', freq:4},
     'ma',
-    {ar:'الْقَارِعَةُ', tr:'al-qāriʿah', en:'the Striking Hour', freq:4},
-    {ar:'وَمَا أَدْرَاكَ', tr:'wa-mā adrāka', en:'and what will make you know', freq:13},
   ]},
-  {label:'Verse 4 — يَوْمَ يَكُونُ النَّاسُ كَالْفَرَاشِ الْمَبْثُوثِ', words:[
+  {label:'101:3 — وَمَا أَدْرَاكَ مَا الْقَارِعَةُ', words:[
+    {ar:'الْقَارِعَةُ', tr:'al-qāriʿah', en:'the Striking Hour', freq:4},
+    'ma',
+    {ar:'أَدْرَاكَ', tr:'adrāka', en:'can make you know', freq:13},
+    {ar:'وَمَا', tr:'wa-mā', en:'and what', freq:500},
+  ]},
+  {label:'101:4 — يَوْمَ يَكُونُ النَّاسُ كَالْفَرَاشِ الْمَبْثُوثِ', words:[
     {ar:'الْمَبْثُوثِ', tr:'al-mabthūth', en:'scattered', freq:1},
     {ar:'كَالْفَرَاشِ', tr:'kal-farāsh', en:'like moths', freq:1},
     {ar:'النَّاسُ', tr:'al-nās', en:'the people', freq:241},
     {ar:'يَكُونُ', tr:'yakūnu', en:'will be', freq:200},
-    {ar:'يَوْمَ', tr:'yawma', en:'the Day', freq:365},
+    'yawma',
   ]},
-  {label:'Verse 6 — فَأَمَّا مَن ثَقُلَتْ مَوَازِينُهُ', words:[
+  {label:'101:5 — وَتَكُونُ الْجِبَالُ كَالْعِهْنِ الْمَنفُوشِ', words:[
+    {ar:'الْمَنفُوشِ', tr:'al-manfūsh', en:'fluffed up', freq:1},
+    {ar:'كَالْعِهْنِ', tr:'kal-ʿihn', en:'like wool', freq:1},
+    'al-jibal-u',
+    {ar:'وَتَكُونُ', tr:'wa-takūnu', en:'and will be', freq:200},
+  ]},
+  {label:'101:6 — فَأَمَّا مَن ثَقُلَتْ مَوَازِينُهُ', words:[
     {ar:'مَوَازِينُهُ', tr:'mawāzīnuhu', en:'his scales', freq:3},
     {ar:'ثَقُلَتْ', tr:'thaqulat', en:'are heavy', freq:2},
-    {ar:'مَن', tr:'man', en:'whoever', freq:89},
+    'man',
     {ar:'فَأَمَّا', tr:'fa-ammā', en:'so as for', freq:18},
   ]},
-  {label:'Verse 9 — وَأَمَّا مَنْ خَفَّتْ مَوَازِينُهُ', words:[
+  {label:'101:7 — فَهُوَ فِي عِيشَةٍ رَّاضِيَةٍ', words:[
+    {ar:'رَّاضِيَةٍ', tr:'rāḍiyah', en:'pleasant / satisfied', freq:3},
+    {ar:'عِيشَةٍ', tr:'ʿīshah', en:'a life', freq:2},
+    'fi',
+    {ar:'فَهُوَ', tr:'fa-huwa', en:'then he (will be)', freq:526},
+  ]},
+  {label:'101:8 — وَأَمَّا مَن خَفَّتْ مَوَازِينُهُ', words:[
     {ar:'مَوَازِينُهُ', tr:'mawāzīnuhu', en:'his scales', freq:3},
     {ar:'خَفَّتْ', tr:'khaffat', en:'are light', freq:1},
-    {ar:'مَنْ', tr:'man', en:'whoever', freq:89},
+    'man',
     {ar:'وَأَمَّا', tr:'wa-ammā', en:'but as for', freq:18},
   ]},
-  {label:'Verse 11 — نَارٌ حَامِيَةٌ', words:[
+  {label:'101:9 — فَأُمُّهُ هَاوِيَةٌ', words:[
+    {ar:'هَاوِيَةٌ', tr:'hāwiyah', en:'Hawiyah (the Abyss)', freq:1},
+    {ar:'فَأُمُّهُ', tr:'fa-ummuhu', en:'then his abode/mother', freq:1},
+  ]},
+  {label:'101:10 — وَمَا أَدْرَاكَ مَا هِيَهْ', words:[
+    {ar:'هِيَهْ', tr:'hiyah', en:'it is', freq:1},
+    'ma',
+    {ar:'أَدْرَاكَ', tr:'adrāka', en:'can make you know', freq:13},
+    {ar:'وَمَا', tr:'wa-mā', en:'and what', freq:500},
+  ]},
+  {label:'101:11 — نَارٌ حَامِيَةٌ', words:[
     {ar:'حَامِيَةٌ', tr:'ḥāmiyah', en:'intensely hot', freq:2},
     {ar:'نَارٌ', tr:'nār', en:'a Fire', freq:145},
   ]},

@@ -24,28 +24,170 @@ window.SURAH_CONFIG={
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1-2 — إِذَا السَّمَاءُ انشَقَّتْ · وَأَذِنَتْ لِرَبِّهَا وَحُقَّتْ', words:[
+  {label:'84:1 — إِذَا السَّمَاءُ انشَقَّتْ', words:[
+    {ar:'انشَقَّتْ', tr:'inshaqqat', en:'has split open', freq:1},
+    'al-sama',
+    'idha',
+  ]},
+  {label:'84:2 — وَأَذِنَتْ لِرَبِّهَا وَحُقَّتْ', words:[
     {ar:'وَحُقَّتْ', tr:'wa-ḥuqqat', en:'as it must', freq:1},
     {ar:'لِرَبِّهَا', tr:'li-rabbihā', en:'its Lord', freq:49},
     {ar:'وَأَذِنَتْ', tr:'wa-adhinat', en:'and obeyed', freq:2},
-    {ar:'انشَقَّتْ', tr:'inshaqqat', en:'has split open', freq:1},
-    {ar:'السَّمَاءُ', tr:'al-samāʾ', en:'the sky', freq:120},
-    'idha',
   ]},
-  {label:'Verse 6 — يَا أَيُّهَا الْإِنسَانُ إِنَّكَ كَادِحٌ إِلَىٰ رَبِّكَ كَدْحًا', words:[
-    {ar:'كَدْحًا', tr:'kadḥan', en:'a striving', freq:1},
-    {ar:'رَبِّكَ', tr:'rabbika', en:'your Lord', freq:49},
-    {ar:'إِلَىٰ', tr:'ilā', en:'toward', freq:189},
+  {label:'84:3 — وَإِذَا الْأَرْضُ مُدَّتْ', words:[
+    {ar:'مُدَّتْ', tr:'muddat', en:'is stretched out', freq:1},
+    {ar:'الْأَرْضُ', tr:'al-arḍ', en:'the earth', freq:461},
+    {ar:'وَإِذَا', tr:'wa idhā', en:'and when', freq:406},
+  ]},
+  {label:'84:4 — وَأَلْقَتْ مَا فِيهَا وَتَخَلَّتْ', words:[
+    {ar:'وَتَخَلَّتْ', tr:'wa-takhallat', en:'and became empty', freq:1},
+    'fiiha',
+    'ma',
+    {ar:'وَأَلْقَتْ', tr:'wa-alqat', en:'and cast out', freq:6},
+  ]},
+  {label:'84:5 — وَأَذِنَتْ لِرَبِّهَا وَحُقَّتْ', words:[
+    {ar:'وَحُقَّتْ', tr:'wa-ḥuqqat', en:'as it must', freq:1},
+    {ar:'لِرَبِّهَا', tr:'li-rabbihā', en:'its Lord', freq:49},
+    {ar:'وَأَذِنَتْ', tr:'wa-adhinat', en:'and obeyed', freq:2},
+  ]},
+  {label:'84:6 — يَا أَيُّهَا الْإِنسَانُ إِنَّكَ كَادِحٌ إِلَىٰ رَبِّكَ كَدْحًا فَمُلَاقِيهِ', words:[
+    {ar:'فَمُلَاقِيهِ', tr:'fa-mulāqīhi', en:'and you will meet Him', freq:1},
+    {ar:'كَدْحًا', tr:'kadḥan', en:'a [great] striving', freq:1},
+    'rabbika',
+    'ila',
     {ar:'كَادِحٌ', tr:'kādiḥ', en:'labouring', freq:1},
     {ar:'إِنَّكَ', tr:'innaka', en:'indeed you are', freq:743},
     {ar:'الْإِنسَانُ', tr:'al-insān', en:'O mankind', freq:65},
+    {ar:'أَيُّهَا', tr:'ayyuhā', en:'O you', freq:142},
+    'ya',
+  ]},
+  {label:'84:7 — فَأَمَّا مَنْ أُوتِيَ كِتَابَهُ بِيَمِينِهِ', words:[
+    {ar:'بِيَمِينِهِ', tr:'bi-yamīnihi', en:'in his right hand', freq:5},
+    {ar:'كِتَابَهُ', tr:'kitābahu', en:'his book', freq:29},
+    {ar:'أُوتِيَ', tr:'ūtiya', en:'is given', freq:68},
+    'man',
+    {ar:'فَأَمَّا', tr:'fa-ammā', en:'as for', freq:18},
+  ]},
+  {label:'84:8 — فَسَوْفَ يُحَاسَبُ حِسَابًا يَسِيرًا', words:[
+    {ar:'يَسِيرًا', tr:'yasīran', en:'an easy [one]', freq:7},
+    {ar:'حِسَابًا', tr:'ḥisāban', en:'a reckoning', freq:32},
+    {ar:'يُحَاسَبُ', tr:'yuḥāsabu', en:'he will be judged', freq:32},
+    {ar:'فَسَوْفَ', tr:'fa-sawfa', en:'then he will', freq:60},
+  ]},
+  {label:'84:9 — وَيَنقَلِبُ إِلَىٰ أَهْلِهِ مَسْرُورًا', words:[
+    {ar:'مَسْرُورًا', tr:'masrūran', en:'delighted', freq:1},
+    {ar:'أَهْلِهِ', tr:'ahlihi', en:'his people', freq:73},
+    'ila',
+    {ar:'وَيَنقَلِبُ', tr:'wa yanqalibu', en:'and will return', freq:5},
+  ]},
+  {label:'84:10 — وَأَمَّا مَنْ أُوتِيَ كِتَابَهُ وَرَاءَ ظَهْرِهِ', words:[
+    {ar:'ظَهْرِهِ', tr:'ẓahrihi', en:'his back', freq:12},
+    {ar:'وَرَاءَ', tr:'warāʾa', en:'behind', freq:15},
+    {ar:'كِتَابَهُ', tr:'kitābahu', en:'his book', freq:29},
+    {ar:'أُوتِيَ', tr:'ūtiya', en:'is given', freq:68},
+    'man',
+    {ar:'وَأَمَّا', tr:'wa-ammā', en:'but as for', freq:18},
+  ]},
+  {label:'84:11 — فَسَوْفَ يَدْعُو ثُبُورًا', words:[
+    {ar:'ثُبُورًا', tr:'thubūran', en:'destruction', freq:1},
+    {ar:'يَدْعُو', tr:'yadʿū', en:'he will call out', freq:76},
+    {ar:'فَسَوْفَ', tr:'fa-sawfa', en:'then he will', freq:60},
+  ]},
+  {label:'84:12 — وَيَصْلَىٰ سَعِيرًا', words:[
+    {ar:'سَعِيرًا', tr:'saʿīran', en:'a Blaze', freq:17},
+    {ar:'وَيَصْلَىٰ', tr:'wa yaṣlā', en:'and will burn in', freq:3},
+  ]},
+  {label:'84:13 — إِنَّهُ كَانَ فِي أَهْلِهِ مَسْرُورًا', words:[
+    {ar:'مَسْرُورًا', tr:'masrūran', en:'happy / joyful', freq:1},
+    {ar:'أَهْلِهِ', tr:'ahlihi', en:'his people', freq:73},
+    'fi',
+    'kaana',
+    {ar:'إِنَّهُ', tr:'innahu', en:'indeed he', freq:743},
+  ]},
+  {label:'84:14 — إِنَّهُ ظَنَّ أَن لَّن يَحُورَ', words:[
+    {ar:'يَحُورَ', tr:'yaḥūra', en:'he would return [to Allah]', freq:1},
+    {ar:'لَّن', tr:'lan', en:'never', freq:167},
+    {ar:'أَن', tr:'an', en:'that', freq:986},
+    {ar:'ظَنَّ', tr:'ẓanna', en:'he thought', freq:69},
+    {ar:'إِنَّهُ', tr:'innahu', en:'indeed he', freq:743},
+  ]},
+  {label:'84:15 — بَلَىٰ إِنَّ رَبَّهُ كَانَ بِهِ بَصِيرًا', words:[
+    {ar:'بَصِيرًا', tr:'baṣīran', en:'All-Seeing', freq:51},
+    'bihi',
+    'kaana',
+    {ar:'رَبَّهُ', tr:'rabbahu', en:'his Lord', freq:49},
+    'inna',
+    {ar:'بَلَىٰ', tr:'balā', en:'yes indeed', freq:22},
+  ]},
+  {label:'84:16 — فَلَا أُقْسِمُ بِالشَّفَقِ', words:[
+    {ar:'بِالشَّفَقِ', tr:'bil-shafaq', en:'by the twilight glow', freq:1},
+    {ar:'أُقْسِمُ', tr:'uqsimu', en:'I swear', freq:16},
+    {ar:'فَلَا', tr:'falā', en:'so no', freq:50},
+  ]},
+  {label:'84:17 — وَاللَّيْلِ وَمَا وَسَقَ', words:[
+    {ar:'وَسَقَ', tr:'wasaqa', en:'it envelops', freq:1},
+    {ar:'وَمَا', tr:'wa mā', en:'and what', freq:2005},
+    {ar:'وَاللَّيْلِ', tr:'wal-layl', en:'and the night', freq:72},
+  ]},
+  {label:'84:18 — وَالْقَمَرِ إِذَا اتَّسَقَ', words:[
+    {ar:'اتَّسَقَ', tr:'ittasaqa', en:'it becomes full', freq:1},
+    'idha',
+    {ar:'وَالْقَمَرِ', tr:'wal-qamar', en:'and the moon', freq:27},
+  ]},
+  {label:'84:19 — لَتَرْكَبُنَّ طَبَقًا عَن طَبَقٍ', words:[
+    {ar:'طَبَقٍ', tr:'ṭabaq', en:'stage', freq:2},
+    {ar:'عَن', tr:'ʿan', en:'after', freq:264},
+    {ar:'طَبَقًا', tr:'ṭabaqan', en:'stage', freq:2},
+    {ar:'لَتَرْكَبُنَّ', tr:'la-tarkabunna', en:'you will surely pass through', freq:1},
+  ]},
+  {label:'84:20 — فَمَا لَهُمْ لَا يُؤْمِنُونَ', words:[
+    {ar:'يُؤْمِنُونَ', tr:'yuʾminūn', en:'they believe', freq:811},
+    'la',
+    {ar:'لَهُمْ', tr:'lahum', en:'what is with them', freq:850},
+    {ar:'فَمَا', tr:'fa-mā', en:'so what is [wrong]', freq:2005},
+  ]},
+  {label:'84:21 — وَإِذَا قُرِئَ عَلَيْهِمُ الْقُرْآنُ لَا يَسْجُدُونَ', words:[
+    {ar:'يَسْجُدُونَ', tr:'yasjudūn', en:'they prostrate', freq:34},
+    'la',
+    {ar:'الْقُرْآنُ', tr:'al-Qurʾān', en:'the Quran', freq:70},
+    {ar:'عَلَيْهِمُ', tr:'ʿalayhim', en:'to them', freq:108},
+    {ar:'قُرِئَ', tr:'quriʾa', en:'is recited', freq:70},
+    {ar:'وَإِذَا', tr:'wa idhā', en:'and when', freq:406},
+  ]},
+  {label:'84:22 — بَلِ الَّذِينَ كَفَرُوا يُكَذِّبُونَ', words:[
+    {ar:'يُكَذِّبُونَ', tr:'yukadhdhibūn', en:'deny', freq:79},
+    {ar:'كَفَرُوا', tr:'kafarū', en:'disbelieved', freq:525},
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'those who', freq:1283},
+    {ar:'بَلِ', tr:'bal', en:'rather / nay', freq:126},
+  ]},
+  {label:'84:23 — وَاللَّهُ أَعْلَمُ بِمَا يُوعُونَ', words:[
+    {ar:'يُوعُونَ', tr:'yūʿūn', en:'they gather [in their hearts]', freq:1},
+    {ar:'بِمَا', tr:'bimā', en:'of what', freq:413},
+    {ar:'أَعْلَمُ', tr:'aʿlamu', en:'most knowing', freq:50},
+    {ar:'وَاللَّهُ', tr:'wallāhu', en:'and Allah', freq:2699},
+  ]},
+  {label:'84:24 — فَبَشِّرْهُم بِعَذَابٍ أَلِيمٍ', words:[
+    {ar:'أَلِيمٍ', tr:'alīm', en:'painful', freq:72},
+    {ar:'بِعَذَابٍ', tr:'bi-ʿadhāb', en:'of a punishment', freq:373},
+    {ar:'فَبَشِّرْهُم', tr:'fa-bashshirhum', en:'so give them tidings', freq:2},
+  ]},
+  {label:'84:25 — إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ لَهُمْ أَجْرٌ غَيْرُ مَمْنُونٍ', words:[
+    {ar:'مَمْنُونٍ', tr:'mamnūn', en:'interrupted', freq:3},
+    {ar:'غَيْرُ', tr:'ghayru', en:'without being', freq:45},
+    {ar:'أَجْرٌ', tr:'ajr', en:'a reward', freq:105},
+    {ar:'لَهُمْ', tr:'lahum', en:'for them is', freq:850},
+    {ar:'الصَّالِحَاتِ', tr:'al-ṣāliḥāt', en:'righteous deeds', freq:73},
+    {ar:'وَعَمِلُوا', tr:'wa ʿamilū', en:'and did', freq:73},
+    {ar:'آمَنُوا', tr:'āmanū', en:'believed', freq:811},
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'those who', freq:1283},
+    'illa',
   ]},
 ];
 
 window.setupWBWLevel(WBW_DATA, 10);
 
-const S1_ITEMS=[{id:'i1',text:'🌅 Sky\nAnshaqqa',zone:'z1'},{id:'i2',text:'🌍 Earth\nMuddat',zone:'z2'},{id:'i3',text:'👂 "Listened\nto its Lord"',zone:'z3'},{id:'i4',text:'⚖️ Both\nObligated',zone:'z4'}];
-const S1_ZONES=[{id:'z1',desc:'"Idha al-sama\' anshaqqa" (84:1) — When the sky SPLITS/CLEAVES. "Inshaqqa" — broke open, split apart. This is the same root as the surah\'s name. The entire sky, the universe\'s ceiling, cracks and opens.'},{id:'z2',desc:'"Wa idha al-ardhu muddat" (84:3) — When the earth is STRETCHED. "Muddat" — stretched flat, spread out. The earth that contains mountains and depths is stretched smooth and flat for the resurrection.'},{id:'z3',desc:'"Wa adhinat li-Rabbiha" (84:2,4) — The sky AND earth LISTENED to their Lord and obeyed. "Adhina" means to give ear to, to obey, to comply. The sky and earth hear Allah\'s command and respond.'},{id:'z4',desc:'"Wa huqqat" (84:2,4) — They were OBLIGATED/RIGHT to do so — or "it was the right thing for them." Allah is saying: of course they obeyed — how could they not? And how could we humans not also comply?'}];
+const S1_ITEMS=[{id:'i1',text:'السَّمَاءُ\nانشَقَّتْ',zone:'z1'},{id:'i2',text:'الْأَرْضُ\nمُدَّتْ',zone:'z2'},{id:'i3',text:'وَأَذِنَتْ\nلِرَبِّهَا',zone:'z3'},{id:'i4',text:'وَحُقَّتْ',zone:'z4'}];
+const S1_ZONES=[{id:'z1',desc:'The sky splits open — the universe\'s ceiling cracks (84:1)'},{id:'z2',desc:'The earth is stretched flat and spread out (84:3)'},{id:'z3',desc:'And listened to its Lord and obeyed His command (84:2,5)'},{id:'z4',desc:'As it must — it was the right thing to obey (84:2,5)'}];
 
 const S2_QUIZ=[
   {q:'What does "kadihun" (كَادِحٌ) mean in "Innaka kadihun ila Rabbika kadhan" (84:6)?',

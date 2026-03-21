@@ -24,28 +24,171 @@ window.SURAH_CONFIG={
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1-3 — وَالسَّمَاءِ ذَاتِ الْبُرُوجِ · وَالْيَوْمِ الْمَوْعُودِ · وَشَاهِدٍ وَمَشْهُودٍ', words:[
-    {ar:'وَمَشْهُودٍ', tr:'wa-mashhūd', en:'and what is witnessed', freq:4},
-    {ar:'وَشَاهِدٍ', tr:'wa-shāhid', en:'and a witness', freq:35},
-    {ar:'الْمَوْعُودِ', tr:'al-mawʿūd', en:'the Promised [Day]', freq:3},
+  {label:'85:1 — وَالسَّمَاءِ ذَاتِ الْبُرُوجِ', words:[
     {ar:'الْبُرُوجِ', tr:'al-burūj', en:'the great constellations', freq:3},
+    {ar:'ذَاتِ', tr:'dhāti', en:'possessor of', freq:36},
     {ar:'وَالسَّمَاءِ', tr:'wal-samāʾ', en:'by the sky', freq:120},
   ]},
-  {label:'Verse 12-13 — إِنَّ بَطْشَ رَبِّكَ لَشَدِيدٌ · إِنَّهُ هُوَ يُبْدِئُ وَيُعِيدُ', words:[
+  {label:'85:2 — وَالْيَوْمِ الْمَوْعُودِ', words:[
+    {ar:'الْمَوْعُودِ', tr:'al-mawʿūd', en:'the Promised [Day]', freq:3},
+    {ar:'وَالْيَوْمِ', tr:'wal-yawm', en:'and the Day', freq:365},
+  ]},
+  {label:'85:3 — وَشَاهِدٍ وَمَشْهُودٍ', words:[
+    {ar:'وَمَشْهُودٍ', tr:'wa-mashhūd', en:'and what is witnessed', freq:4},
+    {ar:'وَشَاهِدٍ', tr:'wa-shāhid', en:'and a witness', freq:35},
+  ]},
+  {label:'85:4 — قُتِلَ أَصْحَابُ الْأُخْدُودِ', words:[
+    {ar:'الْأُخْدُودِ', tr:'al-ukhdūd', en:'the ditch', freq:1},
+    {ar:'أَصْحَابُ', tr:'aṣḥābu', en:'the people of', freq:40},
+    {ar:'قُتِلَ', tr:'qutila', en:'cursed / destroyed were', freq:7},
+  ]},
+  {label:'85:5 — النَّارِ ذَاتِ الْوَقُودِ', words:[
+    {ar:'الْوَقُودِ', tr:'al-waqūd', en:'the fuel', freq:2},
+    {ar:'ذَاتِ', tr:'dhāti', en:'full of', freq:36},
+    {ar:'النَّارِ', tr:'al-nār', en:'the Fire', freq:145},
+  ]},
+  {label:'85:6 — إِذْ هُمْ عَلَيْهَا قُعُودٌ', words:[
+    {ar:'قُعُودٌ', tr:'quʿūd', en:'sitting', freq:1},
+    {ar:'عَلَيْهَا', tr:'ʿalayhā', en:'by it', freq:108},
+    'hum',
+    {ar:'إِذْ', tr:'idh', en:'when', freq:183},
+  ]},
+  {label:'85:7 — وَهُمْ عَلَىٰ مَا يَفْعَلُونَ بِالْمُؤْمِنِينَ شُهُودٌ', words:[
+    {ar:'شُهُودٌ', tr:'shuhūd', en:'witnesses', freq:35},
+    {ar:'بِالْمُؤْمِنِينَ', tr:'bil-muʾminīn', en:'to the believers', freq:65},
+    {ar:'يَفْعَلُونَ', tr:'yafʿalūn', en:'they were doing', freq:172},
+    'ma',
+    {ar:'عَلَىٰ', tr:'ʿalā', en:'over', freq:472},
+    {ar:'وَهُمْ', tr:'wa hum', en:'and they', freq:850},
+  ]},
+  {label:'85:8 — وَمَا نَقَمُوا مِنْهُمْ إِلَّا أَن يُؤْمِنُوا بِاللَّهِ الْعَزِيزِ الْحَمِيدِ', words:[
+    {ar:'الْحَمِيدِ', tr:'al-ḥamīd', en:'the Praiseworthy', freq:17},
+    {ar:'الْعَزِيزِ', tr:'al-ʿazīz', en:'the Almighty', freq:92},
+    {ar:'بِاللَّهِ', tr:'billāhi', en:'in Allah', freq:2699},
+    {ar:'يُؤْمِنُوا', tr:'yuʾminū', en:'they believe', freq:811},
+    {ar:'أَن', tr:'an', en:'that', freq:986},
+    'illa',
+    {ar:'مِنْهُمْ', tr:'minhum', en:'against them', freq:270},
+    {ar:'نَقَمُوا', tr:'naqamū', en:'they resented', freq:2},
+    {ar:'وَمَا', tr:'wa mā', en:'and not', freq:2005},
+  ]},
+  {label:'85:9 — الَّذِي لَهُ مُلْكُ السَّمَاوَاتِ وَالْأَرْضِ', words:[
+    'wal-ard',
+    'al-samawat',
+    {ar:'مُلْكُ', tr:'mulku', en:'dominion of', freq:48},
+    {ar:'لَهُ', tr:'lahu', en:'to Him belongs', freq:850},
+    'alladhi',
+  ]},
+  {label:'85:9b — وَاللَّهُ عَلَىٰ كُلِّ شَيْءٍ شَهِيدٌ', words:[
+    {ar:'شَهِيدٌ', tr:'shahīd', en:'Witness', freq:35},
+    'shay',
+    {ar:'كُلِّ', tr:'kulli', en:'every', freq:330},
+    {ar:'عَلَىٰ', tr:'ʿalā', en:'over', freq:472},
+    {ar:'وَاللَّهُ', tr:'wallāhu', en:'and Allah', freq:2699},
+  ]},
+  {label:'85:10 — إِنَّ الَّذِينَ فَتَنُوا الْمُؤْمِنِينَ وَالْمُؤْمِنَاتِ ثُمَّ لَمْ يَتُوبُوا', words:[
+    {ar:'يَتُوبُوا', tr:'yatūbū', en:'they repent', freq:12},
+    'lam',
+    'thumma',
+    {ar:'وَالْمُؤْمِنَاتِ', tr:'wal-muʾmināt', en:'and the believing women', freq:24},
+    {ar:'الْمُؤْمِنِينَ', tr:'al-muʾminīn', en:'the believing men', freq:65},
+    {ar:'فَتَنُوا', tr:'fatanū', en:'persecuted', freq:7},
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'those who', freq:1283},
+    'inna',
+  ]},
+  {label:'85:10b — فَلَهُمْ عَذَابُ جَهَنَّمَ وَلَهُمْ عَذَابُ الْحَرِيقِ', words:[
+    {ar:'الْحَرِيقِ', tr:'al-ḥarīq', en:'the Burning', freq:5},
+    {ar:'عَذَابُ', tr:'ʿadhābu', en:'punishment of', freq:373},
+    {ar:'وَلَهُمْ', tr:'wa lahum', en:'and for them is', freq:850},
+    'jahannam',
+    {ar:'عَذَابُ', tr:'ʿadhābu', en:'punishment of', freq:373},
+    {ar:'فَلَهُمْ', tr:'fa-lahum', en:'then for them is', freq:850},
+  ]},
+  {label:'85:11 — إِنَّ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ لَهُمْ جَنَّاتٌ', words:[
+    {ar:'جَنَّاتٌ', tr:'jannāt', en:'gardens', freq:147},
+    {ar:'لَهُمْ', tr:'lahum', en:'for them are', freq:850},
+    {ar:'الصَّالِحَاتِ', tr:'al-ṣāliḥāt', en:'righteous deeds', freq:73},
+    {ar:'وَعَمِلُوا', tr:'wa ʿamilū', en:'and did', freq:73},
+    {ar:'آمَنُوا', tr:'āmanū', en:'believed', freq:811},
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'those who', freq:1283},
+    'inna',
+  ]},
+  {label:'85:11b — تَجْرِي مِن تَحْتِهَا الْأَنْهَارُ ذَٰلِكَ الْفَوْزُ الْكَبِيرُ', words:[
+    {ar:'الْكَبِيرُ', tr:'al-kabīr', en:'the Great', freq:52},
+    {ar:'الْفَوْزُ', tr:'al-fawz', en:'the Attainment', freq:7},
+    'dhalika',
+    {ar:'الْأَنْهَارُ', tr:'al-anhār', en:'the rivers', freq:54},
+    {ar:'تَحْتِهَا', tr:'taḥtihā', en:'beneath them', freq:54},
+    'min',
+    {ar:'تَجْرِي', tr:'tajrī', en:'flow', freq:54},
+  ]},
+  {label:'85:12 — إِنَّ بَطْشَ رَبِّكَ لَشَدِيدٌ', words:[
+    {ar:'لَشَدِيدٌ', tr:'la-shadīd', en:'truly severe', freq:52},
+    'rabbika',
+    {ar:'بَطْشَ', tr:'baṭsha', en:'the grip of', freq:5},
+    'inna',
+  ]},
+  {label:'85:13 — إِنَّهُ هُوَ يُبْدِئُ وَيُعِيدُ', words:[
     {ar:'وَيُعِيدُ', tr:'wa-yuʿīd', en:'and repeats', freq:7},
     {ar:'يُبْدِئُ', tr:'yubdiʾ', en:'originates', freq:7},
-    {ar:'هُوَ', tr:'huwa', en:'He', freq:526},
-    {ar:'لَشَدِيدٌ', tr:'la-shadīd', en:'truly severe', freq:52},
-    {ar:'بَطْشَ', tr:'baṭsha', en:'the grip of', freq:5},
-    {ar:'رَبِّكَ', tr:'rabbika', en:'your Lord', freq:49},
-    'inna',
+    'huwa',
+    {ar:'إِنَّهُ', tr:'innahu', en:'indeed He', freq:743},
+  ]},
+  {label:'85:14 — وَهُوَ الْغَفُورُ الْوَدُودُ', words:[
+    {ar:'الْوَدُودُ', tr:'al-wadūd', en:'the Loving', freq:2},
+    {ar:'الْغَفُورُ', tr:'al-ghafūr', en:'the Forgiving', freq:91},
+    {ar:'وَهُوَ', tr:'wa huwa', en:'and He is', freq:526},
+  ]},
+  {label:'85:15 — ذُو الْعَرْشِ الْمَجِيدُ', words:[
+    {ar:'الْمَجِيدُ', tr:'al-majīd', en:'the Glorious', freq:4},
+    {ar:'الْعَرْشِ', tr:'al-ʿarsh', en:'the Throne', freq:26},
+    {ar:'ذُو', tr:'dhū', en:'Owner of', freq:28},
+  ]},
+  {label:'85:16 — فَعَّالٌ لِّمَا يُرِيدُ', words:[
+    {ar:'يُرِيدُ', tr:'yurīd', en:'He intends', freq:139},
+    {ar:'لِّمَا', tr:'limā', en:'for what', freq:2005},
+    {ar:'فَعَّالٌ', tr:'faʿʿāl', en:'Doer (Effecter)', freq:1},
+  ]},
+  {label:'85:17 — هَلْ أَتَاكَ حَدِيثُ الْجُنُودِ', words:[
+    {ar:'الْجُنُودِ', tr:'al-junūd', en:'the soldiers / armies', freq:10},
+    {ar:'حَدِيثُ', tr:'ḥadīthu', en:'the story of', freq:36},
+    {ar:'أَتَاكَ', tr:'atāka', en:'reached you', freq:130},
+    {ar:'هَلْ', tr:'hal', en:'has', freq:101},
+  ]},
+  {label:'85:18 — فِرْعَوْنَ وَثَمُودَ', words:[
+    {ar:'وَثَمُودَ', tr:'wa Thamūd', en:'and Thamud', freq:26},
+    {ar:'فِرْعَوْنَ', tr:'Firʿawn', en:'Pharaoh', freq:74},
+  ]},
+  {label:'85:19 — بَلِ الَّذِينَ كَفَرُوا فِي تَكْذِيبٍ', words:[
+    {ar:'تَكْذِيبٍ', tr:'takdhīb', en:'denial', freq:5},
+    'fi',
+    {ar:'كَفَرُوا', tr:'kafarū', en:'disbelieved', freq:525},
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'those who', freq:1283},
+    {ar:'بَلِ', tr:'bal', en:'rather / nay', freq:126},
+  ]},
+  {label:'85:20 — وَاللَّهُ مِن وَرَائِهِم مُّحِيطٌ', words:[
+    {ar:'مُّحِيطٌ', tr:'muḥīṭ', en:'encompassing', freq:8},
+    {ar:'وَرَائِهِم', tr:'warāʾihim', en:'behind them', freq:15},
+    'min',
+    {ar:'وَاللَّهُ', tr:'wallāhu', en:'and Allah', freq:2699},
+  ]},
+  {label:'85:21 — بَلْ هُوَ قُرْآنٌ مَّجِيدٌ', words:[
+    {ar:'مَّجِيدٌ', tr:'majīd', en:'glorious', freq:4},
+    {ar:'قُرْآنٌ', tr:'Qurʾān', en:'a Quran', freq:70},
+    'huwa',
+    {ar:'بَلْ', tr:'bal', en:'rather / nay', freq:126},
+  ]},
+  {label:'85:22 — فِي لَوْحٍ مَّحْفُوظٍ', words:[
+    {ar:'مَّحْفُوظٍ', tr:'maḥfūẓ', en:'preserved', freq:3},
+    {ar:'لَوْحٍ', tr:'lawḥ', en:'a Tablet', freq:4},
+    'fi',
   ]},
 ];
 
 window.setupWBWLevel(WBW_DATA, 10);
 
-const S1_ITEMS=[{id:'i1',text:'⭐ Sky with\nBuruj',zone:'z1'},{id:'i2',text:'📅 Promised\nDay',zone:'z2'},{id:'i3',text:'👁️ Witness &\nWitnessed',zone:'z3'}];
-const S1_ZONES=[{id:'z1',desc:'"Wa al-sama\' dhat al-buruj" (85:1) — By the sky possessing constellations. "Al-buruj" are the great star formations, the towers of the sky. A vast, ordered sky with permanent, majestic constellations — evidence of Allah\'s perfect creation and power.'},{id:'z2',desc:'"Wa al-yawm al-maw\'ud" (85:2) — By the Promised Day. The Day of Judgment — "maw\'ud" means promised, guaranteed. Allah swears by the certainty of the Day He Himself promised. If Allah swears by it — how real must it be?'},{id:'z3',desc:'"Wa shahedin wa mashhud" (85:3) — By the witness and the witnessed. Scholars interpret this as: Friday (witness) and Arafah (witnessed); the Prophet ﷺ (witness) and his community (witnessed); or the recording angels (witness) and the deeds (witnessed). All of human reality is being observed.'}];
+const S1_ITEMS=[{id:'i1',text:'وَالسَّمَاءِ ذَاتِ\nالْبُرُوجِ',zone:'z1'},{id:'i2',text:'وَالْيَوْمِ\nالْمَوْعُودِ',zone:'z2'},{id:'i3',text:'وَشَاهِدٍ\nوَمَشْهُودٍ',zone:'z3'}];
+const S1_ZONES=[{id:'z1',desc:'By the sky with constellations — the great star formations, towers of the sky (85:1)'},{id:'z2',desc:'And the Promised Day — the Day of Judgment, guaranteed by Allah (85:2)'},{id:'z3',desc:'And a witness and what is witnessed — all of reality is observed (85:3)'}];
 
 const S2_QUIZ=[
   {q:'What is "al-Ukhdud" (الأُخْدُود) mentioned in 85:4?',

@@ -187,28 +187,75 @@ function checkQuiz(n, data) {
 }
 
 // =============================================
-//  DRAG & DROP
+//  TAP-TO-MATCH (replaces drag & drop)
 // =============================================
 function renderDragDrop(n, items, zones) {
-  const pool    = document.getElementById(`drag-pool-${n}`);
+  const pool = document.getElementById(`drag-pool-${n}`);
   const zonesEl = document.getElementById(`drop-zones-${n}`);
-  if (!pool || !zonesEl) return;
-  pool.innerHTML = ''; zonesEl.innerHTML = '';
-  shuffle(items).forEach(item => {
-    const el = document.createElement('div');
-    const isArabic = /[\u0600-\u06FF]/.test(item.text);
-    el.className      = isArabic ? 'drag-item drag-item-ar' : 'drag-item';
-    el.draggable = true;
-    el.dataset.itemId = item.id; el.dataset.zone = item.zone;
-    el.dataset.pool   = `drag-pool-${n}`; el.textContent = item.text;
-    pool.appendChild(el);
+  const parent = pool ? pool.parentElement : (zonesEl ? zonesEl.parentElement : null);
+  if (!parent) return;
+
+  const pairs = items.map(item => {
+    const zone = zones.find(z => z.id === item.zone);
+    return { left: item.text, right: zone ? zone.desc : '', origIdx: item.id };
   });
-  shuffle(zones).forEach(zone => {
-    const el = document.createElement('div');
-    el.className      = 'drop-zone'; el.dataset.zoneId = zone.id;
-    el.innerHTML      = `<span class="drop-zone-desc">${zone.desc}</span>`;
-    zonesEl.appendChild(el);
+  const shuffledRight = shuffle(pairs.slice());
+
+  let html = '<div class="tap-match-grid">';
+  html += '<div class="tap-match-col">';
+  pairs.forEach((p, i) => {
+    const isAr = /[\u0600-\u06FF]/.test(p.left);
+    html += `<button class="wbw-match-btn${isAr ? ' ar-btn' : ''}" data-section="${n}" data-side="left" data-idx="${i}">${p.left}</button>`;
   });
+  html += '</div><div class="tap-match-col">';
+  shuffledRight.forEach(p => {
+    const origIdx = pairs.indexOf(p);
+    html += `<button class="wbw-match-btn en-btn" data-section="${n}" data-side="right" data-idx="${origIdx}">${p.right}</button>`;
+  });
+  html += '</div></div>';
+
+  parent.innerHTML = html;
+
+  let selectedLeft = null;
+  parent.addEventListener('click', function(ev) {
+    const btn = ev.target.closest('.wbw-match-btn');
+    if (!btn || btn.classList.contains('matched')) return;
+    const side = btn.dataset.side, idx = parseInt(btn.dataset.idx, 10);
+
+    if (side === 'left') {
+      parent.querySelectorAll('[data-side="left"]').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedLeft = idx;
+    } else if (side === 'right' && selectedLeft !== null) {
+      const leftBtn = parent.querySelector(`[data-side="left"][data-idx="${selectedLeft}"]`);
+      if (idx === selectedLeft) {
+        btn.classList.add('matched');
+        if (leftBtn) leftBtn.classList.add('matched');
+        if (leftBtn) leftBtn.classList.remove('selected');
+        selectedLeft = null;
+        const total = parent.querySelectorAll('[data-side="left"]').length;
+        const done = parent.querySelectorAll('[data-side="left"].matched').length;
+        const fb = document.getElementById(`feedback-${n}`);
+        if (done === total) {
+          if (fb) { fb.textContent = `🏆 All ${total} matched! MashAllah!`; fb.className = 'game-feedback success'; }
+          window.state[`s${n}Checked`] = true; saveProgress();
+          const claimBtn = document.getElementById(`complete-${n}-btn`);
+          if (claimBtn) claimBtn.style.display = 'inline-block';
+        } else if (fb) {
+          fb.textContent = `${done}/${total} matched`; fb.className = 'game-feedback partial';
+        }
+      } else {
+        btn.classList.add('wrong');
+        if (leftBtn) leftBtn.classList.add('wrong');
+        setTimeout(() => {
+          btn.classList.remove('wrong');
+          if (leftBtn) leftBtn.classList.remove('wrong', 'selected');
+        }, 700);
+        selectedLeft = null;
+      }
+    }
+  });
+
   if (window.state.completed.includes(n) || window.state[`s${n}Checked`]) {
     const btn = document.getElementById(`complete-${n}-btn`);
     if (btn) btn.style.display = 'inline-block';
@@ -216,25 +263,19 @@ function renderDragDrop(n, items, zones) {
 }
 
 function checkDragDrop(n, zones) {
-  const dropZones = document.querySelectorAll(`#drop-zones-${n} .drop-zone`);
-  let correct = 0;
-  dropZones.forEach(zone => {
-    zone.classList.remove('correct', 'incorrect');
-    const item = zone.querySelector('.drag-item');
-    if (item && item.dataset.zone === zone.dataset.zoneId) { zone.classList.add('correct');   correct++; }
-    else if (item)                                          { zone.classList.add('incorrect'); }
-  });
-  const fb = document.getElementById(`feedback-${n}`), total = zones.length;
-  if (!fb) return;
-  if (correct === total) {
-    fb.textContent = `🏆 Perfect! All ${total} matched! MashAllah!`; fb.className = 'game-feedback success';
+  const pool = document.getElementById(`drag-pool-${n}`);
+  const parent = pool ? pool.parentElement : null;
+  if (!parent) return;
+  const total = parent.querySelectorAll('[data-side="left"]').length;
+  const done = parent.querySelectorAll('[data-side="left"].matched').length;
+  const fb = document.getElementById(`feedback-${n}`);
+  if (done === total && total > 0) {
+    if (fb) { fb.textContent = `🏆 All ${total} matched! MashAllah!`; fb.className = 'game-feedback success'; }
     window.state[`s${n}Checked`] = true; saveProgress();
-    const btn = document.getElementById(`complete-${n}-btn`);
-    if (btn) btn.style.display = 'inline-block';
-  } else if (correct >= total - 1) {
-    fb.textContent = `✅ ${correct}/${total} — so close! Fix the red one.`; fb.className = 'game-feedback partial';
-  } else {
-    fb.textContent = `❌ ${correct}/${total} — re-read and try again!`; fb.className = 'game-feedback error';
+    const btn = document.getElementById(`complete-${n}-btn`); if (btn) btn.style.display = 'inline-block';
+  } else if (fb) {
+    fb.textContent = `${done}/${total} matched — tap Arabic on left, then tap its English meaning on right!`;
+    fb.className = 'game-feedback';
   }
 }
 
@@ -300,97 +341,4 @@ function checkStoryOrder(n, data) {
   }
 }
 
-// =============================================
-//  MOUSE DRAG EVENTS (desktop)
-// =============================================
-let _dragging = null;
-document.addEventListener('dragstart', e => {
-  const item = e.target.closest('.drag-item'); if (!item) return;
-  _dragging = item;
-  setTimeout(() => item.classList.add('dragging'), 0);
-  e.dataTransfer.setData('text/plain', item.dataset.itemId || '');
-});
-document.addEventListener('dragend', e => {
-  const item = e.target.closest('.drag-item'); if (item) item.classList.remove('dragging');
-  _dragging = null;
-});
-document.addEventListener('dragover', e => {
-  const zone = e.target.closest('.drop-zone');
-  if (zone) { e.preventDefault(); zone.classList.add('drag-over'); }
-  if (e.target.closest('.drag-pool')) e.preventDefault();
-});
-document.addEventListener('dragleave', e => {
-  const zone = e.target.closest('.drop-zone');
-  if (zone && !zone.contains(e.relatedTarget)) zone.classList.remove('drag-over');
-});
-document.addEventListener('drop', e => {
-  e.preventDefault(); if (!_dragging) return;
-  const targetZone = e.target.closest('.drop-zone');
-  const targetPool = e.target.closest('.drag-pool');
-  if (targetZone) {
-    targetZone.classList.remove('drag-over');
-    const ex = targetZone.querySelector('.drag-item');
-    if (ex) { ex.classList.remove('placed'); const p = document.getElementById(ex.dataset.pool) || ex.closest('.drag-pool'); if (p) p.appendChild(ex); }
-    _dragging.classList.add('placed'); targetZone.appendChild(_dragging);
-  } else if (targetPool) {
-    _dragging.classList.remove('placed'); targetPool.appendChild(_dragging);
-  }
-  _dragging = null;
-});
-
-// =============================================
-//  TOUCH DRAG & DROP — iOS / Android
-// =============================================
-(function () {
-  let touchEl = null, touchClone = null, offX = 0, offY = 0;
-  function zoneAt(x, y) {
-    if (touchClone) touchClone.style.visibility = 'hidden';
-    const el = document.elementFromPoint(x, y);
-    if (touchClone) touchClone.style.visibility = '';
-    return el ? el.closest('.drop-zone') : null;
-  }
-  function poolOf(el) { return document.getElementById(el.dataset.pool) || el.closest('.drag-pool'); }
-  document.addEventListener('touchstart', function(e) {
-    const t = e.target.closest('.drag-item'); if (!t) return;
-    e.preventDefault(); touchEl = t; touchEl.classList.add('dragging');
-    const touch = e.touches[0], rect = t.getBoundingClientRect();
-    offX = touch.clientX - rect.left; offY = touch.clientY - rect.top;
-    touchClone = t.cloneNode(true);
-    const cs = window.getComputedStyle(t);
-    Object.assign(touchClone.style, {
-      position:'fixed', zIndex:'9999', pointerEvents:'none', opacity:'0.85',
-      width:rect.width+'px', minHeight:rect.height+'px',
-      left:(touch.clientX-offX)+'px', top:(touch.clientY-offY)+'px',
-      margin:'0', background:cs.background, border:cs.border, padding:cs.padding,
-      color:cs.color, fontSize:cs.fontSize, fontFamily:cs.fontFamily,
-      lineHeight:cs.lineHeight, whiteSpace:'pre-line', boxSizing:'border-box', transform:'scale(1.06)',
-    });
-    document.body.appendChild(touchClone);
-  }, { passive: false });
-  document.addEventListener('touchmove', function(e) {
-    if (!touchEl) return; e.preventDefault();
-    const touch = e.touches[0];
-    touchClone.style.left = (touch.clientX-offX)+'px'; touchClone.style.top = (touch.clientY-offY)+'px';
-    document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
-    const z = zoneAt(touch.clientX, touch.clientY); if (z) z.classList.add('drag-over');
-  }, { passive: false });
-  document.addEventListener('touchend', function(e) {
-    if (!touchEl) return;
-    const touch = e.changedTouches[0];
-    document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
-    const z = zoneAt(touch.clientX, touch.clientY);
-    if (z) {
-      const ex = z.querySelector('.drag-item');
-      if (ex && ex !== touchEl) { ex.classList.remove('placed'); const p = poolOf(ex); if (p) p.appendChild(ex); }
-      touchEl.classList.add('placed'); z.appendChild(touchEl);
-    }
-    touchEl.classList.remove('dragging'); touchEl = null;
-    if (touchClone) { touchClone.remove(); touchClone = null; }
-  }, { passive: false });
-  document.addEventListener('touchcancel', function() {
-    if (!touchEl) return;
-    touchEl.classList.remove('dragging'); touchEl = null;
-    if (touchClone) { touchClone.remove(); touchClone = null; }
-    document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
-  });
-}());
+// (Legacy drag & touch event listeners removed — replaced by tap-to-match above)

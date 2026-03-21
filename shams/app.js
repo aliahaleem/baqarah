@@ -33,27 +33,87 @@ window.SURAH_CONFIG = {
 /* Level 1 — Quiz: The Cosmic Oaths (91:1-7) */
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1-2 — وَالشَّمْسِ وَضُحَاهَا · وَالْقَمَرِ إِذَا تَلَاهَا', words:[
-    {ar:'تَلَاهَا', tr:'talāhā', en:'follows it', freq:1},
-    {ar:'وَالْقَمَرِ', tr:'wal-qamar', en:'and the moon', freq:27},
+  {label:'91:1 — وَالشَّمْسِ وَضُحَاهَا', words:[
     {ar:'وَضُحَاهَا', tr:'wa-ḍuḥāhā', en:'and its brightness', freq:3},
-    {ar:'وَالشَّمْسِ', tr:'wal-shams', en:'by the sun', freq:33},
+    {ar:'وَالشَّمْسِ', tr:'wash-shams', en:'by the sun', freq:33},
   ]},
-  {label:'Verse 7-8 — وَنَفْسٍ وَمَا سَوَّاهَا · فَأَلْهَمَهَا فُجُورَهَا وَتَقْوَاهَا', words:[
-    {ar:'وَتَقْوَاهَا', tr:'wa-taqwāhā', en:'and its righteousness', freq:64},
-    {ar:'فُجُورَهَا', tr:'fujūrahā', en:'its wickedness', freq:3},
-    {ar:'فَأَلْهَمَهَا', tr:'fa-alhamahā', en:'and inspired it', freq:1},
+  {label:'91:2 — وَالْقَمَرِ إِذَا تَلَاهَا', words:[
+    {ar:'تَلَاهَا', tr:'talāhā', en:'follows it', freq:1},
+    'idha',
+    {ar:'وَالْقَمَرِ', tr:'wal-qamar', en:'and the moon', freq:27},
+  ]},
+  {label:'91:3 — وَالنَّهَارِ إِذَا جَلَّاهَا', words:[
+    {ar:'جَلَّاهَا', tr:'jallāhā', en:'reveals / uncovers it', freq:1},
+    'idha',
+    {ar:'وَالنَّهَارِ', tr:'wan-nahār', en:'and the day', freq:57},
+  ]},
+  {label:'91:4 — وَاللَّيْلِ إِذَا يَغْشَاهَا', words:[
+    {ar:'يَغْشَاهَا', tr:'yaghshāhā', en:'covers it', freq:1},
+    'idha',
+    {ar:'وَاللَّيْلِ', tr:'wal-layl', en:'and the night', freq:72},
+  ]},
+  {label:'91:5 — وَالسَّمَاءِ وَمَا بَنَاهَا', words:[
+    {ar:'بَنَاهَا', tr:'banāhā', en:'built it', freq:6},
+    {ar:'وَمَا', tr:'wa-mā', en:'and He who', freq:500},
+    {ar:'وَالسَّمَاءِ', tr:'was-samāʾ', en:'and the sky', freq:310},
+  ]},
+  {label:'91:6 — وَالْأَرْضِ وَمَا طَحَاهَا', words:[
+    {ar:'طَحَاهَا', tr:'ṭaḥāhā', en:'spread it out', freq:1},
+    {ar:'وَمَا', tr:'wa-mā', en:'and He who', freq:500},
+    {ar:'وَالْأَرْضِ', tr:'wal-arḍ', en:'and the earth', freq:95},
+  ]},
+  {label:'91:7 — وَنَفْسٍ وَمَا سَوَّاهَا', words:[
     {ar:'سَوَّاهَا', tr:'sawwāhā', en:'proportioned it', freq:4},
     {ar:'وَمَا', tr:'wa-mā', en:'and He who', freq:500},
     {ar:'وَنَفْسٍ', tr:'wa-nafs', en:'and [by] the soul', freq:295},
   ]},
-  {label:'Verse 9-10 — قَدْ أَفْلَحَ مَن زَكَّاهَا · وَقَدْ خَابَ مَن دَسَّاهَا', words:[
-    {ar:'دَسَّاهَا', tr:'dassāhā', en:'corrupts it', freq:1},
-    {ar:'خَابَ', tr:'khāba', en:'has failed', freq:5},
+  {label:'91:8 — فَأَلْهَمَهَا فُجُورَهَا وَتَقْوَاهَا', words:[
+    {ar:'وَتَقْوَاهَا', tr:'wa-taqwāhā', en:'and its righteousness', freq:64},
+    {ar:'فُجُورَهَا', tr:'fujūrahā', en:'its wickedness', freq:3},
+    {ar:'فَأَلْهَمَهَا', tr:'fa-alhamahā', en:'then inspired it', freq:1},
+  ]},
+  {label:'91:9 — قَدْ أَفْلَحَ مَن زَكَّاهَا', words:[
     {ar:'زَكَّاهَا', tr:'zakkāhā', en:'purifies it', freq:5},
+    'man',
     {ar:'أَفْلَحَ', tr:'aflaḥa', en:'has succeeded', freq:10},
-    {ar:'مَن', tr:'man', en:'he who', freq:89},
     {ar:'قَدْ', tr:'qad', en:'certainly', freq:406},
+  ]},
+  {label:'91:10 — وَقَدْ خَابَ مَن دَسَّاهَا', words:[
+    {ar:'دَسَّاهَا', tr:'dassāhā', en:'corrupts it', freq:1},
+    'man',
+    {ar:'خَابَ', tr:'khāba', en:'has failed', freq:5},
+    {ar:'وَقَدْ', tr:'wa-qad', en:'and certainly', freq:406},
+  ]},
+  {label:'91:11 — كَذَّبَتْ ثَمُودُ بِطَغْوَاهَا', words:[
+    {ar:'بِطَغْوَاهَا', tr:'bi-ṭaghwāhā', en:'in its transgression', freq:1},
+    {ar:'ثَمُودُ', tr:'thamūd', en:'Thamud', freq:26},
+    {ar:'كَذَّبَتْ', tr:'kadhdhabat', en:'denied', freq:45},
+  ]},
+  {label:'91:12 — إِذِ انبَعَثَ أَشْقَاهَا', words:[
+    {ar:'أَشْقَاهَا', tr:'ashqāhā', en:'the most wretched of them', freq:1},
+    {ar:'انبَعَثَ', tr:'inbaʿatha', en:'rose up', freq:1},
+    {ar:'إِذِ', tr:'idh', en:'when', freq:73},
+  ]},
+  {label:'91:13 — فَقَالَ لَهُمْ رَسُولُ اللَّهِ نَاقَةَ اللَّهِ وَسُقْيَاهَا', words:[
+    {ar:'وَسُقْيَاهَا', tr:'wa-suqyāhā', en:'and her drink', freq:1},
+    {ar:'نَاقَةَ اللَّهِ', tr:'nāqat Allāh', en:'she-camel of Allah', freq:2},
+    {ar:'رَسُولُ اللَّهِ', tr:'rasūl Allāh', en:'Messenger of Allah', freq:10},
+    {ar:'لَهُمْ', tr:'lahum', en:'to them', freq:400},
+    {ar:'فَقَالَ', tr:'fa-qāla', en:'then he said', freq:528},
+  ]},
+  {label:'91:14 — فَكَذَّبُوهُ فَعَقَرُوهَا فَدَمْدَمَ عَلَيْهِمْ رَبُّهُم بِذَنبِهِمْ فَسَوَّاهَا', words:[
+    {ar:'فَسَوَّاهَا', tr:'fa-sawwāhā', en:'and levelled it', freq:4},
+    {ar:'بِذَنبِهِمْ', tr:'bi-dhanbihim', en:'for their sin', freq:4},
+    {ar:'رَبُّهُم', tr:'rabbuhum', en:'their Lord', freq:20},
+    {ar:'عَلَيْهِمْ', tr:'ʿalayhim', en:'upon them', freq:400},
+    {ar:'فَدَمْدَمَ', tr:'fa-damdama', en:'then destroyed them', freq:1},
+    {ar:'فَعَقَرُوهَا', tr:'fa-ʿaqarūhā', en:'then they hamstrung her', freq:2},
+    {ar:'فَكَذَّبُوهُ', tr:'fa-kadhdhabūhu', en:'but they denied him', freq:5},
+  ]},
+  {label:'91:15 — وَلَا يَخَافُ عُقْبَاهَا', words:[
+    {ar:'عُقْبَاهَا', tr:'ʿuqbāhā', en:'its consequence', freq:1},
+    {ar:'يَخَافُ', tr:'yakhāfu', en:'fears', freq:13},
+    'wala',
   ]},
 ];
 
@@ -76,12 +136,12 @@ const S1_QUIZ = [
 
 /* Level 2 — Drag & Drop: Match Oath to Meaning (91:1-6) */
 const S2_ITEMS = [
-  {id:'o1', text:'☀️ Ash-Shams\n(The Sun)',      zone:'z1'},
-  {id:'o2', text:'🌙 Al-Qamar\n(The Moon)',       zone:'z2'},
-  {id:'o3', text:'🌅 An-Nahar\n(The Day)',         zone:'z3'},
-  {id:'o4', text:'🌑 Al-Layl\n(The Night)',         zone:'z4'},
-  {id:'o5', text:'🌌 As-Sama\n(The Sky)',            zone:'z5'},
-  {id:'o6', text:'🌍 Al-Ard\n(The Earth)',           zone:'z6'},
+  {id:'o1', text:'وَالشَّمْسِ',   zone:'z1'},
+  {id:'o2', text:'وَالْقَمَرِ',   zone:'z2'},
+  {id:'o3', text:'وَالنَّهَارِ',  zone:'z3'},
+  {id:'o4', text:'وَاللَّيْلِ',   zone:'z4'},
+  {id:'o5', text:'وَالسَّمَاءِ',  zone:'z5'},
+  {id:'o6', text:'وَالْأَرْضِ',   zone:'z6'},
 ];
 const S2_ZONES = [
   {id:'z1', desc:'When it shines in morning brightness (91:1)'},

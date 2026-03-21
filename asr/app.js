@@ -23,23 +23,23 @@ window.SURAH_CONFIG = {
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1 — وَالْعَصْرِ', words:[
+  {label:'103:1 — وَالْعَصْرِ', words:[
     {ar:'وَالْعَصْرِ', tr:'wal-ʿaṣr', en:'by Time', freq:3},
   ]},
-  {label:'Verse 2 — إِنَّ الْإِنسَانَ لَفِي خُسْرٍ', words:[
+  {label:'103:2 — إِنَّ الْإِنسَانَ لَفِي خُسْرٍ', words:[
     {ar:'خُسْرٍ', tr:'khusr', en:'loss', freq:5},
     {ar:'لَفِي', tr:'la-fī', en:'surely in', freq:1714},
-    'inna',
     {ar:'الْإِنسَانَ', tr:'al-insān', en:'mankind', freq:65},
+    'inna',
   ]},
-  {label:'Verse 3 — إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ', words:[
+  {label:'103:3 — إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ', words:[
     {ar:'الصَّالِحَاتِ', tr:'al-ṣāliḥāt', en:'righteous deeds', freq:62},
     {ar:'وَعَمِلُوا', tr:'wa-ʿamilū', en:'and did', freq:360},
     {ar:'آمَنُوا', tr:'āmanū', en:'believed', freq:537},
     {ar:'الَّذِينَ', tr:'alladhīna', en:'those who', freq:1450},
-    {ar:'إِلَّا', tr:'illā', en:'except', freq:663},
+    'illa',
   ]},
-  {label:'Verse 3b — وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ', words:[
+  {label:'103:3b — وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ', words:[
     {ar:'بِالصَّبْرِ', tr:'bil-ṣabr', en:'patience', freq:22},
     {ar:'وَتَوَاصَوْا', tr:'wa-tawāṣaw', en:'and urged one another to', freq:2},
     {ar:'بِالْحَقِّ', tr:'bil-ḥaqq', en:'truth', freq:247},

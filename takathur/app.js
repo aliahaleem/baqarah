@@ -23,28 +23,49 @@ window.SURAH_CONFIG = {
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1 — أَلْهَاكُمُ التَّكَاثُرُ', words:[
+  {label:'102:1 — أَلْهَاكُمُ التَّكَاثُرُ', words:[
     {ar:'التَّكَاثُرُ', tr:'al-takāthur', en:'competition for more', freq:1},
     {ar:'أَلْهَاكُمُ', tr:'alhākum', en:'has diverted you', freq:1},
   ]},
-  {label:'Verse 2 — حَتَّىٰ زُرْتُمُ الْمَقَابِرَ', words:[
+  {label:'102:2 — حَتَّىٰ زُرْتُمُ الْمَقَابِرَ', words:[
     {ar:'الْمَقَابِرَ', tr:'al-maqābir', en:'the graves', freq:1},
     {ar:'زُرْتُمُ', tr:'zurtum', en:'you visited', freq:1},
     {ar:'حَتَّىٰ', tr:'ḥattā', en:'until', freq:129},
   ]},
-  {label:'Verse 5 — كَلَّا لَوْ تَعْلَمُونَ عِلْمَ الْيَقِينِ', words:[
+  {label:'102:3 — كَلَّا سَوْفَ تَعْلَمُونَ', words:[
+    {ar:'تَعْلَمُونَ', tr:'taʿlamūn', en:'you will know', freq:50},
+    {ar:'سَوْفَ', tr:'sawfa', en:'soon / you will', freq:30},
+    'kalla',
+  ]},
+  {label:'102:4 — ثُمَّ كَلَّا سَوْفَ تَعْلَمُونَ', words:[
+    {ar:'تَعْلَمُونَ', tr:'taʿlamūn', en:'you will know', freq:50},
+    {ar:'سَوْفَ', tr:'sawfa', en:'soon / you will', freq:30},
+    'kalla',
+    'thumma',
+  ]},
+  {label:'102:5 — كَلَّا لَوْ تَعْلَمُونَ عِلْمَ الْيَقِينِ', words:[
     {ar:'الْيَقِينِ', tr:'al-yaqīn', en:'certainty', freq:5},
     {ar:'عِلْمَ', tr:'ʿilma', en:'knowledge of', freq:105},
     {ar:'تَعْلَمُونَ', tr:'taʿlamūn', en:'you knew', freq:50},
     {ar:'لَوْ', tr:'law', en:'if', freq:192},
-    {ar:'كَلَّا', tr:'kallā', en:'No! Indeed', freq:33},
+    'kalla',
   ]},
-  {label:'Verse 8 — ثُمَّ لَتُسْأَلُنَّ يَوْمَئِذٍ عَنِ النَّعِيمِ', words:[
+  {label:'102:6 — لَتَرَوُنَّ الْجَحِيمَ', words:[
+    {ar:'الْجَحِيمَ', tr:'al-jaḥīm', en:'the Hellfire', freq:26},
+    {ar:'لَتَرَوُنَّ', tr:'la-tarawunna', en:'you will surely see', freq:1},
+  ]},
+  {label:'102:7 — ثُمَّ لَتَرَوُنَّهَا عَيْنَ الْيَقِينِ', words:[
+    {ar:'الْيَقِينِ', tr:'al-yaqīn', en:'certainty', freq:5},
+    {ar:'عَيْنَ', tr:'ʿayna', en:'eye / vision of', freq:30},
+    {ar:'لَتَرَوُنَّهَا', tr:'la-tarawunnahā', en:'you will surely see it', freq:1},
+    'thumma',
+  ]},
+  {label:'102:8 — ثُمَّ لَتُسْأَلُنَّ يَوْمَئِذٍ عَنِ النَّعِيمِ', words:[
     {ar:'النَّعِيمِ', tr:'al-naʿīm', en:'the blessings', freq:16},
     {ar:'عَنِ', tr:'ʿan', en:'about', freq:330},
     {ar:'يَوْمَئِذٍ', tr:'yawmaʾidhin', en:'that Day', freq:37},
     {ar:'لَتُسْأَلُنَّ', tr:'la-tusʾalunna', en:'you will surely be asked', freq:2},
-    {ar:'ثُمَّ', tr:'thumma', en:'then', freq:340},
+    'thumma',
   ]},
 ];
 
@@ -66,9 +87,9 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'t1', text:'\'Ilm al-Yaqin\n(Certain knowledge)',   zone:'z1'},
-  {id:'t2', text:'\'Ayn al-Yaqin\n(Eye-certain — seeing)', zone:'z2'},
-  {id:'t3', text:'Haqq al-Yaqin\n(True certainty)',        zone:'z3'},
+  {id:'t1', text:'عِلْمَ الْيَقِينِ',   zone:'z1'},
+  {id:'t2', text:'عَيْنَ الْيَقِينِ',   zone:'z2'},
+  {id:'t3', text:'حَقَّ الْيَقِينِ',    zone:'z3'},
 ];
 const S2_ZONES = [
   {id:'z1', desc:'"Law ta\'lamuna \'ilmal-yaqin" — if you truly KNEW with certainty (102:5)'},

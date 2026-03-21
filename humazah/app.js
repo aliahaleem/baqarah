@@ -23,28 +23,56 @@ window.SURAH_CONFIG = {
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1 — وَيْلٌ لِّكُلِّ هُمَزَةٍ لُّمَزَةٍ', words:[
+  {label:'104:1 — وَيْلٌ لِّكُلِّ هُمَزَةٍ لُّمَزَةٍ', words:[
     {ar:'لُّمَزَةٍ', tr:'lumazah', en:'backbiter', freq:1},
     {ar:'هُمَزَةٍ', tr:'humazah', en:'slanderer', freq:1},
     {ar:'لِّكُلِّ', tr:'li-kulli', en:'to every', freq:99},
     'waylun',
   ]},
-  {label:'Verse 2 — الَّذِي جَمَعَ مَالًا وَعَدَّدَهُ', words:[
+  {label:'104:2 — الَّذِي جَمَعَ مَالًا وَعَدَّدَهُ', words:[
     {ar:'وَعَدَّدَهُ', tr:'wa-ʿaddadahu', en:'and counted it', freq:1},
     {ar:'مَالًا', tr:'mālan', en:'wealth', freq:85},
     {ar:'جَمَعَ', tr:'jamaʿa', en:'who amassed', freq:29},
     'alladhi',
   ]},
-  {label:'Verse 4 — كَلَّا لَيُنبَذَنَّ فِي الْحُطَمَةِ', words:[
-    {ar:'الْحُطَمَةِ', tr:'al-ḥuṭamah', en:'the Crusher (Hellfire)', freq:2},
-    {ar:'فِي', tr:'fī', en:'into', freq:1714},
-    {ar:'لَيُنبَذَنَّ', tr:'la-yunbadhanna', en:'he will surely be thrown', freq:1},
-    {ar:'كَلَّا', tr:'kallā', en:'No! Indeed', freq:33},
+  {label:'104:3 — يَحْسَبُ أَنَّ مَالَهُ أَخْلَدَهُ', words:[
+    {ar:'أَخْلَدَهُ', tr:'akhladahu', en:'will make him immortal', freq:1},
+    {ar:'مَالَهُ', tr:'mālahu', en:'his wealth', freq:15},
+    {ar:'أَنَّ', tr:'anna', en:'that', freq:407},
+    {ar:'يَحْسَبُ', tr:'yaḥsabu', en:'he thinks', freq:12},
   ]},
-  {label:'Verse 6 — نَارُ اللَّهِ الْمُوقَدَةُ', words:[
+  {label:'104:4 — كَلَّا لَيُنبَذَنَّ فِي الْحُطَمَةِ', words:[
+    {ar:'الْحُطَمَةِ', tr:'al-ḥuṭamah', en:'the Crusher (Hellfire)', freq:2},
+    'fi',
+    {ar:'لَيُنبَذَنَّ', tr:'la-yunbadhanna', en:'he will surely be thrown', freq:1},
+    'kalla',
+  ]},
+  {label:'104:5 — وَمَا أَدْرَاكَ مَا الْحُطَمَةُ', words:[
+    {ar:'الْحُطَمَةُ', tr:'al-ḥuṭamah', en:'the Crusher', freq:2},
+    'ma',
+    {ar:'أَدْرَاكَ', tr:'adrāka', en:'can make you know', freq:13},
+    {ar:'وَمَا', tr:'wa-mā', en:'and what', freq:2005},
+  ]},
+  {label:'104:6 — نَارُ اللَّهِ الْمُوقَدَةُ', words:[
     {ar:'الْمُوقَدَةُ', tr:'al-mūqadah', en:'ever-burning', freq:1},
-    {ar:'اللَّهِ', tr:'Allāh', en:'of Allah', freq:2699},
-    {ar:'نَارُ', tr:'nār', en:'the Fire', freq:145},
+    'allah',
+    {ar:'نَارُ', tr:'nār', en:'the Fire of', freq:145},
+  ]},
+  {label:'104:7 — الَّتِي تَطَّلِعُ عَلَى الْأَفْئِدَةِ', words:[
+    {ar:'الْأَفْئِدَةِ', tr:'al-afʾidah', en:'the hearts', freq:5},
+    {ar:'عَلَى', tr:'ʿalā', en:'over / upon', freq:1445},
+    {ar:'تَطَّلِعُ', tr:'taṭṭaliʿu', en:'it mounts up / rises', freq:1},
+    {ar:'الَّتِي', tr:'allatī', en:'which', freq:270},
+  ]},
+  {label:'104:8 — إِنَّهَا عَلَيْهِم مُّؤْصَدَةٌ', words:[
+    {ar:'مُّؤْصَدَةٌ', tr:'muʾṣadah', en:'closed / sealed', freq:2},
+    {ar:'عَلَيْهِم', tr:'ʿalayhim', en:'over them', freq:140},
+    {ar:'إِنَّهَا', tr:'innahā', en:'indeed it is', freq:15},
+  ]},
+  {label:'104:9 — فِي عَمَدٍ مُّمَدَّدَةٍ', words:[
+    {ar:'مُّمَدَّدَةٍ', tr:'mumaddadah', en:'extended / outstretched', freq:1},
+    {ar:'عَمَدٍ', tr:'ʿamadin', en:'columns / pillars', freq:2},
+    'fi',
   ]},
 ];
 

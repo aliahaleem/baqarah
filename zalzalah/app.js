@@ -23,22 +23,43 @@ window.SURAH_CONFIG = {
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1 — إِذَا زُلْزِلَتِ الْأَرْضُ زِلْزَالَهَا', words:[
+  {label:'99:1 — إِذَا زُلْزِلَتِ الْأَرْضُ زِلْزَالَهَا', words:[
     {ar:'زِلْزَالَهَا', tr:'zilzālahā', en:'its [ultimate] earthquake', freq:2},
     {ar:'الْأَرْضُ', tr:'al-arḍ', en:'the earth', freq:461},
+    {ar:'زُلْزِلَتِ', tr:'zulzilat', en:'is shaken', freq:2},
     'idha',
   ]},
-  {label:'Verse 2 — وَأَخْرَجَتِ الْأَرْضُ أَثْقَالَهَا', words:[
+  {label:'99:2 — وَأَخْرَجَتِ الْأَرْضُ أَثْقَالَهَا', words:[
     {ar:'أَثْقَالَهَا', tr:'athqālahā', en:'its burdens', freq:1},
     {ar:'الْأَرْضُ', tr:'al-arḍ', en:'the earth', freq:461},
     {ar:'وَأَخْرَجَتِ', tr:'wa-akhrajat', en:'and brings forth', freq:55},
   ]},
-  {label:'Verse 4 — يَوْمَئِذٍ تُحَدِّثُ أَخْبَارَهَا', words:[
-    {ar:'أَخْبَارَهَا', tr:'akhbārahā', en:'its stories/news', freq:3},
+  {label:'99:3 — وَقَالَ الْإِنسَانُ مَا لَهَا', words:[
+    {ar:'لَهَا', tr:'lahā', en:'is [wrong] with it?', freq:176},
+    'ma',
+    {ar:'الْإِنسَانُ', tr:'al-insān', en:'mankind', freq:65},
+    {ar:'وَقَالَ', tr:'wa-qāla', en:'and says', freq:528},
+  ]},
+  {label:'99:4 — يَوْمَئِذٍ تُحَدِّثُ أَخْبَارَهَا', words:[
+    {ar:'أَخْبَارَهَا', tr:'akhbārahā', en:'its stories / news', freq:3},
     {ar:'تُحَدِّثُ', tr:'tuḥaddithu', en:'it will report', freq:1},
     {ar:'يَوْمَئِذٍ', tr:'yawmaʾidhin', en:'that Day', freq:37},
   ]},
-  {label:'Verse 7 — فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ', words:[
+  {label:'99:5 — بِأَنَّ رَبَّكَ أَوْحَىٰ لَهَا', words:[
+    {ar:'لَهَا', tr:'lahā', en:'to it', freq:176},
+    {ar:'أَوْحَىٰ', tr:'awḥā', en:'inspired / revealed', freq:36},
+    {ar:'رَبَّكَ', tr:'rabbaka', en:'your Lord', freq:30},
+    {ar:'بِأَنَّ', tr:'bi-anna', en:'because', freq:24},
+  ]},
+  {label:'99:6 — يَوْمَئِذٍ يَصْدُرُ النَّاسُ أَشْتَاتًا لِّيُرَوْا أَعْمَالَهُمْ', words:[
+    {ar:'أَعْمَالَهُمْ', tr:'aʿmālahum', en:'their deeds', freq:38},
+    {ar:'لِّيُرَوْا', tr:'li-yuraw', en:'to be shown', freq:1},
+    {ar:'أَشْتَاتًا', tr:'ashtātan', en:'in scattered groups', freq:2},
+    {ar:'النَّاسُ', tr:'al-nās', en:'the people', freq:241},
+    {ar:'يَصْدُرُ', tr:'yaṣduru', en:'will proceed', freq:2},
+    {ar:'يَوْمَئِذٍ', tr:'yawmaʾidhin', en:'that Day', freq:37},
+  ]},
+  {label:'99:7 — فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ', words:[
     {ar:'يَرَهُ', tr:'yarahu', en:'will see it', freq:3},
     {ar:'خَيْرًا', tr:'khayran', en:'good', freq:189},
     {ar:'ذَرَّةٍ', tr:'dharratin', en:'an atom', freq:3},
@@ -46,7 +67,7 @@ const WBW_DATA = [
     {ar:'يَعْمَلْ', tr:'yaʿmal', en:'does', freq:360},
     {ar:'فَمَن', tr:'fa-man', en:'so whoever', freq:89},
   ]},
-  {label:'Verse 8 — وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُ', words:[
+  {label:'99:8 — وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُ', words:[
     {ar:'يَرَهُ', tr:'yarahu', en:'will see it', freq:3},
     {ar:'شَرًّا', tr:'sharran', en:'evil', freq:30},
     {ar:'ذَرَّةٍ', tr:'dharratin', en:'an atom', freq:3},

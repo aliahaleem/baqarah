@@ -469,6 +469,14 @@ html[data-theme="stars"] .drop-zone-desc { font-size: 14px; }
 .drop-zone.correct    { border-color: var(--success) !important; background: rgba(39,174,96,0.1); border-style: solid !important; }
 .drop-zone.incorrect  { border-color: var(--error)   !important; background: rgba(231,76,60,0.1); border-style: solid !important; }
 
+/* ── Tap-to-Match grid (replaces drag-drop interaction) ── */
+.tap-match-grid { display: flex; gap: 10px; justify-content: center; padding: 8px 0; }
+.tap-match-col  { display: flex; flex-direction: column; gap: 6px; flex: 1; max-width: 240px; }
+.wbw-match-btn.en-btn {
+  font-family: var(--font-body); font-size: 13px;
+  text-align: left; line-height: 1.5; padding: 10px 12px;
+}
+
 /* ================================================
    QUIZ
    ================================================ */
@@ -734,6 +742,8 @@ html[data-theme="stars"] .theme-btn.active { background: rgba(255,255,255,0.12);
   .map-grid             { grid-template-columns: 1fr 1fr; }
   .dnd-wrapper          { grid-template-columns: 1fr; }
   .drag-game-container  { grid-template-columns: 1fr; }
+  .tap-match-grid       { flex-direction: column; }
+  .tap-match-col        { max-width: 100%; }
   .options-grid         { grid-template-columns: 1fr; }
   .ibn-ameen-panel      { flex-direction: column; }
   .character-avatar     { font-size: 36px; }

@@ -24,25 +24,130 @@ window.SURAH_CONFIG={
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1-2 — إِذَا السَّمَاءُ انفَطَرَتْ · وَإِذَا الْكَوَاكِبُ انتَثَرَتْ', words:[
-    {ar:'انتَثَرَتْ', tr:'intatharat', en:'scatter', freq:1},
-    {ar:'الْكَوَاكِبُ', tr:'al-kawākib', en:'the stars', freq:5},
+  {label:'82:1 — إِذَا السَّمَاءُ انفَطَرَتْ', words:[
     {ar:'انفَطَرَتْ', tr:'infaṭarat', en:'has broken apart', freq:1},
     {ar:'السَّمَاءُ', tr:'al-samāʾ', en:'the sky', freq:120},
     'idha',
   ]},
-  {label:'Verse 6 — يَا أَيُّهَا الْإِنسَانُ مَا غَرَّكَ بِرَبِّكَ الْكَرِيمِ', words:[
+  {label:'82:2 — وَإِذَا الْكَوَاكِبُ انتَثَرَتْ', words:[
+    {ar:'انتَثَرَتْ', tr:'intatharat', en:'scattered', freq:1},
+    {ar:'الْكَوَاكِبُ', tr:'al-kawākib', en:'the stars', freq:5},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'82:3 — وَإِذَا الْبِحَارُ فُجِّرَتْ', words:[
+    {ar:'فُجِّرَتْ', tr:'fujjirat', en:'burst forth', freq:1},
+    {ar:'الْبِحَارُ', tr:'al-biḥār', en:'the seas', freq:9},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'82:4 — وَإِذَا الْقُبُورُ بُعْثِرَتْ', words:[
+    {ar:'بُعْثِرَتْ', tr:'buʿthirat', en:'overturned', freq:1},
+    {ar:'الْقُبُورُ', tr:'al-qubūr', en:'the graves', freq:7},
+    {ar:'وَإِذَا', tr:'wa-idhā', en:'and when', freq:406},
+  ]},
+  {label:'82:5 — عَلِمَتْ نَفْسٌ مَّا قَدَّمَتْ وَأَخَّرَتْ', words:[
+    {ar:'وَأَخَّرَتْ', tr:'wa-akhkharat', en:'and delayed', freq:5},
+    {ar:'قَدَّمَتْ', tr:'qaddamat', en:'put forward', freq:14},
+    {ar:'مَّا', tr:'mā', en:'what', freq:2005},
+    {ar:'نَفْسٌ', tr:'nafsun', en:'a soul', freq:295},
+    {ar:'عَلِمَتْ', tr:'ʿalimat', en:'will know', freq:382},
+  ]},
+  {label:'82:6 — يَا أَيُّهَا الْإِنسَانُ مَا غَرَّكَ بِرَبِّكَ الْكَرِيمِ', words:[
     {ar:'الْكَرِيمِ', tr:'al-karīm', en:'the Generous', freq:27},
     {ar:'بِرَبِّكَ', tr:'bi-rabbika', en:'concerning your Lord', freq:49},
     {ar:'غَرَّكَ', tr:'gharraka', en:'deceived you', freq:2},
-    {ar:'مَا', tr:'mā', en:'what', freq:2005},
+    'ma',
     {ar:'الْإِنسَانُ', tr:'al-insān', en:'O mankind', freq:65},
+    {ar:'أَيُّهَا', tr:'ayyuhā', en:'O you', freq:142},
+    'ya',
+  ]},
+  {label:'82:7 — الَّذِي خَلَقَكَ فَسَوَّاكَ فَعَدَلَكَ', words:[
+    {ar:'فَعَدَلَكَ', tr:'fa-ʿadalaka', en:'and balanced you', freq:1},
+    {ar:'فَسَوَّاكَ', tr:'fa-sawwāka', en:'and proportioned you', freq:1},
+    {ar:'خَلَقَكَ', tr:'khalaqaka', en:'created you', freq:29},
+    'alladhi',
+  ]},
+  {label:'82:8 — فِي أَيِّ صُورَةٍ مَّا شَاءَ رَكَّبَكَ', words:[
+    {ar:'رَكَّبَكَ', tr:'rakkabaka', en:'assembled you', freq:1},
+    {ar:'شَاءَ', tr:'shāʾa', en:'He willed', freq:236},
+    {ar:'مَّا', tr:'mā', en:'whatever', freq:2005},
+    {ar:'صُورَةٍ', tr:'ṣūratin', en:'form', freq:3},
+    {ar:'أَيِّ', tr:'ayyi', en:'any / whichever', freq:16},
+    'fi',
+  ]},
+  {label:'82:9 — كَلَّا بَلْ تُكَذِّبُونَ بِالدِّينِ', words:[
+    'al-deen',
+    {ar:'تُكَذِّبُونَ', tr:'tukadhdhibūna', en:'you deny', freq:25},
+    {ar:'بَلْ', tr:'bal', en:'rather / nay', freq:126},
+    'kalla',
+  ]},
+  {label:'82:10 — وَإِنَّ عَلَيْكُمْ لَحَافِظِينَ', words:[
+    {ar:'لَحَافِظِينَ', tr:'la-ḥāfiẓīn', en:'surely guardians', freq:10},
+    {ar:'عَلَيْكُمْ', tr:'ʿalaykum', en:'over you', freq:44},
+    {ar:'وَإِنَّ', tr:'wa-inna', en:'and indeed', freq:743},
+  ]},
+  {label:'82:11 — كِرَامًا كَاتِبِينَ', words:[
+    {ar:'كَاتِبِينَ', tr:'kātibīn', en:'recording (angels)', freq:1},
+    {ar:'كِرَامًا', tr:'kirāman', en:'noble / honourable', freq:5},
+  ]},
+  {label:'82:12 — يَعْلَمُونَ مَا تَفْعَلُونَ', words:[
+    {ar:'تَفْعَلُونَ', tr:'tafʿalūna', en:'you do', freq:80},
+    'ma',
+    {ar:'يَعْلَمُونَ', tr:'yaʿlamūna', en:'they know', freq:382},
+  ]},
+  {label:'82:13 — إِنَّ الْأَبْرَارَ لَفِي نَعِيمٍ', words:[
+    {ar:'نَعِيمٍ', tr:'naʿīm', en:'bliss', freq:16},
+    {ar:'لَفِي', tr:'la-fī', en:'surely in', freq:1714},
+    {ar:'الْأَبْرَارَ', tr:'al-abrār', en:'the righteous', freq:6},
+    'inna',
+  ]},
+  {label:'82:14 — وَإِنَّ الْفُجَّارَ لَفِي جَحِيمٍ', words:[
+    {ar:'جَحِيمٍ', tr:'jaḥīm', en:'Hellfire', freq:26},
+    {ar:'لَفِي', tr:'la-fī', en:'surely in', freq:1714},
+    {ar:'الْفُجَّارَ', tr:'al-fujjār', en:'the wicked', freq:3},
+    {ar:'وَإِنَّ', tr:'wa-inna', en:'and indeed', freq:743},
+  ]},
+  {label:'82:15 — يَصْلَوْنَهَا يَوْمَ الدِّينِ', words:[
+    {ar:'الدِّينِ', tr:'al-dīn', en:'of Judgement', freq:92},
+    'yawma',
+    {ar:'يَصْلَوْنَهَا', tr:'yaṣlawnahā', en:'they will enter it', freq:5},
+  ]},
+  {label:'82:16 — وَمَا هُم عَنْهَا بِغَائِبِينَ', words:[
+    {ar:'بِغَائِبِينَ', tr:'bi-ghāʾibīn', en:'absent', freq:1},
+    {ar:'عَنْهَا', tr:'ʿanhā', en:'from it', freq:30},
+    'hum',
+    {ar:'وَمَا', tr:'wa-mā', en:'and not', freq:2005},
+  ]},
+  {label:'82:17 — وَمَا أَدْرَاكَ مَا يَوْمُ الدِّينِ', words:[
+    {ar:'الدِّينِ', tr:'al-dīn', en:'of Judgement', freq:92},
+    {ar:'يَوْمُ', tr:'yawmu', en:'the Day', freq:365},
+    'ma',
+    {ar:'أَدْرَاكَ', tr:'adrāka', en:'will make you know', freq:13},
+    {ar:'وَمَا', tr:'wa-mā', en:'and what', freq:2005},
+  ]},
+  {label:'82:18 — ثُمَّ مَا أَدْرَاكَ مَا يَوْمُ الدِّينِ', words:[
+    {ar:'الدِّينِ', tr:'al-dīn', en:'of Judgement', freq:92},
+    {ar:'يَوْمُ', tr:'yawmu', en:'the Day', freq:365},
+    'ma',
+    {ar:'أَدْرَاكَ', tr:'adrāka', en:'will make you know', freq:13},
+    'ma',
+    'thumma',
+  ]},
+  {label:'82:19 — يَوْمَ لَا تَمْلِكُ نَفْسٌ لِّنَفْسٍ شَيْئًا وَالْأَمْرُ يَوْمَئِذٍ لِّلَّهِ', words:[
+    {ar:'لِّلَّهِ', tr:'li-llāh', en:'for Allah', freq:170},
+    {ar:'يَوْمَئِذٍ', tr:'yawmaʾidhin', en:'that Day', freq:42},
+    {ar:'وَالْأَمْرُ', tr:'wal-amr', en:'and the command', freq:30},
+    {ar:'شَيْئًا', tr:'shayʾan', en:'anything', freq:283},
+    {ar:'لِّنَفْسٍ', tr:'li-nafsin', en:'for (another) soul', freq:295},
+    {ar:'نَفْسٌ', tr:'nafsun', en:'a soul', freq:295},
+    {ar:'تَمْلِكُ', tr:'tamliku', en:'possesses', freq:18},
+    'la',
+    'yawma',
   ]},
 ];
 
 window.setupWBWLevel(WBW_DATA, 10);
 
-const S1_ITEMS=[{id:'i1',text:'🌌 Sky\nInfatarat',zone:'z1'},{id:'i2',text:'⭐ Stars\nIntatharat',zone:'z2'},{id:'i3',text:'🌊 Seas\nFujjirat',zone:'z3'},{id:'i4',text:'⚰️ Graves\nBu\'thirat',zone:'z4'}];
+const S1_ITEMS=[{id:'i1',text:'السَّمَاءُ\nانفَطَرَتْ',zone:'z1'},{id:'i2',text:'الْكَوَاكِبُ\nانتَثَرَتْ',zone:'z2'},{id:'i3',text:'الْبِحَارُ\nفُجِّرَتْ',zone:'z3'},{id:'i4',text:'الْقُبُورُ\nبُعْثِرَتْ',zone:'z4'}];
 const S1_ZONES=[{id:'z1',desc:'"Idha al-sama\' infatarat" (82:1) — When the sky is CLEFT/split asunder. "Infatara" means to split open with force. The sky that seems permanent above us will be torn apart.'},{id:'z2',desc:'"Wa idha al-kawakib intatharat" (82:2) — When the stars are scattered/fall. "Intathara" means to scatter in every direction like scattered seeds.'},{id:'z3',desc:'"Wa idha al-bihar fujjirat" (82:3) — When the seas are burst forth/set flowing. Water merges, boundaries between seas dissolve, the ocean overflows. Everything orderly becomes chaotic.'},{id:'z4',desc:'"Wa idha al-qubur bu\'thirat" (82:4) — When the graves are overturned/stirred up. Their contents are thrown up — the dead emerge for resurrection. No one stays buried.'}];
 
 const S2_QUIZ=[
@@ -72,7 +177,7 @@ const S2_QUIZ=[
    correct:2},
 ];
 
-const S3_ITEMS=[{id:'a1',text:'🛡️ Hafizin\n(Guardians)',zone:'z1'},{id:'a2',text:'✍️ Katibin\n(Recorders)',zone:'z2'},{id:'a3',text:'👁️ They Know\nEverything',zone:'z3'}];
+const S3_ITEMS=[{id:'a1',text:'لَحَافِظِينَ',zone:'z1'},{id:'a2',text:'كِرَامًا\nكَاتِبِينَ',zone:'z2'},{id:'a3',text:'يَعْلَمُونَ\nمَا تَفْعَلُونَ',zone:'z3'}];
 const S3_ZONES=[{id:'z1',desc:'"Inna \'alaykum la-hafizin" (82:10) — Over you are GUARDIANS. Hafizin from hafiz (to guard, preserve). They protect and keep your record. This is a blessing — your deeds are preserved accurately, nothing is lost.'},{id:'z2',desc:'"Kiraman katibin" (82:11) — NOBLE RECORDERS. Kiram means noble, generous, dignified. Allah emphasises their nobility — they are honoured beings doing an important duty faithfully.'},{id:'z3',desc:'"Ya\'lamuna ma taf\'alun" (82:12) — They KNOW everything you do. Every act, every word, everything. Complete, perfect knowledge. Your entire life is witnessed and recorded by beings who never sleep, never make mistakes, and never miss anything.'}];
 
 const S4_QUIZ=[

@@ -24,33 +24,121 @@ window.SURAH_CONFIG={
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1 — سَبِّحِ اسْمَ رَبِّكَ الْأَعْلَى', words:[
+  {label:'87:1 — سَبِّحِ اسْمَ رَبِّكَ الْأَعْلَى', words:[
     {ar:'الْأَعْلَى', tr:'al-aʿlā', en:'the Most High', freq:14},
-    {ar:'رَبِّكَ', tr:'rabbika', en:'your Lord', freq:49},
+    'rabbika',
     {ar:'اسْمَ', tr:'isma', en:'the name of', freq:22},
     {ar:'سَبِّحِ', tr:'sabbiḥ', en:'glorify', freq:7},
   ]},
-  {label:'Verse 2-3 — الَّذِي خَلَقَ فَسَوَّىٰ · وَالَّذِي قَدَّرَ فَهَدَىٰ', words:[
-    {ar:'فَهَدَىٰ', tr:'fa-hadā', en:'and then guided', freq:169},
-    {ar:'قَدَّرَ', tr:'qaddara', en:'measured/destined', freq:13},
+  {label:'87:2 — الَّذِي خَلَقَ فَسَوَّىٰ', words:[
     {ar:'فَسَوَّىٰ', tr:'fa-sawwā', en:'and proportioned', freq:4},
     {ar:'خَلَقَ', tr:'khalaqa', en:'created', freq:29},
     'alladhi',
   ]},
-  {label:'Verse 14-15 — قَدْ أَفْلَحَ مَن تَزَكَّىٰ · وَذَكَرَ اسْمَ رَبِّهِ فَصَلَّىٰ', words:[
+  {label:'87:3 — وَالَّذِي قَدَّرَ فَهَدَىٰ', words:[
+    {ar:'فَهَدَىٰ', tr:'fa-hadā', en:'and then guided', freq:169},
+    {ar:'قَدَّرَ', tr:'qaddara', en:'measured / destined', freq:13},
+    {ar:'وَالَّذِي', tr:'walladhī', en:'and He who', freq:1283},
+  ]},
+  {label:'87:4 — وَالَّذِي أَخْرَجَ الْمَرْعَىٰ', words:[
+    {ar:'الْمَرْعَىٰ', tr:'al-marʿā', en:'the pasture', freq:1},
+    {ar:'أَخْرَجَ', tr:'akhraja', en:'brought out', freq:30},
+    {ar:'وَالَّذِي', tr:'walladhī', en:'and He who', freq:1283},
+  ]},
+  {label:'87:5 — فَجَعَلَهُ غُثَاءً أَحْوَىٰ', words:[
+    {ar:'أَحْوَىٰ', tr:'aḥwā', en:'dark / withered', freq:1},
+    {ar:'غُثَاءً', tr:'ghuthāʾan', en:'debris / stubble', freq:2},
+    {ar:'فَجَعَلَهُ', tr:'fa-jaʿalahu', en:'and made it', freq:30},
+  ]},
+  {label:'87:6 — سَنُقْرِئُكَ فَلَا تَنسَىٰ', words:[
+    {ar:'تَنسَىٰ', tr:'tansā', en:'you forget', freq:10},
+    {ar:'فَلَا', tr:'fa-lā', en:'so you will not', freq:1069},
+    {ar:'سَنُقْرِئُكَ', tr:'sanuqriʾuka', en:'We will make you recite', freq:1},
+  ]},
+  {label:'87:7 — إِلَّا مَا شَاءَ اللَّهُ إِنَّهُ يَعْلَمُ الْجَهْرَ وَمَا يَخْفَىٰ', words:[
+    {ar:'يَخْفَىٰ', tr:'yakhfā', en:'is hidden', freq:12},
+    {ar:'وَمَا', tr:'wa-mā', en:'and what', freq:2005},
+    {ar:'الْجَهْرَ', tr:'al-jahra', en:'the apparent', freq:9},
+    {ar:'يَعْلَمُ', tr:'yaʿlamu', en:'He knows', freq:382},
+    {ar:'إِنَّهُ', tr:'innahu', en:'indeed He', freq:98},
+    'allahu',
+    {ar:'شَاءَ', tr:'shāʾa', en:'wills', freq:236},
+    'ma',
+    'illa',
+  ]},
+  {label:'87:8 — وَنُيَسِّرُكَ لِلْيُسْرَىٰ', words:[
+    {ar:'لِلْيُسْرَىٰ', tr:'lil-yusrā', en:'for the easy way', freq:1},
+    {ar:'وَنُيَسِّرُكَ', tr:'wa-nuyassiruka', en:'and We will ease you', freq:1},
+  ]},
+  {label:'87:9 — فَذَكِّرْ إِن نَّفَعَتِ الذِّكْرَىٰ', words:[
+    {ar:'الذِّكْرَىٰ', tr:'al-dhikrā', en:'the reminder', freq:9},
+    {ar:'نَّفَعَتِ', tr:'nafaʿati', en:'benefits', freq:2},
+    {ar:'إِن', tr:'in', en:'if', freq:743},
+    {ar:'فَذَكِّرْ', tr:'fa-dhakkir', en:'so remind', freq:10},
+  ]},
+  {label:'87:10 — سَيَذَّكَّرُ مَن يَخْشَىٰ', words:[
+    {ar:'يَخْشَىٰ', tr:'yakhshā', en:'fears (Allah)', freq:28},
+    'man',
+    {ar:'سَيَذَّكَّرُ', tr:'sayadhdhakkaru', en:'will be reminded', freq:1},
+  ]},
+  {label:'87:11 — وَيَتَجَنَّبُهَا الْأَشْقَى', words:[
+    {ar:'الْأَشْقَى', tr:'al-ashqā', en:'the most wretched', freq:2},
+    {ar:'وَيَتَجَنَّبُهَا', tr:'wa-yatajannabu-hā', en:'and will avoid it', freq:1},
+  ]},
+  {label:'87:12 — الَّذِي يَصْلَى النَّارَ الْكُبْرَىٰ', words:[
+    {ar:'الْكُبْرَىٰ', tr:'al-kubrā', en:'the greatest', freq:9},
+    {ar:'النَّارَ', tr:'al-nār', en:'the Fire', freq:145},
+    {ar:'يَصْلَى', tr:'yaṣlā', en:'will burn in', freq:5},
+    'alladhi',
+  ]},
+  {label:'87:13 — ثُمَّ لَا يَمُوتُ فِيهَا وَلَا يَحْيَىٰ', words:[
+    {ar:'يَحْيَىٰ', tr:'yaḥyā', en:'lives', freq:30},
+    'wala',
+    'fiiha',
+    {ar:'يَمُوتُ', tr:'yamūtu', en:'he dies', freq:30},
+    'la',
+    'thumma',
+  ]},
+  {label:'87:14 — قَدْ أَفْلَحَ مَن تَزَكَّىٰ', words:[
+    {ar:'تَزَكَّىٰ', tr:'tazakkā', en:'purifies himself', freq:5},
+    'man',
+    {ar:'أَفْلَحَ', tr:'aflaḥa', en:'has succeeded', freq:10},
+    {ar:'قَدْ', tr:'qad', en:'certainly', freq:406},
+  ]},
+  {label:'87:15 — وَذَكَرَ اسْمَ رَبِّهِ فَصَلَّىٰ', words:[
     {ar:'فَصَلَّىٰ', tr:'fa-ṣallā', en:'and prayed', freq:83},
     {ar:'رَبِّهِ', tr:'rabbihi', en:'his Lord', freq:49},
     {ar:'اسْمَ', tr:'isma', en:'the name of', freq:22},
     {ar:'وَذَكَرَ', tr:'wa-dhakara', en:'and remembers', freq:267},
-    {ar:'تَزَكَّىٰ', tr:'tazakkā', en:'purifies himself', freq:5},
-    {ar:'أَفْلَحَ', tr:'aflaḥa', en:'has succeeded', freq:10},
-    {ar:'قَدْ', tr:'qad', en:'certainly', freq:406},
+  ]},
+  {label:'87:16 — بَلْ تُؤْثِرُونَ الْحَيَاةَ الدُّنْيَا', words:[
+    {ar:'الدُّنْيَا', tr:'al-dunyā', en:'the worldly life', freq:115},
+    {ar:'الْحَيَاةَ', tr:'al-ḥayāt', en:'the life', freq:76},
+    {ar:'تُؤْثِرُونَ', tr:'tuʾthirūna', en:'you prefer', freq:1},
+    {ar:'بَلْ', tr:'bal', en:'rather / nay', freq:126},
+  ]},
+  {label:'87:17 — وَالْآخِرَةُ خَيْرٌ وَأَبْقَىٰ', words:[
+    {ar:'وَأَبْقَىٰ', tr:'wa-abqā', en:'and more lasting', freq:3},
+    'khayr',
+    {ar:'وَالْآخِرَةُ', tr:'wal-ākhira', en:'and the Hereafter', freq:115},
+  ]},
+  {label:'87:18 — إِنَّ هَٰذَا لَفِي الصُّحُفِ الْأُولَىٰ', words:[
+    {ar:'الْأُولَىٰ', tr:'al-ūlā', en:'the former', freq:22},
+    {ar:'الصُّحُفِ', tr:'al-ṣuḥuf', en:'the scriptures', freq:8},
+    {ar:'لَفِي', tr:'la-fī', en:'surely in', freq:1714},
+    {ar:'هَٰذَا', tr:'hādhā', en:'this', freq:380},
+    'inna',
+  ]},
+  {label:'87:19 — صُحُفِ إِبْرَاهِيمَ وَمُوسَىٰ', words:[
+    {ar:'وَمُوسَىٰ', tr:'wa-Mūsā', en:'and Musa', freq:136},
+    {ar:'إِبْرَاهِيمَ', tr:'Ibrāhīm', en:'Ibrahim', freq:69},
+    {ar:'صُحُفِ', tr:'ṣuḥufi', en:'scriptures of', freq:8},
   ]},
 ];
 
 window.setupWBWLevel(WBW_DATA, 10);
 
-const S1_ITEMS=[{id:'i1',text:'🌿 Khalq\n& Taswiya',zone:'z1'},{id:'i2',text:'🎯 Qadr\n& Huda',zone:'z2'},{id:'i3',text:'🌾 Pasture\n& Debris',zone:'z3'}];
+const S1_ITEMS=[{id:'i1',text:'خَلَقَ\nفَسَوَّىٰ',zone:'z1'},{id:'i2',text:'قَدَّرَ\nفَهَدَىٰ',zone:'z2'},{id:'i3',text:'الْمَرْعَىٰ',zone:'z3'}];
 const S1_ZONES=[{id:'z1',desc:'"Alladhi khalaqa fa-sawwa" (87:2) — Who CREATED and then PROPORTIONED. "Khalaqa" — brought into existence from nothing. "Sawwa" — balanced, proportioned, made even. Every creation of Allah is complete and perfectly proportioned — nothing missing, nothing excess.'},{id:'z2',desc:'"Wa alladhi qaddara fa-hada" (87:3) — Who DESTINED and then GUIDED. "Qaddara" — decreed, fixed the measure of all things. "Hada" — guided each thing to fulfil its purpose. The bee is guided to its hive, the seed to its growth, the human to what benefits them — if they listen.'},{id:'z3',desc:'"Wa alladhi akhraja al-mar\'a — fa-ja\'alahu ghuthaan ahwa" (87:4-5) — Who brought out the pasture — then made it dark debris. Green, thriving pasture becomes dry, withered, dark debris. The world\'s cycles of growth and decay — all under Allah\'s command.'}];
 
 const S2_QUIZ=[

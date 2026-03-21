@@ -23,39 +23,62 @@ window.SURAH_CONFIG = {
 
 /* ── LEVEL 1: Word by Word ── */
 const WBW_DATA = [
-  {label:'Verse 1 — أَلَمْ نَشْرَحْ لَكَ صَدْرَكَ', words:[
+  {label:'94:1 — أَلَمْ نَشْرَحْ لَكَ صَدْرَكَ', words:[
     {ar:'صَدْرَكَ', tr:'ṣadraka', en:'your chest/heart', freq:5},
     {ar:'لَكَ', tr:'laka', en:'for you', freq:202},
     {ar:'نَشْرَحْ', tr:'nashraḥ', en:'We expanded', freq:1},
-    {ar:'أَلَمْ', tr:'alam', en:'did We not', freq:40},
+    'alam',
   ]},
-  {label:'Verse 5-6 — فَإِنَّ مَعَ الْعُسْرِ يُسْرًا · إِنَّ مَعَ الْعُسْرِ يُسْرًا', words:[
+  {label:'94:2 — وَوَضَعْنَا عَنكَ وِزْرَكَ', words:[
+    {ar:'وِزْرَكَ', tr:'wizraka', en:'your burden', freq:3},
+    {ar:'عَنكَ', tr:'ʿanka', en:'from you', freq:18},
+    {ar:'وَوَضَعْنَا', tr:'wa-waḍaʿnā', en:'and We removed', freq:1},
+  ]},
+  {label:'94:3 — الَّذِي أَنقَضَ ظَهْرَكَ', words:[
+    {ar:'ظَهْرَكَ', tr:'ẓahraka', en:'your back', freq:1},
+    {ar:'أَنقَضَ', tr:'anqaḍa', en:'which weighed down', freq:1},
+    'alladhi',
+  ]},
+  {label:'94:4 — وَرَفَعْنَا لَكَ ذِكْرَكَ', words:[
+    {ar:'ذِكْرَكَ', tr:'dhikraka', en:'your mention / fame', freq:1},
+    {ar:'لَكَ', tr:'laka', en:'for you', freq:202},
+    {ar:'وَرَفَعْنَا', tr:'wa-rafaʿnā', en:'and We raised', freq:2},
+  ]},
+  {label:'94:5 — فَإِنَّ مَعَ الْعُسْرِ يُسْرًا', words:[
     {ar:'يُسْرًا', tr:'yusran', en:'ease', freq:5},
     {ar:'الْعُسْرِ', tr:'al-ʿusr', en:'hardship', freq:3},
     {ar:'مَعَ', tr:'maʿa', en:'with', freq:161},
     {ar:'فَإِنَّ', tr:'fa-inna', en:'for indeed', freq:743},
   ]},
-  {label:'Verse 7-8 — فَإِذَا فَرَغْتَ فَانصَبْ · وَإِلَىٰ رَبِّكَ فَارْغَب', words:[
-    {ar:'فَارْغَب', tr:'farghab', en:'turn your longing', freq:1},
-    {ar:'رَبِّكَ', tr:'rabbika', en:'your Lord', freq:49},
-    {ar:'وَإِلَىٰ', tr:'wa-ilā', en:'and to', freq:189},
+  {label:'94:6 — إِنَّ مَعَ الْعُسْرِ يُسْرًا', words:[
+    {ar:'يُسْرًا', tr:'yusran', en:'ease', freq:5},
+    {ar:'الْعُسْرِ', tr:'al-ʿusr', en:'hardship', freq:3},
+    {ar:'مَعَ', tr:'maʿa', en:'with', freq:161},
+    'inna',
+  ]},
+  {label:'94:7 — فَإِذَا فَرَغْتَ فَانصَبْ', words:[
     {ar:'فَانصَبْ', tr:'fanṣab', en:'then strive [in worship]', freq:1},
     {ar:'فَرَغْتَ', tr:'faraghta', en:'you have finished', freq:1},
     {ar:'فَإِذَا', tr:'fa-idhā', en:'so when', freq:406},
+  ]},
+  {label:'94:8 — وَإِلَىٰ رَبِّكَ فَارْغَب', words:[
+    {ar:'فَارْغَب', tr:'farghab', en:'turn your longing', freq:1},
+    'rabbika',
+    {ar:'وَإِلَىٰ', tr:'wa-ilā', en:'and to', freq:189},
   ]},
 ];
 
 window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS = [
-  {id:'a1', text:'Expanded your\nchest for you', zone:'z1'},
-  {id:'a2', text:'Removed the\nburden / weight', zone:'z2'},
-  {id:'a3', text:'Raised high\nyour mention', zone:'z3'},
+  {id:'a1', text:'نَشْرَحْ لَكَ\nصَدْرَكَ',   zone:'z1'},
+  {id:'a2', text:'وَوَضَعْنَا عَنكَ\nوِزْرَكَ', zone:'z2'},
+  {id:'a3', text:'وَرَفَعْنَا لَكَ\nذِكْرَكَ',  zone:'z3'},
 ];
 const S1_ZONES = [
-  {id:'z1', desc:'"Sharaha" — opened, expanded. His chest was opened for prophethood (94:1)'},
-  {id:'z2', desc:'"Wizr" — heavy burden that weighed down his back — worries before prophethood (94:2-3)'},
-  {id:'z3', desc:'"Rafa\'na laka dhikrak" — his name linked with Allah\'s in every adhan and shahadah (94:4)'},
+  {id:'z1', desc:'Expanded your chest — opened for prophethood and guidance (94:1)'},
+  {id:'z2', desc:'Removed the burden that weighed down your back (94:2-3)'},
+  {id:'z3', desc:'Raised high your mention — linked with Allah\'s in every adhan (94:4)'},
 ];
 
 const S2_QUIZ = [
