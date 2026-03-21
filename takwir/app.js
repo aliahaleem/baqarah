@@ -4,7 +4,7 @@
    The Overthrowing · Indigo / Silver-Star / Cosmic
    ================================================ */
 window.STORAGE_KEY='takwirQuestSave';
-window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Order:[],s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false,s7Answers:{},s7Checked:false};
+window.state = window.buildDefaultState(7);
 
 const REWARDS={
   1: {xp:60, gems:3, icon:'📖', title:'Words Learned!', msg:'MashAllah! You learned the key Arabic words of this surah!'},
@@ -242,7 +242,6 @@ const S3_EVENTS_CORRECT=[
   {id:'e4',text:'🌿 Paradise (al-Jannah) is brought near (uzlifat) — close enough to see (81:13)'},
   {id:'e5',text:'💡 Then a soul will KNOW (alimat nafsun) what it has brought forward (81:14)'},
 ];
-window._S3_EVENTS=S3_EVENTS_CORRECT;
 
 // S4 — Quiz: The Noble Angel
 const S4_QUIZ=[
@@ -328,21 +327,17 @@ const S6_QUIZ=[
    correct:1},
 ];
 
-function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}
-function checkSection2(){checkDragDrop(2,S1_ZONES);}
-function renderSection3Game(){renderQuiz(3,S2_QUIZ);}
-function checkSection3(){checkQuiz(3,S2_QUIZ);}
-function renderSection4Game(){renderStoryOrder(4,S3_EVENTS_CORRECT);}
-function checkSection4(){checkStoryOrder(4,S3_EVENTS_CORRECT);}
-function renderSection5Game(){renderQuiz(5,S4_QUIZ);}
-function checkSection5(){checkQuiz(5,S4_QUIZ);}
-function renderSection6Game(){renderQuiz(6,S5_QUIZ);}
-function checkSection6(){checkQuiz(6,S5_QUIZ);}
-function renderSection7Game(){renderQuiz(7,S6_QUIZ);}
-function checkSection7(){checkQuiz(7,S6_QUIZ);}
+// =============================================
+//  SECTION REGISTRATION (shared helpers from engine.js)
+// =============================================
+window.registerMatch(2, S1_ITEMS,S1_ZONES);
+window.registerQuiz(3, S2_QUIZ);
+window.registerOrder(4, S3_EVENTS_CORRECT);
+window.registerQuiz(5, S4_QUIZ);
+window.registerQuiz(6, S5_QUIZ);
+window.registerQuiz(7, S6_QUIZ);
 
 // WORLD BUILDER — Celestial Canvas (stars appearing as levels unlock)
-function _lbl(ctx,W,msg,d,t){ctx.fillStyle='#c8c070';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(msg,W/2,18);ctx.fillStyle='#04040e';ctx.fillRect(W/2-100,26,200,8);ctx.fillStyle='#2828a0';ctx.fillRect(W/2-100,26,Math.round(200*d/t),8);ctx.textAlign='left';}
 function _drawBuildCanvas(n){
   const c=document.getElementById('build-canvas');if(!c)return;
   const ctx=c.getContext('2d'),W=560,H=250;ctx.clearRect(0,0,W,H);
@@ -356,28 +351,28 @@ function _drawBuildCanvas(n){
     ctx.fillStyle=`rgba(200,200,255,${0.5+i%3*0.2})`;ctx.beginPath();ctx.arc(sx,sy,r,0,Math.PI*2);ctx.fill();
     if(n>=6){ctx.fillStyle=`rgba(255,230,100,${0.3+i%3*0.2})`;ctx.beginPath();ctx.arc(sx,sy,r*1.5,0,Math.PI*2);ctx.fill();}
   });
-  if(n<1){_lbl(ctx,W,"⭐ Complete levels to build the Celestial Canvas!",0,6);return;}
+  if(n<1){_buildLabel(ctx,W,"⭐ Complete levels to build the Celestial Canvas!",0,6);return;}
   // Horizon
   ctx.fillStyle='#12123a';ctx.fillRect(0,200,W,50);ctx.fillStyle='#1c1c4a';ctx.fillRect(0,200,W,4);
-  if(n<2){_lbl(ctx,W,"🌌 Cosmic horizon set — 1/6",1,6);return;}
+  if(n<2){_buildLabel(ctx,W,"🌌 Cosmic horizon set — 1/6",1,6);return;}
   // Rolling sun (dimming)
   const sunG=ctx.createRadialGradient(W/2,100,0,W/2,100,40);sunG.addColorStop(0,'#ffffa0');sunG.addColorStop(1,'rgba(255,200,0,0)');
   ctx.globalAlpha=Math.max(0.1,1-n*0.15);ctx.fillStyle=sunG;ctx.beginPath();ctx.arc(W/2,100,40,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
-  if(n<3){_lbl(ctx,W,"☀️ Sun rolls up — 2/6",2,6);return;}
+  if(n<3){_buildLabel(ctx,W,"☀️ Sun rolls up — 2/6",2,6);return;}
   // Mountains
   [[60,200,80],[240,200,60],[400,200,70],[480,200,55]].forEach(([mx,my,mw])=>{ctx.fillStyle='#1c1c4a';ctx.beginPath();ctx.moveTo(mx,my);ctx.lineTo(mx+mw/2,my-35);ctx.lineTo(mx+mw,my);ctx.fill();});
-  if(n<4){_lbl(ctx,W,"⛰️ Mountains in motion — 3/6",3,6);return;}
+  if(n<4){_buildLabel(ctx,W,"⛰️ Mountains in motion — 3/6",3,6);return;}
   // Records unrolling
   ctx.fillStyle='#c8c090';ctx.fillRect(W/2-40,120,80,50);ctx.strokeStyle='#a08030';ctx.lineWidth=1;ctx.strokeRect(W/2-40,120,80,50);
   ctx.fillStyle='#2a2060';ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';
   ctx.fillText('DEEDS',W/2,148);ctx.textAlign='left';
-  if(n<5){_lbl(ctx,W,"📜 Records laid open — 4/6",4,6);return;}
+  if(n<5){_buildLabel(ctx,W,"📜 Records laid open — 4/6",4,6);return;}
   // Hell and Paradise
   ctx.fillStyle='rgba(220,60,20,0.5)';ctx.fillRect(40,170,100,30);
   ctx.fillStyle='rgba(40,180,80,0.5)';ctx.fillRect(420,170,100,30);
   ctx.fillStyle='#fff';ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';
   ctx.fillText('🔥',90,190);ctx.fillText('🌿',470,190);ctx.textAlign='left';
-  if(n<6){_lbl(ctx,W,"⚖️ Hell & Paradise revealed — 5/6",5,6);return;}
+  if(n<6){_buildLabel(ctx,W,"⚖️ Hell & Paradise revealed — 5/6",5,6);return;}
   // Complete: full cosmic scene
   const lg=ctx.createRadialGradient(W/2,50,0,W/2,50,180);
   lg.addColorStop(0,'rgba(200,200,255,0.15)');lg.addColorStop(1,'rgba(100,100,200,0)');

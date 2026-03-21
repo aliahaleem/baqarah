@@ -1,7 +1,7 @@
 'use strict';
 /* SURAH AL-INFITAR (82) — app.js */
 window.STORAGE_KEY='infitarQuestSave';
-window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false,s7Answers:{},s7Checked:false};
+window.state = window.buildDefaultState(7);
 
 const REWARDS={
   1: {xp:60, gems:3, icon:'📖', title:'Words Learned!', msg:'MashAllah! You learned the key Arabic words of this surah!'},
@@ -262,33 +262,35 @@ const S6_QUIZ=[
    correct:3},
 ];
 
-function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
-function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}
-function renderSection4Game(){renderDragDrop(4,S3_ITEMS,S3_ZONES);}function checkSection4(){checkDragDrop(4,S3_ZONES);}
-function renderSection5Game(){renderQuiz(5,S4_QUIZ);}function checkSection5(){checkQuiz(5,S4_QUIZ);}
-function renderSection6Game(){renderQuiz(6,S5_QUIZ);}function checkSection6(){checkQuiz(6,S5_QUIZ);}
-function renderSection7Game(){renderQuiz(7,S6_QUIZ);}function checkSection7(){checkQuiz(7,S6_QUIZ);}
+// =============================================
+//  SECTION REGISTRATION (shared helpers from engine.js)
+// =============================================
+window.registerMatch(2, S1_ITEMS,S1_ZONES);
+window.registerQuiz(3, S2_QUIZ);
+window.registerMatch(4, S3_ITEMS,S3_ZONES);
+window.registerQuiz(5, S4_QUIZ);
+window.registerQuiz(6, S5_QUIZ);
+window.registerQuiz(7, S6_QUIZ);
 
-function _lbl(ctx,W,msg,d,t){ctx.fillStyle='#40d0e8';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(msg,W/2,18);ctx.fillStyle='#020818';ctx.fillRect(W/2-100,26,200,8);ctx.fillStyle='#1848a0';ctx.fillRect(W/2-100,26,Math.round(200*d/t),8);ctx.textAlign='left';}
 function _drawBuildCanvas(n){
   const c=document.getElementById('build-canvas');if(!c)return;
   const ctx=c.getContext('2d'),W=560,H=250;ctx.clearRect(0,0,W,H);
   const sk=ctx.createLinearGradient(0,0,0,H);sk.addColorStop(0,n>=6?'#081828':'#020818');sk.addColorStop(1,n>=6?'#102030':'#051428');
   ctx.fillStyle=sk;ctx.fillRect(0,0,W,H);
   [[80,20],[160,12],[240,30],[320,15],[400,25],[480,10],[120,50],[280,45],[440,55]].slice(0,n*2).forEach(([sx,sy])=>{ctx.fillStyle='rgba(100,200,255,0.6)';ctx.beginPath();ctx.arc(sx,sy,1.5,0,Math.PI*2);ctx.fill();});
-  if(n<1){_lbl(ctx,W,"🌌 Complete levels to build the Cleaving Sky!",0,6);return;}
+  if(n<1){_buildLabel(ctx,W,"🌌 Complete levels to build the Cleaving Sky!",0,6);return;}
   ctx.fillStyle='#0a1e30';ctx.fillRect(0,200,W,50);ctx.fillStyle='#102838';ctx.fillRect(0,200,W,4);
-  if(n<2){_lbl(ctx,W,"🌍 Earth revealed — 1/6",1,6);return;}
+  if(n<2){_buildLabel(ctx,W,"🌍 Earth revealed — 1/6",1,6);return;}
   const pulse=0.5+Math.sin(Date.now()*0.002)*0.3;ctx.strokeStyle=`rgba(64,208,232,${pulse})`;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(W/2-30,0);ctx.lineTo(W/2,80);ctx.lineTo(W/2+20,H);ctx.stroke();
-  if(n<3){_lbl(ctx,W,"🌌 Sky cleaves — 2/6",2,6);return;}
+  if(n<3){_buildLabel(ctx,W,"🌌 Sky cleaves — 2/6",2,6);return;}
   for(let i=0;i<4;i++){const sx=(i*140),sy=20+i*10;ctx.fillStyle='rgba(100,200,255,0.8)';ctx.beginPath();ctx.arc(sx+40,sy,3,0,Math.PI*2);ctx.fill();ctx.strokeStyle='rgba(100,200,255,0.3)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(sx+40,sy);ctx.lineTo(sx+70,sy+30);ctx.stroke();}
-  if(n<4){_lbl(ctx,W,"⭐ Stars scatter — 3/6",3,6);return;}
+  if(n<4){_buildLabel(ctx,W,"⭐ Stars scatter — 3/6",3,6);return;}
   // Scales
   ctx.strokeStyle='rgba(64,208,232,0.7)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(W/2,100);ctx.lineTo(W/2,130);ctx.stroke();ctx.beginPath();ctx.moveTo(W/2-50,130);ctx.lineTo(W/2+50,130);ctx.stroke();ctx.fillStyle='rgba(64,208,232,0.4)';ctx.fillRect(W/2-60,140,30,12);ctx.fillRect(W/2+30,140,30,12);
-  if(n<5){_lbl(ctx,W,"⚖️ Scales of justice — 4/6",4,6);return;}
+  if(n<5){_buildLabel(ctx,W,"⚖️ Scales of justice — 4/6",4,6);return;}
   // Two groups
   ctx.fillStyle='rgba(40,180,80,0.4)';ctx.fillRect(20,165,120,35);ctx.fillStyle='rgba(200,40,20,0.4)';ctx.fillRect(420,165,120,35);ctx.fillStyle='#80ff80';ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('ABRAR',80,188);ctx.fillStyle='#ff8080';ctx.fillText('FUJJAR',480,188);ctx.textAlign='left';
-  if(n<6){_lbl(ctx,W,"⚖️ Two destinies revealed — 5/6",5,6);return;}
+  if(n<6){_buildLabel(ctx,W,"⚖️ Two destinies revealed — 5/6",5,6);return;}
   const lg=ctx.createRadialGradient(W/2,100,0,W/2,100,150);lg.addColorStop(0,'rgba(64,208,232,0.15)');lg.addColorStop(1,'rgba(30,100,180,0)');ctx.fillStyle=lg;ctx.fillRect(0,0,W,H);
   ctx.fillStyle='#40d0e8';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText("ALLAHUMMA BARIK! 🌌 AL-INFITAR COMPLETE!",W/2,225);ctx.font='6px "Press Start 2P",monospace';ctx.fillText('"Wa al-amru yawma\'idhin li-llah" — 82:19',W/2,238);ctx.textAlign='left';
 }

@@ -1,7 +1,7 @@
 'use strict';
 /* Surah Al-Adiyat (100) — The Charging Mares */
 window.STORAGE_KEY = 'adiyatQuestSave';
-window.state = { explorerName:'', xp:0, gems:0, completed:[], s2Answers:{}, s2Checked:false, s3Checked:false, s4Order:[], s4Checked:false, s5Answers:{}, s5Checked:false };
+window.state = window.buildDefaultState(5);
 
 const REWARDS = {
   1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
@@ -125,7 +125,6 @@ const S3_EVENTS_CORRECT = [
   {id:'e5', text:'💀 Does he not know? When graves are emptied and secrets revealed! (100:9-10)'},
   {id:'e6', text:'🌟 On that Day, their Lord is All-Aware of them and their deeds (100:11)'},
 ];
-window._S3_EVENTS = S3_EVENTS_CORRECT;
 
 const S4_QUIZ = [
   {q:'What contrast does Surah Al-Adiyat make?',
@@ -142,10 +141,14 @@ const S4_QUIZ = [
    correct:2},
 ];
 
-function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
-function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}
-function renderSection4Game(){renderStoryOrder(4,S3_EVENTS_CORRECT);}function checkSection4(){checkStoryOrder(4,S3_EVENTS_CORRECT);}
-function renderSection5Game(){renderQuiz(5,S4_QUIZ);}function checkSection5(){checkQuiz(5,S4_QUIZ);}
+// =============================================
+//  SECTION REGISTRATION (shared helpers from engine.js)
+// =============================================
+window.registerQuiz(2, S1_QUIZ);
+window.registerMatch(3, S2_ITEMS,S2_ZONES);
+window.registerOrder(4, S3_EVENTS_CORRECT);
+window.registerQuiz(5, S4_QUIZ);
+
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {

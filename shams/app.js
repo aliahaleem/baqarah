@@ -1,14 +1,7 @@
 'use strict';
 /* Surah Ash-Shams (91) — The Sun */
 window.STORAGE_KEY = 'shamsQuestSave';
-window.state = {
-  explorerName:'', xp:0, gems:0, completed:[],
-  s1Checked:false,
-  s2Answers:{}, s2Checked:false,
-  s3Checked:false,
-  s4Answers:{}, s4Checked:false,
-  s5Order:[], s5Checked:false,
-};
+window.state = window.buildDefaultState(5);
 
 const REWARDS = {
   1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
@@ -177,16 +170,15 @@ const S4_EVENTS_CORRECT = [
   {id:'t5', text:'⚡ Allah destroyed them with a swift and crushing punishment (91:14)'},
   {id:'t6', text:'😔 Allah has no fear of the consequence — arrogance against Him always ends in ruin (91:15)'},
 ];
-window._S4_EVENTS = S4_EVENTS_CORRECT;
 
-function renderSection2Game(){renderQuiz(2,S1_QUIZ);}
-function checkSection2(){checkQuiz(2,S1_QUIZ);}
-function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}
-function checkSection3(){checkDragDrop(3,S2_ZONES);}
-function renderSection4Game(){renderQuiz(4,S3_QUIZ);}
-function checkSection4(){checkQuiz(4,S3_QUIZ);}
-function renderSection5Game(){renderStoryOrder(5,S4_EVENTS_CORRECT);}
-function checkSection5(){checkStoryOrder(5,S4_EVENTS_CORRECT);}
+// =============================================
+//  SECTION REGISTRATION (shared helpers from engine.js)
+// =============================================
+window.registerQuiz(2, S1_QUIZ);
+window.registerMatch(3, S2_ITEMS,S2_ZONES);
+window.registerQuiz(4, S3_QUIZ);
+window.registerOrder(5, S4_EVENTS_CORRECT);
+
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {

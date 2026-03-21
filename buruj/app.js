@@ -1,7 +1,7 @@
 'use strict';
 /* SURAH AL-BURUJ (85) — app.js */
 window.STORAGE_KEY='burujQuestSave';
-window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Answers:{},s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false,s7Answers:{},s7Checked:false};
+window.state = window.buildDefaultState(7);
 
 const REWARDS={
   1: {xp:60, gems:3, icon:'📖', title:'Words Learned!', msg:'MashAllah! You learned the key Arabic words of this surah!'},
@@ -326,35 +326,37 @@ const S6_QUIZ=[
    correct:3},
 ];
 
-function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
-function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}
-function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
-function renderSection5Game(){renderQuiz(5,S4_QUIZ);}function checkSection5(){checkQuiz(5,S4_QUIZ);}
-function renderSection6Game(){renderQuiz(6,S5_QUIZ);}function checkSection6(){checkQuiz(6,S5_QUIZ);}
-function renderSection7Game(){renderQuiz(7,S6_QUIZ);}function checkSection7(){checkQuiz(7,S6_QUIZ);}
+// =============================================
+//  SECTION REGISTRATION (shared helpers from engine.js)
+// =============================================
+window.registerMatch(2, S1_ITEMS,S1_ZONES);
+window.registerQuiz(3, S2_QUIZ);
+window.registerQuiz(4, S3_QUIZ);
+window.registerQuiz(5, S4_QUIZ);
+window.registerQuiz(6, S5_QUIZ);
+window.registerQuiz(7, S6_QUIZ);
 
-function _lbl(ctx,W,msg,d,t){ctx.fillStyle='#c8b030';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(msg,W/2,18);ctx.fillStyle='#04080e';ctx.fillRect(W/2-100,26,200,8);ctx.fillStyle='#182880';ctx.fillRect(W/2-100,26,Math.round(200*d/t),8);ctx.textAlign='left';}
 function _drawBuildCanvas(n){
   const c=document.getElementById('build-canvas');if(!c)return;
   const ctx=c.getContext('2d'),W=560,H=250;ctx.clearRect(0,0,W,H);
   const sk=ctx.createLinearGradient(0,0,0,H);sk.addColorStop(0,'#04080e');sk.addColorStop(1,'#0e1828');ctx.fillStyle=sk;ctx.fillRect(0,0,W,H);
   const pts=[[40,15],[90,8],[160,22],[220,5],[300,18],[380,10],[440,25],[510,8],[70,45],[200,38],[330,42],[460,35],[140,55],[290,60],[420,50]];
   pts.slice(0,n*3).forEach(([x,y],i)=>{ctx.fillStyle=`rgba(100,140,220,${0.3+i%3*0.2})`;ctx.beginPath();ctx.arc(x,y,i%3===0?2:1.2,0,Math.PI*2);ctx.fill();});
-  if(n<1){_lbl(ctx,W,"⭐ Complete levels to build the Constellation Sky!",0,6);return;}
+  if(n<1){_buildLabel(ctx,W,"⭐ Complete levels to build the Constellation Sky!",0,6);return;}
   ctx.fillStyle='#121e28';ctx.fillRect(0,210,W,40);ctx.fillStyle='#182838';ctx.fillRect(0,210,W,5);
-  if(n<2){_lbl(ctx,W,"⭐ Constellation sky revealed — 1/6",1,6);return;}
+  if(n<2){_buildLabel(ctx,W,"⭐ Constellation sky revealed — 1/6",1,6);return;}
   // Fire trench
   fillRect(ctx,W/2-80,190,160,20,'#200808');for(let f=0;f<7;f++){const fx=W/2-65+f*20,fh=10+f%3*5;ctx.fillStyle=`rgba(200,${40+f*12},10,0.8)`;ctx.beginPath();ctx.moveTo(fx+3,210);ctx.lineTo(fx,210-fh);ctx.lineTo(fx+6,210);ctx.fill();}
-  if(n<3){_lbl(ctx,W,"🔥 Ditch of fire — 2/6",2,6);return;}
+  if(n<3){_buildLabel(ctx,W,"🔥 Ditch of fire — 2/6",2,6);return;}
   // Constellations connected
   const con=[[80,30],[100,20],[120,35],[95,45],[80,30]];ctx.strokeStyle='rgba(200,176,48,0.5)';ctx.lineWidth=1;ctx.beginPath();con.forEach(([x,y],i)=>{if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);});ctx.stroke();con.forEach(([x,y])=>{ctx.fillStyle='rgba(200,176,48,0.8)';ctx.beginPath();ctx.arc(x,y,2,0,Math.PI*2);ctx.fill();});
-  if(n<4){_lbl(ctx,W,"⭐ Constellations mapped — 3/6",3,6);return;}
+  if(n<4){_buildLabel(ctx,W,"⭐ Constellations mapped — 3/6",3,6);return;}
   // Garden
   ctx.fillStyle='rgba(40,180,80,0.2)';ctx.fillRect(350,175,180,35);ctx.fillStyle='rgba(30,100,200,0.4)';ctx.fillRect(360,190,160,12);[[370,170],[400,165],[430,172],[460,168]].forEach(([tx,ty])=>{ctx.fillStyle='#1a3808';ctx.fillRect(tx-2,ty,4,20);ctx.fillStyle='#0a2808';ctx.fillRect(tx-6,ty-12,12,16);});
-  if(n<5){_lbl(ctx,W,"🌿 Gardens of Fawz al-Kabir — 4/6",4,6);return;}
+  if(n<5){_buildLabel(ctx,W,"🌿 Gardens of Fawz al-Kabir — 4/6",4,6);return;}
   // Preserved tablet glow
   ctx.shadowColor='rgba(200,176,48,0.5)';ctx.shadowBlur=12;fillRect(ctx,W/2-30,80,60,70,'#0e1828');ctx.strokeStyle='rgba(200,176,48,0.8)';ctx.lineWidth=1;ctx.strokeRect(W/2-30,80,60,70);ctx.shadowBlur=0;ctx.fillStyle='rgba(200,176,48,0.7)';ctx.font='6px serif';ctx.textAlign='center';ctx.fillText('قُرْآن',W/2,115);ctx.fillText('مَجِيد',W/2,128);ctx.textAlign='left';
-  if(n<6){_lbl(ctx,W,"📜 Preserved Tablet appears — 5/6",5,6);return;}
+  if(n<6){_buildLabel(ctx,W,"📜 Preserved Tablet appears — 5/6",5,6);return;}
   ctx.fillStyle='#c8b030';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText("ALLAHUMMA BARIK! ⭐ AL-BURUJ COMPLETE!",W/2,237);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Bal huwa Quranun Majid — fi Lawhin Mahfudh" 85:21-22',W/2,H-2);ctx.textAlign='left';
 }
 function updateUIExtra(){_drawBuildCanvas(window.state.completed.length);}

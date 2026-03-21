@@ -29,11 +29,13 @@ function loadProgress() {
 }
 
 function _buildLabel(ctx, W, msg, done, total) {
-  ctx.fillStyle = window.state ? 'rgba(255,187,68,0.8)' : '#888';
+  var pal = window.SCENE_PALETTE || {};
+  ctx.fillStyle = pal.labelText || (window.state ? 'rgba(255,187,68,0.8)' : '#888');
   ctx.font = '7px "Press Start 2P",monospace'; ctx.textAlign = 'center';
   ctx.fillText(msg, W / 2, 18);
-  ctx.fillStyle = 'rgba(255,255,255,0.08)'; ctx.fillRect(W / 2 - 100, 26, 200, 8);
-  ctx.fillStyle = window.SURAH_CONFIG ? 'rgba(255,187,68,0.7)' : '#3a7a2a';
+  ctx.fillStyle = pal.labelBg || 'rgba(255,255,255,0.08)';
+  ctx.fillRect(W / 2 - 100, 26, 200, 8);
+  ctx.fillStyle = pal.labelBar || (window.SURAH_CONFIG ? 'rgba(255,187,68,0.7)' : '#3a7a2a');
   ctx.fillRect(W / 2 - 100, 26, Math.round(200 * done / total), 8);
   ctx.textAlign = 'left';
 }
@@ -341,4 +343,36 @@ function checkStoryOrder(n, data) {
   }
 }
 
-// (Legacy drag & touch event listeners removed — replaced by tap-to-match above)
+// =============================================
+//  SECTION REGISTRATION HELPERS (DRY)
+// =============================================
+
+window.registerQuiz = function(sectionNum, quizData) {
+  window['renderSection' + sectionNum + 'Game'] = function() { renderQuiz(sectionNum, quizData); };
+  window['checkSection' + sectionNum]           = function() { checkQuiz(sectionNum, quizData); };
+};
+
+window.registerMatch = function(sectionNum, items, zones) {
+  window['renderSection' + sectionNum + 'Game'] = function() { renderDragDrop(sectionNum, items, zones); };
+  window['checkSection' + sectionNum]           = function() { checkDragDrop(sectionNum, zones); };
+};
+
+window.registerOrder = function(sectionNum, events) {
+  window['_S' + sectionNum + '_EVENTS'] = events;
+  window['renderSection' + sectionNum + 'Game'] = function() { renderStoryOrder(sectionNum, events); };
+  window['checkSection' + sectionNum]           = function() { checkStoryOrder(sectionNum, events); };
+};
+
+// =============================================
+//  STATE INITIALISATION HELPER (DRY)
+// =============================================
+
+window.buildDefaultState = function(totalLevels) {
+  var s = { explorerName: '', xp: 0, gems: 0, completed: [] };
+  for (var n = 1; n <= totalLevels; n++) {
+    s['s' + n + 'Answers'] = {};
+    s['s' + n + 'Checked'] = false;
+    s['s' + n + 'Order']   = [];
+  }
+  return s;
+};

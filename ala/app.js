@@ -1,7 +1,7 @@
 'use strict';
 /* SURAH AL-ALA (87) — app.js */
 window.STORAGE_KEY='alaQuestSave';
-window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Answers:{},s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false,s7Answers:{},s7Checked:false};
+window.state = window.buildDefaultState(7);
 
 const REWARDS={
   1: {xp:60, gems:3, icon:'📖', title:'Words Learned!', msg:'MashAllah! You learned the key Arabic words of this surah!'},
@@ -277,34 +277,36 @@ const S6_QUIZ=[
    correct:3},
 ];
 
-function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
-function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}
-function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
-function renderSection5Game(){renderQuiz(5,S4_QUIZ);}function checkSection5(){checkQuiz(5,S4_QUIZ);}
-function renderSection6Game(){renderQuiz(6,S5_QUIZ);}function checkSection6(){checkQuiz(6,S5_QUIZ);}
-function renderSection7Game(){renderQuiz(7,S6_QUIZ);}function checkSection7(){checkQuiz(7,S6_QUIZ);}
+// =============================================
+//  SECTION REGISTRATION (shared helpers from engine.js)
+// =============================================
+window.registerMatch(2, S1_ITEMS,S1_ZONES);
+window.registerQuiz(3, S2_QUIZ);
+window.registerQuiz(4, S3_QUIZ);
+window.registerQuiz(5, S4_QUIZ);
+window.registerQuiz(6, S5_QUIZ);
+window.registerQuiz(7, S6_QUIZ);
 
-function _lbl(ctx,W,msg,d,t){ctx.fillStyle='#c8a020';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(msg,W/2,18);ctx.fillStyle='#041008';ctx.fillRect(W/2-100,26,200,8);ctx.fillStyle='#1a6030';ctx.fillRect(W/2-100,26,Math.round(200*d/t),8);ctx.textAlign='left';}
 function _drawBuildCanvas(n){
   const c=document.getElementById('build-canvas');if(!c)return;
   const ctx=c.getContext('2d'),W=560,H=250;ctx.clearRect(0,0,W,H);
   const sk=ctx.createLinearGradient(0,0,0,H);sk.addColorStop(0,'#041008');sk.addColorStop(1,'#0c2010');ctx.fillStyle=sk;ctx.fillRect(0,0,W,H);
-  if(n<1){_lbl(ctx,W,"🌿 Complete levels to build the Garden of Glorification!",0,6);return;}
+  if(n<1){_buildLabel(ctx,W,"🌿 Complete levels to build the Garden of Glorification!",0,6);return;}
   // Ground
   ctx.fillStyle='#102010';ctx.fillRect(0,210,W,40);ctx.fillStyle='#183018';ctx.fillRect(0,210,W,5);
-  if(n<2){_lbl(ctx,W,"🌿 Earth appears — 1/6",1,6);return;}
+  if(n<2){_buildLabel(ctx,W,"🌿 Earth appears — 1/6",1,6);return;}
   // Grasses
   for(let g=0;g<16;g++){const gx=30+g*33;ctx.fillStyle='#1a5010';ctx.fillRect(gx,194,6,16);ctx.fillStyle='#0a3008';ctx.fillRect(gx-4,184,14,14);}
-  if(n<3){_lbl(ctx,W,"🌱 Pasture grows — 2/6",2,6);return;}
+  if(n<3){_buildLabel(ctx,W,"🌱 Pasture grows — 2/6",2,6);return;}
   // Golden "Al-Ala" text above
   const pulse=0.5+Math.sin(Date.now()*0.002)*0.4;ctx.fillStyle=`rgba(200,160,32,${pulse})`;ctx.font='10px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('الأَعْلَى',W/2,45);ctx.textAlign='left';
-  if(n<4){_lbl(ctx,W,"✨ The Most High above — 3/6",3,6);return;}
+  if(n<4){_buildLabel(ctx,W,"✨ The Most High above — 3/6",3,6);return;}
   // Light beam from above
   ctx.fillStyle='rgba(200,160,32,0.08)';ctx.beginPath();ctx.moveTo(W/2,0);ctx.lineTo(W/2-60,210);ctx.lineTo(W/2+60,210);ctx.closePath();ctx.fill();
-  if(n<5){_lbl(ctx,W,"☀️ Divine light descends — 4/6",4,6);return;}
+  if(n<5){_buildLabel(ctx,W,"☀️ Divine light descends — 4/6",4,6);return;}
   // Two scrolls (Ibrahim and Musa)
   [[60,150],[W-140,150]].forEach(([sx,sy])=>{fillRect(ctx,sx,sy,80,50,'#201808');ctx.strokeStyle='rgba(200,160,32,0.5)';ctx.lineWidth=1;ctx.strokeRect(sx,sy,80,50);});
-  if(n<6){_lbl(ctx,W,"📜 Scrolls of Ibrahim and Musa — 5/6",5,6);return;}
+  if(n<6){_buildLabel(ctx,W,"📜 Scrolls of Ibrahim and Musa — 5/6",5,6);return;}
   ctx.fillStyle='#c8a020';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText("ALLAHUMMA BARIK! 🌿 AL-ALA COMPLETE!",W/2,237);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Sabbihi isma Rabbika al-A\'la — Qad aflaha man tazakka"',W/2,H-2);ctx.textAlign='left';
 }
 function updateUIExtra(){_drawBuildCanvas(window.state.completed.length);}

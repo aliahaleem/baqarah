@@ -1,7 +1,7 @@
 'use strict';
 /* Surah Al-Asr (103) — The Time */
 window.STORAGE_KEY = 'asrQuestSave';
-window.state = { explorerName:'', xp:0, gems:0, completed:[], s2Answers:{}, s2Checked:false, s3Checked:false, s4Answers:{}, s4Checked:false };
+window.state = window.buildDefaultState(4);
 
 const REWARDS = {
   1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
@@ -92,9 +92,13 @@ const S3_QUIZ = [
    correct:0},
 ];
 
-function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
-function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}
-function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
+// =============================================
+//  SECTION REGISTRATION (shared helpers from engine.js)
+// =============================================
+window.registerQuiz(2, S1_QUIZ);
+window.registerMatch(3, S2_ITEMS,S2_ZONES);
+window.registerQuiz(4, S3_QUIZ);
+
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {

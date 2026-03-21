@@ -1,16 +1,7 @@
 'use strict';
 /* Surah Al-Ghashiyah (88) — The Overwhelming */
 window.STORAGE_KEY = 'ghashiyahQuestSave';
-window.state = {
-  explorerName: '', xp: 0, gems: 0, completed: [],
-  s1Checked:false,
-  s2Checked: false,
-  s3Answers: {}, s3Checked: false,
-  s4Checked: false,
-  s5Answers: {}, s5Checked: false,
-  s6Answers: {}, s6Checked: false,
-  s7Answers: {}, s7Checked: false,
-};
+window.state = window.buildDefaultState(7);
 
 const REWARDS = {
   1: { xp: 60,  gems: 3, icon: '📖', title: 'Words Learned!',
@@ -280,18 +271,16 @@ const S6_QUIZ = [
 
 /* ── Section wrappers ── */
 
-function renderSection2Game() { renderDragDrop(2, S1_ITEMS, S1_ZONES); }
-function checkSection2()      { checkDragDrop(2, S1_ZONES); }
-function renderSection3Game() { renderQuiz(3, S2_QUIZ); }
-function checkSection3()      { checkQuiz(3, S2_QUIZ); }
-function renderSection4Game() { renderDragDrop(4, S3_ITEMS, S3_ZONES); }
-function checkSection4()      { checkDragDrop(4, S3_ZONES); }
-function renderSection5Game() { renderQuiz(5, S4_QUIZ); }
-function checkSection5()      { checkQuiz(5, S4_QUIZ); }
-function renderSection6Game() { renderQuiz(6, S5_QUIZ); }
-function checkSection6()      { checkQuiz(6, S5_QUIZ); }
-function renderSection7Game() { renderQuiz(7, S6_QUIZ); }
-function checkSection7()      { checkQuiz(7, S6_QUIZ); }
+// =============================================
+//  SECTION REGISTRATION (shared helpers from engine.js)
+// =============================================
+window.registerMatch(2, S1_ITEMS, S1_ZONES);
+window.registerQuiz(3, S2_QUIZ);
+window.registerMatch(4, S3_ITEMS, S3_ZONES);
+window.registerQuiz(5, S4_QUIZ);
+window.registerQuiz(6, S5_QUIZ);
+window.registerQuiz(7, S6_QUIZ);
+
 function updateUIExtra()      { window._drawBuildCanvas(window.state.completed.length); }
 
 /* ── World Builder Canvas ── */

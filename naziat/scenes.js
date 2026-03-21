@@ -6,7 +6,8 @@
 
 
 window.SCENE_PALETTE = {
-  minecraft: {
+
+  labelText:'#2a9060', labelBg:'#041408', labelBar:'#1a6040',  minecraft: {
     sky0:    '#020810', sky1:    '#060c18', sky2:    '#0e2010',
     gnd:     '#1a2808', gndAcc:  '#2a4010',
     starStr: 'rgba(255,240,200,',

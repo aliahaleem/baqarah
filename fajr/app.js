@@ -1,16 +1,7 @@
 'use strict';
 /* Surah Al-Fajr (89) — The Dawn */
 window.STORAGE_KEY = 'fajrQuestSave';
-window.state = {
-  explorerName: '', xp: 0, gems: 0, completed: [],
-  s1Checked:false,
-  s2Checked: false,
-  s3Answers: {}, s3Checked: false,
-  s4Order: [],    s4Checked: false,
-  s5Checked: false,
-  s6Answers: {}, s6Checked: false,
-  s7Answers: {}, s7Checked: false,
-};
+window.state = window.buildDefaultState(7);
 
 const REWARDS = {
   1: { xp: 60,  gems: 3, icon: '📖', title: 'Words Learned!',
@@ -280,7 +271,6 @@ const S3_EVENTS_CORRECT = [
   { id: 'e5', text: '❤️‍🔥 He loves wealth with an intense and overwhelming love (89:20)' },
   { id: 'e6', text: '⚖️ Allah\'s verdict: Both wealth AND poverty are tests — man misunderstands both (89:15-16)' },
 ];
-window._S3_EVENTS = S3_EVENTS_CORRECT;
 
 /* ── Level 4: Drag & Drop — What Man Does Wrong (89:17-20) ── */
 const S4_ITEMS = [
@@ -333,18 +323,16 @@ const S6_QUIZ = [
 
 /* ── Section wrappers ── */
 
-function renderSection2Game() { renderDragDrop(2, S1_ITEMS, S1_ZONES); }
-function checkSection2()      { checkDragDrop(2, S1_ZONES); }
-function renderSection3Game() { renderQuiz(3, S2_QUIZ); }
-function checkSection3()      { checkQuiz(3, S2_QUIZ); }
-function renderSection4Game() { renderStoryOrder(4, S3_EVENTS_CORRECT); }
-function checkSection4()      { checkStoryOrder(4, S3_EVENTS_CORRECT); }
-function renderSection5Game() { renderDragDrop(5, S4_ITEMS, S4_ZONES); }
-function checkSection5()      { checkDragDrop(5, S4_ZONES); }
-function renderSection6Game() { renderQuiz(6, S5_QUIZ); }
-function checkSection6()      { checkQuiz(6, S5_QUIZ); }
-function renderSection7Game() { renderQuiz(7, S6_QUIZ); }
-function checkSection7()      { checkQuiz(7, S6_QUIZ); }
+// =============================================
+//  SECTION REGISTRATION (shared helpers from engine.js)
+// =============================================
+window.registerMatch(2, S1_ITEMS, S1_ZONES);
+window.registerQuiz(3, S2_QUIZ);
+window.registerOrder(4, S3_EVENTS_CORRECT);
+window.registerMatch(5, S4_ITEMS, S4_ZONES);
+window.registerQuiz(6, S5_QUIZ);
+window.registerQuiz(7, S6_QUIZ);
+
 function updateUIExtra()      { window._drawBuildCanvas(window.state.completed.length); }
 
 /* ── World Builder Canvas ── */

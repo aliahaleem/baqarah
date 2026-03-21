@@ -5,7 +5,8 @@
 // =============================================
 
 window.SCENE_PALETTE = {
-  minecraft: {sky0:'#04040e',sky1:'#08081c',sky2:'#0c0c28',gnd:'#12123a',gndAcc:'#1c1c4a',starStr:'rgba(200,200,255,',acStr:'rgba(200,192,112,',label:'#c8c070',hint:'#a8a050'},
+
+  labelText:'#c8c070', labelBg:'#04040e', labelBar:'#2828a0',  minecraft: {sky0:'#04040e',sky1:'#08081c',sky2:'#0c0c28',gnd:'#12123a',gndAcc:'#1c1c4a',starStr:'rgba(200,200,255,',acStr:'rgba(200,192,112,',label:'#c8c070',hint:'#a8a050'},
   stars: {sky0:'#1e1a4a',sky1:'#2a2460',sky2:'#363078',gnd:'#42389a',gndAcc:'#524aa8',starStr:'rgba(220,215,255,',acStr:'rgba(232,224,160,',label:'#e8e0a0',hint:'#c8c080'},
 };
 function _sky(ctx){const p=sceneP();const g=ctx.createLinearGradient(0,0,0,CH);g.addColorStop(0,p.sky0);g.addColorStop(0.6,p.sky1);g.addColorStop(1,p.sky2);ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);}

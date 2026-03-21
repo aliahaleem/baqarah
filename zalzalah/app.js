@@ -1,7 +1,7 @@
 'use strict';
 /* Surah Az-Zalzalah (99) — The Earthquake */
 window.STORAGE_KEY = 'zalzalahQuestSave';
-window.state = { explorerName:'', xp:0, gems:0, completed:[], s2Answers:{}, s2Checked:false, s3Order:[], s3Checked:false, s4Answers:{}, s4Checked:false };
+window.state = window.buildDefaultState(4);
 
 const REWARDS = {
   1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
@@ -102,7 +102,6 @@ const S2_EVENTS_CORRECT = [
   {id:'z5', text:'👣 People go forth in different groups to be shown their deeds (99:6)'},
   {id:'z6', text:'⚖️ An atom\'s weight of good is seen. An atom\'s weight of evil is seen. (99:7-8)'},
 ];
-window._S2_EVENTS = S2_EVENTS_CORRECT;
 
 const S3_QUIZ = [
   {q:'What is the smallest unit of deeds that will be seen on the Day of Judgement? (99:7-8)',
@@ -119,9 +118,13 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
-function renderSection3Game(){renderStoryOrder(3,S2_EVENTS_CORRECT);}function checkSection3(){checkStoryOrder(3,S2_EVENTS_CORRECT);}
-function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
+// =============================================
+//  SECTION REGISTRATION (shared helpers from engine.js)
+// =============================================
+window.registerQuiz(2, S1_QUIZ);
+window.registerOrder(3, S2_EVENTS_CORRECT);
+window.registerQuiz(4, S3_QUIZ);
+
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {

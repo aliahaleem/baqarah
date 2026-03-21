@@ -1,7 +1,7 @@
 'use strict';
 /* SURAH AL-MUTAFFIFIN (83) — app.js */
 window.STORAGE_KEY='mutaffifinQuestSave';
-window.state={explorerName:'',xp:0,gems:0,completed:[],s2Answers:{},s2Checked:false,s3Checked:false,s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false,s7Answers:{},s7Checked:false};
+window.state = window.buildDefaultState(7);
 
 const REWARDS={
   1: {xp:60, gems:3, icon:'📖', title:'Words Learned!', msg:'MashAllah! You learned the key Arabic words of this surah!'},
@@ -377,34 +377,36 @@ const S6_QUIZ=[
    correct:2},
 ];
 
-function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
-function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}
-function renderSection4Game(){renderDragDrop(4,S3_ITEMS,S3_ZONES);}function checkSection4(){checkDragDrop(4,S3_ZONES);}
-function renderSection5Game(){renderQuiz(5,S4_QUIZ);}function checkSection5(){checkQuiz(5,S4_QUIZ);}
-function renderSection6Game(){renderQuiz(6,S5_QUIZ);}function checkSection6(){checkQuiz(6,S5_QUIZ);}
-function renderSection7Game(){renderQuiz(7,S6_QUIZ);}function checkSection7(){checkQuiz(7,S6_QUIZ);}
+// =============================================
+//  SECTION REGISTRATION (shared helpers from engine.js)
+// =============================================
+window.registerQuiz(2, S1_QUIZ);
+window.registerMatch(3, S2_ITEMS,S2_ZONES);
+window.registerMatch(4, S3_ITEMS,S3_ZONES);
+window.registerQuiz(5, S4_QUIZ);
+window.registerQuiz(6, S5_QUIZ);
+window.registerQuiz(7, S6_QUIZ);
 
-function _lbl(ctx,W,msg,d,t){ctx.fillStyle='#c88030';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(msg,W/2,18);ctx.fillStyle='#140408';ctx.fillRect(W/2-100,26,200,8);ctx.fillStyle='#6a1828';ctx.fillRect(W/2-100,26,Math.round(200*d/t),8);ctx.textAlign='left';}
 function _drawBuildCanvas(n){
   const c=document.getElementById('build-canvas');if(!c)return;
   const ctx=c.getContext('2d'),W=560,H=250;ctx.clearRect(0,0,W,H);
   const sk=ctx.createLinearGradient(0,0,0,H);sk.addColorStop(0,'#0a0408');sk.addColorStop(1,'#180810');ctx.fillStyle=sk;ctx.fillRect(0,0,W,H);
   for(let i=0;i<20;i++){const sx=(i*5997)%W,sy=(i*3821)%(H*0.4);ctx.fillStyle=`rgba(200,150,100,${0.1+i%3*0.1})`;ctx.fillRect(sx,sy,1,1);}
-  if(n<1){_lbl(ctx,W,"⚖️ Complete levels to build the Scales of Justice!",0,6);return;}
+  if(n<1){_buildLabel(ctx,W,"⚖️ Complete levels to build the Scales of Justice!",0,6);return;}
   ctx.fillStyle='#1a0e08';ctx.fillRect(0,200,W,50);ctx.fillStyle='#281408';ctx.fillRect(0,200,W,5);
-  if(n<2){_lbl(ctx,W,"⚖️ Base of scales set — 1/6",1,6);return;}
+  if(n<2){_buildLabel(ctx,W,"⚖️ Base of scales set — 1/6",1,6);return;}
   // Scales
   ctx.strokeStyle='rgba(200,128,48,0.8)';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(W/2,80);ctx.lineTo(W/2,110);ctx.stroke();ctx.beginPath();ctx.moveTo(W/2-80,110);ctx.lineTo(W/2+80,110);ctx.stroke();ctx.beginPath();ctx.moveTo(W/2-80,110);ctx.lineTo(W/2-90,145);ctx.stroke();ctx.beginPath();ctx.moveTo(W/2+80,110);ctx.lineTo(W/2+90,145);ctx.stroke();ctx.fillStyle='rgba(200,128,48,0.8)';ctx.beginPath();ctx.arc(W/2,78,6,0,Math.PI*2);ctx.fill();fillRect(ctx,W/2-100,145,30,12,'#5a3010');fillRect(ctx,W/2+70,145,30,12,'#5a3010');
-  if(n<3){_lbl(ctx,W,"⚖️ Scales of Justice raised — 2/6",2,6);return;}
+  if(n<3){_buildLabel(ctx,W,"⚖️ Scales of Justice raised — 2/6",2,6);return;}
   // Sijjin below
   const sy=185;fillRect(ctx,W/2-180,sy,80,25,'#1a0a10');ctx.strokeStyle='#6a1828';ctx.lineWidth=1;ctx.strokeRect(W/2-180,sy,80,25);ctx.fillStyle='#aa3040';ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('SIJJIN',W/2-140,sy+17);ctx.textAlign='left';
-  if(n<4){_lbl(ctx,W,"📕 Sijjin revealed below — 3/6",3,6);return;}
+  if(n<4){_buildLabel(ctx,W,"📕 Sijjin revealed below — 3/6",3,6);return;}
   // Illiyyin above
   ctx.shadowColor='rgba(200,200,80,0.5)';ctx.shadowBlur=10;fillRect(ctx,W/2+100,20,80,25,'#4a4010');ctx.strokeStyle='rgba(200,180,60,0.8)';ctx.lineWidth=1;ctx.strokeRect(W/2+100,20,80,25);ctx.shadowBlur=0;ctx.fillStyle='#e8d840';ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('ILLIYYIN',W/2+140,37);ctx.textAlign='left';
-  if(n<5){_lbl(ctx,W,"📗 Illiyyin revealed above — 4/6",4,6);return;}
+  if(n<5){_buildLabel(ctx,W,"📗 Illiyyin revealed above — 4/6",4,6);return;}
   // Two groups
   ctx.fillStyle='rgba(80,200,80,0.3)';ctx.fillRect(20,165,100,35);ctx.fillStyle='rgba(200,40,40,0.3)';ctx.fillRect(440,165,100,35);ctx.fillStyle='#80ff80';ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('ABRAR',70,188);ctx.fillStyle='#ff8080';ctx.fillText('FUJJAR',490,188);ctx.textAlign='left';
-  if(n<6){_lbl(ctx,W,"⚖️ Two sides of the scale — 5/6",5,6);return;}
+  if(n<6){_buildLabel(ctx,W,"⚖️ Two sides of the scale — 5/6",5,6);return;}
   ctx.fillStyle='#c88030';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText("ALLAHUMMA BARIK! ⚖️ AL-MUTAFFIFIN COMPLETE!",W/2,225);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Waylun lil-mutaffifin...kalla inna kitab al-abrar la-fi Illiyyin"',W/2,238);ctx.textAlign='left';
 }
 function updateUIExtra(){_drawBuildCanvas(window.state.completed.length);}

@@ -5,17 +5,7 @@
 
 window.STORAGE_KEY = 'naziatQuestSave';
 
-window.state = {
-  explorerName: '', xp: 0, gems: 0, completed: [],
-  s1Checked:false,
-  s2Checked: false,
-  s3Answers: {}, s3Checked: false,
-  s4Order:   [], s4Checked: false,
-  s5Answers: {}, s5Checked: false,
-  s6Checked: false,
-  s7Answers: {}, s7Checked: false,
-  s8Answers: {}, s8Checked: false,
-};
+window.state = window.buildDefaultState(8);
 
 const REWARDS = {
   1: { xp: 60,  gems: 3, icon: '📖', title: 'Words Learned!',
@@ -122,7 +112,6 @@ const S3_EVENTS_CORRECT = [
   { id: 'e3', text: '🕊️ The message to deliver: "Would you like to purify yourself (tazakka)?" — an invitation to tazkiyah, not a threat (79:18)' },
   { id: 'e4', text: '✨ "And I will guide you to your Lord, so you may fear [Him]." — Allah offers His own guidance (79:19)' },
 ];
-window._S3_EVENTS = S3_EVENTS_CORRECT;
 
 const S4_QUIZ = [
   { q: 'What was "al-aya al-kubra" (the greatest sign) shown to Pharaoh (79:20)?',
@@ -219,34 +208,21 @@ const S7_QUIZ = [
 ];
 
 // =============================================
-//  SECTION WRAPPERS
 // =============================================
-
-function renderSection2Game() { renderDragDrop(2, S1_ITEMS, S1_ZONES); }
-function checkSection2()      { checkDragDrop(2, S1_ZONES); }
-function renderSection3Game() { renderQuiz(3, S2_QUIZ); }
-function checkSection3()      { checkQuiz(3, S2_QUIZ); }
-function renderSection4Game() { renderStoryOrder(4, S3_EVENTS_CORRECT); }
-function checkSection4()      { checkStoryOrder(4, S3_EVENTS_CORRECT); }
-function renderSection5Game() { renderQuiz(5, S4_QUIZ); }
-function checkSection5()      { checkQuiz(5, S4_QUIZ); }
-function renderSection6Game() { renderDragDrop(6, S5_ITEMS, S5_ZONES); }
-function checkSection6()      { checkDragDrop(6, S5_ZONES); }
-function renderSection7Game() { renderQuiz(7, S6_QUIZ); }
-function checkSection7()      { checkQuiz(7, S6_QUIZ); }
-function renderSection8Game() { renderQuiz(8, S7_QUIZ); }
-function checkSection8()      { checkQuiz(8, S7_QUIZ); }
+//  SECTION REGISTRATION (shared helpers from engine.js)
+// =============================================
+window.registerMatch(2, S1_ITEMS, S1_ZONES);
+window.registerQuiz(3, S2_QUIZ);
+window.registerOrder(4, S3_EVENTS_CORRECT);
+window.registerQuiz(5, S4_QUIZ);
+window.registerMatch(6, S5_ITEMS, S5_ZONES);
+window.registerQuiz(7, S6_QUIZ);
+window.registerQuiz(8, S7_QUIZ);
+// =============================================
 
 // =============================================
 //  GARDEN OF AL-MA'WA — WORLD BUILDER CANVAS
 // =============================================
-function _buildLabelNaziat(ctx, W, msg, done, total) {
-  ctx.fillStyle = '#2a9060'; ctx.font = '7px "Press Start 2P",monospace'; ctx.textAlign = 'center';
-  ctx.fillText(msg, W / 2, 18);
-  ctx.fillStyle = '#041408'; ctx.fillRect(W/2-100, 26, 200, 8);
-  ctx.fillStyle = '#1a6040'; ctx.fillRect(W/2-100, 26, Math.round(200*done/total), 8);
-  ctx.textAlign = 'left';
-}
 function _drawBuildCanvas(n) {
   const c = document.getElementById('build-canvas'); if (!c) return;
   const ctx = c.getContext('2d'), W = 560, H = 250;
@@ -264,16 +240,16 @@ function _drawBuildCanvas(n) {
     const sx=(i*7123)%W, sy=(i*4419)%(H*0.45);
     ctx.fillStyle=`rgba(220,240,200,${0.2+(i%3)*0.15})`; ctx.fillRect(sx,sy,1,1);
   }
-  if (n<1) { _buildLabelNaziat(ctx,W,"🌿 Complete levels to build the Garden of Al-Ma'wa!",0,7); return; }
+  if (n<1) { _buildLabel(ctx,W,"🌿 Complete levels to build the Garden of Al-Ma'wa!",0,7); return; }
   ctx.fillStyle='#183a10'; ctx.fillRect(0,195,W,55);
   ctx.fillStyle='#204810'; ctx.fillRect(0,195,W,5);
   for (let gx=5; gx<W-5; gx+=12) { ctx.fillStyle='#2a5c18'; ctx.fillRect(gx,192,3,7+(gx%5)); }
-  if (n<2) { _buildLabelNaziat(ctx,W,"🌱 Earth of Al-Ma'wa laid — 1/7",1,7); return; }
+  if (n<2) { _buildLabel(ctx,W,"🌱 Earth of Al-Ma'wa laid — 1/7",1,7); return; }
   ctx.fillStyle='#d8d0b0'; ctx.fillRect(220,185,120,65);
   ctx.strokeStyle='#b0a888'; ctx.lineWidth=1;
   for (let px=225; px<340; px+=20) { ctx.beginPath(); ctx.moveTo(px,185); ctx.lineTo(px,250); ctx.stroke(); }
   for (let py=190; py<250; py+=15) { ctx.beginPath(); ctx.moveTo(220,py); ctx.lineTo(340,py); ctx.stroke(); }
-  if (n<3) { _buildLabelNaziat(ctx,W,"🛤️ Path of return laid — 2/7",2,7); return; }
+  if (n<3) { _buildLabel(ctx,W,"🛤️ Path of return laid — 2/7",2,7); return; }
   if (n>=3) {
     ctx.fillStyle='#4a2808'; ctx.fillRect(110,140,14,55);
     ctx.fillStyle='#1c5012'; ctx.beginPath(); ctx.arc(117,125,32,0,Math.PI*2); ctx.fill();
@@ -281,7 +257,7 @@ function _drawBuildCanvas(n) {
     ctx.fillStyle='#e03030';
     [[104,118],[126,112],[110,130],[130,124]].forEach(([fx,fy])=>{ ctx.beginPath(); ctx.arc(fx,fy,5,0,Math.PI*2); ctx.fill(); });
   }
-  if (n<4) { _buildLabelNaziat(ctx,W,"🌳 First fruit tree planted — 3/7",3,7); return; }
+  if (n<4) { _buildLabel(ctx,W,"🌳 First fruit tree planted — 3/7",3,7); return; }
   if (n>=4) {
     ctx.fillStyle='#4a2808'; ctx.fillRect(436,142,14,53);
     ctx.fillStyle='#1c5012'; ctx.beginPath(); ctx.arc(443,127,30,0,Math.PI*2); ctx.fill();
@@ -289,7 +265,7 @@ function _drawBuildCanvas(n) {
     ctx.fillStyle='#d04020';
     [[432,120],[452,115],[436,132],[454,128]].forEach(([fx,fy])=>{ ctx.beginPath(); ctx.arc(fx,fy,5,0,Math.PI*2); ctx.fill(); });
   }
-  if (n<5) { _buildLabelNaziat(ctx,W,"🌳 Second fruit tree planted — 4/7",4,7); return; }
+  if (n<5) { _buildLabel(ctx,W,"🌳 Second fruit tree planted — 4/7",4,7); return; }
   if (n>=5) {
     ctx.fillStyle='#1840a0'; ctx.fillRect(30,182,500,14);
     ctx.fillStyle='rgba(60,140,240,0.55)'; ctx.fillRect(30,182,500,6);
@@ -301,7 +277,7 @@ function _drawBuildCanvas(n) {
       ctx.beginPath(); ctx.moveTo(280,170); ctx.lineTo(280+Math.cos(ang)*18,170+Math.sin(ang)*18); ctx.stroke();
     }
   }
-  if (n<6) { _buildLabelNaziat(ctx,W,"💧 River of paradise flows — 5/7",5,7); return; }
+  if (n<6) { _buildLabel(ctx,W,"💧 River of paradise flows — 5/7",5,7); return; }
   if (n>=6) {
     ctx.fillStyle='#c8e8a0';
     [[100,60],[150,45],[200,68],[380,55],[430,40],[490,65]].forEach(([bx,by])=>{
@@ -310,7 +286,7 @@ function _drawBuildCanvas(n) {
       ctx.fillStyle='#a8c880'; ctx.fillRect(bx-1,by-1,3,3);
     });
   }
-  if (n<7) { _buildLabelNaziat(ctx,W,"🐦 Birds fill the garden — 6/7",6,7); return; }
+  if (n<7) { _buildLabel(ctx,W,"🐦 Birds fill the garden — 6/7",6,7); return; }
   ctx.fillStyle='#c8a840'; ctx.fillRect(210,85,36,112);
   ctx.fillStyle='#d8b850'; ctx.fillRect(210,85,36,6); ctx.fillRect(206,80,44,10);
   ctx.fillStyle='#c8a840'; ctx.fillRect(314,85,36,112);

@@ -7,18 +7,7 @@
 
 window.STORAGE_KEY = 'nabaQuestSave';
 
-window.state = {
-  explorerName: '', xp: 0, gems: 0, completed: [],
-  s1Checked:false,
-  s2Answers: {}, s2Checked: false,
-  s3Checked: false,
-  s4Checked: false,
-  s5Order:   [], s5Checked: false,
-  s6Answers: {}, s6Checked: false,
-  s7Checked: false,
-  s8Answers: {}, s8Checked: false,
-  s9Answers: {}, s9Checked: false,
-};
+window.state = window.buildDefaultState(9);
 
 const REWARDS = {
   1: { xp: 60,  gems: 3, icon: '📖', title: 'Words Learned!',
@@ -388,8 +377,6 @@ const S4_EVENTS_CORRECT = [
   { id: 'd3', text: '🌌 The sky is torn open and becomes like gates (78:19)' },
   { id: 'd4', text: '⛰️ The mountains are moved away completely — they become a mirage (78:20)' },
 ];
-window._S4_EVENTS = S4_EVENTS_CORRECT;
-
 const S5_QUIZ = [
   { q: 'What does "mirsad" mean for Hell in 78:21?',
     opts: ['A watch-post / ambush — Hell is lying in wait and alert',
@@ -473,27 +460,16 @@ const S8_QUIZ = [
 ];
 
 // =============================================
-//  SECTION WRAPPERS
+//  SECTION REGISTRATION (shared helpers from engine.js)
 // =============================================
-
-
-
-function renderSection2Game() { renderQuiz(2, S1_QUIZ); }
-function checkSection2()      { checkQuiz(2, S1_QUIZ); }
-function renderSection3Game() { renderDragDrop(3, S2_ITEMS, S2_ZONES); }
-function checkSection3()      { checkDragDrop(3, S2_ZONES); }
-function renderSection4Game() { renderDragDrop(4, S3_ITEMS, S3_ZONES); }
-function checkSection4()      { checkDragDrop(4, S3_ZONES); }
-function renderSection5Game() { renderStoryOrder(5, S4_EVENTS_CORRECT); }
-function checkSection5()      { checkStoryOrder(5, S4_EVENTS_CORRECT); }
-function renderSection6Game() { renderQuiz(6, S5_QUIZ); }
-function checkSection6()      { checkQuiz(6, S5_QUIZ); }
-function renderSection7Game() { renderDragDrop(7, S6_ITEMS, S6_ZONES); }
-function checkSection7()      { checkDragDrop(7, S6_ZONES); }
-function renderSection8Game() { renderQuiz(8, S7_QUIZ); }
-function checkSection8()      { checkQuiz(8, S7_QUIZ); }
-function renderSection9Game() { renderQuiz(9, S8_QUIZ); }
-function checkSection9()      { checkQuiz(9, S8_QUIZ); }
+window.registerQuiz(2, S1_QUIZ);
+window.registerMatch(3, S2_ITEMS, S2_ZONES);
+window.registerMatch(4, S3_ITEMS, S3_ZONES);
+window.registerOrder(5, S4_EVENTS_CORRECT);
+window.registerQuiz(6, S5_QUIZ);
+window.registerMatch(7, S6_ITEMS, S6_ZONES);
+window.registerQuiz(8, S7_QUIZ);
+window.registerQuiz(9, S8_QUIZ);
 
 // =============================================
 //  PARADISE GATE WORLD BUILDER (surah-specific)
@@ -511,10 +487,10 @@ function _drawBuildCanvas(n) {
     const sx = (i * 7123) % 260, sy = (i * 4419) % 175, br = 0.35 + (i % 3) * 0.18;
     ctx.fillStyle = `rgba(200,170,255,${br})`; ctx.fillRect(sx, sy, 1, 1);
   }
-  if (n < 1) { _buildLabelNaba(ctx, W, '🌿 Complete levels to open the Gate of Paradise!', 0, 8); return; }
+  if (n < 1) { _buildLabel(ctx, W, '🌿 Complete levels to open the Gate of Paradise!', 0, 8); return; }
   ctx.fillStyle = '#2e2818'; ctx.fillRect(0, 210, W, 40);
   ctx.fillStyle = '#d0c8b0'; ctx.fillRect(215, 195, 130, 55);
-  if (n < 2) { _buildLabelNaba(ctx, W, '🌿 Path to Paradise laid — 1/8', 1, 8); return; }
+  if (n < 2) { _buildLabel(ctx, W, '🌿 Path to Paradise laid — 1/8', 1, 8); return; }
   if (n >= 2) { ctx.fillStyle = '#c8b880'; ctx.fillRect(192, 95, 38, 122); ctx.fillStyle = '#d8c890'; ctx.fillRect(192, 95, 38, 5); ctx.fillRect(188, 90, 46, 10); }
   if (n >= 3) { ctx.fillStyle = '#c8b880'; ctx.fillRect(330, 95, 38, 122); ctx.fillStyle = '#d8c890'; ctx.fillRect(330, 95, 38, 5); ctx.fillRect(326, 90, 46, 10); }
   if (n >= 4) { ctx.fillStyle = '#b8a870'; ctx.fillRect(96, 115, 96, 98); }
@@ -537,13 +513,6 @@ function _drawBuildCanvas(n) {
     ctx.fillStyle = '#ffd700'; ctx.font = '9px "Press Start 2P",monospace'; ctx.textAlign = 'center';
     ctx.fillText('ALLAHUMMA BARIK! 🌿 GATES OF PARADISE OPEN!', W / 2, 20);
     ctx.textAlign = 'left';
-  } else { _buildLabelNaba(ctx, W, `Building the Gate — ${n}/9 levels`, n, 8); }
-}
-function _buildLabelNaba(ctx, W, msg, done, total) {
-  ctx.fillStyle = '#8840c8'; ctx.font = '7px "Press Start 2P",monospace'; ctx.textAlign = 'center';
-  ctx.fillText(msg, W / 2, 18);
-  ctx.fillStyle = '#0e0420'; ctx.fillRect(W / 2 - 100, 26, 200, 8);
-  ctx.fillStyle = '#5a20a0'; ctx.fillRect(W / 2 - 100, 26, Math.round(200 * done / total), 8);
-  ctx.textAlign = 'left';
+  } else { _buildLabel(ctx, W, `Building the Gate — ${n}/9 levels`, n, 8); }
 }
 function updateUIExtra() { _drawBuildCanvas(window.state.completed.length); }

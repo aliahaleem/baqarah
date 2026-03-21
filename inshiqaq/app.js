@@ -1,7 +1,7 @@
 'use strict';
 /* SURAH AL-INSHIQAQ (84) — app.js */
 window.STORAGE_KEY='inshiqaqQuestSave';
-window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Answers:{},s4Checked:false,s5Answers:{},s5Checked:false,s6Checked:false,s7Answers:{},s7Checked:false};
+window.state = window.buildDefaultState(7);
 
 const REWARDS={
   1: {xp:60, gems:3, icon:'📖', title:'Words Learned!', msg:'MashAllah! You learned the key Arabic words of this surah!'},
@@ -325,37 +325,39 @@ const S6_QUIZ=[
    correct:3},
 ];
 
-function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
-function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}
-function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
-function renderSection5Game(){renderQuiz(5,S4_QUIZ);}function checkSection5(){checkQuiz(5,S4_QUIZ);}
-function renderSection6Game(){renderQuiz(6,S5_QUIZ);}function checkSection6(){checkQuiz(6,S5_QUIZ);}
-function renderSection7Game(){renderQuiz(7,S6_QUIZ);}function checkSection7(){checkQuiz(7,S6_QUIZ);}
+// =============================================
+//  SECTION REGISTRATION (shared helpers from engine.js)
+// =============================================
+window.registerMatch(2, S1_ITEMS,S1_ZONES);
+window.registerQuiz(3, S2_QUIZ);
+window.registerQuiz(4, S3_QUIZ);
+window.registerQuiz(5, S4_QUIZ);
+window.registerQuiz(6, S5_QUIZ);
+window.registerQuiz(7, S6_QUIZ);
 
-function _lbl(ctx,W,msg,d,t){ctx.fillStyle='#f09030';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(msg,W/2,18);ctx.fillStyle='#100802';ctx.fillRect(W/2-100,26,200,8);ctx.fillStyle='#883010';ctx.fillRect(W/2-100,26,Math.round(200*d/t),8);ctx.textAlign='left';}
 function _drawBuildCanvas(n){
   const c=document.getElementById('build-canvas');if(!c)return;
   const ctx=c.getContext('2d'),W=560,H=250;ctx.clearRect(0,0,W,H);
   const sk=ctx.createLinearGradient(0,0,0,H);sk.addColorStop(0,'#0a0402');sk.addColorStop(0.5,'#180a04');sk.addColorStop(1,'#261408');ctx.fillStyle=sk;ctx.fillRect(0,0,W,H);
-  if(n<1){_lbl(ctx,W,"🌅 Complete levels to build the Sunset Journey!",0,6);return;}
+  if(n<1){_buildLabel(ctx,W,"🌅 Complete levels to build the Sunset Journey!",0,6);return;}
   // Ground
   ctx.fillStyle='#301808';ctx.fillRect(0,210,W,40);ctx.fillStyle='#401e08';ctx.fillRect(0,210,W,5);
-  if(n<2){_lbl(ctx,W,"🌍 Earth appears — 1/6",1,6);return;}
+  if(n<2){_buildLabel(ctx,W,"🌍 Earth appears — 1/6",1,6);return;}
   // Sunset sky
   const sg=ctx.createLinearGradient(0,0,0,210);sg.addColorStop(0,'#1a0802');sg.addColorStop(0.4,'#3a1808');sg.addColorStop(0.8,'#7a3810');sg.addColorStop(1,'#301808');ctx.fillStyle=sg;ctx.fillRect(0,0,W,210);
-  if(n<3){_lbl(ctx,W,"🌅 Sunset sky — 2/6",2,6);return;}
+  if(n<3){_buildLabel(ctx,W,"🌅 Sunset sky — 2/6",2,6);return;}
   // Crack in sky
   ctx.strokeStyle='rgba(248,192,96,0.8)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(W/2,0);ctx.lineTo(W/2+15,60);ctx.lineTo(W/2-10,130);ctx.lineTo(W/2+5,210);ctx.stroke();
-  if(n<4){_lbl(ctx,W,"🌅 Sky splits — 3/6",3,6);return;}
+  if(n<4){_buildLabel(ctx,W,"🌅 Sky splits — 3/6",3,6);return;}
   // Person walking
   ctx.fillStyle='#e8c39a';ctx.fillRect(100,175,16,12);ctx.fillRect(103,163,10,12);ctx.fillStyle='#3a2818';ctx.fillRect(100,163,10,12);
   for(let f=0;f<3;f++){ctx.fillStyle='rgba(248,192,96,0.3)';ctx.fillRect(60-f*15,210,8,3);}
-  if(n<5){_lbl(ctx,W,"🚶 Man striving toward Lord — 4/6",4,6);return;}
+  if(n<5){_buildLabel(ctx,W,"🚶 Man striving toward Lord — 4/6",4,6);return;}
   // Moon
   ctx.fillStyle='rgba(248,192,96,0.7)';ctx.beginPath();ctx.arc(60,40,22,0,Math.PI*2);ctx.fill();ctx.fillStyle='#0a0402';ctx.beginPath();ctx.arc(70,34,15,0,Math.PI*2);ctx.fill();
   // Stars
   [[200,20],[300,35],[420,15],[480,45]].forEach(([sx,sy])=>{ctx.fillStyle='rgba(248,192,96,0.5)';ctx.beginPath();ctx.arc(sx,sy,1.5,0,Math.PI*2);ctx.fill();});
-  if(n<6){_lbl(ctx,W,"🌙 Moon and stars — 5/6",5,6);return;}
+  if(n<6){_buildLabel(ctx,W,"🌙 Moon and stars — 5/6",5,6);return;}
   ctx.fillStyle='#f09030';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText("ALLAHUMMA BARIK! 🌅 AL-INSHIQAQ COMPLETE!",W/2,240);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Innaka kadihun ila Rabbika kadhan fa-mulaqihi" — 84:6',W/2,H-2);ctx.textAlign='left';
 }
 function updateUIExtra(){_drawBuildCanvas(window.state.completed.length);}

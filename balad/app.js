@@ -1,16 +1,7 @@
 'use strict';
 /* Surah Al-Balad (90) — The City */
 window.STORAGE_KEY = 'baladQuestSave';
-window.state = {
-  explorerName:'', xp:0, gems:0, completed:[],
-  s1Checked:false,
-  s2Answers:{}, s2Checked:false,
-  s3Checked:false,
-  s4Answers:{}, s4Checked:false,
-  s5Checked:false,
-  s6Order:[], s6Checked:false,
-  s7Answers:{}, s7Checked:false,
-};
+window.state = window.buildDefaultState(7);
 
 const REWARDS = {
   1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
@@ -229,7 +220,6 @@ const S5_EVENTS_CORRECT = [
   {id:'p5', text:'🔥 Over them fire is closing in — they are sealed within it (90:20)'},
   {id:'p6', text:'⚖️ The conclusion: every person chooses their path — aqabah or easy road — then lives with the consequence'},
 ];
-window._S5_EVENTS = S5_EVENTS_CORRECT;
 
 /* Level 6: Quiz — Companions of Right and Left (90:17-20) */
 const S6_QUIZ = [
@@ -247,18 +237,16 @@ const S6_QUIZ = [
    correct:1},
 ];
 
-function renderSection2Game(){renderQuiz(2,S1_QUIZ);}
-function checkSection2(){checkQuiz(2,S1_QUIZ);}
-function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}
-function checkSection3(){checkDragDrop(3,S2_ZONES);}
-function renderSection4Game(){renderQuiz(4,S3_QUIZ);}
-function checkSection4(){checkQuiz(4,S3_QUIZ);}
-function renderSection5Game(){renderDragDrop(5,S4_ITEMS,S4_ZONES);}
-function checkSection5(){checkDragDrop(5,S4_ZONES);}
-function renderSection6Game(){renderStoryOrder(6,S5_EVENTS_CORRECT);}
-function checkSection6(){checkStoryOrder(6,S5_EVENTS_CORRECT);}
-function renderSection7Game(){renderQuiz(7,S6_QUIZ);}
-function checkSection7(){checkQuiz(7,S6_QUIZ);}
+// =============================================
+//  SECTION REGISTRATION (shared helpers from engine.js)
+// =============================================
+window.registerQuiz(2, S1_QUIZ);
+window.registerMatch(3, S2_ITEMS,S2_ZONES);
+window.registerQuiz(4, S3_QUIZ);
+window.registerMatch(5, S4_ITEMS,S4_ZONES);
+window.registerOrder(6, S5_EVENTS_CORRECT);
+window.registerQuiz(7, S6_QUIZ);
+
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {

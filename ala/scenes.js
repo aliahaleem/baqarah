@@ -1,6 +1,7 @@
 'use strict';
 window.SCENE_PALETTE = {
-  minecraft: {sky0:'#041008',sky1:'#081a0c',sky2:'#0c2410',gnd:'#10280c',gndAcc:'#183014',starStr:'rgba(80,180,100,',acStr:'rgba(200,160,32,',label:'#c8a020',hint:'#a08018'},
+
+  labelText:'#c8a020', labelBg:'#041008', labelBar:'#1a6030',  minecraft: {sky0:'#041008',sky1:'#081a0c',sky2:'#0c2410',gnd:'#10280c',gndAcc:'#183014',starStr:'rgba(80,180,100,',acStr:'rgba(200,160,32,',label:'#c8a020',hint:'#a08018'},
   stars: {sky0:'#0e2820',sky1:'#183830',sky2:'#224840',gnd:'#2c5840',gndAcc:'#3c6850',starStr:'rgba(160,240,200,',acStr:'rgba(240,208,96,',label:'#f0d060',hint:'#d0b040'},
 };
 

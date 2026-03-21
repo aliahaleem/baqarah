@@ -7,6 +7,7 @@
 // =============================================
 
 window.SCENE_PALETTE = {
+  labelText:'#8840c8', labelBg:'#0e0420', labelBar:'#5a20a0',
   minecraft: {
     sky0:'#0e0528', sky1:'#150830', sky2:'#301840',
     gnd:'#3a2808', gndAcc:'#5a4010',

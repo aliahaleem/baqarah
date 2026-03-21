@@ -1,7 +1,7 @@
 'use strict';
 /* Surah Al-Qaria (101) — The Striking Hour */
 window.STORAGE_KEY = 'qariaQuestSave';
-window.state = { explorerName:'', xp:0, gems:0, completed:[], s2Answers:{}, s2Checked:false, s3Order:[], s3Checked:false, s4Checked:false, s5Answers:{}, s5Checked:false };
+window.state = window.buildDefaultState(5);
 
 const REWARDS = {
   1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
@@ -109,7 +109,6 @@ const S2_EVENTS_CORRECT = [
   {id:'q5', text:'🌟 Heavy scales: a pleased and comfortable life in the highest garden (101:7)'},
   {id:'q6', text:'🔥 Light scales: Hawiyah — his mother is a blazing fire! (101:8-11)'},
 ];
-window._S2_EVENTS = S2_EVENTS_CORRECT;
 
 const S3_QUIZ = [
   {q:'What happens to the person whose scales are heavy with good deeds? (101:7)',
@@ -141,10 +140,14 @@ const S4_QUIZ = [
    correct:1},
 ];
 
-function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
-function renderSection3Game(){renderStoryOrder(3,S2_EVENTS_CORRECT);}function checkSection3(){checkStoryOrder(3,S2_EVENTS_CORRECT);}
-function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
-function renderSection5Game(){renderQuiz(5,S4_QUIZ);}function checkSection5(){checkQuiz(5,S4_QUIZ);}
+// =============================================
+//  SECTION REGISTRATION (shared helpers from engine.js)
+// =============================================
+window.registerQuiz(2, S1_QUIZ);
+window.registerOrder(3, S2_EVENTS_CORRECT);
+window.registerQuiz(4, S3_QUIZ);
+window.registerQuiz(5, S4_QUIZ);
+
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
