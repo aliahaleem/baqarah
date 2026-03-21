@@ -37,7 +37,9 @@ class S1 extends BS{
     };draw();
   }
 }
-const VD_insan2={ref:'Al-Insan 76:8-9',arabic:'وَيُطْعِمُونَ الطَّعَامَ عَلَىٰ حُبِّهِ مِسْكِينًا وَيَتِيمًا وَأَسِيرًا ۩ إِنَّمَا نُطْعِمُكُمْ لِوَجْهِ اللَّهِ لَا نُرِيدُ مِنكُمْ جَزَاءً وَلَا شُكُورًا',english:'"They give food — despite their love for it — to the poor, the orphan, and the captive. [Saying] We feed you only for the sake of Allah. We desire no reward from you nor gratitude." (76:8-9)',note:"The phrase 'despite their love for it' — they are HUNGRY but they give anyway. And their words of pure ikhlas: no reward needed, no thanks needed. This is the highest form of giving — purely for Allah."};
+const VD_insan1b={ref:'Al-Insan 76:4',arabic:'إِنَّا أَعْتَدْنَا لِلْكَافِرِينَ سَلَاسِلَ وَأَغْلَالًا وَسَعِيرًا',english:'"Indeed, We have prepared for the disbelievers chains, shackles, and a blazing Fire." (76:4)',note:'After the gentle opening about human creation and choice, the consequence for disbelief is stated bluntly: chains, shackles, and fire. Free will was given, but misusing it leads to binding.'};
+const VD_insan1c={ref:'Al-Insan 76:5-7',arabic:'إِنَّ الْأَبْرَارَ يَشْرَبُونَ مِن كَأْسٍ كَانَ مِزَاجُهَا كَافُورًا ۩ عَيْنًا يَشْرَبُ بِهَا عِبَادُ اللَّهِ يُفَجِّرُونَهَا تَفْجِيرًا ۩ يُوفُونَ بِالنَّذْرِ وَيَخَافُونَ يَوْمًا كَانَ شَرُّهُ مُسْتَطِيرًا',english:'"Indeed, the righteous will drink from a cup whose mixture is of camphor — a spring from which the servants of Allah will drink, causing it to gush forth abundantly. They fulfill their vows and fear a Day whose evil will be widespread." (76:5-7)',note:'The righteous drink from cups of camphor — cool, pure, fragrant. They make the springs flow as they wish. Why? Two qualities: they fulfill vows and they fear the Day. Faith and action together.'};
+const VD_insan2={ref:'Al-Insan 76:8-12',arabic:'وَيُطْعِمُونَ الطَّعَامَ عَلَىٰ حُبِّهِ مِسْكِينًا وَيَتِيمًا وَأَسِيرًا ۩ إِنَّمَا نُطْعِمُكُمْ لِوَجْهِ اللَّهِ لَا نُرِيدُ مِنكُمْ جَزَاءً وَلَا شُكُورًا ۩ إِنَّا نَخَافُ مِن رَّبِّنَا يَوْمًا عَبُوسًا قَمْطَرِيرًا ۩ فَوَقَاهُمُ اللَّهُ شَرَّ ذَٰلِكَ الْيَوْمِ وَلَقَّاهُمْ نَضْرَةً وَسُرُورًا ۩ وَجَزَاهُم بِمَا صَبَرُوا جَنَّةً وَحَرِيرًا',english:'"They give food — despite their love for it — to the poor, the orphan, and the captive. [Saying:] We feed you only for the sake of Allah. We desire no reward nor gratitude. Indeed, we fear from our Lord a Day austere and distressful. So Allah will protect them from the evil of that Day and grant them radiance and happiness. And He will reward them for their patience with a garden and silk." (76:8-12)',note:"They give food while hungry, expecting nothing — only fearing Allah's Day. And Allah's response: protection from that very Day they feared, radiance on their faces, Jannah and silk. Beautiful symmetry: they gave selflessly, so Allah gives abundantly."};
 
 class S2 extends BS{
   constructor(){super('canvas-2');}
@@ -58,11 +60,11 @@ class S2 extends BS{
       _fig(ctx,CW*0.76,CH*0.72,'#808080');
       ctx.strokeStyle='#606060';ctx.lineWidth=2;
       ctx.beginPath();ctx.arc(CW*0.76,CH*0.72+2,12,0,Math.PI*1.2);ctx.stroke();
-      _label(ctx,"CLICK: Feeding the Poor for Allah's Sake (76:8-9)",p.label);
+      _label(ctx,"CLICK: Feeding the Poor, Allah's Protection (76:8-12)",p.label);
     };draw();
   }
 }
-const VD_insan3={ref:'Al-Insan 76:13-16',arabic:'مُتَّكِئِينَ فِيهَا عَلَى الْأَرَائِكِ ۩ لَا يَرَوْنَ فِيهَا شَمْسًا وَلَا زَمْهَرِيرًا ۩ وَدَانِيَةً عَلَيْهِمْ ظِلَالُهَا وَوَجُنِيهَا تَذْلِيلًا ۩ وَيُطَافُ عَلَيْهِم بِآنِيَةٍ مِّن فِضَّةٍ',english:'"Reclining therein on raised couches — they will see no sun or cold therein. Close over them its shades, and its bunches of fruit hanging low. And around them will be circulated silver vessels." (76:13-16)',note:'Jannah: reclining, perfect temperature, shade, fruit within reach, silver goblets. These are not metaphors — these are promises from the One who created the universe. Every detail is intentional.'};
+const VD_insan3={ref:'Al-Insan 76:13-22',arabic:'مُتَّكِئِينَ فِيهَا عَلَى الْأَرَائِكِ ۩ لَا يَرَوْنَ فِيهَا شَمْسًا وَلَا زَمْهَرِيرًا ۩ وَدَانِيَةً عَلَيْهِمْ ظِلَالُهَا وَذُلِّلَتْ قُطُوفُهَا تَذْلِيلًا ۩ وَيُطَافُ عَلَيْهِم بِآنِيَةٍ مِّن فِضَّةٍ ۩ وَيُسْقَوْنَ فِيهَا كَأْسًا كَانَ مِزَاجُهَا زَنجَبِيلًا ۩ عَيْنًا فِيهَا تُسَمَّىٰ سَلْسَبِيلًا ۩ وَيَطُوفُ عَلَيْهِمْ وِلْدَانٌ مُّخَلَّدُونَ إِذَا رَأَيْتَهُمْ حَسِبْتَهُمْ لُؤْلُؤًا مَّنثُورًا ۩ وَإِذَا رَأَيْتَ ثَمَّ رَأَيْتَ نَعِيمًا وَمُلْكًا كَبِيرًا ۩ عَالِيَهُمْ ثِيَابُ سُندُسٍ خُضْرٌ وَإِسْتَبْرَقٌ ۖ وَحُلُّوا أَسَاوِرَ مِن فِضَّةٍ وَسَقَاهُمْ رَبُّهُمْ شَرَابًا طَهُورًا ۩ إِنَّ هَٰذَا كَانَ لَكُمْ جَزَاءً وَكَانَ سَعْيُكُم مَّشْكُورًا',english:'"Reclining therein on couches — they see no sun or biting cold. Close upon them its shades, and its fruit bunches made easy to reach. Silver vessels circulated among them, and cups mixed with ginger — a spring therein named Salsabeel. Circulating among them are eternal youths; when you see them you would think them scattered pearls. And when you look, you see bliss and a great kingdom. Upon them are green garments of fine silk and brocade, adorned with silver bracelets, and their Lord will give them a purifying drink. Indeed, this is for you a reward, and your effort has been appreciated." (76:13-22)',note:"The full Jannah panorama: reclining, perfect climate, low-hanging fruit, silver vessels, ginger drink from Salsabeel, eternal servants like scattered pearls, silk and brocade, silver bracelets, a purifying drink from their Lord. And the crown: 'your effort has been appreciated.' Allah acknowledges their struggle."};
 
 class S3 extends BS{
   constructor(){super('canvas-3');}
@@ -83,10 +85,11 @@ class S3 extends BS{
       // Person reclining
       ctx.fillStyle='#d0a060';ctx.fillRect(CW*0.42,CH*0.62,CW*0.16,8);
       ctx.fillStyle='#c0a070';ctx.beginPath();ctx.arc(CW*0.42,CH*0.62+4,10,0,Math.PI*2);ctx.fill();
-      _label(ctx,'CLICK: Jannah — Shade, Fruit, Silver Goblets (76:13-16)',p.label);
+      _label(ctx,'CLICK: Jannah in Full — Salsabeel to Silk (76:13-22)',p.label);
     };draw();
   }
 }
+const VD_insan3b={ref:'Al-Insan 76:23-24',arabic:'إِنَّا نَحْنُ نَزَّلْنَا عَلَيْكَ الْقُرْآنَ تَنزِيلًا ۩ فَاصْبِرْ لِحُكْمِ رَبِّكَ وَلَا تُطِعْ مِنْهُمْ آثِمًا أَوْ كَفُورًا',english:'"Indeed, it is We who have sent down to you the Quran progressively. So be patient for the decree of your Lord and do not obey from among them a sinner or ungrateful one." (76:23-24)',note:'After the vivid descriptions of Jannah, a direct command to the Prophet: patience and steadfastness. The Quran was revealed gradually — each portion at its right time. Do not yield to sinners or the ungrateful, no matter the pressure.'};
 const VD_insan4={ref:'Al-Insan 76:25-26',arabic:'وَاذْكُرِ اسْمَ رَبِّكَ بُكْرَةً وَأَصِيلًا ۩ وَمِنَ اللَّيْلِ فَاسْجُدْ لَهُ وَسَبِّحْهُ لَيْلًا طَوِيلًا',english:'"And remember the name of your Lord morning and evening. And during the night prostrate to Him and glorify Him through the long night." (76:25-26)',note:"Three times of remembrance: morning, evening, and the long night. After describing Jannah's rewards for the righteous, this is the practical instruction: dhikr and sujood. The path to Jannah is built through remembrance."};
 
 class S4 extends BS{
@@ -112,6 +115,7 @@ class S4 extends BS{
     };draw();
   }
 }
+const VD_insan5={ref:'Al-Insan 76:27-31',arabic:'إِنَّ هَٰؤُلَاءِ يُحِبُّونَ الْعَاجِلَةَ وَيَذَرُونَ وَرَاءَهُمْ يَوْمًا ثَقِيلًا ۩ نَّحْنُ خَلَقْنَاهُمْ وَشَدَدْنَا أَسْرَهُمْ ۖ وَإِذَا شِئْنَا بَدَّلْنَا أَمْثَالَهُمْ تَبْدِيلًا ۩ إِنَّ هَٰذِهِ تَذْكِرَةٌ ۖ فَمَن شَاءَ اتَّخَذَ إِلَىٰ رَبِّهِ سَبِيلًا ۩ وَمَا تَشَاءُونَ إِلَّا أَن يَشَاءَ اللَّهُ ۚ إِنَّ اللَّهَ كَانَ عَلِيمًا حَكِيمًا ۩ يُدْخِلُ مَن يَشَاءُ فِي رَحْمَتِهِ ۚ وَالظَّالِمِينَ أَعَدَّ لَهُمْ عَذَابًا أَلِيمًا',english:'"Indeed, these people love the fleeting world and leave behind them a Heavy Day. We created them and strengthened their forms, and whenever We will, We can replace them entirely. Indeed, this is a reminder — so whoever wills may take a path to his Lord. But you cannot will unless Allah wills. Indeed, Allah is All-Knowing, All-Wise. He admits whom He wills into His mercy, and for the wrongdoers He has prepared a painful punishment." (76:27-31)',note:'The surah closes with sobering contrast: they love the fleeting world but forget the Heavy Day ahead. Allah reminds: He created you and can replace you. This is a reminder — take the path or leave it. But even your will depends on His will. Mercy for whom He wills, punishment for the wrongdoers.'};
 const _scenes={};
 function initScenes(){for(let k in _scenes)_scenes[k]=null;_scenes[1]=new S1();_scenes[2]=new S2();_scenes[3]=new S3();_scenes[4]=new S4();}
 function startScene(n){if(_scenes[n])_scenes[n].start();}

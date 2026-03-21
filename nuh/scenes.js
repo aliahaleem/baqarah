@@ -107,7 +107,126 @@ class S4 extends BS{
     };draw();
   }
 }
+const VD_nuh5={ref:'Nuh 71:1-4',arabic:'إِنَّا أَرْسَلْنَا نُوحًا إِلَىٰ قَوْمِهِ أَنْ أَنذِرْ قَوْمَكَ مِن قَبْلِ أَن يَأْتِيَهُمْ عَذَابٌ أَلِيمٌ ۩ قَالَ يَا قَوْمِ إِنِّي لَكُمْ نَذِيرٌ مُّبِينٌ ۩ أَنِ اعْبُدُوا اللَّهَ وَاتَّقُوهُ وَأَطِيعُونِ ۩ يَغْفِرْ لَكُم مِّن ذُنُوبِكُمْ وَيُؤَخِّرْكُمْ إِلَىٰ أَجَلٍ مُّسَمًّى',english:'"We sent Nuh to his people: Warn your people before a painful punishment comes to them. He said: O my people, I am to you a clear warner — worship Allah, fear Him, and obey me. He will forgive your sins and delay you until an appointed term." (71:1-4)',note:"The opening of the surah: Nuh's mission in three words — worship, fear, obey. The reward: forgiveness and reprieve. Simple, clear, direct. This is the essence of every prophet's message."};
+
+class S5 extends BS{
+  constructor(){super('canvas-5');}
+  start(){
+    if(!this.ctx)return;
+    this.canvas=this.cv;
+    this.canvas.onclick=()=>showVersePopup(VD_nuh5);
+    const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);
+      const ctx=this.ctx,p=sceneP();_sky(ctx,p);
+      _stars(ctx,20);_ground(ctx,CH*0.75,p.gnd);
+      _fig(ctx,CW*0.5,CH*0.74,'#e0c080',12);
+      const fl=0.5+Math.sin(this.t*0.05)*0.3;
+      const g=ctx.createRadialGradient(CW*0.5,CH*0.4,5,CW*0.5,CH*0.4,80);
+      g.addColorStop(0,`rgba(96,208,192,${fl})`);g.addColorStop(1,'transparent');
+      ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);
+      for(let i=0;i<6;i++)_fig(ctx,CW*0.08+i*CW*0.16,CH*0.75,'#606880');
+      _label(ctx,'CLICK: Nuh\'s Mission — Warn Before Punishment (71:1-4)',p.label);
+    };draw();
+  }
+}
+const VD_nuh6={ref:'Nuh 71:8-9',arabic:'ثُمَّ إِنِّي دَعَوْتُهُمْ جِهَارًا ۩ ثُمَّ إِنِّي أَعْلَنتُ لَهُمْ وَأَسْرَرْتُ لَهُمْ إِسْرَارًا',english:'"Then I called them publicly. Then I announced to them openly and confided to them privately." (71:8-9)',note:"Nuh tried every method: public and private, loud and quiet, open and secret. He adapted his approach over 950 years. Da'wah is not one-size-fits-all — use every means available."};
+
+class S6 extends BS{
+  constructor(){super('canvas-6');}
+  start(){
+    if(!this.ctx)return;
+    this.canvas=this.cv;
+    this.canvas.onclick=()=>showVersePopup(VD_nuh6);
+    const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);
+      const ctx=this.ctx,p=sceneP();_sky(ctx,p);
+      _ground(ctx,CH*0.75,p.gnd);
+      _fig(ctx,CW*0.3,CH*0.74,'#e0c080');
+      ctx.strokeStyle=p.acc;ctx.lineWidth=2;
+      for(let i=0;i<4;i++){const r=15+i*18;
+        ctx.beginPath();ctx.arc(CW*0.3,CH*0.6,r*Math.abs(Math.sin(this.t*0.03)),0,Math.PI*2);ctx.stroke();}
+      _fig(ctx,CW*0.7,CH*0.74,'#e0c080');
+      _fig(ctx,CW*0.78,CH*0.74,'#606880');
+      ctx.fillStyle=`rgba(96,208,192,${0.3+Math.sin(this.t*0.06)*0.2})`;
+      ctx.font='7px serif';ctx.textAlign='center';
+      ctx.fillText('\u062c\u0650\u0647\u064e\u0627\u0631\u064b\u0627',CW*0.3,CH*0.38);
+      ctx.fillText('\u0625\u0650\u0633\u0631\u064e\u0627\u0631\u064b\u0627',CW*0.7,CH*0.38);ctx.textAlign='left';
+      _label(ctx,'CLICK: Public & Private Da\'wah (71:8-9)',p.label);
+    };draw();
+  }
+}
+const VD_nuh7={ref:'Nuh 71:14-20',arabic:'وَقَدْ خَلَقَكُمْ أَطْوَارًا ۩ أَلَمْ تَرَوْا كَيْفَ خَلَقَ اللَّهُ سَبْعَ سَمَاوَاتٍ طِبَاقًا ۩ وَجَعَلَ الْقَمَرَ فِيهِنَّ نُورًا وَجَعَلَ الشَّمْسَ سِرَاجًا ۩ وَاللَّهُ أَنبَتَكُم مِّنَ الْأَرْضِ نَبَاتًا ۩ ثُمَّ يُعِيدُكُمْ فِيهَا وَيُخْرِجُكُمْ إِخْرَاجًا ۩ وَاللَّهُ جَعَلَ لَكُمُ الْأَرْضَ بِسَاطًا ۩ لِّتَسْلُكُوا مِنْهَا سُبُلًا فِجَاجًا',english:'"He created you in stages. Do you not see how Allah created seven heavens in layers? He made the moon a light therein and the sun a lamp. Allah caused you to grow from the earth like plants. Then He will return you into it and bring you out again. Allah made the earth a spread for you — to walk therein on spacious paths." (71:14-20)',note:"Nuh's da'wah used creation as evidence: stages of human development, seven layered heavens, moon as light, sun as lamp, growth from earth, and the earth spread out with paths. Science and faith together."};
+
+class S7 extends BS{
+  constructor(){super('canvas-7');}
+  start(){
+    if(!this.ctx)return;
+    this.canvas=this.cv;
+    this.canvas.onclick=()=>showVersePopup(VD_nuh7);
+    const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);
+      const ctx=this.ctx,p=sceneP();_sky(ctx,p);
+      _stars(ctx,30);
+      for(let i=0;i<7;i++){ctx.strokeStyle=`rgba(96,208,192,${0.15+i*0.04})`;ctx.lineWidth=1;
+        ctx.beginPath();ctx.arc(CW*0.5,CH*1.2,CH*0.5+i*18,Math.PI*1.1,Math.PI*1.9);ctx.stroke();}
+      const ma=this.t*0.01;
+      ctx.fillStyle='#f0e060';ctx.beginPath();ctx.arc(CW*0.7,CH*0.2,12,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle='#c0d0e0';ctx.beginPath();ctx.arc(CW*0.3,CH*0.25,8,0,Math.PI*2);ctx.fill();
+      _ground(ctx,CH*0.78,'#1a3018');
+      ctx.strokeStyle='rgba(120,180,100,0.3)';ctx.lineWidth=2;
+      for(let i=0;i<6;i++){ctx.beginPath();ctx.moveTo(CW*0.05+i*CW*0.18,CH*0.78);
+        ctx.lineTo(CW*0.05+i*CW*0.18,CH*0.62+Math.sin(this.t*0.04+i)*4);ctx.stroke();}
+      _label(ctx,'CLICK: Signs of Creation \u2014 Heavens, Moon, Sun (71:14-20)',p.label);
+    };draw();
+  }
+}
+const VD_nuh8={ref:'Nuh 71:21-24',arabic:'قَالَ نُوحٌ رَّبِّ إِنَّهُمْ عَصَوْنِي وَاتَّبَعُوا مَن لَّمْ يَزِدْهُ مَالُهُ وَوَلَدُهُ إِلَّا خَسَارًا ۩ وَمَكَرُوا مَكْرًا كُبَّارًا ۩ وَقَالُوا لَا تَذَرُنَّ آلِهَتَكُمْ وَلَا تَذَرُنَّ وَدًّا وَلَا سُوَاعًا وَلَا يَغُوثَ وَيَعُوقَ وَنَسْرًا ۩ وَقَدْ أَضَلُّوا كَثِيرًا',english:'"Nuh said: My Lord, they disobeyed me and followed those whose wealth and children only increased them in loss. They plotted a tremendous plot. They said: Do not abandon your gods — do not abandon Wadd, Suwa\u2019a, Yaghuth, Ya\u2019uq, and Nasr! And they have already misled many." (71:21-24)',note:"Five idols named by name \u2014 Wadd, Suwa\u2019a, Yaghuth, Ya\u2019uq, Nasr. Originally righteous people whose images became objects of worship over generations. The origin of idol worship in human history."};
+
+class S8 extends BS{
+  constructor(){super('canvas-8');}
+  start(){
+    if(!this.ctx)return;
+    this.canvas=this.cv;
+    this.canvas.onclick=()=>showVersePopup(VD_nuh8);
+    const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);
+      const ctx=this.ctx,p=sceneP();_sky(ctx,p);
+      _ground(ctx,CH*0.72,p.gnd);
+      for(let i=0;i<5;i++){
+        fillRect(ctx,CW*0.08+i*CW*0.18,CH*0.35,CW*0.1,CH*0.2,'#3a2820',4);
+        fillRect(ctx,CW*0.1+i*CW*0.18,CH*0.3,CW*0.06,CH*0.08,'#4a3828',3);}
+      for(let i=0;i<4;i++){
+        const bx=CW*0.12+i*CW*0.22,by=CH*0.72;
+        _fig(ctx,bx,by,'#606880');
+        ctx.fillStyle='#404858';fillRect(ctx,bx-4,by-6,8,4,'#404858',2);}
+      const fl=0.3+Math.sin(this.t*0.06)*0.2;
+      ctx.fillStyle=`rgba(180,60,40,${fl})`;ctx.fillRect(0,0,CW,CH*0.15);
+      _label(ctx,'CLICK: Five Idols \u2014 Wadd, Suwa, Yaghuth... (71:21-24)',p.label);
+    };draw();
+  }
+}
+const VD_nuh9={ref:'Nuh 71:27',arabic:'إِنَّكَ إِن تَذَرْهُمْ يُضِلُّوا عِبَادَكَ وَلَا يَلِدُوا إِلَّا فَاجِرًا كَفَّارًا',english:'"If You leave them, they will mislead Your servants and will not give birth except to wicked ungrateful disbelievers." (71:27)',note:"After 950 years, Nuh reached this conclusion: they are beyond reform and will only breed more corruption. This is not cruelty \u2014 it is the wisdom of a prophet who exhausted every possible means of guidance."};
+
+class S9 extends BS{
+  constructor(){super('canvas-9');}
+  start(){
+    if(!this.ctx)return;
+    this.canvas=this.cv;
+    this.canvas.onclick=()=>showVersePopup(VD_nuh9);
+    const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);
+      const ctx=this.ctx,p=sceneP();_sky(ctx,p);
+      _stars(ctx,15);_ground(ctx,CH*0.8,p.gnd);
+      _fig(ctx,CW*0.5,CH*0.8,'#e0c080',12);
+      const fl=0.5+Math.sin(this.t*0.04)*0.3;
+      ctx.fillStyle=`rgba(200,60,40,${fl})`;ctx.fillRect(0,0,CW,CH*0.2);
+      ctx.fillStyle=p.acc;ctx.font='9px serif';ctx.textAlign='center';
+      ctx.fillText('\u0631\u064e\u0628\u0650\u0651',CW*0.5,CH*0.42);ctx.textAlign='left';
+      for(let i=0;i<5;i++){
+        const x=CW*0.15+i*CW*0.18,y=CH*0.78;
+        _fig(ctx,x,y,'#404050',7);
+        ctx.strokeStyle='#e04040';ctx.lineWidth=1;
+        ctx.beginPath();ctx.moveTo(x-5,y-16);ctx.lineTo(x+5,y-10);ctx.moveTo(x+5,y-16);ctx.lineTo(x-5,y-10);ctx.stroke();}
+      _label(ctx,'CLICK: Nuh\'s Final Plea \u2014 They Will Only Mislead (71:27)',p.label);
+    };draw();
+  }
+}
 const _scenes={};
-function initScenes(){for(let k in _scenes)_scenes[k]=null;_scenes[1]=new S1();_scenes[2]=new S2();_scenes[3]=new S3();_scenes[4]=new S4();}
+function initScenes(){for(let k in _scenes)_scenes[k]=null;_scenes[1]=new S1();_scenes[2]=new S2();_scenes[3]=new S3();_scenes[4]=new S4();_scenes[5]=new S5();_scenes[6]=new S6();_scenes[7]=new S7();_scenes[8]=new S8();_scenes[9]=new S9();}
 function startScene(n){if(_scenes[n])_scenes[n].start();}
 function stopAllScenes(){Object.values(_scenes).forEach(s=>s&&s.stop());}

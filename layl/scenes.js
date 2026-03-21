@@ -5,7 +5,33 @@ window.SCENE_PALETTE = {
 };
 
 /* scenes.js — Surah Al-Layl (92) */
-;
+
+const VD = {
+  oaths: {
+    ref: 'Al-Layl 92:1-4',
+    arabic: 'وَاللَّيْلِ إِذَا يَغْشَىٰ ۩ وَالنَّهَارِ إِذَا تَجَلَّىٰ ۩ وَمَا خَلَقَ الذَّكَرَ وَالْأُنثَىٰ ۩ إِنَّ سَعْيَكُمْ لَشَتَّىٰ',
+    english: '"By the night when it covers — and the day when it appears — and He who created the male and female — indeed your efforts are diverse." (92:1-4)',
+    note: 'Three majestic oaths — the night that veils, the day that shines, the creation of male and female — all leading to one truth: your strivings are diverse. Two opposite paths follow.',
+  },
+  giver: {
+    ref: 'Al-Layl 92:5-7',
+    arabic: 'فَأَمَّا مَنْ أَعْطَىٰ وَاتَّقَىٰ ۩ وَصَدَّقَ بِالْحُسْنَىٰ ۩ فَسَنُيَسِّرُهُ لِلْيُسْرَىٰ',
+    english: '"As for he who gives and fears Allah — and believes in the best reward — We will ease him toward ease." (92:5-7)',
+    note: 'Three qualities of the generous: gives freely, has taqwa, and believes in Al-Husna (the best — Paradise and Allah\'s promise). Allah rewards them by smoothing the path of ease in everything they do.',
+  },
+  miser: {
+    ref: 'Al-Layl 92:8-11',
+    arabic: 'وَأَمَّا مَن بَخِلَ وَاسْتَغْنَىٰ ۩ وَكَذَّبَ بِالْحُسْنَىٰ ۩ فَسَنُيَسِّرُهُ لِلْعُسْرَىٰ ۩ وَمَا يُغْنِي عَنْهُ مَالُهُ إِذَا تَرَدَّىٰ',
+    english: '"But as for he who withholds and considers himself self-sufficient — and denies the best reward — We will ease him toward difficulty. And what will his wealth avail him when he falls?" (92:8-11)',
+    note: 'Three qualities of the miser: withholds, feels self-sufficient (no need for Allah), and denies Al-Husna. Allah eases his path toward difficulty. His hoarded wealth cannot save him when he perishes.',
+  },
+  conclusion: {
+    ref: 'Al-Layl 92:12-21',
+    arabic: 'إِنَّ عَلَيْنَا لَلْهُدَىٰ ۩ وَإِنَّ لَنَا لَلْآخِرَةَ وَالْأُولَىٰ ۩ فَأَنذَرْتُكُمْ نَارًا تَلَظَّىٰ ۩ لَا يَصْلَاهَا إِلَّا الْأَشْقَى ۩ الَّذِي كَذَّبَ وَتَوَلَّىٰ ۩ وَسَيُجَنَّبُهَا الْأَتْقَى ۩ الَّذِي يُؤْتِي مَالَهُ يَتَزَكَّىٰ ۩ وَمَا لِأَحَدٍ عِندَهُ مِن نِّعْمَةٍ تُجْزَىٰ ۩ إِلَّا ابْتِغَاءَ وَجْهِ رَبِّهِ الْأَعْلَىٰ ۩ وَلَسَوْفَ يَرْضَىٰ',
+    english: '"Indeed, upon Us is guidance. And to Us belongs the Hereafter and the first life. So I have warned you of a blazing Fire — none will burn therein except the most wretched, who denied and turned away. But the most righteous will avoid it — he who gives his wealth to purify himself, not as repayment for a favour from anyone, but only seeking the face of his Lord, Most High. And he is going to be satisfied." (92:12-21)',
+    note: 'The surah\'s powerful conclusion: Allah owns guidance, the Hereafter, and this life. The Fire is for the wretched who denied and turned away. The righteous one gives purely for Allah\'s sake — no worldly debt, no favour returned — only seeking Allah\'s face. And the promise: "wa la-sawfa yarda" — he WILL be satisfied.',
+  },
+};
 
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 
@@ -48,7 +74,7 @@ ctx.fillStyle='#ff8080';ctx.font='6px serif';ctx.fillText('عُسْرَى — DI
 const pitY=175+Math.sin(this.t*0.04)*3;ctx.fillStyle='rgba(255,80,40,0.3)';ctx.fillRect(CW*0.55,pitY,120,CH-pitY);
 ctx.fillStyle='#ff9060';ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('"What will his wealth avail when he falls?" (92:11)',CW/2,CH-8);ctx.textAlign='left';};draw();}}
 
-class S5 extends BS{constructor(){super('canvas-5');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.oaths);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,this.t);_ground(ctx,175);_label(ctx,'Al-Layl Complete — Two Paths, Two Destinies 🌙');
+class S5 extends BS{constructor(){super('canvas-5');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.conclusion);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,this.t);_ground(ctx,175);_label(ctx,'Al-Layl Complete — Two Paths, Two Destinies 🌙');
 // Two paths diverging
 ctx.strokeStyle='rgba(180,140,255,0.4)';ctx.lineWidth=2;ctx.setLineDash([4,4]);
 ctx.beginPath();ctx.moveTo(CW/2,175);ctx.lineTo(100,80);ctx.stroke();

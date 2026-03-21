@@ -105,6 +105,12 @@ const VERSES = {
     english: '"Or who is it that could be an army for you to aid you other than the Most Merciful? The disbelievers are not but in delusion. Or who is it that could provide for you if He withheld His provision?"',
     note: 'Two of the most powerful rhetorical questions in the Quran: WHO will help you if not Allah? WHO will feed you if not Allah? No one. When we run to others for help before running to Allah — that is the delusion (ghurur) mentioned here. True security, true provision, true protection — all exclusively from ar-Rahman.',
   },
+  death_or_mercy: {
+    ref: 'Al-Mulk 67:28-29',
+    arabic: 'قُلْ أَرَأَيْتُمْ إِنْ أَهْلَكَنِيَ اللَّهُ وَمَن مَّعِيَ أَوْ رَحِمَنَا فَمَن يُجِيرُ الْكَافِرِينَ مِنْ عَذَابٍ أَلِيمٍ ۩ قُلْ هُوَ الرَّحْمَٰنُ آمَنَّا بِهِ وَعَلَيْهِ تَوَكَّلْنَا ۖ فَسَتَعْلَمُونَ مَنْ هُوَ فِي ضَلَالٍ مُّبِينٍ',
+    english: '"Say, \'Have you considered: whether Allah should cause my death and those with me, or have mercy upon us, who can protect the disbelievers from a painful punishment?\' Say, \'He is the Most Merciful; we have believed in Him and upon Him we have relied. You will know who it is that is in clear error.\'" (67:28-29)',
+    note: 'Whether the Prophet ﷺ lives or dies, whether mercy comes or hardship — the disbelievers still face a painful punishment. Their obsession with wishing harm on the believers changes nothing about their own fate. Then: "He is ar-Rahman — we believe in Him and rely on Him." This is the ultimate statement of tawakkul. And the closing challenge: soon you will know who was really in error.',
+  },
   water_verse: {
     ref: 'Al-Mulk 67:30',
     arabic: 'قُلْ أَرَأَيْتُمْ إِنْ أَصْبَحَ مَاؤُكُمْ غَوْرًا فَمَن يَأْتِيكُم بِمَاءٍ مَّعِينٍ',

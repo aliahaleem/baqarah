@@ -6,7 +6,39 @@ window.SCENE_PALETTE = {
 };
 
 // SURAH AL-MUTAFFIFIN (83) — scenes.js
-;
+
+const VD = {
+  woe: {
+    ref: 'Al-Mutaffifin 83:1-6',
+    arabic: 'وَيْلٌ لِّلْمُطَفِّفِينَ ۩ الَّذِينَ إِذَا اكْتَالُوا عَلَى النَّاسِ يَسْتَوْفُونَ ۩ وَإِذَا كَالُوهُمْ أَو وَّزَنُوهُمْ يُخْسِرُونَ ۩ أَلَا يَظُنُّ أُولَٰئِكَ أَنَّهُم مَّبْعُوثُونَ ۩ لِيَوْمٍ عَظِيمٍ ۩ يَوْمَ يَقُومُ النَّاسُ لِرَبِّ الْعَالَمِينَ',
+    english: '"Woe to those who defraud — who demand full measure when receiving from others, but give less when they measure or weigh for them. Do they not think they will be resurrected for a tremendous Day — the Day mankind will stand before the Lord of the worlds?" (83:1-6)',
+    note: 'The surah opens with "Waylun" — woe and destruction. The defrauders (mutaffifin) cheat in weights and measures. Allah links this dishonesty to disbelief in resurrection — if you truly believed in standing before Allah, you would never cheat.',
+  },
+  sijjin: {
+    ref: 'Al-Mutaffifin 83:7-17',
+    arabic: 'كَلَّا إِنَّ كِتَابَ الْفُجَّارِ لَفِي سِجِّينٍ ۩ وَمَا أَدْرَاكَ مَا سِجِّينٌ ۩ كِتَابٌ مَّرْقُومٌ ۩ وَيْلٌ يَوْمَئِذٍ لِّلْمُكَذِّبِينَ ۩ الَّذِينَ يُكَذِّبُونَ بِيَوْمِ الدِّينِ ۩ وَمَا يُكَذِّبُ بِهِ إِلَّا كُلُّ مُعْتَدٍ أَثِيمٍ ۩ إِذَا تُتْلَىٰ عَلَيْهِ آيَاتُنَا قَالَ أَسَاطِيرُ الْأَوَّلِينَ ۩ كَلَّا ۖ بَلْ ۜ رَانَ عَلَىٰ قُلُوبِهِم مَّا كَانُوا يَكْسِبُونَ ۩ كَلَّا إِنَّهُمْ عَن رَّبِّهِمْ يَوْمَئِذٍ لَّمَحْجُوبُونَ ۩ ثُمَّ إِنَّهُمْ لَصَالُو الْجَحِيمِ ۩ ثُمَّ يُقَالُ هَٰذَا الَّذِي كُنتُم بِهِ تُكَذِّبُونَ',
+    english: '"No! The record of the wicked is in Sijjin. What will make you know what Sijjin is? A clearly inscribed record. Woe that Day to the deniers — who deny the Day of Recompense. None denies it except every sinful transgressor. When Our verses are recited to him, he says: Legends of the former peoples! No! Rather, what they earned has covered their hearts. No! They will be veiled from their Lord that Day. Then they will burn in Hellfire. Then it will be said: This is what you used to deny." (83:7-17)',
+    note: 'Sijjin — from "sijn" (prison). The record of every wicked deed is filed in the lowest, most degraded place. "Rana" (rust/covering on the heart) — sins accumulate layer by layer until the heart is sealed. The worst punishment: being veiled from seeing Allah on that Day.',
+  },
+  illiyyin: {
+    ref: 'Al-Mutaffifin 83:18-21',
+    arabic: 'كَلَّا إِنَّ كِتَابَ الْأَبْرَارِ لَفِي عِلِّيِّينَ ۩ وَمَا أَدْرَاكَ مَا عِلِّيُّونَ ۩ كِتَابٌ مَّرْقُومٌ ۩ يَشْهَدُهُ الْمُقَرَّبُونَ',
+    english: '"No! The record of the righteous is in Illiyyin. What will make you know what Illiyyun is? A clearly inscribed record, witnessed by those brought nearest to Allah." (83:18-21)',
+    note: 'Illiyyin — from "ula" (high). The record of every good deed is filed in the highest, most honoured place. Witnessed by the Muqarrabun — the angels closest to Allah. The perfect contrast to Sijjin: one in the lowest depths, the other at the highest heights.',
+  },
+  bliss: {
+    ref: 'Al-Mutaffifin 83:22-28',
+    arabic: 'إِنَّ الْأَبْرَارَ لَفِي نَعِيمٍ ۩ عَلَى الْأَرَائِكِ يَنظُرُونَ ۩ تَعْرِفُ فِي وُجُوهِهِمْ نَضْرَةَ النَّعِيمِ ۩ يُسْقَوْنَ مِن رَّحِيقٍ مَّخْتُومٍ ۩ خِتَامُهُ مِسْكٌ ۚ وَفِي ذَٰلِكَ فَلْيَتَنَافَسِ الْمُتَنَافِسُونَ ۩ وَمِزَاجُهُ مِن تَسْنِيمٍ ۩ عَيْنًا يَشْرَبُ بِهَا الْمُقَرَّبُونَ',
+    english: '"Indeed the righteous are in bliss — on couches, looking on. You recognise the radiance of bliss on their faces. They are given sealed pure nectar to drink — its seal is of musk. For this let the competitors compete! And its mixture is of Tasnim — a spring from which those nearest to Allah drink." (83:22-28)',
+    note: 'Nahrat al-na\'im — the radiance of bliss visible on their faces. Rahiq makhtum — sealed pure nectar with a seal of musk. Tasnim — the highest spring of Paradise, shared with the Muqarrabun. This is what is truly worth competing for!',
+  },
+  laugh: {
+    ref: 'Al-Mutaffifin 83:29-36',
+    arabic: 'إِنَّ الَّذِينَ أَجْرَمُوا كَانُوا مِنَ الَّذِينَ آمَنُوا يَضْحَكُونَ ۩ وَإِذَا مَرُّوا بِهِمْ يَتَغَامَزُونَ ۩ وَإِذَا انقَلَبُوا إِلَىٰ أَهْلِهِمُ انقَلَبُوا فَكِهِينَ ۩ وَإِذَا رَأَوْهُمْ قَالُوا إِنَّ هَٰؤُلَاءِ لَضَالُّونَ ۩ وَمَا أُرْسِلُوا عَلَيْهِمْ حَافِظِينَ ۩ فَالْيَوْمَ الَّذِينَ آمَنُوا مِنَ الْكُفَّارِ يَضْحَكُونَ ۩ عَلَى الْأَرَائِكِ يَنظُرُونَ ۩ هَلْ ثُوِّبَ الْكُفَّارُ مَا كَانُوا يَفْعَلُونَ',
+    english: '"Indeed the criminals used to laugh at the believers — winking mockingly as they passed, returning to their people amused, saying: Those are surely astray! But they were not sent as guardians over them. So Today the believers are laughing at the disbelievers — on couches, looking on. Have the disbelievers been repaid for what they used to do?" (83:29-36)',
+    note: 'The great reversal: in this world the criminals mocked the believers. On That Day the believers laugh at the disbelievers from their elevated couches. "Hal thuwwiba?" — Were they repaid? Yes, perfectly.',
+  },
+};
 
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 

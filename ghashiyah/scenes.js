@@ -61,10 +61,10 @@ const VD = {
     note: 'The camel: triple-eyelids for sandstorms, padded feet for sand, stores water in blood, can carry huge loads. Every feature points to a perfect Designer. The "ship of the desert" as a gateway to recognising the Creator.',
   },
   mountains: {
-    ref: 'Al-Ghashiyah 88:19-20',
-    arabic: 'وَإِلَى الْجِبَالِ كَيْفَ نُصِبَتْ ۩ وَإِلَى الْأَرْضِ كَيْفَ سُطِحَتْ',
-    english: '"And at the mountains — how they were set? And at the earth — how it was spread out?" (88:19-20)',
-    note: 'Mountains are stabilisers of the earth\'s crust — pegs driven in (awatad). The earth is spread accessible for human habitation. Four signs: camel, sky, mountains, earth — all point to Allah.',
+    ref: 'Al-Ghashiyah 88:19-24',
+    arabic: 'وَإِلَى الْجِبَالِ كَيْفَ نُصِبَتْ ۩ وَإِلَى الْأَرْضِ كَيْفَ سُطِحَتْ ۩ فَذَكِّرْ إِنَّمَا أَنتَ مُذَكِّرٌ ۩ لَّسْتَ عَلَيْهِم بِمُصَيْطِرٍ ۩ إِلَّا مَن تَوَلَّىٰ وَكَفَرَ ۩ فَيُعَذِّبُهُ اللَّهُ الْعَذَابَ الْأَكْبَرَ',
+    english: '"And at the mountains — how they were set? And at the earth — how it was spread out? So remind; you are only a reminder. You are not over them a controller. However, he who turns away and disbelieves — Allah will punish him with the greatest punishment." (88:19-24)',
+    note: 'Mountains are stabilisers of the earth\'s crust — pegs driven in (awatad). The earth is spread accessible for human habitation. Four signs point to Allah. The Prophet\'s ﷺ role: to remind, not to force. But those who turn away face the greatest punishment.',
   },
   return: {
     ref: 'Al-Ghashiyah 88:25-26',

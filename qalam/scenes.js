@@ -106,7 +106,118 @@ class S4 extends BS{
     };draw();
   }
 }
+const VD_qalam5={ref:'Al-Qalam 68:5-9',arabic:'فَسَتُبْصِرُ وَيُبْصِرُونَ ۩ بِأَيِّيكُمُ الْمَفْتُونُ ۩ إِنَّ رَبَّكَ هُوَ أَعْلَمُ بِمَن ضَلَّ عَن سَبِيلِهِ وَهُوَ أَعْلَمُ بِالْمُهْتَدِينَ ۩ فَلَا تُطِعِ الْمُكَذِّبِينَ ۩ وَدُّوا لَوْ تُدْهِنُ فَيُدْهِنُونَ',english:'"Soon you will see, and they will see, which of you is the afflicted. Your Lord knows best who has strayed from His way, and He knows best the guided ones. So do not obey the deniers — they wish you would compromise so they could compromise." (68:5-9)',note:"Allah challenges: time will reveal who is truly afflicted. Then the command: do not obey the deniers. They want you to soften your message — to compromise (tudhin). But truth does not bend."};
+
+class S5 extends BS{
+  constructor(){super('canvas-5');}
+  start(){
+    if(!this.ctx)return;
+    this.canvas=this.cv;
+    this.canvas.onclick=()=>showVersePopup(VD_qalam5);
+    const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);
+      const ctx=this.ctx,p=sceneP();_sky(ctx,p);
+      _ground(ctx,CH*0.75,p.gnd);
+      ctx.strokeStyle=p.acc;ctx.lineWidth=3;
+      ctx.beginPath();ctx.moveTo(CW*0.5,CH*0.75);ctx.lineTo(CW*0.2,CH*0.35);ctx.stroke();
+      ctx.strokeStyle='#e04040';
+      ctx.beginPath();ctx.moveTo(CW*0.5,CH*0.75);ctx.lineTo(CW*0.8,CH*0.35);ctx.stroke();
+      const fl=0.5+Math.sin(this.t*0.06)*0.5;
+      ctx.fillStyle=`rgba(240,192,48,${fl})`;ctx.font='bold 20px serif';ctx.textAlign='center';
+      ctx.fillText('?',CW*0.5,CH*0.45);ctx.textAlign='left';
+      _fig(ctx,CW*0.2,CH*0.38,p.acc);
+      _fig(ctx,CW*0.8,CH*0.38,'#804030');
+      _label(ctx,'CLICK: Who Is Truly Afflicted? (68:5-9)',p.label);
+    };draw();
+  }
+}
+const VD_qalam6={ref:'Al-Qalam 68:14-16',arabic:'أَن كَانَ ذَا مَالٍ وَبَنِينَ ۩ إِذَا تُتْلَىٰ عَلَيْهِ آيَاتُنَا قَالَ أَسَاطِيرُ الْأَوَّلِينَ ۩ سَنَسِمُهُ عَلَى الْخُرْطُومِ',english:'"Just because he has wealth and children — when Our verses are recited to him, he says: Tales of the ancients! We will brand him on the snout." (68:14-16)',note:"Wealth and sons made him arrogant. He dismissed the Quran as old fables. Allah's response is devastating: We will brand him on the khurtoom — the snout — humiliated like an animal."};
+
+class S6 extends BS{
+  constructor(){super('canvas-6');}
+  start(){
+    if(!this.ctx)return;
+    this.canvas=this.cv;
+    this.canvas.onclick=()=>showVersePopup(VD_qalam6);
+    const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);
+      const ctx=this.ctx,p=sceneP();_sky(ctx,p);
+      _ground(ctx,CH*0.75,p.gnd);
+      _fig(ctx,CW*0.5,CH*0.72,'#4a3020');
+      for(let i=0;i<5;i++){fillRect(ctx,CW*0.2+i*CW*0.13,CH*0.55,14,10,'#e0b020',3);}
+      const fl=Math.sin(this.t*0.08);
+      if(fl>0){ctx.fillStyle=`rgba(255,60,20,${fl})`;ctx.font='bold 14px serif';ctx.textAlign='center';
+        ctx.fillText('\u00d7',CW*0.5,CH*0.47);ctx.textAlign='left';}
+      _label(ctx,'CLICK: Branded on the Snout (68:14-16)',p.label);
+    };draw();
+  }
+}
+const VD_qalam7={ref:'Al-Qalam 68:34-41',arabic:'إِنَّ لِلْمُتَّقِينَ عِندَ رَبِّهِمْ جَنَّاتِ النَّعِيمِ ۩ أَفَنَجْعَلُ الْمُسْلِمِينَ كَالْمُجْرِمِينَ ۩ مَا لَكُمْ كَيْفَ تَحْكُمُونَ ۩ أَمْ لَكُمْ كِتَابٌ فِيهِ تَدْرُسُونَ ۩ إِنَّ لَكُمْ فِيهِ لَمَا تَخَيَّرُونَ ۩ أَمْ لَكُمْ أَيْمَانٌ عَلَيْنَا بَالِغَةٌ إِلَىٰ يَوْمِ الْقِيَامَةِ ۙ إِنَّ لَكُمْ لَمَا تَحْكُمُونَ ۩ سَلْهُمْ أَيُّهُم بِذَٰلِكَ زَعِيمٌ ۩ أَمْ لَهُمْ شُرَكَاءُ فَلْيَأْتُوا بِشُرَكَائِهِمْ إِن كَانُوا صَادِقِينَ',english:'"For the righteous are Gardens of Bliss with their Lord. Shall We treat the Muslims like the criminals? What is the matter with you — how do you judge? Do you have a book you study? That in it you will have whatever you choose? Or do you have oaths binding on Us until the Day of Resurrection — that you will have whatever you decide? Ask them which of them will guarantee that! Or do they have partners? Let them bring their partners if they are truthful!" (68:34-41)',note:"A devastating series of rhetorical questions: Do you have a book? Oaths? Partners? Each answer is silence. The righteous and the criminals can never be equal — what kind of judgment is that?"};
+
+class S7 extends BS{
+  constructor(){super('canvas-7');}
+  start(){
+    if(!this.ctx)return;
+    this.canvas=this.cv;
+    this.canvas.onclick=()=>showVersePopup(VD_qalam7);
+    const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);
+      const ctx=this.ctx,p=sceneP();_sky(ctx,p);
+      ctx.fillStyle='#0a2a10';ctx.fillRect(0,CH*0.5,CW*0.5,CH*0.5);
+      ctx.fillStyle='#2a0808';ctx.fillRect(CW*0.5,CH*0.5,CW*0.5,CH*0.5);
+      for(let i=0;i<4;i++){fillRect(ctx,CW*0.02+i*CW*0.12,CH*0.32,CW*0.08,CH*0.2,'#1a4a1a',4);}
+      const fl=0.3+Math.sin(this.t*0.08)*0.15;
+      ctx.fillStyle=`rgba(200,40,20,${fl})`;ctx.fillRect(CW*0.5,CH*0.3,CW*0.5,CH*0.4);
+      _fig(ctx,CW*0.25,CH*0.72,p.acc);
+      _fig(ctx,CW*0.75,CH*0.72,'#804030');
+      ctx.fillStyle='#fff';ctx.font='bold 16px serif';ctx.textAlign='center';
+      ctx.fillText('\u2260',CW*0.5,CH*0.5);ctx.textAlign='left';
+      _label(ctx,'CLICK: Righteous \u2260 Criminals (68:34-41)',p.label);
+    };draw();
+  }
+}
+const VD_qalam8={ref:'Al-Qalam 68:42-45',arabic:'يَوْمَ يُكْشَفُ عَن سَاقٍ وَيُدْعَوْنَ إِلَى السُّجُودِ فَلَا يَسْتَطِيعُونَ ۩ خَاشِعَةً أَبْصَارُهُمْ تَرْهَقُهُمْ ذِلَّةٌ ۖ وَقَدْ كَانُوا يُدْعَوْنَ إِلَى السُّجُودِ وَهُمْ سَالِمُونَ ۩ فَذَرْنِي وَمَن يُكَذِّبُ بِهَٰذَا الْحَدِيثِ ۖ سَنَسْتَدْرِجُهُم مِّنْ حَيْثُ لَا يَعْلَمُونَ ۩ وَأُمْلِي لَهُمْ ۚ إِنَّ كَيْدِي مَتِينٌ',english:'"The Day the shin is laid bare and they are called to prostrate but cannot — their eyes humbled, humiliation covering them. They had been called to prostrate while they were sound. So leave Me with whoever denies this discourse. We will progressively lead them from where they do not know. And I give them time — indeed My plan is firm." (68:42-45)',note:"On that Day, prostration will be demanded but their backs will be locked stiff. The greatest regret: they refused to bow when they could. Then the chilling: istidraj — Allah leads them gradually to ruin while they think all is well."};
+
+class S8 extends BS{
+  constructor(){super('canvas-8');}
+  start(){
+    if(!this.ctx)return;
+    this.canvas=this.cv;
+    this.canvas.onclick=()=>showVersePopup(VD_qalam8);
+    const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);
+      const ctx=this.ctx,p=sceneP();_sky(ctx,p);
+      _ground(ctx,CH*0.78,p.gnd);
+      for(let i=0;i<5;i++){
+        const x=CW*0.15+i*CW*0.18,y=CH*0.76;
+        _fig(ctx,x,y,'#808090');
+        const strain=Math.sin(this.t*0.05+i)*2;
+        ctx.strokeStyle='#e04040';ctx.lineWidth=1;
+        ctx.beginPath();ctx.moveTo(x-6,y-12+strain);ctx.lineTo(x+6,y-12+strain);ctx.stroke();}
+      const fl=0.4+Math.sin(this.t*0.04)*0.2;
+      ctx.fillStyle=`rgba(200,40,40,${fl})`;ctx.fillRect(0,0,CW,CH*0.3);
+      _label(ctx,'CLICK: Called to Prostrate but Cannot (68:42-45)',p.label);
+    };draw();
+  }
+}
+const VD_qalam9={ref:'Al-Qalam 68:46-50',arabic:'أَمْ تَسْأَلُهُمْ أَجْرًا فَهُم مِّن مَّغْرَمٍ مُّثْقَلُونَ ۩ أَمْ عِندَهُمُ الْغَيْبُ فَهُمْ يَكْتُبُونَ ۩ فَاصْبِرْ لِحُكْمِ رَبِّكَ وَلَا تَكُن كَصَاحِبِ الْحُوتِ إِذْ نَادَىٰ وَهُوَ مَكْظُومٌ ۩ لَّوْلَا أَن تَدَارَكَهُ نِعْمَةٌ مِّن رَّبِّهِ لَنُبِذَ بِالْعَرَاءِ وَهُوَ مَذْمُومٌ ۩ فَاجْتَبَاهُ رَبُّهُ فَجَعَلَهُ مِنَ الصَّالِحِينَ',english:'"Do you ask them a payment so they are burdened by debt? Or have they the unseen so they write it down? So be patient for the judgement of your Lord and do not be like the companion of the whale when he called out while distressed. Had a blessing from his Lord not reached him, he would have been cast onto the bare shore while blamed. But his Lord chose him and made him among the righteous." (68:46-50)',note:"Be patient — but don't be like Yunus who left his people prematurely. Swallowed by the whale, he repented in the depths, and Allah rescued him. The lesson: stay with your mission, Allah's mercy will come."};
+
+class S9 extends BS{
+  constructor(){super('canvas-9');}
+  start(){
+    if(!this.ctx)return;
+    this.canvas=this.cv;
+    this.canvas.onclick=()=>showVersePopup(VD_qalam9);
+    const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);
+      const ctx=this.ctx,p=sceneP();_sky(ctx,p);
+      ctx.fillStyle='#0a1830';ctx.fillRect(0,CH*0.4,CW,CH*0.6);
+      ctx.strokeStyle='rgba(64,128,200,0.4)';ctx.lineWidth=2;
+      for(let w=0;w<3;w++){ctx.beginPath();
+        for(let x=0;x<=CW;x+=6)ctx.lineTo(x,CH*0.4+w*20+Math.sin(x*0.08+this.t*0.06+w)*6);ctx.stroke();}
+      const wy=CH*0.55+Math.sin(this.t*0.03)*8;
+      ctx.fillStyle='#1a2840';ctx.beginPath();ctx.ellipse(CW*0.5,wy,60,25,0,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle='#101e30';ctx.beginPath();ctx.moveTo(CW*0.57,wy-10);ctx.lineTo(CW*0.7,wy-25);ctx.lineTo(CW*0.7,wy+5);ctx.closePath();ctx.fill();
+      _label(ctx,'CLICK: Patience \u2014 Companion of the Whale (68:46-50)',p.label);
+    };draw();
+  }
+}
 const _scenes={};
-function initScenes(){for(let k in _scenes)_scenes[k]=null;_scenes[1]=new S1();_scenes[2]=new S2();_scenes[3]=new S3();_scenes[4]=new S4();}
+function initScenes(){for(let k in _scenes)_scenes[k]=null;_scenes[1]=new S1();_scenes[2]=new S2();_scenes[3]=new S3();_scenes[4]=new S4();_scenes[5]=new S5();_scenes[6]=new S6();_scenes[7]=new S7();_scenes[8]=new S8();_scenes[9]=new S9();}
 function startScene(n){if(_scenes[n])_scenes[n].start();}
 function stopAllScenes(){Object.values(_scenes).forEach(s=>s&&s.stop());}

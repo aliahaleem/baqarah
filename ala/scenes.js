@@ -10,6 +10,39 @@ window.SCENE_PALETTE = {
 
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 
+const VD = {
+  glorify: {
+    ref: 'Al-Ala 87:1-5',
+    arabic: 'سَبِّحِ اسْمَ رَبِّكَ الْأَعْلَى ۩ الَّذِي خَلَقَ فَسَوَّىٰ ۩ وَالَّذِي قَدَّرَ فَهَدَىٰ ۩ وَالَّذِي أَخْرَجَ الْمَرْعَىٰ ۩ فَجَعَلَهُ غُثَاءً أَحْوَىٰ',
+    english: '"Glorify the name of your Lord, the Most High, who created and proportioned, and who destined and then guided, and who brought out the pasture, and then made it dark debris." (87:1-5)',
+    note: 'Five verses opening with the command to glorify. From the Most High who created, proportioned, destined, guided, grew pasture and returned it to debris. All creation cycles under His command.',
+  },
+  recite: {
+    ref: 'Al-Ala 87:6-8',
+    arabic: 'سَنُقْرِئُكَ فَلَا تَنسَىٰ ۩ إِلَّا مَا شَاءَ اللَّهُ ۚ إِنَّهُ يَعْلَمُ الْجَهْرَ وَمَا يَخْفَىٰ ۩ وَنُيَسِّرُكَ لِلْيُسْرَىٰ',
+    english: '"We will make you recite, and you will not forget, except what Allah wills. Indeed, He knows what is declared and what is hidden. And We will ease you toward ease." (87:6-8)',
+    note: 'A divine promise of memory and ease. The Quran will be preserved and the path made easy.',
+  },
+  fear: {
+    ref: 'Al-Ala 87:9-13',
+    arabic: 'فَذَكِّرْ إِن نَّفَعَتِ الذِّكْرَىٰ ۩ سَيَذَّكَّرُ مَن يَخْشَىٰ ۩ وَيَتَجَنَّبُهَا الْأَشْقَى ۩ الَّذِي يَصْلَى النَّارَ الْكُبْرَىٰ ۩ ثُمَّ لَا يَمُوتُ فِيهَا وَلَا يَحْيَىٰ',
+    english: '"So remind, if the reminder benefits. He who fears will be reminded. But the wretched one will avoid it — he who will burn in the great Fire, then he will neither die therein nor live." (87:9-13)',
+    note: 'Two responses to the reminder: the one who fears Allah benefits, and the wretched one avoids it and faces the greatest Fire.',
+  },
+  purify: {
+    ref: 'Al-Ala 87:14-15',
+    arabic: 'قَدْ أَفْلَحَ مَن تَزَكَّىٰ ۩ وَذَكَرَ اسْمَ رَبِّهِ فَصَلَّىٰ',
+    english: '"He has certainly succeeded who purifies himself and remembers the name of his Lord and prays." (87:14-15)',
+    note: 'The formula for success: purify, remember, pray. Tazakka + dhikr + salah = falah.',
+  },
+  dunya: {
+    ref: 'Al-Ala 87:16-17',
+    arabic: 'بَلْ تُؤْثِرُونَ الْحَيَاةَ الدُّنْيَا ۩ وَالْآخِرَةُ خَيْرٌ وَأَبْقَىٰ',
+    english: '"But you prefer the worldly life, while the Hereafter is better and more lasting." (87:16-17)',
+    note: 'The world is dunya (lowest), the Hereafter is better in quality and duration.',
+  },
+};
+
 class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.glorify);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();
 // Sky to earth gradient
 const g=ctx.createLinearGradient(0,0,0,CH);g.addColorStop(0,p.sky0);g.addColorStop(0.5,p.sky1);g.addColorStop(1,p.gnd);ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);
