@@ -8,15 +8,18 @@ window.STORAGE_KEY = 'abasaQuestSave';
 
 window.state = {
   explorerName: '', xp: 0, gems: 0, completed: [],
-  s1Checked: false,
-  s2Answers: {}, s2Checked: false,
-  s3Order:   [], s3Checked: false,
-  s4Checked: false,
-  s5Answers: {}, s5Checked: false,
+  s1Checked:false,
+  s2Checked: false,
+  s3Answers: {}, s3Checked: false,
+  s4Order:   [], s4Checked: false,
+  s5Checked: false,
   s6Answers: {}, s6Checked: false,
+  s7Answers: {}, s7Checked: false,
 };
 
 const REWARDS = {
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
   1: { xp: 80,  gems: 3, icon: '🙈', title: 'THE LESSON OF THE BLIND MAN!',
        msg: "SubhanAllah! The Prophet ﷺ turned away from Abdullah ibn Umm Maktum — and Allah gently corrected him. Not a harsh rebuke, but a divine lesson: the one who comes EAGERLY to learn matters more than the indifferent powerful. 'Wa amma man ja\'aka yas\'a wa huwa yakhsha — fa anta anhu talahhha.' Don't be distracted from those who truly seek Allah!" },
   2: { xp: 80,  gems: 3, icon: '📜', title: 'THE NOBLE QURAN UNDERSTOOD!',
@@ -28,18 +31,18 @@ const REWARDS = {
   5: { xp: 100, gems: 4, icon: '💥', title: 'THE DEAFENING BLAST MAPPED!',
        msg: "Allahu Akbar! Al-Sakhkhah — The Deafening Blast — overwhelms everything. That Day, brother flees from brother. Mother from child. Wife from husband. Not from cruelty — but because 'li kulli imri\'in minhum yawma\'idhin sha\'nun yughniyhi' — every soul is CONSUMED by their own account. Are you prepared for that Day?" },
   6: { xp: 120, gems: 5, icon: '✨', title: 'SURAH ABASA COMPLETE!',
-       msg: "ALLAHUMMA BARIK! All 6 levels of Surah Abasa — He Frowned — complete! 'Wujuhun yawma\'idhin musfirah — dahikah mustabshirah.' Faces bright, laughing, rejoicing. May Allah make our faces THOSE faces on that Day. The lesson of Abasa: every sincere seeker matters. Every morsel of food is a gift. Every breath is a trust. Make it count! Ameen!" },
+       msg: "ALLAHUMMA BARIK! All 7 levels of Surah Abasa — He Frowned — complete! 'Wujuhun yawma\'idhin musfirah — dahikah mustabshirah.' Faces bright, laughing, rejoicing. May Allah make our faces THOSE faces on that Day. The lesson of Abasa: every sincere seeker matters. Every morsel of food is a gift. Every breath is a trust. Make it count! Ameen!" },
 };
 
 window.SURAH_CONFIG = {
-  totalLevels: 6,
+  totalLevels: 7,
   rewards: REWARDS,
-  tileIcons:  ['🙈','📜','🌱','🌾','💥','✨'],
-  tileLabels: ['He Frowned','Noble Quran','From a Drop','Your Food','The Blast','Two Faces'],
+  tileIcons:['📖','🙈','📜','🌱','🌾','💥','✨'],
+  tileLabels:['Word by Word','He Frowned','Noble Quran','From a Drop','Your Food','The Blast','Two Faces'],
   welcomeMsg: {
-    fresh:    name => `As-salamu alaykum, ${name}! Surah Abasa — "He Frowned." The Prophet ﷺ learns who truly matters. The noble Quran in angel hands. Creation from a drop. Seven foods of provision. The Deafening Blast. And two faces on That Day. 6 levels await!`,
+    fresh:    name => `As-salamu alaykum, ${name}! Surah Abasa — "He Frowned." The Prophet ﷺ learns who truly matters. The noble Quran in angel hands. Creation from a drop. Seven foods of provision. The Deafening Blast. And two faces on That Day. 7 levels await!`,
     partial:  (name, done) => `Welcome back, ${name}! ${done} level${done>1?'s':''} complete. "Wujuhun yawma'idhin musfirah dahikah mustabshirah..." — Keep building the harvest! 🌾`,
-    complete: name => `MashAllah, ${name}! All 6 levels of Abasa complete! "Wujuhun yawma'idhin musfirah — dahikah mustabshirah." May Allah make our faces bright with joy on That Day. Ameen! ✨`,
+    complete: name => `MashAllah, ${name}! All 7 levels of Abasa complete! "Wujuhun yawma'idhin musfirah — dahikah mustabshirah." May Allah make our faces bright with joy on That Day. Ameen! ✨`,
   },
 };
 
@@ -48,6 +51,42 @@ window.SURAH_CONFIG = {
 // =============================================
 
 // SECTION 1 — Drag & Drop: The Incident (80:1-10)
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1-2 — عَبَسَ وَتَوَلَّىٰ · أَن جَاءَهُ الْأَعْمَىٰ', words:[
+    {ar:'الْأَعْمَىٰ', tr:'al-aʿmā', en:'the blind man', freq:8},
+    {ar:'جَاءَهُ', tr:'jāʾahu', en:'came to him', freq:130},
+    {ar:'أَن', tr:'an', en:'because', freq:1000},
+    {ar:'وَتَوَلَّىٰ', tr:'wa-tawallā', en:'and turned away', freq:15},
+    {ar:'عَبَسَ', tr:'ʿabasa', en:'he frowned', freq:1},
+  ]},
+  {label:'Verse 24 — فَلْيَنظُرِ الْإِنسَانُ إِلَىٰ طَعَامِهِ', words:[
+    {ar:'طَعَامِهِ', tr:'ṭaʿāmihi', en:'his food', freq:48},
+    {ar:'إِلَىٰ', tr:'ilā', en:'at', freq:189},
+    {ar:'الْإِنسَانُ', tr:'al-insān', en:'man', freq:65},
+    {ar:'فَلْيَنظُرِ', tr:'fal-yanẓur', en:'let him look', freq:33},
+  ]},
+];
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'الْأَعْمَىٰ', zone:'wz1'},
+  {id:'w2', text:'جَاءَهُ', zone:'wz2'},
+  {id:'w3', text:'أَن', zone:'wz3'},
+  {id:'w4', text:'وَتَوَلَّىٰ', zone:'wz4'},
+  {id:'w5', text:'عَبَسَ', zone:'wz5'},
+  {id:'w6', text:'طَعَامِهِ', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'the blind man'},
+  {id:'wz2', desc:'came to him'},
+  {id:'wz3', desc:'because'},
+  {id:'wz4', desc:'and turned away'},
+  {id:'wz5', desc:'he frowned'},
+  {id:'wz6', desc:'his food'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+
+
 const S1_ITEMS = [
   { id: 'i1', text: '👁️ Abdullah ibn\nUmm Maktum',  zone: 'z1' },
   { id: 'i2', text: '👑 The Quraysh\nLeaders',        zone: 'z2' },
@@ -175,18 +214,21 @@ const S6_QUIZ = [
 // =============================================
 //  SECTION WRAPPERS
 // =============================================
-function renderSection1Game() { renderDragDrop(1, S1_ITEMS, S1_ZONES); }
-function checkSection1()      { checkDragDrop(1, S1_ZONES); }
-function renderSection2Game() { renderQuiz(2, S2_QUIZ); }
-function checkSection2()      { checkQuiz(2, S2_QUIZ); }
-function renderSection3Game() { renderStoryOrder(3, S3_EVENTS_CORRECT); }
-function checkSection3()      { checkStoryOrder(3, S3_EVENTS_CORRECT); }
-function renderSection4Game() { renderDragDrop(4, S4_ITEMS, S4_ZONES); }
-function checkSection4()      { checkDragDrop(4, S4_ZONES); }
-function renderSection5Game() { renderQuiz(5, S5_QUIZ); }
-function checkSection5()      { checkQuiz(5, S5_QUIZ); }
-function renderSection6Game() { renderQuiz(6, S6_QUIZ); }
-function checkSection6()      { checkQuiz(6, S6_QUIZ); }
+
+
+
+function renderSection2Game() { renderDragDrop(2, S1_ITEMS, S1_ZONES); }
+function checkSection2()      { checkDragDrop(2, S1_ZONES); }
+function renderSection3Game() { renderQuiz(3, S2_QUIZ); }
+function checkSection3()      { checkQuiz(3, S2_QUIZ); }
+function renderSection4Game() { renderStoryOrder(4, S3_EVENTS_CORRECT); }
+function checkSection4()      { checkStoryOrder(4, S3_EVENTS_CORRECT); }
+function renderSection5Game() { renderDragDrop(5, S4_ITEMS, S4_ZONES); }
+function checkSection5()      { checkDragDrop(5, S4_ZONES); }
+function renderSection6Game() { renderQuiz(6, S5_QUIZ); }
+function checkSection6()      { checkQuiz(6, S5_QUIZ); }
+function renderSection7Game() { renderQuiz(7, S6_QUIZ); }
+function checkSection7()      { checkQuiz(7, S6_QUIZ); }
 
 // =============================================
 //  HARVEST GARDEN — WORLD BUILDER CANVAS

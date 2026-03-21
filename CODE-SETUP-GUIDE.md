@@ -31,7 +31,7 @@ Quran Quest is a browser-based interactive learning game. Each Surah is its own 
 - Completing a level rewards XP and Gems
 - Completing all levels builds a unique world-builder canvas (e.g. Ka'ba, Garden of Al-Ma'wa)
 
-The app supports **two visual themes**: Adventure (Minecraft pixel art) and Stars & Ink (soft, feminine). The theme is selected once on the Hub and persists across all Surahs via `localStorage`.
+The app supports **two visual themes**: Pixel (Minecraft pixel art) and Elegant (soft lavender/gold). The theme is selected once on the Hub ("⚡ Pixel / ✨ Elegant") and persists across all Surahs via `localStorage`.
 
 **Live entry point:** `baqarah/index.html` (the hub page)
 
@@ -47,7 +47,8 @@ baqarah/                        ← Git repository root
 ├── shared/                     ← Shared code reused by ALL surahs
 │   ├── base.css                ← All structural CSS + both theme definitions
 │   ├── engine.js               ← All game logic (quiz, drag-drop, story order)
-│   └── ui.js                   ← Navigation, rewards, lifecycle, theme switching
+│   ├── ui.js                   ← Navigation, rewards, lifecycle, theme switching
+│   └── arabic-words.js         ← Centralised Arabic word dictionary + flip-card/WBW helpers
 │
 ├── baqarah/                    ← Surah Al-Baqarah quest
 │   ├── index.html              ← Game page (HTML structure only)
@@ -60,8 +61,13 @@ baqarah/                        ← Git repository root
 ├── mulk/                       ← Surah Al-Mulk quest   (same structure)
 ├── naba/                       ← Surah An-Naba quest   (same structure)
 ├── muhammad/                   ← Surah Muhammad quest  (same structure)
-└── naziat/                     ← Surah An-Nazi'at quest (same structure)
+├── naziat/                     ← Surah An-Nazi'at quest (same structure)
+├── ...                         ← 40+ surah folders (68–114), all same structure
+└── CODE-SETUP-GUIDE.md         ← This file
 ```
+
+**Surahs with Word-by-Word (WBW) activity:** 105–114 (Al-Fil through An-Nas).
+These include `arabic-words.js` in their script loading and define `WBW_DATA`.
 
 **Rule:** Everything lives inside `baqarah/`. Never create surah folders at the parent `rahman/` level.
 
@@ -80,11 +86,13 @@ The codebase follows **SOLID / DRY** principles:
 
 **Script loading order in every surah `index.html`:**
 ```html
-<script src="scenes.js"></script>       <!-- 1. Surah-specific scene animations -->
-<script src="../shared/engine.js"></script>  <!-- 2. Generic game mechanics -->
-<script src="../shared/ui.js"></script>      <!-- 3. UI/navigation/lifecycle -->
-<script src="app.js"></script>          <!-- 4. Surah data (runs last, after engine is ready) -->
+<script src="scenes.js"></script>              <!-- 1. Surah-specific scene animations -->
+<script src="../shared/arabic-words.js"></script> <!-- 2. Arabic word library (for WBW surahs) -->
+<script src="../shared/engine.js"></script>    <!-- 3. Generic game mechanics -->
+<script src="../shared/ui.js"></script>        <!-- 4. UI/navigation/lifecycle -->
+<script src="app.js"></script>                 <!-- 5. Surah data (runs last) -->
 ```
+Note: `arabic-words.js` is only needed for surahs 105–114 that have WBW activities.
 
 **CSS loading order:**
 ```html
@@ -107,6 +115,31 @@ Defines:
 - All shared structural CSS: header, intro screen, map grid, cards, quiz, drag-drop, story order, verse popup, reward overlay, world builder
 
 **Never** put layout CSS into a surah's individual `style.css` if it could be reused. Add it here instead.
+
+### `shared/arabic-words.js`
+
+Centralised dictionary of Arabic words + helpers for the Word-by-Word (WBW) flip card activity.
+
+**`window.AW`** — Dictionary of word entries keyed by short names:
+```javascript
+window.AW = {
+  'qul':   {ar:'قُلْ', tr:'Qul', en:'Say', freq:332},
+  'allah': {ar:'اللَّهِ', tr:'Allāh', en:'of Allah', freq:2699},
+  // ... 100+ entries
+};
+```
+- `ar` = Arabic text, `tr` = transliteration, `en` = English meaning
+- `freq` = approximate Quranic occurrence count (root/lemma basis)
+- `freq:1` = confirmed hapax legomenon; freq ≤ 10 shows diamond icon ✦; freq > 10 shows ⭐ ×N
+
+**Helper functions:**
+| Function | Purpose |
+|----------|---------|
+| `wbwCard(item, showHint)` | Returns HTML for one flip card (Arabic front, meaning+freq back) |
+| `wbwGroup(label, words, firstCard)` | Returns HTML for one verse row (label + cards, RTL) |
+| `renderWBW(containerId, verseGroups, revealBtnId)` | Renders full WBW section into a DOM container |
+
+Words can be referenced by key (`'qul'`) or inline object (`{ar:'بِرَبِّ', tr:'bi-rabb', en:'in the Lord of', freq:15}`).
 
 ### `shared/engine.js`
 
@@ -238,9 +271,7 @@ Required elements (IDs that `ui.js` looks for):
 
 | ID | Purpose |
 |----|---------|
-| `intro-screen` | Name entry form |
-| `explorer-name` | Name text input |
-| `name-error` | Error message span |
+| `intro-screen` | Splash screen (auto-dismissed — name entry removed, auto-sets "Explorer") |
 | `game-header` | Sticky header (hidden until game starts) |
 | `header-name` | Explorer name display |
 | `xp-display` | XP counter |
@@ -276,9 +307,9 @@ Themes are controlled by a `data-theme` attribute on the `<html>` element:
 
 The active theme is stored in `localStorage` under the key `quranQuestTheme`.
 
-**Minecraft** (default): Pixel art feel — `Press Start 2P` font, hard `4px 4px 0 #000` shadows, sharp corners.
+**Pixel / Minecraft** (default, `data-theme="minecraft"`): Pixel art feel — `Press Start 2P` font, hard `4px 4px 0 #000` shadows, sharp corners.
 
-**Stars & Ink**: Soft, feminine — `Quicksand` font, glowing radial shadows, rounded corners, larger text.
+**Elegant** (`data-theme="stars"`): Soft lavender/gold palette — `Quicksand` font, glowing radial shadows, rounded corners, larger text. Lighter colours throughout.
 
 ### Adding a theme-aware style rule
 
@@ -393,6 +424,57 @@ HTML required:
 ```
 
 Pass threshold: **All in correct position**.
+
+---
+
+### Word by Word (WBW) — Flip Cards + Matching
+
+Used as Level 1 in surahs 105–114. Shows interactive Arabic flip cards (tap to reveal meaning) followed by a drag-and-drop matching game.
+
+```javascript
+// In app.js — WBW verse data (words listed right-to-left for RTL display)
+const WBW_DATA = [
+  {label:'Verse 1 — قُلْ هُوَ اللَّهُ أَحَدٌ', words:[
+    'ahad','allahu','huwa','qul',   // keys from window.AW
+  ]},
+  {label:'Verse 4 — ...', words:[
+    'ahad','kufuwan',
+    {ar:'لَّهُ', tr:'lahu', en:'for/to Him', freq:860},  // inline for rare words
+    'walam',
+  ]},
+];
+
+// Matching game items (Arabic text, NOT transliteration)
+const S1_ITEMS = [
+  {id:'w1', text:'أَحَدٌ',     zone:'z1'},
+  {id:'w2', text:'الصَّمَدُ', zone:'z2'},
+];
+const S1_ZONES = [
+  {id:'z1', desc:'One — uniquely singular, indivisible (112:1)'},
+  {id:'z2', desc:'The Eternal Refuge — all depend on Him (112:2)'},
+];
+
+// Wrappers
+function renderSection1Game() {
+  if (window.renderWBW) renderWBW('wbw-display', WBW_DATA, 'wbw-reveal-btn');
+  renderDragDrop(1, S1_ITEMS, S1_ZONES);
+}
+function checkSection1() { checkDragDrop(1, S1_ZONES); }
+```
+
+HTML required in `section-panel-1`:
+```html
+<button id="wbw-reveal-btn" class="wbw-reveal-btn">👁 Reveal All Meanings</button>
+<div id="wbw-display"></div>
+<!-- ... then the matching game card below ... -->
+<div class="drag-pool" id="drag-pool-1"></div>
+<div class="drop-zones" id="drop-zones-1"></div>
+```
+
+**Important rules for matching activities:**
+- Drag item `text` must be **Arabic text**, never transliteration — transliteration gives away the answer
+- All inline word objects must include `freq` property
+- The "tap to reveal" hint only shows on the very first card of the first verse
 
 ---
 
@@ -590,7 +672,35 @@ ctx.fillStyle = isStars ? '#d4a0ff' : '#4a8a30';
 | Forgetting `window._SN_EVENTS = SN_EVENTS_CORRECT` for story order | The HTML's `moveOrderItem(n, idx, dir, SN_EVENTS_CORRECT)` needs this global reference |
 | Forgetting `data-theme="minecraft"` on `<html>` | Set it as default to prevent FOUC before `ui.js` loads |
 | Forgetting the early-apply theme script in `<head>` | Add `<script>(function(){var t=localStorage.getItem('quranQuestTheme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>` right after `<meta charset>` |
+| Using transliteration in matching drag items | Drag item `text` must be **Arabic script** — transliteration gives away the answer |
+| Forgetting `freq` on inline WBW word objects | Every word object (in `WBW_DATA` and `window.AW`) must have `freq` or the card back will be missing its badge |
+| Missing `WBW_DATA` in `app.js` for WBW surahs | `renderSection1Game()` calls `renderWBW('wbw-display', WBW_DATA, ...)` — if `WBW_DATA` is undefined, the entire section crashes (flip cards AND matching game disappear) |
+| Quiz options all different lengths | Ensure all quiz option strings are similar length — otherwise users pick the longest answer blindly |
+| Forgetting to add `renderProgress()` for new surahs on the hub | Add both the HTML `<div id="xxx-progress">` and the JS `renderProgress(...)` call |
+| Progress bar invisible for new surahs | The default `.progress-bar` must have a `background` colour set in the hub CSS |
 
 ---
 
-*Last updated: March 2026 — Architecture version 2 (SOLID refactor with shared engine/ui/base)*
+## 14. Centralised CSS Variables for Quiz Selection
+
+Quiz option selected state uses dedicated CSS variables (not `--tile-unlocked`) for clear visual feedback:
+
+```css
+/* In :root (Pixel theme) */
+--option-selected-bg:     #1a6e2e;
+--option-selected-border: #4ade80;
+--option-selected-text:   #ffffff;
+--option-selected-shadow: 3px 3px 0 #000;
+
+/* In html[data-theme="stars"] (Elegant) */
+--option-selected-bg:     #5a30c0;
+--option-selected-border: #c8a0f8;
+--option-selected-text:   #ffffff;
+--option-selected-shadow: 0 4px 16px rgba(90,48,192,0.5);
+```
+
+Selected options also show a `✔` prefix via `::before` pseudo-element.
+
+---
+
+*Last updated: March 2026 — Architecture version 3 (WBW activity, arabic-words.js library, freq badges, Elegant theme)*

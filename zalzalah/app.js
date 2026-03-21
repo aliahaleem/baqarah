@@ -1,23 +1,79 @@
 'use strict';
 /* Surah Az-Zalzalah (99) — The Earthquake */
 window.STORAGE_KEY = 'zalzalahQuestSave';
-window.state = { explorerName:'', xp:0, gems:0, completed:[], s1Answers:{}, s1Checked:false, s2Order:[], s2Checked:false, s3Answers:{}, s3Checked:false };
+window.state = { explorerName:'', xp:0, gems:0, completed:[], s2Answers:{}, s2Checked:false, s3Order:[], s3Checked:false, s4Answers:{}, s4Checked:false };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'🌍', title:'Earth Shook',   msg:"SubhanAllah! 'Idha zulzilatil-ardu zilzalaha' — When the earth is shaken with its full shaking! Imagine: the earth brings forth all its hidden burdens. The dead rise. The account begins!"},
-  2:{xp:80, gems:3, icon:'📋', title:'Story Ordered',  msg:"MashAllah! You ordered the earthquake correctly — from the shaking to the earth's confession to the viewing of all deeds. The sequence is vivid!"},
-  3:{xp:90, gems:4, icon:'⚖️', title:'Az-Zalzalah Complete', msg:"Allahu Akbar! Az-Zalzalah complete! 'Faman ya\'mal mithqala dharratin khayran yarah — wa man ya\'mal mithqala dharratin sharran yarah.' An atom's weight of good, an atom's weight of evil — ALL SEEN. Nothing is lost. Ameen! 🏆"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
+  2:{xp:70, gems:3, icon:'🌍', title:'Earth Shook',   msg:"SubhanAllah! 'Idha zulzilatil-ardu zilzalaha' — When the earth is shaken with its full shaking! Imagine: the earth brings forth all its hidden burdens. The dead rise. The account begins!"},
+  3:{xp:80, gems:3, icon:'📋', title:'Story Ordered',  msg:"MashAllah! You ordered the earthquake correctly — from the shaking to the earth's confession to the viewing of all deeds. The sequence is vivid!"},
+  4:{xp:90, gems:4, icon:'⚖️', title:'Az-Zalzalah Complete', msg:"Allahu Akbar! Az-Zalzalah complete! 'Faman ya\'mal mithqala dharratin khayran yarah — wa man ya\'mal mithqala dharratin sharran yarah.' An atom's weight of good, an atom's weight of evil — ALL SEEN. Nothing is lost. Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s99', surahName:'Az-Zalzalah', surahArabic:'الزلزلة', totalLevels:3, rewards:REWARDS,
-  tileIcons:['🌍','📋','⚖️'], tileLabels:['The Earthquake','Story Order','Atom\'s Weight'],
+  id:'s99', surahName:'Az-Zalzalah', surahArabic:'الزلزلة', totalLevels:4, rewards:REWARDS,
+  tileIcons:['📖','🌍','📋','⚖️'], tileLabels:['Word by Word','The Earthquake','Story Order','Atom\'s Weight'],
   welcomeMsg:{
-    fresh:   n=>`As-salamu alaykum, ${n}! Surah Az-Zalzalah — The Earthquake! The earth shakes, reveals its secrets, and then every soul sees every deed — down to an atom's weight. 3 levels!`,
-    partial: (n,d)=>`Welcome back, ${n}! ${d}/3 done. The earth is shaking! 🌍`,
+    fresh:   n=>`As-salamu alaykum, ${n}! Surah Az-Zalzalah — The Earthquake! The earth shakes, reveals its secrets, and then every soul sees every deed — down to an atom's weight. 4 levels!`,
+    partial: (n,d)=>`Welcome back, ${n}! ${d}/4 done. The earth is shaking! 🌍`,
     complete:n=>`MashAllah, ${n}! Az-Zalzalah complete! An atom's weight of good — you shall see it. May every good atom be counted for us! Ameen! 🏆`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1 — إِذَا زُلْزِلَتِ الْأَرْضُ زِلْزَالَهَا', words:[
+    {ar:'زِلْزَالَهَا', tr:'zilzālahā', en:'its [ultimate] earthquake', freq:2},
+    {ar:'الْأَرْضُ', tr:'al-arḍ', en:'the earth', freq:461},
+    'idha',
+  ]},
+  {label:'Verse 2 — وَأَخْرَجَتِ الْأَرْضُ أَثْقَالَهَا', words:[
+    {ar:'أَثْقَالَهَا', tr:'athqālahā', en:'its burdens', freq:1},
+    {ar:'الْأَرْضُ', tr:'al-arḍ', en:'the earth', freq:461},
+    {ar:'وَأَخْرَجَتِ', tr:'wa-akhrajat', en:'and brings forth', freq:55},
+  ]},
+  {label:'Verse 4 — يَوْمَئِذٍ تُحَدِّثُ أَخْبَارَهَا', words:[
+    {ar:'أَخْبَارَهَا', tr:'akhbārahā', en:'its stories/news', freq:3},
+    {ar:'تُحَدِّثُ', tr:'tuḥaddithu', en:'it will report', freq:1},
+    {ar:'يَوْمَئِذٍ', tr:'yawmaʾidhin', en:'that Day', freq:37},
+  ]},
+  {label:'Verse 7 — فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ', words:[
+    {ar:'يَرَهُ', tr:'yarahu', en:'will see it', freq:3},
+    {ar:'خَيْرًا', tr:'khayran', en:'good', freq:189},
+    {ar:'ذَرَّةٍ', tr:'dharratin', en:'an atom', freq:3},
+    {ar:'مِثْقَالَ', tr:'mithqāla', en:'weight of', freq:7},
+    {ar:'يَعْمَلْ', tr:'yaʿmal', en:'does', freq:360},
+    {ar:'فَمَن', tr:'fa-man', en:'so whoever', freq:89},
+  ]},
+  {label:'Verse 8 — وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُ', words:[
+    {ar:'يَرَهُ', tr:'yarahu', en:'will see it', freq:3},
+    {ar:'شَرًّا', tr:'sharran', en:'evil', freq:30},
+    {ar:'ذَرَّةٍ', tr:'dharratin', en:'an atom', freq:3},
+    {ar:'مِثْقَالَ', tr:'mithqāla', en:'weight of', freq:7},
+    {ar:'يَعْمَلْ', tr:'yaʿmal', en:'does', freq:360},
+    {ar:'وَمَن', tr:'wa-man', en:'and whoever', freq:89},
+  ]},
+];
+
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'زِلْزَالَهَا', zone:'wz1'},
+  {id:'w2', text:'الْأَرْضُ', zone:'wz2'},
+  {id:'w3', text:'أَثْقَالَهَا', zone:'wz3'},
+  {id:'w4', text:'وَأَخْرَجَتِ', zone:'wz4'},
+  {id:'w5', text:'أَخْبَارَهَا', zone:'wz5'},
+  {id:'w6', text:'تُحَدِّثُ', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'its [ultimate] earthquake'},
+  {id:'wz2', desc:'the earth'},
+  {id:'wz3', desc:'its burdens'},
+  {id:'wz4', desc:'and brings forth'},
+  {id:'wz5', desc:'its stories/news'},
+  {id:'wz6', desc:'it will report'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
 
 const S1_QUIZ = [
   {q:'What is the Arabic word "zalzalah" translated as?',
@@ -59,9 +115,12 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderStoryOrder(2,S2_EVENTS_CORRECT);}function checkSection2(){checkStoryOrder(2,S2_EVENTS_CORRECT);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
+
+
+
+function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
+function renderSection3Game(){renderStoryOrder(3,S2_EVENTS_CORRECT);}function checkSection3(){checkStoryOrder(3,S2_EVENTS_CORRECT);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -73,5 +132,5 @@ window._drawBuildCanvas = function(n) {
   if(n>=1){ctx.strokeStyle=`rgba(255,160,60,0.5)`;ctx.lineWidth=2;for(let i=0;i<5;i++){const x=(i*113)%W;ctx.beginPath();ctx.moveTo(x,H*0.3);ctx.lineTo(x+30,H*0.8);ctx.stroke();}}
   if(n>=2){ctx.fillStyle=acc;ctx.font='9px serif';ctx.textAlign='center';ctx.fillText('مِثْقَالَ ذَرَّةٍ',W/2,H*0.55);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Weight of an atom"',W/2,H*0.68);ctx.textAlign='left';}
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
-  ctx.fillText(n>=3?'AZ-ZALZALAH COMPLETE! ⚖️':`Az-Zalzalah — ${n}/3 levels`,W/2,14);ctx.textAlign='left';
+  ctx.fillText(n>=3?'AZ-ZALZALAH COMPLETE! ⚖️':`Az-Zalzalah — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
 };

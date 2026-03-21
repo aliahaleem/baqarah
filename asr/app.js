@@ -1,23 +1,70 @@
 'use strict';
 /* Surah Al-Asr (103) — The Time */
 window.STORAGE_KEY = 'asrQuestSave';
-window.state = { explorerName:'', xp:0, gems:0, completed:[], s1Answers:{}, s1Checked:false, s2Checked:false, s3Answers:{}, s3Checked:false };
+window.state = { explorerName:'', xp:0, gems:0, completed:[], s2Answers:{}, s2Checked:false, s3Checked:false, s4Answers:{}, s4Checked:false };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'⏳', title:'Time Keeper',    msg:"SubhanAllah! Imam Shafi\'i said: if people only reflected on Surah Al-Asr, it would be enough for them. ONE oath (time), ONE claim (man is in loss), ONE exception (4 conditions). The entire formula for success in 3 verses!"},
-  2:{xp:80, gems:3, icon:'🤝', title:'Four Found',     msg:"MashAllah! You matched the four conditions for salvation: believe, do good deeds, urge to truth, and urge to patience. All FOUR are required — not just iman alone!"},
-  3:{xp:90, gems:4, icon:'✅', title:'Al-Asr Complete', msg:"Allahu Akbar! Al-Asr complete! 'Wa tawassaw bil-haqq wa tawassaw bis-sabr.' Counsel each other to TRUTH and counsel each other to PATIENCE. Two collective duties — not just individual. May we be a community of truth and patience! Ameen! 🏆"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
+  2:{xp:70, gems:3, icon:'⏳', title:'Time Keeper',    msg:"SubhanAllah! Imam Shafi\'i said: if people only reflected on Surah Al-Asr, it would be enough for them. ONE oath (time), ONE claim (man is in loss), ONE exception (4 conditions). The entire formula for success in 3 verses!"},
+  3:{xp:80, gems:3, icon:'🤝', title:'Four Found',     msg:"MashAllah! You matched the four conditions for salvation: believe, do good deeds, urge to truth, and urge to patience. All FOUR are required — not just iman alone!"},
+  4:{xp:90, gems:4, icon:'✅', title:'Al-Asr Complete', msg:"Allahu Akbar! Al-Asr complete! 'Wa tawassaw bil-haqq wa tawassaw bis-sabr.' Counsel each other to TRUTH and counsel each other to PATIENCE. Two collective duties — not just individual. May we be a community of truth and patience! Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s103', surahName:'Al-Asr', surahArabic:'العصر', totalLevels:3, rewards:REWARDS,
-  tileIcons:['⏳','🤝','✅'], tileLabels:['Time Oath','Four Conditions','Complete'],
+  id:'s103', surahName:'Al-Asr', surahArabic:'العصر', totalLevels:4, rewards:REWARDS,
+  tileIcons:['📖','⏳','🤝','✅'], tileLabels:['Word by Word','Time Oath','Four Conditions','Complete'],
   welcomeMsg:{
-    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Asr — The Time! Three verses that contain the ENTIRE formula for human salvation. Imam Shafi\'i said these three verses are enough if you truly understand them. 3 levels!`,
-    partial: (n,d)=>`Welcome back, ${n}! ${d}/3 done. Time is running! ⏳`,
+    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Asr — The Time! Three verses that contain the ENTIRE formula for human salvation. Imam Shafi\'i said these three verses are enough if you truly understand them. 4 levels!`,
+    partial: (n,d)=>`Welcome back, ${n}! ${d}/4 done. Time is running! ⏳`,
     complete:n=>`MashAllah, ${n}! Al-Asr complete! Iman + \'Amal Salih + Tawasi bil-Haqq + Tawasi bis-Sabr. The formula is yours! Live it! 🏆`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1 — وَالْعَصْرِ', words:[
+    {ar:'وَالْعَصْرِ', tr:'wal-ʿaṣr', en:'by Time', freq:3},
+  ]},
+  {label:'Verse 2 — إِنَّ الْإِنسَانَ لَفِي خُسْرٍ', words:[
+    {ar:'خُسْرٍ', tr:'khusr', en:'loss', freq:5},
+    {ar:'لَفِي', tr:'la-fī', en:'surely in', freq:1714},
+    'inna',
+    {ar:'الْإِنسَانَ', tr:'al-insān', en:'mankind', freq:65},
+  ]},
+  {label:'Verse 3 — إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ', words:[
+    {ar:'الصَّالِحَاتِ', tr:'al-ṣāliḥāt', en:'righteous deeds', freq:62},
+    {ar:'وَعَمِلُوا', tr:'wa-ʿamilū', en:'and did', freq:360},
+    {ar:'آمَنُوا', tr:'āmanū', en:'believed', freq:537},
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'those who', freq:1450},
+    {ar:'إِلَّا', tr:'illā', en:'except', freq:663},
+  ]},
+  {label:'Verse 3b — وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ', words:[
+    {ar:'بِالصَّبْرِ', tr:'bil-ṣabr', en:'patience', freq:22},
+    {ar:'وَتَوَاصَوْا', tr:'wa-tawāṣaw', en:'and urged one another to', freq:2},
+    {ar:'بِالْحَقِّ', tr:'bil-ḥaqq', en:'truth', freq:247},
+    {ar:'وَتَوَاصَوْا', tr:'wa-tawāṣaw', en:'and urged one another to', freq:2},
+  ]},
+];
+
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'وَالْعَصْرِ', zone:'wz1'},
+  {id:'w2', text:'خُسْرٍ', zone:'wz2'},
+  {id:'w3', text:'لَفِي', zone:'wz3'},
+  {id:'w4', text:'الْإِنسَانَ', zone:'wz4'},
+  {id:'w5', text:'الصَّالِحَاتِ', zone:'wz5'},
+  {id:'w6', text:'وَعَمِلُوا', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'by Time'},
+  {id:'wz2', desc:'loss'},
+  {id:'wz3', desc:'surely in'},
+  {id:'wz4', desc:'mankind'},
+  {id:'wz5', desc:'righteous deeds'},
+  {id:'wz6', desc:'and did'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
 
 const S1_QUIZ = [
   {q:'What does Allah swear by in 103:1?',
@@ -62,9 +109,12 @@ const S3_QUIZ = [
    correct:0},
 ];
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
+
+
+
+function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
+function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -77,5 +127,5 @@ window._drawBuildCanvas = function(n) {
   if(n>=1){ctx.strokeStyle=acc;ctx.lineWidth=2;ctx.strokeRect(W/2-15,H*0.25,30,50);ctx.beginPath();ctx.moveTo(W/2-15,H*0.25);ctx.lineTo(W/2+15,H*0.5);ctx.lineTo(W/2-15,H*0.75);ctx.lineTo(W/2+15,H*0.25);ctx.lineTo(W/2-15,H*0.25);ctx.stroke();ctx.fillStyle=acc;ctx.beginPath();ctx.moveTo(W/2-14,H*0.51);ctx.lineTo(W/2+14,H*0.51);ctx.lineTo(W/2,H*0.74);ctx.fill();}
   if(n>=2){ctx.fillStyle=acc;ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('Believe + Deeds + Truth + Patience',W/2,H*0.88);ctx.textAlign='left';}
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
-  ctx.fillText(n>=3?'AL-ASR COMPLETE! ⏳':`Al-Asr — ${n}/3 levels`,W/2,14);ctx.textAlign='left';
+  ctx.fillText(n>=3?'AL-ASR COMPLETE! ⏳':`Al-Asr — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
 };

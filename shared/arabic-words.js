@@ -170,6 +170,99 @@ window.AW = {
   'fi-sudur'   : {ar:'فِي صُدُورِ',    tr:'fī ṣudūr',       en:'in the chests / hearts of',        freq:5},
 };
 
+/* ── SHARED WBW SCENE CLASS ───────────────────────────────────── */
+
+/**
+ * Base scene class for canvas animations.
+ * Reusable by any surah that lacks its own BS/BaseScene definition.
+ */
+window._BS = function _BS(id) {
+  this.canvas = document.getElementById(id);
+  this.ctx = this.canvas ? this.canvas.getContext('2d') : null;
+  this.raf = null;
+  this.t = 0;
+};
+window._BS.prototype.stop = function() {
+  if (this.raf) { cancelAnimationFrame(this.raf); this.raf = null; }
+};
+
+/**
+ * Shared Word-by-Word scene — animated canvas with emoji, label, particles.
+ * Eliminates the need for a duplicated _S1WBW class in every scenes.js.
+ *
+ * Usage in scenes.js:
+ *   const wbwScene = new window.WBWScene('canvas-1', {
+ *     emoji: '📰', label: 'THE GREAT NEWS',
+ *     verse: { ref:'An-Naba (78)', arabic:'...', english:'...' }
+ *   });
+ *   // then in initScenes: scenes[1] = wbwScene;
+ *
+ * @param {string} canvasId  — e.g. 'canvas-1'
+ * @param {object} cfg       — { emoji, label, verse: {ref, arabic, english, note?} }
+ */
+window.WBWScene = function WBWScene(canvasId, cfg) {
+  window._BS.call(this, canvasId);
+  this._emoji = cfg.emoji || '📖';
+  this._label = (cfg.label || 'WORD BY WORD').toUpperCase();
+  this._verse = cfg.verse || null;
+};
+window.WBWScene.prototype = Object.create(window._BS.prototype);
+window.WBWScene.prototype.constructor = window.WBWScene;
+window.WBWScene.prototype.start = function() {
+  if (!this.ctx) return;
+  var self = this, ctx = this.ctx, cv = this.canvas;
+  if (this._verse && typeof showVersePopup === 'function') {
+    cv.onclick = function() { showVersePopup(self._verse); };
+  }
+  var draw = function() {
+    self.t++;
+    self.raf = requestAnimationFrame(draw);
+    var W = cv.width, H = cv.height;
+    var st = document.documentElement.getAttribute('data-theme') === 'stars';
+    ctx.fillStyle = st ? '#1a1440' : '#0e0e1a';
+    ctx.fillRect(0, 0, W, H);
+    var t = self.t * 0.02;
+    ctx.globalAlpha = 0.3;
+    for (var i = 0; i < 15; i++) {
+      var x = (i * 97 + t * (20 + i * 3)) % W;
+      var y = (i * 53 + Math.sin(t + i) * 20 + H * 0.3) % H;
+      var r = 1.5 + Math.sin(t + i * 0.7) * 0.8;
+      ctx.fillStyle = st ? '#c8a0f8' : '#ffd700';
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    ctx.font = '28px serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(self._emoji, W / 2, H * 0.42);
+    ctx.fillStyle = st ? '#e8d0ff' : '#ffd700';
+    ctx.font = 'bold 7px "Press Start 2P", monospace';
+    ctx.fillText(self._label, W / 2, H * 0.62);
+    ctx.fillStyle = st ? '#a89bc8' : '#c8a060';
+    ctx.font = '5px "Press Start 2P", monospace';
+    ctx.fillText('CLICK: Reveal Full Verse', W / 2, H * 0.78);
+    ctx.textAlign = 'left';
+  };
+  draw();
+};
+
+/**
+ * Default renderSection1Game / checkSection1 for WBW levels.
+ * Call from app.js: window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+ * This wires up the standard render + check functions so each app.js doesn't repeat them.
+ */
+window.setupWBWLevel = function(wbwData, matchItems, matchZones) {
+  window.renderSection1Game = function() {
+    if (window.renderWBW) window.renderWBW('wbw-display', wbwData, 'wbw-reveal-btn');
+    if (matchItems && matchZones) renderDragDrop(1, matchItems, matchZones);
+  };
+  window.checkSection1 = function() {
+    if (matchItems && matchZones) checkDragDrop(1, matchZones);
+    else completeSection(1);
+  };
+};
+
 /* ── HELPERS ───────────────────────────────────────────────────── */
 
 /** Return the frequency badge HTML for the back of a flip card. */

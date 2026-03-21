@@ -19,7 +19,7 @@ const VD={
 
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 
-class S1 extends BS{constructor(){super('canvas-1');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.signs);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_label(ctx,'CLICK: When the Sky Splits — 82:1-5');
+class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.signs);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_label(ctx,'CLICK: When the Sky Splits — 82:1-5');
 // Sky crack
 const pulse=0.6+Math.sin(this.t*0.04)*0.4;ctx.strokeStyle=`rgba(128,232,248,${pulse})`;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(CW/2-30,0);ctx.lineTo(CW/2-10,40);ctx.lineTo(CW/2+20,80);ctx.lineTo(CW/2+5,CH);ctx.stroke();
 ctx.strokeStyle=`rgba(128,232,248,${pulse*0.5})`;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(CW/2+50,0);ctx.lineTo(CW/2+30,50);ctx.lineTo(CW/2+60,CH);ctx.stroke();
@@ -29,7 +29,7 @@ for(let i=0;i<6;i++){const sx=((this.t*0.5+i*90)%CW);const sy=((this.t*0.3+i*35)
 _ground(ctx,165);[[80,155],[200,160],[350,158],[480,155]].forEach(([gx,gy])=>{fillRect(ctx,gx-10,gy,20,10,p.gndAcc);});
 _label(ctx,'"A soul will know what it put forward and left behind" (82:5)',CH-15);};draw();}}
 
-class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.deceived);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,170);_label(ctx,'CLICK: "O Man, What Has Deceived You?" — 82:6-8');
+class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.deceived);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,170);_label(ctx,'CLICK: "O Man, What Has Deceived You?" — 82:6-8');
 // Human figure looking proud
 _fig(ctx,CW/2-10,100,'#e8c39a','#3a5a80','#1a2840');
 // Crown symbol above (pride/deception)
@@ -39,7 +39,7 @@ ctx.fillStyle='#ff8888';ctx.font='12px "Press Start 2P",monospace';ctx.textAlign
 ctx.fillText('?',CW/2-80,120);ctx.fillText('?',CW/2+80,115);ctx.textAlign='left';
 ctx.fillStyle=p.label;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('"What DECEIVED you about your Generous Lord?" (82:6)',CW/2,CH-15);ctx.textAlign='left';};draw();}}
 
-class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.angels);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,175);_label(ctx,'CLICK: The Recording Angels — 82:10-12');
+class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.angels);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,175);_label(ctx,'CLICK: The Recording Angels — 82:10-12');
 // Two angels flanking a person
 const off=Math.sin(this.t*0.03)*4;
 // Right angel (writing)
@@ -54,7 +54,7 @@ fillRect(ctx,132,78+off,12,30,'#f0eee8');fillRect(ctx,133,70+off,10,10,'#e8c39a'
 _fig(ctx,CW/2-10,105,'#e8c39a','#2a4060','#1a2840');
 _label(ctx,'"Noble recorders — who know everything you do" (82:11-12)',CH-15);};draw();}}
 
-class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.destiny);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();
+class S5 extends BS{constructor(){super('canvas-5');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.destiny);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();
 // Split background
 ctx.fillStyle='#0a2808';ctx.fillRect(0,0,CW/2,CH);ctx.fillStyle='#200808';ctx.fillRect(CW/2,0,CW/2,CH);
 ctx.strokeStyle='rgba(255,255,255,0.1)';ctx.lineWidth=1;ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(CW/2,0);ctx.lineTo(CW/2,CH);ctx.stroke();ctx.setLineDash([]);
@@ -70,7 +70,7 @@ _fig(ctx,380,95,'#c09070','#2a1818','#181010');
 for(let f=0;f<5;f++){const fx=CW/2+20+f*26,fy=CH-60+Math.sin(this.t*0.1+f)*10;ctx.fillStyle=`rgba(220,${80+f*20},20,0.7)`;ctx.beginPath();ctx.arc(fx,fy,6,0,Math.PI*2);ctx.fill();}
 ctx.fillStyle='#ff8888';ctx.fillText('الفُجَّار',CW/2+100,185);ctx.fillText('IN HELL',CW/2+100,196);ctx.textAlign='left';};draw();}}
 
-class S5 extends BS{constructor(){super('canvas-5');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.yawm);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,175);_label(ctx,'CLICK: "What Makes You Know What the Day is?" — 82:17-19');
+class S6 extends BS{constructor(){super('canvas-6');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.yawm);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,175);_label(ctx,'CLICK: "What Makes You Know What the Day is?" — 82:17-19');
 // Large scales
 const tilt=Math.sin(this.t*0.02)*8;
 ctx.strokeStyle=p.acStr+'0.8)';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(CW/2,50);ctx.lineTo(CW/2,90);ctx.stroke();
@@ -83,7 +83,7 @@ ctx.fillStyle=p.label;ctx.beginPath();ctx.arc(CW/2,48,8,0,Math.PI*2);ctx.fill();
 // Allah text
 ctx.fillStyle=p.acStr+'0.9)';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('الأَمْرُ لِلَّه',CW/2,CH-15);ctx.fillText('"The command that Day is ENTIRELY for Allah"',CW/2,CH-4);ctx.textAlign='left';};draw();}}
 
-class S6 extends BS{constructor(){super('canvas-6');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.yawm);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,170);_label(ctx,'CLICK: No Soul Helps Another — 82:19');
+class S7 extends BS{constructor(){super('canvas-7');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.yawm);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,170);_label(ctx,'CLICK: No Soul Helps Another — 82:19');
 // Multiple figures standing alone
 [[80,105],[180,110],[280,105],[380,108],[480,110]].forEach(([fx,fy],i)=>{
   _fig(ctx,fx,fy,'#e8c39a',['#2a5080','#3a3a60','#204820','#5a2020','#2a4060'][i],['#1a2840','#1a1a40','#0e2010','#2a1010','#1a2840'][i]);
@@ -92,6 +92,15 @@ class S6 extends BS{constructor(){super('canvas-6');}start(){if(!this.ctx)return
 ctx.fillStyle=p.label;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('"No soul has power for another — ALONE before Allah"',CW/2,CH-15);ctx.textAlign='left';};draw();}}
 
 const scenes={};
-function initScenes(){scenes[1]=new S1();scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();scenes[5]=new S5();scenes[6]=new S6();}
-function startScene(n){if(scenes[n])scenes[n].start();}
-function stopAllScenes(){Object.values(scenes).forEach(s=>s.stop());}
+
+
+
+
+const VD_wbw={ref:'Al-Infitar (82)',arabic:'إِذَا السَّمَاءُ انفَطَرَتْ ۩ وَإِذَا الْكَوَاكِبُ انتَثَرَتْ ۩ يَا أَيُّهَا الْإِنسَانُ مَا غَرَّكَ بِرَبِّكَ الْكَرِيمِ',english:'"When the sky breaks apart, when the stars scatter — O mankind, what has deceived you concerning your Lord, the Generous?" (82:1-2, 6)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};
+const _s1wbw = new window.WBWScene('canvas-1', {emoji:'🌌',label:'THE CLEAVING',verse:VD_wbw});
+
+function initScenes(){scenes[1]=_s1wbw;scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();scenes[5]=new S5();scenes[6]=new S6();scenes[7]=new S7();}
+function startScene(n) {
+  if(scenes[n])scenes[n].start();}
+function stopAllScenes() {
+  Object.values(scenes).forEach(s=>s.stop());}

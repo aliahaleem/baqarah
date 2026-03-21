@@ -1,23 +1,68 @@
 'use strict';
 /* Surah Ash-Sharh (94) — The Opening / The Relief */
 window.STORAGE_KEY = 'sharhQuestSave';
-window.state = { explorerName:'', xp:0, gems:0, completed:[], s1Answers:{}, s1Checked:false, s2Checked:false, s3Answers:{}, s3Checked:false };
+window.state = { explorerName:'', xp:0, gems:0, completed:[], s2Answers:{}, s2Checked:false, s3Checked:false, s4Answers:{}, s4Checked:false };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'💙', title:'Chest Opened',  msg:"SubhanAllah! Allah expanded the Prophet's ﷺ chest — removed his burden — and raised his mention worldwide. Every time someone says 'Allahu Akbar' or recites the shahadah, the Prophet's name is mentioned. SubhanAllah!"},
-  2:{xp:80, gems:3, icon:'🌟', title:'Ease Found',    msg:"MashAllah! 'Fa-inna ma\'al-usri yusra — inna ma\'al-usri yusra.' With hardship comes ease — twice! In Arabic grammar, when 'usri' (hardship) is definite and 'yusra' (ease) is indefinite, the ease is different BOTH times. Double ease from one hardship!"},
-  3:{xp:90, gems:4, icon:'🕊️', title:'Ash-Sharh Complete', msg:"Allahu Akbar! Ash-Sharh complete! 'Fa-idha faraghta fansab — wa ila rabbika farghab.' When you finish, strive again — and turn to your Lord with yearning. Rest leads to the next striving. Keep going! Ameen 🏆"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
+  2:{xp:70, gems:3, icon:'💙', title:'Chest Opened',  msg:"SubhanAllah! Allah expanded the Prophet's ﷺ chest — removed his burden — and raised his mention worldwide. Every time someone says 'Allahu Akbar' or recites the shahadah, the Prophet's name is mentioned. SubhanAllah!"},
+  3:{xp:80, gems:3, icon:'🌟', title:'Ease Found',    msg:"MashAllah! 'Fa-inna ma\'al-usri yusra — inna ma\'al-usri yusra.' With hardship comes ease — twice! In Arabic grammar, when 'usri' (hardship) is definite and 'yusra' (ease) is indefinite, the ease is different BOTH times. Double ease from one hardship!"},
+  4:{xp:90, gems:4, icon:'🕊️', title:'Ash-Sharh Complete', msg:"Allahu Akbar! Ash-Sharh complete! 'Fa-idha faraghta fansab — wa ila rabbika farghab.' When you finish, strive again — and turn to your Lord with yearning. Rest leads to the next striving. Keep going! Ameen 🏆"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s94', surahName:'Ash-Sharh', surahArabic:'الشرح', totalLevels:3, rewards:REWARDS,
-  tileIcons:['💙','🌟','🕊️'], tileLabels:['Expanded Chest','Ease after Hardship','Keep Striving'],
+  id:'s94', surahName:'Ash-Sharh', surahArabic:'الشرح', totalLevels:4, rewards:REWARDS,
+  tileIcons:['📖','💙','🌟','🕊️'], tileLabels:['Word by Word','Expanded Chest','Ease after Hardship','Keep Striving'],
   welcomeMsg:{
-    fresh:   n=>`As-salamu alaykum, ${n}! Surah Ash-Sharh — The Opening! Just 8 verses, but overflowing with comfort. Allah tells the Prophet ﷺ — I expanded your chest, removed your burden, and raised your name. And twice: with hardship COMES ease! 3 levels!`,
-    partial: (n,d)=>`Welcome back, ${n}! ${d}/3 done. The chest is expanding! 💙`,
+    fresh:   n=>`As-salamu alaykum, ${n}! Surah Ash-Sharh — The Opening! Just 8 verses, but overflowing with comfort. Allah tells the Prophet ﷺ — I expanded your chest, removed your burden, and raised your name. And twice: with hardship COMES ease! 4 levels!`,
+    partial: (n,d)=>`Welcome back, ${n}! ${d}/4 done. The chest is expanding! 💙`,
     complete:n=>`MashAllah, ${n}! Ash-Sharh complete! "Inna ma\'al-usri yusra." With every difficulty, ease is coming. Trust Allah completely! 🏆`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1 — أَلَمْ نَشْرَحْ لَكَ صَدْرَكَ', words:[
+    {ar:'صَدْرَكَ', tr:'ṣadraka', en:'your chest/heart', freq:5},
+    {ar:'لَكَ', tr:'laka', en:'for you', freq:202},
+    {ar:'نَشْرَحْ', tr:'nashraḥ', en:'We expanded', freq:1},
+    {ar:'أَلَمْ', tr:'alam', en:'did We not', freq:40},
+  ]},
+  {label:'Verse 5-6 — فَإِنَّ مَعَ الْعُسْرِ يُسْرًا · إِنَّ مَعَ الْعُسْرِ يُسْرًا', words:[
+    {ar:'يُسْرًا', tr:'yusran', en:'ease', freq:5},
+    {ar:'الْعُسْرِ', tr:'al-ʿusr', en:'hardship', freq:3},
+    {ar:'مَعَ', tr:'maʿa', en:'with', freq:161},
+    {ar:'فَإِنَّ', tr:'fa-inna', en:'for indeed', freq:743},
+  ]},
+  {label:'Verse 7-8 — فَإِذَا فَرَغْتَ فَانصَبْ · وَإِلَىٰ رَبِّكَ فَارْغَب', words:[
+    {ar:'فَارْغَب', tr:'farghab', en:'turn your longing', freq:1},
+    {ar:'رَبِّكَ', tr:'rabbika', en:'your Lord', freq:49},
+    {ar:'وَإِلَىٰ', tr:'wa-ilā', en:'and to', freq:189},
+    {ar:'فَانصَبْ', tr:'fanṣab', en:'then strive [in worship]', freq:1},
+    {ar:'فَرَغْتَ', tr:'faraghta', en:'you have finished', freq:1},
+    {ar:'فَإِذَا', tr:'fa-idhā', en:'so when', freq:406},
+  ]},
+];
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'صَدْرَكَ', zone:'wz1'},
+  {id:'w2', text:'لَكَ', zone:'wz2'},
+  {id:'w3', text:'نَشْرَحْ', zone:'wz3'},
+  {id:'w4', text:'أَلَمْ', zone:'wz4'},
+  {id:'w5', text:'يُسْرًا', zone:'wz5'},
+  {id:'w6', text:'الْعُسْرِ', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'your chest/heart'},
+  {id:'wz2', desc:'for you'},
+  {id:'wz3', desc:'We expanded'},
+  {id:'wz4', desc:'did We not'},
+  {id:'wz5', desc:'ease'},
+  {id:'wz6', desc:'hardship'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+
 
 const S1_ITEMS = [
   {id:'a1', text:'Expanded your\nchest for you', zone:'z1'},
@@ -60,9 +105,12 @@ const S3_QUIZ = [
    correct:0},
 ];
 
-function renderSection1Game(){renderDragDrop(1,S1_ITEMS,S1_ZONES);}function checkSection1(){checkDragDrop(1,S1_ZONES);}
-function renderSection2Game(){renderQuiz(2,S2_QUIZ);}function checkSection2(){checkQuiz(2,S2_QUIZ);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
+
+
+
+function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
+function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -74,5 +122,5 @@ window._drawBuildCanvas = function(n) {
   if(n>=1){const g=ctx.createRadialGradient(W/2,H*0.4,5,W/2,H*0.4,60);g.addColorStop(0,'rgba(64,216,192,0.3)');g.addColorStop(1,'transparent');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);}
   if(n>=2){ctx.fillStyle=acc;ctx.font='9px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('مَعَ الْعُسْرِ يُسْرًا',W/2,H*0.45);ctx.font='6px "Press Start 2P",monospace';ctx.fillText('"With hardship comes ease"',W/2,H*0.58);ctx.textAlign='left';}
   if(n>=3){ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('ASH-SHARH COMPLETE! 💙',W/2,14);ctx.textAlign='left';}
-  else{ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(`Ash-Sharh — ${n}/3 levels`,W/2,14);ctx.textAlign='left';}
+  else{ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(`Ash-Sharh — ${n}/4 levels`,W/2,14);ctx.textAlign='left';}
 };

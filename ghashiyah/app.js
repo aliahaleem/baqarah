@@ -3,15 +3,18 @@
 window.STORAGE_KEY = 'ghashiyahQuestSave';
 window.state = {
   explorerName: '', xp: 0, gems: 0, completed: [],
-  s1Checked: false,
-  s2Answers: {}, s2Checked: false,
-  s3Checked: false,
-  s4Answers: {}, s4Checked: false,
+  s1Checked:false,
+  s2Checked: false,
+  s3Answers: {}, s3Checked: false,
+  s4Checked: false,
   s5Answers: {}, s5Checked: false,
   s6Answers: {}, s6Checked: false,
+  s7Answers: {}, s7Checked: false,
 };
 
 const REWARDS = {
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
   1: { xp: 70,  gems: 3, icon: '⚡', title: 'Day Witness',   msg: "MashAllah! Al-Ghashiyah will OVERWHELM everything — two groups, two fates. May Allah make us among the faces of delight!" },
   2: { xp: 80,  gems: 3, icon: '😶', title: 'Face Keeper',   msg: "SubhanAllah! The wretched labor but gain nothing. Boiling water to drink, bitter thorns to eat. May Allah protect us!" },
   3: { xp: 90,  gems: 3, icon: '🌸', title: 'Garden Seeker', msg: "MashAllah! The blessed are satisfied with their effort — in a high garden with flowing springs. May Allah grant us this! Ameen." },
@@ -24,16 +27,60 @@ window.SURAH_CONFIG = {
   id: 's88',
   surahName: 'Al-Ghashiyah',
   surahArabic: 'الغاشية',
-  totalLevels: 6,
+  totalLevels: 7,
   rewards: REWARDS,
   welcomeMsg: {
-    fresh:    name => `As-salamu alaykum, ${name}! Welcome to Al-Ghashiyah — The Overwhelming! A stunning surah about the Day of Judgement. Two groups: faces downcast in the Fire, faces radiant in Paradise. 6 levels await!`,
+    fresh:    name => `As-salamu alaykum, ${name}! Welcome to Al-Ghashiyah — The Overwhelming! A stunning surah about the Day of Judgement. Two groups: faces downcast in the Fire, faces radiant in Paradise. 7 levels await!`,
     partial:  (name, done) => `Welcome back, ${name}! ${done} level${done>1?'s':''} complete. The reckoning is near — keep going! 💪`,
-    complete: name => `MashAllah, ${name}! All 6 levels of Al-Ghashiyah done. "Inna ilayna iyabahum" — to Allah is our return. May we stand before Him with pure hearts. Ameen! 🏆`,
+    complete: name => `MashAllah, ${name}! All 7 levels of Al-Ghashiyah done. "Inna ilayna iyabahum" — to Allah is our return. May we stand before Him with pure hearts. Ameen! 🏆`,
   },
 };
 
 /* ── Section 1: Drag & Drop — Day of Judgement overview (88:1-7) ── */
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1 — هَلْ أَتَاكَ حَدِيثُ الْغَاشِيَةِ', words:[
+    {ar:'الْغَاشِيَةِ', tr:'al-ghāshiyah', en:'the Overwhelming', freq:2},
+    {ar:'حَدِيثُ', tr:'ḥadīth', en:'the story of', freq:36},
+    {ar:'أَتَاكَ', tr:'atāka', en:'reached you', freq:130},
+    {ar:'هَلْ', tr:'hal', en:'has', freq:101},
+  ]},
+  {label:'Verse 8-9 — وُجُوهٌ يَوْمَئِذٍ نَّاعِمَةٌ · لِّسَعْيِهَا رَاضِيَةٌ', words:[
+    {ar:'رَاضِيَةٌ', tr:'rāḍiyah', en:'satisfied', freq:3},
+    {ar:'لِّسَعْيِهَا', tr:'li-saʿyihā', en:'with their effort', freq:2},
+    {ar:'نَّاعِمَةٌ', tr:'nāʿimah', en:'joyful', freq:2},
+    {ar:'يَوْمَئِذٍ', tr:'yawmaʾidhin', en:'that Day', freq:37},
+    {ar:'وُجُوهٌ', tr:'wujūh', en:'[other] faces', freq:34},
+  ]},
+  {label:'Verse 17 — أَفَلَا يَنظُرُونَ إِلَى الْإِبِلِ كَيْفَ خُلِقَتْ', words:[
+    {ar:'خُلِقَتْ', tr:'khuliqat', en:'they were created', freq:29},
+    {ar:'كَيْفَ', tr:'kayfa', en:'how', freq:89},
+    {ar:'الْإِبِلِ', tr:'al-ibil', en:'the camels', freq:1},
+    {ar:'إِلَى', tr:'ilā', en:'at', freq:189},
+    {ar:'يَنظُرُونَ', tr:'yanẓurūn', en:'they look', freq:33},
+    {ar:'أَفَلَا', tr:'afalā', en:'do they not', freq:50},
+  ]},
+];
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'الْغَاشِيَةِ', zone:'wz1'},
+  {id:'w2', text:'حَدِيثُ', zone:'wz2'},
+  {id:'w3', text:'أَتَاكَ', zone:'wz3'},
+  {id:'w4', text:'هَلْ', zone:'wz4'},
+  {id:'w5', text:'رَاضِيَةٌ', zone:'wz5'},
+  {id:'w6', text:'لِّسَعْيِهَا', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'the Overwhelming'},
+  {id:'wz2', desc:'the story of'},
+  {id:'wz3', desc:'reached you'},
+  {id:'wz4', desc:'has'},
+  {id:'wz5', desc:'satisfied'},
+  {id:'wz6', desc:'with their effort'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+
+
 const S1_ITEMS = [
   { id: 'i1', text: 'Al-Ghashiyah',    zone: 'z1' },
   { id: 'i2', text: 'Faces\nDowncast', zone: 'z2' },
@@ -126,18 +173,21 @@ const S6_QUIZ = [
 ];
 
 /* ── Section wrappers ── */
-function renderSection1Game() { renderDragDrop(1, S1_ITEMS, S1_ZONES); }
-function checkSection1()      { checkDragDrop(1, S1_ZONES); }
-function renderSection2Game() { renderQuiz(2, S2_QUIZ); }
-function checkSection2()      { checkQuiz(2, S2_QUIZ); }
-function renderSection3Game() { renderDragDrop(3, S3_ITEMS, S3_ZONES); }
-function checkSection3()      { checkDragDrop(3, S3_ZONES); }
-function renderSection4Game() { renderQuiz(4, S4_QUIZ); }
-function checkSection4()      { checkQuiz(4, S4_QUIZ); }
-function renderSection5Game() { renderQuiz(5, S5_QUIZ); }
-function checkSection5()      { checkQuiz(5, S5_QUIZ); }
-function renderSection6Game() { renderQuiz(6, S6_QUIZ); }
-function checkSection6()      { checkQuiz(6, S6_QUIZ); }
+
+
+
+function renderSection2Game() { renderDragDrop(2, S1_ITEMS, S1_ZONES); }
+function checkSection2()      { checkDragDrop(2, S1_ZONES); }
+function renderSection3Game() { renderQuiz(3, S2_QUIZ); }
+function checkSection3()      { checkQuiz(3, S2_QUIZ); }
+function renderSection4Game() { renderDragDrop(4, S3_ITEMS, S3_ZONES); }
+function checkSection4()      { checkDragDrop(4, S3_ZONES); }
+function renderSection5Game() { renderQuiz(5, S4_QUIZ); }
+function checkSection5()      { checkQuiz(5, S4_QUIZ); }
+function renderSection6Game() { renderQuiz(6, S5_QUIZ); }
+function checkSection6()      { checkQuiz(6, S5_QUIZ); }
+function renderSection7Game() { renderQuiz(7, S6_QUIZ); }
+function checkSection7()      { checkQuiz(7, S6_QUIZ); }
 function updateUIExtra()      { window._drawBuildCanvas(window.state.completed.length); }
 
 /* ── World Builder Canvas ── */

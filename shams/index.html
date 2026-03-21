@@ -34,10 +34,15 @@
   </div>
   <h2 class="section-heading">☀️ THE QUEST MAP</h2>
   <div class="map-grid">
-    <div class="map-tile unlocked" id="tile-1"><div class="tile-icon">☀️</div><div class="tile-level">LEVEL 1</div><div class="tile-name">The Cosmic Oaths</div><div class="tile-verses">91:1-7</div><div class="tile-status" id="status-1">▶ PLAY</div></div>
-    <div class="map-tile locked" id="tile-2"><div class="tile-icon">🌅</div><div class="tile-level">LEVEL 2</div><div class="tile-name">11 Signs</div><div class="tile-verses">91:1-6</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-3"><div class="tile-icon">✨</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Purify the Soul</div><div class="tile-verses">91:7-10</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-4"><div class="tile-icon">🐪</div><div class="tile-level">LEVEL 4</div><div class="tile-name">Thamud</div><div class="tile-verses">91:11-15</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
+        <div class="map-tile unlocked" id="tile-1" onclick="openSection(1)">
+      <div class="tile-icon">📖</div><div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">Word by Word</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+<div class="map-tile unlocked" id="tile-2"><div class="tile-icon">☀️</div><div class="tile-level">LEVEL 1</div><div class="tile-name">The Cosmic Oaths</div><div class="tile-verses">91:1-7</div><div class="tile-status" id="status-2">▶ PLAY</div></div>
+    <div class="map-tile locked" id="tile-3"><div class="tile-icon">🌅</div><div class="tile-level">LEVEL 2</div><div class="tile-name">11 Signs</div><div class="tile-verses">91:1-6</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-4"><div class="tile-icon">✨</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Purify the Soul</div><div class="tile-verses">91:7-10</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-5"><div class="tile-icon">🐪</div><div class="tile-level">LEVEL 4</div><div class="tile-name">Thamud</div><div class="tile-verses">91:11-15</div><div class="tile-status" id="status-5">🔒 LOCKED</div></div>
   </div>
   <div id="world-builder">
     <h2 class="section-heading">☀️ WORLD BUILDER</h2>
@@ -45,10 +50,11 @@
       <canvas id="build-canvas" width="560" height="180" style="width:100%;image-rendering:pixelated;display:block;"></canvas>
     </div>
     <div class="world-preview">
-      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">The Cosmic Oaths</div></div>
-      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">11 Signs</div></div>
-      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Purify the Soul</div></div>
-      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Thamud</div></div>
+            <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Words</div></div>
+<div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">The Cosmic Oaths</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">11 Signs</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Purify the Soul</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Thamud</div></div>
     </div>
   </div>
   <div id="all-complete" style="display:none">
@@ -62,11 +68,55 @@
 <div id="section-view" style="display:none">
   <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></header>
 
+  
+  <!-- ==================== SECTION 1 — WORD BY WORD ==================== -->
   <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Learn the key Arabic words of this surah! Tap each card to reveal its meaning, then continue to the next level.
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 1 — WORD BY WORD (91:Ash-Shams)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 The Sun — Click to reveal verse</span></div>
+        <canvas id="canvas-1" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        
+        <div class="verse-block">
+          <div class="arabic-text">وَالشَّمْسِ وَضُحَاهَا ۩ وَنَفْسٍ وَمَا سَوَّاهَا ۩ فَأَلْهَمَهَا فُجُورَهَا وَتَقْوَاهَا ۩ قَدْ أَفْلَحَ مَن زَكَّاهَا</div>
+          <div class="verse-translation">"By the sun and its brightness. And [by] the soul and He who proportioned it, then inspired it with its wickedness and its righteousness. He has succeeded who purifies it." (91:1, 7-9)</div>
+        </div>
+
+        <p class="word-grid-intro">Now explore each word — <strong>tap a card to reveal its meaning</strong>.</p>
+        <button id="wbw-reveal-btn" class="wbw-reveal-btn">👁 Reveal All Meanings</button>
+        <div id="wbw-display"></div>
+      </div>
+    </div>
+        <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 MATCH — ARABIC WORD TO ENGLISH MEANING</div>
+      <div class="game-instructions">Drag each Arabic word to its English meaning!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-1"></div>
+        <div class="drop-zones" id="drop-zones-1"></div>
+      </div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+<div class="section-panel" id="section-panel-2">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Allah takes ELEVEN cosmic oaths — the most in the Quran! Sun, moon, day, night, sky, earth — and finally the SOUL. Answer the quiz!</div></div>
     <div class="card" style="margin:14px 12px 0">
       <div class="card-header">☀️ LEVEL 1 — The Cosmic Oaths (91:1-7)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Cosmic Oaths — Click to reveal verse</span></div><canvas id="canvas-1" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Cosmic Oaths — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
       <div class="verse-block">
         <div class="arabic-text">وَالشَّمْسِ وَضُحَاهَا ۩ وَالْقَمَرِ إِذَا تَلَاهَا</div>
         <div class="verse-translation">"By the sun in its morning brightness, by the moon when it follows it" (91:1-2)</div>
@@ -75,20 +125,20 @@
     <div class="card" style="margin:8px 12px 0">
       <div class="card-header">🎮 QUIZ — THE COSMIC OATHS (91:1-7)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-1"></div>
-      <div class="game-feedback" id="feedback-1"></div>
+      <div id="quiz-2"></div>
+      <div class="game-feedback" id="feedback-2"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection1()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
-  <div class="section-panel" id="section-panel-2">
+  <div class="section-panel" id="section-panel-3">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Six of the eleven oaths: sun, moon, day, night, sky, earth. Each oath points to a Creator. Match them!</div></div>
     <div class="card" style="margin:14px 12px 0">
       <div class="card-header">🌅 LEVEL 2 — 11 Signs (91:1-6)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 11 Signs — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 11 Signs — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
       <div class="verse-block">
         <div class="arabic-text">وَالنَّهَارِ إِذَا جَلَّاهَا ۩ وَاللَّيْلِ إِذَا يَغْشَاهَا</div>
         <div class="verse-translation">"By the day when it reveals, by the night when it covers" (91:3-4)</div>
@@ -97,20 +147,20 @@
     <div class="card" style="margin:8px 12px 0">
       <div class="card-header">🎮 MATCH — SIX COSMIC SIGNS (91:1-6)</div>
       <div class="game-instructions">Drag each oath to its correct meaning!</div>
-      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-2"></div><div class="drop-zones" id="drop-zones-2"></div></div>
-      <div class="game-feedback" id="feedback-2"></div>
+      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-3"></div><div class="drop-zones" id="drop-zones-3"></div></div>
+      <div class="game-feedback" id="feedback-3"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection2()">✅ Check Matches</button>
-        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection3()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
-  <div class="section-panel" id="section-panel-3">
+  <div class="section-panel" id="section-panel-4">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Qad aflaha man zakkaha — wa qad khaba man dassaha!" He succeeds who purifies his soul. He fails who corrupts it. The soul KNOWS right and wrong — Allah inspired it!</div></div>
     <div class="card" style="margin:14px 12px 0">
       <div class="card-header">✨ LEVEL 3 — Purify the Soul (91:7-10)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Purify the Soul — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Purify the Soul — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
       <div class="verse-block">
         <div class="arabic-text">وَنَفْسٍ وَمَا سَوَّاهَا ۩ فَأَلْهَمَهَا فُجُورَهَا وَتَقْوَاهَا</div>
         <div class="verse-translation">"By the soul and He who formed it perfectly — He inspired it with its wickedness and its piety." (91:7-8)</div>
@@ -119,20 +169,20 @@
     <div class="card" style="margin:8px 12px 0">
       <div class="card-header">🎮 QUIZ — THE SOUL (91:7-10)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-3"></div>
-      <div class="game-feedback" id="feedback-3"></div>
+      <div id="quiz-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection3()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
-  <div class="section-panel" id="section-panel-4">
+  <div class="section-panel" id="section-panel-5">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The story of Thamud: they had signs, prophets, miracles — and they CHOSE arrogance. They hamstrung Allah's camel. The result? Total destruction. Arrange the story!</div></div>
     <div class="card" style="margin:14px 12px 0">
       <div class="card-header">🐪 LEVEL 4 — Thamud (91:11-15)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Thamud — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Thamud — Click to reveal verse</span></div><canvas id="canvas-5" width="560" height="220"></canvas></div>
       <div class="verse-block">
         <div class="arabic-text">فَقَالَ لَهُمْ رَسُولُ اللَّهِ نَاقَةَ اللَّهِ وَسُقْيَاهَا ۩ فَكَذَّبُوهُ فَعَقَرُوهَا</div>
         <div class="verse-translation">"The messenger of Allah said: The she-camel of Allah — leave her to graze! They rejected him and hamstrung her." (91:13-14)</div>
@@ -142,15 +192,16 @@
       <div class="card-header">🎮 STORY ORDER — THAMUD (91:11-15)</div>
       <div class="game-instructions">Put the story of Thamud in the correct order!</div>
       <div class="story-order-container" id="story-order-4"></div>
-      <div class="game-feedback" id="feedback-4"></div>
+      <div class="game-feedback" id="feedback-5"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection4()">✅ Check Order</button>
-        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection5()">✅ Check Order</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 </div>
+<script src="../shared/arabic-words.js"></script>
 <script src="scenes.js"></script>
 <script src="../shared/engine.js"></script>
 <script src="../shared/ui.js"></script>

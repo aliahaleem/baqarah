@@ -1,23 +1,71 @@
 'use strict';
 /* Surah Al-Humazah (104) — The Slanderer */
 window.STORAGE_KEY = 'humazahQuestSave';
-window.state = { explorerName:'', xp:0, gems:0, completed:[], s1Answers:{}, s1Checked:false, s2Checked:false, s3Answers:{}, s3Checked:false };
+window.state = { explorerName:'', xp:0, gems:0, completed:[], s2Answers:{}, s2Checked:false, s3Checked:false, s4Answers:{}, s4Checked:false };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'👆', title:'Slanderer Named',  msg:"SubhanAllah! 'Waylul li-kulli humazatin lumazah!' Woe to every backbiter and slanderer! Two different words: humazah = one who criticises with gestures and mocking, lumazah = one who slanders behind the back. Both condemned!"},
-  2:{xp:80, gems:3, icon:'💰', title:'Wealth Delusion',  msg:"MashAllah! His wealth makes him think he will live forever! The delusion of wealth: 'Ya\'sabu anna malahu akhladah.' He thinks his money made him IMMORTAL. How many people live as if they'll never die?"},
-  3:{xp:90, gems:4, icon:'🔥', title:'Al-Humazah Complete', msg:"Allahu Akbar! Al-Humazah complete! Hutamah — the Crushing Fire! Closed over them, tied in extended columns. May Allah protect us from slander, from the delusion of wealth, and from Hutamah! Ameen! 🏆"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
+  2:{xp:70, gems:3, icon:'👆', title:'Slanderer Named',  msg:"SubhanAllah! 'Waylul li-kulli humazatin lumazah!' Woe to every backbiter and slanderer! Two different words: humazah = one who criticises with gestures and mocking, lumazah = one who slanders behind the back. Both condemned!"},
+  3:{xp:80, gems:3, icon:'💰', title:'Wealth Delusion',  msg:"MashAllah! His wealth makes him think he will live forever! The delusion of wealth: 'Ya\'sabu anna malahu akhladah.' He thinks his money made him IMMORTAL. How many people live as if they'll never die?"},
+  4:{xp:90, gems:4, icon:'🔥', title:'Al-Humazah Complete', msg:"Allahu Akbar! Al-Humazah complete! Hutamah — the Crushing Fire! Closed over them, tied in extended columns. May Allah protect us from slander, from the delusion of wealth, and from Hutamah! Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s104', surahName:'Al-Humazah', surahArabic:'الهمزة', totalLevels:3, rewards:REWARDS,
-  tileIcons:['👆','💰','🔥'], tileLabels:['The Slanderer','Wealth Delusion','Hutamah'],
+  id:'s104', surahName:'Al-Humazah', surahArabic:'الهمزة', totalLevels:4, rewards:REWARDS,
+  tileIcons:['📖','👆','💰','🔥'], tileLabels:['Word by Word','The Slanderer','Wealth Delusion','Hutamah'],
   welcomeMsg:{
-    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Humazah — The Slanderer! Woe to the backbiter who hoards wealth thinking it will make them live forever. Then the crushing fire — Hutamah! 3 levels!`,
-    partial: (n,d)=>`Welcome back, ${n}! ${d}/3 done. Avoid the path of the slanderer! 👆`,
+    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Humazah — The Slanderer! Woe to the backbiter who hoards wealth thinking it will make them live forever. Then the crushing fire — Hutamah! 4 levels!`,
+    partial: (n,d)=>`Welcome back, ${n}! ${d}/4 done. Avoid the path of the slanderer! 👆`,
     complete:n=>`MashAllah, ${n}! Al-Humazah complete! Guard your tongue, give your wealth, and remember mortality! 🏆`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1 — وَيْلٌ لِّكُلِّ هُمَزَةٍ لُّمَزَةٍ', words:[
+    {ar:'لُّمَزَةٍ', tr:'lumazah', en:'backbiter', freq:1},
+    {ar:'هُمَزَةٍ', tr:'humazah', en:'slanderer', freq:1},
+    {ar:'لِّكُلِّ', tr:'li-kulli', en:'to every', freq:99},
+    'waylun',
+  ]},
+  {label:'Verse 2 — الَّذِي جَمَعَ مَالًا وَعَدَّدَهُ', words:[
+    {ar:'وَعَدَّدَهُ', tr:'wa-ʿaddadahu', en:'and counted it', freq:1},
+    {ar:'مَالًا', tr:'mālan', en:'wealth', freq:85},
+    {ar:'جَمَعَ', tr:'jamaʿa', en:'who amassed', freq:29},
+    'alladhi',
+  ]},
+  {label:'Verse 4 — كَلَّا لَيُنبَذَنَّ فِي الْحُطَمَةِ', words:[
+    {ar:'الْحُطَمَةِ', tr:'al-ḥuṭamah', en:'the Crusher (Hellfire)', freq:2},
+    {ar:'فِي', tr:'fī', en:'into', freq:1714},
+    {ar:'لَيُنبَذَنَّ', tr:'la-yunbadhanna', en:'he will surely be thrown', freq:1},
+    {ar:'كَلَّا', tr:'kallā', en:'No! Indeed', freq:33},
+  ]},
+  {label:'Verse 6 — نَارُ اللَّهِ الْمُوقَدَةُ', words:[
+    {ar:'الْمُوقَدَةُ', tr:'al-mūqadah', en:'ever-burning', freq:1},
+    {ar:'اللَّهِ', tr:'Allāh', en:'of Allah', freq:2699},
+    {ar:'نَارُ', tr:'nār', en:'the Fire', freq:145},
+  ]},
+];
+
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'لُّمَزَةٍ', zone:'wz1'},
+  {id:'w2', text:'هُمَزَةٍ', zone:'wz2'},
+  {id:'w3', text:'لِّكُلِّ', zone:'wz3'},
+  {id:'w4', text:'وَعَدَّدَهُ', zone:'wz4'},
+  {id:'w5', text:'مَالًا', zone:'wz5'},
+  {id:'w6', text:'جَمَعَ', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'backbiter'},
+  {id:'wz2', desc:'slanderer'},
+  {id:'wz3', desc:'to every'},
+  {id:'wz4', desc:'and counted it'},
+  {id:'wz5', desc:'wealth'},
+  {id:'wz6', desc:'who amassed'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
 
 const S1_QUIZ = [
   {q:'What does "waylun" at the start of 104:1 express?',
@@ -62,9 +110,12 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
+
+
+
+function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
+function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -76,5 +127,5 @@ window._drawBuildCanvas = function(n) {
   if(n>=1){ctx.fillStyle=acc;ctx.font='20px serif';ctx.textAlign='center';ctx.fillText('وَيْلٌ',W/2,H*0.45);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"WOE to every slanderer!"',W/2,H*0.6);ctx.textAlign='left';}
   if(n>=2){const fp=0.4+Math.sin(Date.now()*0.002)*0.2;ctx.fillStyle=`rgba(255,100,30,${fp})`;ctx.fillRect(0,H*0.75,W,H*0.25);}
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
-  ctx.fillText(n>=3?'AL-HUMAZAH COMPLETE! 🔥':`Al-Humazah — ${n}/3 levels`,W/2,14);ctx.textAlign='left';
+  ctx.fillText(n>=3?'AL-HUMAZAH COMPLETE! 🔥':`Al-Humazah — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
 };

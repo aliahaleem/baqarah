@@ -4,28 +4,69 @@ window.STORAGE_KEY = 'laylQuestSave';
 window.state = {
   explorerName:'', xp:0, gems:0, completed:[],
   s1Checked:false,
-  s2Answers:{}, s2Checked:false,
+  s2Checked:false,
   s3Answers:{}, s3Checked:false,
-  s4Order:[], s4Checked:false,
+  s4Answers:{}, s4Checked:false,
+  s5Order:[], s5Checked:false,
 };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'🌙', title:'Night Witness',   msg:"SubhanAllah! Three oaths — night, day, creation of male and female — then one question: what is your striving FOR? The night covers everything; what does your heart hide?"},
-  2:{xp:80, gems:3, icon:'💝', title:'Giver Recognised', msg:"MashAllah! The generous person gives, fears Allah, and believes in Al-Husna (the best). Allah smooths the way to ease for them. May we always give generously! Ameen."},
-  3:{xp:90, gems:3, icon:'💔', title:'Miser Warned',    msg:"SubhanAllah! The miser thinks wealth can protect them forever. But on the Day of Judgement, wealth won't help. 'What will wealth avail him when he perishes?' A warning for us all!"},
-  4:{xp:100, gems:4, icon:'🔥', title:'Al-Layl Complete', msg:"Allahu Akbar! Al-Layl complete! Two paths: the path of giving that leads to ease, and the path of stinginess that leads to difficulty. May Allah make us of the givers! Ameen 🏆"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
+  2:{xp:70, gems:3, icon:'🌙', title:'Night Witness',   msg:"SubhanAllah! Three oaths — night, day, creation of male and female — then one question: what is your striving FOR? The night covers everything; what does your heart hide?"},
+  3:{xp:80, gems:3, icon:'💝', title:'Giver Recognised', msg:"MashAllah! The generous person gives, fears Allah, and believes in Al-Husna (the best). Allah smooths the way to ease for them. May we always give generously! Ameen."},
+  4:{xp:90, gems:3, icon:'💔', title:'Miser Warned',    msg:"SubhanAllah! The miser thinks wealth can protect them forever. But on the Day of Judgement, wealth won't help. 'What will wealth avail him when he perishes?' A warning for us all!"},
+  5:{xp:100, gems:4, icon:'🔥', title:'Al-Layl Complete', msg:"Allahu Akbar! Al-Layl complete! Two paths: the path of giving that leads to ease, and the path of stinginess that leads to difficulty. May Allah make us of the givers! Ameen 🏆"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s92', surahName:'Al-Layl', surahArabic:'الليل', totalLevels:4, rewards:REWARDS,
-  tileIcons:['🌙','💝','💔','🔥'],
-  tileLabels:['The Oaths','Generous','The Miser','Two Paths'],
+  id:'s92', surahName:'Al-Layl', surahArabic:'الليل', totalLevels:5, rewards:REWARDS,
+  tileIcons:['📖','🌙','💝','💔','🔥'],
+  tileLabels:['Word by Word','The Oaths','Generous','The Miser','Two Paths'],
   welcomeMsg:{
-    fresh:   name=>`As-salamu alaykum, ${name}! Welcome to Surah Al-Layl — The Night! Allah swears by the night, the day, and the creation of male and female. Then He describes two opposite types: the generous giver and the stingy miser. Their destinies are completely different. 4 levels await!`,
-    partial: (name,done)=>`Welcome back, ${name}! ${done}/4 levels done. The night awaits — keep striving! 🌙`,
+    fresh:   name=>`As-salamu alaykum, ${name}! Welcome to Surah Al-Layl — The Night! Allah swears by the night, the day, and the creation of male and female. Then He describes two opposite types: the generous giver and the stingy miser. Their destinies are completely different. 5 levels await!`,
+    partial: (name,done)=>`Welcome back, ${name}! ${done}/5 levels done. The night awaits — keep striving! 🌙`,
     complete: name=>`MashAllah, ${name}! Al-Layl complete! "Inna alayna lal-huda — wa inna lana lal-akhira wal-ula." Guidance is from Allah. May we follow the path of ease! 🏆`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1-2 — وَاللَّيْلِ إِذَا يَغْشَىٰ · وَالنَّهَارِ إِذَا تَجَلَّىٰ', words:[
+    {ar:'تَجَلَّىٰ', tr:'tajallā', en:'it appears', freq:2},
+    {ar:'وَالنَّهَارِ', tr:'wal-nahār', en:'and the day', freq:57},
+    {ar:'يَغْشَىٰ', tr:'yaghshā', en:'it covers', freq:3},
+    {ar:'وَاللَّيْلِ', tr:'wal-layl', en:'by the night', freq:72},
+  ]},
+  {label:'Verse 5-7 — فَأَمَّا مَنْ أَعْطَىٰ وَاتَّقَىٰ · وَصَدَّقَ بِالْحُسْنَىٰ · فَسَنُيَسِّرُهُ لِلْيُسْرَىٰ', words:[
+    {ar:'لِلْيُسْرَىٰ', tr:'lil-yusrā', en:'to ease', freq:5},
+    {ar:'فَسَنُيَسِّرُهُ', tr:'fa-sanuyassiruhu', en:'We will ease him', freq:2},
+    {ar:'بِالْحُسْنَىٰ', tr:'bil-ḥusnā', en:'the best [reward]', freq:12},
+    {ar:'وَصَدَّقَ', tr:'wa-ṣaddaqa', en:'and believed in', freq:20},
+    {ar:'وَاتَّقَىٰ', tr:'wattaqā', en:'and feared Allah', freq:64},
+    {ar:'أَعْطَىٰ', tr:'aʿṭā', en:'gives', freq:10},
+    {ar:'فَأَمَّا مَنْ', tr:'fa-ammā man', en:'as for he who', freq:18},
+  ]},
+];
+
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'تَجَلَّىٰ', zone:'wz1'},
+  {id:'w2', text:'وَالنَّهَارِ', zone:'wz2'},
+  {id:'w3', text:'يَغْشَىٰ', zone:'wz3'},
+  {id:'w4', text:'وَاللَّيْلِ', zone:'wz4'},
+  {id:'w5', text:'لِلْيُسْرَىٰ', zone:'wz5'},
+  {id:'w6', text:'فَسَنُيَسِّرُهُ', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'it appears'},
+  {id:'wz2', desc:'and the day'},
+  {id:'wz3', desc:'it covers'},
+  {id:'wz4', desc:'by the night'},
+  {id:'wz5', desc:'to ease'},
+  {id:'wz6', desc:'We will ease him'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
 
 const S1_QUIZ = [
   {q:'What are the three oaths in Surah Al-Layl?',
@@ -78,14 +119,17 @@ const S4_EVENTS_CORRECT = [
 ];
 window._S4_EVENTS = S4_EVENTS_CORRECT;
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}
-function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}
-function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}
-function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderStoryOrder(4,S4_EVENTS_CORRECT);}
-function checkSection4(){checkStoryOrder(4,S4_EVENTS_CORRECT);}
+
+
+
+function renderSection2Game(){renderQuiz(2,S1_QUIZ);}
+function checkSection2(){checkQuiz(2,S1_QUIZ);}
+function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}
+function checkSection3(){checkDragDrop(3,S2_ZONES);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}
+function checkSection4(){checkQuiz(4,S3_QUIZ);}
+function renderSection5Game(){renderStoryOrder(5,S4_EVENTS_CORRECT);}
+function checkSection5(){checkStoryOrder(5,S4_EVENTS_CORRECT);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -98,5 +142,5 @@ window._drawBuildCanvas = function(n) {
   if(n>=2){ctx.fillStyle=st?'#f0e0ff':'#e8d060';ctx.beginPath();ctx.arc(W*0.8,30,14,0,Math.PI*2);ctx.fill();}
   if(n>=3){ctx.fillStyle=acc;ctx.font='18px serif';ctx.textAlign='center';ctx.fillText('💝',W*0.3,90);ctx.fillText('💔',W*0.7,90);ctx.textAlign='left';}
   if(n>=4){ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('AL-LAYL COMPLETE! 🌙',W/2,14);ctx.textAlign='left';}
-  else{ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(`Al-Layl — ${n}/4 levels`,W/2,14);ctx.textAlign='left';}
+  else{ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(`Al-Layl — ${n}/5 levels`,W/2,14);ctx.textAlign='left';}
 };

@@ -7,16 +7,19 @@ window.STORAGE_KEY = 'naziatQuestSave';
 
 window.state = {
   explorerName: '', xp: 0, gems: 0, completed: [],
-  s1Checked: false,
-  s2Answers: {}, s2Checked: false,
-  s3Order:   [], s3Checked: false,
-  s4Answers: {}, s4Checked: false,
-  s5Checked: false,
-  s6Answers: {}, s6Checked: false,
+  s1Checked:false,
+  s2Checked: false,
+  s3Answers: {}, s3Checked: false,
+  s4Order:   [], s4Checked: false,
+  s5Answers: {}, s5Checked: false,
+  s6Checked: false,
   s7Answers: {}, s7Checked: false,
+  s8Answers: {}, s8Checked: false,
 };
 
 const REWARDS = {
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
   1: { xp: 80,  gems: 3, icon: '👼', title: 'THE FIVE ANGELS KNOWN!',
        msg: "SubhanAllah! Five types of angels — extractors, releasers, floaters, racers, administrators — all swearing oaths in Allah's name. There is a vast cosmic system running every moment that our eyes cannot see. On to the Day of Trembling!" },
   2: { xp: 90,  gems: 3, icon: '💓', title: 'THE DAY UNDERSTOOD!',
@@ -30,24 +33,63 @@ const REWARDS = {
   6: { xp: 120, gems: 5, icon: '⚖️', title: 'AT-TAMMAH MAPPED!',
        msg: "Allahu Akbar! The Greatest Overwhelming comes. Two paths, two eternal destinations. One: transgress + prefer dunya = Hellfire. Two: fear your Lord's standing + restrain your nafs = Paradise al-Ma'wa. The choice is made in this life. Choose wisely!" },
   7: { xp: 150, gems: 7, icon: '🏆', title: "SURAH AN-NAZI'AT COMPLETE!",
-       msg: "ALLAHUMMA BARIK! All 7 levels of Surah An-Nazi'at — The Pullers — complete! 'Wa amma man khafa maqama Rabbihi wa naha al-nafsa 'an al-hawa — fa inna al-jannata hiya al-ma'wa.' For the one who feared standing before their Lord and restrained themselves: Paradise is their home. May we be among them. Ameen!" },
+       msg: "ALLAHUMMA BARIK! All 8 levels of Surah An-Nazi'at — The Pullers — complete! 'Wa amma man khafa maqama Rabbihi wa naha al-nafsa 'an al-hawa — fa inna al-jannata hiya al-ma'wa.' For the one who feared standing before their Lord and restrained themselves: Paradise is their home. May we be among them. Ameen!" },
 };
 
 window.SURAH_CONFIG = {
-  totalLevels: 7,
+  totalLevels: 8,
   rewards: REWARDS,
-  tileIcons:  ['👼','💓','🔥','⚡','🌍','⚖️','🏆'],
-  tileLabels: ['The Angels','Hearts Tremble','Holy Valley','Pharaoh','Creation Signs','At-Tammah','The Hour'],
+  tileIcons:['📖','👼','💓','🔥','⚡','🌍','⚖️','🏆'],
+  tileLabels:['Word by Word','The Angels','Hearts Tremble','Holy Valley','Pharaoh','Creation Signs','At-Tammah','The Hour'],
   welcomeMsg: {
-    fresh:    name => `As-salamu alaykum, ${name}! Surah An-Nazi'at — "The Pullers." Five cosmic angels. The trembling Day. Moses in the Holy Valley. Pharaoh's arrogance and downfall. Signs of creation. At-Tammah. And the Final Hour that only Allah knows. 7 levels await!`,
+    fresh:    name => `As-salamu alaykum, ${name}! Surah An-Nazi'at — "The Pullers." Five cosmic angels. The trembling Day. Moses in the Holy Valley. Pharaoh's arrogance and downfall. Signs of creation. At-Tammah. And the Final Hour that only Allah knows. 8 levels await!`,
     partial:  (name, done) => `Welcome back, ${name}! ${done} level${done>1?'s':''} complete. "Wa amma man khafa maqama Rabbihi..." — Keep building the garden! 🌿`,
-    complete: name => `MashAllah, ${name}! All 7 levels of An-Nazi'at complete! "Fa-inna al-jannata hiya al-ma'wa." May Allah make it our home. Ameen! 🏆`,
+    complete: name => `MashAllah, ${name}! All 8 levels of An-Nazi'at complete! "Fa-inna al-jannata hiya al-ma'wa." May Allah make it our home. Ameen! 🏆`,
   },
 };
 
 // =============================================
 //  GAME DATA
 // =============================================
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1-2 — وَالنَّازِعَاتِ غَرْقًا · وَالنَّاشِطَاتِ نَشْطًا', words:[
+    {ar:'نَشْطًا', tr:'nashṭan', en:'briskly', freq:1},
+    {ar:'وَالنَّاشِطَاتِ', tr:'wal-nāshiṭāt', en:'and those who draw out gently', freq:1},
+    {ar:'غَرْقًا', tr:'gharqan', en:'violently', freq:1},
+    {ar:'وَالنَّازِعَاتِ', tr:'wal-nāziʿāt', en:'by those who extract', freq:1},
+  ]},
+  {label:'Verse 40-41 — وَأَمَّا مَنْ خَافَ مَقَامَ رَبِّهِ وَنَهَى النَّفْسَ عَنِ الْهَوَىٰ · فَإِنَّ الْجَنَّةَ هِيَ الْمَأْوَىٰ', words:[
+    {ar:'الْمَأْوَىٰ', tr:'al-maʾwā', en:'the refuge', freq:8},
+    {ar:'الْجَنَّةَ', tr:'al-jannah', en:'Paradise', freq:66},
+    {ar:'الْهَوَىٰ', tr:'al-hawā', en:'desire', freq:4},
+    {ar:'النَّفْسَ', tr:'al-nafs', en:'the soul', freq:295},
+    {ar:'وَنَهَى', tr:'wa-nahā', en:'and restrained', freq:7},
+    {ar:'رَبِّهِ', tr:'rabbihi', en:'his Lord', freq:49},
+    {ar:'مَقَامَ', tr:'maqāma', en:'the standing before', freq:5},
+    {ar:'خَافَ', tr:'khāfa', en:'feared', freq:42},
+  ]},
+];
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'نَشْطًا', zone:'wz1'},
+  {id:'w2', text:'وَالنَّاشِطَاتِ', zone:'wz2'},
+  {id:'w3', text:'غَرْقًا', zone:'wz3'},
+  {id:'w4', text:'وَالنَّازِعَاتِ', zone:'wz4'},
+  {id:'w5', text:'الْمَأْوَىٰ', zone:'wz5'},
+  {id:'w6', text:'الْجَنَّةَ', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'briskly'},
+  {id:'wz2', desc:'and those who draw out gently'},
+  {id:'wz3', desc:'violently'},
+  {id:'wz4', desc:'by those who extract'},
+  {id:'wz5', desc:'the refuge'},
+  {id:'wz6', desc:'Paradise'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+
 
 const S1_ITEMS = [
   { id: 'a1', text: "🪝 Al-Nazi'at\n(The Extractors)",  zone: 'z1' },
@@ -196,20 +238,23 @@ const S7_QUIZ = [
 // =============================================
 //  SECTION WRAPPERS
 // =============================================
-function renderSection1Game() { renderDragDrop(1, S1_ITEMS, S1_ZONES); }
-function checkSection1()      { checkDragDrop(1, S1_ZONES); }
-function renderSection2Game() { renderQuiz(2, S2_QUIZ); }
-function checkSection2()      { checkQuiz(2, S2_QUIZ); }
-function renderSection3Game() { renderStoryOrder(3, S3_EVENTS_CORRECT); }
-function checkSection3()      { checkStoryOrder(3, S3_EVENTS_CORRECT); }
-function renderSection4Game() { renderQuiz(4, S4_QUIZ); }
-function checkSection4()      { checkQuiz(4, S4_QUIZ); }
-function renderSection5Game() { renderDragDrop(5, S5_ITEMS, S5_ZONES); }
-function checkSection5()      { checkDragDrop(5, S5_ZONES); }
-function renderSection6Game() { renderQuiz(6, S6_QUIZ); }
-function checkSection6()      { checkQuiz(6, S6_QUIZ); }
-function renderSection7Game() { renderQuiz(7, S7_QUIZ); }
-function checkSection7()      { checkQuiz(7, S7_QUIZ); }
+
+
+
+function renderSection2Game() { renderDragDrop(2, S1_ITEMS, S1_ZONES); }
+function checkSection2()      { checkDragDrop(2, S1_ZONES); }
+function renderSection3Game() { renderQuiz(3, S2_QUIZ); }
+function checkSection3()      { checkQuiz(3, S2_QUIZ); }
+function renderSection4Game() { renderStoryOrder(4, S3_EVENTS_CORRECT); }
+function checkSection4()      { checkStoryOrder(4, S3_EVENTS_CORRECT); }
+function renderSection5Game() { renderQuiz(5, S4_QUIZ); }
+function checkSection5()      { checkQuiz(5, S4_QUIZ); }
+function renderSection6Game() { renderDragDrop(6, S5_ITEMS, S5_ZONES); }
+function checkSection6()      { checkDragDrop(6, S5_ZONES); }
+function renderSection7Game() { renderQuiz(7, S6_QUIZ); }
+function checkSection7()      { checkQuiz(7, S6_QUIZ); }
+function renderSection8Game() { renderQuiz(8, S7_QUIZ); }
+function checkSection8()      { checkQuiz(8, S7_QUIZ); }
 
 // =============================================
 //  GARDEN OF AL-MA'WA — WORLD BUILDER CANVAS

@@ -3,33 +3,80 @@
 window.STORAGE_KEY = 'baladQuestSave';
 window.state = {
   explorerName:'', xp:0, gems:0, completed:[],
-  s1Answers:{}, s1Checked:false,
-  s2Checked:false,
-  s3Answers:{}, s3Checked:false,
-  s4Checked:false,
-  s5Order:[], s5Checked:false,
-  s6Answers:{}, s6Checked:false,
+  s1Checked:false,
+  s2Answers:{}, s2Checked:false,
+  s3Checked:false,
+  s4Answers:{}, s4Checked:false,
+  s5Checked:false,
+  s6Order:[], s6Checked:false,
+  s7Answers:{}, s7Checked:false,
 };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'🕋', title:'City Witness',    msg:"SubhanAllah! Allah swears by THIS city — Mecca — and by the Prophet ﷺ living freely in it. 'Laqad khalaqnal-insan fi kabad' — We created man in hardship. Life is designed for striving. May we strive well!"},
-  2:{xp:80, gems:3, icon:'💪', title:'Struggle Knower', msg:"MashAllah! Man has two eyes, a tongue, two lips — and Allah showed him BOTH paths. He was given everything he needs. No excuses! May we choose the right path always."},
-  3:{xp:90, gems:3, icon:'🏔️', title:'Path Climber',   msg:"SubhanAllah! Al-aqabah — the steep path — is the path of freeing the oppressed, feeding the hungry. It's HARD — that's why it's called steep! May Allah give us strength to climb it. Ameen!"},
-  4:{xp:90, gems:3, icon:'🍲', title:'Feeder of Hungry', msg:"MashAllah! Feeding an orphan relative or a destitute stranger on a day of hunger — this is the aqabah! And not just doing it — ENCOURAGING others too. May Allah make us of the feeders!"},
-  5:{xp:100, gems:4, icon:'🤝', title:'Companion Right', msg:"MashAllah! Believe, urge each other to patience, urge each other to mercy — these are the 'Companions of the Right' (Ashaab al-Maymana). May Allah write us among them. Ameen!"},
-  6:{xp:110, gems:5, icon:'🔥', title:'Al-Balad Complete', msg:"Allahu Akbar! Al-Balad complete! The two paths are clear. The aqabah is steep. The companions of the right earn Jannah. May Allah make us climb every aqabah in our lives! Ameen!"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
+  2:{xp:70, gems:3, icon:'🕋', title:'City Witness',    msg:"SubhanAllah! Allah swears by THIS city — Mecca — and by the Prophet ﷺ living freely in it. 'Laqad khalaqnal-insan fi kabad' — We created man in hardship. Life is designed for striving. May we strive well!"},
+  3:{xp:80, gems:3, icon:'💪', title:'Struggle Knower', msg:"MashAllah! Man has two eyes, a tongue, two lips — and Allah showed him BOTH paths. He was given everything he needs. No excuses! May we choose the right path always."},
+  4:{xp:90, gems:3, icon:'🏔️', title:'Path Climber',   msg:"SubhanAllah! Al-aqabah — the steep path — is the path of freeing the oppressed, feeding the hungry. It's HARD — that's why it's called steep! May Allah give us strength to climb it. Ameen!"},
+  5:{xp:90, gems:3, icon:'🍲', title:'Feeder of Hungry', msg:"MashAllah! Feeding an orphan relative or a destitute stranger on a day of hunger — this is the aqabah! And not just doing it — ENCOURAGING others too. May Allah make us of the feeders!"},
+  6:{xp:100, gems:4, icon:'🤝', title:'Companion Right', msg:"MashAllah! Believe, urge each other to patience, urge each other to mercy — these are the 'Companions of the Right' (Ashaab al-Maymana). May Allah write us among them. Ameen!"},
+  7:{xp:110, gems:5, icon:'🔥', title:'Al-Balad Complete', msg:"Allahu Akbar! Al-Balad complete! The two paths are clear. The aqabah is steep. The companions of the right earn Jannah. May Allah make us climb every aqabah in our lives! Ameen!"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s90', surahName:'Al-Balad', surahArabic:'البلد', totalLevels:6, rewards:REWARDS,
+  id:'s90', surahName:'Al-Balad', surahArabic:'البلد', totalLevels:7, rewards:REWARDS,
   welcomeMsg:{
-    fresh:   name=>`As-salamu alaykum, ${name}! Welcome to Surah Al-Balad — The City! Allah swears by Mecca. Man is created in hardship. Two paths: the easy path of selfishness, and the steep aqabah of freeing slaves, feeding orphans, and urging mercy. Which path will you choose? 6 levels await!`,
+    fresh:   name=>`As-salamu alaykum, ${name}! Welcome to Surah Al-Balad — The City! Allah swears by Mecca. Man is created in hardship. Two paths: the easy path of selfishness, and the steep aqabah of freeing slaves, feeding orphans, and urging mercy. Which path will you choose? 7 levels await!`,
     partial: (name,done)=>`Welcome back, ${name}! ${done} level${done>1?'s':''} complete. The aqabah is steep — but keep climbing! 💪`,
-    complete: name=>`MashAllah, ${name}! All 6 levels of Al-Balad complete! "Thumma kana minal-ladhina amanu wa-tawassaw bis-sabri wa-tawassaw bil-marhama." May Allah make us companions of the right. Ameen! 🏆`,
+    complete: name=>`MashAllah, ${name}! All 7 levels of Al-Balad complete! "Thumma kana minal-ladhina amanu wa-tawassaw bis-sabri wa-tawassaw bil-marhama." May Allah make us companions of the right. Ameen! 🏆`,
   },
 };
 
 /* Level 1: Quiz — The Sacred City & Man in Hardship (90:1-4) */
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1-2 — لَا أُقْسِمُ بِهَٰذَا الْبَلَدِ · وَأَنتَ حِلٌّ بِهَٰذَا الْبَلَدِ', words:[
+    {ar:'الْبَلَدِ', tr:'al-balad', en:'the city (Mecca)', freq:19},
+    {ar:'بِهَٰذَا', tr:'bi-hādhā', en:'by this', freq:70},
+    {ar:'أُقْسِمُ', tr:'uqsimu', en:'I swear', freq:8},
+    {ar:'لَا', tr:'lā', en:'no / I do', freq:1069},
+  ]},
+  {label:'Verse 8-9 — أَلَمْ نَجْعَل لَّهُ عَيْنَيْنِ · وَلِسَانًا وَشَفَتَيْنِ', words:[
+    {ar:'وَشَفَتَيْنِ', tr:'wa-shafatayn', en:'and two lips', freq:1},
+    {ar:'وَلِسَانًا', tr:'wa-lisānan', en:'and a tongue', freq:25},
+    {ar:'عَيْنَيْنِ', tr:'ʿaynayn', en:'two eyes', freq:7},
+    {ar:'لَّهُ', tr:'lahu', en:'for him', freq:860},
+    {ar:'نَجْعَل', tr:'najʿal', en:'did We not make', freq:30},
+    {ar:'أَلَمْ', tr:'alam', en:'did We not', freq:40},
+  ]},
+  {label:'Verse 11-12 — فَلَا اقْتَحَمَ الْعَقَبَةَ · وَمَا أَدْرَاكَ مَا الْعَقَبَةُ', words:[
+    {ar:'الْعَقَبَةُ', tr:'al-ʿaqabah', en:'the difficult path', freq:2},
+    {ar:'وَمَا أَدْرَاكَ', tr:'wa-mā adrāka', en:'and what will make you know', freq:13},
+    {ar:'الْعَقَبَةَ', tr:'al-ʿaqabah', en:'the steep path', freq:2},
+    {ar:'اقْتَحَمَ', tr:'iqtaḥama', en:'attempted', freq:1},
+    {ar:'فَلَا', tr:'fa-lā', en:'but he has not', freq:1069},
+  ]},
+];
+
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'الْبَلَدِ', zone:'wz1'},
+  {id:'w2', text:'بِهَٰذَا', zone:'wz2'},
+  {id:'w3', text:'أُقْسِمُ', zone:'wz3'},
+  {id:'w4', text:'لَا', zone:'wz4'},
+  {id:'w5', text:'وَشَفَتَيْنِ', zone:'wz5'},
+  {id:'w6', text:'وَلِسَانًا', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'the city (Mecca)'},
+  {id:'wz2', desc:'by this'},
+  {id:'wz3', desc:'I swear'},
+  {id:'wz4', desc:'no / I do'},
+  {id:'wz5', desc:'and two lips'},
+  {id:'wz6', desc:'and a tongue'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+
 const S1_QUIZ = [
   {q:'What city does Allah swear by in 90:1?',
    opts:['Medina','Jerusalem','Mecca','Baghdad'],
@@ -116,18 +163,21 @@ const S6_QUIZ = [
    correct:1},
 ];
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}
-function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}
-function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}
-function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderDragDrop(4,S4_ITEMS,S4_ZONES);}
-function checkSection4(){checkDragDrop(4,S4_ZONES);}
-function renderSection5Game(){renderStoryOrder(5,S5_EVENTS_CORRECT);}
-function checkSection5(){checkStoryOrder(5,S5_EVENTS_CORRECT);}
-function renderSection6Game(){renderQuiz(6,S6_QUIZ);}
-function checkSection6(){checkQuiz(6,S6_QUIZ);}
+
+
+
+function renderSection2Game(){renderQuiz(2,S1_QUIZ);}
+function checkSection2(){checkQuiz(2,S1_QUIZ);}
+function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}
+function checkSection3(){checkDragDrop(3,S2_ZONES);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}
+function checkSection4(){checkQuiz(4,S3_QUIZ);}
+function renderSection5Game(){renderDragDrop(5,S4_ITEMS,S4_ZONES);}
+function checkSection5(){checkDragDrop(5,S4_ZONES);}
+function renderSection6Game(){renderStoryOrder(6,S5_EVENTS_CORRECT);}
+function checkSection6(){checkStoryOrder(6,S5_EVENTS_CORRECT);}
+function renderSection7Game(){renderQuiz(7,S6_QUIZ);}
+function checkSection7(){checkQuiz(7,S6_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -144,5 +194,5 @@ window._drawBuildCanvas = function(n) {
   if(n>=4){ctx.fillStyle=acc; ctx.fillRect(W*0.39,H*0.16,50,6);}
   if(n>=5){ctx.fillStyle=st?'#f4c840':'#e8b030';ctx.font='7px serif';for(let i=0;i<5;i++)ctx.fillText('★',W*0.08+i*20,H*0.25);}
   if(n>=6){ctx.fillStyle=acc;ctx.font='8px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('AL-BALAD COMPLETE! 🕋',W/2,16);ctx.textAlign='left';}
-  else{ctx.fillStyle=acc;ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(`Building Mecca — ${n}/6 levels`,W/2,16);ctx.textAlign='left';}
+  else{ctx.fillStyle=acc;ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(`Building Mecca — ${n}/7 levels`,W/2,16);ctx.textAlign='left';}
 };

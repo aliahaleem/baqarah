@@ -3,15 +3,18 @@
 window.STORAGE_KEY = 'fajrQuestSave';
 window.state = {
   explorerName: '', xp: 0, gems: 0, completed: [],
-  s1Checked: false,
-  s2Answers: {}, s2Checked: false,
-  s3Order: [],    s3Checked: false,
-  s4Checked: false,
-  s5Answers: {}, s5Checked: false,
+  s1Checked:false,
+  s2Checked: false,
+  s3Answers: {}, s3Checked: false,
+  s4Order: [],    s4Checked: false,
+  s5Checked: false,
   s6Answers: {}, s6Checked: false,
+  s7Answers: {}, s7Checked: false,
 };
 
 const REWARDS = {
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
   1: { xp: 70,  gems: 3, icon: '🌅', title: 'Oath Keeper',      msg: "SubhanAllah! Allah swears by the Fajr — the Dawn is a sign of His power. The ten nights of Dhul-Hijjah are the best days of the year. MashAllah!" },
   2: { xp: 80,  gems: 3, icon: '🏛️', title: 'History Reader',   msg: "MashAllah! \'Aad, Thamud, Pharaoh — three mighty civilisations, all destroyed. Tyranny never endures. Remember this always." },
   3: { xp: 90,  gems: 3, icon: '⚖️', title: 'Test Understander', msg: "SubhanAllah! Both wealth AND poverty are tests from Allah. Man is not honoured by wealth — he is tested by it. May Allah help us pass every test!" },
@@ -24,16 +27,59 @@ window.SURAH_CONFIG = {
   id: 's89',
   surahName: 'Al-Fajr',
   surahArabic: 'الفجر',
-  totalLevels: 6,
+  totalLevels: 7,
   rewards: REWARDS,
   welcomeMsg: {
-    fresh:    name => `As-salamu alaykum, ${name}! Welcome to Surah Al-Fajr — The Dawn! Ancient nations destroyed, the tests of wealth and poverty, the Day of Regret, and the most beautiful ending: "O tranquil soul — return to your Lord!" 6 levels of Quran quest await!`,
+    fresh:    name => `As-salamu alaykum, ${name}! Welcome to Surah Al-Fajr — The Dawn! Ancient nations destroyed, the tests of wealth and poverty, the Day of Regret, and the most beautiful ending: "O tranquil soul — return to your Lord!" 7 levels of Quran quest await!`,
     partial:  (name, done) => `Welcome back, ${name}! ${done} level${done>1?'s':''} complete. The Dawn is calling — keep going! 💪`,
-    complete: name => `MashAllah, ${name}! All 6 levels of Al-Fajr complete! "Ya ayyatuha an-nafs al-mutma'inna — irji'i ila rabbiki radiyatan mardiyyah." May you be among those souls. Ameen! 🏆`,
+    complete: name => `MashAllah, ${name}! All 7 levels of Al-Fajr complete! "Ya ayyatuha an-nafs al-mutma'inna — irji'i ila rabbiki radiyatan mardiyyah." May you be among those souls. Ameen! 🏆`,
   },
 };
 
 /* ── Level 1: Drag & Drop — The Oaths (89:1-5) ── */
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1-2 — وَالْفَجْرِ · وَلَيَالٍ عَشْرٍ', words:[
+    {ar:'عَشْرٍ', tr:'ʿashr', en:'ten', freq:10},
+    {ar:'وَلَيَالٍ', tr:'wa-layālin', en:'and ten nights', freq:8},
+    {ar:'وَالْفَجْرِ', tr:'wal-fajr', en:'by the dawn', freq:6},
+  ]},
+  {label:'Verse 14 — إِنَّ رَبَّكَ لَبِالْمِرْصَادِ', words:[
+    {ar:'لَبِالْمِرْصَادِ', tr:'la-bil-mirṣād', en:'is ever watchful', freq:1},
+    {ar:'رَبَّكَ', tr:'rabbaka', en:'your Lord', freq:49},
+    'inna',
+  ]},
+  {label:'Verse 27-28 — يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ · ارْجِعِي إِلَىٰ رَبِّكِ رَاضِيَةً مَّرْضِيَّةً', words:[
+    {ar:'مَّرْضِيَّةً', tr:'marḍiyyah', en:'pleasing [to Him]', freq:1},
+    {ar:'رَاضِيَةً', tr:'rāḍiyah', en:'satisfied', freq:3},
+    {ar:'رَبِّكِ', tr:'rabbiki', en:'your Lord', freq:49},
+    {ar:'إِلَىٰ', tr:'ilā', en:'to', freq:189},
+    {ar:'ارْجِعِي', tr:'irjiʿī', en:'return', freq:1},
+    {ar:'الْمُطْمَئِنَّةُ', tr:'al-muṭmaʾinnah', en:'at peace', freq:1},
+    {ar:'النَّفْسُ', tr:'al-nafs', en:'O soul', freq:295},
+    {ar:'يَا أَيَّتُهَا', tr:'yā ayyatuhā', en:'O you', freq:70},
+  ]},
+];
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'عَشْرٍ', zone:'wz1'},
+  {id:'w2', text:'وَلَيَالٍ', zone:'wz2'},
+  {id:'w3', text:'وَالْفَجْرِ', zone:'wz3'},
+  {id:'w4', text:'لَبِالْمِرْصَادِ', zone:'wz4'},
+  {id:'w5', text:'رَبَّكَ', zone:'wz5'},
+  {id:'w6', text:'مَّرْضِيَّةً', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'ten'},
+  {id:'wz2', desc:'and ten nights'},
+  {id:'wz3', desc:'by the dawn'},
+  {id:'wz4', desc:'is ever watchful'},
+  {id:'wz5', desc:'your Lord'},
+  {id:'wz6', desc:'pleasing [to Him]'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+
+
 const S1_ITEMS = [
   { id: 'o1', text: 'Wal-Fajr',      zone: 'z1' },
   { id: 'o2', text: 'Wayal-in \'ashr', zone: 'z2' },
@@ -127,18 +173,21 @@ const S6_QUIZ = [
 ];
 
 /* ── Section wrappers ── */
-function renderSection1Game() { renderDragDrop(1, S1_ITEMS, S1_ZONES); }
-function checkSection1()      { checkDragDrop(1, S1_ZONES); }
-function renderSection2Game() { renderQuiz(2, S2_QUIZ); }
-function checkSection2()      { checkQuiz(2, S2_QUIZ); }
-function renderSection3Game() { renderStoryOrder(3, S3_EVENTS_CORRECT); }
-function checkSection3()      { checkStoryOrder(3, S3_EVENTS_CORRECT); }
-function renderSection4Game() { renderDragDrop(4, S4_ITEMS, S4_ZONES); }
-function checkSection4()      { checkDragDrop(4, S4_ZONES); }
-function renderSection5Game() { renderQuiz(5, S5_QUIZ); }
-function checkSection5()      { checkQuiz(5, S5_QUIZ); }
-function renderSection6Game() { renderQuiz(6, S6_QUIZ); }
-function checkSection6()      { checkQuiz(6, S6_QUIZ); }
+
+
+
+function renderSection2Game() { renderDragDrop(2, S1_ITEMS, S1_ZONES); }
+function checkSection2()      { checkDragDrop(2, S1_ZONES); }
+function renderSection3Game() { renderQuiz(3, S2_QUIZ); }
+function checkSection3()      { checkQuiz(3, S2_QUIZ); }
+function renderSection4Game() { renderStoryOrder(4, S3_EVENTS_CORRECT); }
+function checkSection4()      { checkStoryOrder(4, S3_EVENTS_CORRECT); }
+function renderSection5Game() { renderDragDrop(5, S4_ITEMS, S4_ZONES); }
+function checkSection5()      { checkDragDrop(5, S4_ZONES); }
+function renderSection6Game() { renderQuiz(6, S5_QUIZ); }
+function checkSection6()      { checkQuiz(6, S5_QUIZ); }
+function renderSection7Game() { renderQuiz(7, S6_QUIZ); }
+function checkSection7()      { checkQuiz(7, S6_QUIZ); }
 function updateUIExtra()      { window._drawBuildCanvas(window.state.completed.length); }
 
 /* ── World Builder Canvas ── */
@@ -210,6 +259,6 @@ window._drawBuildCanvas = function(n) {
     ctx.fillText('AL-FAJR COMPLETE! 🌅', W/2, 16); ctx.textAlign='left';
   } else {
     ctx.fillStyle=acc; ctx.font='7px "Press Start 2P",monospace'; ctx.textAlign='center';
-    ctx.fillText(`Dawn rising — ${n}/6 levels`, W/2, 16); ctx.textAlign='left';
+    ctx.fillText(`Dawn rising — ${n}/7 levels`, W/2, 16); ctx.textAlign='left';
   }
 };

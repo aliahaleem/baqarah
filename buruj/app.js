@@ -1,26 +1,65 @@
 'use strict';
 /* SURAH AL-BURUJ (85) — app.js */
 window.STORAGE_KEY='burujQuestSave';
-window.state={explorerName:'',xp:0,gems:0,completed:[],s1Checked:false,s2Answers:{},s2Checked:false,s3Answers:{},s3Checked:false,s4Answers:{},s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false};
+window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Answers:{},s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false,s7Answers:{},s7Checked:false};
 
 const REWARDS={
-  1:{xp:80,gems:3,icon:'⭐',title:'THE OATHS UNDERSTOOD!',msg:"SubhanAllah! Three powerful oaths: By the sky with its constellations — by the Promised Day — by the witness and the witnessed. Allah swears by the vast, ordered sky; by the certain Day of Judgment; by the witnesses of this world and the next. These oaths certify: everything you are about to read is TRUTH."},
-  2:{xp:80,gems:3,icon:'🔥',title:'THE DITCH EXPOSED!',msg:"Allahu Akbar! The People of the Ditch — 'Ashab al-Ukhdud.' The tyrant Dhunuwas dug trenches of fire in Yemen and threw believers in for refusing to abandon their faith. The persecutors sat watching, witnessing their own evil. They were 'DESTROYED.' But the believers? They entered the gardens of the Greatest Success."},
-  3:{xp:90,gems:3,icon:'✊',title:'THE TRUE CRIME REVEALED!',msg:"MashAllah! 'Wa ma naqamu minhum illa an yu\'minu bi-Allah al-Aziz al-Hamid.' Their ONLY crime was believing in Allah — the Most Powerful and Most Praiseworthy. No worldly crime. No harm done to others. Just faith. This is the highest form of persecution — and the highest form of martyrdom."},
-  4:{xp:90,gems:4,icon:'🌿',title:'AL-FAWZ AL-KABIR CLAIMED!',msg:"SubhanAllah! 'Lahum jannatun tajri min tahtiha al-anhar — dhalika al-fawz al-kabir.' For the believers: gardens with rivers flowing beneath. And it is called 'AL-FAWZ AL-KABIR' — THE GREAT ATTAINMENT. The believers burned in earthly ditches and entered directly into the greatest success in existence!"},
-  5:{xp:100,gems:4,icon:'⚡',title:'ALLAH\'S GRIP KNOWN!',msg:"Allahu Akbar! 'Inna batsha Rabbika la-shadid.' Indeed the GRIP of your Lord is SEVERE. The tyrants who burned believers — destroyed. Pharaoh and Thamud (85:17-20) — destroyed. Allah's grip catches every oppressor perfectly. No one escapes. 'Wa Allahu min wara\'ihim muhit' — Allah surrounds them from behind (85:20)."},
-  6:{xp:120,gems:5,icon:'📜',title:'SURAH AL-BURUJ COMPLETE!',msg:"ALLAHUMMA BARIK! All 6 levels of Surah Al-Buruj complete! The sky with constellations. The People of the Ditch. The only crime: faith. The great attainment. Allah's severe grip. And the Quran Majid — preserved in the Lawh al-Mahfudh, beyond all harm. May we be among the faithful. Ameen!"},
+  2:{xp:80,gems:3,icon:'⭐',title:'THE OATHS UNDERSTOOD!',msg:"SubhanAllah! Three powerful oaths: By the sky with its constellations — by the Promised Day — by the witness and the witnessed. Allah swears by the vast, ordered sky; by the certain Day of Judgment; by the witnesses of this world and the next. These oaths certify: everything you are about to read is TRUTH."},
+  3:{xp:80,gems:3,icon:'🔥',title:'THE DITCH EXPOSED!',msg:"Allahu Akbar! The People of the Ditch — 'Ashab al-Ukhdud.' The tyrant Dhunuwas dug trenches of fire in Yemen and threw believers in for refusing to abandon their faith. The persecutors sat watching, witnessing their own evil. They were 'DESTROYED.' But the believers? They entered the gardens of the Greatest Success."},
+  4:{xp:90,gems:3,icon:'✊',title:'THE TRUE CRIME REVEALED!',msg:"MashAllah! 'Wa ma naqamu minhum illa an yu\'minu bi-Allah al-Aziz al-Hamid.' Their ONLY crime was believing in Allah — the Most Powerful and Most Praiseworthy. No worldly crime. No harm done to others. Just faith. This is the highest form of persecution — and the highest form of martyrdom."},
+  5:{xp:90,gems:4,icon:'🌿',title:'AL-FAWZ AL-KABIR CLAIMED!',msg:"SubhanAllah! 'Lahum jannatun tajri min tahtiha al-anhar — dhalika al-fawz al-kabir.' For the believers: gardens with rivers flowing beneath. And it is called 'AL-FAWZ AL-KABIR' — THE GREAT ATTAINMENT. The believers burned in earthly ditches and entered directly into the greatest success in existence!"},
+  6:{xp:100,gems:4,icon:'⚡',title:'ALLAH\'S GRIP KNOWN!',msg:"Allahu Akbar! 'Inna batsha Rabbika la-shadid.' Indeed the GRIP of your Lord is SEVERE. The tyrants who burned believers — destroyed. Pharaoh and Thamud (85:17-20) — destroyed. Allah's grip catches every oppressor perfectly. No one escapes. 'Wa Allahu min wara\'ihim muhit' — Allah surrounds them from behind (85:20)."},
+  7:{xp:120,gems:5,icon:'📜',title:'SURAH AL-BURUJ COMPLETE!',msg:"ALLAHUMMA BARIK! All 7 levels of Surah Al-Buruj complete! The sky with constellations. The People of the Ditch. The only crime: faith. The great attainment. Allah's severe grip. And the Quran Majid — preserved in the Lawh al-Mahfudh, beyond all harm. May we be among the faithful. Ameen!"},
 };
 window.SURAH_CONFIG={
-  totalLevels:6,rewards:REWARDS,
-  tileIcons:['⭐','🔥','✊','🌿','⚡','📜'],
-  tileLabels:['The Oaths','Ditch','Their Crime','Attainment','Grip','Tablet'],
+  totalLevels:7,rewards:REWARDS,
+  tileIcons:['📖','⭐','🔥','✊','🌿','⚡','📜'],
+  tileLabels:['Word by Word','The Oaths','Ditch','Their Crime','Attainment','Grip','Tablet'],
   welcomeMsg:{
-    fresh:name=>`As-salamu alaykum, ${name}! Surah Al-Buruj — The Constellations! By the starry sky, by the Promised Day. The People of the Ditch burned for believing. Their only crime: faith in Allah. Allah's grip is severe. The Quran is Preserved forever. 6 levels await!`,
+    fresh:name=>`As-salamu alaykum, ${name}! Surah Al-Buruj — The Constellations! By the starry sky, by the Promised Day. The People of the Ditch burned for believing. Their only crime: faith in Allah. Allah's grip is severe. The Quran is Preserved forever. 7 levels await!`,
     partial:(name,done)=>`Welcome back, ${name}! ${done} level${done>1?'s':''} complete. "Wa ma naqamu minhum illa an yu\'minu bi-Allah" — They believed and stood firm. Keep going! ⭐`,
     complete:name=>`MashAllah, ${name}! Surah Al-Buruj complete! "Bal huwa Quranun Majid — fi Lawhin Mahfudh." Glorious Quran, Preserved forever. Ameen! 📜`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1-3 — وَالسَّمَاءِ ذَاتِ الْبُرُوجِ · وَالْيَوْمِ الْمَوْعُودِ · وَشَاهِدٍ وَمَشْهُودٍ', words:[
+    {ar:'وَمَشْهُودٍ', tr:'wa-mashhūd', en:'and what is witnessed', freq:4},
+    {ar:'وَشَاهِدٍ', tr:'wa-shāhid', en:'and a witness', freq:35},
+    {ar:'الْمَوْعُودِ', tr:'al-mawʿūd', en:'the Promised [Day]', freq:3},
+    {ar:'الْبُرُوجِ', tr:'al-burūj', en:'the great constellations', freq:3},
+    {ar:'وَالسَّمَاءِ', tr:'wal-samāʾ', en:'by the sky', freq:120},
+  ]},
+  {label:'Verse 12-13 — إِنَّ بَطْشَ رَبِّكَ لَشَدِيدٌ · إِنَّهُ هُوَ يُبْدِئُ وَيُعِيدُ', words:[
+    {ar:'وَيُعِيدُ', tr:'wa-yuʿīd', en:'and repeats', freq:7},
+    {ar:'يُبْدِئُ', tr:'yubdiʾ', en:'originates', freq:7},
+    {ar:'هُوَ', tr:'huwa', en:'He', freq:526},
+    {ar:'لَشَدِيدٌ', tr:'la-shadīd', en:'truly severe', freq:52},
+    {ar:'بَطْشَ', tr:'baṭsha', en:'the grip of', freq:5},
+    {ar:'رَبِّكَ', tr:'rabbika', en:'your Lord', freq:49},
+    'inna',
+  ]},
+];
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'وَمَشْهُودٍ', zone:'wz1'},
+  {id:'w2', text:'وَشَاهِدٍ', zone:'wz2'},
+  {id:'w3', text:'الْمَوْعُودِ', zone:'wz3'},
+  {id:'w4', text:'الْبُرُوجِ', zone:'wz4'},
+  {id:'w5', text:'وَالسَّمَاءِ', zone:'wz5'},
+  {id:'w6', text:'وَيُعِيدُ', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'and what is witnessed'},
+  {id:'wz2', desc:'and a witness'},
+  {id:'wz3', desc:'the Promised [Day]'},
+  {id:'wz4', desc:'the great constellations'},
+  {id:'wz5', desc:'by the sky'},
+  {id:'wz6', desc:'and repeats'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+
 
 const S1_ITEMS=[{id:'i1',text:'⭐ Sky with\nBuruj',zone:'z1'},{id:'i2',text:'📅 Promised\nDay',zone:'z2'},{id:'i3',text:'👁️ Witness &\nWitnessed',zone:'z3'}];
 const S1_ZONES=[{id:'z1',desc:'"Wa al-sama\' dhat al-buruj" (85:1) — By the sky possessing constellations. "Al-buruj" are the great star formations, the towers of the sky. A vast, ordered sky with permanent, majestic constellations — evidence of Allah\'s perfect creation and power.'},{id:'z2',desc:'"Wa al-yawm al-maw\'ud" (85:2) — By the Promised Day. The Day of Judgment — "maw\'ud" means promised, guaranteed. Allah swears by the certainty of the Day He Himself promised. If Allah swears by it — how real must it be?'},{id:'z3',desc:'"Wa shahedin wa mashhud" (85:3) — By the witness and the witnessed. Scholars interpret this as: Friday (witness) and Arafah (witnessed); the Prophet ﷺ (witness) and his community (witnessed); or the recording angels (witness) and the deeds (witnessed). All of human reality is being observed.'}];
@@ -160,12 +199,15 @@ const S6_QUIZ=[
    correct:3},
 ];
 
-function renderSection1Game(){renderDragDrop(1,S1_ITEMS,S1_ZONES);}function checkSection1(){checkDragDrop(1,S1_ZONES);}
-function renderSection2Game(){renderQuiz(2,S2_QUIZ);}function checkSection2(){checkQuiz(2,S2_QUIZ);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
-function renderSection5Game(){renderQuiz(5,S5_QUIZ);}function checkSection5(){checkQuiz(5,S5_QUIZ);}
-function renderSection6Game(){renderQuiz(6,S6_QUIZ);}function checkSection6(){checkQuiz(6,S6_QUIZ);}
+
+
+
+function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
+function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
+function renderSection5Game(){renderQuiz(5,S4_QUIZ);}function checkSection5(){checkQuiz(5,S4_QUIZ);}
+function renderSection6Game(){renderQuiz(6,S5_QUIZ);}function checkSection6(){checkQuiz(6,S5_QUIZ);}
+function renderSection7Game(){renderQuiz(7,S6_QUIZ);}function checkSection7(){checkQuiz(7,S6_QUIZ);}
 
 function _lbl(ctx,W,msg,d,t){ctx.fillStyle='#c8b030';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(msg,W/2,18);ctx.fillStyle='#04080e';ctx.fillRect(W/2-100,26,200,8);ctx.fillStyle='#182880';ctx.fillRect(W/2-100,26,Math.round(200*d/t),8);ctx.textAlign='left';}
 function _drawBuildCanvas(n){

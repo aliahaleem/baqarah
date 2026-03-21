@@ -18,7 +18,7 @@ const VD={
 
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 
-class S1 extends BS{constructor(){super('canvas-1');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.split);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();
+class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.split);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();
 // Sunset gradient sky
 const g=ctx.createLinearGradient(0,0,0,CH);g.addColorStop(0,'#1a0a04');g.addColorStop(0.4,p.sky1);g.addColorStop(0.8,p.gndAcc||'#7a5030');g.addColorStop(1,p.gnd||'#604020');ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);
 _label(ctx,'CLICK: Sky Splits, Earth Stretches — 84:1-5');
@@ -30,7 +30,7 @@ _ground(ctx,170);ctx.strokeStyle=p.acStr+'0.6)';ctx.lineWidth=1;ctx.setLineDash(
 const glow=0.3+Math.sin(this.t*0.03)*0.15;ctx.fillStyle=`rgba(255,150,50,${glow})`;ctx.beginPath();ctx.arc(CW/2,CH,80,Math.PI,0);ctx.fill();
 _label(ctx,'"Listened to its Lord and was OBLIGATED" (84:2,4)',CH-10);};draw();}}
 
-class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.strive);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,170);_label(ctx,'CLICK: You Are Striving Toward Your Lord — 84:6');
+class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.strive);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,170);_label(ctx,'CLICK: You Are Striving Toward Your Lord — 84:6');
 // Person walking toward a point on the horizon
 const walkX=60+((this.t*0.5)%340);const walkBob=Math.sin(this.t*0.2)*2;
 _fig(ctx,walkX,110+walkBob,'#e8c39a','#3a2818','#1a1408');
@@ -41,7 +41,7 @@ const pulse=0.5+Math.sin(this.t*0.05)*0.3;ctx.fillStyle=`rgba(248,192,96,${pulse
 ctx.fillStyle='rgba(0,0,0,0.5)';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('رَبّ',CW-40,124);ctx.textAlign='left';
 _label(ctx,'"Kadihun ila Rabbika kadhan fa-mulaqihi" (84:6)',CH-10);};draw();}}
 
-class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.right);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();
+class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.right);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();
 const g=ctx.createLinearGradient(0,0,0,CH);g.addColorStop(0,'#0a1808');g.addColorStop(1,'#182c08');ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);
 _ground(ctx,180);_label(ctx,'CLICK: Book in Right Hand — Happy Return! — 84:7-9');
 // Happy figure holding scroll in right hand
@@ -55,7 +55,7 @@ _fig(ctx,CW/2+80,110,'#e0d8b0','#284020','#182810');_fig(ctx,CW/2+110,115,'#e8d0
 ctx.fillStyle='rgba(80,220,80,0.5)';ctx.beginPath();ctx.arc(CW/2-38,120,45,0,Math.PI*2);ctx.fill();
 ctx.fillStyle='#80ff80';ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('"Easy account — returns to family JOYFUL!" (84:8-9)',CW/2,CH-10);ctx.textAlign='left';};draw();}}
 
-class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.left);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();
+class S5 extends BS{constructor(){super('canvas-5');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.left);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();
 const g=ctx.createLinearGradient(0,0,0,CH);g.addColorStop(0,'#100204');g.addColorStop(1,'#1a0408');ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);
 _ground(ctx,180);_label(ctx,'CLICK: Book Behind the Back — 84:10-12');
 // Distressed figure with book behind back
@@ -67,12 +67,12 @@ for(let f=0;f<8;f++){const fx=CW/2-60+f*18,fh=25+Math.sin(this.t*0.15+f)*10;cons
 // Despair
 ctx.fillStyle='#ff4444';ctx.font='10px sans-serif';ctx.textAlign='center';ctx.fillText('😰',CW/2+5,88);ctx.font='6px "Press Start 2P",monospace';ctx.fillText('يَدْعُو ثُبُورًا — "Calls for destruction!" (84:11)',CW/2,CH-15);ctx.fillText('يَصْلَى سَعِيرًا — "Will enter blazing fire" (84:12)',CW/2,CH-4);ctx.textAlign='left';};draw();}}
 
-class S5 extends BS{constructor(){super('canvas-5');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.stages);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,175);_label(ctx,'CLICK: Stage After Stage — 84:19');
+class S6 extends BS{constructor(){super('canvas-6');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.stages);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,175);_label(ctx,'CLICK: Stage After Stage — 84:19');
 const stages=['Womb','Birth','Child','Youth','Adult','Elder','Death','Grave','Rise'];const cols=['#6a4028','#8a5838','#a06848','#b07858','#c08868','#a07060','#806858','#604838','#f8c060'];stages.forEach((stage,i)=>{const x=30+i*55,y=130-i*8;fillRect(ctx,x,y,44,44,cols[i]);ctx.fillStyle='rgba(0,0,0,0.5)';ctx.font='4px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(stage,x+22,y+25);ctx.textAlign='left';
 if(i<stages.length-1){const pulse=i===Math.floor(this.t*0.05)%stages.length;ctx.strokeStyle=pulse?p.acStr+'0.9)':'rgba(255,255,255,0.2)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x+44,y+22);ctx.lineTo(x+55,y+14);ctx.stroke();}});
 _label(ctx,'"La-tarkabunna tabaqan \'an tabaqin" — Stage by Stage! (84:19)',CH-10);};draw();}}
 
-class S6 extends BS{constructor(){super('canvas-6');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.strive);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,170);_label(ctx,'CLICK: "Why Don\'t They Believe When Quran Recited?" — 84:20-21');
+class S7 extends BS{constructor(){super('canvas-7');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.strive);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,170);_label(ctx,'CLICK: "Why Don\'t They Believe When Quran Recited?" — 84:20-21');
 // Person listening to recitation
 _fig(ctx,CW/2-10,105,'#e8c39a','#3a1828','#1a0e18');
 // Sound waves
@@ -84,6 +84,15 @@ ctx.fillStyle='#ff8888';ctx.font='10px "Press Start 2P",monospace';ctx.textAlign
 _label(ctx,'"Ma lahum la yu\'minun?" — What is with them that they do not believe? (84:20)',CH-10);};draw();}}
 
 const scenes={};
-function initScenes(){scenes[1]=new S1();scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();scenes[5]=new S5();scenes[6]=new S6();}
-function startScene(n){if(scenes[n])scenes[n].start();}
-function stopAllScenes(){Object.values(scenes).forEach(s=>s.stop());}
+
+
+
+
+const VD_wbw={ref:'Al-Inshiqaq (84)',arabic:'إِذَا السَّمَاءُ انشَقَّتْ ۩ وَأَذِنَتْ لِرَبِّهَا وَحُقَّتْ ۩ يَا أَيُّهَا الْإِنسَانُ إِنَّكَ كَادِحٌ إِلَىٰ رَبِّكَ كَدْحًا فَمُلَاقِيهِ',english:'"When the sky has split open and obeyed its Lord as it must — O mankind, you are labouring toward your Lord, and you will meet Him." (84:1-2, 6)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};
+const _s1wbw = new window.WBWScene('canvas-1', {emoji:'🌅',label:'THE SPLITTING OPEN',verse:VD_wbw});
+
+function initScenes(){scenes[1]=_s1wbw;scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();scenes[5]=new S5();scenes[6]=new S6();scenes[7]=new S7();}
+function startScene(n) {
+  if(scenes[n])scenes[n].start();}
+function stopAllScenes() {
+  Object.values(scenes).forEach(s=>s.stop());}

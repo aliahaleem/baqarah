@@ -9,17 +9,20 @@ window.STORAGE_KEY = 'nabaQuestSave';
 
 window.state = {
   explorerName: '', xp: 0, gems: 0, completed: [],
-  s1Answers: {}, s1Checked: false,
-  s2Checked: false,
+  s1Checked:false,
+  s2Answers: {}, s2Checked: false,
   s3Checked: false,
-  s4Order:   [], s4Checked: false,
-  s5Answers: {}, s5Checked: false,
-  s6Checked: false,
-  s7Answers: {}, s7Checked: false,
+  s4Checked: false,
+  s5Order:   [], s5Checked: false,
+  s6Answers: {}, s6Checked: false,
+  s7Checked: false,
   s8Answers: {}, s8Checked: false,
+  s9Answers: {}, s9Checked: false,
 };
 
 const REWARDS = {
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
   1: { xp: 90,  gems: 3, icon: '❓', title: 'THE GREAT NEWS KNOWN!',
        msg: 'SubhanAllah! "An-Naba Al-Atheem" — The Great News. They argued about it. But Allah says twice: "Kalla saya\'lamoon!" — They are going to know. On to the Signs of Creation!' },
   2: { xp: 100, gems: 4, icon: '⛰️', title: 'EARTH SIGNS UNLOCKED!',
@@ -35,24 +38,69 @@ const REWARDS = {
   7: { xp: 100, gems: 3, icon: '👑', title: 'THE ROWS WITNESSED!',
        msg: 'Allahu Akbar! Only those given permission may speak — and only truth. The absolute sovereignty of Allah.' },
   8: { xp: 160, gems: 8, icon: '🏆', title: 'SURAH AN-NABA COMPLETE!',
-       msg: "ALLAHUMMA BARIK! All 8 levels complete! \"Fa-man sha'a ittakhadha ila rabbihi ma'aba.\" May Allah make us from those who rush toward Him. Ameen!" },
+       msg: "ALLAHUMMA BARIK! All 9 levels complete! \"Fa-man sha'a ittakhadha ila rabbihi ma'aba.\" May Allah make us from those who rush toward Him. Ameen!" },
 };
 
 window.SURAH_CONFIG = {
-  totalLevels: 8,
+  totalLevels: 9,
   rewards: REWARDS,
-  tileIcons:  ['❓','⛰️','🌧️','📯','🔥','🌿','👑','🏆'],
-  tileLabels: ['Great News','Earth Signs','Sky Signs','Day of Sorting','Hellfire','Paradise','The Rows','Final Warning'],
+  tileIcons:['📖','❓','⛰️','🌧️','📯','🔥','🌿','👑','🏆'],
+  tileLabels:['Word by Word','Great News','Earth Signs','Sky Signs','Day of Sorting','Hellfire','Paradise','The Rows','Final Warning'],
   welcomeMsg: {
-    fresh:    name => `As-salamu alaykum, ${name}! Surah An-Naba — "The Great News." What were they arguing about? 8 levels. Let's begin!`,
+    fresh:    name => `As-salamu alaykum, ${name}! Surah An-Naba — "The Great News." What were they arguing about? 9 levels. Let's begin!`,
     partial:  (name, done) => `Welcome back, ${name}! ${done} level${done>1?'s':''} complete. "Kalla saya'lamoon!" Keep learning! 📯`,
-    complete: name => `MashAllah, ${name}! All 8 levels of An-Naba complete! May Allah make us from those who rush toward Him. Ameen! 🏆`,
+    complete: name => `MashAllah, ${name}! All 9 levels of An-Naba complete! May Allah make us from those who rush toward Him. Ameen! 🏆`,
   },
 };
 
 // =============================================
 //  GAME DATA
 // =============================================
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1-2 — عَمَّ يَتَسَاءَلُونَ · عَنِ النَّبَإِ الْعَظِيمِ', words:[
+    {ar:'الْعَظِيمِ', tr:'al-ʿaẓīm', en:'the great', freq:79},
+    {ar:'النَّبَإِ', tr:'al-nabaʾ', en:'the news', freq:6},
+    {ar:'عَنِ', tr:'ʿan', en:'about', freq:330},
+    {ar:'يَتَسَاءَلُونَ', tr:'yatasāʾalūn', en:'they are asking', freq:3},
+    {ar:'عَمَّ', tr:'ʿamma', en:'about what', freq:2},
+  ]},
+  {label:'Verse 6-7 — أَلَمْ نَجْعَلِ الْأَرْضَ مِهَادًا · وَالْجِبَالَ أَوْتَادًا', words:[
+    {ar:'أَوْتَادًا', tr:'awtādan', en:'as pegs/stakes', freq:3},
+    {ar:'وَالْجِبَالَ', tr:'wal-jibāl', en:'and the mountains', freq:33},
+    {ar:'مِهَادًا', tr:'mihādan', en:'a resting place', freq:2},
+    {ar:'الْأَرْضَ', tr:'al-arḍ', en:'the earth', freq:461},
+    {ar:'نَجْعَلِ', tr:'najʿal', en:'did We not make', freq:30},
+    {ar:'أَلَمْ', tr:'alam', en:'did We not', freq:40},
+  ]},
+  {label:'Verse 31-32 — إِنَّ لِلْمُتَّقِينَ مَفَازًا · حَدَائِقَ وَأَعْنَابًا', words:[
+    {ar:'وَأَعْنَابًا', tr:'wa-aʿnāban', en:'and grapes', freq:11},
+    {ar:'حَدَائِقَ', tr:'ḥadāʾiq', en:'gardens', freq:3},
+    {ar:'مَفَازًا', tr:'mafāzan', en:'a place of success', freq:1},
+    {ar:'لِلْمُتَّقِينَ', tr:'lil-muttaqīn', en:'for the righteous', freq:26},
+    'inna',
+  ]},
+];
+
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'الْعَظِيمِ', zone:'wz1'},
+  {id:'w2', text:'النَّبَإِ', zone:'wz2'},
+  {id:'w3', text:'عَنِ', zone:'wz3'},
+  {id:'w4', text:'يَتَسَاءَلُونَ', zone:'wz4'},
+  {id:'w5', text:'عَمَّ', zone:'wz5'},
+  {id:'w6', text:'أَوْتَادًا', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'the great'},
+  {id:'wz2', desc:'the news'},
+  {id:'wz3', desc:'about'},
+  {id:'wz4', desc:'they are asking'},
+  {id:'wz5', desc:'about what'},
+  {id:'wz6', desc:'as pegs/stakes'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
 
 const S1_QUIZ = [
   { q: "What is \"An-Naba Al-Atheem\" (The Great News) that the Quraysh disputed?",
@@ -202,22 +250,25 @@ const S8_QUIZ = [
 // =============================================
 //  SECTION WRAPPERS
 // =============================================
-function renderSection1Game() { renderQuiz(1, S1_QUIZ); }
-function checkSection1()      { checkQuiz(1, S1_QUIZ); }
-function renderSection2Game() { renderDragDrop(2, S2_ITEMS, S2_ZONES); }
-function checkSection2()      { checkDragDrop(2, S2_ZONES); }
-function renderSection3Game() { renderDragDrop(3, S3_ITEMS, S3_ZONES); }
-function checkSection3()      { checkDragDrop(3, S3_ZONES); }
-function renderSection4Game() { renderStoryOrder(4, S4_EVENTS_CORRECT); }
-function checkSection4()      { checkStoryOrder(4, S4_EVENTS_CORRECT); }
-function renderSection5Game() { renderQuiz(5, S5_QUIZ); }
-function checkSection5()      { checkQuiz(5, S5_QUIZ); }
-function renderSection6Game() { renderDragDrop(6, S6_ITEMS, S6_ZONES); }
-function checkSection6()      { checkDragDrop(6, S6_ZONES); }
-function renderSection7Game() { renderQuiz(7, S7_QUIZ); }
-function checkSection7()      { checkQuiz(7, S7_QUIZ); }
-function renderSection8Game() { renderQuiz(8, S8_QUIZ); }
-function checkSection8()      { checkQuiz(8, S8_QUIZ); }
+
+
+
+function renderSection2Game() { renderQuiz(2, S1_QUIZ); }
+function checkSection2()      { checkQuiz(2, S1_QUIZ); }
+function renderSection3Game() { renderDragDrop(3, S2_ITEMS, S2_ZONES); }
+function checkSection3()      { checkDragDrop(3, S2_ZONES); }
+function renderSection4Game() { renderDragDrop(4, S3_ITEMS, S3_ZONES); }
+function checkSection4()      { checkDragDrop(4, S3_ZONES); }
+function renderSection5Game() { renderStoryOrder(5, S4_EVENTS_CORRECT); }
+function checkSection5()      { checkStoryOrder(5, S4_EVENTS_CORRECT); }
+function renderSection6Game() { renderQuiz(6, S5_QUIZ); }
+function checkSection6()      { checkQuiz(6, S5_QUIZ); }
+function renderSection7Game() { renderDragDrop(7, S6_ITEMS, S6_ZONES); }
+function checkSection7()      { checkDragDrop(7, S6_ZONES); }
+function renderSection8Game() { renderQuiz(8, S7_QUIZ); }
+function checkSection8()      { checkQuiz(8, S7_QUIZ); }
+function renderSection9Game() { renderQuiz(9, S8_QUIZ); }
+function checkSection9()      { checkQuiz(9, S8_QUIZ); }
 
 // =============================================
 //  PARADISE GATE WORLD BUILDER (surah-specific)
@@ -261,7 +312,7 @@ function _drawBuildCanvas(n) {
     ctx.fillStyle = '#ffd700'; ctx.font = '9px "Press Start 2P",monospace'; ctx.textAlign = 'center';
     ctx.fillText('ALLAHUMMA BARIK! 🌿 GATES OF PARADISE OPEN!', W / 2, 20);
     ctx.textAlign = 'left';
-  } else { _buildLabelNaba(ctx, W, `Building the Gate — ${n}/8 levels`, n, 8); }
+  } else { _buildLabelNaba(ctx, W, `Building the Gate — ${n}/9 levels`, n, 8); }
 }
 function _buildLabelNaba(ctx, W, msg, done, total) {
   ctx.fillStyle = '#8840c8'; ctx.font = '7px "Press Start 2P",monospace'; ctx.textAlign = 'center';

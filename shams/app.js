@@ -3,31 +3,79 @@
 window.STORAGE_KEY = 'shamsQuestSave';
 window.state = {
   explorerName:'', xp:0, gems:0, completed:[],
-  s1Answers:{}, s1Checked:false,
-  s2Checked:false,
-  s3Answers:{}, s3Checked:false,
-  s4Order:[], s4Checked:false,
+  s1Checked:false,
+  s2Answers:{}, s2Checked:false,
+  s3Checked:false,
+  s4Answers:{}, s4Checked:false,
+  s5Order:[], s5Checked:false,
 };
 
 const REWARDS = {
-  1:{xp:70,  gems:3, icon:'☀️',  title:'Sun Witness',    msg:"SubhanAllah! Eleven cosmic oaths — sun, moon, day, night, sky, earth, and the SOUL itself. Allah is drawing our attention: LOOK at creation, then look inward at your soul. The nafs is at the heart of this surah!"},
-  2:{xp:80,  gems:3, icon:'🌅',  title:'Oath Keeper',    msg:"MashAllah! You matched all eleven cosmic signs. Remember: each oath points to the SOUL and its choice. Purify it or corrupt it — that is the test!"},
-  3:{xp:90,  gems:3, icon:'✨',  title:'Soul Purifier',  msg:"SubhanAllah! 'Qad aflaha man zakkaha — wa qad khaba man dassaha.' He who purifies wins. He who corrupts loses. May Allah purify our souls! Ameen."},
-  4:{xp:100, gems:4, icon:'🐪',  title:'Thamud Witness', msg:"Allahu Akbar! Thamud had everything — signs, prophets, miracles — but they chose arrogance. They hamstrung Allah's camel. Allah crushed them. Let Thamud's story be our reminder: arrogance destroys. May Allah protect us from it!"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
+  2:{xp:70,  gems:3, icon:'☀️',  title:'Sun Witness',    msg:"SubhanAllah! Eleven cosmic oaths — sun, moon, day, night, sky, earth, and the SOUL itself. Allah is drawing our attention: LOOK at creation, then look inward at your soul. The nafs is at the heart of this surah!"},
+  3:{xp:80,  gems:3, icon:'🌅',  title:'Oath Keeper',    msg:"MashAllah! You matched all eleven cosmic signs. Remember: each oath points to the SOUL and its choice. Purify it or corrupt it — that is the test!"},
+  4:{xp:90,  gems:3, icon:'✨',  title:'Soul Purifier',  msg:"SubhanAllah! 'Qad aflaha man zakkaha — wa qad khaba man dassaha.' He who purifies wins. He who corrupts loses. May Allah purify our souls! Ameen."},
+  5:{xp:100, gems:4, icon:'🐪',  title:'Thamud Witness', msg:"Allahu Akbar! Thamud had everything — signs, prophets, miracles — but they chose arrogance. They hamstrung Allah's camel. Allah crushed them. Let Thamud's story be our reminder: arrogance destroys. May Allah protect us from it!"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s91', surahName:'Ash-Shams', surahArabic:'الشمس', totalLevels:4, rewards:REWARDS,
-  tileIcons:['☀️','🌅','✨','🐪'],
-  tileLabels:['The Oaths','11 Signs','Soul','Thamud'],
+  id:'s91', surahName:'Ash-Shams', surahArabic:'الشمس', totalLevels:5, rewards:REWARDS,
+  tileIcons:['📖','☀️','🌅','✨','🐪'],
+  tileLabels:['Word by Word','The Oaths','11 Signs','Soul','Thamud'],
   welcomeMsg:{
-    fresh:   name=>`As-salamu alaykum, ${name}! Welcome to Surah Ash-Shams — The Sun! Allah takes ELEVEN cosmic oaths — the most in the Quran — to make one point: purify your soul. Then the story of Thamud shows what happens when you don't. 4 levels await!`,
-    partial: (name,done)=>`Welcome back, ${name}! ${done}/4 levels done. The sun still shines — keep going! ☀️`,
+    fresh:   name=>`As-salamu alaykum, ${name}! Welcome to Surah Ash-Shams — The Sun! Allah takes ELEVEN cosmic oaths — the most in the Quran — to make one point: purify your soul. Then the story of Thamud shows what happens when you don't. 5 levels await!`,
+    partial: (name,done)=>`Welcome back, ${name}! ${done}/5 levels done. The sun still shines — keep going! ☀️`,
     complete: name=>`MashAllah, ${name}! Ash-Shams complete! "Qad aflaha man zakkaha." May Allah purify your soul and mine! Ameen 🏆`,
   },
 };
 
 /* Level 1 — Quiz: The Cosmic Oaths (91:1-7) */
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1-2 — وَالشَّمْسِ وَضُحَاهَا · وَالْقَمَرِ إِذَا تَلَاهَا', words:[
+    {ar:'تَلَاهَا', tr:'talāhā', en:'follows it', freq:1},
+    {ar:'وَالْقَمَرِ', tr:'wal-qamar', en:'and the moon', freq:27},
+    {ar:'وَضُحَاهَا', tr:'wa-ḍuḥāhā', en:'and its brightness', freq:3},
+    {ar:'وَالشَّمْسِ', tr:'wal-shams', en:'by the sun', freq:33},
+  ]},
+  {label:'Verse 7-8 — وَنَفْسٍ وَمَا سَوَّاهَا · فَأَلْهَمَهَا فُجُورَهَا وَتَقْوَاهَا', words:[
+    {ar:'وَتَقْوَاهَا', tr:'wa-taqwāhā', en:'and its righteousness', freq:64},
+    {ar:'فُجُورَهَا', tr:'fujūrahā', en:'its wickedness', freq:3},
+    {ar:'فَأَلْهَمَهَا', tr:'fa-alhamahā', en:'and inspired it', freq:1},
+    {ar:'سَوَّاهَا', tr:'sawwāhā', en:'proportioned it', freq:4},
+    {ar:'وَمَا', tr:'wa-mā', en:'and He who', freq:500},
+    {ar:'وَنَفْسٍ', tr:'wa-nafs', en:'and [by] the soul', freq:295},
+  ]},
+  {label:'Verse 9-10 — قَدْ أَفْلَحَ مَن زَكَّاهَا · وَقَدْ خَابَ مَن دَسَّاهَا', words:[
+    {ar:'دَسَّاهَا', tr:'dassāhā', en:'corrupts it', freq:1},
+    {ar:'خَابَ', tr:'khāba', en:'has failed', freq:5},
+    {ar:'زَكَّاهَا', tr:'zakkāhā', en:'purifies it', freq:5},
+    {ar:'أَفْلَحَ', tr:'aflaḥa', en:'has succeeded', freq:10},
+    {ar:'مَن', tr:'man', en:'he who', freq:89},
+    {ar:'قَدْ', tr:'qad', en:'certainly', freq:406},
+  ]},
+];
+
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'تَلَاهَا', zone:'wz1'},
+  {id:'w2', text:'وَالْقَمَرِ', zone:'wz2'},
+  {id:'w3', text:'وَضُحَاهَا', zone:'wz3'},
+  {id:'w4', text:'وَالشَّمْسِ', zone:'wz4'},
+  {id:'w5', text:'وَتَقْوَاهَا', zone:'wz5'},
+  {id:'w6', text:'فُجُورَهَا', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'follows it'},
+  {id:'wz2', desc:'and the moon'},
+  {id:'wz3', desc:'and its brightness'},
+  {id:'wz4', desc:'by the sun'},
+  {id:'wz5', desc:'and its righteousness'},
+  {id:'wz6', desc:'its wickedness'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+
 const S1_QUIZ = [
   {q:'How many oaths does Allah take in Surah Ash-Shams?',
    opts:['Five oaths','Seven oaths','Nine oaths','Eleven oaths'],
@@ -88,14 +136,17 @@ const S4_EVENTS_CORRECT = [
 ];
 window._S4_EVENTS = S4_EVENTS_CORRECT;
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}
-function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}
-function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}
-function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderStoryOrder(4,S4_EVENTS_CORRECT);}
-function checkSection4(){checkStoryOrder(4,S4_EVENTS_CORRECT);}
+
+
+
+function renderSection2Game(){renderQuiz(2,S1_QUIZ);}
+function checkSection2(){checkQuiz(2,S1_QUIZ);}
+function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}
+function checkSection3(){checkDragDrop(3,S2_ZONES);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}
+function checkSection4(){checkQuiz(4,S3_QUIZ);}
+function renderSection5Game(){renderStoryOrder(5,S4_EVENTS_CORRECT);}
+function checkSection5(){checkStoryOrder(5,S4_EVENTS_CORRECT);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -129,6 +180,6 @@ window._drawBuildCanvas = function(n) {
     ctx.fillText('ASH-SHAMS COMPLETE ☀️',W/2,14);ctx.textAlign='left';
   } else {
     ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
-    ctx.fillText(`Ash-Shams — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
+    ctx.fillText(`Ash-Shams — ${n}/5 levels`,W/2,14);ctx.textAlign='left';
   }
 };

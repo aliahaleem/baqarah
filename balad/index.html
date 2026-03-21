@@ -44,12 +44,17 @@
   </div>
   <h2 class="section-heading">🕋 THE QUEST MAP</h2>
   <div class="map-grid">
-    <div class="map-tile locked" id="tile-1" onclick="openSection(1)"><div class="tile-icon">🕋</div><div class="tile-level">LEVEL 1</div><div class="tile-name">The Sacred City</div><div class="tile-verses">90:1-4</div><div class="tile-status" id="status-1">▶ PLAY</div></div>
-    <div class="map-tile locked" id="tile-2" onclick="openSection(2)"><div class="tile-icon">👁️</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Eyes & Two Paths</div><div class="tile-verses">90:8-10</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-3" onclick="openSection(3)"><div class="tile-icon">🏔️</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Al-Aqabah</div><div class="tile-verses">90:11-16</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-4" onclick="openSection(4)"><div class="tile-icon">🍲</div><div class="tile-level">LEVEL 4</div><div class="tile-name">Acts of the Steep Path</div><div class="tile-verses">90:13-17</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-5" onclick="openSection(5)"><div class="tile-icon">⚖️</div><div class="tile-level">LEVEL 5</div><div class="tile-name">Two Types of People</div><div class="tile-verses">90:17-20</div><div class="tile-status" id="status-5">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-6" onclick="openSection(6)"><div class="tile-icon">✨</div><div class="tile-level">LEVEL 6</div><div class="tile-name">Right & Left</div><div class="tile-verses">90:17-20</div><div class="tile-status" id="status-6">🔒 LOCKED</div></div>
+        <div class="map-tile unlocked" id="tile-1" onclick="openSection(1)">
+      <div class="tile-icon">📖</div><div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">Word by Word</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+<div class="map-tile locked" id="tile-2" onclick="openSection(2)"><div class="tile-icon">🕋</div><div class="tile-level">LEVEL 1</div><div class="tile-name">The Sacred City</div><div class="tile-verses">90:1-4</div><div class="tile-status" id="status-2">▶ PLAY</div></div>
+    <div class="map-tile locked" id="tile-3" onclick="openSection(3)"><div class="tile-icon">👁️</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Eyes & Two Paths</div><div class="tile-verses">90:8-10</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-4" onclick="openSection(4)"><div class="tile-icon">🏔️</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Al-Aqabah</div><div class="tile-verses">90:11-16</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-5" onclick="openSection(5)"><div class="tile-icon">🍲</div><div class="tile-level">LEVEL 4</div><div class="tile-name">Acts of the Steep Path</div><div class="tile-verses">90:13-17</div><div class="tile-status" id="status-5">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-6" onclick="openSection(6)"><div class="tile-icon">⚖️</div><div class="tile-level">LEVEL 5</div><div class="tile-name">Two Types of People</div><div class="tile-verses">90:17-20</div><div class="tile-status" id="status-6">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-7" onclick="openSection(7)"><div class="tile-icon">✨</div><div class="tile-level">LEVEL 6</div><div class="tile-name">Right & Left</div><div class="tile-verses">90:17-20</div><div class="tile-status" id="status-7">🔒 LOCKED</div></div>
   </div>
   <div id="world-builder">
     <h2 class="section-heading">🕋 BUILD MECCA</h2>
@@ -58,12 +63,13 @@
     </div>
     <p style="font-family:var(--font-body);font-size:var(--font-size-sm);color:var(--primary-lit);text-align:center;margin-bottom:10px;line-height:1.8;">Complete each level to build the Sacred City scene!<br/><em style="color:var(--text-dim);">"La uqsimu bi-hadhal-balad" — By this city! — 90:1</em></p>
     <div class="world-preview">
-      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Sacred City</div></div>
-      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Two Paths</div></div>
-      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Al-Aqabah</div></div>
-      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Acts</div></div>
-      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Two Groups</div></div>
-      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Right & Left</div></div>
+            <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Words</div></div>
+<div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Sacred City</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Two Paths</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Al-Aqabah</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Acts</div></div>
+      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Two Groups</div></div>
+      <div class="world-chunk" id="chunk-7"><div class="chunk-emoji">⬛</div><div class="chunk-label">Right & Left</div></div>
     </div>
   </div>
   <div id="all-complete">
@@ -78,11 +84,55 @@
 <div id="section-view" style="display:none">
   <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></header>
 
+  
+  <!-- ==================== SECTION 1 — WORD BY WORD ==================== -->
   <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Learn the key Arabic words of this surah! Tap each card to reveal its meaning, then continue to the next level.
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 1 — WORD BY WORD (90:Al-Balad)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 The City — Click to reveal verse</span></div>
+        <canvas id="canvas-1" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        
+        <div class="verse-block">
+          <div class="arabic-text">لَا أُقْسِمُ بِهَٰذَا الْبَلَدِ ۩ أَلَمْ نَجْعَل لَّهُ عَيْنَيْنِ ۩ وَلِسَانًا وَشَفَتَيْنِ ۩ فَلَا اقْتَحَمَ الْعَقَبَةَ</div>
+          <div class="verse-translation">"I swear by this city (Mecca). Did We not make for him two eyes, a tongue and two lips? But he has not attempted the steep path." (90:1, 8-9, 11)</div>
+        </div>
+
+        <p class="word-grid-intro">Now explore each word — <strong>tap a card to reveal its meaning</strong>.</p>
+        <button id="wbw-reveal-btn" class="wbw-reveal-btn">👁 Reveal All Meanings</button>
+        <div id="wbw-display"></div>
+      </div>
+    </div>
+        <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 MATCH — ARABIC WORD TO ENGLISH MEANING</div>
+      <div class="game-instructions">Drag each Arabic word to its English meaning!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-1"></div>
+        <div class="drop-zones" id="drop-zones-1"></div>
+      </div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+<div class="section-panel" id="section-panel-2">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"La uqsimu bi-hadhal-balad!" — I swear by this city! Allah swears by Mecca — the sacred city. And He mentions that the Prophet ﷺ is free within it (unrestricted). Then He swears by the father (Ibrahim AS) and what he fathered — the prophets and the believers. And the conclusion? "Laqad khalaqnal-insan fi kabad!" — We created man IN hardship! Answer these questions!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">🕋 LEVEL 1 — THE SACRED CITY (90:1-4)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Mecca — Click to reveal verse</span></div><canvas id="canvas-1" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Mecca — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>Surah Al-Balad opens with Allah swearing by Mecca — the most sacred city on earth. <strong>"La uqsimu bi-hadhal-balad"</strong> — I do swear by this city! The "la" here is an emphatic particle, intensifying the oath rather than negating it.</p>
         <p>Then comes a remarkable clause: <strong>"Wa-anta hillun bi-hadhal-balad"</strong> — and you are free of restriction in this city. This is addressed to the Prophet ﷺ. Despite Mecca being a city where warfare was normally forbidden, Allah was indicating that He would make it lawful for the Prophet ﷺ to enter it on the Day of Conquest.</p>
@@ -97,20 +147,20 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — THE SACRED CITY (90:1-4)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-1"></div><div class="game-feedback" id="feedback-1"></div>
+      <div id="quiz-2"></div><div class="game-feedback" id="feedback-2"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection1()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-2">
+  <div class="section-panel" id="section-panel-3">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Alam naj'al lahu 'aynayn?" — Have We not given him TWO EYES? A tongue? Two lips? And We showed him BOTH paths! Allah gave man everything he needs to choose rightly. Two eyes to see the signs. A tongue to speak truth or lies. Two lips. And "al-najdayn" — the two highways of good and evil. Match each gift to its purpose!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">👁️ LEVEL 2 — EYES, TONGUE & TWO PATHS (90:8-10)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Two Highways — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Two Highways — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>Before describing the two paths, Allah reminds man of the gifts he was given for the journey. <strong>"Alam naj'al lahu 'aynayn"</strong> — Have We not made for him two eyes? These eyes can see the signs of Allah everywhere — in creation, in history, in oneself.</p>
         <p><strong>"Wa-lisanan wa-shafatayn"</strong> — And a tongue and two lips? The tongue is the most powerful instrument of good and evil. With it you can recite Quran, speak truth, comfort the grieving. Or you can lie, backbite, and harm. The lips shape every word.</p>
@@ -125,21 +175,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 MATCH — GIFTS FROM ALLAH (90:8-10)</div>
       <div class="game-instructions">Drag each gift to its purpose. All 4 must match!</div>
-      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-2"></div><div class="drop-zones" id="drop-zones-2"></div></div>
-      <div class="game-feedback" id="feedback-2"></div>
+      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-3"></div><div class="drop-zones" id="drop-zones-3"></div></div>
+      <div class="game-feedback" id="feedback-3"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection2()">✅ Check Matches</button>
-        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection3()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-3">
+  <div class="section-panel" id="section-panel-4">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Fala-qtahama al-aqabah!" — But he has NOT attempted the steep climb! Al-aqabah is a metaphor for the difficult righteous path. Allah asks: "Do you know what the aqabah IS?" And then defines it — freeing a slave! Feeding on a day of hunger! An orphan relative, or someone prostrate in poverty. THAT is the steep path. Answer these questions!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">🏔️ LEVEL 3 — AL-AQABAH (90:11-16)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Steep Path — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Steep Path — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p><strong>"Fala-qtahama al-aqabah"</strong> — But he has not attempted the steep path! (90:11) The verb "iqtahama" means to throw oneself into something difficult, to assault a challenge with determination. Al-aqabah is the steep mountain path — the harder road.</p>
         <p>Then a dramatic question: <strong>"Wa ma adraka mal-aqabah?"</strong> — And what would make you know what the aqabah is? This question builds suspense — as if to say: it's not what you might think. The definition is not a ritual act alone.</p>
@@ -155,20 +205,20 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — AL-AQABAH (90:11-16)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-3"></div><div class="game-feedback" id="feedback-3"></div>
+      <div id="quiz-4"></div><div class="game-feedback" id="feedback-4"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection3()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-4">
+  <div class="section-panel" id="section-panel-5">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The aqabah has four specific acts: freeing a slave, feeding an orphan relative, feeding someone utterly destitute, and — perhaps most importantly — encouraging others to do the same! One person climbing the aqabah is good. A community that pushes each other up the mountain is EXTRAORDINARY. Match each act to its description!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">🍲 LEVEL 4 — ACTS OF THE AQABAH (90:13-17)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Feeding the Poor — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Feeding the Poor — Click to reveal verse</span></div><canvas id="canvas-5" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>The surah defines the aqabah through concrete acts of social justice and generosity. These are not vague — they are specific, demanding, and costly.</p>
         <p><strong>1. Fakku raqabah</strong> — Freeing a slave. The most expensive act of liberation. In the Islamic tradition, freeing a slave was the highest form of expiation for many sins, showing just how valued this act was in Allah's sight.</p>
@@ -184,21 +234,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 MATCH — ACTS OF THE AQABAH (90:13-17)</div>
       <div class="game-instructions">Drag each act to its Quranic description. All 4 must match!</div>
-      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-4"></div><div class="drop-zones" id="drop-zones-4"></div></div>
-      <div class="game-feedback" id="feedback-4"></div>
+      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-5"></div><div class="drop-zones" id="drop-zones-5"></div></div>
+      <div class="game-feedback" id="feedback-5"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection4()">✅ Check Matches</button>
-        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection5()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-5">
+  <div class="section-panel" id="section-panel-6">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The surah ends with two destinies. Those who took the aqabah: they believed, urged patience, urged mercy — these are "Ashaab al-Maymana" — Companions of the Right Hand — Jannah! And those who rejected Our signs — they are "Ashaab al-Mash'ama" — fire closing over them from all sides. Can you put the events in order?</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">⚖️ LEVEL 5 — TWO TYPES OF PEOPLE (90:17-20)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Two Destinies — Click to reveal verse</span></div><canvas id="canvas-5" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Two Destinies — Click to reveal verse</span></div><canvas id="canvas-6" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>The surah concludes by dividing humanity into two groups based on their choices.</p>
         <p>The first group: <strong>"Thumma kana minal-ladhina amanu wa-tawassaw bis-sabri wa-tawassaw bil-marhama"</strong> — Then he was of those who believed and urged each other to patience and urged each other to mercy. (90:17)</p>
@@ -215,20 +265,20 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 STORY ORDER — TWO DESTINIES (90:17-20)</div>
       <div class="game-instructions">Arrange these events in the correct Quranic sequence!</div>
-      <div id="order-5"></div><div class="game-feedback" id="feedback-5"></div>
+      <div id="order-6"></div><div class="game-feedback" id="feedback-6"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection5()">✅ Check Order</button>
-        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection6()">✅ Check Order</button>
+        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-6">
+  <div class="section-panel" id="section-panel-7">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The final test! "Ashaab al-Maymana" — Companions of the Right — Jannah! "Ashaab al-Mash'ama" — Companions of the Left — fire that seals them in. Every choice we make today — every aqabah we climb or avoid — is writing which group we join. Answer these final questions!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">✨ LEVEL 6 — COMPANIONS OF RIGHT AND LEFT (90:17-20)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Final Judgement — Click to reveal verse</span></div><canvas id="canvas-6" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Final Judgement — Click to reveal verse</span></div><canvas id="canvas-7" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>The final verses of Surah Al-Balad make it crystal clear: every human being will end up in one of two groups.</p>
         <p>The Companions of the Right (Ashaab al-Maymana) are those who combined three things: <strong>iman (belief)</strong>, <strong>tawasi bis-sabr (urging each other to patience)</strong>, and <strong>tawasi bil-marhama (urging each other to mercy)</strong>. The community aspect is striking — Islam is not a solo journey. We help each other climb the mountain.</p>
@@ -243,16 +293,17 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 FINAL QUIZ — RIGHT AND LEFT (90:17-20)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to complete Surah Al-Balad!</div>
-      <div id="quiz-6"></div><div class="game-feedback" id="feedback-6"></div>
+      <div id="quiz-7"></div><div class="game-feedback" id="feedback-7"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection7()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-7-btn" style="display:none" onclick="completeSection(7)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
 </div>
+<script src="../shared/arabic-words.js"></script>
 <script src="scenes.js"></script>
 <script src="../shared/engine.js"></script>
 <script src="../shared/ui.js"></script>

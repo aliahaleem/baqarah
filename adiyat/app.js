@@ -1,24 +1,71 @@
 'use strict';
 /* Surah Al-Adiyat (100) — The Charging Mares */
 window.STORAGE_KEY = 'adiyatQuestSave';
-window.state = { explorerName:'', xp:0, gems:0, completed:[], s1Answers:{}, s1Checked:false, s2Checked:false, s3Order:[], s3Checked:false, s4Answers:{}, s4Checked:false };
+window.state = { explorerName:'', xp:0, gems:0, completed:[], s2Answers:{}, s2Checked:false, s3Checked:false, s4Order:[], s4Checked:false, s5Answers:{}, s5Checked:false };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'🐎', title:'Horses Witnessed', msg:"SubhanAllah! Five powerful oaths by the charging warhorses: they pant, they strike sparks, they raid at dawn, they kick up dust, they charge into the centre. The energy and loyalty of the horse — used to condemn human ingratitude!"},
-  2:{xp:80, gems:3, icon:'💔', title:'Ingratitude Exposed', msg:"MashAllah! 'Inna al-insana li-rabbihi la-kanud.' Truly, man is KANUD — ungrateful, withholding. He WITNESSES his own ingratitude. He is FIERCE in his love of wealth. Yet the graves will be emptied and the secrets revealed!"},
-  3:{xp:90, gems:3, icon:'📜', title:'Story Ordered',    msg:"MashAllah! You ordered the structure of Al-Adiyat correctly — from the oath to the condemnation to the Day when all is exposed!"},
-  4:{xp:100, gems:4, icon:'⚡', title:'Al-Adiyat Complete', msg:"Allahu Akbar! Al-Adiyat complete! The loyal horse charges for its master despite dangers. The ungrateful human hoards wealth despite all Allah's gifts. May we be grateful horses — loyal to our Creator! Ameen! 🏆"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
+  2:{xp:70, gems:3, icon:'🐎', title:'Horses Witnessed', msg:"SubhanAllah! Five powerful oaths by the charging warhorses: they pant, they strike sparks, they raid at dawn, they kick up dust, they charge into the centre. The energy and loyalty of the horse — used to condemn human ingratitude!"},
+  3:{xp:80, gems:3, icon:'💔', title:'Ingratitude Exposed', msg:"MashAllah! 'Inna al-insana li-rabbihi la-kanud.' Truly, man is KANUD — ungrateful, withholding. He WITNESSES his own ingratitude. He is FIERCE in his love of wealth. Yet the graves will be emptied and the secrets revealed!"},
+  4:{xp:90, gems:3, icon:'📜', title:'Story Ordered',    msg:"MashAllah! You ordered the structure of Al-Adiyat correctly — from the oath to the condemnation to the Day when all is exposed!"},
+  5:{xp:100, gems:4, icon:'⚡', title:'Al-Adiyat Complete', msg:"Allahu Akbar! Al-Adiyat complete! The loyal horse charges for its master despite dangers. The ungrateful human hoards wealth despite all Allah's gifts. May we be grateful horses — loyal to our Creator! Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s100', surahName:'Al-Adiyat', surahArabic:'العاديات', totalLevels:4, rewards:REWARDS,
-  tileIcons:['🐎','💔','📜','⚡'], tileLabels:['Charging Mares','Ingratitude','Story','Complete'],
+  id:'s100', surahName:'Al-Adiyat', surahArabic:'العاديات', totalLevels:5, rewards:REWARDS,
+  tileIcons:['📖','🐎','💔','📜','⚡'], tileLabels:['Word by Word','Charging Mares','Ingratitude','Story','Complete'],
   welcomeMsg:{
-    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Adiyat — The Charging Mares! Five dramatic oaths by warhorses panting, sparking, raiding at dawn — all to condemn one thing: human ingratitude towards Allah. 4 levels!`,
-    partial: (n,d)=>`Welcome back, ${n}! ${d}/4 done. The horses charge on! 🐎`,
+    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Adiyat — The Charging Mares! Five dramatic oaths by warhorses panting, sparking, raiding at dawn — all to condemn one thing: human ingratitude towards Allah. 5 levels!`,
+    partial: (n,d)=>`Welcome back, ${n}! ${d}/5 done. The horses charge on! 🐎`,
     complete:n=>`MashAllah, ${n}! Al-Adiyat complete! "Inna al-insana li-rabbihi la-kanud." May we never be ungrateful to our Lord! 🏆`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1 — وَالْعَادِيَاتِ ضَبْحًا', words:[
+    {ar:'ضَبْحًا', tr:'ḍabḥan', en:'panting', freq:1},
+    {ar:'وَالْعَادِيَاتِ', tr:'wal-ʿādiyāt', en:'by the charging steeds', freq:1},
+  ]},
+  {label:'Verse 6 — إِنَّ الْإِنسَانَ لِرَبِّهِ لَكَنُودٌ', words:[
+    {ar:'لَكَنُودٌ', tr:'la-kanūd', en:'truly ungrateful', freq:1},
+    {ar:'لِرَبِّهِ', tr:'li-rabbihi', en:'to his Lord', freq:10},
+    {ar:'الْإِنسَانَ', tr:'al-insān', en:'mankind', freq:65},
+    'inna',
+  ]},
+  {label:'Verse 9 — أَفَلَا يَعْلَمُ إِذَا بُعْثِرَ مَا فِي الْقُبُورِ', words:[
+    {ar:'الْقُبُورِ', tr:'al-qubūr', en:'the graves', freq:7},
+    {ar:'مَا فِي', tr:'mā fī', en:'what is in', freq:2005},
+    {ar:'بُعْثِرَ', tr:'buʿthira', en:'is scattered/overturned', freq:1},
+    'idha',
+    {ar:'أَفَلَا يَعْلَمُ', tr:'afalā yaʿlamu', en:'does he not know', freq:50},
+  ]},
+  {label:'Verse 10 — وَحُصِّلَ مَا فِي الصُّدُورِ', words:[
+    {ar:'الصُّدُورِ', tr:'al-ṣudūr', en:'the chests/hearts', freq:5},
+    {ar:'مَا فِي', tr:'mā fī', en:'what is in', freq:2005},
+    {ar:'وَحُصِّلَ', tr:'wa-ḥuṣṣila', en:'and is made apparent', freq:1},
+  ]},
+];
+
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'ضَبْحًا', zone:'wz1'},
+  {id:'w2', text:'وَالْعَادِيَاتِ', zone:'wz2'},
+  {id:'w3', text:'لَكَنُودٌ', zone:'wz3'},
+  {id:'w4', text:'لِرَبِّهِ', zone:'wz4'},
+  {id:'w5', text:'الْإِنسَانَ', zone:'wz5'},
+  {id:'w6', text:'الْقُبُورِ', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'panting'},
+  {id:'wz2', desc:'by the charging steeds'},
+  {id:'wz3', desc:'truly ungrateful'},
+  {id:'wz4', desc:'to his Lord'},
+  {id:'wz5', desc:'mankind'},
+  {id:'wz6', desc:'the graves'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
 
 const S1_QUIZ = [
   {q:'What are "al-adiyat" in 100:1?',
@@ -73,10 +120,13 @@ const S4_QUIZ = [
    correct:2},
 ];
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderStoryOrder(3,S3_EVENTS_CORRECT);}function checkSection3(){checkStoryOrder(3,S3_EVENTS_CORRECT);}
-function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
+
+
+
+function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
+function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}
+function renderSection4Game(){renderStoryOrder(4,S3_EVENTS_CORRECT);}function checkSection4(){checkStoryOrder(4,S3_EVENTS_CORRECT);}
+function renderSection5Game(){renderQuiz(5,S4_QUIZ);}function checkSection5(){checkQuiz(5,S4_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -92,5 +142,5 @@ window._drawBuildCanvas = function(n) {
     ctx.fillRect(hx+5,H*0.65,7,14);ctx.fillRect(hx+18,H*0.65,7,14);ctx.fillRect(hx+28,H*0.65,7,14);ctx.fillRect(hx+38,H*0.65,7,14);}
   if(n>=3){ctx.fillStyle=acc;ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('كَنُود',W/2,H*0.3);ctx.textAlign='left';}
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
-  ctx.fillText(n>=4?'AL-ADIYAT COMPLETE! 🐎':`Al-Adiyat — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
+  ctx.fillText(n>=4?'AL-ADIYAT COMPLETE! 🐎':`Al-Adiyat — ${n}/5 levels`,W/2,14);ctx.textAlign='left';
 };

@@ -19,7 +19,7 @@ const VD={
 
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 
-class S1 extends BS{constructor(){super('canvas-1');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.tariq);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_label(ctx,'CLICK: The Piercing Night Star — 86:1-4');
+class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.tariq);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_label(ctx,'CLICK: The Piercing Night Star — 86:1-4');
 // Pulsing bright star
 const pulse=0.5+Math.sin(this.t*0.08)*0.5;ctx.shadowColor=`rgba(216,232,255,${pulse})`;ctx.shadowBlur=20*pulse;ctx.fillStyle=`rgba(220,235,255,${0.7+pulse*0.3})`;ctx.beginPath();ctx.arc(CW/2,CH/2,8,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
 // Rays
@@ -30,7 +30,7 @@ _stars(ctx);
 const off=Math.sin(this.t*0.03)*3;ctx.fillStyle='rgba(200,220,255,0.5)';ctx.beginPath();ctx.ellipse(CW/2+100,80+off,20,10,0.3,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.ellipse(CW/2+140,80+off,20,10,-0.3,0,Math.PI*2);ctx.fill();fillRect(ctx,CW/2+112,68+off,12,24,'#f0eee8');
 _label(ctx,'"Every soul has a GUARDIAN over it" (86:4)',CH-10);};draw();}}
 
-class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.water);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,175);_label(ctx,'CLICK: Created from Rushing Water — 86:5-8');
+class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.water);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,175);_label(ctx,'CLICK: Created from Rushing Water — 86:5-8');
 // Drop of water
 const drop_y=60+Math.sin(this.t*0.05)*5;ctx.fillStyle='rgba(144,184,224,0.8)';ctx.beginPath();ctx.arc(CW/2,drop_y,12,0,Math.PI*2);ctx.fill();ctx.fillStyle='rgba(180,220,255,0.5)';ctx.beginPath();ctx.moveTo(CW/2,drop_y-12);ctx.quadraticCurveTo(CW/2+8,drop_y-25,CW/2,drop_y-35);ctx.quadraticCurveTo(CW/2-8,drop_y-25,CW/2,drop_y-12);ctx.fill();
 // Arrow down to person
@@ -40,7 +40,7 @@ _fig(ctx,CW/2-10,105,'#e8c39a','#2a4060','#1a2840');
 // Resurrection arrow up
 ctx.fillStyle=p.label;ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('مِن مَاءٍ دَافِقٍ',CW/2,58);ctx.fillText('"Created from gushing water"',CW/2,70);ctx.fillText('"He is ABLE to return him" (86:8)',CW/2,CH-5);ctx.textAlign='left';};draw();}}
 
-class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.secrets);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,175);_label(ctx,'CLICK: The Day Secrets Are Examined — 86:9-10');
+class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.secrets);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,175);_label(ctx,'CLICK: The Day Secrets Are Examined — 86:9-10');
 // X-ray of person (secrets visible)
 _fig(ctx,CW/2-10,100,'#e8c39a','#2a4060','#1a2840');
 // Radiating examination lines
@@ -50,7 +50,7 @@ ctx.fillStyle='rgba(144,184,224,0.5)';ctx.font='6px "Press Start 2P",monospace';
 // Alone
 ctx.fillStyle='#ff8888';ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"No power, no helper on That Day"',CW/2,CH-5);ctx.textAlign='left';};draw();}}
 
-class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.quran);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,180);_label(ctx,'CLICK: The Decisive Word — 86:13-14');
+class S5 extends BS{constructor(){super('canvas-5');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.quran);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,180);_label(ctx,'CLICK: The Decisive Word — 86:13-14');
 // Book - Quran
 fillRect(ctx,CW/2-30,80,60,80,'#0c1428');ctx.strokeStyle=p.acStr+'0.8)';ctx.lineWidth=2;ctx.strokeRect(CW/2-30,80,60,80);
 // Light beam from book
@@ -58,7 +58,7 @@ const pulse=0.2+Math.sin(this.t*0.05)*0.15;ctx.fillStyle=`rgba(216,232,255,${pul
 ctx.fillStyle=p.label;ctx.font='6px serif';ctx.textAlign='center';ctx.fillText('قَوْلٌ',CW/2,115);ctx.fillText('فَصْلٌ',CW/2,128);
 ctx.fillStyle=p.acStr+'0.9)';ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"A DECISIVE word — not jest" (86:13-14)',CW/2,CH-5);ctx.textAlign='left';};draw();}}
 
-class S5 extends BS{constructor(){super('canvas-5');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.tariq);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,175);_label(ctx,'CLICK: Sky Returns, Earth Opens Up — 86:11-12');
+class S6 extends BS{constructor(){super('canvas-6');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.tariq);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,175);_label(ctx,'CLICK: Sky Returns, Earth Opens Up — 86:11-12');
 // Sky returning rain
 for(let r=0;r<5;r++){const rx=80+r*100,ry=(this.t*2+r*40)%150;ctx.fillStyle='rgba(144,184,224,0.6)';ctx.fillRect(rx,ry,2,8);}
 // Earth cracking open
@@ -67,7 +67,7 @@ ctx.strokeStyle=p.acStr+'0.5)';ctx.lineWidth=1;ctx.setLineDash([3,2]);ctx.beginP
 [[80,160],[200,155],[330,162],[450,158]].forEach(([px,py])=>{ctx.fillStyle='#1a3808';ctx.fillRect(px-2,py,4,18);ctx.fillStyle='#0a2008';ctx.fillRect(px-6,py-8,12,12);});
 ctx.fillStyle=p.label;ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('"By the sky that returns water" (86:11)',CW/2,55);ctx.fillText('"By the earth that splits open" (86:12)',CW/2,68);ctx.fillText('EVIDENCE: Allah who sends rain CAN send resurrection!',CW/2,CH-5);ctx.textAlign='left';};draw();}}
 
-class S6 extends BS{constructor(){super('canvas-6');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.plot);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,175);_label(ctx,'CLICK: They Plot, Allah Plans — 86:15-17');
+class S7 extends BS{constructor(){super('canvas-7');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.plot);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,175);_label(ctx,'CLICK: They Plot, Allah Plans — 86:15-17');
 // Humans plotting
 _fig(ctx,100,110,'#d0b080','#2a1818','#181010');_fig(ctx,150,115,'#c8a880','#221818','#181010');ctx.fillStyle='rgba(200,50,50,0.3)';ctx.beginPath();ctx.arc(120,120,30,0,Math.PI*2);ctx.fill();
 ctx.fillStyle='#ff8888';ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('يَكِيدُون',120,158);ctx.fillText('"They plot"',120,170);
@@ -78,6 +78,15 @@ const glow=0.2+Math.sin(this.t*0.04)*0.1;ctx.fillStyle=`rgba(216,232,255,${glow}
 ctx.fillStyle='#90b8e0';ctx.fillText('"Give them respite — gently" (86:17)',CW/2,CH-5);ctx.textAlign='left';};draw();}}
 
 const scenes={};
-function initScenes(){scenes[1]=new S1();scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();scenes[5]=new S5();scenes[6]=new S6();}
-function startScene(n){if(scenes[n])scenes[n].start();}
-function stopAllScenes(){Object.values(scenes).forEach(s=>s.stop());}
+
+
+
+
+const VD_wbw={ref:'At-Tariq (86)',arabic:'وَالسَّمَاءِ وَالطَّارِقِ ۩ وَمَا أَدْرَاكَ مَا الطَّارِقُ ۩ النَّجْمُ الثَّاقِبُ',english:'"By the sky and the night-comer — and what will make you know what the night-comer is? It is the piercing star." (86:1-3)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};
+const _s1wbw = new window.WBWScene('canvas-1', {emoji:'🌟',label:'THE NIGHT-COMER',verse:VD_wbw});
+
+function initScenes(){scenes[1]=_s1wbw;scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();scenes[5]=new S5();scenes[6]=new S6();scenes[7]=new S7();}
+function startScene(n) {
+  if(scenes[n])scenes[n].start();}
+function stopAllScenes() {
+  Object.values(scenes).forEach(s=>s.stop());}

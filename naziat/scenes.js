@@ -156,7 +156,7 @@ class BaseScene {
 //  SCENE 1 — THE FIVE ANGELS (79:1-5)
 // =============================================
 class Scene1 extends BaseScene {
-  constructor() { super('canvas-1'); this.clickZones = [{ x:0, y:0, w:CW, h:CH, key:'angels' }]; }
+  constructor() { super('canvas-2'); this.clickZones = [{ x:0, y:0, w:CW, h:CH, key:'angels' }]; }
   draw() {
     const c = this.ctx, t = this.t, p = sceneP();
     c.fillStyle = p.sky0; c.fillRect(0, 0, CW, CH);
@@ -216,7 +216,7 @@ class Scene1 extends BaseScene {
 // =============================================
 class Scene2 extends BaseScene {
   constructor() {
-    super('canvas-2');
+    super('canvas-3');
     this.clickZones = [{ x:0,y:0,w:CW,h:CH,key:'trembling' }];
   }
   draw() {
@@ -265,7 +265,7 @@ class Scene2 extends BaseScene {
 //  SCENE 3 — MOSES IN THE HOLY VALLEY (79:15-19)
 // =============================================
 class Scene3 extends BaseScene {
-  constructor() { super('canvas-3'); this.clickZones=[{x:0,y:0,w:CW,h:CH,key:'holy_valley'}]; }
+  constructor() { super('canvas-4'); this.clickZones=[{x:0,y:0,w:CW,h:CH,key:'holy_valley'}]; }
   draw() {
     const c = this.ctx, t = this.t, p = sceneP();
     const sky=c.createLinearGradient(0,0,0,CH);
@@ -312,7 +312,7 @@ class Scene3 extends BaseScene {
 //  SCENE 4 — PHARAOH'S DEFIANCE (79:20-26)
 // =============================================
 class Scene4 extends BaseScene {
-  constructor() { super('canvas-4'); this.clickZones=[{x:0,y:0,w:CW,h:CH,key:'pharaoh_denial'}]; }
+  constructor() { super('canvas-5'); this.clickZones=[{x:0,y:0,w:CW,h:CH,key:'pharaoh_denial'}]; }
   draw() {
     const c = this.ctx, t = this.t;
     const sky=c.createLinearGradient(0,0,0,CH);
@@ -350,7 +350,7 @@ class Scene4 extends BaseScene {
 //  SCENE 5 — SIGNS OF CREATION (79:27-33)
 // =============================================
 class Scene5 extends BaseScene {
-  constructor() { super('canvas-5'); this.clickZones=[{x:0,y:0,w:CW,h:CH,key:'creation_signs'}]; }
+  constructor() { super('canvas-6'); this.clickZones=[{x:0,y:0,w:CW,h:CH,key:'creation_signs'}]; }
   draw() {
     const c = this.ctx, t = this.t, p = sceneP();
     const sky=c.createLinearGradient(0,0,0,CH*0.55);
@@ -394,7 +394,7 @@ class Scene5 extends BaseScene {
 //  SCENE 6 — AT-TAMMAH (79:34-41)
 // =============================================
 class Scene6 extends BaseScene {
-  constructor() { super('canvas-6'); this.clickZones=[{x:0,y:0,w:CW,h:CH,key:'at_tammah'}]; }
+  constructor() { super('canvas-7'); this.clickZones=[{x:0,y:0,w:CW,h:CH,key:'at_tammah'}]; }
   draw() {
     const c = this.ctx, t = this.t;
     c.fillStyle='#200404';c.fillRect(0,0,CW/2,CH);
@@ -448,7 +448,7 @@ class Scene6 extends BaseScene {
 //  SCENE 7 — THE FINAL HOUR (79:42-46)
 // =============================================
 class Scene7 extends BaseScene {
-  constructor() { super('canvas-7'); this.clickZones=[{x:0,y:0,w:CW,h:CH,key:'the_hour'}]; }
+  constructor() { super('canvas-8'); this.clickZones=[{x:0,y:0,w:CW,h:CH,key:'the_hour'}]; }
   draw() {
     const c = this.ctx, t = this.t, p = sceneP();
     c.fillStyle=p.sky0;c.fillRect(0,0,CW,CH);
@@ -485,8 +485,18 @@ class Scene7 extends BaseScene {
 //  SCENE MANAGER
 // =============================================
 const _scenes = {};
+
+
+
+
+const VD_wbw={ref:'An-Naziat (79)',arabic:'وَالنَّازِعَاتِ غَرْقًا ۩ وَالنَّاشِطَاتِ نَشْطًا ۩ وَالسَّابِحَاتِ سَبْحًا',english:'"By those [angels] who extract with violence, and those who draw out gently, and those who glide [through the sky]." (79:1-3)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};
+const _s1wbw = new window.WBWScene('canvas-1', {emoji:'⭐',label:'THE EXTRACTORS',verse:VD_wbw});
+
 function initScenes() {
-  [Scene1,Scene2,Scene3,Scene4,Scene5,Scene6,Scene7].forEach((cls,i) => { _scenes[i+1] = new cls(); });
+  _scenes[1] = _s1wbw;
+  [Scene1,Scene2,Scene3,Scene4,Scene5,Scene6,Scene7].forEach((cls,i) => { _scenes[i+2] = new cls(); });
 }
-function startScene(n)   { stopAllScenes(); if (_scenes[n]) _scenes[n].start(); }
-function stopAllScenes() { Object.values(_scenes).forEach(s => s && s.stop && s.stop()); }
+function startScene(n) {
+   stopAllScenes(); if (_scenes[n]) _scenes[n].start(); }
+function stopAllScenes() {
+  Object.values(_scenes).forEach(s => s && s.stop && s.stop()); }

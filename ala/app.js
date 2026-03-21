@@ -1,26 +1,71 @@
 'use strict';
 /* SURAH AL-ALA (87) — app.js */
 window.STORAGE_KEY='alaQuestSave';
-window.state={explorerName:'',xp:0,gems:0,completed:[],s1Checked:false,s2Answers:{},s2Checked:false,s3Answers:{},s3Checked:false,s4Answers:{},s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false};
+window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Answers:{},s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false,s7Answers:{},s7Checked:false};
 
 const REWARDS={
-  1:{xp:80,gems:3,icon:'🌿',title:'GLORIFY THE MOST HIGH!',msg:"SubhanAllah — Subhana Rabbiya Al-A\'la! When you say these words in sujood (prostration), you are directly reciting Surah Al-Ala verse 1! The Prophet ﷺ commanded this du'a in sujood after this surah was revealed. Every sajdah, every prayer — you glorify the Most High with His own words. SubhanAllah!"},
-  2:{xp:80,gems:3,icon:'📿',title:'THE PROMISE OF MEMORY!',msg:"Allahu Akbar! 'Sanuqri\'uka fa-la tansa!' We will make you RECITE and you will NOT FORGET. This was a divine promise to Prophet Muhammad ﷺ — the Quran would be preserved in his memory perfectly. And through him and the Ummah: the Quran has been memorised by millions across 1400+ years! The promise is fulfilled daily."},
-  3:{xp:90,gems:3,icon:'🤲',title:'KHASHYAH OPENS THE HEART!',msg:"MashAllah! 'Sayyadhdhakkaru man yakhsha.' The one who FEARS Allah with awe will be reminded. Khashyah — not just fear but awe, reverence, awareness. This is the key that opens the heart to benefit from the Quran and reminder. A heart with khashyah absorbs every reminder. Cultivate khashyah and every reminder will benefit you!"},
-  4:{xp:90,gems:4,icon:'✨',title:'SUCCESS FORMULA FOUND!',msg:"SubhanAllah! 'Qad aflaha man tazakka — wa dhakara isma Rabbih fa-salla.' CERTAINLY SUCCEEDED who purified himself AND mentioned Allah's name AND prayed. Three steps: purification (tazakka), dhikr (dhakara), salah (salla). This is the formula for falah — for complete success. Keep purifying, keep in dhikr, keep your prayers!"},
-  5:{xp:100,gems:4,icon:'⚡',title:'DUNYA vs AKHIRA DECIDED!',msg:"Allahu Akbar! 'Bal tu\'thirun al-hayat al-dunya — wa al-akhiratu khayrun wa abqa.' But you PREFER the worldly life — while the Hereafter is BETTER AND MORE LASTING. Better in quality. Longer in duration. The choice is clear when you see it like this. Use the world as a vehicle to the Hereafter — not as a destination."},
-  6:{xp:120,gems:5,icon:'📜',title:'SURAH AL-ALA COMPLETE!',msg:"ALLAHUMMA BARIK! All 6 levels of Surah Al-Ala complete! Glorify the Most High. He will make you not forget. Fear Allah to be reminded. Purify and pray for success. Prefer the Hereafter. And remember: these truths were in the scrolls of Ibrahim and Musa too! This message is eternal. Ameen!"},
+  2:{xp:80,gems:3,icon:'🌿',title:'GLORIFY THE MOST HIGH!',msg:"SubhanAllah — Subhana Rabbiya Al-A\'la! When you say these words in sujood (prostration), you are directly reciting Surah Al-Ala verse 1! The Prophet ﷺ commanded this du'a in sujood after this surah was revealed. Every sajdah, every prayer — you glorify the Most High with His own words. SubhanAllah!"},
+  3:{xp:80,gems:3,icon:'📿',title:'THE PROMISE OF MEMORY!',msg:"Allahu Akbar! 'Sanuqri\'uka fa-la tansa!' We will make you RECITE and you will NOT FORGET. This was a divine promise to Prophet Muhammad ﷺ — the Quran would be preserved in his memory perfectly. And through him and the Ummah: the Quran has been memorised by millions across 1400+ years! The promise is fulfilled daily."},
+  4:{xp:90,gems:3,icon:'🤲',title:'KHASHYAH OPENS THE HEART!',msg:"MashAllah! 'Sayyadhdhakkaru man yakhsha.' The one who FEARS Allah with awe will be reminded. Khashyah — not just fear but awe, reverence, awareness. This is the key that opens the heart to benefit from the Quran and reminder. A heart with khashyah absorbs every reminder. Cultivate khashyah and every reminder will benefit you!"},
+  5:{xp:90,gems:4,icon:'✨',title:'SUCCESS FORMULA FOUND!',msg:"SubhanAllah! 'Qad aflaha man tazakka — wa dhakara isma Rabbih fa-salla.' CERTAINLY SUCCEEDED who purified himself AND mentioned Allah's name AND prayed. Three steps: purification (tazakka), dhikr (dhakara), salah (salla). This is the formula for falah — for complete success. Keep purifying, keep in dhikr, keep your prayers!"},
+  6:{xp:100,gems:4,icon:'⚡',title:'DUNYA vs AKHIRA DECIDED!',msg:"Allahu Akbar! 'Bal tu\'thirun al-hayat al-dunya — wa al-akhiratu khayrun wa abqa.' But you PREFER the worldly life — while the Hereafter is BETTER AND MORE LASTING. Better in quality. Longer in duration. The choice is clear when you see it like this. Use the world as a vehicle to the Hereafter — not as a destination."},
+  7:{xp:120,gems:5,icon:'📜',title:'SURAH AL-ALA COMPLETE!',msg:"ALLAHUMMA BARIK! All 7 levels of Surah Al-Ala complete! Glorify the Most High. He will make you not forget. Fear Allah to be reminded. Purify and pray for success. Prefer the Hereafter. And remember: these truths were in the scrolls of Ibrahim and Musa too! This message is eternal. Ameen!"},
 };
 window.SURAH_CONFIG={
-  totalLevels:6,rewards:REWARDS,
-  tileIcons:['🌿','📿','🤲','✨','⚡','📜'],
-  tileLabels:['Glorify','Recite','Who Fears','Purify','Dunya/Akhira','Scrolls'],
+  totalLevels:7,rewards:REWARDS,
+  tileIcons:['📖','🌿','📿','🤲','✨','⚡','📜'],
+  tileLabels:['Word by Word','Glorify','Recite','Who Fears','Purify','Dunya/Akhira','Scrolls'],
   welcomeMsg:{
-    fresh:name=>`As-salamu alaykum, ${name}! Surah Al-Ala — The Most High! Glorify His name. He will make you recite without forgetting. Fear Allah and be reminded. Purify yourself and succeed. Prefer the Hereafter. This is in the earliest scriptures too. 6 levels await!`,
+    fresh:name=>`As-salamu alaykum, ${name}! Surah Al-Ala — The Most High! Glorify His name. He will make you recite without forgetting. Fear Allah and be reminded. Purify yourself and succeed. Prefer the Hereafter. This is in the earliest scriptures too. 7 levels await!`,
     partial:(name,done)=>`Welcome back, ${name}! ${done} level${done>1?'s':''} complete. "Sabbihi isma Rabbika al-A\'la" — Keep glorifying! 🌿`,
     complete:name=>`MashAllah, ${name}! Surah Al-Ala complete! "Qad aflaha man tazakka." He has certainly succeeded who purified himself. May we be among them! Ameen! 📜`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1 — سَبِّحِ اسْمَ رَبِّكَ الْأَعْلَى', words:[
+    {ar:'الْأَعْلَى', tr:'al-aʿlā', en:'the Most High', freq:14},
+    {ar:'رَبِّكَ', tr:'rabbika', en:'your Lord', freq:49},
+    {ar:'اسْمَ', tr:'isma', en:'the name of', freq:22},
+    {ar:'سَبِّحِ', tr:'sabbiḥ', en:'glorify', freq:7},
+  ]},
+  {label:'Verse 2-3 — الَّذِي خَلَقَ فَسَوَّىٰ · وَالَّذِي قَدَّرَ فَهَدَىٰ', words:[
+    {ar:'فَهَدَىٰ', tr:'fa-hadā', en:'and then guided', freq:169},
+    {ar:'قَدَّرَ', tr:'qaddara', en:'measured/destined', freq:13},
+    {ar:'فَسَوَّىٰ', tr:'fa-sawwā', en:'and proportioned', freq:4},
+    {ar:'خَلَقَ', tr:'khalaqa', en:'created', freq:29},
+    'alladhi',
+  ]},
+  {label:'Verse 14-15 — قَدْ أَفْلَحَ مَن تَزَكَّىٰ · وَذَكَرَ اسْمَ رَبِّهِ فَصَلَّىٰ', words:[
+    {ar:'فَصَلَّىٰ', tr:'fa-ṣallā', en:'and prayed', freq:83},
+    {ar:'رَبِّهِ', tr:'rabbihi', en:'his Lord', freq:49},
+    {ar:'اسْمَ', tr:'isma', en:'the name of', freq:22},
+    {ar:'وَذَكَرَ', tr:'wa-dhakara', en:'and remembers', freq:267},
+    {ar:'تَزَكَّىٰ', tr:'tazakkā', en:'purifies himself', freq:5},
+    {ar:'أَفْلَحَ', tr:'aflaḥa', en:'has succeeded', freq:10},
+    {ar:'قَدْ', tr:'qad', en:'certainly', freq:406},
+  ]},
+];
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'الْأَعْلَى', zone:'wz1'},
+  {id:'w2', text:'رَبِّكَ', zone:'wz2'},
+  {id:'w3', text:'اسْمَ', zone:'wz3'},
+  {id:'w4', text:'سَبِّحِ', zone:'wz4'},
+  {id:'w5', text:'فَهَدَىٰ', zone:'wz5'},
+  {id:'w6', text:'قَدَّرَ', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'the Most High'},
+  {id:'wz2', desc:'your Lord'},
+  {id:'wz3', desc:'the name of'},
+  {id:'wz4', desc:'glorify'},
+  {id:'wz5', desc:'and then guided'},
+  {id:'wz6', desc:'measured/destined'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+
 
 const S1_ITEMS=[{id:'i1',text:'🌿 Khalq\n& Taswiya',zone:'z1'},{id:'i2',text:'🎯 Qadr\n& Huda',zone:'z2'},{id:'i3',text:'🌾 Pasture\n& Debris',zone:'z3'}];
 const S1_ZONES=[{id:'z1',desc:'"Alladhi khalaqa fa-sawwa" (87:2) — Who CREATED and then PROPORTIONED. "Khalaqa" — brought into existence from nothing. "Sawwa" — balanced, proportioned, made even. Every creation of Allah is complete and perfectly proportioned — nothing missing, nothing excess.'},{id:'z2',desc:'"Wa alladhi qaddara fa-hada" (87:3) — Who DESTINED and then GUIDED. "Qaddara" — decreed, fixed the measure of all things. "Hada" — guided each thing to fulfil its purpose. The bee is guided to its hive, the seed to its growth, the human to what benefits them — if they listen.'},{id:'z3',desc:'"Wa alladhi akhraja al-mar\'a — fa-ja\'alahu ghuthaan ahwa" (87:4-5) — Who brought out the pasture — then made it dark debris. Green, thriving pasture becomes dry, withered, dark debris. The world\'s cycles of growth and decay — all under Allah\'s command.'}];
@@ -160,12 +205,15 @@ const S6_QUIZ=[
    correct:3},
 ];
 
-function renderSection1Game(){renderDragDrop(1,S1_ITEMS,S1_ZONES);}function checkSection1(){checkDragDrop(1,S1_ZONES);}
-function renderSection2Game(){renderQuiz(2,S2_QUIZ);}function checkSection2(){checkQuiz(2,S2_QUIZ);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
-function renderSection5Game(){renderQuiz(5,S5_QUIZ);}function checkSection5(){checkQuiz(5,S5_QUIZ);}
-function renderSection6Game(){renderQuiz(6,S6_QUIZ);}function checkSection6(){checkQuiz(6,S6_QUIZ);}
+
+
+
+function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
+function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
+function renderSection5Game(){renderQuiz(5,S4_QUIZ);}function checkSection5(){checkQuiz(5,S4_QUIZ);}
+function renderSection6Game(){renderQuiz(6,S5_QUIZ);}function checkSection6(){checkQuiz(6,S5_QUIZ);}
+function renderSection7Game(){renderQuiz(7,S6_QUIZ);}function checkSection7(){checkQuiz(7,S6_QUIZ);}
 
 function _lbl(ctx,W,msg,d,t){ctx.fillStyle='#c8a020';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(msg,W/2,18);ctx.fillStyle='#041008';ctx.fillRect(W/2-100,26,200,8);ctx.fillStyle='#1a6030';ctx.fillRect(W/2-100,26,Math.round(200*d/t),8);ctx.textAlign='left';}
 function _drawBuildCanvas(n){

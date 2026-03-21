@@ -1,25 +1,76 @@
 'use strict';
 /* Surah Al-Alaq (96) — The Clot / Read! */
 window.STORAGE_KEY = 'alaqQuestSave';
-window.state = { explorerName:'', xp:0, gems:0, completed:[], s1Answers:{}, s1Checked:false, s2Checked:false, s3Answers:{}, s3Checked:false, s4Order:[], s4Checked:false, s5Answers:{}, s5Checked:false };
+window.state = { explorerName:'', xp:0, gems:0, completed:[], s2Answers:{}, s2Checked:false, s3Checked:false, s4Answers:{}, s4Checked:false, s5Order:[], s5Checked:false, s6Answers:{}, s6Checked:false };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'📖', title:'First Word',    msg:"SubhanAllah! The very first word revealed to any prophet — 'IQRA!' Read! Not 'pray', not 'fast' — READ. In the name of your Lord who CREATED. Knowledge is from Allah. The pen taught what man did not know."},
-  2:{xp:80, gems:3, icon:'🩸', title:'Origin Known',  msg:"MashAllah! 'Khalaqal-insana min alaq' — man was created from a clinging blood clot. From something so humble — such an arrogant creature! Yet Allah honoured him with the pen, with knowledge."},
-  3:{xp:85, gems:3, icon:'⚠️', title:'Tyrant Warned', msg:"SubhanAllah! Man transgresses when he sees himself as self-sufficient. Abu Jahl threatened to crush the Prophet ﷺ. Allah warned: 'Kalla! Truly, if he does not stop — We will drag him by the forelock!'"},
-  4:{xp:90, gems:3, icon:'📜', title:'Story Ordered',  msg:"MashAllah! You ordered the story of the first revelation correctly. From the cave of Hira to the arrogance of Abu Jahl to the command: bow down and draw near!"},
-  5:{xp:100, gems:4, icon:'🌟', title:'Al-Alaq Complete', msg:"Allahu Akbar! Al-Alaq complete! 'Kalla la tuti\'hu wasjud waqtarib.' Do not obey him — PROSTRATE and draw near! The surah ends with sujud — the closest we get to Allah. Ameen! 🏆"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
+  2:{xp:70, gems:3, icon:'📖', title:'First Word',    msg:"SubhanAllah! The very first word revealed to any prophet — 'IQRA!' Read! Not 'pray', not 'fast' — READ. In the name of your Lord who CREATED. Knowledge is from Allah. The pen taught what man did not know."},
+  3:{xp:80, gems:3, icon:'🩸', title:'Origin Known',  msg:"MashAllah! 'Khalaqal-insana min alaq' — man was created from a clinging blood clot. From something so humble — such an arrogant creature! Yet Allah honoured him with the pen, with knowledge."},
+  4:{xp:85, gems:3, icon:'⚠️', title:'Tyrant Warned', msg:"SubhanAllah! Man transgresses when he sees himself as self-sufficient. Abu Jahl threatened to crush the Prophet ﷺ. Allah warned: 'Kalla! Truly, if he does not stop — We will drag him by the forelock!'"},
+  5:{xp:90, gems:3, icon:'📜', title:'Story Ordered',  msg:"MashAllah! You ordered the story of the first revelation correctly. From the cave of Hira to the arrogance of Abu Jahl to the command: bow down and draw near!"},
+  6:{xp:100, gems:4, icon:'🌟', title:'Al-Alaq Complete', msg:"Allahu Akbar! Al-Alaq complete! 'Kalla la tuti\'hu wasjud waqtarib.' Do not obey him — PROSTRATE and draw near! The surah ends with sujud — the closest we get to Allah. Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s96', surahName:'Al-Alaq', surahArabic:'العلق', totalLevels:5, rewards:REWARDS,
-  tileIcons:['📖','🩸','⚠️','📜','🌟'], tileLabels:['Read!','The Clot','Transgression','Story','Draw Near'],
+  id:'s96', surahName:'Al-Alaq', surahArabic:'العلق', totalLevels:6, rewards:REWARDS,
+  tileIcons:['📖','📖','🩸','⚠️','📜','🌟'], tileLabels:['Word by Word','Read!','The Clot','Transgression','Story','Draw Near'],
   welcomeMsg:{
-    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Alaq — The Clot! The FIRST revealed surah. 'Iqra!' — Read! Then it jumps to arrogant man who thinks he's self-sufficient. Then a direct confrontation with Abu Jahl. Ends with: prostrate and draw near to Allah. 5 levels!`,
-    partial: (n,d)=>`Welcome back, ${n}! ${d}/5 done. Keep reading — Iqra! 📖`,
+    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Alaq — The Clot! The FIRST revealed surah. 'Iqra!' — Read! Then it jumps to arrogant man who thinks he's self-sufficient. Then a direct confrontation with Abu Jahl. Ends with: prostrate and draw near to Allah. 6 levels!`,
+    partial: (n,d)=>`Welcome back, ${n}! ${d}/6 done. Keep reading — Iqra! 📖`,
     complete:n=>`MashAllah, ${n}! Al-Alaq complete! From the first "Iqra!" to "Wasjud waqtarib." May we always be of those who draw near! 🏆`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1 — اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ', words:[
+    {ar:'خَلَقَ', tr:'khalaqa', en:'created', freq:29},
+    {ar:'الَّذِي', tr:'alladhī', en:'who', freq:1283},
+    {ar:'رَبِّكَ', tr:'rabbika', en:'your Lord', freq:49},
+    {ar:'بِاسْمِ', tr:'bismi', en:'in the name of', freq:22},
+    {ar:'اقْرَأْ', tr:'iqraʾ', en:'Read! / Recite!', freq:3},
+  ]},
+  {label:'Verse 2 — خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ', words:[
+    {ar:'عَلَقٍ', tr:'ʿalaq', en:'a clinging clot', freq:2},
+    {ar:'مِنْ', tr:'min', en:'from', freq:1891},
+    {ar:'الْإِنسَانَ', tr:'al-insān', en:'mankind', freq:65},
+    {ar:'خَلَقَ', tr:'khalaqa', en:'He created', freq:29},
+  ]},
+  {label:'Verse 3-4 — اقْرَأْ وَرَبُّكَ الْأَكْرَمُ · الَّذِي عَلَّمَ بِالْقَلَمِ', words:[
+    {ar:'بِالْقَلَمِ', tr:'bil-qalam', en:'by the pen', freq:2},
+    {ar:'عَلَّمَ', tr:'ʿallama', en:'taught', freq:20},
+    {ar:'الْأَكْرَمُ', tr:'al-akram', en:'the Most Generous', freq:1},
+    {ar:'وَرَبُّكَ', tr:'wa-rabbuka', en:'and your Lord is', freq:30},
+  ]},
+  {label:'Verse 19 — كَلَّا لَا تُطِعْهُ وَاسْجُدْ وَاقْتَرِب', words:[
+    {ar:'وَاقْتَرِب', tr:'waqtarib', en:'and draw near', freq:2},
+    {ar:'وَاسْجُدْ', tr:'wasjud', en:'and prostrate', freq:34},
+    {ar:'تُطِعْهُ', tr:'tuṭiʿhu', en:'obey him', freq:10},
+    {ar:'لَا', tr:'lā', en:'do not', freq:1069},
+    {ar:'كَلَّا', tr:'kallā', en:'No! Indeed', freq:33},
+  ]},
+];
+
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'خَلَقَ', zone:'wz1'},
+  {id:'w2', text:'الَّذِي', zone:'wz2'},
+  {id:'w3', text:'رَبِّكَ', zone:'wz3'},
+  {id:'w4', text:'بِاسْمِ', zone:'wz4'},
+  {id:'w5', text:'اقْرَأْ', zone:'wz5'},
+  {id:'w6', text:'عَلَقٍ', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'created'},
+  {id:'wz2', desc:'who'},
+  {id:'wz3', desc:'your Lord'},
+  {id:'wz4', desc:'in the name of'},
+  {id:'wz5', desc:'Read! / Recite!'},
+  {id:'wz6', desc:'a clinging clot'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
 
 const S1_QUIZ = [
   {q:'What was the first word revealed to Prophet Muhammad ﷺ?',
@@ -89,11 +140,14 @@ const S5_QUIZ = [
    correct:1},
 ];
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderStoryOrder(4,S4_EVENTS_CORRECT);}function checkSection4(){checkStoryOrder(4,S4_EVENTS_CORRECT);}
-function renderSection5Game(){renderQuiz(5,S5_QUIZ);}function checkSection5(){checkQuiz(5,S5_QUIZ);}
+
+
+
+function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
+function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
+function renderSection5Game(){renderStoryOrder(5,S4_EVENTS_CORRECT);}function checkSection5(){checkStoryOrder(5,S4_EVENTS_CORRECT);}
+function renderSection6Game(){renderQuiz(6,S5_QUIZ);}function checkSection6(){checkQuiz(6,S5_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -104,5 +158,5 @@ window._drawBuildCanvas = function(n) {
   ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);
   if(n>=1){ctx.fillStyle=acc;ctx.font='18px serif';ctx.textAlign='center';ctx.fillText('اقْرَأْ',W/2,H*0.45);ctx.font='6px "Press Start 2P",monospace';ctx.fillText('"READ!" — First word revealed',W/2,H*0.6);ctx.textAlign='left';}
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
-  ctx.fillText(n>=5?'AL-ALAQ COMPLETE! 📖':`Al-Alaq — ${n}/5 levels`,W/2,14);ctx.textAlign='left';
+  ctx.fillText(n>=5?'AL-ALAQ COMPLETE! 📖':`Al-Alaq — ${n}/6 levels`,W/2,14);ctx.textAlign='left';
 };

@@ -35,7 +35,7 @@ const VD={
 class BaseScene{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 
 class Scene1 extends BaseScene{
-  constructor(){super('canvas-1');}
+  constructor(){super('canvas-2');}
   start(){
     if(!this.ctx)return;
     this.canvas.onclick=()=>showVersePopup(VD.signs);
@@ -73,7 +73,7 @@ class Scene1 extends BaseScene{
   }
 }
 class Scene2 extends BaseScene{
-  constructor(){super('canvas-2');}
+  constructor(){super('canvas-3');}
   start(){
     if(!this.ctx)return;
     this.canvas.onclick=()=>showVersePopup(VD.baby);
@@ -106,7 +106,7 @@ class Scene2 extends BaseScene{
   }
 }
 class Scene3 extends BaseScene{
-  constructor(){super('canvas-3');}
+  constructor(){super('canvas-4');}
   start(){
     if(!this.ctx)return;
     this.canvas.onclick=()=>showVersePopup(VD.prepared);
@@ -140,7 +140,7 @@ class Scene3 extends BaseScene{
   }
 }
 class Scene4 extends BaseScene{
-  constructor(){super('canvas-4');}
+  constructor(){super('canvas-5');}
   start(){
     if(!this.ctx)return;
     this.canvas.onclick=()=>showVersePopup(VD.angel);
@@ -172,7 +172,7 @@ class Scene4 extends BaseScene{
   }
 }
 class Scene5 extends BaseScene{
-  constructor(){super('canvas-5');}
+  constructor(){super('canvas-6');}
   start(){
     if(!this.ctx)return;
     this.canvas.onclick=()=>showVersePopup(VD.prophet);
@@ -204,7 +204,7 @@ class Scene5 extends BaseScene{
   }
 }
 class Scene6 extends BaseScene{
-  constructor(){super('canvas-6');}
+  constructor(){super('canvas-7');}
   start(){
     if(!this.ctx)return;
     this.canvas.onclick=()=>showVersePopup(VD.will);
@@ -242,6 +242,15 @@ class Scene6 extends BaseScene{
 }
 
 const scenes={};
-function initScenes(){scenes[1]=new Scene1();scenes[2]=new Scene2();scenes[3]=new Scene3();scenes[4]=new Scene4();scenes[5]=new Scene5();scenes[6]=new Scene6();}
-function startScene(n){if(scenes[n])scenes[n].start();}
-function stopAllScenes(){Object.values(scenes).forEach(s=>s.stop());}
+
+
+
+
+const VD_wbw={ref:'At-Takwir (81)',arabic:'إِذَا الشَّمْسُ كُوِّرَتْ ۩ وَإِذَا النُّجُومُ انكَدَرَتْ ۩ وَإِذَا الْجِبَالُ سُيِّرَتْ',english:'"When the sun is wound round, when the stars fall losing their light, when the mountains are made to move." (81:1-3)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};
+const _s1wbw = new window.WBWScene('canvas-1', {emoji:'🌑',label:'THE FOLDING UP',verse:VD_wbw});
+
+function initScenes(){scenes[1]=_s1wbw;scenes[2]=new Scene1();scenes[3]=new Scene2();scenes[4]=new Scene3();scenes[5]=new Scene4();scenes[6]=new Scene5();scenes[7]=new Scene6();}
+function startScene(n) {
+  if(scenes[n])scenes[n].start();}
+function stopAllScenes() {
+  Object.values(scenes).forEach(s=>s.stop());}

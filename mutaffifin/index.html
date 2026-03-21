@@ -41,12 +41,17 @@
   </div>
   <h2 class="section-heading">⚖️ THE QUEST MAP</h2>
   <div class="map-grid">
-    <div class="map-tile locked" id="tile-1" onclick="openSection(1)"><div class="tile-icon">⚖️</div><div class="tile-level">LEVEL 1</div><div class="tile-name">Defrauders</div><div class="tile-verses">83:1-6</div><div class="tile-status" id="status-1">▶ PLAY</div></div>
-    <div class="map-tile locked" id="tile-2" onclick="openSection(2)"><div class="tile-icon">📕</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Sijjin</div><div class="tile-verses">83:7-9</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-3" onclick="openSection(3)"><div class="tile-icon">📗</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Illiyyin</div><div class="tile-verses">83:18-21</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-4" onclick="openSection(4)"><div class="tile-icon">🌿</div><div class="tile-level">LEVEL 4</div><div class="tile-name">In Bliss</div><div class="tile-verses">83:22-26</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-5" onclick="openSection(5)"><div class="tile-icon">🔄</div><div class="tile-level">LEVEL 5</div><div class="tile-name">Reversal</div><div class="tile-verses">83:29-36</div><div class="tile-status" id="status-5">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-6" onclick="openSection(6)"><div class="tile-icon">📊</div><div class="tile-level">LEVEL 6</div><div class="tile-name">Resurrection</div><div class="tile-verses">83:4-6</div><div class="tile-status" id="status-6">🔒 LOCKED</div></div>
+        <div class="map-tile unlocked" id="tile-1" onclick="openSection(1)">
+      <div class="tile-icon">📖</div><div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">Word by Word</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+<div class="map-tile locked" id="tile-2" onclick="openSection(2)"><div class="tile-icon">⚖️</div><div class="tile-level">LEVEL 1</div><div class="tile-name">Defrauders</div><div class="tile-verses">83:1-6</div><div class="tile-status" id="status-2">▶ PLAY</div></div>
+    <div class="map-tile locked" id="tile-3" onclick="openSection(3)"><div class="tile-icon">📕</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Sijjin</div><div class="tile-verses">83:7-9</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-4" onclick="openSection(4)"><div class="tile-icon">📗</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Illiyyin</div><div class="tile-verses">83:18-21</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-5" onclick="openSection(5)"><div class="tile-icon">🌿</div><div class="tile-level">LEVEL 4</div><div class="tile-name">In Bliss</div><div class="tile-verses">83:22-26</div><div class="tile-status" id="status-5">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-6" onclick="openSection(6)"><div class="tile-icon">🔄</div><div class="tile-level">LEVEL 5</div><div class="tile-name">Reversal</div><div class="tile-verses">83:29-36</div><div class="tile-status" id="status-6">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-7" onclick="openSection(7)"><div class="tile-icon">📊</div><div class="tile-level">LEVEL 6</div><div class="tile-name">Resurrection</div><div class="tile-verses">83:4-6</div><div class="tile-status" id="status-7">🔒 LOCKED</div></div>
   </div>
   <div id="world-builder">
     <h2 class="section-heading">⚖️ BUILD THE SCALES OF JUSTICE</h2>
@@ -55,12 +60,13 @@
     </div>
     <p style="font-family:var(--font-body);font-size:var(--font-size-sm);color:var(--primary-lit);text-align:center;margin-bottom:10px;line-height:1.8;">Complete each level to build the Scales of Justice — Sijjin below, Illiyyin above!<br/><em style="color:var(--text-dim);">"Kalla inna kitab al-abrar la-fi Illiyyin" — 83:18</em></p>
     <div class="world-preview">
-      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Defrauders</div></div>
-      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Sijjin</div></div>
-      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Illiyyin</div></div>
-      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">In Bliss</div></div>
-      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Reversal</div></div>
-      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Complete</div></div>
+            <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Words</div></div>
+<div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Defrauders</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Sijjin</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Illiyyin</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">In Bliss</div></div>
+      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Reversal</div></div>
+      <div class="world-chunk" id="chunk-7"><div class="chunk-emoji">⬛</div><div class="chunk-label">Complete</div></div>
     </div>
   </div>
   <div id="all-complete">
@@ -77,11 +83,55 @@
 <div id="section-view" style="display:none">
   <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></header>
 
+  
+  <!-- ==================== SECTION 1 — WORD BY WORD ==================== -->
   <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Learn the key Arabic words of this surah! Tap each card to reveal its meaning, then continue to the next level.
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 1 — WORD BY WORD (83:Al-Mutaffifin)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 The Defrauding — Click to reveal verse</span></div>
+        <canvas id="canvas-1" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        
+        <div class="verse-block">
+          <div class="arabic-text">وَيْلٌ لِّلْمُطَفِّفِينَ ۩ كَلَّا إِنَّ كِتَابَ الْفُجَّارِ لَفِي سِجِّينٍ ۩ كَلَّا إِنَّ كِتَابَ الْأَبْرَارِ لَفِي عِلِّيِّينَ</div>
+          <div class="verse-translation">"Woe to those who give less [than due]! The record of the wicked is in Sijjin. The record of the righteous is in Illiyyun." (83:1, 7, 18)</div>
+        </div>
+
+        <p class="word-grid-intro">Now explore each word — <strong>tap a card to reveal its meaning</strong>.</p>
+        <button id="wbw-reveal-btn" class="wbw-reveal-btn">👁 Reveal All Meanings</button>
+        <div id="wbw-display"></div>
+      </div>
+    </div>
+        <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 MATCH — ARABIC WORD TO ENGLISH MEANING</div>
+      <div class="game-instructions">Drag each Arabic word to its English meaning!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-1"></div>
+        <div class="drop-zones" id="drop-zones-1"></div>
+      </div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+<div class="section-panel" id="section-panel-2">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Surah Al-Mutaffifin was revealed when the Prophet ﷺ first arrived in Madinah. Cheating in the marketplace was common there. "Waylun lil-mutaffifin!" — Woe to those who take full measure for themselves but give short to others. And the question: do they not think they'll be resurrected? Answer these questions about the defrauders!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">⚖️ LEVEL 1 — WOE TO THE DEFRAUDERS (83:1-6)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Unequal Scales — Click to reveal verse</span></div><canvas id="canvas-1" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Unequal Scales — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>This surah was among the first to be revealed after the Prophet ﷺ migrated to Madinah. The marketplace there was known for dishonest practices — merchants who would carefully take a full measure when purchasing from others, but when selling, their scales would tip just slightly in their favour.</p>
         <p>Allah begins immediately: <strong>"Waylun lil-mutaffifin!"</strong> — Woe to the defrauders! "Tatfif" comes from a root meaning "the edge, the rim" — giving just a hair short of the full amount. Not dramatically stealing — just slightly, systematically, always in their favour.</p>
@@ -95,21 +145,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — THE DEFRAUDERS (83:1-6)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-1"></div>
-      <div class="game-feedback" id="feedback-1"></div>
+      <div id="quiz-2"></div>
+      <div class="game-feedback" id="feedback-2"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection1()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-2">
+  <div class="section-panel" id="section-panel-3">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The record of the wicked is in Sijjin — the lowest, most confining place. "Kitab marqum" — a clearly inscribed record. Match each aspect of Sijjin to its correct description from the Quran!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">📕 LEVEL 2 — THE BOOK OF SIJJIN (83:7-9)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Lowest Record — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Lowest Record — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>After describing the defrauders, Allah declares: <strong>"Kalla!"</strong> — No! Stop! There is complete accountability coming. And then: <strong>"Inna kitab al-fujjar la-fi Sijjin."</strong></p>
         <p>The record of the wicked (al-Fujjar) is preserved in <strong>Sijjin</strong> — a word related to "sijn" (prison). Scholars say it is in the seventh earth, the lowest possible location — below all creation, the most degraded and confined place.</p>
@@ -123,21 +173,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 GAME — MATCH SIJJIN (83:7-9)</div>
       <div class="game-instructions">Drag each card to its correct description. All 3 must match!</div>
-      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-2"></div><div class="drop-zones" id="drop-zones-2"></div></div>
-      <div class="game-feedback" id="feedback-2"></div>
+      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-3"></div><div class="drop-zones" id="drop-zones-3"></div></div>
+      <div class="game-feedback" id="feedback-3"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection2()">✅ Check Matches</button>
-        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection3()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-3">
+  <div class="section-panel" id="section-panel-4">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Now the contrast! "Kalla inna kitab al-abrar la-fi Illiyyin!" The record of the righteous is in Illiyyin — the HIGHEST place! Witnessed by the Muqarrabun — the angels closest to Allah! Match each aspect of Illiyyin to its description!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">📗 LEVEL 3 — THE BOOK OF ILLIYYIN (83:18-21)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Highest Record — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Highest Record — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>After describing the deniers of Yawm al-Din (83:10-17), the surah pivots completely with another <strong>"Kalla!"</strong> — No! For the righteous, the story is entirely different.</p>
         <p><strong>"Inna kitab al-abrar la-fi Illiyyin"</strong> — The record of the righteous (al-Abrar) is in Illiyyin. From "\'ala" — high. The highest possible register. Scholars say it is above the seventh heaven, in the most elevated location, near the Throne of Allah.</p>
@@ -152,21 +202,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 GAME — MATCH ILLIYYIN (83:18-21)</div>
       <div class="game-instructions">Drag each card to its correct description. All 3 must match!</div>
-      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-3"></div><div class="drop-zones" id="drop-zones-3"></div></div>
-      <div class="game-feedback" id="feedback-3"></div>
+      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-4"></div><div class="drop-zones" id="drop-zones-4"></div></div>
+      <div class="game-feedback" id="feedback-4"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection3()">✅ Check Matches</button>
-        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection4()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-4">
+  <div class="section-panel" id="section-panel-5">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>What awaits the Abrar (righteous)? Couches of bliss. Radiance shining on their faces. And sealed pure nectar — whose seal is MUSK. Then the most beautiful invitation: "For THIS — let those who want to compete, compete!" Answer these questions about the Abrar in bliss!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">🌿 LEVEL 4 — THE RIGHTEOUS IN BLISS (83:22-26)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Couches of Bliss — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Couches of Bliss — Click to reveal verse</span></div><canvas id="canvas-5" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>The surah paints a vivid picture of what the Abrar (righteous) receive: <strong>"Inna al-abrar la-fi na'im — 'ala al-ara'iki yandhuruna"</strong> — they are in bliss, reclining on raised couches, looking.</p>
         <p><strong>"Taf'rifu fi wujuhihim nahrat al-na'im"</strong> — you would RECOGNISE in their faces the radiance of bliss. "Nahrah" means freshness, radiance, luminosity. Joy so complete and deep that it literally shines on their faces. It is not just internal happiness — it radiates outward visibly.</p>
@@ -181,21 +231,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — THE RIGHTEOUS IN BLISS (83:22-26)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-4"></div>
-      <div class="game-feedback" id="feedback-4"></div>
+      <div id="quiz-5"></div>
+      <div class="game-feedback" id="feedback-5"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-5">
+  <div class="section-panel" id="section-panel-6">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The surah ends with a powerful mirror-image. In this world: the wrongdoers laughed at believers, winked at each other, went home and mocked them. On That Day: the believers laugh at the disbelievers! The roles are completely reversed. Answer these questions about the Great Reversal!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">🔄 LEVEL 5 — THE GREAT REVERSAL (83:29-36)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Roles Reversed — Click to reveal verse</span></div><canvas id="canvas-5" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Roles Reversed — Click to reveal verse</span></div><canvas id="canvas-6" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>The surah closes with a precise mirror image — what happened in this world will be exactly reversed in the next.</p>
         <p>In this world (83:29-33): those who committed crimes <strong>"kanu min alladhina amanu yadhakun"</strong> — used to LAUGH at the believers. When they passed the believers on the street, they would <strong>"yataghama zu"</strong> — wink and nudge each other mockingly. They would return to their families laughing. They called believers <strong>"dhallun"</strong> — misguided people.</p>
@@ -210,21 +260,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — THE GREAT REVERSAL (83:29-36)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-5"></div>
-      <div class="game-feedback" id="feedback-5"></div>
+      <div id="quiz-6"></div>
+      <div class="game-feedback" id="feedback-6"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-6">
+  <div class="section-panel" id="section-panel-7">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Final level! Connecting the whole surah: marketplace cheating reveals disbelief in resurrection. Sijjin vs Illiyyin — where will your record be filed? The radiance of the righteous. The Great Reversal. Answer these final reflection questions to complete Surah Al-Mutaffifin!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">📊 LEVEL 6 — RESURRECTION AND JUSTICE (83:4-6)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Day of Rising — Click to reveal verse</span></div><canvas id="canvas-6" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Day of Rising — Click to reveal verse</span></div><canvas id="canvas-7" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>Surah Al-Mutaffifin contains a remarkable logical argument. The defrauders cheat in their weights. Allah's response is not "this is financially wrong" — it is: <strong>"Do they not think they will be RAISED, for a GREAT Day?"</strong></p>
         <p>The argument is: <em>Your cheating reveals your belief system.</em> If you truly believed you would face a perfect, precise accounting of every gram on the Day of Judgment, you would weigh every gram perfectly for others. The fact that you cheat reveals a hidden conviction that there will be no accounting.</p>
@@ -239,16 +289,17 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 FINAL QUIZ — REFLECTION (83:1-6)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to complete Surah Al-Mutaffifin!</div>
-      <div id="quiz-6"></div>
-      <div class="game-feedback" id="feedback-6"></div>
+      <div id="quiz-7"></div>
+      <div class="game-feedback" id="feedback-7"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection7()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-7-btn" style="display:none" onclick="completeSection(7)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 </div>
+<script src="../shared/arabic-words.js"></script>
 <script src="scenes.js"></script>
 <script src="../shared/engine.js"></script>
 <script src="../shared/ui.js"></script>

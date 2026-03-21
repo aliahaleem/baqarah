@@ -1,24 +1,71 @@
 'use strict';
 /* Surah Al-Bayyinah (98) — The Clear Evidence */
 window.STORAGE_KEY = 'bayyinahQuestSave';
-window.state = { explorerName:'', xp:0, gems:0, completed:[], s1Answers:{}, s1Checked:false, s2Checked:false, s3Answers:{}, s3Checked:false, s4Answers:{}, s4Checked:false };
+window.state = { explorerName:'', xp:0, gems:0, completed:[], s2Answers:{}, s2Checked:false, s3Checked:false, s4Answers:{}, s4Checked:false, s5Answers:{}, s5Checked:false };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'📜', title:'Evidence Clear',  msg:"SubhanAllah! The People of the Book and polytheists were supposed to leave their old ways when the Clear Evidence came — a Messenger with purified scriptures. Yet most didn't. Clear evidence doesn't guarantee acceptance!"},
-  2:{xp:80, gems:3, icon:'🕌', title:'Pure Religion',   msg:"MashAllah! 'Wa ma umiru illa liya\'budu Allaha mukhlisina lahu al-din.' They were commanded nothing except to worship Allah with sincere devotion — uprightly, establish prayer, give zakah. That's the pure religion!"},
-  3:{xp:85, gems:3, icon:'😇', title:'Best of Creation', msg:"SubhanAllah! 'Inna alladhina amanu wa amilu al-salihat ula\'ika hum khayrul-bariyya.' Those who believe and do good — THEY are the best of creation. Better than angels? Scholars discussed this!"},
-  4:{xp:100, gems:4, icon:'✨', title:'Al-Bayyinah Complete', msg:"Allahu Akbar! Al-Bayyinah complete! Best of creation vs worst of creation — the difference is iman and righteous action. May Allah make us among the best! Ameen! 🏆"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
+  2:{xp:70, gems:3, icon:'📜', title:'Evidence Clear',  msg:"SubhanAllah! The People of the Book and polytheists were supposed to leave their old ways when the Clear Evidence came — a Messenger with purified scriptures. Yet most didn't. Clear evidence doesn't guarantee acceptance!"},
+  3:{xp:80, gems:3, icon:'🕌', title:'Pure Religion',   msg:"MashAllah! 'Wa ma umiru illa liya\'budu Allaha mukhlisina lahu al-din.' They were commanded nothing except to worship Allah with sincere devotion — uprightly, establish prayer, give zakah. That's the pure religion!"},
+  4:{xp:85, gems:3, icon:'😇', title:'Best of Creation', msg:"SubhanAllah! 'Inna alladhina amanu wa amilu al-salihat ula\'ika hum khayrul-bariyya.' Those who believe and do good — THEY are the best of creation. Better than angels? Scholars discussed this!"},
+  5:{xp:100, gems:4, icon:'✨', title:'Al-Bayyinah Complete', msg:"Allahu Akbar! Al-Bayyinah complete! Best of creation vs worst of creation — the difference is iman and righteous action. May Allah make us among the best! Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s98', surahName:'Al-Bayyinah', surahArabic:'البينة', totalLevels:4, rewards:REWARDS,
-  tileIcons:['📜','🕌','😇','✨'], tileLabels:['Clear Evidence','Pure Worship','Best of Creation','Al-Bayyinah'],
+  id:'s98', surahName:'Al-Bayyinah', surahArabic:'البينة', totalLevels:5, rewards:REWARDS,
+  tileIcons:['📖','📜','🕌','😇','✨'], tileLabels:['Word by Word','Clear Evidence','Pure Worship','Best of Creation','Al-Bayyinah'],
   welcomeMsg:{
-    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Bayyinah — The Clear Evidence! A Messenger came with purified scriptures. He commanded pure worship. Then the surah divides humanity: the best of creation vs the worst of creation. 4 levels!`,
-    partial: (n,d)=>`Welcome back, ${n}! ${d}/4 done. The evidence is clear! 📜`,
+    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Bayyinah — The Clear Evidence! A Messenger came with purified scriptures. He commanded pure worship. Then the surah divides humanity: the best of creation vs the worst of creation. 5 levels!`,
+    partial: (n,d)=>`Welcome back, ${n}! ${d}/5 done. The evidence is clear! 📜`,
     complete:n=>`MashAllah, ${n}! Al-Bayyinah complete! "Khayrul-bariyya" — the best of creation! May you be among them always! 🏆`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1 — لَمْ يَكُنِ الَّذِينَ كَفَرُوا', words:[
+    {ar:'كَفَرُوا', tr:'kafarū', en:'disbelieved', freq:368},
+    {ar:'الَّذِينَ', tr:'alladhīna', en:'those who', freq:1450},
+    {ar:'يَكُنِ', tr:'yakun', en:'were', freq:200},
+    'lam',
+  ]},
+  {label:'Verse 2 — رَسُولٌ مِّنَ اللَّهِ يَتْلُو صُحُفًا مُّطَهَّرَةً', words:[
+    {ar:'مُّطَهَّرَةً', tr:'muṭahharah', en:'purified', freq:3},
+    {ar:'صُحُفًا', tr:'ṣuḥufan', en:'scriptures/pages', freq:8},
+    {ar:'يَتْلُو', tr:'yatlū', en:'reciting', freq:10},
+    {ar:'اللَّهِ', tr:'Allāh', en:'Allah', freq:2699},
+    {ar:'مِّنَ', tr:'min', en:'from', freq:1891},
+    {ar:'رَسُولٌ', tr:'rasūl', en:'a Messenger', freq:236},
+  ]},
+  {label:'Verse 5 — وَمَا أُمِرُوا إِلَّا لِيَعْبُدُوا اللَّهَ مُخْلِصِينَ', words:[
+    {ar:'مُخْلِصِينَ', tr:'mukhliṣīn', en:'being sincere', freq:6},
+    {ar:'اللَّهَ', tr:'Allāh', en:'Allah', freq:2699},
+    {ar:'لِيَعْبُدُوا', tr:'li-yaʿbudū', en:'to worship', freq:11},
+    {ar:'إِلَّا', tr:'illā', en:'except', freq:663},
+    {ar:'أُمِرُوا', tr:'umirū', en:'they were commanded', freq:14},
+    'ma',
+  ]},
+];
+
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'كَفَرُوا', zone:'wz1'},
+  {id:'w2', text:'الَّذِينَ', zone:'wz2'},
+  {id:'w3', text:'يَكُنِ', zone:'wz3'},
+  {id:'w4', text:'مُّطَهَّرَةً', zone:'wz4'},
+  {id:'w5', text:'صُحُفًا', zone:'wz5'},
+  {id:'w6', text:'يَتْلُو', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'disbelieved'},
+  {id:'wz2', desc:'those who'},
+  {id:'wz3', desc:'were'},
+  {id:'wz4', desc:'purified'},
+  {id:'wz5', desc:'scriptures/pages'},
+  {id:'wz6', desc:'reciting'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
 
 const S1_QUIZ = [
   {q:'Who are the two groups that would not leave their ways until the Clear Evidence came? (98:1)',
@@ -78,10 +125,13 @@ const S4_QUIZ = [
    correct:1},
 ];
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
+
+
+
+function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
+function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
+function renderSection5Game(){renderQuiz(5,S4_QUIZ);}function checkSection5(){checkQuiz(5,S4_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -92,5 +142,5 @@ window._drawBuildCanvas = function(n) {
   ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);
   if(n>=1){ctx.fillStyle=acc;ctx.font='18px serif';ctx.textAlign='center';ctx.fillText('📜',W/2,H*0.45);ctx.font='6px "Press Start 2P",monospace';ctx.fillText('Al-Bayyinah — Clear Evidence',W/2,H*0.62);ctx.textAlign='left';}
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
-  ctx.fillText(n>=4?'AL-BAYYINAH COMPLETE! 📜':`Al-Bayyinah — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
+  ctx.fillText(n>=4?'AL-BAYYINAH COMPLETE! 📜':`Al-Bayyinah — ${n}/5 levels`,W/2,14);ctx.textAlign='left';
 };

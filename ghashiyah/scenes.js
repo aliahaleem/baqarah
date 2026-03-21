@@ -108,8 +108,8 @@ class BS {
 }
 
 /* ── Scene 1: The Overwhelming — Two Groups ── */
-class S1 extends BS {
-  constructor() { super('canvas-1'); }
+class S2 extends BS {
+  constructor() { super('canvas-2'); }
   start() {
     if (!this.ctx) return;
     this.canvas.onclick = () => showVersePopup(VD.ghashiyah);
@@ -142,8 +142,8 @@ class S1 extends BS {
 }
 
 /* ── Scene 2: Faces Downcast in Hellfire ── */
-class S2 extends BS {
-  constructor() { super('canvas-2'); }
+class S3 extends BS {
+  constructor() { super('canvas-3'); }
   start() {
     if (!this.ctx) return;
     this.canvas.onclick = () => showVersePopup(VD.downcast);
@@ -180,8 +180,8 @@ class S2 extends BS {
 }
 
 /* ── Scene 3: Paradise — Faces in Delight ── */
-class S3 extends BS {
-  constructor() { super('canvas-3'); }
+class S4 extends BS {
+  constructor() { super('canvas-4'); }
   start() {
     if (!this.ctx) return;
     this.canvas.onclick = () => showVersePopup(VD.paradise);
@@ -229,8 +229,8 @@ class S3 extends BS {
 }
 
 /* ── Scene 4: The Camel ── */
-class S4 extends BS {
-  constructor() { super('canvas-4'); }
+class S5 extends BS {
+  constructor() { super('canvas-5'); }
   start() {
     if (!this.ctx) return;
     this.canvas.onclick = () => showVersePopup(VD.camel);
@@ -279,8 +279,8 @@ class S4 extends BS {
 }
 
 /* ── Scene 5: Sky, Mountains, Earth ── */
-class S5 extends BS {
-  constructor() { super('canvas-5'); }
+class S6 extends BS {
+  constructor() { super('canvas-6'); }
   start() {
     if (!this.ctx) return;
     this.canvas.onclick = () => showVersePopup(VD.mountains);
@@ -322,8 +322,8 @@ class S5 extends BS {
 }
 
 /* ── Scene 6: The Return to Allah ── */
-class S6 extends BS {
-  constructor() { super('canvas-6'); }
+class S7 extends BS {
+  constructor() { super('canvas-7'); }
   start() {
     if (!this.ctx) return;
     this.canvas.onclick = () => showVersePopup(VD.return);
@@ -367,9 +367,19 @@ class S6 extends BS {
 
 /* ── Scene Lifecycle ── */
 const scenes = {};
+
+
+
+
+const VD_wbw={ref:'Al-Ghashiyah (88)',arabic:'هَلْ أَتَاكَ حَدِيثُ الْغَاشِيَةِ ۩ وُجُوهٌ يَوْمَئِذٍ نَّاعِمَةٌ ۩ لِّسَعْيِهَا رَاضِيَةٌ ۩ أَفَلَا يَنظُرُونَ إِلَى الْإِبِلِ كَيْفَ خُلِقَتْ',english:'"Has the story of the Overwhelming reached you? Some faces that Day will be joyful, satisfied with their effort. Do they not look at the camels — how they are created?" (88:1, 8-9, 17)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};
+const _s1wbw = new window.WBWScene('canvas-1', {emoji:'😰',label:'THE OVERWHELMING',verse:VD_wbw});
+
 function initScenes() {
-  scenes[1] = new S1(); scenes[2] = new S2(); scenes[3] = new S3();
-  scenes[4] = new S4(); scenes[5] = new S5(); scenes[6] = new S6();
+  scenes[1]=_s1wbw;
+  scenes[2] = new S2(); scenes[3] = new S3(); scenes[4] = new S4();
+  scenes[5] = new S5(); scenes[6] = new S6(); scenes[7] = new S7();
 }
-function startScene(n) { if (scenes[n]) scenes[n].start(); }
-function stopAllScenes() { Object.values(scenes).forEach(s => s.stop()); }
+function startScene(n) {
+   if (scenes[n]) scenes[n].start(); }
+function stopAllScenes() {
+  Object.values(scenes).forEach(s => s.stop()); }

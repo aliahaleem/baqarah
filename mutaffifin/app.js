@@ -1,26 +1,69 @@
 'use strict';
 /* SURAH AL-MUTAFFIFIN (83) — app.js */
 window.STORAGE_KEY='mutaffifinQuestSave';
-window.state={explorerName:'',xp:0,gems:0,completed:[],s1Answers:{},s1Checked:false,s2Checked:false,s3Checked:false,s4Answers:{},s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false};
+window.state={explorerName:'',xp:0,gems:0,completed:[],s2Answers:{},s2Checked:false,s3Checked:false,s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false,s7Answers:{},s7Checked:false};
 
 const REWARDS={
-  1:{xp:80,gems:3,icon:'⚖️',title:'THE DEFRAUDERS EXPOSED!',msg:"SubhanAllah! 'Waylun lil-mutaffifin!' Woe to those who take full measure for themselves but give less to others. This surah was revealed to fix an economic injustice. The lesson? Every transaction — with people, with time, with effort — should be honest. What you expect from others, give to them too."},
-  2:{xp:80,gems:3,icon:'📕',title:'SIJJIN MAPPED!',msg:"Allahu Akbar! The record of the wicked is in Sijjin — the lowest, most confining place. 'Kitab marqum' — a clearly inscribed, sealed record. The deeds of the Fujjar are filed away in the most degraded place in existence. Contrast this with the record of the Abrar — filed in Illiyyin above!"},
-  3:{xp:90,gems:3,icon:'📗',title:'ILLIYYIN REACHED!',msg:"MashAllah! The record of the righteous is in Illiyyin — the highest, most elevated register. Witnessed by the Muqarrabun — angels closest to Allah! Your good deeds are preserved in the most honoured location in all of creation. Let this motivate you to add more good deeds to that register today!"},
-  4:{xp:90,gems:4,icon:'🌿',title:'THE RIGHTEOUS IN BLISS!',msg:"SubhanAllah! Reclining on couches. 'Nahrat al-na\'im' — the RADIANCE of bliss on their faces. And 'rahiq makhtum' — sealed pure nectar, whose seal is MUSK. 'Wa fi dhalika fal-yatanafas al-mutanafisun' — For THIS, let those who want to compete — compete! This is the true competition."},
-  5:{xp:100,gems:4,icon:'🔄',title:'THE GREAT REVERSAL!',msg:"Allahu Akbar! In this world the wrongdoers laughed at the believers — mocking their prayers, their hijab, their commitment. On That Day, the believers laugh at the disbelievers: 'Hal thuwwiba al-kuffar ma kanu yaf\'alun?' Were the disbelievers rewarded for what they used to do? Yes — the most painful reward. Patience in this world pays in That world!"},
-  6:{xp:120,gems:5,icon:'📊',title:'SURAH AL-MUTAFFIFIN COMPLETE!',msg:"ALLAHUMMA BARIK! All 6 levels of Surah Al-Mutaffifin — Those Who Defraud — complete! The lesson: be honest in every measure. Your record is being written — either in Sijjin or in Illiyyin. On That Day, what you gave in this world — full or less — will determine where you stand. Ameen!"},
+  2:{xp:80,gems:3,icon:'⚖️',title:'THE DEFRAUDERS EXPOSED!',msg:"SubhanAllah! 'Waylun lil-mutaffifin!' Woe to those who take full measure for themselves but give less to others. This surah was revealed to fix an economic injustice. The lesson? Every transaction — with people, with time, with effort — should be honest. What you expect from others, give to them too."},
+  3:{xp:80,gems:3,icon:'📕',title:'SIJJIN MAPPED!',msg:"Allahu Akbar! The record of the wicked is in Sijjin — the lowest, most confining place. 'Kitab marqum' — a clearly inscribed, sealed record. The deeds of the Fujjar are filed away in the most degraded place in existence. Contrast this with the record of the Abrar — filed in Illiyyin above!"},
+  4:{xp:90,gems:3,icon:'📗',title:'ILLIYYIN REACHED!',msg:"MashAllah! The record of the righteous is in Illiyyin — the highest, most elevated register. Witnessed by the Muqarrabun — angels closest to Allah! Your good deeds are preserved in the most honoured location in all of creation. Let this motivate you to add more good deeds to that register today!"},
+  5:{xp:90,gems:4,icon:'🌿',title:'THE RIGHTEOUS IN BLISS!',msg:"SubhanAllah! Reclining on couches. 'Nahrat al-na\'im' — the RADIANCE of bliss on their faces. And 'rahiq makhtum' — sealed pure nectar, whose seal is MUSK. 'Wa fi dhalika fal-yatanafas al-mutanafisun' — For THIS, let those who want to compete — compete! This is the true competition."},
+  6:{xp:100,gems:4,icon:'🔄',title:'THE GREAT REVERSAL!',msg:"Allahu Akbar! In this world the wrongdoers laughed at the believers — mocking their prayers, their hijab, their commitment. On That Day, the believers laugh at the disbelievers: 'Hal thuwwiba al-kuffar ma kanu yaf\'alun?' Were the disbelievers rewarded for what they used to do? Yes — the most painful reward. Patience in this world pays in That world!"},
+  7:{xp:120,gems:5,icon:'📊',title:'SURAH AL-MUTAFFIFIN COMPLETE!',msg:"ALLAHUMMA BARIK! All 7 levels of Surah Al-Mutaffifin — Those Who Defraud — complete! The lesson: be honest in every measure. Your record is being written — either in Sijjin or in Illiyyin. On That Day, what you gave in this world — full or less — will determine where you stand. Ameen!"},
 };
 window.SURAH_CONFIG={
-  totalLevels:6,rewards:REWARDS,
-  tileIcons:['⚖️','📕','📗','🌿','🔄','📊'],
-  tileLabels:['Defrauders','Sijjin','Illiyyin','Bliss','Reversal','Complete'],
+  totalLevels:7,rewards:REWARDS,
+  tileIcons:['📖','⚖️','📕','📗','🌿','🔄','📊'],
+  tileLabels:['Word by Word','Defrauders','Sijjin','Illiyyin','Bliss','Reversal','Complete'],
   welcomeMsg:{
-    fresh:name=>`As-salamu alaykum, ${name}! Surah Al-Mutaffifin — Those Who Give Less. Woe to those who defraud! The Book of Sijjin. The Book of Illiyyin. The Righteous in Bliss. And the Great Reversal on That Day. 6 levels of justice and accountability await!`,
+    fresh:name=>`As-salamu alaykum, ${name}! Surah Al-Mutaffifin — Those Who Give Less. Woe to those who defraud! The Book of Sijjin. The Book of Illiyyin. The Righteous in Bliss. And the Great Reversal on That Day. 7 levels of justice and accountability await!`,
     partial:(name,done)=>`Welcome back, ${name}! ${done} level${done>1?'s':''} complete. "Kalla inna kitab al-abrar la-fi \'illiyyin..." — Your record is being built! ⚖️`,
     complete:name=>`MashAllah, ${name}! Surah Al-Mutaffifin complete! The honest scale never fails. May Allah write our records in Illiyyin. Ameen! 📊`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1 — وَيْلٌ لِّلْمُطَفِّفِينَ', words:[
+    {ar:'لِّلْمُطَفِّفِينَ', tr:'lil-muṭaffifīn', en:'to those who give less', freq:1},
+    'waylun',
+  ]},
+  {label:'Verse 7 — كَلَّا إِنَّ كِتَابَ الْفُجَّارِ لَفِي سِجِّينٍ', words:[
+    {ar:'سِجِّينٍ', tr:'sijjīn', en:'Sijjin (prison-record)', freq:3},
+    {ar:'لَفِي', tr:'la-fī', en:'is in', freq:1714},
+    {ar:'الْفُجَّارِ', tr:'al-fujjār', en:'the wicked', freq:3},
+    {ar:'كِتَابَ', tr:'kitāba', en:'the record of', freq:255},
+    {ar:'كَلَّا', tr:'kallā', en:'No! Indeed', freq:33},
+    'inna',
+  ]},
+  {label:'Verse 18 — كَلَّا إِنَّ كِتَابَ الْأَبْرَارِ لَفِي عِلِّيِّينَ', words:[
+    {ar:'عِلِّيِّينَ', tr:'ʿilliyyīn', en:'Illiyyun (highest heights)', freq:2},
+    {ar:'لَفِي', tr:'la-fī', en:'is in', freq:1714},
+    {ar:'الْأَبْرَارِ', tr:'al-abrār', en:'the righteous', freq:6},
+    {ar:'كِتَابَ', tr:'kitāba', en:'the record of', freq:255},
+    {ar:'كَلَّا', tr:'kallā', en:'No! Indeed', freq:33},
+    'inna',
+  ]},
+];
+
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'لِّلْمُطَفِّفِينَ', zone:'wz1'},
+  {id:'w2', text:'سِجِّينٍ', zone:'wz2'},
+  {id:'w3', text:'لَفِي', zone:'wz3'},
+  {id:'w4', text:'الْفُجَّارِ', zone:'wz4'},
+  {id:'w5', text:'كِتَابَ', zone:'wz5'},
+  {id:'w6', text:'كَلَّا', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'to those who give less'},
+  {id:'wz2', desc:'Sijjin (prison-record)'},
+  {id:'wz3', desc:'is in'},
+  {id:'wz4', desc:'the wicked'},
+  {id:'wz5', desc:'the record of'},
+  {id:'wz6', desc:'No! Indeed'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
 
 const S1_QUIZ=[
   {q:'What does "al-mutaffifin" (المُطَفِّفِين) mean?',
@@ -136,12 +179,15 @@ const S6_QUIZ=[
    correct:2},
 ];
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderDragDrop(3,S3_ITEMS,S3_ZONES);}function checkSection3(){checkDragDrop(3,S3_ZONES);}
-function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
-function renderSection5Game(){renderQuiz(5,S5_QUIZ);}function checkSection5(){checkQuiz(5,S5_QUIZ);}
-function renderSection6Game(){renderQuiz(6,S6_QUIZ);}function checkSection6(){checkQuiz(6,S6_QUIZ);}
+
+
+
+function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
+function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}
+function renderSection4Game(){renderDragDrop(4,S3_ITEMS,S3_ZONES);}function checkSection4(){checkDragDrop(4,S3_ZONES);}
+function renderSection5Game(){renderQuiz(5,S4_QUIZ);}function checkSection5(){checkQuiz(5,S4_QUIZ);}
+function renderSection6Game(){renderQuiz(6,S5_QUIZ);}function checkSection6(){checkQuiz(6,S5_QUIZ);}
+function renderSection7Game(){renderQuiz(7,S6_QUIZ);}function checkSection7(){checkQuiz(7,S6_QUIZ);}
 
 function _lbl(ctx,W,msg,d,t){ctx.fillStyle='#c88030';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(msg,W/2,18);ctx.fillStyle='#140408';ctx.fillRect(W/2-100,26,200,8);ctx.fillStyle='#6a1828';ctx.fillRect(W/2-100,26,Math.round(200*d/t),8);ctx.textAlign='left';}
 function _drawBuildCanvas(n){

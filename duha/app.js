@@ -1,24 +1,78 @@
 'use strict';
 /* Surah Ad-Duha (93) — The Morning Brightness */
 window.STORAGE_KEY = 'duhaQuestSave';
-window.state = { explorerName:'', xp:0, gems:0, completed:[], s1Answers:{}, s1Checked:false, s2Checked:false, s3Answers:{}, s3Checked:false, s4Order:[], s4Checked:false };
+window.state = { explorerName:'', xp:0, gems:0, completed:[], s2Answers:{}, s2Checked:false, s3Checked:false, s4Answers:{}, s4Checked:false, s5Order:[], s5Checked:false };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'🌄', title:'Dawn Witness',  msg:"SubhanAllah! This surah was revealed after a pause in revelation. The Prophet ﷺ was sad, wondering if Allah had abandoned him. Then this surah came — 'Your Lord has not forsaken you, nor does He hate you.' What comfort!"},
-  2:{xp:80, gems:3, icon:'💛', title:'Blessings Known', msg:"MashAllah! Allah reminds the Prophet of His blessings: orphan, found and sheltered; lost, found and guided; poor, found and enriched. Every difficulty had a divine answer. May we count our blessings!"},
-  3:{xp:90, gems:3, icon:'🙏', title:'Duty Fulfilled', msg:"MashAllah! Three duties: do not oppress the orphan, do not drive away the asker, and proclaim the blessings of Allah. Gratitude in action — Ameen!"},
-  4:{xp:100, gems:4, icon:'☀️', title:'Ad-Duha Complete', msg:"Allahu Akbar! Ad-Duha complete! When times are dark and you feel alone — remember: 'The Hereafter is better for you than the first!' Allah has not abandoned us. Ever. Ameen! 🏆"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
+  2:{xp:70, gems:3, icon:'🌄', title:'Dawn Witness',  msg:"SubhanAllah! This surah was revealed after a pause in revelation. The Prophet ﷺ was sad, wondering if Allah had abandoned him. Then this surah came — 'Your Lord has not forsaken you, nor does He hate you.' What comfort!"},
+  3:{xp:80, gems:3, icon:'💛', title:'Blessings Known', msg:"MashAllah! Allah reminds the Prophet of His blessings: orphan, found and sheltered; lost, found and guided; poor, found and enriched. Every difficulty had a divine answer. May we count our blessings!"},
+  4:{xp:90, gems:3, icon:'🙏', title:'Duty Fulfilled', msg:"MashAllah! Three duties: do not oppress the orphan, do not drive away the asker, and proclaim the blessings of Allah. Gratitude in action — Ameen!"},
+  5:{xp:100, gems:4, icon:'☀️', title:'Ad-Duha Complete', msg:"Allahu Akbar! Ad-Duha complete! When times are dark and you feel alone — remember: 'The Hereafter is better for you than the first!' Allah has not abandoned us. Ever. Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s93', surahName:'Ad-Duha', surahArabic:'الضحى', totalLevels:4, rewards:REWARDS,
-  tileIcons:['🌄','💛','🙏','☀️'], tileLabels:['Revelation','Blessings','Duties','Complete'],
+  id:'s93', surahName:'Ad-Duha', surahArabic:'الضحى', totalLevels:5, rewards:REWARDS,
+  tileIcons:['📖','🌄','💛','🙏','☀️'], tileLabels:['Word by Word','Revelation','Blessings','Duties','Complete'],
   welcomeMsg:{
-    fresh:   n=>`As-salamu alaykum, ${n}! Welcome to Surah Ad-Duha — The Morning Brightness! Allah directly consoles Prophet Muhammad ﷺ after a painful pause in revelation. 'Your Lord has not forsaken you!' — A surah of divine love. 4 levels!`,
-    partial: (n,d)=>`Welcome back, ${n}! ${d}/4 levels done. The morning light awaits! 🌄`,
+    fresh:   n=>`As-salamu alaykum, ${n}! Welcome to Surah Ad-Duha — The Morning Brightness! Allah directly consoles Prophet Muhammad ﷺ after a painful pause in revelation. 'Your Lord has not forsaken you!' — A surah of divine love. 5 levels!`,
+    partial: (n,d)=>`Welcome back, ${n}! ${d}/5 levels done. The morning light awaits! 🌄`,
     complete:n=>`MashAllah, ${n}! Ad-Duha complete! "Wa lal-akhiratu khayrun laka minal-ula." May the Hereafter always feel closer than this world! 🏆`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1-2 — وَالضُّحَىٰ · وَاللَّيْلِ إِذَا سَجَىٰ', words:[
+    {ar:'سَجَىٰ', tr:'sajā', en:'covers with darkness', freq:1},
+    {ar:'إِذَا', tr:'idhā', en:'when', freq:406},
+    {ar:'وَاللَّيْلِ', tr:'wal-layl', en:'and the night', freq:72},
+    {ar:'وَالضُّحَىٰ', tr:'wal-ḍuḥā', en:'by the morning brightness', freq:3},
+  ]},
+  {label:'Verse 3 — مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ', words:[
+    {ar:'قَلَىٰ', tr:'qalā', en:'(nor) hated', freq:1},
+    {ar:'وَمَا', tr:'wa-mā', en:'and not', freq:500},
+    {ar:'رَبُّكَ', tr:'rabbuka', en:'your Lord', freq:30},
+    {ar:'وَدَّعَكَ', tr:'waddaʿaka', en:'forsaken you', freq:1},
+    'ma',
+  ]},
+  {label:'Verse 4 — وَلَلْآخِرَةُ خَيْرٌ لَّكَ مِنَ الْأُولَىٰ', words:[
+    {ar:'الْأُولَىٰ', tr:'al-ūlā', en:'the first [life]', freq:37},
+    {ar:'مِنَ', tr:'min', en:'than', freq:1891},
+    {ar:'لَّكَ', tr:'laka', en:'for you', freq:202},
+    {ar:'خَيْرٌ', tr:'khayr', en:'better', freq:189},
+    {ar:'وَلَلْآخِرَةُ', tr:'wal-ākhirah', en:'and the Hereafter', freq:115},
+  ]},
+  {label:'Verse 9-10 — فَأَمَّا الْيَتِيمَ فَلَا تَقْهَرْ · وَأَمَّا السَّائِلَ فَلَا تَنْهَرْ', words:[
+    {ar:'تَنْهَرْ', tr:'tanhar', en:'repel', freq:1},
+    {ar:'فَلَا', tr:'fa-lā', en:'then do not', freq:1069},
+    {ar:'السَّائِلَ', tr:'al-sāʾil', en:'the one who asks', freq:5},
+    {ar:'تَقْهَرْ', tr:'taqhar', en:'oppress', freq:1},
+    {ar:'فَلَا', tr:'fa-lā', en:'then do not', freq:1069},
+    {ar:'الْيَتِيمَ', tr:'al-yatīm', en:'the orphan', freq:22},
+    {ar:'فَأَمَّا', tr:'fa-ammā', en:'so as for', freq:18},
+  ]},
+];
+
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'سَجَىٰ', zone:'wz1'},
+  {id:'w2', text:'إِذَا', zone:'wz2'},
+  {id:'w3', text:'وَاللَّيْلِ', zone:'wz3'},
+  {id:'w4', text:'وَالضُّحَىٰ', zone:'wz4'},
+  {id:'w5', text:'قَلَىٰ', zone:'wz5'},
+  {id:'w6', text:'وَمَا', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'covers with darkness'},
+  {id:'wz2', desc:'when'},
+  {id:'wz3', desc:'and the night'},
+  {id:'wz4', desc:'by the morning brightness'},
+  {id:'wz5', desc:'(nor) hated'},
+  {id:'wz6', desc:'and not'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
 
 const S1_QUIZ = [
   {q:'Why was Surah Ad-Duha revealed?',
@@ -71,10 +125,13 @@ const S4_EVENTS_CORRECT = [
 ];
 window._S4_EVENTS = S4_EVENTS_CORRECT;
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderStoryOrder(4,S4_EVENTS_CORRECT);}function checkSection4(){checkStoryOrder(4,S4_EVENTS_CORRECT);}
+
+
+
+function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
+function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
+function renderSection5Game(){renderStoryOrder(5,S4_EVENTS_CORRECT);}function checkSection5(){checkStoryOrder(5,S4_EVENTS_CORRECT);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -87,5 +144,5 @@ window._drawBuildCanvas = function(n) {
   if(n>=2){ctx.fillStyle=st?'#4a2a10':'#361a08';ctx.fillRect(0,H*0.65,W,H*0.35);}
   if(n>=3){ctx.fillStyle=acc;ctx.font='14px serif';ctx.textAlign='center';ctx.fillText('🌄',W*0.3,H*0.5);ctx.textAlign='left';}
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
-  ctx.fillText(n>=4?'AD-DUHA COMPLETE ☀️':`Ad-Duha — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
+  ctx.fillText(n>=4?'AD-DUHA COMPLETE ☀️':`Ad-Duha — ${n}/5 levels`,W/2,14);ctx.textAlign='left';
 };

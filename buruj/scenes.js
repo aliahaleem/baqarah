@@ -19,7 +19,7 @@ const VD={
 
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 
-class S1 extends BS{constructor(){super('canvas-1');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.oath);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,15);_label(ctx,'CLICK: By the Sky with Constellations — 85:1-3');
+class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.oath);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,15);_label(ctx,'CLICK: By the Sky with Constellations — 85:1-3');
 // Constellations
 const constellations=[[[80,30],[100,20],[120,35],[95,45]],[[200,15],[230,25],[250,10],[225,35]],[[350,20],[380,10],[400,30],[370,38]],[[450,15],[480,25],[500,10],[470,35]]];
 constellations.forEach(pts=>{ctx.strokeStyle=p.acStr+'0.4)';ctx.lineWidth=1;ctx.beginPath();pts.forEach(([x,y],i)=>{if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);});ctx.stroke();pts.forEach(([x,y])=>{ctx.fillStyle=p.acStr+'0.9)';ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);ctx.fill();});});
@@ -27,7 +27,7 @@ constellations.forEach(pts=>{ctx.strokeStyle=p.acStr+'0.4)';ctx.lineWidth=1;ctx.
 const glow=0.15+Math.sin(this.t*0.03)*0.1;ctx.fillStyle=`rgba(200,176,48,${glow})`;ctx.beginPath();ctx.arc(CW/2,CH/2,80,0,Math.PI*2);ctx.fill();
 _label(ctx,'"By the Promised Day — Witness and Witnessed" (85:1-3)',CH-10);};draw();}}
 
-class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.ditch);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,6);_ground(ctx,175);_label(ctx,'CLICK: People of the Ditch — 85:4-7');
+class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.ditch);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,6);_ground(ctx,175);_label(ctx,'CLICK: People of the Ditch — 85:4-7');
 // Ditch/trench with fire
 const ditch={x:150,y:155,w:260,h:25};fillRect(ctx,ditch.x,ditch.y,ditch.w,ditch.h,'#200808');
 // Flames in ditch
@@ -38,7 +38,7 @@ _fig(ctx,100,130,'#d0b080','#3a2010','#201008');_fig(ctx,420,128,'#d0b080','#3a2
 fillRect(ctx,CW/2-8,158,20,14,'#e8c39a');ctx.fillStyle='rgba(220,80,20,0.6)';ctx.fillRect(CW/2-12,154,28,18);
 ctx.fillStyle='#ff8080';ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('"DESTROYED were the People of the Ditch!" (85:4)',CW/2,CH-5);ctx.textAlign='left';};draw();}}
 
-class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.reason);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,8);_ground(ctx,175);_label(ctx,'CLICK: Their Only Crime — Believing in Allah — 85:8-9');
+class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.reason);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,8);_ground(ctx,175);_label(ctx,'CLICK: Their Only Crime — Believing in Allah — 85:8-9');
 // Figure with faith symbol
 _fig(ctx,CW/2-10,100,'#e8c39a','#2a4060','#1a2840');
 // Forbidden sign / punishment
@@ -47,7 +47,7 @@ ctx.strokeStyle='rgba(220,80,20,0.8)';ctx.lineWidth=3;ctx.beginPath();ctx.arc(CW
 ctx.fillStyle=p.label;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('الْعَزِيزِ',CW/2+60,95);ctx.fillText('الْحَمِيدِ',CW/2+60,110);ctx.fillText('Believed in',CW/2+60,128);ctx.fillText('AL-AZIZ',CW/2+60,140);ctx.fillText('AL-HAMID',CW/2+60,152);
 ctx.fillStyle='#ff8080';ctx.fillText('"Resented for NOTHING except — FAITH" (85:8)',CW/2,CH-5);ctx.textAlign='left';};draw();}}
 
-class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.watching);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();
+class S5 extends BS{constructor(){super('canvas-5');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.watching);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();
 const g=ctx.createLinearGradient(0,0,0,CH);g.addColorStop(0,'#041408');g.addColorStop(1,'#082010');ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);
 _stars(ctx,10);_label(ctx,'CLICK: The Great Attainment — 85:11');
 // Gardens with rivers
@@ -60,7 +60,7 @@ ctx.fillStyle='rgba(30,100,200,0.6)';ctx.fillRect(50,185,460,12);
 const glow=0.3+Math.sin(this.t*0.05)*0.2;ctx.shadowColor=`rgba(80,220,80,${glow})`;ctx.shadowBlur=12;_fig(ctx,CW/2-10,140,'#f0e8c0','#3a6828','#1a3818');ctx.shadowBlur=0;
 ctx.fillStyle='#80ff80';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('الْفَوْزُ الْكَبِيرُ',CW/2,100);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"Al-Fawz al-Kabir" — THE GREAT ATTAINMENT (85:11)',CW/2,CH-5);ctx.textAlign='left';};draw();}}
 
-class S5 extends BS{constructor(){super('canvas-5');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.watching);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,12);_ground(ctx,175);_label(ctx,'CLICK: Allah\'s Grip is Severe — 85:12');
+class S6 extends BS{constructor(){super('canvas-6');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.watching);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,12);_ground(ctx,175);_label(ctx,'CLICK: Allah\'s Grip is Severe — 85:12');
 // Tyrant falling
 _fig(ctx,80,140,'#d0b080','#3a2010','#201008');const shake=Math.sin(this.t*0.3)*3;ctx.fillStyle='rgba(220,80,20,0.6)';ctx.fillRect(55,135+shake,50,30);
 // Lightning bolt from above
@@ -69,7 +69,7 @@ const pulse=0.5+Math.sin(this.t*0.06)*0.4;ctx.fillStyle=`rgba(224,216,96,${pulse
 _fig(ctx,420,130,'#f0e8c0','#2a4060','#1a2840');ctx.fillStyle='rgba(60,100,220,0.2)';ctx.beginPath();ctx.arc(440,150,40,0,Math.PI*2);ctx.fill();
 ctx.fillStyle=p.label;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('"Inna batsha Rabbika la-shadid" — 85:12',CW/2,CH-5);ctx.fillText('"Indeed the GRIP of your Lord is SEVERE"',CW/2,CH+5);ctx.textAlign='left';};draw();}}
 
-class S6 extends BS{constructor(){super('canvas-6');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.tablet);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,15);_ground(ctx,180);_label(ctx,'CLICK: The Preserved Tablet — 85:21-22');
+class S7 extends BS{constructor(){super('canvas-7');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.tablet);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,15);_ground(ctx,180);_label(ctx,'CLICK: The Preserved Tablet — 85:21-22');
 // Glowing tablet
 const pulse=0.4+Math.sin(this.t*0.04)*0.3;ctx.shadowColor=p.acStr+pulse+')';ctx.shadowBlur=20;
 fillRect(ctx,CW/2-50,50,100,100,p.sky2||'#0e1828');ctx.strokeStyle=p.acStr+'0.9)';ctx.lineWidth=2;ctx.strokeRect(CW/2-50,50,100,100);ctx.shadowBlur=0;
@@ -80,6 +80,15 @@ ctx.fillStyle=`rgba(200,176,48,0.05)`;ctx.beginPath();ctx.arc(CW/2,100,80,0,Math
 ctx.textAlign='left';_label(ctx,'"Quran Majid — fi Lawhin Mahfudh" (85:21-22)',CH-5);};draw();}}
 
 const scenes={};
-function initScenes(){scenes[1]=new S1();scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();scenes[5]=new S5();scenes[6]=new S6();}
-function startScene(n){if(scenes[n])scenes[n].start();}
-function stopAllScenes(){Object.values(scenes).forEach(s=>s.stop());}
+
+
+
+
+const VD_wbw={ref:'Al-Buruj (85)',arabic:'وَالسَّمَاءِ ذَاتِ الْبُرُوجِ ۩ وَالْيَوْمِ الْمَوْعُودِ ۩ إِنَّ بَطْشَ رَبِّكَ لَشَدِيدٌ ۩ إِنَّهُ هُوَ يُبْدِئُ وَيُعِيدُ',english:'"By the sky full of great constellations, and the Promised Day — indeed the grip of your Lord is severe. It is He who originates and repeats." (85:1-2, 12-13)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};
+const _s1wbw = new window.WBWScene('canvas-1', {emoji:'✨',label:'THE CONSTELLATIONS',verse:VD_wbw});
+
+function initScenes(){scenes[1]=_s1wbw;scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();scenes[5]=new S5();scenes[6]=new S6();scenes[7]=new S7();}
+function startScene(n) {
+  if(scenes[n])scenes[n].start();}
+function stopAllScenes() {
+  Object.values(scenes).forEach(s=>s.stop());}

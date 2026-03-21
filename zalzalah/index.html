@@ -25,14 +25,20 @@
   <div class="ibn-ameen-panel"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/><span id="welcome-text">As-salamu alaykum! Welcome to Surah Az-Zalzalah!</span></div></div>
   <h2 class="section-heading">🌍 THE QUEST MAP</h2>
   <div class="map-grid">
-    <div class="map-tile unlocked" id="tile-1"><div class="tile-icon">🌍</div><div class="tile-level">LEVEL 1</div><div class="tile-name">The Earthquake</div><div class="tile-verses">99:1-3</div><div class="tile-status" id="status-1">▶ PLAY</div></div>
-    <div class="map-tile locked" id="tile-2"><div class="tile-icon">📋</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Story Order</div><div class="tile-verses">99:1-6</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-3"><div class="tile-icon">⚖️</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Atom's Weight</div><div class="tile-verses">99:7-8</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
+        <div class="map-tile unlocked" id="tile-1" onclick="openSection(1)">
+      <div class="tile-icon">📖</div><div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">Word by Word</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+<div class="map-tile unlocked" id="tile-2"><div class="tile-icon">🌍</div><div class="tile-level">LEVEL 1</div><div class="tile-name">The Earthquake</div><div class="tile-verses">99:1-3</div><div class="tile-status" id="status-2">▶ PLAY</div></div>
+    <div class="map-tile locked" id="tile-3"><div class="tile-icon">📋</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Story Order</div><div class="tile-verses">99:1-6</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-4"><div class="tile-icon">⚖️</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Atom's Weight</div><div class="tile-verses">99:7-8</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
   </div>
   <div id="world-builder"><h2 class="section-heading">🌍 WORLD BUILDER</h2><div style="border:3px solid var(--primary);margin-bottom:12px;"><canvas id="build-canvas" width="560" height="180" style="width:100%;image-rendering:pixelated;display:block;"></canvas></div><div class="world-preview">
-      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">The Earthquake</div></div>
-      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Story Order</div></div>
-      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Atom's Weight</div></div>
+            <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Words</div></div>
+<div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">The Earthquake</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Story Order</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Atom's Weight</div></div>
   </div></div>
   <div id="all-complete" style="display:none"><div style="font-size:36px">🌍</div><div style="color:var(--accent);font-size:10px">SURAH AZ-ZALZALAH COMPLETE!</div></div>
 </div></div>
@@ -41,25 +47,70 @@
 <div id="section-view" style="display:none">
   <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></header>
 
+  
+  <!-- ==================== SECTION 1 — WORD BY WORD ==================== -->
   <div class="section-panel" id="section-panel-1">
-    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The earth shakes fully and brings forth its heavy burdens. Answer the quiz!</div></div>
-    <div class="card" style="margin:14px 12px 0"><div class="card-header">🌍 LEVEL 1 — The Earthquake (99:1-3)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Earthquake — Click to reveal verse</span></div><canvas id="canvas-1" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">إِذَا زُلْزِلَتِ الْأَرْضُ زِلْزَالَهَا ۩ وَأَخْرَجَتِ الْأَرْضُ أَثْقَالَهَا</div><div class="verse-translation">"When the earth is shaken fully and brings forth its burdens." (99:1-2)</div></div></div>
-    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 QUIZ — THE EARTHQUAKE</div><div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div><div id="quiz-1"></div><div class="game-feedback" id="feedback-1"></div><div class="game-footer"><button class="action-btn" onclick="checkSection1()">✅ Check Answers</button><button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button></div></div>
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Learn the key Arabic words of this surah! Tap each card to reveal its meaning, then continue to the next level.
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 1 — WORD BY WORD (99:Az-Zalzalah)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 The Earthquake — Click to reveal verse</span></div>
+        <canvas id="canvas-1" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        
+        <div class="verse-block">
+          <div class="arabic-text">إِذَا زُلْزِلَتِ الْأَرْضُ زِلْزَالَهَا ۩ يَوْمَئِذٍ تُحَدِّثُ أَخْبَارَهَا ۩ فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ ۩ وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُ</div>
+          <div class="verse-translation">"When the earth is shaken with its final earthquake, that Day it will report its news. So whoever does an atom's weight of good will see it, and whoever does an atom's weight of evil will see it." (99:1, 4, 7-8)</div>
+        </div>
+
+        <p class="word-grid-intro">Now explore each word — <strong>tap a card to reveal its meaning</strong>.</p>
+        <button id="wbw-reveal-btn" class="wbw-reveal-btn">👁 Reveal All Meanings</button>
+        <div id="wbw-display"></div>
+      </div>
+    </div>
+        <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 MATCH — ARABIC WORD TO ENGLISH MEANING</div>
+      <div class="game-instructions">Drag each Arabic word to its English meaning!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-1"></div>
+        <div class="drop-zones" id="drop-zones-1"></div>
+      </div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
-  <div class="section-panel" id="section-panel-2">
-    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>From the shaking to the earth's confession to people coming forth. Put the sequence in order!</div></div>
-    <div class="card" style="margin:14px 12px 0"><div class="card-header">📋 LEVEL 2 — Story Order (99:1-6)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Story Order — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">يَوْمَئِذٍ تُحَدِّثُ أَخْبَارَهَا</div><div class="verse-translation">"That Day it will report its news." (99:4)</div></div></div>
-    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 STORY ORDER — AZ-ZALZALAH</div><div class="game-instructions">Put the events in correct order!</div><div class="story-order-container" id="story-order-2"></div><div class="game-feedback" id="feedback-2"></div><div class="game-footer"><button class="action-btn" onclick="checkSection2()">✅ Check Order</button><button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button></div></div>
+
+<div class="section-panel" id="section-panel-2">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The earth shakes fully and brings forth its heavy burdens. Answer the quiz!</div></div>
+    <div class="card" style="margin:14px 12px 0"><div class="card-header">🌍 LEVEL 1 — The Earthquake (99:1-3)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Earthquake — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">إِذَا زُلْزِلَتِ الْأَرْضُ زِلْزَالَهَا ۩ وَأَخْرَجَتِ الْأَرْضُ أَثْقَالَهَا</div><div class="verse-translation">"When the earth is shaken fully and brings forth its burdens." (99:1-2)</div></div></div>
+    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 QUIZ — THE EARTHQUAKE</div><div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div><div id="quiz-2"></div><div class="game-feedback" id="feedback-2"></div><div class="game-footer"><button class="action-btn" onclick="checkSection2()">✅ Check Answers</button><button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button></div></div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
   <div class="section-panel" id="section-panel-3">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>From the shaking to the earth's confession to people coming forth. Put the sequence in order!</div></div>
+    <div class="card" style="margin:14px 12px 0"><div class="card-header">📋 LEVEL 2 — Story Order (99:1-6)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Story Order — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">يَوْمَئِذٍ تُحَدِّثُ أَخْبَارَهَا</div><div class="verse-translation">"That Day it will report its news." (99:4)</div></div></div>
+    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 STORY ORDER — AZ-ZALZALAH</div><div class="game-instructions">Put the events in correct order!</div><div class="story-order-container" id="story-order-2"></div><div class="game-feedback" id="feedback-3"></div><div class="game-footer"><button class="action-btn" onclick="checkSection3()">✅ Check Order</button><button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button></div></div>
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+  <div class="section-panel" id="section-panel-4">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>An atom's weight of good will be seen. An atom's weight of evil will be seen. Final quiz!</div></div>
-    <div class="card" style="margin:14px 12px 0"><div class="card-header">⚖️ LEVEL 3 — Atom's Weight (99:7-8)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Atom's Weight — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ ۩ وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُ</div><div class="verse-translation">"An atom's weight of good will be seen. An atom's weight of evil will be seen." (99:7-8)</div></div></div>
-    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 QUIZ — ATOM'S WEIGHT</div><div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div><div id="quiz-3"></div><div class="game-feedback" id="feedback-3"></div><div class="game-footer"><button class="action-btn" onclick="checkSection3()">✅ Check Answers</button><button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button></div></div>
+    <div class="card" style="margin:14px 12px 0"><div class="card-header">⚖️ LEVEL 3 — Atom's Weight (99:7-8)</div><div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Atom's Weight — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div><div class="verse-block"><div class="arabic-text">فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ ۩ وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُ</div><div class="verse-translation">"An atom's weight of good will be seen. An atom's weight of evil will be seen." (99:7-8)</div></div></div>
+    <div class="card" style="margin:8px 12px 0"><div class="card-header">🎮 QUIZ — ATOM'S WEIGHT</div><div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div><div id="quiz-4"></div><div class="game-feedback" id="feedback-4"></div><div class="game-footer"><button class="action-btn" onclick="checkSection4()">✅ Check Answers</button><button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button></div></div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 </div>
+<script src="../shared/arabic-words.js"></script>
 <script src="scenes.js"></script>
 <script src="../shared/engine.js"></script>
 <script src="../shared/ui.js"></script>

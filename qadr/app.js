@@ -1,23 +1,76 @@
 'use strict';
 /* Surah Al-Qadr (97) — The Night of Power */
 window.STORAGE_KEY = 'qadrQuestSave';
-window.state = { explorerName:'', xp:0, gems:0, completed:[], s1Answers:{}, s1Checked:false, s2Checked:false, s3Answers:{}, s3Checked:false };
+window.state = { explorerName:'', xp:0, gems:0, completed:[], s2Answers:{}, s2Checked:false, s3Checked:false, s4Answers:{}, s4Checked:false };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'🌃', title:'Night Revealed', msg:"SubhanAllah! The Quran was sent down on one single night — Laylat al-Qadr. Better than a THOUSAND months. The angels and Ruh (Jibreel) descend. Peace reigns until Fajr. One night of worship = 83+ years!"},
-  2:{xp:80, gems:3, icon:'👼', title:'Angels Descend',  msg:"MashAllah! The angels and Jibreel (AS) descend with every decree for the coming year. Imagine: on that night, the angels of your provision, health, guidance — all descend. Seek it in the last 10 nights of Ramadan!"},
-  3:{xp:90, gems:4, icon:'✨', title:'Al-Qadr Complete', msg:"Allahu Akbar! Al-Qadr complete! 'Salamun hiya hatta matla\'il-fajr.' Peace — PEACE — until the break of dawn. May Allah grant us Laylat al-Qadr every year! Ameen! 🏆"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
+  2:{xp:70, gems:3, icon:'🌃', title:'Night Revealed', msg:"SubhanAllah! The Quran was sent down on one single night — Laylat al-Qadr. Better than a THOUSAND months. The angels and Ruh (Jibreel) descend. Peace reigns until Fajr. One night of worship = 83+ years!"},
+  3:{xp:80, gems:3, icon:'👼', title:'Angels Descend',  msg:"MashAllah! The angels and Jibreel (AS) descend with every decree for the coming year. Imagine: on that night, the angels of your provision, health, guidance — all descend. Seek it in the last 10 nights of Ramadan!"},
+  4:{xp:90, gems:4, icon:'✨', title:'Al-Qadr Complete', msg:"Allahu Akbar! Al-Qadr complete! 'Salamun hiya hatta matla\'il-fajr.' Peace — PEACE — until the break of dawn. May Allah grant us Laylat al-Qadr every year! Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s97', surahName:'Al-Qadr', surahArabic:'القدر', totalLevels:3, rewards:REWARDS,
-  tileIcons:['🌃','👼','✨'], tileLabels:['Night of Power','Angels Descend','Peace till Fajr'],
+  id:'s97', surahName:'Al-Qadr', surahArabic:'القدر', totalLevels:4, rewards:REWARDS,
+  tileIcons:['📖','🌃','👼','✨'], tileLabels:['Word by Word','Night of Power','Angels Descend','Peace till Fajr'],
   welcomeMsg:{
-    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Qadr — The Night of Power! Just 5 verses — but what verses! The Quran was revealed on this night. It's better than 1,000 months. Angels descend. Peace until dawn. 3 levels!`,
-    partial: (n,d)=>`Welcome back, ${n}! ${d}/3 done. The night awaits! 🌃`,
+    fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Qadr — The Night of Power! Just 5 verses — but what verses! The Quran was revealed on this night. It's better than 1,000 months. Angels descend. Peace until dawn. 4 levels!`,
+    partial: (n,d)=>`Welcome back, ${n}! ${d}/4 done. The night awaits! 🌃`,
     complete:n=>`MashAllah, ${n}! Al-Qadr complete! May Allah grant you Laylat al-Qadr and all its blessings every Ramadan! Ameen! 🏆`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1 — إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ', words:[
+    {ar:'الْقَدْرِ', tr:'al-qadr', en:'Decree / Power', freq:3},
+    {ar:'لَيْلَةِ', tr:'laylati', en:'the Night of', freq:8},
+    {ar:'فِي', tr:'fī', en:'in', freq:1714},
+    {ar:'أَنزَلْنَاهُ', tr:'anzalnāhu', en:'We sent it down', freq:15},
+    'innaa',
+  ]},
+  {label:'Verse 3 — لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ', words:[
+    {ar:'شَهْرٍ', tr:'shahr', en:'months', freq:13},
+    {ar:'أَلْفِ', tr:'alf', en:'a thousand', freq:6},
+    {ar:'مِّنْ', tr:'min', en:'than', freq:1891},
+    {ar:'خَيْرٌ', tr:'khayr', en:'better', freq:189},
+    {ar:'الْقَدْرِ', tr:'al-qadr', en:'Decree', freq:3},
+    {ar:'لَيْلَةُ', tr:'laylatu', en:'the Night of', freq:8},
+  ]},
+  {label:'Verse 4 — تَنَزَّلُ الْمَلَائِكَةُ وَالرُّوحُ فِيهَا', words:[
+    {ar:'فِيهَا', tr:'fīhā', en:'therein', freq:142},
+    {ar:'وَالرُّوحُ', tr:'wal-rūḥ', en:'and the Spirit (Jibreel)', freq:21},
+    {ar:'الْمَلَائِكَةُ', tr:'al-malāʾikah', en:'the angels', freq:88},
+    {ar:'تَنَزَّلُ', tr:'tanazzalu', en:'descend', freq:5},
+  ]},
+  {label:'Verse 5 — سَلَامٌ هِيَ حَتَّىٰ مَطْلَعِ الْفَجْرِ', words:[
+    {ar:'الْفَجْرِ', tr:'al-fajr', en:'dawn', freq:6},
+    {ar:'مَطْلَعِ', tr:'maṭlaʿ', en:'the emergence of', freq:2},
+    {ar:'حَتَّىٰ', tr:'ḥattā', en:'until', freq:129},
+    {ar:'هِيَ', tr:'hiya', en:'it is', freq:226},
+    {ar:'سَلَامٌ', tr:'salām', en:'peace', freq:33},
+  ]},
+];
+
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'الْقَدْرِ', zone:'wz1'},
+  {id:'w2', text:'لَيْلَةِ', zone:'wz2'},
+  {id:'w3', text:'فِي', zone:'wz3'},
+  {id:'w4', text:'أَنزَلْنَاهُ', zone:'wz4'},
+  {id:'w5', text:'شَهْرٍ', zone:'wz5'},
+  {id:'w6', text:'أَلْفِ', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'Decree / Power'},
+  {id:'wz2', desc:'the Night of'},
+  {id:'wz3', desc:'in'},
+  {id:'wz4', desc:'We sent it down'},
+  {id:'wz5', desc:'months'},
+  {id:'wz6', desc:'a thousand'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
 
 const S1_QUIZ = [
   {q:'What was sent down on Laylat al-Qadr? (97:1)',
@@ -62,9 +115,12 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
+
+
+
+function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
+function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -77,5 +133,5 @@ window._drawBuildCanvas = function(n) {
   if(n>=2){ctx.fillStyle=acc;ctx.font='8px serif';ctx.textAlign='center';ctx.fillText('👼 👼 👼 👼',W/2,H*0.45);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('Angels descending...',W/2,H*0.58);ctx.textAlign='left';}
   if(n>=3){ctx.fillStyle=acc;ctx.font='8px serif';ctx.textAlign='center';ctx.fillText('سَلَامٌ',W/2,H*0.75);ctx.textAlign='left';}
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
-  ctx.fillText(n>=3?'AL-QADR COMPLETE! ✨':`Al-Qadr — ${n}/3 levels`,W/2,14);ctx.textAlign='left';
+  ctx.fillText(n>=3?'AL-QADR COMPLETE! ✨':`Al-Qadr — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
 };

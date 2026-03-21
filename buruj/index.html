@@ -41,12 +41,17 @@
   </div>
   <h2 class="section-heading">⭐ THE QUEST MAP</h2>
   <div class="map-grid">
-    <div class="map-tile locked" id="tile-1" onclick="openSection(1)"><div class="tile-icon">⭐</div><div class="tile-level">LEVEL 1</div><div class="tile-name">The Oaths</div><div class="tile-verses">85:1-3</div><div class="tile-status" id="status-1">▶ PLAY</div></div>
-    <div class="map-tile locked" id="tile-2" onclick="openSection(2)"><div class="tile-icon">🔥</div><div class="tile-level">LEVEL 2</div><div class="tile-name">The Ditch</div><div class="tile-verses">85:4-10</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-3" onclick="openSection(3)"><div class="tile-icon">✊</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Their Crime</div><div class="tile-verses">85:8-9</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-4" onclick="openSection(4)"><div class="tile-icon">🌿</div><div class="tile-level">LEVEL 4</div><div class="tile-name">Great Attainment</div><div class="tile-verses">85:11</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-5" onclick="openSection(5)"><div class="tile-icon">⚡</div><div class="tile-level">LEVEL 5</div><div class="tile-name">Allah's Grip</div><div class="tile-verses">85:12-20</div><div class="tile-status" id="status-5">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-6" onclick="openSection(6)"><div class="tile-icon">📜</div><div class="tile-level">LEVEL 6</div><div class="tile-name">Preserved Tablet</div><div class="tile-verses">85:21-22</div><div class="tile-status" id="status-6">🔒 LOCKED</div></div>
+        <div class="map-tile unlocked" id="tile-1" onclick="openSection(1)">
+      <div class="tile-icon">📖</div><div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">Word by Word</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+<div class="map-tile locked" id="tile-2" onclick="openSection(2)"><div class="tile-icon">⭐</div><div class="tile-level">LEVEL 1</div><div class="tile-name">The Oaths</div><div class="tile-verses">85:1-3</div><div class="tile-status" id="status-2">▶ PLAY</div></div>
+    <div class="map-tile locked" id="tile-3" onclick="openSection(3)"><div class="tile-icon">🔥</div><div class="tile-level">LEVEL 2</div><div class="tile-name">The Ditch</div><div class="tile-verses">85:4-10</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-4" onclick="openSection(4)"><div class="tile-icon">✊</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Their Crime</div><div class="tile-verses">85:8-9</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-5" onclick="openSection(5)"><div class="tile-icon">🌿</div><div class="tile-level">LEVEL 4</div><div class="tile-name">Great Attainment</div><div class="tile-verses">85:11</div><div class="tile-status" id="status-5">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-6" onclick="openSection(6)"><div class="tile-icon">⚡</div><div class="tile-level">LEVEL 5</div><div class="tile-name">Allah's Grip</div><div class="tile-verses">85:12-20</div><div class="tile-status" id="status-6">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-7" onclick="openSection(7)"><div class="tile-icon">📜</div><div class="tile-level">LEVEL 6</div><div class="tile-name">Preserved Tablet</div><div class="tile-verses">85:21-22</div><div class="tile-status" id="status-7">🔒 LOCKED</div></div>
   </div>
   <div id="world-builder">
     <h2 class="section-heading">⭐ BUILD THE CONSTELLATION SKY</h2>
@@ -55,12 +60,13 @@
     </div>
     <p style="font-family:var(--font-body);font-size:var(--font-size-sm);color:var(--primary-lit);text-align:center;margin-bottom:10px;line-height:1.8;">Complete each level to reveal the constellation sky with the Preserved Tablet!<br/><em style="color:var(--text-dim);">"Bal huwa Quranun Majid — fi Lawhin Mahfudh" — 85:21-22</em></p>
     <div class="world-preview">
-      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Constellations</div></div>
-      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Ditch</div></div>
-      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Their Crime</div></div>
-      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Attainment</div></div>
-      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Allah's Grip</div></div>
-      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Tablet</div></div>
+            <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Words</div></div>
+<div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Constellations</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Ditch</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Their Crime</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Attainment</div></div>
+      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Allah's Grip</div></div>
+      <div class="world-chunk" id="chunk-7"><div class="chunk-emoji">⬛</div><div class="chunk-label">Tablet</div></div>
     </div>
   </div>
   <div id="all-complete">
@@ -77,11 +83,55 @@
 <div id="section-view" style="display:none">
   <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></header>
 
+  
+  <!-- ==================== SECTION 1 — WORD BY WORD ==================== -->
   <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Learn the key Arabic words of this surah! Tap each card to reveal its meaning, then continue to the next level.
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 1 — WORD BY WORD (85:Al-Buruj)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 The Constellations — Click to reveal verse</span></div>
+        <canvas id="canvas-1" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        
+        <div class="verse-block">
+          <div class="arabic-text">وَالسَّمَاءِ ذَاتِ الْبُرُوجِ ۩ وَالْيَوْمِ الْمَوْعُودِ ۩ إِنَّ بَطْشَ رَبِّكَ لَشَدِيدٌ ۩ إِنَّهُ هُوَ يُبْدِئُ وَيُعِيدُ</div>
+          <div class="verse-translation">"By the sky full of great constellations, and the Promised Day — indeed the grip of your Lord is severe. It is He who originates and repeats." (85:1-2, 12-13)</div>
+        </div>
+
+        <p class="word-grid-intro">Now explore each word — <strong>tap a card to reveal its meaning</strong>.</p>
+        <button id="wbw-reveal-btn" class="wbw-reveal-btn">👁 Reveal All Meanings</button>
+        <div id="wbw-display"></div>
+      </div>
+    </div>
+        <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 MATCH — ARABIC WORD TO ENGLISH MEANING</div>
+      <div class="game-instructions">Drag each Arabic word to its English meaning!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-1"></div>
+        <div class="drop-zones" id="drop-zones-1"></div>
+      </div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+<div class="section-panel" id="section-panel-2">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Surah Al-Buruj opens with three powerful oaths from Allah — by the sky with its constellations, by the Promised Day, and by the witness and the witnessed. Allah swears these oaths to certify the truth of what follows. Match each oath to its meaning!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">⭐ LEVEL 1 — THE THREE OATHS (85:1-3)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Constellation Sky — Click to reveal verse</span></div><canvas id="canvas-1" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Constellation Sky — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>Surah Al-Buruj begins with three divine oaths — sworn by Allah Himself — certifying the truth of everything that follows. When Allah swears, the oath carries infinite weight.</p>
         <p><strong>"Wa al-sama' dhat al-buruj"</strong> — By the sky possessing the constellations. Al-buruj are the great star formations — the towers of heaven. The vast, ordered, permanent constellations that humans have navigated by, worshipped wrongly, and marvelled at throughout history.</p>
@@ -96,21 +146,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 GAME — MATCH THE THREE OATHS (85:1-3)</div>
       <div class="game-instructions">Drag each oath to its correct meaning. All 3 must match!</div>
-      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-1"></div><div class="drop-zones" id="drop-zones-1"></div></div>
-      <div class="game-feedback" id="feedback-1"></div>
+      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-2"></div><div class="drop-zones" id="drop-zones-2"></div></div>
+      <div class="game-feedback" id="feedback-2"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection1()">✅ Check Matches</button>
-        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection2()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-2">
+  <div class="section-panel" id="section-panel-3">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The oaths certify the following story: "Qutila ashab al-ukhdud!" — DESTROYED were the People of the Ditch! One of the most heart-wrenching events in Islamic history. Believers thrown into pits of fire for refusing to abandon their faith. Answer the questions about this chilling episode!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">🔥 LEVEL 2 — THE PEOPLE OF THE DITCH (85:4-10)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Burning Trenches — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Burning Trenches — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>The surah introduces one of the most powerful stories in the Quran about persecution of believers. Historical accounts identify this event as occurring in Yemen (around 525 CE), when the Jewish convert king Dhunuwas ordered that all Christians/monotheist believers be killed unless they apostatised.</p>
         <p><strong>"Qutila ashab al-ukhdud"</strong> — Destroyed/cursed were the People of the Ditch. "Ukhdud" is a deep trench dug into the earth — filled with fuel and fire. The believers were brought to the edge of these flaming trenches and given a choice: renounce your faith, or burn.</p>
@@ -125,21 +175,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — THE PEOPLE OF THE DITCH (85:4-10)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-2"></div>
-      <div class="game-feedback" id="feedback-2"></div>
+      <div id="quiz-3"></div>
+      <div class="game-feedback" id="feedback-3"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection3()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-3">
+  <div class="section-panel" id="section-panel-4">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>After describing the persecution, the Quran asks: WHY did they resent the believers? The answer is one of the most powerful verses in the Quran. "Wa ma naqamu minhum illa an yu\'minu bi-Allah al-Aziz al-Hamid." Answer the questions about this verse!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">✊ LEVEL 3 — THEIR ONLY CRIME: FAITH (85:8-9)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Only Crime — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Only Crime — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>After describing the horrific persecution, the Quran asks the question that exposes the ultimate injustice: WHY did the persecutors hate the believers? What had they done?</p>
         <p><strong>"Wa ma naqamu minhum illa an yu'minu bi-Allah al-'Aziz al-Hamid."</strong> — They resented them for NOTHING — except that they believed in Allah, the Exalted in Might, the Praiseworthy.</p>
@@ -155,21 +205,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — THEIR ONLY CRIME (85:8-9)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-3"></div>
-      <div class="game-feedback" id="feedback-3"></div>
+      <div id="quiz-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection3()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-4">
+  <div class="section-panel" id="section-panel-5">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The believers were burned alive for their faith. But where did they go? Straight to "Al-Fawz al-Kabir" — THE GREAT ATTAINMENT! "Lahum jannatun tajri min tahtiha al-anhar." The contrast is complete: earthly fire → heavenly rivers! Answer the questions about the Great Attainment!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">🌿 LEVEL 4 — THE GREAT ATTAINMENT (85:11)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Gardens of Paradise — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Gardens of Paradise — Click to reveal verse</span></div><canvas id="canvas-5" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>Immediately after describing the terrible persecution, Allah declares the outcome for the believers: <strong>"Inna alladhina amanu wa 'amilu al-salihat lahum jannatun tajri min tahtiha al-anhar — dhalika al-fawz al-kabir."</strong></p>
         <p>Indeed those who believed and did righteous deeds will have gardens beneath which rivers flow — and that is <strong>AL-FAWZ AL-KABIR</strong> — the GREAT ATTAINMENT.</p>
@@ -185,21 +235,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — THE GREAT ATTAINMENT (85:11)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-4"></div>
-      <div class="game-feedback" id="feedback-4"></div>
+      <div id="quiz-5"></div>
+      <div class="game-feedback" id="feedback-5"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-5">
+  <div class="section-panel" id="section-panel-6">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Inna batsha Rabbika la-shadid." Indeed, the GRIP of your Lord is SEVERE. What happened to Pharaoh? Destroyed. What happened to Thamud? Wiped out. What about the People of the Ditch? "Wa Allahu min wara'ihim muhit" — Allah surrounded them completely. Answer the questions about Allah's grip!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">⚡ LEVEL 5 — ALLAH'S GRIP IS SEVERE (85:12-20)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Severe Grip — Click to reveal verse</span></div><canvas id="canvas-5" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Severe Grip — Click to reveal verse</span></div><canvas id="canvas-6" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>The surah now pivots to Allah's response to the oppressors: <strong>"Inna batsha Rabbika la-shadid."</strong> — Indeed the GRIP/SEIZURE of your Lord is SEVERE.</p>
         <p>"Batsh" is a powerful word — the seizing, grasping, taking hold. When Allah takes hold of an oppressor, His grip is "shadid" — severe, intense, inescapable. History proves this:</p>
@@ -215,21 +265,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — ALLAH'S GRIP (85:12-20)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-5"></div>
-      <div class="game-feedback" id="feedback-5"></div>
+      <div id="quiz-6"></div>
+      <div class="game-feedback" id="feedback-6"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-6">
+  <div class="section-panel" id="section-panel-7">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The final declaration — after all the persecution, all the oppression, all the attacks on the believers: "Bal huwa Quranun Majid — fi Lawhin Mahfudh." But it is a GLORIOUS Quran — preserved in a PRESERVED TABLET! The attackers are dust, the Quran endures forever! Answer the final questions!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">📜 LEVEL 6 — THE PRESERVED TABLET (85:21-22)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Glorious Quran — Click to reveal verse</span></div><canvas id="canvas-6" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Glorious Quran — Click to reveal verse</span></div><canvas id="canvas-7" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>The surah concludes with a triumphant declaration that answers all persecution with one unassailable fact:</p>
         <p><strong>"Bal huwa Quranun Majid — fi Lawhin Mahfudh."</strong></p>
@@ -246,16 +296,17 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 FINAL QUIZ — THE PRESERVED TABLET (85:21-22)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to complete Surah Al-Buruj!</div>
-      <div id="quiz-6"></div>
-      <div class="game-feedback" id="feedback-6"></div>
+      <div id="quiz-7"></div>
+      <div class="game-feedback" id="feedback-7"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection7()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-7-btn" style="display:none" onclick="completeSection(7)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 </div>
+<script src="../shared/arabic-words.js"></script>
 <script src="scenes.js"></script>
 <script src="../shared/engine.js"></script>
 <script src="../shared/ui.js"></script>

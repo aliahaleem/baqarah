@@ -1,26 +1,65 @@
 'use strict';
 /* SURAH AL-INSHIQAQ (84) — app.js */
 window.STORAGE_KEY='inshiqaqQuestSave';
-window.state={explorerName:'',xp:0,gems:0,completed:[],s1Checked:false,s2Answers:{},s2Checked:false,s3Answers:{},s3Checked:false,s4Answers:{},s4Checked:false,s5Checked:false,s6Answers:{},s6Checked:false};
+window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Answers:{},s4Checked:false,s5Answers:{},s5Checked:false,s6Checked:false,s7Answers:{},s7Checked:false};
 
 const REWARDS={
-  1:{xp:80,gems:3,icon:'🌅',title:'SKY SPLITS, EARTH STRETCHES!',msg:"SubhanAllah! The sky splits and listens to its Lord. The earth stretches and listens to its Lord. 'Wa adhinat li-Rabbiha wa huqqat' — it was RIGHT for them to do so! The entire universe obeys Allah completely. How about us — do we listen to our Lord and comply?"},
-  2:{xp:80,gems:3,icon:'🚶',title:'THE JOURNEY UNDERSTOOD!',msg:"Allahu Akbar! 'Ya ayyuha al-insan, innaka kadihun ila Rabbika kadhan fa-mulaqihi.' You are STRIVING toward your Lord — every breath, every heartbeat, every step is part of this journey. And you WILL meet Him. 'Fa-mulaqihi' — you will meet Him. Prepare well for that meeting!"},
-  3:{xp:90,gems:3,icon:'📖',title:'RIGHT HAND PEOPLE KNOWN!',msg:"MashAllah! The right-hand people receive their book joyfully. 'Hisaban yasiran' — an EASY reckoning! And then: 'yanqalibu ila ahlihi masrura' — they return to their people OVERJOYED. The reunion of believers in Paradise is a celebration! May Allah make us among them. Ameen!"},
-  4:{xp:90,gems:4,icon:'⚠️',title:'THE WARNING RECEIVED!',msg:"SubhanAllah! The person given their book from behind their back — 'yad\'u thuburan' — calls for destruction. 'Wa yasla sa\'iran' — enters blazing fire. The contrast is total. There are only two paths: the right-hand path of the Abrar, or the left-hand path of the Fujjar. Which path are you building today?"},
-  5:{xp:100,gems:4,icon:'🔄',title:'STAGES OF LIFE MAPPED!',msg:"Allahu Akbar! 'La-tarkabunna tabaqan \'an tabaqin.' You will SURELY pass through stage after stage. Womb, birth, childhood, youth, adulthood, old age, death, grave, resurrection, judgment. Every stage is a gift — and every stage passes. The meeting with Allah is the final stage. Use each stage well!"},
-  6:{xp:120,gems:5,icon:'🌙',title:'SURAH AL-INSHIQAQ COMPLETE!',msg:"ALLAHUMMA BARIK! All 6 levels of Surah Al-Inshiqaq complete! You are striving toward your Lord, stage after stage. The sky will split. The earth will stretch. You will receive your book. May Allah give us books in our right hands, easy reckonings, and joyful returns to our people. Ameen!"},
+  2:{xp:80,gems:3,icon:'🌅',title:'SKY SPLITS, EARTH STRETCHES!',msg:"SubhanAllah! The sky splits and listens to its Lord. The earth stretches and listens to its Lord. 'Wa adhinat li-Rabbiha wa huqqat' — it was RIGHT for them to do so! The entire universe obeys Allah completely. How about us — do we listen to our Lord and comply?"},
+  3:{xp:80,gems:3,icon:'🚶',title:'THE JOURNEY UNDERSTOOD!',msg:"Allahu Akbar! 'Ya ayyuha al-insan, innaka kadihun ila Rabbika kadhan fa-mulaqihi.' You are STRIVING toward your Lord — every breath, every heartbeat, every step is part of this journey. And you WILL meet Him. 'Fa-mulaqihi' — you will meet Him. Prepare well for that meeting!"},
+  4:{xp:90,gems:3,icon:'📖',title:'RIGHT HAND PEOPLE KNOWN!',msg:"MashAllah! The right-hand people receive their book joyfully. 'Hisaban yasiran' — an EASY reckoning! And then: 'yanqalibu ila ahlihi masrura' — they return to their people OVERJOYED. The reunion of believers in Paradise is a celebration! May Allah make us among them. Ameen!"},
+  5:{xp:90,gems:4,icon:'⚠️',title:'THE WARNING RECEIVED!',msg:"SubhanAllah! The person given their book from behind their back — 'yad\'u thuburan' — calls for destruction. 'Wa yasla sa\'iran' — enters blazing fire. The contrast is total. There are only two paths: the right-hand path of the Abrar, or the left-hand path of the Fujjar. Which path are you building today?"},
+  6:{xp:100,gems:4,icon:'🔄',title:'STAGES OF LIFE MAPPED!',msg:"Allahu Akbar! 'La-tarkabunna tabaqan \'an tabaqin.' You will SURELY pass through stage after stage. Womb, birth, childhood, youth, adulthood, old age, death, grave, resurrection, judgment. Every stage is a gift — and every stage passes. The meeting with Allah is the final stage. Use each stage well!"},
+  7:{xp:120,gems:5,icon:'🌙',title:'SURAH AL-INSHIQAQ COMPLETE!',msg:"ALLAHUMMA BARIK! All 7 levels of Surah Al-Inshiqaq complete! You are striving toward your Lord, stage after stage. The sky will split. The earth will stretch. You will receive your book. May Allah give us books in our right hands, easy reckonings, and joyful returns to our people. Ameen!"},
 };
 window.SURAH_CONFIG={
-  totalLevels:6,rewards:REWARDS,
-  tileIcons:['🌅','🚶','📖','⚠️','🔄','🌙'],
-  tileLabels:['Sky Splits','Striving','Right Hand','Behind Back','Stages','Complete'],
+  totalLevels:7,rewards:REWARDS,
+  tileIcons:['📖','🌅','🚶','📖','⚠️','🔄','🌙'],
+  tileLabels:['Word by Word','Sky Splits','Striving','Right Hand','Behind Back','Stages','Complete'],
   welcomeMsg:{
-    fresh:name=>`As-salamu alaykum, ${name}! Surah Al-Inshiqaq — The Splitting! Sky splits, earth stretches, and you WILL meet your Lord. Right-hand people: joyful return. Left-hand people: destruction. Stage after stage — the journey is real. 6 levels await!`,
+    fresh:name=>`As-salamu alaykum, ${name}! Surah Al-Inshiqaq — The Splitting! Sky splits, earth stretches, and you WILL meet your Lord. Right-hand people: joyful return. Left-hand people: destruction. Stage after stage — the journey is real. 7 levels await!`,
     partial:(name,done)=>`Welcome back, ${name}! ${done} level${done>1?'s':''} complete. "Innaka kadihun ila Rabbika kadhan fa-mulaqihi" — Keep striving! 🚶`,
     complete:name=>`MashAllah, ${name}! Surah Al-Inshiqaq complete! Stage after stage you've journeyed through this surah. May your book be given in your right hand. Ameen! 🌙`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1-2 — إِذَا السَّمَاءُ انشَقَّتْ · وَأَذِنَتْ لِرَبِّهَا وَحُقَّتْ', words:[
+    {ar:'وَحُقَّتْ', tr:'wa-ḥuqqat', en:'as it must', freq:1},
+    {ar:'لِرَبِّهَا', tr:'li-rabbihā', en:'its Lord', freq:49},
+    {ar:'وَأَذِنَتْ', tr:'wa-adhinat', en:'and obeyed', freq:2},
+    {ar:'انشَقَّتْ', tr:'inshaqqat', en:'has split open', freq:1},
+    {ar:'السَّمَاءُ', tr:'al-samāʾ', en:'the sky', freq:120},
+    'idha',
+  ]},
+  {label:'Verse 6 — يَا أَيُّهَا الْإِنسَانُ إِنَّكَ كَادِحٌ إِلَىٰ رَبِّكَ كَدْحًا', words:[
+    {ar:'كَدْحًا', tr:'kadḥan', en:'a striving', freq:1},
+    {ar:'رَبِّكَ', tr:'rabbika', en:'your Lord', freq:49},
+    {ar:'إِلَىٰ', tr:'ilā', en:'toward', freq:189},
+    {ar:'كَادِحٌ', tr:'kādiḥ', en:'labouring', freq:1},
+    {ar:'إِنَّكَ', tr:'innaka', en:'indeed you are', freq:743},
+    {ar:'الْإِنسَانُ', tr:'al-insān', en:'O mankind', freq:65},
+  ]},
+];
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'وَحُقَّتْ', zone:'wz1'},
+  {id:'w2', text:'لِرَبِّهَا', zone:'wz2'},
+  {id:'w3', text:'وَأَذِنَتْ', zone:'wz3'},
+  {id:'w4', text:'انشَقَّتْ', zone:'wz4'},
+  {id:'w5', text:'السَّمَاءُ', zone:'wz5'},
+  {id:'w6', text:'كَدْحًا', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'as it must'},
+  {id:'wz2', desc:'its Lord'},
+  {id:'wz3', desc:'and obeyed'},
+  {id:'wz4', desc:'has split open'},
+  {id:'wz5', desc:'the sky'},
+  {id:'wz6', desc:'a striving'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+
 
 const S1_ITEMS=[{id:'i1',text:'🌅 Sky\nAnshaqqa',zone:'z1'},{id:'i2',text:'🌍 Earth\nMuddat',zone:'z2'},{id:'i3',text:'👂 "Listened\nto its Lord"',zone:'z3'},{id:'i4',text:'⚖️ Both\nObligated',zone:'z4'}];
 const S1_ZONES=[{id:'z1',desc:'"Idha al-sama\' anshaqqa" (84:1) — When the sky SPLITS/CLEAVES. "Inshaqqa" — broke open, split apart. This is the same root as the surah\'s name. The entire sky, the universe\'s ceiling, cracks and opens.'},{id:'z2',desc:'"Wa idha al-ardhu muddat" (84:3) — When the earth is STRETCHED. "Muddat" — stretched flat, spread out. The earth that contains mountains and depths is stretched smooth and flat for the resurrection.'},{id:'z3',desc:'"Wa adhinat li-Rabbiha" (84:2,4) — The sky AND earth LISTENED to their Lord and obeyed. "Adhina" means to give ear to, to obey, to comply. The sky and earth hear Allah\'s command and respond.'},{id:'z4',desc:'"Wa huqqat" (84:2,4) — They were OBLIGATED/RIGHT to do so — or "it was the right thing for them." Allah is saying: of course they obeyed — how could they not? And how could we humans not also comply?'}];
@@ -160,12 +199,15 @@ const S6_QUIZ=[
    correct:3},
 ];
 
-function renderSection1Game(){renderDragDrop(1,S1_ITEMS,S1_ZONES);}function checkSection1(){checkDragDrop(1,S1_ZONES);}
-function renderSection2Game(){renderQuiz(2,S2_QUIZ);}function checkSection2(){checkQuiz(2,S2_QUIZ);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
-function renderSection5Game(){renderQuiz(5,S5_QUIZ);}function checkSection5(){checkQuiz(5,S5_QUIZ);}
-function renderSection6Game(){renderQuiz(6,S6_QUIZ);}function checkSection6(){checkQuiz(6,S6_QUIZ);}
+
+
+
+function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
+function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
+function renderSection5Game(){renderQuiz(5,S4_QUIZ);}function checkSection5(){checkQuiz(5,S4_QUIZ);}
+function renderSection6Game(){renderQuiz(6,S5_QUIZ);}function checkSection6(){checkQuiz(6,S5_QUIZ);}
+function renderSection7Game(){renderQuiz(7,S6_QUIZ);}function checkSection7(){checkQuiz(7,S6_QUIZ);}
 
 function _lbl(ctx,W,msg,d,t){ctx.fillStyle='#f09030';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(msg,W/2,18);ctx.fillStyle='#100802';ctx.fillRect(W/2-100,26,200,8);ctx.fillStyle='#883010';ctx.fillRect(W/2-100,26,Math.round(200*d/t),8);ctx.textAlign='left';}
 function _drawBuildCanvas(n){

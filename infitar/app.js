@@ -1,26 +1,63 @@
 'use strict';
 /* SURAH AL-INFITAR (82) — app.js */
 window.STORAGE_KEY='infitarQuestSave';
-window.state={explorerName:'',xp:0,gems:0,completed:[],s1Checked:false,s2Answers:{},s2Checked:false,s3Checked:false,s4Answers:{},s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false};
+window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false,s7Answers:{},s7Checked:false};
 
 const REWARDS={
-  1:{xp:80,gems:3,icon:'🌌',title:'THE SKY HAS SPLIT!',msg:"SubhanAllah! The sky splits. Stars scatter. Seas burst. Graves overturn. And then — 'Alimat nafsun ma qaddamat wa akhkharat.' A soul will know what it put forward AND what it left behind. Both matter: what you did AND what you failed to do. Start building your record today!"},
-  2:{xp:80,gems:3,icon:'🤔',title:'THE DECEPTION EXPOSED!',msg:"Allahu Akbar! 'Ya ayyuha al-insan — ma gharraka bi-Rabbika al-Karim?' What DECEIVED you? Allah calls Himself 'al-Karim' — the Generous. We took His generosity and thought it meant no accountability. We were deceived by His kindness. SubhanAllah — use His generosity as motivation, not as false security!"},
-  3:{xp:90,gems:3,icon:'✍️',title:'THE RECORDING ANGELS KNOWN!',msg:"MashAllah! 'Kiraman Katibin' — Noble Recorders. They are NOBLE — not threatening agents, but honoured beings doing an honourable task. And they know EVERYTHING. Every whisper, every secret thought that leads to action. Your record is being written right now. Make it a record you'd be proud to show."},
-  4:{xp:90,gems:4,icon:'⚖️',title:'TWO DESTINIES CLEAR!',msg:"SubhanAllah! Al-Abrar in bliss. Al-Fujjar in Hell. The contrast is absolute. And 'wa ma hum anha bi-gha'ibin' — the wrongdoers will NOT be absent from Hell. No escape. No last-minute reprieve. The time to choose al-Abrar is NOW, while this door is still open."},
-  5:{xp:100,gems:4,icon:'⚡',title:'YAWM AL-DIN UNDERSTOOD!',msg:"Allahu Akbar! 'Wa ma adraka ma yawm al-din? Thumma ma adraka ma yawm al-din?' The question is asked TWICE — it is that incomprehensible. That Day, no soul helps another. No wealth, no status, no intercession except by His permission. 'Wa al-amru yawma'idhin li-llah.' Allah alone commands."},
-  6:{xp:120,gems:5,icon:'🌊',title:'SURAH AL-INFITAR COMPLETE!',msg:"ALLAHUMMA BARIK! All 6 levels of Surah Al-Infitar — The Cleaving — complete! The sky will split, records will be laid open, and every soul will stand completely alone. 'Wa al-amru yawma'idhin li-llah.' On that Day, only Allah commands. May our records be full of good. Ameen!"},
+  2:{xp:80,gems:3,icon:'🌌',title:'THE SKY HAS SPLIT!',msg:"SubhanAllah! The sky splits. Stars scatter. Seas burst. Graves overturn. And then — 'Alimat nafsun ma qaddamat wa akhkharat.' A soul will know what it put forward AND what it left behind. Both matter: what you did AND what you failed to do. Start building your record today!"},
+  3:{xp:80,gems:3,icon:'🤔',title:'THE DECEPTION EXPOSED!',msg:"Allahu Akbar! 'Ya ayyuha al-insan — ma gharraka bi-Rabbika al-Karim?' What DECEIVED you? Allah calls Himself 'al-Karim' — the Generous. We took His generosity and thought it meant no accountability. We were deceived by His kindness. SubhanAllah — use His generosity as motivation, not as false security!"},
+  4:{xp:90,gems:3,icon:'✍️',title:'THE RECORDING ANGELS KNOWN!',msg:"MashAllah! 'Kiraman Katibin' — Noble Recorders. They are NOBLE — not threatening agents, but honoured beings doing an honourable task. And they know EVERYTHING. Every whisper, every secret thought that leads to action. Your record is being written right now. Make it a record you'd be proud to show."},
+  5:{xp:90,gems:4,icon:'⚖️',title:'TWO DESTINIES CLEAR!',msg:"SubhanAllah! Al-Abrar in bliss. Al-Fujjar in Hell. The contrast is absolute. And 'wa ma hum anha bi-gha'ibin' — the wrongdoers will NOT be absent from Hell. No escape. No last-minute reprieve. The time to choose al-Abrar is NOW, while this door is still open."},
+  6:{xp:100,gems:4,icon:'⚡',title:'YAWM AL-DIN UNDERSTOOD!',msg:"Allahu Akbar! 'Wa ma adraka ma yawm al-din? Thumma ma adraka ma yawm al-din?' The question is asked TWICE — it is that incomprehensible. That Day, no soul helps another. No wealth, no status, no intercession except by His permission. 'Wa al-amru yawma'idhin li-llah.' Allah alone commands."},
+  7:{xp:120,gems:5,icon:'🌊',title:'SURAH AL-INFITAR COMPLETE!',msg:"ALLAHUMMA BARIK! All 7 levels of Surah Al-Infitar — The Cleaving — complete! The sky will split, records will be laid open, and every soul will stand completely alone. 'Wa al-amru yawma'idhin li-llah.' On that Day, only Allah commands. May our records be full of good. Ameen!"},
 };
 window.SURAH_CONFIG={
-  totalLevels:6,rewards:REWARDS,
-  tileIcons:['🌌','🤔','✍️','⚖️','⚡','🌊'],
-  tileLabels:['Sky Splits','Deceived?','Angels','Two Destinies','Yawm al-Din','No Help'],
+  totalLevels:7,rewards:REWARDS,
+  tileIcons:['📖','🌌','🤔','✍️','⚖️','⚡','🌊'],
+  tileLabels:['Word by Word','Sky Splits','Deceived?','Angels','Two Destinies','Yawm al-Din','No Help'],
   welcomeMsg:{
-    fresh:name=>`As-salamu alaykum, ${name}! Surah Al-Infitar — "The Cleaving." The sky splits. Stars scatter. What deceived you about your Lord? Noble recording angels. The righteous in bliss and the wicked in Hell. And the Day when no soul helps another. 6 levels await!`,
+    fresh:name=>`As-salamu alaykum, ${name}! Surah Al-Infitar — "The Cleaving." The sky splits. Stars scatter. What deceived you about your Lord? Noble recording angels. The righteous in bliss and the wicked in Hell. And the Day when no soul helps another. 7 levels await!`,
     partial:(name,done)=>`Welcome back, ${name}! ${done} level${done>1?'s':''} complete. "Ma gharraka bi-Rabbika al-Karim?" — Keep building your record! 🌌`,
     complete:name=>`MashAllah, ${name}! Surah Al-Infitar complete! "Wa al-amru yawma'idhin li-llah." Allah commands on That Day. May your record bring you joy. Ameen! 🌊`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1-2 — إِذَا السَّمَاءُ انفَطَرَتْ · وَإِذَا الْكَوَاكِبُ انتَثَرَتْ', words:[
+    {ar:'انتَثَرَتْ', tr:'intatharat', en:'scatter', freq:1},
+    {ar:'الْكَوَاكِبُ', tr:'al-kawākib', en:'the stars', freq:5},
+    {ar:'انفَطَرَتْ', tr:'infaṭarat', en:'has broken apart', freq:1},
+    {ar:'السَّمَاءُ', tr:'al-samāʾ', en:'the sky', freq:120},
+    'idha',
+  ]},
+  {label:'Verse 6 — يَا أَيُّهَا الْإِنسَانُ مَا غَرَّكَ بِرَبِّكَ الْكَرِيمِ', words:[
+    {ar:'الْكَرِيمِ', tr:'al-karīm', en:'the Generous', freq:27},
+    {ar:'بِرَبِّكَ', tr:'bi-rabbika', en:'concerning your Lord', freq:49},
+    {ar:'غَرَّكَ', tr:'gharraka', en:'deceived you', freq:2},
+    {ar:'مَا', tr:'mā', en:'what', freq:2005},
+    {ar:'الْإِنسَانُ', tr:'al-insān', en:'O mankind', freq:65},
+  ]},
+];
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'انتَثَرَتْ', zone:'wz1'},
+  {id:'w2', text:'الْكَوَاكِبُ', zone:'wz2'},
+  {id:'w3', text:'انفَطَرَتْ', zone:'wz3'},
+  {id:'w4', text:'السَّمَاءُ', zone:'wz4'},
+  {id:'w5', text:'الْكَرِيمِ', zone:'wz5'},
+  {id:'w6', text:'بِرَبِّكَ', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'scatter'},
+  {id:'wz2', desc:'the stars'},
+  {id:'wz3', desc:'has broken apart'},
+  {id:'wz4', desc:'the sky'},
+  {id:'wz5', desc:'the Generous'},
+  {id:'wz6', desc:'concerning your Lord'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+
 
 const S1_ITEMS=[{id:'i1',text:'🌌 Sky\nInfatarat',zone:'z1'},{id:'i2',text:'⭐ Stars\nIntatharat',zone:'z2'},{id:'i3',text:'🌊 Seas\nFujjirat',zone:'z3'},{id:'i4',text:'⚰️ Graves\nBu\'thirat',zone:'z4'}];
 const S1_ZONES=[{id:'z1',desc:'"Idha al-sama\' infatarat" (82:1) — When the sky is CLEFT/split asunder. "Infatara" means to split open with force. The sky that seems permanent above us will be torn apart.'},{id:'z2',desc:'"Wa idha al-kawakib intatharat" (82:2) — When the stars are scattered/fall. "Intathara" means to scatter in every direction like scattered seeds.'},{id:'z3',desc:'"Wa idha al-bihar fujjirat" (82:3) — When the seas are burst forth/set flowing. Water merges, boundaries between seas dissolve, the ocean overflows. Everything orderly becomes chaotic.'},{id:'z4',desc:'"Wa idha al-qubur bu\'thirat" (82:4) — When the graves are overturned/stirred up. Their contents are thrown up — the dead emerge for resurrection. No one stays buried.'}];
@@ -136,12 +173,15 @@ const S6_QUIZ=[
    correct:3},
 ];
 
-function renderSection1Game(){renderDragDrop(1,S1_ITEMS,S1_ZONES);}function checkSection1(){checkDragDrop(1,S1_ZONES);}
-function renderSection2Game(){renderQuiz(2,S2_QUIZ);}function checkSection2(){checkQuiz(2,S2_QUIZ);}
-function renderSection3Game(){renderDragDrop(3,S3_ITEMS,S3_ZONES);}function checkSection3(){checkDragDrop(3,S3_ZONES);}
-function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
-function renderSection5Game(){renderQuiz(5,S5_QUIZ);}function checkSection5(){checkQuiz(5,S5_QUIZ);}
-function renderSection6Game(){renderQuiz(6,S6_QUIZ);}function checkSection6(){checkQuiz(6,S6_QUIZ);}
+
+
+
+function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
+function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}
+function renderSection4Game(){renderDragDrop(4,S3_ITEMS,S3_ZONES);}function checkSection4(){checkDragDrop(4,S3_ZONES);}
+function renderSection5Game(){renderQuiz(5,S4_QUIZ);}function checkSection5(){checkQuiz(5,S4_QUIZ);}
+function renderSection6Game(){renderQuiz(6,S5_QUIZ);}function checkSection6(){checkQuiz(6,S5_QUIZ);}
+function renderSection7Game(){renderQuiz(7,S6_QUIZ);}function checkSection7(){checkQuiz(7,S6_QUIZ);}
 
 function _lbl(ctx,W,msg,d,t){ctx.fillStyle='#40d0e8';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(msg,W/2,18);ctx.fillStyle='#020818';ctx.fillRect(W/2-100,26,200,8);ctx.fillStyle='#1848a0';ctx.fillRect(W/2-100,26,Math.round(200*d/t),8);ctx.textAlign='left';}
 function _drawBuildCanvas(n){

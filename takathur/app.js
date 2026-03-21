@@ -1,23 +1,71 @@
 'use strict';
 /* Surah At-Takathur (102) — Competing for More */
 window.STORAGE_KEY = 'takathurQuestSave';
-window.state = { explorerName:'', xp:0, gems:0, completed:[], s1Answers:{}, s1Checked:false, s2Checked:false, s3Answers:{}, s3Checked:false };
+window.state = { explorerName:'', xp:0, gems:0, completed:[], s2Answers:{}, s2Checked:false, s3Checked:false, s4Answers:{}, s4Checked:false };
 
 const REWARDS = {
-  1:{xp:70, gems:3, icon:'💰', title:'Distracted Exposed', msg:"SubhanAllah! 'Al-hakumut-takathur hatta zurtumul-maqabir.' Competing for MORE distracted you until you visited the graves! The grave is what it takes to stop the race for MORE. What a wake-up call!"},
-  2:{xp:80, gems:3, icon:'👁️', title:'Hellfire Seen',     msg:"MashAllah! 'Kalla law ta\'lamuna \'ilmal-yaqin — latarawun al-jahim.' If you KNEW with certain knowledge, you would see the Hellfire. Three types of knowledge in the surah: \'ilm al-yaqin, \'ayn al-yaqin, haqq al-yaqin!"},
-  3:{xp:90, gems:4, icon:'❓', title:'At-Takathur Complete', msg:"Allahu Akbar! At-Takathur complete! 'Thumma latus\'alunna yawma\'idhin \'anin-na\'im.' Then you will be asked about the blessings (na\'im)! Every blessing — are we grateful? May we answer well on that Day! Ameen! 🏆"},
+  1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
+     msg:'MashAllah! You learned the key Arabic words of this surah!'},
+  2:{xp:70, gems:3, icon:'💰', title:'Distracted Exposed', msg:"SubhanAllah! 'Al-hakumut-takathur hatta zurtumul-maqabir.' Competing for MORE distracted you until you visited the graves! The grave is what it takes to stop the race for MORE. What a wake-up call!"},
+  3:{xp:80, gems:3, icon:'👁️', title:'Hellfire Seen',     msg:"MashAllah! 'Kalla law ta\'lamuna \'ilmal-yaqin — latarawun al-jahim.' If you KNEW with certain knowledge, you would see the Hellfire. Three types of knowledge in the surah: \'ilm al-yaqin, \'ayn al-yaqin, haqq al-yaqin!"},
+  4:{xp:90, gems:4, icon:'❓', title:'At-Takathur Complete', msg:"Allahu Akbar! At-Takathur complete! 'Thumma latus\'alunna yawma\'idhin \'anin-na\'im.' Then you will be asked about the blessings (na\'im)! Every blessing — are we grateful? May we answer well on that Day! Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
-  id:'s102', surahName:'At-Takathur', surahArabic:'التكاثر', totalLevels:3, rewards:REWARDS,
-  tileIcons:['💰','👁️','❓'], tileLabels:['Distracted','Hellfire','Questioned'],
+  id:'s102', surahName:'At-Takathur', surahArabic:'التكاثر', totalLevels:4, rewards:REWARDS,
+  tileIcons:['📖','💰','👁️','❓'], tileLabels:['Word by Word','Distracted','Hellfire','Questioned'],
   welcomeMsg:{
-    fresh:   n=>`As-salamu alaykum, ${n}! Surah At-Takathur — Competing for More! Competing and boasting of MORE distracted you until the grave. Three warnings. Three types of certainty. And a final question about the blessings. 3 levels!`,
-    partial: (n,d)=>`Welcome back, ${n}! ${d}/3 done. Step away from the race! 💰`,
+    fresh:   n=>`As-salamu alaykum, ${n}! Surah At-Takathur — Competing for More! Competing and boasting of MORE distracted you until the grave. Three warnings. Three types of certainty. And a final question about the blessings. 4 levels!`,
+    partial: (n,d)=>`Welcome back, ${n}! ${d}/4 done. Step away from the race! 💰`,
     complete:n=>`MashAllah, ${n}! At-Takathur complete! "Thumma latus\'alunna yawma\'idhin \'anin-na\'im." May we be grateful for every blessing! 🏆`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1 — أَلْهَاكُمُ التَّكَاثُرُ', words:[
+    {ar:'التَّكَاثُرُ', tr:'al-takāthur', en:'competition for more', freq:1},
+    {ar:'أَلْهَاكُمُ', tr:'alhākum', en:'has diverted you', freq:1},
+  ]},
+  {label:'Verse 2 — حَتَّىٰ زُرْتُمُ الْمَقَابِرَ', words:[
+    {ar:'الْمَقَابِرَ', tr:'al-maqābir', en:'the graves', freq:1},
+    {ar:'زُرْتُمُ', tr:'zurtum', en:'you visited', freq:1},
+    {ar:'حَتَّىٰ', tr:'ḥattā', en:'until', freq:129},
+  ]},
+  {label:'Verse 5 — كَلَّا لَوْ تَعْلَمُونَ عِلْمَ الْيَقِينِ', words:[
+    {ar:'الْيَقِينِ', tr:'al-yaqīn', en:'certainty', freq:5},
+    {ar:'عِلْمَ', tr:'ʿilma', en:'knowledge of', freq:105},
+    {ar:'تَعْلَمُونَ', tr:'taʿlamūn', en:'you knew', freq:50},
+    {ar:'لَوْ', tr:'law', en:'if', freq:192},
+    {ar:'كَلَّا', tr:'kallā', en:'No! Indeed', freq:33},
+  ]},
+  {label:'Verse 8 — ثُمَّ لَتُسْأَلُنَّ يَوْمَئِذٍ عَنِ النَّعِيمِ', words:[
+    {ar:'النَّعِيمِ', tr:'al-naʿīm', en:'the blessings', freq:16},
+    {ar:'عَنِ', tr:'ʿan', en:'about', freq:330},
+    {ar:'يَوْمَئِذٍ', tr:'yawmaʾidhin', en:'that Day', freq:37},
+    {ar:'لَتُسْأَلُنَّ', tr:'la-tusʾalunna', en:'you will surely be asked', freq:2},
+    {ar:'ثُمَّ', tr:'thumma', en:'then', freq:340},
+  ]},
+];
+
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'التَّكَاثُرُ', zone:'wz1'},
+  {id:'w2', text:'أَلْهَاكُمُ', zone:'wz2'},
+  {id:'w3', text:'الْمَقَابِرَ', zone:'wz3'},
+  {id:'w4', text:'زُرْتُمُ', zone:'wz4'},
+  {id:'w5', text:'حَتَّىٰ', zone:'wz5'},
+  {id:'w6', text:'الْيَقِينِ', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'competition for more'},
+  {id:'wz2', desc:'has diverted you'},
+  {id:'wz3', desc:'the graves'},
+  {id:'wz4', desc:'you visited'},
+  {id:'wz5', desc:'until'},
+  {id:'wz6', desc:'certainty'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
 
 const S1_QUIZ = [
   {q:'What does "al-hakumut-takathur" (102:1) mean?',
@@ -60,9 +108,12 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-function renderSection1Game(){renderQuiz(1,S1_QUIZ);}function checkSection1(){checkQuiz(1,S1_QUIZ);}
-function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
+
+
+
+function renderSection2Game(){renderQuiz(2,S1_QUIZ);}function checkSection2(){checkQuiz(2,S1_QUIZ);}
+function renderSection3Game(){renderDragDrop(3,S2_ITEMS,S2_ZONES);}function checkSection3(){checkDragDrop(3,S2_ZONES);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {
@@ -76,5 +127,5 @@ window._drawBuildCanvas = function(n) {
     for(let i=0;i<5;i++){ctx.fillStyle=st?'#304030':'#203020';ctx.fillRect(W*0.08+i*100,H*0.45,22,32);ctx.fillStyle=ctx.fillStyle;ctx.beginPath();ctx.arc(W*0.08+i*100+11,H*0.45,11,Math.PI,0);ctx.fill();}}
   if(n>=2){ctx.fillStyle=acc;ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('كَلَّا!',W/2,H*0.3);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"No! Stop!"',W/2,H*0.42);ctx.textAlign='left';}
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
-  ctx.fillText(n>=3?'AT-TAKATHUR COMPLETE! ❓':`At-Takathur — ${n}/3 levels`,W/2,14);ctx.textAlign='left';
+  ctx.fillText(n>=3?'AT-TAKATHUR COMPLETE! ❓':`At-Takathur — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
 };

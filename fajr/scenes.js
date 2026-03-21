@@ -173,10 +173,12 @@ function drawScene6(ctx, W, H) {
   ctx.beginPath(); ctx.moveTo(W*0.5, H*0.05); ctx.lineTo(W*0.2, H*0.4); ctx.lineTo(W*0.8, H*0.4); ctx.fill();
 }
 
-const SCENE_FNS = { 1:drawScene1, 2:drawScene2, 3:drawScene3, 4:drawScene4, 5:drawScene5, 6:drawScene6 };
+const SCENE_FNS = { 2:drawScene1, 3:drawScene2, 4:drawScene3, 5:drawScene4, 6:drawScene5, 7:drawScene6 };
 let _activeScene = null, _sceneCanvas = null, _sceneCtx = null;
 
 function startScene(n) {
+  if (n === 1) { _s1wbw.start(); return; }
+  
   stopAllScenes();
   const cv = document.getElementById(`canvas-${n}`);
   if (!cv) return;
@@ -185,8 +187,15 @@ function startScene(n) {
   if (fn) fn(_sceneCtx, cv.width, cv.height);
   cv.onclick = () => showVerse(n);
 }
-function stopAllScenes() { _activeScene = null; }
-function initScenes() { for (let i = 1; i <= 6; i++) { const cv = document.getElementById(`canvas-${i}`); if (cv) { const fn = SCENE_FNS[i]; if (fn) fn(cv.getContext('2d'), cv.width, cv.height); } } }
+function stopAllScenes() {
+  _activeScene = null; }
+
+
+
+
+const VD_wbw={ref:'Al-Fajr (89)',arabic:'وَالْفَجْرِ ۩ وَلَيَالٍ عَشْرٍ ۩ إِنَّ رَبَّكَ لَبِالْمِرْصَادِ ۩ يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ ۩ ارْجِعِي إِلَىٰ رَبِّكِ رَاضِيَةً مَّرْضِيَّةً',english:'"By the dawn, and ten nights — your Lord is ever watchful. O tranquil soul, return to your Lord, pleased and pleasing." (89:1-2, 14, 27-28)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};
+const _s1wbw = new window.WBWScene('canvas-1', {emoji:'🌄',label:'THE DAWN',verse:VD_wbw});
+function initScenes() { for (let i = 2; i <= 7; i++) { const cv = document.getElementById(`canvas-${i}`); if (cv) { const fn = SCENE_FNS[i]; if (fn) fn(cv.getContext('2d'), cv.width, cv.height); } } }
 function showVerse(n) {
   const v = VERSES_FAJR[n]; if (!v) return;
   const el = id => document.getElementById(id);

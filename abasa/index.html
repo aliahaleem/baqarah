@@ -53,47 +53,52 @@
 
   <h2 class="section-heading">🌾 THE QUEST MAP</h2>
   <div class="map-grid">
-    <div class="map-tile locked" id="tile-1" onclick="openSection(1)">
+        <div class="map-tile unlocked" id="tile-1" onclick="openSection(1)">
+      <div class="tile-icon">📖</div><div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">Word by Word</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+<div class="map-tile locked" id="tile-2" onclick="openSection(2)">
       <div class="tile-icon">🙈</div>
       <div class="tile-level">LEVEL 1</div>
       <div class="tile-name">He Frowned</div>
       <div class="tile-verses">80:1-10</div>
-      <div class="tile-status" id="status-1">▶ PLAY</div>
+      <div class="tile-status" id="status-2">▶ PLAY</div>
     </div>
-    <div class="map-tile locked" id="tile-2" onclick="openSection(2)">
+    <div class="map-tile locked" id="tile-3" onclick="openSection(3)">
       <div class="tile-icon">📜</div>
       <div class="tile-level">LEVEL 2</div>
       <div class="tile-name">Noble Quran</div>
       <div class="tile-verses">80:11-16</div>
-      <div class="tile-status" id="status-2">🔒 LOCKED</div>
+      <div class="tile-status" id="status-3">🔒 LOCKED</div>
     </div>
-    <div class="map-tile locked" id="tile-3" onclick="openSection(3)">
+    <div class="map-tile locked" id="tile-4" onclick="openSection(4)">
       <div class="tile-icon">🌱</div>
       <div class="tile-level">LEVEL 3</div>
       <div class="tile-name">From a Drop</div>
       <div class="tile-verses">80:17-23</div>
-      <div class="tile-status" id="status-3">🔒 LOCKED</div>
+      <div class="tile-status" id="status-4">🔒 LOCKED</div>
     </div>
-    <div class="map-tile locked" id="tile-4" onclick="openSection(4)">
+    <div class="map-tile locked" id="tile-5" onclick="openSection(5)">
       <div class="tile-icon">🌾</div>
       <div class="tile-level">LEVEL 4</div>
       <div class="tile-name">Your Food</div>
       <div class="tile-verses">80:24-32</div>
-      <div class="tile-status" id="status-4">🔒 LOCKED</div>
+      <div class="tile-status" id="status-5">🔒 LOCKED</div>
     </div>
-    <div class="map-tile locked" id="tile-5" onclick="openSection(5)">
+    <div class="map-tile locked" id="tile-6" onclick="openSection(6)">
       <div class="tile-icon">💥</div>
       <div class="tile-level">LEVEL 5</div>
       <div class="tile-name">The Blast</div>
       <div class="tile-verses">80:33-37</div>
-      <div class="tile-status" id="status-5">🔒 LOCKED</div>
+      <div class="tile-status" id="status-6">🔒 LOCKED</div>
     </div>
-    <div class="map-tile locked" id="tile-6" onclick="openSection(6)">
+    <div class="map-tile locked" id="tile-7" onclick="openSection(7)">
       <div class="tile-icon">✨</div>
       <div class="tile-level">LEVEL 6</div>
       <div class="tile-name">Two Faces</div>
       <div class="tile-verses">80:38-42</div>
-      <div class="tile-status" id="status-6">🔒 LOCKED</div>
+      <div class="tile-status" id="status-7">🔒 LOCKED</div>
     </div>
   </div>
 
@@ -107,12 +112,13 @@
       <em style="color:var(--text-dim);">"Fal-yandhur al-insan ila ta'amihi" — 80:24</em>
     </p>
     <div class="world-preview">
-      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">He Frowned</div></div>
-      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Noble Quran</div></div>
-      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">From a Drop</div></div>
-      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Your Food</div></div>
-      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">The Blast</div></div>
-      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Two Faces</div></div>
+            <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Words</div></div>
+<div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">He Frowned</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Noble Quran</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">From a Drop</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Your Food</div></div>
+      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">The Blast</div></div>
+      <div class="world-chunk" id="chunk-7"><div class="chunk-emoji">⬛</div><div class="chunk-label">Two Faces</div></div>
     </div>
   </div>
 
@@ -160,7 +166,51 @@
   </header>
 
   <!-- ==================== SECTION 1 — He Frowned ==================== -->
+  
+  <!-- ==================== SECTION 1 — WORD BY WORD ==================== -->
   <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Learn the key Arabic words of this surah! Tap each card to reveal its meaning, then continue to the next level.
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 1 — WORD BY WORD (80:Abasa)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 He Frowned — Click to reveal verse</span></div>
+        <canvas id="canvas-1" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        
+        <div class="verse-block">
+          <div class="arabic-text">عَبَسَ وَتَوَلَّىٰ ۩ أَن جَاءَهُ الْأَعْمَىٰ ۩ وَمَا يُدْرِيكَ لَعَلَّهُ يَزَّكَّىٰ</div>
+          <div class="verse-translation">"He frowned and turned away because there came to him the blind man. But what would make you perceive that perhaps he might be purified?" (80:1-3)</div>
+        </div>
+
+        <p class="word-grid-intro">Now explore each word — <strong>tap a card to reveal its meaning</strong>.</p>
+        <button id="wbw-reveal-btn" class="wbw-reveal-btn">👁 Reveal All Meanings</button>
+        <div id="wbw-display"></div>
+      </div>
+    </div>
+        <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 MATCH — ARABIC WORD TO ENGLISH MEANING</div>
+      <div class="game-instructions">Drag each Arabic word to its English meaning!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-1"></div>
+        <div class="drop-zones" id="drop-zones-1"></div>
+      </div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+<div class="section-panel" id="section-panel-2">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
       <div class="character-avatar">🧙‍♂️</div>
       <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
@@ -171,7 +221,7 @@
       <div class="card-header">👁️ LEVEL 1 — HE FROWNED (80:1-10)</div>
       <div class="scene-container">
         <div class="scene-header"><span class="scene-title">🎬 The Incident — Click to reveal verses</span></div>
-        <canvas id="canvas-1" width="560" height="220"></canvas>
+        <canvas id="canvas-2" width="560" height="220"></canvas>
       </div>
       <div class="story-text">
         <p>One day the Prophet Muhammad ﷺ was in deep conversation with leaders of the Quraysh — powerful, respected men he hoped to guide to Islam. He was focused, attentive, trying his best to reach their hearts.</p>
@@ -197,20 +247,20 @@
       <div class="card-header">🎮 GAME — MATCH THE INCIDENT (80:1-10)</div>
       <div class="game-instructions">Drag each card to its correct description. All 4 must be correct to claim your reward!</div>
       <div class="drag-game-container">
-        <div class="drag-pool" id="drag-pool-1"></div>
-        <div class="drop-zones" id="drop-zones-1"></div>
+        <div class="drag-pool" id="drag-pool-2"></div>
+        <div class="drop-zones" id="drop-zones-2"></div>
       </div>
-      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-feedback" id="feedback-2"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection1()">✅ Check Matches</button>
-        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection2()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
   <!-- ==================== SECTION 2 — Noble Quran ==================== -->
-  <div class="section-panel" id="section-panel-2">
+  <div class="section-panel" id="section-panel-3">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
       <div class="character-avatar">🧙‍♂️</div>
       <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
@@ -221,7 +271,7 @@
       <div class="card-header">📜 LEVEL 2 — THE NOBLE QURAN (80:11-16)</div>
       <div class="scene-container">
         <div class="scene-header"><span class="scene-title">🎬 Honoured Sheets — Click to reveal verse</span></div>
-        <canvas id="canvas-2" width="560" height="220"></canvas>
+        <canvas id="canvas-3" width="560" height="220"></canvas>
       </div>
       <div class="story-text">
         <p>Having corrected the Prophet ﷺ with a gentle but firm "Kalla!" (No!), Allah now explains WHY this correction matters. The Quran itself is far too noble to be used as a bargaining chip with the disinterested wealthy.</p>
@@ -242,18 +292,18 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — THE NOBLE QURAN (80:11-16)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-2"></div>
-      <div class="game-feedback" id="feedback-2"></div>
+      <div id="quiz-3"></div>
+      <div class="game-feedback" id="feedback-3"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection3()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
   <!-- ==================== SECTION 3 — From a Drop ==================== -->
-  <div class="section-panel" id="section-panel-3">
+  <div class="section-panel" id="section-panel-4">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
       <div class="character-avatar">🧙‍♂️</div>
       <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
@@ -264,7 +314,7 @@
       <div class="card-header">🌱 LEVEL 3 — FROM A DROP (80:17-23)</div>
       <div class="scene-container">
         <div class="scene-header"><span class="scene-title">🎬 Stages of Creation — Click to reveal verse</span></div>
-        <canvas id="canvas-3" width="560" height="220"></canvas>
+        <canvas id="canvas-4" width="560" height="220"></canvas>
       </div>
       <div class="story-text">
         <p>After describing the Quran's nobility, Allah turns to address human arrogance directly — with a rhetorical challenge that should stop you in your tracks.</p>
@@ -285,18 +335,18 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 ORDER THE STAGES — HUMAN CREATION (80:17-23)</div>
       <div class="game-instructions">Use ↑ ↓ arrows to put the 6 stages in the correct order from first to last!</div>
-      <div class="order-list" id="order-3"></div>
-      <div class="game-feedback" id="feedback-3"></div>
+      <div class="order-list" id="order-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection3()">✅ Check Order</button>
-        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection4()">✅ Check Order</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
   <!-- ==================== SECTION 4 — Your Food ==================== -->
-  <div class="section-panel" id="section-panel-4">
+  <div class="section-panel" id="section-panel-5">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
       <div class="character-avatar">🧙‍♂️</div>
       <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
@@ -307,7 +357,7 @@
       <div class="card-header">🌾 LEVEL 4 — YOUR FOOD (80:24-32)</div>
       <div class="scene-container">
         <div class="scene-header"><span class="scene-title">🎬 The Garden of Provision — Click to reveal verse</span></div>
-        <canvas id="canvas-4" width="560" height="220"></canvas>
+        <canvas id="canvas-5" width="560" height="220"></canvas>
       </div>
       <div class="story-text">
         <p>Having challenged human ingratitude regarding creation, Allah now gives a specific, practical command: <strong>"Fal-yandhur al-insan ila ta'amihi"</strong> — Let man LOOK at his food.</p>
@@ -330,20 +380,20 @@
       <div class="card-header">🎮 GAME — MATCH THE PROVISION (80:24-32)</div>
       <div class="game-instructions">Drag each provision card to its correct Quranic description. All 5 must be correct!</div>
       <div class="drag-game-container">
-        <div class="drag-pool" id="drag-pool-4"></div>
-        <div class="drop-zones" id="drop-zones-4"></div>
+        <div class="drag-pool" id="drag-pool-5"></div>
+        <div class="drop-zones" id="drop-zones-5"></div>
       </div>
-      <div class="game-feedback" id="feedback-4"></div>
+      <div class="game-feedback" id="feedback-5"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection4()">✅ Check Matches</button>
-        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection5()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
   <!-- ==================== SECTION 5 — The Deafening Blast ==================== -->
-  <div class="section-panel" id="section-panel-5">
+  <div class="section-panel" id="section-panel-6">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
       <div class="character-avatar">🧙‍♂️</div>
       <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
@@ -354,7 +404,7 @@
       <div class="card-header">💥 LEVEL 5 — THE DEAFENING BLAST (80:33-37)</div>
       <div class="scene-container">
         <div class="scene-header"><span class="scene-title">🎬 The Day of Fleeing — Click to reveal verse</span></div>
-        <canvas id="canvas-5" width="560" height="220"></canvas>
+        <canvas id="canvas-6" width="560" height="220"></canvas>
       </div>
       <div class="story-text">
         <p>The Quran now leaps forward to the ultimate moment — <strong>Al-Sakhkhah</strong> — a name for the Day of Resurrection that comes from the Arabic root meaning to deafen. The sound is so overwhelming it shatters hearing itself.</p>
@@ -376,18 +426,18 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — THE DEAFENING BLAST (80:33-37)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-5"></div>
-      <div class="game-feedback" id="feedback-5"></div>
+      <div id="quiz-6"></div>
+      <div class="game-feedback" id="feedback-6"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
   <!-- ==================== SECTION 6 — Two Faces ==================== -->
-  <div class="section-panel" id="section-panel-6">
+  <div class="section-panel" id="section-panel-7">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
       <div class="character-avatar">🧙‍♂️</div>
       <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
@@ -398,7 +448,7 @@
       <div class="card-header">✨ LEVEL 6 — TWO FACES (80:38-42)</div>
       <div class="scene-container">
         <div class="scene-header"><span class="scene-title">🎬 Bright &amp; Dusty — Click to reveal verse</span></div>
-        <canvas id="canvas-6" width="560" height="220"></canvas>
+        <canvas id="canvas-7" width="560" height="220"></canvas>
       </div>
       <div class="story-text">
         <p>The surah closes with a stunning visual contrast — two kinds of faces that will exist on the Day of Judgment. It perfectly mirrors the opening: the blind man who came earnestly vs the nobles who were indifferent.</p>
@@ -419,11 +469,11 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 FINAL QUIZ — TWO FACES (80:38-42)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to complete Surah Abasa!</div>
-      <div id="quiz-6"></div>
-      <div class="game-feedback" id="feedback-6"></div>
+      <div id="quiz-7"></div>
+      <div class="game-feedback" id="feedback-7"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection7()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-7-btn" style="display:none" onclick="completeSection(7)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
@@ -431,6 +481,7 @@
 
 </div><!-- end section-view -->
 
+<script src="../shared/arabic-words.js"></script>
 <script src="scenes.js"></script>
 <script src="../shared/engine.js"></script>
 <script src="../shared/ui.js"></script>

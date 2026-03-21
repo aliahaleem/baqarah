@@ -139,7 +139,7 @@ class BaseScene {
 //  SCENE 1 — He Frowned (80:1-10)
 // =============================================
 class Scene1 extends BaseScene {
-  constructor() { super('canvas-1'); }
+  constructor() { super('canvas-2'); }
   start() {
     if (!this.ctx) return;
     const c = this.canvas;
@@ -183,7 +183,7 @@ class Scene1 extends BaseScene {
 //  SCENE 2 — A Reminder / Noble Quran (80:11-16)
 // =============================================
 class Scene2 extends BaseScene {
-  constructor() { super('canvas-2'); }
+  constructor() { super('canvas-3'); }
   start() {
     if (!this.ctx) return;
     this.canvas.onclick = () => showVersePopup(VERSES.quran);
@@ -227,7 +227,7 @@ class Scene2 extends BaseScene {
 //  SCENE 3 — Created from Earth (80:17-23)
 // =============================================
 class Scene3 extends BaseScene {
-  constructor() { super('canvas-3'); }
+  constructor() { super('canvas-4'); }
   start() {
     if (!this.ctx) return;
     this.canvas.onclick = () => showVersePopup(VERSES.creation);
@@ -267,7 +267,7 @@ class Scene3 extends BaseScene {
 //  SCENE 4 — Look at Your Food (80:24-32)
 // =============================================
 class Scene4 extends BaseScene {
-  constructor() { super('canvas-4'); }
+  constructor() { super('canvas-5'); }
   start() {
     if (!this.ctx) return;
     this.canvas.onclick = () => showVersePopup(VERSES.food);
@@ -321,7 +321,7 @@ class Scene4 extends BaseScene {
 //  SCENE 5 — The Deafening Blast (80:33-37)
 // =============================================
 class Scene5 extends BaseScene {
-  constructor() { super('canvas-5'); }
+  constructor() { super('canvas-6'); }
   start() {
     if (!this.ctx) return;
     this.canvas.onclick = () => showVersePopup(VERSES.blast);
@@ -358,7 +358,7 @@ class Scene5 extends BaseScene {
 //  SCENE 6 — Two Faces: Bright and Dusty (80:38-42)
 // =============================================
 class Scene6 extends BaseScene {
-  constructor() { super('canvas-6'); }
+  constructor() { super('canvas-7'); }
   start() {
     if (!this.ctx) return;
     this.canvas.onclick = () => showVersePopup(VERSES.faces);
@@ -404,9 +404,19 @@ class Scene6 extends BaseScene {
 //  ENGINE
 // =============================================
 const scenes = {};
+
+
+
+
+const VD_wbw={ref:'Abasa (80)',arabic:'عَبَسَ وَتَوَلَّىٰ ۩ أَن جَاءَهُ الْأَعْمَىٰ ۩ وَمَا يُدْرِيكَ لَعَلَّهُ يَزَّكَّىٰ',english:'"He frowned and turned away because there came to him the blind man. But what would make you perceive that perhaps he might be purified?" (80:1-3)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};
+const _s1wbw = new window.WBWScene('canvas-1', {emoji:'👤',label:'HE FROWNED',verse:VD_wbw});
+
 function initScenes() {
-  scenes[1] = new Scene1(); scenes[2] = new Scene2(); scenes[3] = new Scene3();
-  scenes[4] = new Scene4(); scenes[5] = new Scene5(); scenes[6] = new Scene6();
+  scenes[1]=_s1wbw;
+  scenes[2] = new Scene1(); scenes[3] = new Scene2(); scenes[4] = new Scene3();
+  scenes[5] = new Scene4(); scenes[6] = new Scene5(); scenes[7] = new Scene6();
 }
-function startScene(n)   { if (scenes[n]) scenes[n].start(); }
-function stopAllScenes() { Object.values(scenes).forEach(s => s.stop()); }
+function startScene(n) {
+   if (scenes[n]) scenes[n].start(); }
+function stopAllScenes() {
+  Object.values(scenes).forEach(s => s.stop()); }

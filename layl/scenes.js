@@ -17,7 +17,7 @@ const VD={
 
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 
-class S1 extends BS{constructor(){super('canvas-1');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.oaths);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,this.t);_ground(ctx,175);_label(ctx,'CLICK: Night, Day, Creation — 92:1-3');
+class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.oaths);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,this.t);_ground(ctx,175);_label(ctx,'CLICK: Night, Day, Creation — 92:1-3');
 // Dark night side
 ctx.fillStyle='rgba(0,0,30,0.5)';ctx.fillRect(0,0,CW/2,CH);
 // Bright day side
@@ -32,7 +32,7 @@ _fig(ctx,240,130,'#e8c090','#204080','#102060');_fig(ctx,310,130,'#f0d0a0','#801
 ctx.fillStyle=p.acc;ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';
 ctx.fillText('"Your strivings are varied" (92:4)',CW/2,CH-8);ctx.textAlign='left';};draw();}}
 
-class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.giver);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,this.t);_ground(ctx,170);_label(ctx,'CLICK: The Generous Path — 92:5-7');
+class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.giver);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,this.t);_ground(ctx,170);_label(ctx,'CLICK: The Generous Path — 92:5-7');
 // Radiant giving figure
 const glow=0.2+Math.sin(this.t*0.04)*0.12;const rg=ctx.createRadialGradient(180,120,5,180,120,60);rg.addColorStop(0,`rgba(200,160,255,${glow*3})`);rg.addColorStop(1,'transparent');ctx.fillStyle=rg;ctx.fillRect(0,0,CW,CH);
 _fig(ctx,168,100,'#f0d090','#2050a0','#102870');
@@ -43,7 +43,7 @@ ctx.fillStyle='rgba(180,140,255,0.7)';ctx.font='16px serif';ctx.textAlign='cente
 ctx.fillStyle=p.label;ctx.font='6px serif';ctx.fillText('يُسْرَى — EASE',180,155);
 ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"We shall ease his way to EASE" (92:7)',CW/2,CH-8);ctx.textAlign='left';};draw();}}
 
-class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.miser);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,170);_label(ctx,'CLICK: The Miser\'s Path — 92:8-11');
+class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.miser);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,170);_label(ctx,'CLICK: The Miser\'s Path — 92:8-11');
 // Miser hoarding gold
 _fig(ctx,150,100,'#b09060','#502010','#380808');
 // Gold pile
@@ -56,7 +56,7 @@ ctx.fillStyle='#ff8080';ctx.font='6px serif';ctx.fillText('عُسْرَى — DI
 const pitY=175+Math.sin(this.t*0.04)*3;ctx.fillStyle='rgba(255,80,40,0.3)';ctx.fillRect(CW*0.55,pitY,120,CH-pitY);
 ctx.fillStyle='#ff9060';ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('"What will his wealth avail when he falls?" (92:11)',CW/2,CH-8);ctx.textAlign='left';};draw();}}
 
-class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.oaths);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,this.t);_ground(ctx,175);_label(ctx,'Al-Layl Complete — Two Paths, Two Destinies 🌙');
+class S5 extends BS{constructor(){super('canvas-5');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.oaths);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx,this.t);_ground(ctx,175);_label(ctx,'Al-Layl Complete — Two Paths, Two Destinies 🌙');
 // Two paths diverging
 ctx.strokeStyle='rgba(180,140,255,0.4)';ctx.lineWidth=2;ctx.setLineDash([4,4]);
 ctx.beginPath();ctx.moveTo(CW/2,175);ctx.lineTo(100,80);ctx.stroke();
@@ -69,6 +69,15 @@ _fig(ctx,CW-120,90,'#a08060','#502010','#380808');ctx.fillStyle='#ff8080';ctx.fi
 ctx.fillStyle=p.label;ctx.fillText('"Inna alayna lal-huda" — Guidance is from Allah',CW/2,CH-8);ctx.textAlign='left';};draw();}}
 
 const scenes={};
-function initScenes(){scenes[1]=new S1();scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();}
-function startScene(n){if(scenes[n])scenes[n].start();}
-function stopAllScenes(){Object.values(scenes).forEach(s=>s.stop());}
+
+
+
+
+const VD_wbw={ref:'Al-Layl (92)',arabic:'وَاللَّيْلِ إِذَا يَغْشَىٰ ۩ وَالنَّهَارِ إِذَا تَجَلَّىٰ ۩ فَأَمَّا مَنْ أَعْطَىٰ وَاتَّقَىٰ ۩ فَسَنُيَسِّرُهُ لِلْيُسْرَىٰ',english:'"By the night when it covers, and the day when it appears — as for he who gives and fears Allah, We will ease him to ease." (92:1-2, 5, 7)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};
+const _s1wbw = new window.WBWScene('canvas-1', {emoji:'🌙',label:'THE NIGHT',verse:VD_wbw});
+
+function initScenes(){scenes[1]=_s1wbw;scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();scenes[5]=new S5();}
+function startScene(n) {
+  if(scenes[n])scenes[n].start();}
+function stopAllScenes() {
+  Object.values(scenes).forEach(s=>s.stop());}

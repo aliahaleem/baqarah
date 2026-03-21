@@ -16,7 +16,7 @@ const VD={
 
 class BS{constructor(id){this.canvas=document.getElementById(id);this.ctx=this.canvas?this.canvas.getContext('2d'):null;this.raf=null;this.t=0;}stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}}}
 
-class S1 extends BS{constructor(){super('canvas-1');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.oaths);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,175);_label(ctx,'CLICK: The Eleven Cosmic Oaths — 91:1-7');
+class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.oaths);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,175);_label(ctx,'CLICK: The Eleven Cosmic Oaths — 91:1-7');
 // Pulsing sun
 const pulse=0.7+Math.sin(this.t*0.06)*0.3;
 const sg=ctx.createRadialGradient(CW*0.75,40,3,CW*0.75,40,50*pulse);sg.addColorStop(0,'rgba(255,240,150,0.95)');sg.addColorStop(0.5,'rgba(240,160,40,0.7)');sg.addColorStop(1,'transparent');ctx.fillStyle=sg;ctx.fillRect(0,0,CW,CH);
@@ -29,7 +29,7 @@ ctx.fillStyle='rgba(220,210,180,0.9)';ctx.beginPath();ctx.arc(CW*0.2,45,13,0,Mat
 _fig(ctx,220,140,'#e8c090','#8a4820','#5a2810');_fig(ctx,300,140,'#d0b080','#6a3810','#4a2408');
 ctx.fillStyle=p.label;ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('"By the sun, moon, day, night, sky, earth, and the SOUL" (91:1-7)',CW/2,CH-8);ctx.textAlign='left';};draw();}}
 
-class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.soul);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,175);_label(ctx,'CLICK: Purify the Soul — 91:7-10');
+class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.soul);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,175);_label(ctx,'CLICK: Purify the Soul — 91:7-10');
 // Split scene: left = purified soul (bright), right = corrupted (dark)
 ctx.fillStyle='rgba(255,220,80,0.15)';ctx.fillRect(0,0,CW/2,CH);
 ctx.fillStyle='rgba(40,10,0,0.3)';ctx.fillRect(CW/2,0,CW/2,CH);
@@ -44,7 +44,7 @@ ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillRect(CW/2+50,95,40,60);
 ctx.fillStyle=p.hint;ctx.fillText('DASSAHA',CW*0.75,175);ctx.fillText('Corrupted',CW*0.75,185);
 ctx.textAlign='left';};draw();}}
 
-class S3 extends BS{constructor(){super('canvas-3');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.thamud);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();
+class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.thamud);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();
 ctx.fillStyle=p.sky0;ctx.fillRect(0,0,CW,CH);
 ctx.fillStyle=p.gnd;ctx.fillRect(0,H*0.55||CH*0.55,CW,CH*0.45);
 const H=CH;
@@ -60,7 +60,7 @@ ctx.fillStyle=`rgba(255,240,80,${lp})`;ctx.font='28px serif';ctx.textAlign='cent
 ctx.fillStyle=p.label;ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';
 ctx.fillText('"They hamstrung the camel — Allah crushed them!" (91:14)',CW/2,CH-8);ctx.textAlign='left';};draw();}}
 
-class S4 extends BS{constructor(){super('canvas-4');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.oaths);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,170);_label(ctx,'Complete! Ash-Shams — Purify Your Soul ☀️');
+class S5 extends BS{constructor(){super('canvas-5');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.oaths);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,170);_label(ctx,'Complete! Ash-Shams — Purify Your Soul ☀️');
 // Full scene: sun, moon, soul glow, lesson
 const sg=ctx.createRadialGradient(CW*0.8,30,3,CW*0.8,30,60);sg.addColorStop(0,'rgba(255,230,80,0.9)');sg.addColorStop(1,'transparent');ctx.fillStyle=sg;ctx.fillRect(0,0,CW,CH);
 ctx.fillStyle='#ffe060';ctx.beginPath();ctx.arc(CW*0.8,30,16,0,Math.PI*2);ctx.fill();
@@ -70,6 +70,15 @@ _fig(ctx,CW/2-10,100,'#f0d090','#2050a0','#102870');
 ctx.fillStyle=p.acc;ctx.font='7px serif';ctx.textAlign='center';ctx.fillText('قَدْ أَفْلَحَ مَن زَكَّاهَا',CW/2,90);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"He who purifies his soul succeeds"',CW/2,CH-8);ctx.textAlign='left';};draw();}}
 
 const scenes={};
-function initScenes(){scenes[1]=new S1();scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();}
-function startScene(n){if(scenes[n])scenes[n].start();}
-function stopAllScenes(){Object.values(scenes).forEach(s=>s.stop());}
+
+
+
+
+const VD_wbw={ref:'Ash-Shams (91)',arabic:'وَالشَّمْسِ وَضُحَاهَا ۩ وَنَفْسٍ وَمَا سَوَّاهَا ۩ فَأَلْهَمَهَا فُجُورَهَا وَتَقْوَاهَا ۩ قَدْ أَفْلَحَ مَن زَكَّاهَا',english:'"By the sun and its brightness. And [by] the soul and He who proportioned it, then inspired it with its wickedness and its righteousness. He has succeeded who purifies it." (91:1, 7-9)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};
+const _s1wbw = new window.WBWScene('canvas-1', {emoji:'☀️',label:'THE SUN',verse:VD_wbw});
+
+function initScenes(){scenes[1]=_s1wbw;scenes[2]=new S2();scenes[3]=new S3();scenes[4]=new S4();scenes[5]=new S5();}
+function startScene(n) {
+  if(scenes[n])scenes[n].start();}
+function stopAllScenes() {
+  Object.values(scenes).forEach(s=>s.stop());}

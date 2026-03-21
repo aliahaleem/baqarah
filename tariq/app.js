@@ -1,26 +1,62 @@
 'use strict';
 /* SURAH AT-TARIQ (86) — app.js */
 window.STORAGE_KEY='tariqQuestSave';
-window.state={explorerName:'',xp:0,gems:0,completed:[],s1Checked:false,s2Answers:{},s2Checked:false,s3Answers:{},s3Checked:false,s4Answers:{},s4Checked:false,s5Checked:false,s6Answers:{},s6Checked:false};
+window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Answers:{},s4Checked:false,s5Answers:{},s5Checked:false,s6Checked:false,s7Answers:{},s7Checked:false};
 
 const REWARDS={
-  1:{xp:80,gems:3,icon:'💫',title:'THE PIERCING STAR KNOWN!',msg:"SubhanAllah! 'Al-Tariq' — the night comer. 'Al-najm al-thaqib' — the PIERCING star. A star so brilliant it pierces through the darkness of night. And the conclusion: 'In kullu nafsin lamma alayha hafidh.' Every single soul has a guardian over it. Right now — you are watched, protected, and recorded. Never think you are unguarded!"},
-  2:{xp:80,gems:3,icon:'💧',title:'YOUR ORIGIN UNDERSTOOD!',msg:"Allahu Akbar! 'Fa-l-yandhur al-insan mimma khuliq — khuliq min ma\'in dafiq.' Let man OBSERVE what he was created from — from gushing, rushing water! From such a humble origin, Allah fashioned a thinking, feeling human being. And the proof of resurrection: 'Innahu \'ala raj\'ihi la-qadir.' He who created from nothing can RECREATE perfectly."},
-  3:{xp:90,gems:3,icon:'🔍',title:'THE SECRETS EXAMINED!',msg:"MashAllah! 'Yawma tubla al-sara\'ir.' The Day secrets are EXAMINED — tested through and through. Everything hidden, every private act, every concealed hypocrisy — brought out and examined perfectly. And on That Day: no power, no helper. Only what you prepared. Make sure your private reality matches your public appearance!"},
-  4:{xp:90,gems:4,icon:'📖',title:'THE DECISIVE WORD GRASPED!',msg:"SubhanAllah! 'Innahu la-qawlun fasl — wa ma huwa bi-al-hazl.' The Quran is a DECISIVE, SEPARATING word — not jest, not play, not entertainment. It separates truth from falsehood. When you recite it, you are reciting the most serious, consequential words in existence. Treat the Quran with the gravity it deserves!"},
-  5:{xp:100,gems:4,icon:'🌧️',title:'RAIN AND RESURRECTION!',msg:"Allahu Akbar! 'Wa al-sama\' dhat al-raj\' — wa al-ardh dhat al-sad\'.' By the sky that RETURNS (rain) and the earth that SPLITS OPEN (for plants). Allah swears by the water cycle as proof of resurrection. The same Allah who sends rain to a dead earth and brings it back to life — will bring dead humans back to life. Same principle, same power!"},
-  6:{xp:120,gems:5,icon:'⚡',title:'SURAH AT-TARIQ COMPLETE!',msg:"ALLAHUMMA BARIK! All 6 levels of Surah At-Tariq complete! The piercing star. Created from water. Secrets examined. The decisive Quran. Rain as proof. And: 'Innahum yakiduna kaydan — wa akidu kaydan.' They plot. Allah plans. 'Fa-mahhil al-kafirin amhilhum ruwayda.' The plan is already in motion. Ameen!"},
+  2:{xp:80,gems:3,icon:'💫',title:'THE PIERCING STAR KNOWN!',msg:"SubhanAllah! 'Al-Tariq' — the night comer. 'Al-najm al-thaqib' — the PIERCING star. A star so brilliant it pierces through the darkness of night. And the conclusion: 'In kullu nafsin lamma alayha hafidh.' Every single soul has a guardian over it. Right now — you are watched, protected, and recorded. Never think you are unguarded!"},
+  3:{xp:80,gems:3,icon:'💧',title:'YOUR ORIGIN UNDERSTOOD!',msg:"Allahu Akbar! 'Fa-l-yandhur al-insan mimma khuliq — khuliq min ma\'in dafiq.' Let man OBSERVE what he was created from — from gushing, rushing water! From such a humble origin, Allah fashioned a thinking, feeling human being. And the proof of resurrection: 'Innahu \'ala raj\'ihi la-qadir.' He who created from nothing can RECREATE perfectly."},
+  4:{xp:90,gems:3,icon:'🔍',title:'THE SECRETS EXAMINED!',msg:"MashAllah! 'Yawma tubla al-sara\'ir.' The Day secrets are EXAMINED — tested through and through. Everything hidden, every private act, every concealed hypocrisy — brought out and examined perfectly. And on That Day: no power, no helper. Only what you prepared. Make sure your private reality matches your public appearance!"},
+  5:{xp:90,gems:4,icon:'📖',title:'THE DECISIVE WORD GRASPED!',msg:"SubhanAllah! 'Innahu la-qawlun fasl — wa ma huwa bi-al-hazl.' The Quran is a DECISIVE, SEPARATING word — not jest, not play, not entertainment. It separates truth from falsehood. When you recite it, you are reciting the most serious, consequential words in existence. Treat the Quran with the gravity it deserves!"},
+  6:{xp:100,gems:4,icon:'🌧️',title:'RAIN AND RESURRECTION!',msg:"Allahu Akbar! 'Wa al-sama\' dhat al-raj\' — wa al-ardh dhat al-sad\'.' By the sky that RETURNS (rain) and the earth that SPLITS OPEN (for plants). Allah swears by the water cycle as proof of resurrection. The same Allah who sends rain to a dead earth and brings it back to life — will bring dead humans back to life. Same principle, same power!"},
+  7:{xp:120,gems:5,icon:'⚡',title:'SURAH AT-TARIQ COMPLETE!',msg:"ALLAHUMMA BARIK! All 7 levels of Surah At-Tariq complete! The piercing star. Created from water. Secrets examined. The decisive Quran. Rain as proof. And: 'Innahum yakiduna kaydan — wa akidu kaydan.' They plot. Allah plans. 'Fa-mahhil al-kafirin amhilhum ruwayda.' The plan is already in motion. Ameen!"},
 };
 window.SURAH_CONFIG={
-  totalLevels:6,rewards:REWARDS,
-  tileIcons:['💫','💧','🔍','📖','🌧️','⚡'],
-  tileLabels:['Night Star','From Water','Secrets','Decisive','Rain/Rise','They Plot'],
+  totalLevels:7,rewards:REWARDS,
+  tileIcons:['📖','💫','💧','🔍','📖','🌧️','⚡'],
+  tileLabels:['Word by Word','Night Star','From Water','Secrets','Decisive','Rain/Rise','They Plot'],
   welcomeMsg:{
-    fresh:name=>`As-salamu alaykum, ${name}! Surah At-Tariq — The Night Comer! The piercing star that lights the night. Created from water — Allah can recreate you. Your secrets will be examined. The Quran is decisive. And Allah's plan defeats all plotting. 6 levels await!`,
+    fresh:name=>`As-salamu alaykum, ${name}! Surah At-Tariq — The Night Comer! The piercing star that lights the night. Created from water — Allah can recreate you. Your secrets will be examined. The Quran is decisive. And Allah's plan defeats all plotting. 7 levels await!`,
     partial:(name,done)=>`Welcome back, ${name}! ${done} level${done>1?'s':''} complete. "Al-najm al-thaqib" — keep shining through the darkness! 💫`,
     complete:name=>`MashAllah, ${name}! Surah At-Tariq complete! "Innahu la-qawlun fasl." A decisive word. May our deeds be decisive on That Day. Ameen! ⚡`,
   },
 };
+
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1-3 — وَالسَّمَاءِ وَالطَّارِقِ · وَمَا أَدْرَاكَ مَا الطَّارِقُ · النَّجْمُ الثَّاقِبُ', words:[
+    {ar:'الثَّاقِبُ', tr:'al-thāqib', en:'the piercing', freq:2},
+    {ar:'النَّجْمُ', tr:'al-najm', en:'the star', freq:4},
+    {ar:'الطَّارِقِ', tr:'al-ṭāriq', en:'the night-visitor', freq:2},
+    {ar:'وَالسَّمَاءِ', tr:'wal-samāʾ', en:'by the sky', freq:120},
+  ]},
+  {label:'Verse 5-6 — فَلْيَنظُرِ الْإِنسَانُ مِمَّ خُلِقَ · خُلِقَ مِن مَّاءٍ دَافِقٍ', words:[
+    {ar:'دَافِقٍ', tr:'dāfiq', en:'ejected / gushing', freq:1},
+    {ar:'مَّاءٍ', tr:'māʾ', en:'water/fluid', freq:63},
+    {ar:'خُلِقَ', tr:'khuliqa', en:'he was created', freq:29},
+    {ar:'الْإِنسَانُ', tr:'al-insān', en:'man', freq:65},
+    {ar:'فَلْيَنظُرِ', tr:'fal-yanẓur', en:'so let him look', freq:33},
+  ]},
+];
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'الثَّاقِبُ', zone:'wz1'},
+  {id:'w2', text:'النَّجْمُ', zone:'wz2'},
+  {id:'w3', text:'الطَّارِقِ', zone:'wz3'},
+  {id:'w4', text:'وَالسَّمَاءِ', zone:'wz4'},
+  {id:'w5', text:'دَافِقٍ', zone:'wz5'},
+  {id:'w6', text:'مَّاءٍ', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'the piercing'},
+  {id:'wz2', desc:'the star'},
+  {id:'wz3', desc:'the night-visitor'},
+  {id:'wz4', desc:'by the sky'},
+  {id:'wz5', desc:'ejected / gushing'},
+  {id:'wz6', desc:'water/fluid'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+
 
 const S1_ITEMS=[{id:'i1',text:'🌙 Al-Tariq\nNight Comer',zone:'z1'},{id:'i2',text:'💫 Al-Najm\nAl-Thaqib',zone:'z2'},{id:'i3',text:'👁️ Hafidh\nGuardian',zone:'z3'}];
 const S1_ZONES=[{id:'z1',desc:'"Wa al-sama\' wa al-Tariq" (86:1) — By the sky and the night comer. "Tariq" from "tariqa" — to knock on a door at night, to come by night. The "tariq" comes unexpectedly in darkness. Applied to the piercing star — it appears in the night sky and knocks on the eye with its brilliance.'},{id:'z2',desc:'"Al-najm al-thaqib" (86:3) — The PIERCING star. "Thaqib" from "thaqaba" — to pierce, drill through, penetrate. A star so brilliant it pierces through the darkness of night. Modern understanding: this may refer to a pulsar — a neutron star that pulses brilliantly. 1400 years before pulsars were discovered!'},{id:'z3',desc:'"In kullu nafsin lamma alayha hafidh" (86:4) — There is no soul except that it has over it a GUARDIAN. "Hafidh" — a protector, preserver, guardian. Every human being has a guardian angel watching over them — their deeds recorded, their life preserved by Allah\'s command.'}];
@@ -160,12 +196,15 @@ const S6_QUIZ=[
    correct:3},
 ];
 
-function renderSection1Game(){renderDragDrop(1,S1_ITEMS,S1_ZONES);}function checkSection1(){checkDragDrop(1,S1_ZONES);}
-function renderSection2Game(){renderQuiz(2,S2_QUIZ);}function checkSection2(){checkQuiz(2,S2_QUIZ);}
-function renderSection3Game(){renderQuiz(3,S3_QUIZ);}function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
-function renderSection5Game(){renderQuiz(5,S5_QUIZ);}function checkSection5(){checkQuiz(5,S5_QUIZ);}
-function renderSection6Game(){renderQuiz(6,S6_QUIZ);}function checkSection6(){checkQuiz(6,S6_QUIZ);}
+
+
+
+function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}function checkSection2(){checkDragDrop(2,S1_ZONES);}
+function renderSection3Game(){renderQuiz(3,S2_QUIZ);}function checkSection3(){checkQuiz(3,S2_QUIZ);}
+function renderSection4Game(){renderQuiz(4,S3_QUIZ);}function checkSection4(){checkQuiz(4,S3_QUIZ);}
+function renderSection5Game(){renderQuiz(5,S4_QUIZ);}function checkSection5(){checkQuiz(5,S4_QUIZ);}
+function renderSection6Game(){renderQuiz(6,S5_QUIZ);}function checkSection6(){checkQuiz(6,S5_QUIZ);}
+function renderSection7Game(){renderQuiz(7,S6_QUIZ);}function checkSection7(){checkQuiz(7,S6_QUIZ);}
 
 function _lbl(ctx,W,msg,d,t){ctx.fillStyle='#90b8e0';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(msg,W/2,18);ctx.fillStyle='#040810';ctx.fillRect(W/2-100,26,200,8);ctx.fillStyle='#102060';ctx.fillRect(W/2-100,26,Math.round(200*d/t),8);ctx.textAlign='left';}
 function _drawBuildCanvas(n){

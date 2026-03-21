@@ -41,12 +41,17 @@
   </div>
   <h2 class="section-heading">🌿 THE QUEST MAP</h2>
   <div class="map-grid">
-    <div class="map-tile locked" id="tile-1" onclick="openSection(1)"><div class="tile-icon">🌿</div><div class="tile-level">LEVEL 1</div><div class="tile-name">Glorify!</div><div class="tile-verses">87:1-5</div><div class="tile-status" id="status-1">▶ PLAY</div></div>
-    <div class="map-tile locked" id="tile-2" onclick="openSection(2)"><div class="tile-icon">📿</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Won't Forget</div><div class="tile-verses">87:6-7</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-3" onclick="openSection(3)"><div class="tile-icon">🤲</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Who Fears</div><div class="tile-verses">87:9-13</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-4" onclick="openSection(4)"><div class="tile-icon">✨</div><div class="tile-level">LEVEL 4</div><div class="tile-name">Purify!</div><div class="tile-verses">87:14-15</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-5" onclick="openSection(5)"><div class="tile-icon">⚡</div><div class="tile-level">LEVEL 5</div><div class="tile-name">Dunya vs Akhira</div><div class="tile-verses">87:16-17</div><div class="tile-status" id="status-5">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-6" onclick="openSection(6)"><div class="tile-icon">📜</div><div class="tile-level">LEVEL 6</div><div class="tile-name">Earlier Scrolls</div><div class="tile-verses">87:18-19</div><div class="tile-status" id="status-6">🔒 LOCKED</div></div>
+        <div class="map-tile unlocked" id="tile-1" onclick="openSection(1)">
+      <div class="tile-icon">📖</div><div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">Word by Word</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+<div class="map-tile locked" id="tile-2" onclick="openSection(2)"><div class="tile-icon">🌿</div><div class="tile-level">LEVEL 1</div><div class="tile-name">Glorify!</div><div class="tile-verses">87:1-5</div><div class="tile-status" id="status-2">▶ PLAY</div></div>
+    <div class="map-tile locked" id="tile-3" onclick="openSection(3)"><div class="tile-icon">📿</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Won't Forget</div><div class="tile-verses">87:6-7</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-4" onclick="openSection(4)"><div class="tile-icon">🤲</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Who Fears</div><div class="tile-verses">87:9-13</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-5" onclick="openSection(5)"><div class="tile-icon">✨</div><div class="tile-level">LEVEL 4</div><div class="tile-name">Purify!</div><div class="tile-verses">87:14-15</div><div class="tile-status" id="status-5">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-6" onclick="openSection(6)"><div class="tile-icon">⚡</div><div class="tile-level">LEVEL 5</div><div class="tile-name">Dunya vs Akhira</div><div class="tile-verses">87:16-17</div><div class="tile-status" id="status-6">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-7" onclick="openSection(7)"><div class="tile-icon">📜</div><div class="tile-level">LEVEL 6</div><div class="tile-name">Earlier Scrolls</div><div class="tile-verses">87:18-19</div><div class="tile-status" id="status-7">🔒 LOCKED</div></div>
   </div>
   <div id="world-builder">
     <h2 class="section-heading">🌿 BUILD THE GARDEN OF GLORIFICATION</h2>
@@ -55,12 +60,13 @@
     </div>
     <p style="font-family:var(--font-body);font-size:var(--font-size-sm);color:var(--primary-lit);text-align:center;margin-bottom:10px;line-height:1.8;">Complete each level to reveal the Garden of Glorification — with the scrolls of Ibrahim and Musa!<br/><em style="color:var(--text-dim);">"Sabbihi isma Rabbika al-A'la" — 87:1</em></p>
     <div class="world-preview">
-      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Glorify</div></div>
-      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Recite</div></div>
-      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Who Fears</div></div>
-      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Purify</div></div>
-      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Akhira</div></div>
-      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Scrolls</div></div>
+            <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Words</div></div>
+<div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Glorify</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Recite</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Who Fears</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Purify</div></div>
+      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Akhira</div></div>
+      <div class="world-chunk" id="chunk-7"><div class="chunk-emoji">⬛</div><div class="chunk-label">Scrolls</div></div>
     </div>
   </div>
   <div id="all-complete">
@@ -77,11 +83,55 @@
 <div id="section-view" style="display:none">
   <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></header>
 
+  
+  <!-- ==================== SECTION 1 — WORD BY WORD ==================== -->
   <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Learn the key Arabic words of this surah! Tap each card to reveal its meaning, then continue to the next level.
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 1 — WORD BY WORD (87:Al-Ala)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 The Most High — Click to reveal verse</span></div>
+        <canvas id="canvas-1" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        
+        <div class="verse-block">
+          <div class="arabic-text">سَبِّحِ اسْمَ رَبِّكَ الْأَعْلَى ۩ الَّذِي خَلَقَ فَسَوَّىٰ ۩ قَدْ أَفْلَحَ مَن تَزَكَّىٰ ۩ وَذَكَرَ اسْمَ رَبِّهِ فَصَلَّىٰ</div>
+          <div class="verse-translation">"Glorify the name of your Lord, the Most High, who created and proportioned. He has succeeded who purifies himself and remembers the name of his Lord and prays." (87:1-2, 14-15)</div>
+        </div>
+
+        <p class="word-grid-intro">Now explore each word — <strong>tap a card to reveal its meaning</strong>.</p>
+        <button id="wbw-reveal-btn" class="wbw-reveal-btn">👁 Reveal All Meanings</button>
+        <div id="wbw-display"></div>
+      </div>
+    </div>
+        <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 MATCH — ARABIC WORD TO ENGLISH MEANING</div>
+      <div class="game-instructions">Drag each Arabic word to its English meaning!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-1"></div>
+        <div class="drop-zones" id="drop-zones-1"></div>
+      </div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+<div class="section-panel" id="section-panel-2">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Sabbihi isma Rabbika al-A\'la!" When you say "Subhana Rabbiya al-A\'la" in sujood, you are reciting this verse directly! Allah created and proportioned. He destined and guided. He brought out green pasture, then made it dark debris. Match these acts of Allah!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">🌿 LEVEL 1 — GLORIFY THE MOST HIGH (87:1-5)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Glorification — Click to reveal verse</span></div><canvas id="canvas-1" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Glorification — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>Surah Al-Ala opens with a direct command to the Prophet ﷺ — and through him, to all believers: <strong>"Sabbihi isma Rabbika al-A'la!"</strong> — GLORIFY the name of your Lord, the Most High!</p>
         <p>The word "Sabbihi" is the command form of "sabbaha" — from the root of "SubhanAllah." When the Prophet ﷺ received this surah, he commanded the believers to say "Subhana Rabbiya al-A'la" in sujood (prostration). Every Muslim says these words multiple times in every salah — directly reciting the first verse of this surah.</p>
@@ -95,21 +145,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 GAME — MATCH ALLAH'S ACTIONS (87:2-5)</div>
       <div class="game-instructions">Drag each pair of actions to its correct description. All 3 must match!</div>
-      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-1"></div><div class="drop-zones" id="drop-zones-1"></div></div>
-      <div class="game-feedback" id="feedback-1"></div>
+      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-2"></div><div class="drop-zones" id="drop-zones-2"></div></div>
+      <div class="game-feedback" id="feedback-2"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection1()">✅ Check Matches</button>
-        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection2()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-2">
+  <div class="section-panel" id="section-panel-3">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Sanuqri\'uka fa-la tansa!" WE will make you RECITE and you will NOT FORGET! A divine guarantee to the Prophet ﷺ. This is why the Quran has been perfectly preserved for 1400 years in the memories of millions. Answer the questions about this extraordinary promise!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">📿 LEVEL 2 — WE WILL MAKE YOU RECITE (87:6-7)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Promise of Memory — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Promise of Memory — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>After the opening glorification and description of Allah's actions, the surah makes an extraordinary promise: <strong>"Sanuqri'uka fa-la tansa."</strong></p>
         <p>WE will make you RECITE — and you will NOT FORGET. The subject is Allah ("We" — the royal "We" of divine majesty). The Prophet ﷺ used to rush to repeat the revelation as it came, worried he would forget. Allah addresses this worry directly: don't rush — We are depositing it into your memory.</p>
@@ -124,21 +174,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — THE PROMISE (87:6-7)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-2"></div>
-      <div class="game-feedback" id="feedback-2"></div>
+      <div id="quiz-3"></div>
+      <div class="game-feedback" id="feedback-3"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection3()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-3">
+  <div class="section-panel" id="section-panel-4">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The surah presents two types of people. "Sayyadhdhakkaru man yakhsha" — the one who FEARS Allah will be reminded and benefit. "Wa yatajannabahu al-ashqa" — the wretched one AVOIDS the reminder. Khashyah (awe of Allah) is the key! Answer the questions!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">🤲 LEVEL 3 — WHO FEARS AND WHO AVOIDS (87:9-13)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Two Types of Hearts — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Two Types of Hearts — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>After promising to preserve the Quran, the surah addresses the reception of the reminder. The Prophet ﷺ is told: <strong>"Fa-dhakkir in nafa'at al-dhikra"</strong> — So remind, if the reminder is beneficial.</p>
         <p>Two responses are described: <strong>"Sayyadhdhakkaru man yakhsha"</strong> — The one who FEARS Allah with AWE will be reminded and benefit. "Yakhsha" — the awe-filled fear that comes from knowledge of Allah's greatness. This fear is like an open door — the reminder enters and transforms.</p>
@@ -153,21 +203,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — WHO FEARS (87:9-13)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-3"></div>
-      <div class="game-feedback" id="feedback-3"></div>
+      <div id="quiz-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection3()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-4">
+  <div class="section-panel" id="section-panel-5">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Qad aflaha man tazakka — wa dhakara isma Rabbih fa-salla!" The formula for CERTAIN SUCCESS: purify yourself (tazakka), mention Allah's name (dhakara), and pray (salla). "Qad aflaha" — CERTAINLY succeeded! Answer the questions about this beautiful formula!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">✨ LEVEL 4 — PURIFY AND SUCCEED (87:14-15)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Formula for Success — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Formula for Success — Click to reveal verse</span></div><canvas id="canvas-5" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>After describing the two types — the one who fears (and benefits) and the one who avoids (and is destroyed) — the surah presents the formula for success: <strong>"Qad aflaha man tazakka — wa dhakara isma Rabbih fa-salla."</strong></p>
         <p>HE HAS CERTAINLY SUCCEEDED who PURIFIES himself. "Qad aflaha" — certainly, definitively succeeded. The word "falah" encompasses all dimensions of success: worldly and otherworldly, material and spiritual. "Tazakka" — purified himself from shirk, wrong beliefs, and spiritual diseases of the heart.</p>
@@ -182,21 +232,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — PURIFY AND SUCCEED (87:14-15)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-4"></div>
-      <div class="game-feedback" id="feedback-4"></div>
+      <div id="quiz-5"></div>
+      <div class="game-feedback" id="feedback-5"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-5">
+  <div class="section-panel" id="section-panel-6">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Bal tu\'thirun al-hayat al-dunya — wa al-akhiratu khayrun wa abqa!" But you PREFER the worldly life — while the Hereafter is BETTER AND MORE LASTING. Notice: "al-dunya" literally means THE LOWEST. And Allah is "al-A\'la" — THE MOST HIGH. The contrast is in the very names! Answer the questions!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">⚡ LEVEL 5 — DUNYA VS HEREAFTER (87:16-17)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Two Choices — Click to reveal verse</span></div><canvas id="canvas-5" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Two Choices — Click to reveal verse</span></div><canvas id="canvas-6" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>The surah now exposes the root problem: <strong>"Bal tu'thirun al-hayat al-dunya."</strong> But you PREFER the life of this world.</p>
         <p>Not just "you live in the world" — you PREFER it. "Tu'thirun" — you give it priority, you choose it, you value it above what comes after. This is the disease: misplaced priority.</p>
@@ -212,21 +262,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — DUNYA vs AKHIRA (87:16-17)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-5"></div>
-      <div class="game-feedback" id="feedback-5"></div>
+      <div id="quiz-6"></div>
+      <div class="game-feedback" id="feedback-6"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-6">
+  <div class="section-panel" id="section-panel-7">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The surah closes with a stunning statement: "Inna hadha la-fi al-suhuf al-ula — suhuf Ibrahim wa Musa." This is in the EARLIEST SCRIPTURES — the scrolls of Ibrahim and Musa! The message of glorifying Allah and preferring the Hereafter is not new — it's eternal! Answer the final questions!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">📜 LEVEL 6 — IN THE EARLIEST SCROLLS (87:18-19)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Scrolls of Ibrahim and Musa — Click to reveal verse</span></div><canvas id="canvas-6" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Scrolls of Ibrahim and Musa — Click to reveal verse</span></div><canvas id="canvas-7" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>The surah closes with a declaration that gives the entire message a universal, timeless dimension: <strong>"Inna hadha la-fi al-suhuf al-ula — suhuf Ibrahim wa Musa."</strong></p>
         <p>Indeed this (the message of this surah) is in the EARLIEST SCRIPTURES — the scrolls of Ibrahim and the scrolls of Musa.</p>
@@ -241,16 +291,17 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 FINAL QUIZ — EARLIER SCROLLS (87:18-19)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to complete Surah Al-Ala!</div>
-      <div id="quiz-6"></div>
-      <div class="game-feedback" id="feedback-6"></div>
+      <div id="quiz-7"></div>
+      <div class="game-feedback" id="feedback-7"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection7()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-7-btn" style="display:none" onclick="completeSection(7)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 </div>
+<script src="../shared/arabic-words.js"></script>
 <script src="scenes.js"></script>
 <script src="../shared/engine.js"></script>
 <script src="../shared/ui.js"></script>

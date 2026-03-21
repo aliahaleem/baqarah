@@ -4,28 +4,67 @@
    The Overthrowing · Indigo / Silver-Star / Cosmic
    ================================================ */
 window.STORAGE_KEY='takwirQuestSave';
-window.state={explorerName:'',xp:0,gems:0,completed:[],s1Checked:false,s2Answers:{},s2Checked:false,s3Order:[],s3Checked:false,s4Answers:{},s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false};
+window.state={explorerName:'',xp:0,gems:0,completed:[],s2Checked:false,s3Answers:{},s3Checked:false,s4Order:[],s4Checked:false,s5Answers:{},s5Checked:false,s6Answers:{},s6Checked:false,s7Answers:{},s7Checked:false};
 
 const REWARDS={
-  1:{xp:80,gems:3,icon:'⭐',title:'THE 12 SIGNS KNOWN!',msg:"SubhanAllah! Twelve cosmic events will happen on the Day of Judgment — the sun rolled up, stars falling, mountains set in motion, seas overflowing! Each 'Idha' (when) builds towards one conclusion: your soul will know what it brought forward. Are you ready for that Day?"},
-  2:{xp:80,gems:3,icon:'👼',title:'THE BURIED GIRL VINDICATED!',msg:"Allahu Akbar! Al-Maw'udah — the girl buried alive in pre-Islamic Arabia. On the Day of Judgment, Allah will ask HER: 'For what sin were you killed?' Not her killer — HER. The innocent victim testifying against her murderers. Islam completely abolished this practice. Every life is sacred."},
-  3:{xp:90,gems:3,icon:'📜',title:'WHAT YOU PREPARED REVEALED!',msg:"MashAllah! The records unroll, the sky is stripped, Hell blazes, Paradise draws near — and THEN: 'Alimat nafsun ma ahdharat.' A soul will know exactly what it brought. This is the moment of total clarity. What are you preparing NOW to bring to that Day?"},
-  4:{xp:90,gems:4,icon:'👁️',title:'THE NOBLE ANGEL UNDERSTOOD!',msg:"SubhanAllah! The Quran comes through Jibril (AS) — noble, powerful, honoured, obeyed, trustworthy. Four attributes of the greatest angel. The message comes through the BEST carrier. Yet what Jibril carries is even greater — the Word of Allah Himself. How can you not respect this Book?"},
-  5:{xp:100,gems:4,icon:'🌟',title:'THE PROPHET DEFENDED!',msg:"Allahu Akbar! 'Wa ma sahibukum bi-majnun' — Your companion Muhammad ﷺ is NOT mad! He saw Jibril on the clear horizon. He doesn't withhold knowledge. And this is NOT from Shaytan. Four defences in four verses. The Quraysh called him mad — Allah Himself is his defence. SubhanAllah!"},
-  6:{xp:120,gems:5,icon:'🌌',title:'SURAH AT-TAKWIR COMPLETE!',msg:"ALLAHUMMA BARIK! All 6 levels of Surah At-Takwir — The Overthrowing — complete! 'Fa-ayna tadh-habun?' Where are you going? The Quran is a reminder for all the worlds — for whoever WILLS to take the straight path. May Allah will for us the straight path. Ameen!"},
+  2:{xp:80,gems:3,icon:'⭐',title:'THE 12 SIGNS KNOWN!',msg:"SubhanAllah! Twelve cosmic events will happen on the Day of Judgment — the sun rolled up, stars falling, mountains set in motion, seas overflowing! Each 'Idha' (when) builds towards one conclusion: your soul will know what it brought forward. Are you ready for that Day?"},
+  3:{xp:80,gems:3,icon:'👼',title:'THE BURIED GIRL VINDICATED!',msg:"Allahu Akbar! Al-Maw'udah — the girl buried alive in pre-Islamic Arabia. On the Day of Judgment, Allah will ask HER: 'For what sin were you killed?' Not her killer — HER. The innocent victim testifying against her murderers. Islam completely abolished this practice. Every life is sacred."},
+  4:{xp:90,gems:3,icon:'📜',title:'WHAT YOU PREPARED REVEALED!',msg:"MashAllah! The records unroll, the sky is stripped, Hell blazes, Paradise draws near — and THEN: 'Alimat nafsun ma ahdharat.' A soul will know exactly what it brought. This is the moment of total clarity. What are you preparing NOW to bring to that Day?"},
+  5:{xp:90,gems:4,icon:'👁️',title:'THE NOBLE ANGEL UNDERSTOOD!',msg:"SubhanAllah! The Quran comes through Jibril (AS) — noble, powerful, honoured, obeyed, trustworthy. Four attributes of the greatest angel. The message comes through the BEST carrier. Yet what Jibril carries is even greater — the Word of Allah Himself. How can you not respect this Book?"},
+  6:{xp:100,gems:4,icon:'🌟',title:'THE PROPHET DEFENDED!',msg:"Allahu Akbar! 'Wa ma sahibukum bi-majnun' — Your companion Muhammad ﷺ is NOT mad! He saw Jibril on the clear horizon. He doesn't withhold knowledge. And this is NOT from Shaytan. Four defences in four verses. The Quraysh called him mad — Allah Himself is his defence. SubhanAllah!"},
+  7:{xp:120,gems:5,icon:'🌌',title:'SURAH AT-TAKWIR COMPLETE!',msg:"ALLAHUMMA BARIK! All 7 levels of Surah At-Takwir — The Overthrowing — complete! 'Fa-ayna tadh-habun?' Where are you going? The Quran is a reminder for all the worlds — for whoever WILLS to take the straight path. May Allah will for us the straight path. Ameen!"},
 };
 window.SURAH_CONFIG={
-  totalLevels:6,rewards:REWARDS,
-  tileIcons:['⭐','👼','📜','👁️','🌟','🌌'],
-  tileLabels:['12 Signs','Buried Girl','Prepared','Noble Angel','Not Mad','Where Going?'],
+  totalLevels:7,rewards:REWARDS,
+  tileIcons:['📖','⭐','👼','📜','👁️','🌟','🌌'],
+  tileLabels:['Word by Word','12 Signs','Buried Girl','Prepared','Noble Angel','Not Mad','Where Going?'],
   welcomeMsg:{
-    fresh:name=>`As-salamu alaykum, ${name}! Surah At-Takwir — "The Overthrowing." The sun rolled up, stars falling, the buried baby girl vindicated, the noble angel Jibril, the Prophet ﷺ defended, and the great question: Where are you going? 6 levels await!`,
+    fresh:name=>`As-salamu alaykum, ${name}! Surah At-Takwir — "The Overthrowing." The sun rolled up, stars falling, the buried baby girl vindicated, the noble angel Jibril, the Prophet ﷺ defended, and the great question: Where are you going? 7 levels await!`,
     partial:(name,done)=>`Welcome back, ${name}! ${done} level${done>1?'s':''} complete. "Fa-ayna tadh-habun?" — Keep finding your path! ⭐`,
     complete:name=>`MashAllah, ${name}! Surah At-Takwir complete! "Inna huwa illa dhikrun lil-'alamin — liman sha'a minkum an yastaqim." The straight path awaits the willing heart. Ameen! 🌌`,
   },
 };
 
 // S1 — Drag & Drop: 5 of the 12 Signs
+/* ── LEVEL 1: Word by Word ── */
+const WBW_DATA = [
+  {label:'Verse 1-3 — إِذَا الشَّمْسُ كُوِّرَتْ · وَإِذَا النُّجُومُ انكَدَرَتْ · وَإِذَا الْجِبَالُ سُيِّرَتْ', words:[
+    {ar:'سُيِّرَتْ', tr:'suyyirat', en:'are moved away', freq:1},
+    {ar:'الْجِبَالُ', tr:'al-jibāl', en:'the mountains', freq:33},
+    {ar:'انكَدَرَتْ', tr:'inkadarat', en:'fall/lose light', freq:1},
+    {ar:'النُّجُومُ', tr:'al-nujūm', en:'the stars', freq:13},
+    {ar:'كُوِّرَتْ', tr:'kuwwirat', en:'is wound round', freq:1},
+    {ar:'الشَّمْسُ', tr:'al-shams', en:'the sun', freq:33},
+    'idha',
+  ]},
+  {label:'Verse 8-9 — وَإِذَا الْمَوْءُودَةُ سُئِلَتْ · بِأَيِّ ذَنبٍ قُتِلَتْ', words:[
+    {ar:'قُتِلَتْ', tr:'qutilat', en:'she was killed', freq:39},
+    {ar:'ذَنبٍ', tr:'dhanb', en:'sin', freq:35},
+    {ar:'بِأَيِّ', tr:'bi-ayy', en:'for what', freq:8},
+    {ar:'سُئِلَتْ', tr:'suʾilat', en:'is asked', freq:2},
+    {ar:'الْمَوْءُودَةُ', tr:'al-mawʾūdah', en:'the buried alive girl', freq:1},
+  ]},
+];
+
+const S1_MATCH_ITEMS = [
+  {id:'w1', text:'سُيِّرَتْ', zone:'wz1'},
+  {id:'w2', text:'الْجِبَالُ', zone:'wz2'},
+  {id:'w3', text:'انكَدَرَتْ', zone:'wz3'},
+  {id:'w4', text:'النُّجُومُ', zone:'wz4'},
+  {id:'w5', text:'كُوِّرَتْ', zone:'wz5'},
+  {id:'w6', text:'الشَّمْسُ', zone:'wz6'}
+];
+const S1_MATCH_ZONES = [
+  {id:'wz1', desc:'are moved away'},
+  {id:'wz2', desc:'the mountains'},
+  {id:'wz3', desc:'fall/lose light'},
+  {id:'wz4', desc:'the stars'},
+  {id:'wz5', desc:'is wound round'},
+  {id:'wz6', desc:'the sun'}
+];
+window.setupWBWLevel(WBW_DATA, S1_MATCH_ITEMS, S1_MATCH_ZONES);
+
+
 const S1_ITEMS=[
   {id:'sg1',text:'☀️ Al-Shams\nKuwwirat',zone:'z1'},
   {id:'sg2',text:'⭐ Al-Nujum\nInkadarat',zone:'z2'},
@@ -163,18 +202,21 @@ const S6_QUIZ=[
    correct:1},
 ];
 
-function renderSection1Game(){renderDragDrop(1,S1_ITEMS,S1_ZONES);}
-function checkSection1(){checkDragDrop(1,S1_ZONES);}
-function renderSection2Game(){renderQuiz(2,S2_QUIZ);}
-function checkSection2(){checkQuiz(2,S2_QUIZ);}
-function renderSection3Game(){renderStoryOrder(3,S3_EVENTS_CORRECT);}
-function checkSection3(){checkStoryOrder(3,S3_EVENTS_CORRECT);}
-function renderSection4Game(){renderQuiz(4,S4_QUIZ);}
-function checkSection4(){checkQuiz(4,S4_QUIZ);}
-function renderSection5Game(){renderQuiz(5,S5_QUIZ);}
-function checkSection5(){checkQuiz(5,S5_QUIZ);}
-function renderSection6Game(){renderQuiz(6,S6_QUIZ);}
-function checkSection6(){checkQuiz(6,S6_QUIZ);}
+
+
+
+function renderSection2Game(){renderDragDrop(2,S1_ITEMS,S1_ZONES);}
+function checkSection2(){checkDragDrop(2,S1_ZONES);}
+function renderSection3Game(){renderQuiz(3,S2_QUIZ);}
+function checkSection3(){checkQuiz(3,S2_QUIZ);}
+function renderSection4Game(){renderStoryOrder(4,S3_EVENTS_CORRECT);}
+function checkSection4(){checkStoryOrder(4,S3_EVENTS_CORRECT);}
+function renderSection5Game(){renderQuiz(5,S4_QUIZ);}
+function checkSection5(){checkQuiz(5,S4_QUIZ);}
+function renderSection6Game(){renderQuiz(6,S5_QUIZ);}
+function checkSection6(){checkQuiz(6,S5_QUIZ);}
+function renderSection7Game(){renderQuiz(7,S6_QUIZ);}
+function checkSection7(){checkQuiz(7,S6_QUIZ);}
 
 // WORLD BUILDER — Celestial Canvas (stars appearing as levels unlock)
 function _lbl(ctx,W,msg,d,t){ctx.fillStyle='#c8c070';ctx.font='7px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText(msg,W/2,18);ctx.fillStyle='#04040e';ctx.fillRect(W/2-100,26,200,8);ctx.fillStyle='#2828a0';ctx.fillRect(W/2-100,26,Math.round(200*d/t),8);ctx.textAlign='left';}

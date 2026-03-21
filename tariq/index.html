@@ -41,12 +41,17 @@
   </div>
   <h2 class="section-heading">💫 THE QUEST MAP</h2>
   <div class="map-grid">
-    <div class="map-tile locked" id="tile-1" onclick="openSection(1)"><div class="tile-icon">💫</div><div class="tile-level">LEVEL 1</div><div class="tile-name">Night Star</div><div class="tile-verses">86:1-4</div><div class="tile-status" id="status-1">▶ PLAY</div></div>
-    <div class="map-tile locked" id="tile-2" onclick="openSection(2)"><div class="tile-icon">💧</div><div class="tile-level">LEVEL 2</div><div class="tile-name">From Water</div><div class="tile-verses">86:5-8</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-3" onclick="openSection(3)"><div class="tile-icon">🔍</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Secrets</div><div class="tile-verses">86:9-10</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-4" onclick="openSection(4)"><div class="tile-icon">📖</div><div class="tile-level">LEVEL 4</div><div class="tile-name">Decisive</div><div class="tile-verses">86:13-14</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-5" onclick="openSection(5)"><div class="tile-icon">🌧️</div><div class="tile-level">LEVEL 5</div><div class="tile-name">Rain & Resurrection</div><div class="tile-verses">86:11-12</div><div class="tile-status" id="status-5">🔒 LOCKED</div></div>
-    <div class="map-tile locked" id="tile-6" onclick="openSection(6)"><div class="tile-icon">⚡</div><div class="tile-level">LEVEL 6</div><div class="tile-name">They Plot</div><div class="tile-verses">86:15-17</div><div class="tile-status" id="status-6">🔒 LOCKED</div></div>
+        <div class="map-tile unlocked" id="tile-1" onclick="openSection(1)">
+      <div class="tile-icon">📖</div><div class="tile-level">LEVEL 1</div>
+      <div class="tile-name">Word by Word</div>
+      <div class="tile-status" id="status-1">▶ PLAY</div>
+    </div>
+<div class="map-tile locked" id="tile-2" onclick="openSection(2)"><div class="tile-icon">💫</div><div class="tile-level">LEVEL 1</div><div class="tile-name">Night Star</div><div class="tile-verses">86:1-4</div><div class="tile-status" id="status-2">▶ PLAY</div></div>
+    <div class="map-tile locked" id="tile-3" onclick="openSection(3)"><div class="tile-icon">💧</div><div class="tile-level">LEVEL 2</div><div class="tile-name">From Water</div><div class="tile-verses">86:5-8</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-4" onclick="openSection(4)"><div class="tile-icon">🔍</div><div class="tile-level">LEVEL 3</div><div class="tile-name">Secrets</div><div class="tile-verses">86:9-10</div><div class="tile-status" id="status-4">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-5" onclick="openSection(5)"><div class="tile-icon">📖</div><div class="tile-level">LEVEL 4</div><div class="tile-name">Decisive</div><div class="tile-verses">86:13-14</div><div class="tile-status" id="status-5">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-6" onclick="openSection(6)"><div class="tile-icon">🌧️</div><div class="tile-level">LEVEL 5</div><div class="tile-name">Rain & Resurrection</div><div class="tile-verses">86:11-12</div><div class="tile-status" id="status-6">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-7" onclick="openSection(7)"><div class="tile-icon">⚡</div><div class="tile-level">LEVEL 6</div><div class="tile-name">They Plot</div><div class="tile-verses">86:15-17</div><div class="tile-status" id="status-7">🔒 LOCKED</div></div>
   </div>
   <div id="world-builder">
     <h2 class="section-heading">💫 BUILD THE NIGHT SKY</h2>
@@ -55,12 +60,13 @@
     </div>
     <p style="font-family:var(--font-body);font-size:var(--font-size-sm);color:var(--primary-lit);text-align:center;margin-bottom:10px;line-height:1.8;">Complete each level to reveal the night sky with the piercing star!<br/><em style="color:var(--text-dim);">"Al-najm al-thaqib" — The Piercing Star — 86:3</em></p>
     <div class="world-preview">
-      <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Night Star</div></div>
-      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">From Water</div></div>
-      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Secrets</div></div>
-      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Decisive</div></div>
-      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Rain/Rise</div></div>
-      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Allah Plans</div></div>
+            <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Words</div></div>
+<div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Night Star</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">From Water</div></div>
+      <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">Secrets</div></div>
+      <div class="world-chunk" id="chunk-5"><div class="chunk-emoji">⬛</div><div class="chunk-label">Decisive</div></div>
+      <div class="world-chunk" id="chunk-6"><div class="chunk-emoji">⬛</div><div class="chunk-label">Rain/Rise</div></div>
+      <div class="world-chunk" id="chunk-7"><div class="chunk-emoji">⬛</div><div class="chunk-label">Allah Plans</div></div>
     </div>
   </div>
   <div id="all-complete">
@@ -77,11 +83,55 @@
 <div id="section-view" style="display:none">
   <header style="background:var(--bg2);border-bottom:3px solid var(--primary);padding:8px 14px;display:flex;align-items:center;gap:12px;"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></header>
 
+  
+  <!-- ==================== SECTION 1 — WORD BY WORD ==================== -->
   <div class="section-panel" id="section-panel-1">
+    <div class="ibn-ameen-panel" style="margin:14px 12px 0;">
+      <div class="character-avatar">🧙‍♂️</div>
+      <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>
+        Learn the key Arabic words of this surah! Tap each card to reveal its meaning, then continue to the next level.
+      </div>
+    </div>
+    <div class="card" style="margin:14px 12px 0;">
+      <div class="card-header">📖 LEVEL 1 — WORD BY WORD (86:At-Tariq)</div>
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🎬 The Night-Comer — Click to reveal verse</span></div>
+        <canvas id="canvas-1" width="560" height="220"></canvas>
+      </div>
+      <div class="story-text">
+        
+        <div class="verse-block">
+          <div class="arabic-text">وَالسَّمَاءِ وَالطَّارِقِ ۩ وَمَا أَدْرَاكَ مَا الطَّارِقُ ۩ النَّجْمُ الثَّاقِبُ</div>
+          <div class="verse-translation">"By the sky and the night-comer — and what will make you know what the night-comer is? It is the piercing star." (86:1-3)</div>
+        </div>
+
+        <p class="word-grid-intro">Now explore each word — <strong>tap a card to reveal its meaning</strong>.</p>
+        <button id="wbw-reveal-btn" class="wbw-reveal-btn">👁 Reveal All Meanings</button>
+        <div id="wbw-display"></div>
+      </div>
+    </div>
+        <div class="card" style="margin:8px 12px 0;">
+      <div class="card-header">🎮 MATCH — ARABIC WORD TO ENGLISH MEANING</div>
+      <div class="game-instructions">Drag each Arabic word to its English meaning!</div>
+      <div class="drag-game-container">
+        <div class="drag-pool" id="drag-pool-1"></div>
+        <div class="drop-zones" id="drop-zones-1"></div>
+      </div>
+      <div class="game-feedback" id="feedback-1"></div>
+      <div class="game-footer">
+        <button class="action-btn" onclick="checkSection1()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+      </div>
+    </div>
+
+    <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
+  </div>
+
+<div class="section-panel" id="section-panel-2">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Surah At-Tariq opens with a mysterious oath: "By the sky and the night comer!" — then asks: "What would make you know what the night comer is?" Then reveals: Al-Najm Al-Thaqib — the Piercing Star! And the conclusion: every soul has a guardian! Match these three key elements!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">💫 LEVEL 1 — THE PIERCING NIGHT STAR (86:1-4)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Night Star — Click to reveal verse</span></div><canvas id="canvas-1" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Night Star — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>Surah At-Tariq creates suspense in its very opening. <strong>"Wa al-sama' wa al-Tariq"</strong> — By the sky and al-Tariq! What is al-Tariq? The suspense builds: <strong>"Wa ma adraka ma al-Tariq?"</strong> — And what would make you know what al-Tariq is? Then the reveal:</p>
         <p><strong>"Al-najm al-thaqib"</strong> — The PIERCING STAR. "Thaqib" means to pierce, drill through, penetrate. A star so brilliant that it seems to drill through the darkness of night and pierce the eye with its light. Some scholars have noted this may describe pulsars — neutron stars that emit intense beams of radiation and appear to pulse brilliantly in the sky.</p>
@@ -96,21 +146,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 GAME — MATCH THE NIGHT STAR (86:1-4)</div>
       <div class="game-instructions">Drag each term to its correct description. All 3 must match!</div>
-      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-1"></div><div class="drop-zones" id="drop-zones-1"></div></div>
-      <div class="game-feedback" id="feedback-1"></div>
+      <div class="drag-game-container"><div class="drag-pool" id="drag-pool-2"></div><div class="drop-zones" id="drop-zones-2"></div></div>
+      <div class="game-feedback" id="feedback-2"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection1()">✅ Check Matches</button>
-        <button class="action-btn gold" id="complete-1-btn" style="display:none" onclick="completeSection(1)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection2()">✅ Check Matches</button>
+        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-2">
+  <div class="section-panel" id="section-panel-3">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Fa-l-yandhur al-insan mimma khuliq" — So let man LOOK at what he was created from! "Khuliq min ma\'in dafiq" — created from GUSHING FLUID! A humbling reminder of our origin. And the implication: the same Allah who created you from this drop CAN recreate you after death. Answer the questions!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">💧 LEVEL 2 — CREATED FROM WATER (86:5-8)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Origin and Return — Click to reveal verse</span></div><canvas id="canvas-2" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Origin and Return — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>After the oath and the guardian, the surah turns to the human being directly: <strong>"Fa-l-yandhur al-insan mimma khuliq."</strong> Let man LOOK — observe, consider, ponder — what he was created from.</p>
         <p>The answer: <strong>"Khuliq min ma'in dafiq"</strong> — created from a gushing, rushing fluid. "Dafiq" carries a sense of gushing, flowing with force. The contrast is powerful: from this humble, simple origin, Allah fashioned the human being — with his pride, his intellect, his speech, his ambitions.</p>
@@ -125,21 +175,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — FROM WATER (86:5-8)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-2"></div>
-      <div class="game-feedback" id="feedback-2"></div>
+      <div id="quiz-3"></div>
+      <div class="game-feedback" id="feedback-3"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection2()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-2-btn" style="display:none" onclick="completeSection(2)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection3()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-3">
+  <div class="section-panel" id="section-panel-4">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Yawma tubla al-sara\'ir!" — The Day SECRETS are EXAMINED! Not just deeds — but the hidden, inner realities. And on That Day: "Fa-ma lahu min quwwatin wa la nasir." No power. No helper. Only what you built privately, sincerely. Answer the questions about this sobering verse!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">🔍 LEVEL 3 — SECRETS EXAMINED (86:9-10)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Day of Secrets — Click to reveal verse</span></div><canvas id="canvas-3" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Day of Secrets — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>Having established that every soul has a guardian (86:4) and that Allah can recreate man (86:8), the surah now describes WHAT happens when you are recreated: <strong>"Yawma tubla al-sara'ir."</strong></p>
         <p>The Day SECRETS are tried/examined. "Tubla" from "bala" — to test, examine, put to the trial. "Al-sara'ir" — the plural of "sirr" — secrets, hidden things, private matters, inner realities.</p>
@@ -155,21 +205,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — SECRETS EXAMINED (86:9-10)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-3"></div>
-      <div class="game-feedback" id="feedback-3"></div>
+      <div id="quiz-4"></div>
+      <div class="game-feedback" id="feedback-4"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection3()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-4">
+  <div class="section-panel" id="section-panel-5">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>"Innahu la-qawlun fasl — wa ma huwa bi-al-hazl." The Quran is a DECISIVE, SEPARATING word. It is NOT jest. Not entertainment. Not poetry for enjoyment. This is the most serious book in existence — from the Creator to His creation. Answer the questions about the decisive Quran!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">📖 LEVEL 4 — THE DECISIVE WORD (86:13-14)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Quran Separates — Click to reveal verse</span></div><canvas id="canvas-4" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Quran Separates — Click to reveal verse</span></div><canvas id="canvas-5" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>After describing the sky that returns and the earth that splits (86:11-12), the surah declares the nature of the very words you are reading:</p>
         <p><strong>"Innahu la-qawlun fasl"</strong> — Indeed this is a decisive/separating word. "Fasl" from "fasala" — to cut, separate, distinguish, decide. The Quran is the word that cuts between right and wrong, truth and falsehood, guided and misguided, the people of Paradise and the people of Hell.</p>
@@ -184,21 +234,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — THE DECISIVE WORD (86:13-14)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-4"></div>
-      <div class="game-feedback" id="feedback-4"></div>
+      <div id="quiz-5"></div>
+      <div class="game-feedback" id="feedback-5"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection4()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-4-btn" style="display:none" onclick="completeSection(4)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-5">
+  <div class="section-panel" id="section-panel-6">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>Allah swears by "the sky that returns" (86:11) and "the earth that splits open" (86:12). These are oaths by the water cycle! Rain falls, earth splits for plants, dead earth becomes alive. THIS is the proof of resurrection — Allah does this every year! Answer the questions!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">🌧️ LEVEL 5 — RAIN AND RESURRECTION (86:11-12)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Sky Returns — Click to reveal verse</span></div><canvas id="canvas-5" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Sky Returns — Click to reveal verse</span></div><canvas id="canvas-6" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>The surah places this section between the description of the secrets being examined and the declaration about the Quran — making it the central evidence section:</p>
         <p><strong>"Wa al-sama' dhat al-raj'"</strong> — By the sky that RETURNS. "Al-raj'" means returning, giving back. The sky takes up water through evaporation, then returns it as rain. Allah swears by this process of returning — because resurrection is also a returning: souls to their bodies, the dead back to life.</p>
@@ -213,21 +263,21 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 QUIZ — RAIN AND RESURRECTION (86:11-12)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to pass!</div>
-      <div id="quiz-5"></div>
-      <div class="game-feedback" id="feedback-5"></div>
+      <div id="quiz-6"></div>
+      <div class="game-feedback" id="feedback-6"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection5()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-5-btn" style="display:none" onclick="completeSection(5)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 
-  <div class="section-panel" id="section-panel-6">
+  <div class="section-panel" id="section-panel-7">
     <div class="ibn-ameen-panel" style="margin:14px 12px 0;"><div class="character-avatar">🧙‍♂️</div><div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>The final revelation: "Innahum yakiduna kaydan — wa akidu kaydan." They plot — and I (Allah) am planning too! The ultimate contrast. And the instruction to the Prophet ﷺ: "Give them respite — gently." Allah's plan is already in motion. Answer the final questions to complete Surah At-Tariq!</div></div>
     <div class="card" style="margin:14px 12px 0;">
       <div class="card-header">⚡ LEVEL 6 — THEY PLOT, ALLAH PLANS (86:15-17)</div>
-      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Divine Response — Click to reveal verse</span></div><canvas id="canvas-6" width="560" height="220"></canvas></div>
+      <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 The Divine Response — Click to reveal verse</span></div><canvas id="canvas-7" width="560" height="220"></canvas></div>
       <div class="story-text">
         <p>The surah closes with a powerful declaration that addresses all opposition to the message: <strong>"Innahum yakiduna kaydan — wa akidu kaydan."</strong></p>
         <p>They are PLOTTING a plot — and I am PLOTTING a plan. The same verb "kayd" is used for both. This is deliberate — the same type of activity, but with infinite difference in power, knowledge, and outcome.</p>
@@ -243,16 +293,17 @@
     <div class="card" style="margin:8px 12px 0;">
       <div class="card-header">🎮 FINAL QUIZ — THEY PLOT (86:15-17)</div>
       <div class="game-instructions">Answer all 4 questions. You need 3/4 to complete Surah At-Tariq!</div>
-      <div id="quiz-6"></div>
-      <div class="game-feedback" id="feedback-6"></div>
+      <div id="quiz-7"></div>
+      <div class="game-feedback" id="feedback-7"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection6()">✅ Check Answers</button>
-        <button class="action-btn gold" id="complete-6-btn" style="display:none" onclick="completeSection(6)">🏆 Claim Reward!</button>
+        <button class="action-btn" onclick="checkSection7()">✅ Check Answers</button>
+        <button class="action-btn gold" id="complete-7-btn" style="display:none" onclick="completeSection(7)">🏆 Claim Reward!</button>
       </div>
     </div>
     <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>
   </div>
 </div>
+<script src="../shared/arabic-words.js"></script>
 <script src="scenes.js"></script>
 <script src="../shared/engine.js"></script>
 <script src="../shared/ui.js"></script>

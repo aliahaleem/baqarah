@@ -191,7 +191,7 @@ class BaseScene {
 // =============================================
 class Scene1 extends BaseScene {
   constructor() {
-    super('canvas-1');
+    super('canvas-2');
     this.clickZones = [
       { x: 20,  y: 60,  w: 220, h: 140, key: 'great_news' },
       { x: 280, y: 30,  w: 260, h: 150, key: 'they_will_know' },
@@ -267,7 +267,7 @@ class Scene1 extends BaseScene {
 // =============================================
 class Scene2 extends BaseScene {
   constructor() {
-    super('canvas-2');
+    super('canvas-3');
     this.clickZones = [
       { x: 0,   y: 130, w: 280, h: 90,  key: 'earth_signs' },
       { x: 280, y: 60,  w: 280, h: 160, key: 'night_day' },
@@ -350,7 +350,7 @@ class Scene2 extends BaseScene {
 // =============================================
 class Scene3 extends BaseScene {
   constructor() {
-    super('canvas-3');
+    super('canvas-4');
     this.clickZones = [
       { x: 0,   y: 0,   w: 260, h: 100, key: 'sky_rain' },
       { x: 360, y: 0,   w: 200, h: 130, key: 'sky_rain' },
@@ -427,7 +427,7 @@ class Scene3 extends BaseScene {
 // =============================================
 class Scene4 extends BaseScene {
   constructor() {
-    super('canvas-4');
+    super('canvas-5');
     this.clickZones = [
       { x: 220, y: 40,  w: 120, h: 100, key: 'day_sorting' },
       { x: 0,   y: 0,   w: 220, h: 100, key: 'day_sorting' },
@@ -514,7 +514,7 @@ class Scene4 extends BaseScene {
 // =============================================
 class Scene5 extends BaseScene {
   constructor() {
-    super('canvas-5');
+    super('canvas-6');
     this.clickZones = [
       { x: 0,   y: 0,   w: 140, h: CH,  key: 'hellfire' },
       { x: 420, y: 0,   w: 140, h: CH,  key: 'hellfire' },
@@ -586,7 +586,7 @@ class Scene5 extends BaseScene {
 // =============================================
 class Scene6 extends BaseScene {
   constructor() {
-    super('canvas-6');
+    super('canvas-7');
     this.clickZones = [
       { x: 0,   y: 0,   w: 200, h: CH,  key: 'paradise' },
       { x: 200, y: 60,  w: 200, h: 160, key: 'paradise' },
@@ -675,7 +675,7 @@ class Scene6 extends BaseScene {
 // =============================================
 class Scene7 extends BaseScene {
   constructor() {
-    super('canvas-7');
+    super('canvas-8');
     this.clickZones = [
       { x: 0,   y: 40,  w: CW,  h: 80,  key: 'lord_of_all' },
       { x: 180, y: 20,  w: 200, h: 140, key: 'lord_of_all' },
@@ -748,7 +748,7 @@ class Scene7 extends BaseScene {
 // =============================================
 class Scene8 extends BaseScene {
   constructor() {
-    super('canvas-8');
+    super('canvas-9');
     this.clickZones = [
       { x: 0,   y: 0,   w: 240, h: CH,  key: 'final_warning' },
       { x: 240, y: 60,  w: 80,  h: 160, key: 'final_warning' },
@@ -828,14 +828,21 @@ class Scene8 extends BaseScene {
 // =============================================
 const _scenes = {};
 
+
+
+
+
+const VD_wbw={ref:'An-Naba (78)',arabic:'عَمَّ يَتَسَاءَلُونَ ۩ عَنِ النَّبَإِ الْعَظِيمِ ۩ الَّذِي هُمْ فِيهِ مُخْتَلِفُونَ ۩ كَلَّا سَيَعْلَمُونَ',english:'"About what are they asking one another? About the great news — that over which they are in disagreement. No! They will come to know." (78:1-5)',note:'Key Arabic words from this surah. Tap each flip card below to learn them one by one.'};
+const _s1wbw = new window.WBWScene('canvas-1', {emoji:'📰',label:'THE GREAT NEWS',verse:VD_wbw});
+
 function initScenes() {
-  [1,2,3,4,5,6,7,8].forEach(n => {
-    const cls = [Scene1,Scene2,Scene3,Scene4,Scene5,Scene6,Scene7,Scene8][n-1];
-    _scenes[n] = new cls();
-  });
+  _scenes[1] = _s1wbw;
+  const cls = [Scene1,Scene2,Scene3,Scene4,Scene5,Scene6,Scene7,Scene8];
+  cls.forEach((C, i) => { _scenes[i + 2] = new C(); });
 }
 
 function startScene(n) {
+  
   stopAllScenes();
   if (_scenes[n]) _scenes[n].start();
 }
