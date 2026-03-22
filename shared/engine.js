@@ -194,7 +194,8 @@ function checkQuiz(n, data) {
 function renderDragDrop(n, items, zones) {
   const pool = document.getElementById(`drag-pool-${n}`);
   const zonesEl = document.getElementById(`drop-zones-${n}`);
-  const parent = pool ? pool.parentElement : (zonesEl ? zonesEl.parentElement : null);
+  const orderEl = document.getElementById(`order-${n}`);
+  const parent = pool ? pool.parentElement : (zonesEl ? zonesEl.parentElement : (orderEl || null));
   if (!parent) return;
 
   const pairs = items.map(item => {
@@ -282,68 +283,6 @@ function checkDragDrop(n, zones) {
 }
 
 // =============================================
-//  STORY ORDER
-// =============================================
-function renderStoryOrder(n, data) {
-  const key = `s${n}Order`;
-  if (!window.state[key] || window.state[key].length !== data.length) {
-    window.state[key] = shuffle(data).map(e => e.id); saveProgress();
-  }
-  renderOrderItems(n, data);
-  if (window.state.completed.includes(n) || window.state[`s${n}Checked`]) {
-    const btn = document.getElementById(`complete-${n}-btn`);
-    if (btn) btn.style.display = 'inline-block';
-  }
-}
-
-function renderOrderItems(n, data) {
-  const c = document.getElementById(`order-${n}`); if (!c) return;
-  const key = `s${n}Order`; c.innerHTML = '';
-  window.state[key].forEach((id, idx) => {
-    const ev = data.find(e => e.id === id); if (!ev) return;
-    const item = document.createElement('div');
-    item.className = 'order-item'; item.dataset.id = id;
-    item.innerHTML = `<div class="order-num">${idx+1}</div>
-      <div class="order-text">${ev.text}</div>
-      <div class="order-btns">
-        <button class="order-btn" onclick="moveOrderItem(${n},${idx},-1,window['_S${n}_EVENTS'])" ${idx===0?'disabled':''}>↑</button>
-        <button class="order-btn" onclick="moveOrderItem(${n},${idx}, 1,window['_S${n}_EVENTS'])" ${idx===window.state[key].length-1?'disabled':''}>↓</button>
-      </div>`;
-    c.appendChild(item);
-  });
-}
-
-function moveOrderItem(n, idx, dir, data) {
-  const key = `s${n}Order`, ni = idx + dir;
-  if (ni < 0 || ni >= window.state[key].length) return;
-  const arr = [...window.state[key]]; [arr[idx], arr[ni]] = [arr[ni], arr[idx]];
-  window.state[key] = arr; saveProgress(); renderOrderItems(n, data);
-}
-// Alias for older baqarah inline calls
-function _moveOrderItem(n, idx, dir, data) { moveOrderItem(n, idx, dir, data); }
-
-function checkStoryOrder(n, data) {
-  const correct = data.map(e => e.id), key = `s${n}Order`; let cnt = 0;
-  document.querySelectorAll(`#order-${n} .order-item`).forEach((item, i) => {
-    item.classList.remove('correct-pos','incorrect-pos');
-    if (item.dataset.id === correct[i]) { item.classList.add('correct-pos'); cnt++; }
-    else item.classList.add('incorrect-pos');
-  });
-  const fb = document.getElementById(`feedback-${n}`), total = data.length;
-  if (!fb) return;
-  if (cnt === total) {
-    fb.textContent = '🏆 Perfect order! MashAllah!'; fb.className = 'game-feedback success';
-    window.state[`s${n}Checked`] = true; saveProgress();
-    const btn = document.getElementById(`complete-${n}-btn`);
-    if (btn) btn.style.display = 'inline-block';
-  } else if (cnt >= total - 1) {
-    fb.textContent = `✅ ${cnt}/${total} — almost! Adjust the red one.`; fb.className = 'game-feedback partial';
-  } else {
-    fb.textContent = `❌ ${cnt}/${total} — re-read and try again!`; fb.className = 'game-feedback error';
-  }
-}
-
-// =============================================
 //  SECTION REGISTRATION HELPERS (DRY)
 // =============================================
 
@@ -357,10 +296,88 @@ window.registerMatch = function(sectionNum, items, zones) {
   window['checkSection' + sectionNum]           = function() { checkDragDrop(sectionNum, zones); };
 };
 
-window.registerOrder = function(sectionNum, events) {
-  window['_S' + sectionNum + '_EVENTS'] = events;
-  window['renderSection' + sectionNum + 'Game'] = function() { renderStoryOrder(sectionNum, events); };
-  window['checkSection' + sectionNum]           = function() { checkStoryOrder(sectionNum, events); };
+// =============================================
+//  FILL-IN-THE-BLANK (Arabic verse completion)
+// =============================================
+
+function renderFillBlank(n, data) {
+  const el = document.getElementById(`order-${n}`) || document.getElementById(`quiz-${n}`);
+  if (!el) return;
+  const saved = window.state[`s${n}Answers`] || {};
+  let html = '';
+  data.forEach((item, qi) => {
+    const picked = saved[qi];
+    html += '<div class="fb-question" style="margin-bottom:18px;">';
+    html += `<div class="fb-verse" dir="rtl" style="font-family:var(--font-arabic);font-size:22px;line-height:2;text-align:center;padding:10px;background:var(--bg2);border-radius:var(--radius);margin-bottom:8px;">${item.verse}</div>`;
+    if (item.ref) html += `<div style="text-align:center;font-size:var(--font-size-xs);color:var(--text-dim);margin-bottom:8px;">${item.ref}</div>`;
+    html += `<div class="options-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">`;
+    item.opts.forEach((opt, oi) => {
+      const isAr = /[\u0600-\u06FF]/.test(opt);
+      let cls = 'option-btn';
+      if (picked !== undefined) {
+        if (oi === item.correct) cls += ' correct-fb';
+        else if (oi === picked && picked !== item.correct) cls += ' wrong-fb';
+      }
+      if (picked !== undefined) cls += ' disabled-fb';
+      html += `<button class="${cls}" data-qi="${qi}" data-oi="${oi}" data-section="${n}"${isAr ? ' dir="rtl" style="font-family:var(--font-arabic);font-size:20px;line-height:1.6;"' : ''}>${opt}</button>`;
+    });
+    html += '</div>';
+    if (picked !== undefined && item.translation) {
+      html += `<div style="text-align:center;font-size:var(--font-size-sm);color:var(--accent);margin-top:6px;font-style:italic;">${item.translation}</div>`;
+    }
+    html += '</div>';
+  });
+  el.innerHTML = html;
+
+  el.querySelectorAll('.option-btn:not(.disabled-fb)').forEach(btn => {
+    let _touched = false;
+    btn.addEventListener('touchend', function(e) {
+      e.preventDefault(); _touched = true;
+      _selectFB(n, parseInt(btn.dataset.qi), parseInt(btn.dataset.oi), data);
+      setTimeout(() => { _touched = false; }, 500);
+    }, { passive: false });
+    btn.onclick = function() {
+      if (_touched) return;
+      _selectFB(n, parseInt(btn.dataset.qi), parseInt(btn.dataset.oi), data);
+    };
+  });
+}
+
+function _selectFB(n, qi, oi, data) {
+  if (!window.state[`s${n}Answers`]) window.state[`s${n}Answers`] = {};
+  if (window.state[`s${n}Answers`][qi] !== undefined) return;
+  window.state[`s${n}Answers`][qi] = oi;
+  saveProgress();
+  renderFillBlank(n, data);
+}
+
+function checkFillBlank(n, data) {
+  const saved = window.state[`s${n}Answers`] || {};
+  const total = data.length;
+  let correct = 0;
+  data.forEach((item, qi) => { if (saved[qi] === item.correct) correct++; });
+  const fb = document.getElementById(`feedback-${n}`);
+  if (!fb) return;
+  if (correct === total) {
+    fb.textContent = `🏆 ${correct}/${total} correct! MashAllah — you know these verses!`;
+    fb.className = 'game-feedback success';
+    window.state[`s${n}Checked`] = true; saveProgress();
+    const btn = document.getElementById(`complete-${n}-btn`);
+    if (btn) btn.style.display = 'inline-block';
+  } else if (Object.keys(saved).length < total) {
+    fb.textContent = `Answer all ${total} questions first, then check.`;
+    fb.className = 'game-feedback';
+  } else {
+    fb.textContent = `${correct}/${total} — review and try again!`;
+    fb.className = 'game-feedback error';
+    window.state[`s${n}Answers`] = {};
+    setTimeout(() => renderFillBlank(n, data), 2000);
+  }
+}
+
+window.registerFillBlank = function(sectionNum, data) {
+  window['renderSection' + sectionNum + 'Game'] = function() { renderFillBlank(sectionNum, data); };
+  window['checkSection' + sectionNum]           = function() { checkFillBlank(sectionNum, data); };
 };
 
 // =============================================

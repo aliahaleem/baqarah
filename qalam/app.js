@@ -5,7 +5,7 @@ window.state = {
   explorerName:'', xp:0, gems:0, completed:[],
   s1Checked:false,
   s2Answers:{}, s2Checked:false,
-  s3Order:[], s3Checked:false,
+  s3Answers:{}, s3Checked:false,
   s4Answers:{}, s4Checked:false,
   s5Checked:false,
 };
@@ -61,16 +61,14 @@ const S2_ZONES = [
   {id:'z5', desc:'Their realisation and humble prayer: "Perhaps our Lord will give us better in exchange" (68:32)'},
 ];
 
-/* Level 3 — Story Order: Events of the Garden (68:17-33) */
-const S3_EVENTS_CORRECT = [
-  {id:'e1', text:'🌿 A garden owner had a flourishing garden he was grateful to Allah for'},
-  {id:'e2', text:'🌙 His heirs decided to harvest secretly at dawn without giving to the poor'},
-  {id:'e3', text:'🔕 They said "insha Allah" was not needed — no exception for the needy'},
-  {id:'e4', text:'🌅 They went to the garden early calling out to each other in the morning'},
-  {id:'e5', text:'🔥 Allah struck the garden with a calamity — it became completely blackened'},
-  {id:'e6', text:'😔 They realised their wrongdoing, turned to each other in blame, then humbled themselves'},
+/* Level 3 — Fill-in-the-Blank: The Garden Owners (68:17-33) */
+const S3_FIB = [
+  {verse:'إِنَّا بَلَوْنَاهُمْ كَمَا بَلَوْنَا أَصْحَابَ _____', opts:['الْجَنَّةِ','الْأَرْضِ','الْقَرْيَةِ','الْمَدِينَةِ'], correct:0, ref:'68:17', translation:'Indeed, We have tried them as We tried the companions of the garden'},
+  {verse:'وَلَا _____', opts:['يَسْتَثْنُونَ','يَتُوبُونَ','يَشْكُرُونَ','يَذْكُرُونَ'], correct:0, ref:'68:18', translation:'And they made no exception (did not say insha Allah)'},
+  {verse:'فَأَصْبَحَتْ _____', opts:['كَالصَّرِيمِ','كَالرَّمَادِ','كَالتُّرَابِ','كَالْهَشِيمِ'], correct:0, ref:'68:20', translation:'And it became as though reaped — completely destroyed'},
+  {verse:'قَالَ أَوْسَطُهُمْ أَلَمْ أَقُل لَّكُمْ لَوْلَا _____', opts:['تُسَبِّحُونَ','تَتُوبُونَ','تَسْتَغْفِرُونَ','تَتَّقُونَ'], correct:0, ref:'68:28', translation:'The most moderate of them said: Did I not say to you, why do you not glorify Allah?'},
+  {verse:'قَالُوا سُبْحَانَ رَبِّنَا إِنَّا كُنَّا _____', opts:['ظَالِمِينَ','غَافِلِينَ','كَافِرِينَ','خَاسِرِينَ'], correct:0, ref:'68:29', translation:'They said: Glory be to our Lord! Indeed, we were wrongdoers'},
 ];
-window._S3_EVENTS = S3_EVENTS_CORRECT;
 
 /* Level 4 — Quiz: Traits of the Arrogant (68:10-16) */
 const S4_QUIZ = [
@@ -92,8 +90,8 @@ function renderSection1Game(){renderQuiz(1,S1_QUIZ);}
 function checkSection1(){checkQuiz(1,S1_QUIZ);}
 function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}
 function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderStoryOrder(3,S3_EVENTS_CORRECT);}
-function checkSection3(){checkStoryOrder(3,S3_EVENTS_CORRECT);}
+function renderSection3Game(){renderFillBlank(3,S3_FIB);}
+function checkSection3(){checkFillBlank(3,S3_FIB);}
 function renderSection4Game(){renderQuiz(4,S4_QUIZ);}
 function checkSection4(){checkQuiz(4,S4_QUIZ);}
 // =============================================

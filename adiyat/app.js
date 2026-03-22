@@ -8,7 +8,7 @@ const REWARDS = {
      msg:'MashAllah! You learned the key Arabic words of this surah!'},
   2:{xp:70, gems:3, icon:'🐎', title:'Horses Witnessed', msg:"SubhanAllah! Five powerful oaths by the charging warhorses: they pant, they strike sparks, they raid at dawn, they kick up dust, they charge into the centre. The energy and loyalty of the horse — used to condemn human ingratitude!"},
   3:{xp:80, gems:3, icon:'💔', title:'Ingratitude Exposed', msg:"MashAllah! 'Inna al-insana li-rabbihi la-kanud.' Truly, man is KANUD — ungrateful, withholding. He WITNESSES his own ingratitude. He is FIERCE in his love of wealth. Yet the graves will be emptied and the secrets revealed!"},
-  4:{xp:90, gems:3, icon:'📜', title:'Story Ordered',    msg:"MashAllah! You ordered the structure of Al-Adiyat correctly — from the oath to the condemnation to the Day when all is exposed!"},
+  4:{xp:90, gems:3, icon:'📜', title:'Verse Completed',    msg:"MashAllah! You mastered the structure of Al-Adiyat — from the oath to the condemnation to the Day when all is exposed!"},
   5:{xp:100, gems:4, icon:'⚡', title:'Al-Adiyat Complete', msg:"Allahu Akbar! Al-Adiyat complete! The loyal horse charges for its master despite dangers. The ungrateful human hoards wealth despite all Allah's gifts. May we be grateful horses — loyal to our Creator! Ameen! 🏆"},
 };
 
@@ -117,13 +117,12 @@ const S2_ZONES = [
   {id:'z4', desc:'On the Day when what is in the graves is scattered out (100:9)'},
 ];
 
-const S3_EVENTS_CORRECT = [
-  {id:'e1', text:'🐎 Five oaths by warhorses: panting, sparking, raiding at dawn (100:1-5)'},
-  {id:'e2', text:'😤 Conclusion: Man is KANUD — deeply ungrateful to his Lord (100:6)'},
-  {id:'e3', text:'👁️ He is himself a witness to his own ingratitude (100:7)'},
-  {id:'e4', text:'💰 He is fierce/intense in his love of wealth (100:8)'},
-  {id:'e5', text:'💀 Does he not know? When graves are emptied and secrets revealed! (100:9-10)'},
-  {id:'e6', text:'🌟 On that Day, their Lord is All-Aware of them and their deeds (100:11)'},
+const S4_FIB = [
+  {verse:'وَالْعَادِيَاتِ _____', opts:['ضَبْحًا','رَكْضًا','جَرْيًا','صَهِيلًا'], correct:0, ref:'100:1', translation:'By the charging steeds, panting'},
+  {verse:'إِنَّ الْإِنسَانَ لِرَبِّهِ _____', opts:['لَكَنُودٌ','لَظَلُومٌ','لَكَفُورٌ','لَجَهُولٌ'], correct:0, ref:'100:6', translation:'Indeed mankind, to his Lord, is ungrateful'},
+  {verse:'وَإِنَّهُ لِحُبِّ الْخَيْرِ _____', opts:['لَشَدِيدٌ','لَحَرِيصٌ','لَكَثِيرٌ','لَعَظِيمٌ'], correct:0, ref:'100:8', translation:'And indeed he is, in love of wealth, intense'},
+  {verse:'أَفَلَا يَعْلَمُ إِذَا بُعْثِرَ مَا فِي _____', opts:['الْقُبُورِ','الْأَرْضِ','الْبُيُوتِ','الصُّدُورِ'], correct:0, ref:'100:9', translation:'Does he not know that when the contents of the graves are scattered'},
+  {verse:'إِنَّ رَبَّهُم بِهِمْ يَوْمَئِذٍ _____', opts:['لَّخَبِيرٌ','لَعَلِيمٌ','لَبَصِيرٌ','لَقَدِيرٌ'], correct:0, ref:'100:11', translation:'Indeed, their Lord with them, that Day, is fully Aware'},
 ];
 
 const S4_QUIZ = [
@@ -146,7 +145,7 @@ const S4_QUIZ = [
 // =============================================
 window.registerQuiz(2, S1_QUIZ);
 window.registerMatch(3, S2_ITEMS,S2_ZONES);
-window.registerOrder(4, S3_EVENTS_CORRECT);
+window.registerFillBlank(4, S4_FIB);
 window.registerQuiz(5, S4_QUIZ);
 
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}

@@ -131,13 +131,12 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-const S4_EVENTS_CORRECT = [
-  {id:'e1', text:'😔 Revelation paused — the Prophet ﷺ feared Allah had abandoned him (Context of 93:1-3)'},
-  {id:'e2', text:'🌅 Allah swears by the morning brightness and the still night (93:1-2)'},
-  {id:'e3', text:'💛 Reassurance: "Your Lord has NOT forsaken you, nor does He hate you!" (93:3)'},
-  {id:'e4', text:'🌟 Promise: The Hereafter is better for you than the first life (93:4)'},
-  {id:'e5', text:'🤲 Reminder of blessings: orphan sheltered, wanderer guided, needy enriched (93:6-8)'},
-  {id:'e6', text:'🙏 Three duties given: protect orphans, welcome askers, proclaim Allah\'s blessings (93:9-11)'},
+const S5_FIB = [
+  {verse:'مَا وَدَّعَكَ رَبُّكَ وَمَا _____', opts:['قَلَىٰ','نَسِيَ','تَرَكَ','أَبْعَدَ'], correct:0, ref:'93:3', translation:'Your Lord has not forsaken you, nor has He hated'},
+  {verse:'وَلَلْآخِرَةُ _____ لَّكَ مِنَ الْأُولَىٰ', opts:['خَيْرٌ','أَقْرَبُ','أَعْظَمُ','أَكْبَرُ'], correct:0, ref:'93:4', translation:'And the Hereafter is better for you than the first life'},
+  {verse:'أَلَمْ يَجِدْكَ _____ فَآوَىٰ', opts:['يَتِيمًا','ضَعِيفًا','وَحِيدًا','فَقِيرًا'], correct:0, ref:'93:6', translation:'Did He not find you an orphan and give shelter?'},
+  {verse:'وَوَجَدَكَ _____ فَهَدَىٰ', opts:['ضَالًّا','حَزِينًا','تَائِهًا','جَاهِلًا'], correct:0, ref:'93:7', translation:'And He found you lost and guided you'},
+  {verse:'فَأَمَّا الْيَتِيمَ فَلَا _____', opts:['تَقْهَرْ','تَظْلِمْ','تَنْسَ','تَتْرُكْ'], correct:0, ref:'93:9', translation:'So as for the orphan, do not oppress'},
 ];
 
 // =============================================
@@ -146,7 +145,7 @@ const S4_EVENTS_CORRECT = [
 window.registerQuiz(2, S1_QUIZ);
 window.registerMatch(3, S2_ITEMS,S2_ZONES);
 window.registerQuiz(4, S3_QUIZ);
-window.registerOrder(5, S4_EVENTS_CORRECT);
+window.registerFillBlank(5, S5_FIB);
 
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 

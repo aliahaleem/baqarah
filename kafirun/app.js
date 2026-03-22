@@ -44,24 +44,6 @@ const WBW_DATA = [
   ]},
 ];
 
-/* ─── LEVEL 1: Word by Word matching ─── */
-const S1_ITEMS = [
-  {id:'w1', text:'الْكَافِرُونَ',  zone:'z1'},
-  {id:'w2', text:'أَعْبُدُ',  zone:'z2'},
-  {id:'w3', text:'تَعْبُدُونَ',  zone:'z3'},
-  {id:'w4', text:'عَابِدٌ',  zone:'z4'},
-  {id:'w5', text:'عَبَدتُّمْ',  zone:'z5'},
-  {id:'w6', text:'دِينُكُمْ',  zone:'z6'}
-];
-const S1_ZONES = [
-  {id:'z1', desc:"The disbelievers — those who reject Allah's message and worship others (109:1)"},
-  {id:'z2', desc:"I worship — present tense declaration of the Prophet's ﷺ worship (109:2)"},
-  {id:'z3', desc:"You worship — what the disbelievers direct their worship toward (109:2)"},
-  {id:'z4', desc:"A worshipper — one who worships; 'nor will I BE a worshipper' (109:4)"},
-  {id:'z5', desc:"What you have worshipped — their past and habitual objects of worship (109:4)"},
-  {id:'z6', desc:"Your religion — Al-Kafirun establishes complete separation of faith (109:6)"}
-];
-
 const S2_QUIZ = [
   {q:'Why was Surah Al-Kafirun revealed?',
    opts:['A new prayer was being introduced','The Quraysh proposed a year-year worship exchange — worship their gods and they would worship Allah','A disbeliever asked about Islam','The companions needed clarity about interfaith'],
@@ -106,8 +88,6 @@ const S4_QUIZ = [
 ];
 
 
-function renderSection1Game(){if(window.renderWBW)renderWBW('wbw-display',WBW_DATA,'wbw-reveal-btn');renderDragDrop(1,S1_ITEMS,S1_ZONES);}
-function checkSection1(){checkDragDrop(1,S1_ZONES);}
 function renderSection2Game(){renderQuiz(2,S2_QUIZ);}function checkSection2(){checkQuiz(2,S2_QUIZ);}
 function renderSection3Game(){renderDragDrop(3,S3_ITEMS,S3_ZONES);}function checkSection3(){checkDragDrop(3,S3_ZONES);}
 function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
@@ -123,3 +103,5 @@ window._drawBuildCanvas = function(n) {
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
   ctx.fillText(n>=4?'AL-KAFIRUN COMPLETE! 🚫':`Al-Kafirun — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
 };
+
+window.setupWBWLevel(WBW_DATA, 10);

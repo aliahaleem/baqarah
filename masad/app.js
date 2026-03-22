@@ -8,13 +8,13 @@ const REWARDS = {
      msg:"MashAllah! You know every word of Surah Al-Masad! تَبَّتْ يَدَا أَبِي لَهَبٍ — May the hands of Abu Lahab perish! The only surah naming a specific enemy — and containing a Quranic prediction that came true. Every word carries deep meaning!"},
 
   2:{xp:70, gems:3, icon:'🔥', title:'Abu Lahab Known', msg:"SubhanAllah! Abu Lahab — the Prophet's ﷺ own uncle — was his most vicious enemy. His hands perish! His wealth and earnings won't help him in the slightest. This surah was revealed while Abu Lahab was still alive — and he never became Muslim, as Allah predicted!"},
-  3:{xp:80, gems:3, icon:'📖', title:'Story Ordered',   msg:"MashAllah! You ordered the story of Abu Lahab correctly. Notice: Allah predicted Abu Lahab would NOT become Muslim — and it happened exactly so. This is one of the scientific miracles of the Quran!"},
+  3:{xp:80, gems:3, icon:'📖', title:'Verse Completed',   msg:"MashAllah! You mastered the story of Abu Lahab. Notice: Allah predicted Abu Lahab would NOT become Muslim — and it happened exactly so. This is one of the scientific miracles of the Quran!"},
   4:{xp:90, gems:4, icon:'🌿', title:'Al-Masad Complete', msg:"Allahu Akbar! Al-Masad complete! 'Fi jidiha hablun min masad' — around her neck a rope of palm fiber! The wife of Abu Lahab carried wood to harm the Prophet ﷺ on his path. May we never be of those who harm the Prophet's ﷺ legacy! Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
   id:'s111', surahName:'Al-Masad', surahArabic:'المسد', totalLevels:4, wbwSection:1, rewards:REWARDS,
-  tileIcons:['📖','🔥','📖','🌿'], tileLabels:['Word by Word','Abu Lahab','Story Order','His Wife'],
+  tileIcons:['📖','🔥','📖','🌿'], tileLabels:['Word by Word','Abu Lahab','Complete the Verse','His Wife'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Masad — The Palm Fiber! The only surah to name a specific enemy of the Prophet ﷺ by name — Abu Lahab (Father of Flame). And a Quranic prediction fulfilled! 4 levels!`,
     partial: (n,d)=>`Welcome back, ${n}! ${d}/4 done. The truth is revealed! 🔥`,
@@ -47,24 +47,6 @@ const WBW_DATA = [
   ]},
 ];
 
-/* ─── LEVEL 1: Word by Word matching ─── */
-const S1_ITEMS = [
-  {id:'w1', text:'تَبَّتْ',  zone:'z1'},
-  {id:'w2', text:'يَدَا',  zone:'z2'},
-  {id:'w3', text:'لَهَبٍ',  zone:'z3'},
-  {id:'w4', text:'مَالُهُ',  zone:'z4'},
-  {id:'w5', text:'الْحَطَبِ',  zone:'z5'},
-  {id:'w6', text:'مَسَدٍ',  zone:'z6'}
-];
-const S1_ZONES = [
-  {id:'z1', desc:"May it perish / has perished — a curse and a Quranic prediction (111:1)"},
-  {id:'z2', desc:"Hands (of) — the hands of Abu Lahab — symbol of his hostile actions (111:1)"},
-  {id:'z3', desc:"Flame / blaze — his nickname: Father of Flame; also his punishment (111:1,3)"},
-  {id:'z4', desc:"His wealth — that which he boasted of but which cannot save him (111:2)"},
-  {id:'z5', desc:"The firewood — the thorny branches his wife carried to harm the Prophet ﷺ (111:4)"},
-  {id:'z6', desc:"Palm fiber — the twisted rope around her neck in Hellfire (111:5)"}
-];
-
 const S2_QUIZ = [
   {q:'What is the real name of "Abu Lahab"?',
    opts:['Uqbah ibn Abi Mu\'ayt','Abd al-Uzza ibn Abd al-Muttalib','Walid ibn Mughirah','Abu Jahl ibn Hisham'],
@@ -80,15 +62,13 @@ const S2_QUIZ = [
    correct:2},
 ];
 
-const S3_EVENTS_CORRECT = [
-  {id:'m1', text:'📣 Prophet ﷺ calls family to Mount Safa — "Warn your nearest kin!"'},
-  {id:'m2', text:'😤 Abu Lahab shouts: "May you perish! Is this why you gathered us?" (His hands!)'},
-  {id:'m3', text:'📜 Allah reveals: "Tabbat yada Abi Lahab — wa tabb!" His hands shall perish!'},
-  {id:'m4', text:'💰 Warning: His wealth and what he earned will NOT benefit him (111:2)'},
-  {id:'m5', text:'🌿 His wife: the wood-carrier — puts thorns on the Prophet\'s ﷺ path (111:4)'},
-  {id:'m6', text:'🔥 Around her neck a rope of palm fiber — in the Hellfire (111:5)'},
+const S3_FIB = [
+  {verse:'تَبَّتْ يَدَا أَبِي _____ وَتَبَّ', opts:['لَهَبٍ','جَهْلٍ','سُفْيَانَ','أُمَيَّةَ'], correct:0, ref:'111:1', translation:'May the hands of Abu Lahab perish, and he has perished'},
+  {verse:'مَا أَغْنَىٰ عَنْهُ مَالُهُ وَمَا _____', opts:['كَسَبَ','جَمَعَ','مَلَكَ','وَجَدَ'], correct:0, ref:'111:2', translation:'His wealth did not avail him, nor what he earned'},
+  {verse:'سَيَصْلَىٰ _____ ذَاتَ لَهَبٍ', opts:['نَارًا','جَحِيمًا','سَعِيرًا','حُطَمَةً'], correct:0, ref:'111:3', translation:'He will burn in a Fire of blazing flame'},
+  {verse:'وَامْرَأَتُهُ حَمَّالَةَ _____', opts:['الْحَطَبِ','النَّارِ','الشَّوْكِ','الْحِجَارَةِ'], correct:0, ref:'111:4', translation:'And his wife, the carrier of firewood'},
+  {verse:'فِي جِيدِهَا حَبْلٌ مِّن _____', opts:['مَّسَدٍ','نَارٍ','حَدِيدٍ','لِيفٍ'], correct:0, ref:'111:5', translation:'Around her neck is a rope of palm fiber'},
 ];
-window._S3_EVENTS = S3_EVENTS_CORRECT;
 
 const S4_QUIZ = [
   {q:'What is Abu Lahab\'s wife known for doing to harm the Prophet ﷺ?',
@@ -106,10 +86,8 @@ const S4_QUIZ = [
 ];
 
 
-function renderSection1Game(){if(window.renderWBW)renderWBW('wbw-display',WBW_DATA,'wbw-reveal-btn');renderDragDrop(1,S1_ITEMS,S1_ZONES);}
-function checkSection1(){checkDragDrop(1,S1_ZONES);}
 function renderSection2Game(){renderQuiz(2,S2_QUIZ);}function checkSection2(){checkQuiz(2,S2_QUIZ);}
-function renderSection3Game(){renderStoryOrder(3,S3_EVENTS_CORRECT);}function checkSection3(){checkStoryOrder(3,S3_EVENTS_CORRECT);}
+function renderSection3Game(){renderFillBlank(3,S3_FIB);}function checkSection3(){checkFillBlank(3,S3_FIB);}
 function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
@@ -124,3 +102,5 @@ window._drawBuildCanvas = function(n) {
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
   ctx.fillText(n>=4?'AL-MASAD COMPLETE! 🌿':`Al-Masad — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
 };
+
+window.setupWBWLevel(WBW_DATA, 10);

@@ -6,7 +6,7 @@ window.state = {
   s1Checked:false,
   s2Answers:{}, s2Checked:false,
   s3Checked:false,
-  s4Order:[], s4Checked:false,
+  s4Answers:{}, s4Checked:false,
   s5Checked:false,
 };
 
@@ -45,15 +45,15 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'j1', text:'🌬️ No sun\nor cold in Jannah',      zone:'z1'},
-  {id:'j2', text:'🍷 Drink from\ncups of Kawthar',     zone:'z2'},
-  {id:'j3', text:'💧 Spring called\nSalsabeel',         zone:'z3'},
-  {id:'j4', text:'🏺 Goblets of\npure silver',         zone:'z4'},
+  {id:'j1', text:'لَا يَرَوْنَ فِيهَا\nشَمْسًا وَلَا زَمْهَرِيرًا',  zone:'z1'},
+  {id:'j2', text:'يَشْرَبُونَ مِن كَأْسٍ\nكَانَ مِزَاجُهَا كَافُورًا', zone:'z2'},
+  {id:'j3', text:'عَيْنًا فِيهَا تُسَمَّىٰ\nسَلْسَبِيلًا',            zone:'z3'},
+  {id:'j4', text:'بِآنِيَةٍ مِّن فِضَّةٍ\nوَأَكْوَابٍ كَانَتْ قَوَارِيرَا', zone:'z4'},
 ];
 const S2_ZONES = [
-  {id:'z1', desc:'"La yarawna feeha shamsan wa la zamhareeran" — no burning heat or biting cold (76:13) — perfect climate'},
-  {id:'z2', desc:'They drink from cups whose mixture is from Kawthar — a special spring (76:5-6, 17)'},
-  {id:'z3', desc:'"Salsabeela" — a spring in Jannah, flowing fresh and delicious (76:18) — named for its ease'},
+  {id:'z1', desc:'No burning heat or biting cold in Jannah — perfect climate (76:13)'},
+  {id:'z2', desc:'They drink from cups whose mixture is of camphor — a special spring (76:5-6, 17)'},
+  {id:'z3', desc:'A spring in Jannah, flowing fresh and delicious — named for its ease (76:18)'},
   {id:'z4', desc:'They are served from goblets of silver and cups of crystal, measured precisely (76:15-16)'},
 ];
 
@@ -72,15 +72,13 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-const S4_EVENTS_CORRECT = [
-  {id:'i1', text:'💧 Man was nothing — then created from a mixed drop and tested (76:1-2)'},
-  {id:'i2', text:'👁️ Allah gave man hearing and sight — then showed him the way (76:2-3)'},
-  {id:'i3', text:'🍞 The righteous feed the poor, orphan, and captive for Allah\'s sake alone (76:8-9)'},
-  {id:'i4', text:'🌿 Jannah reward: no heat, Salsabeel, goblets, green silk, silver bracelets (76:11-21)'},
-  {id:'i5', text:'📖 The Quran was sent gradually — in stages — upon the Prophet ﷺ (76:23)'},
-  {id:'i6', text:'🙏 Command: glorify and remember your Lord morning, evening, and prostrate to Him (76:25-26)'},
+const S4_FIB = [
+  {verse:'هَلْ أَتَىٰ عَلَى الْإِنسَانِ حِينٌ مِّنَ _____ لَمْ يَكُن شَيْئًا مَّذْكُورًا', opts:['الدَّهْرِ','الزَّمَانِ','الْأَبَدِ','الْعُمُرِ'], correct:0, ref:'76:1', translation:'Has there not come upon man a period of time when he was nothing mentioned?'},
+  {verse:'يُوفُونَ بِالنَّذْرِ وَيَخَافُونَ يَوْمًا كَانَ شَرُّهُ _____', opts:['مُسْتَطِيرًا','عَظِيمًا','شَدِيدًا','كَبِيرًا'], correct:0, ref:'76:7', translation:'They fulfill vows and fear a Day whose evil is widespread'},
+  {verse:'إِنَّمَا نُطْعِمُكُمْ لِوَجْهِ _____ لَا نُرِيدُ مِنكُمْ جَزَاءً وَلَا شُكُورًا', opts:['اللَّهِ','رَبِّنَا','الْحَقِّ','الْعَلِيِّ'], correct:0, ref:'76:9', translation:'We feed you only for the sake of Allah — we desire no reward or gratitude from you'},
+  {verse:'عَيْنًا فِيهَا تُسَمَّىٰ _____', opts:['سَلْسَبِيلًا','تَسْنِيمًا','كَافُورًا','زَنْجَبِيلًا'], correct:0, ref:'76:18', translation:'A spring therein named Salsabeel'},
+  {verse:'إِنَّ هَٰذِهِ كَانَتْ لَكُمْ _____ وَكَانَ سَعْيُكُم مَّشْكُورًا', opts:['جَزَاءً','هَدِيَّةً','نِعْمَةً','كَرَامَةً'], correct:0, ref:'76:22', translation:'Indeed, this is for you a reward, and your effort has been appreciated'},
 ];
-window._S4_EVENTS = S4_EVENTS_CORRECT;
 
 function renderSection1Game(){renderQuiz(1,S1_QUIZ);}
 function checkSection1(){checkQuiz(1,S1_QUIZ);}
@@ -88,8 +86,8 @@ function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}
 function checkSection2(){checkDragDrop(2,S2_ZONES);}
 function renderSection3Game(){renderQuiz(3,S3_QUIZ);}
 function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderStoryOrder(4,S4_EVENTS_CORRECT);}
-function checkSection4(){checkStoryOrder(4,S4_EVENTS_CORRECT);}
+function renderSection4Game(){renderFillBlank(4,S4_FIB);}
+function checkSection4(){checkFillBlank(4,S4_FIB);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {

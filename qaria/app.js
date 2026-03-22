@@ -7,14 +7,14 @@ const REWARDS = {
   1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
      msg:'MashAllah! You learned the key Arabic words of this surah!'},
   2:{xp:70, gems:3, icon:'💥', title:'Hour Strikes',   msg:"SubhanAllah! 'Al-Qaria! Mal-Qaria? Wa ma adraka mal-Qaria?' The Striking Hour! What is the Striking Hour? And what can make you know what it is? The repetition builds dread — this is coming, and it is MORE than you can imagine!"},
-  3:{xp:80, gems:3, icon:'📋', title:'Story Ordered',  msg:"MashAllah! You ordered the Day of Al-Qaria correctly — from the strike to the scattered moths to the carded wool to the weighing of the scales!"},
+  3:{xp:80, gems:3, icon:'📋', title:'Verse Completed',  msg:"MashAllah! You mastered the Day of Al-Qaria — from the strike to the scattered moths to the carded wool to the weighing of the scales!"},
   4:{xp:85, gems:3, icon:'⚖️', title:'Scales Known',   msg:"SubhanAllah! Heavy scales → comfortable life in high Jannah. Light scales → the abyss of Hawiyah — whose mother is a blazing fire! Two outcomes. Two eternities!"},
   5:{xp:100, gems:4, icon:'🔥', title:'Al-Qaria Complete', msg:"Allahu Akbar! Al-Qaria complete! 'Ummuhul hawiyah — wa ma adraka ma hiyah — narun hamiyah.' May Allah protect us from the fire that blazes and may our scales be heavy with good deeds! Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
   id:'s101', surahName:'Al-Qaria', surahArabic:'القارعة', totalLevels:5, wbwSection:1, rewards:REWARDS,
-  tileIcons:['📖','💥','📋','⚖️','🔥'], tileLabels:['Word by Word','The Strike','Story Order','The Scales','Hawiyah'],
+  tileIcons:['📖','💥','📋','⚖️','🔥'], tileLabels:['Word by Word','The Strike','Complete the Verse','The Scales','Hawiyah'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Qaria — The Striking Hour! The Day strikes like a hammer. People scatter like moths. Mountains become fluffed wool. Then the scales: heavy = Jannah. Light = Hawiyah (Hellfire). 5 levels!`,
     partial: (n,d)=>`Welcome back, ${n}! ${d}/5 done. The scales await! ⚖️`,
@@ -101,13 +101,12 @@ const S1_QUIZ = [
    correct:2},
 ];
 
-const S2_EVENTS_CORRECT = [
-  {id:'q1', text:'💥 Al-Qaria strikes! The Day is announced three times with building dread (101:1-3)'},
-  {id:'q2', text:'🦋 People are scattered like moths — helpless, overwhelmed (101:4)'},
-  {id:'q3', text:'🏔️ Mountains become like carded/fluffy colourful wool — nothing solid remains (101:5)'},
-  {id:'q4', text:'⚖️ The scales are set up — heavy with good deeds leads to a pleasant life (101:6-7)'},
-  {id:'q5', text:'🌟 Heavy scales: a pleased and comfortable life in the highest garden (101:7)'},
-  {id:'q6', text:'🔥 Light scales: Hawiyah — his mother is a blazing fire! (101:8-11)'},
+const S3_FIB = [
+  {verse:'يَوْمَ يَكُونُ النَّاسُ كَالْفَرَاشِ _____', opts:['الْمَبْثُوثِ','الْمُنْتَشِرِ','الْمُتَفَرِّقِ','الْمُتَطَايِرِ'], correct:0, ref:'101:4', translation:'The Day mankind will be like scattered moths'},
+  {verse:'وَتَكُونُ الْجِبَالُ كَالْعِهْنِ _____', opts:['الْمَنفُوشِ','الْمَنْثُورِ','الْمُتَطَايِرِ','الْمُبَعْثَرِ'], correct:0, ref:'101:5', translation:'And the mountains will be like carded wool'},
+  {verse:'فَأَمَّا مَن _____ مَوَازِينُهُ', opts:['ثَقُلَتْ','كَثُرَتْ','زَادَتْ','عَظُمَتْ'], correct:0, ref:'101:6', translation:'Then as for one whose scales are heavy'},
+  {verse:'فَأُمُّهُ _____', opts:['هَاوِيَةٌ','جَهَنَّمُ','نَارٌ','سَعِيرٌ'], correct:0, ref:'101:9', translation:'His refuge will be Hawiyah (the Abyss)'},
+  {verse:'نَارٌ _____', opts:['حَامِيَةٌ','مُلْتَهِبَةٌ','مُشْتَعِلَةٌ','مُؤَصَّدَةٌ'], correct:0, ref:'101:11', translation:'An intensely hot Fire'},
 ];
 
 const S3_QUIZ = [
@@ -144,7 +143,7 @@ const S4_QUIZ = [
 //  SECTION REGISTRATION (shared helpers from engine.js)
 // =============================================
 window.registerQuiz(2, S1_QUIZ);
-window.registerOrder(3, S2_EVENTS_CORRECT);
+window.registerFillBlank(3, S3_FIB);
 window.registerQuiz(4, S3_QUIZ);
 window.registerQuiz(5, S4_QUIZ);
 

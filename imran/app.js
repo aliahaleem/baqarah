@@ -8,14 +8,14 @@ window.STORAGE_KEY = 'imranQuestSave';
 window.state = {
   explorerName: '', xp: 0, gems: 0, completed: [],
   s1Answers: {}, s1Checked: false,
-  s2Order:   [], s2Checked: false,
+  s2Answers: {}, s2Checked: false,
   s3Checked: false,
   s4Answers: {}, s4Checked: false,
   s5Checked: false,
-  s6Order:   [], s6Checked: false,
+  s6Checked: false,
   s7Answers: {}, s7Checked: false,
   s8Checked: false,
-  s9Order:   [], s9Checked: false,
+  s9Answers: {}, s9Checked: false,
   s10Checked: false,
 };
 
@@ -81,15 +81,14 @@ const S1_QUIZ = [
     correct: 1 },
 ];
 
-const S2_EVENTS_CORRECT = [
-  { id: 'm1', text: "🤲 Imran's wife dedicates her unborn child to Allah's service: \"What is in my womb is given to You\" (3:35)" },
-  { id: 'm2', text: '👶 She gives birth to a girl and names her Maryam — she asks protection for her and her descendants (3:36)' },
-  { id: 'm3', text: "🏛️ Zakariyya (AS) becomes Maryam's guardian; she grows under his care (3:37)" },
-  { id: 'm4', text: '🍎 Zakariyya finds miraculous food in her prayer room — winter fruit in summer! (3:37)' },
-  { id: 'm5', text: "🙏 Inspired by the miracle, Zakariyya makes du'a for a righteous child of his own (3:38)" },
-  { id: 'm6', text: '🌸 Angels give Zakariyya glad tidings: his son will be named Yahya — no one was named this before (3:39)' },
+// S2: Fill-in-the-Blank — Zakariyya & Maryam (3:33-51)
+const S2_FIB = [
+  {verse:'إِنَّ اللَّهَ اصْطَفَىٰ آدَمَ وَنُوحًا وَآلَ إِبْرَاهِيمَ وَآلَ _____ عَلَى الْعَالَمِينَ', opts:['عِمْرَانَ','مُوسَىٰ','دَاوُودَ','يَعْقُوبَ'], correct:0, ref:'3:33', translation:'Indeed, Allah chose Adam, Nuh, the family of Ibrahim, and the family of Imran over all people'},
+  {verse:'إِذْ قَالَتِ امْرَأَتُ عِمْرَانَ رَبِّ إِنِّي نَذَرْتُ لَكَ مَا فِي بَطْنِي _____', opts:['مُحَرَّرًا','مُخْلِصًا','مُبَارَكًا','صَالِحًا'], correct:0, ref:'3:35', translation:'When the wife of Imran said: My Lord, I have pledged what is in my womb to be dedicated to You'},
+  {verse:'فَتَقَبَّلَهَا رَبُّهَا بِقَبُولٍ حَسَنٍ وَأَنبَتَهَا _____ حَسَنًا', opts:['نَبَاتًا','شَجَرًا','عِلْمًا','نُورًا'], correct:0, ref:'3:37', translation:'So her Lord accepted her with good acceptance and caused her to grow in a good manner'},
+  {verse:'هُنَالِكَ دَعَا زَكَرِيَّا رَبَّهُ قَالَ رَبِّ هَبْ لِي مِن لَّدُنكَ ذُرِّيَّةً _____', opts:['طَيِّبَةً','صَالِحَةً','مُبَارَكَةً','كَثِيرَةً'], correct:0, ref:'3:38', translation:'There Zakariyya called upon his Lord: My Lord, grant me from You a good offspring'},
+  {verse:'قَالَتْ رَبِّ أَنَّىٰ يَكُونُ لِي وَلَدٌ وَلَمْ يَمْسَسْنِي _____', opts:['بَشَرٌ','رَجُلٌ','أَحَدٌ','زَوْجٌ'], correct:0, ref:'3:47', translation:'She said: My Lord, how can I have a child when no man has touched me?'},
 ];
-window._S2_EVENTS = S2_EVENTS_CORRECT;
 
 const S3_ITEMS = [
   { id: 'i1', text: '🗣️ Spoke from\nthe cradle',     zone: 'z1' },
@@ -154,15 +153,21 @@ const S5_ZONES = [
   { id: 'z5', desc: 'A quality of the Muttaqeen: they pardon people — forgive even when they could retaliate. (3:134)' },
 ];
 
-const S6_EVENTS_CORRECT = [
-  { id: 'b1', text: '🏃 The Prophet ﷺ and the Muslims march out to face the much larger Quraysh army (3:121)' },
-  { id: 'b2', text: '🙏 The believers are outnumbered — they make du\'a and place complete tawakkul in Allah (3:122)' },
-  { id: 'b3', text: '👼 Allah promises to reinforce them with 3,000 angels — and 5,000 if they are patient (3:124-125)' },
-  { id: 'b4', text: '⚔️ The Battle of Badr begins — the small faithful force engages the massive enemy (3:123)' },
-  { id: 'b5', text: '🏆 Allah gives the Muslims a decisive and unexpected victory over the much larger army (3:123)' },
-  { id: 'b6', text: '📖 The lesson: "Victory comes only from Allah, the Almighty, the All-Wise." (3:126)' },
+// S6: Verse-to-Theme — Uhud Lessons (3:139-175)
+const S6_THEME_ITEMS = [
+  {id:'t1', text:'وَلَا تَهِنُوا وَلَا تَحْزَنُوا وَأَنتُمُ الْأَعْلَوْنَ', zone:'z1'},
+  {id:'t2', text:'وَتِلْكَ الْأَيَّامُ نُدَاوِلُهَا بَيْنَ النَّاسِ', zone:'z2'},
+  {id:'t3', text:'وَمَا مُحَمَّدٌ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ', zone:'z3'},
+  {id:'t4', text:'حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ', zone:'z4'},
+  {id:'t5', text:'وَلِيُمَحِّصَ اللَّهُ الَّذِينَ آمَنُوا وَيَمْحَقَ الْكَافِرِينَ', zone:'z5'},
 ];
-window._S6_EVENTS = S6_EVENTS_CORRECT;
+const S6_THEME_ZONES = [
+  {id:'z1', desc:'Believers are always on top spiritually — even when the world says you are losing (3:139)'},
+  {id:'z2', desc:'Allah rotates victory and hardship to test sincerity — setbacks are purification, not punishment (3:140)'},
+  {id:'z3', desc:'Your faith cannot depend on any person — it must be anchored in Allah alone (3:144)'},
+  {id:'z4', desc:'The ultimate response to fear: total reliance on Allah dissolves all anxiety (3:173)'},
+  {id:'z5', desc:'Hardship is Allah\'s filter — it purifies the sincere and exposes the insincere (3:141)'},
+];
 
 const S7_QUIZ = [
   { q: 'What was the main reason Muslims suffered at Uhud?',
@@ -198,43 +203,42 @@ const S7_QUIZ = [
 ];
 
 const S8_ITEMS = [
-  { id: 'sh1', text: '🌟 "Do not think\nof them as dead"',      zone: 'z1' },
-  { id: 'sh2', text: '🍽️ "Provided for\nby their Lord"',        zone: 'z2' },
-  { id: 'sh3', text: "😊 \"Rejoicing in\nAllah's bounty\"",     zone: 'z3' },
-  { id: 'sh4', text: '"Glad news for\nthose still behind"',     zone: 'z4' },
-  { id: 'sh5', text: '"No fear shall\ncome upon them"',         zone: 'z5' },
+  { id: 'sh1', text: 'وَلَا تَحْسَبَنَّ الَّذِينَ\nقُتِلُوا فِي سَبِيلِ اللَّهِ\nأَمْوَاتًا',  zone: 'z1' },
+  { id: 'sh2', text: 'بَلْ أَحْيَاءٌ عِندَ\nرَبِّهِمْ يُرْزَقُونَ',                              zone: 'z2' },
+  { id: 'sh3', text: 'فَرِحِينَ بِمَا آتَاهُمُ\nاللَّهُ مِن فَضْلِهِ',                            zone: 'z3' },
+  { id: 'sh4', text: 'وَيَسْتَبْشِرُونَ بِالَّذِينَ\nلَمْ يَلْحَقُوا بِهِم',                      zone: 'z4' },
+  { id: 'sh5', text: 'أَلَّا خَوْفٌ عَلَيْهِمْ\nوَلَا هُمْ يَحْزَنُونَ',                          zone: 'z5' },
 ];
 const S8_ZONES = [
-  { id: 'z1', desc: '"Do not think of those killed in Allah\'s cause as dead. No — they are alive with their Lord." (3:169)' },
-  { id: 'z2', desc: '"They are being provided for by their Lord." Rizq reaches them from the unseen. (3:169)' },
-  { id: 'z3', desc: '"Rejoicing in the bounty Allah has given them — and glad for those who follow them." (3:170)' },
-  { id: 'z4', desc: '"They give glad tidings to those who have not yet joined them." (3:171)' },
-  { id: 'z5', desc: '"That no fear shall come upon them, nor shall they grieve." Free forever. (3:170)' },
+  { id: 'z1', desc: 'Do not think of those killed in Allah\'s cause as dead — they are alive with their Lord (3:169)' },
+  { id: 'z2', desc: 'They are alive, provided for by their Lord with sustenance (3:169)' },
+  { id: 'z3', desc: 'Rejoicing in the bounty Allah has given them from His favour (3:170)' },
+  { id: 'z4', desc: 'They give glad tidings about those who have not yet joined them (3:170-171)' },
+  { id: 'z5', desc: 'No fear shall come upon them, nor shall they grieve — free forever (3:170)' },
 ];
 
-const S9_EVENTS_CORRECT = [
-  { id: 'u1', text: '🌌 Allah points to the creation of the heavens, earth, and alternation of night and day as signs (3:190)' },
-  { id: 'u2', text: '🙏 The Ulu al-Albab remember Allah while standing, sitting, and lying on their sides (3:191)' },
-  { id: 'u3', text: '🤔 They reflect: "Our Lord, You did not create all this without purpose! Glory be to You!" (3:191)' },
-  { id: 'u4', text: '🔥 They ask: "Protect us from the punishment of the Fire — it is a dreadful fate!" (3:191)' },
-  { id: 'u5', text: '🤲 They ask for forgiveness, for goodness in this life and the next, and to die with the righteous (3:193)' },
-  { id: 'u6', text: '✅ Allah responds: "I will not let the deeds of any worker among you go to waste — male or female." (3:195)' },
+// S9: Fill-in-the-Blank — Closing Wisdom (3:185-200)
+const S9_FIB = [
+  {verse:'كُلُّ نَفْسٍ ذَائِقَةُ _____', opts:['الْمَوْتِ','الْحَيَاةِ','الْحِسَابِ','الْعَذَابِ'], correct:0, ref:'3:185', translation:'Every soul will taste death'},
+  {verse:'لَتُبْلَوُنَّ فِي أَمْوَالِكُمْ وَ _____', opts:['أَنفُسِكُمْ','أَوْلَادِكُمْ','أَهْلِيكُمْ','دِيَارِكُمْ'], correct:0, ref:'3:186', translation:'You will surely be tested in your wealth and yourselves'},
+  {verse:'الَّذِينَ يَذْكُرُونَ اللَّهَ قِيَامًا وَقُعُودًا وَعَلَىٰ _____', opts:['جُنُوبِهِمْ','رُكَبِهِمْ','ظُهُورِهِمْ','وُجُوهِهِمْ'], correct:0, ref:'3:191', translation:'Those who remember Allah standing, sitting, and on their sides'},
+  {verse:'رَبَّنَا إِنَّنَا سَمِعْنَا مُنَادِيًا يُنَادِي لِلْإِيمَانِ أَنْ آمِنُوا بِرَبِّكُمْ _____', opts:['فَآمَنَّا','فَصَبَرْنَا','فَسَجَدْنَا','فَأَطَعْنَا'], correct:0, ref:'3:193', translation:'Our Lord, we heard a caller calling to faith: "Believe in your Lord" — so we believed'},
+  {verse:'يَا أَيُّهَا الَّذِينَ آمَنُوا اصْبِرُوا وَصَابِرُوا وَ _____', opts:['رَابِطُوا','جَاهِدُوا','اعْتَصِمُوا','تَوَاصَوْا'], correct:0, ref:'3:200', translation:'O you who believe, be patient, endure, and remain stationed'},
 ];
-window._S9_EVENTS = S9_EVENTS_CORRECT;
 
 const S10_ITEMS = [
-  { id: 'du1', text: '"Don\'t let\nhearts deviate"',                    zone: 'z1' },
-  { id: 'du2', text: '"Gather all\non the Day"',                        zone: 'z2' },
-  { id: 'du3', text: '"Forgive sins\n& erase bad\ndeeds"',             zone: 'z3' },
-  { id: 'du4', text: '"Give what\nYou promised\nthrough messengers"',  zone: 'z4' },
-  { id: 'du5', text: '"Don\'t disgrace\nus on the\nDay of Resurrection"', zone: 'z5' },
+  { id: 'du1', text: 'رَبَّنَا لَا تُزِغْ\nقُلُوبَنَا بَعْدَ\nإِذْ هَدَيْتَنَا',          zone: 'z1' },
+  { id: 'du2', text: 'رَبَّنَا إِنَّكَ\nجَامِعُ النَّاسِ',                                   zone: 'z2' },
+  { id: 'du3', text: 'رَبَّنَا فَاغْفِرْ لَنَا\nذُنُوبَنَا وَكَفِّرْ\nعَنَّا سَيِّئَاتِنَا', zone: 'z3' },
+  { id: 'du4', text: 'رَبَّنَا وَآتِنَا مَا\nوَعَدتَّنَا عَلَىٰ رُسُلِكَ',                  zone: 'z4' },
+  { id: 'du5', text: 'وَلَا تُخْزِنَا\nيَوْمَ الْقِيَامَةِ',                                zone: 'z5' },
 ];
 const S10_ZONES = [
-  { id: 'z1', desc: '🔤 رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا — "Our Lord, do not let our hearts deviate after You have guided us" (3:8)' },
-  { id: 'z2', desc: '🔤 رَبَّنَا إِنَّكَ جَامِعُ النَّاسِ — "Our Lord, You will surely gather all people on the Day about which there is no doubt" (3:9)' },
-  { id: 'z3', desc: '🔤 رَبَّنَا فَاغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّئَاتِنَا — "Our Lord! Forgive our sins and erase our misdeeds" (3:193)' },
-  { id: 'z4', desc: '🔤 رَبَّنَا وَآتِنَا مَا وَعَدتَّنَا عَلَىٰ رُسُلِكَ — "Our Lord! Give us what You promised through Your messengers" (3:194)' },
-  { id: 'z5', desc: '🔤 رَبَّنَا لَا تُخْزِنَا يَوْمَ الْقِيَامَةِ — "Our Lord! Do not disgrace us on the Day of Resurrection" (3:192)' },
+  { id: 'z1', desc: 'Our Lord, do not let our hearts deviate after You have guided us (3:8)' },
+  { id: 'z2', desc: 'Our Lord, You will surely gather all people on the Day about which there is no doubt (3:9)' },
+  { id: 'z3', desc: 'Our Lord, forgive our sins and erase our misdeeds (3:193)' },
+  { id: 'z4', desc: 'Our Lord, give us what You promised through Your messengers (3:194)' },
+  { id: 'z5', desc: 'Our Lord, do not disgrace us on the Day of Resurrection (3:192)' },
 ];
 
 // =============================================
@@ -242,22 +246,19 @@ const S10_ZONES = [
 // =============================================
 function renderSection1Game()  { renderQuiz(1, S1_QUIZ); }
 function checkSection1()       { checkQuiz(1, S1_QUIZ); }
-function renderSection2Game()  { renderStoryOrder(2, S2_EVENTS_CORRECT); }
-function checkSection2()       { checkStoryOrder(2, S2_EVENTS_CORRECT); }
+window.registerFillBlank(2, S2_FIB);
 function renderSection3Game()  { renderDragDrop(3, S3_ITEMS, S3_ZONES); }
 function checkSection3()       { checkDragDrop(3, S3_ZONES); }
 function renderSection4Game()  { renderQuiz(4, S4_QUIZ); }
 function checkSection4()       { checkQuiz(4, S4_QUIZ); }
 function renderSection5Game()  { renderDragDrop(5, S5_ITEMS, S5_ZONES); }
 function checkSection5()       { checkDragDrop(5, S5_ZONES); }
-function renderSection6Game()  { renderStoryOrder(6, S6_EVENTS_CORRECT); }
-function checkSection6()       { checkStoryOrder(6, S6_EVENTS_CORRECT); }
+window.registerMatch(6, S6_THEME_ITEMS, S6_THEME_ZONES);
 function renderSection7Game()  { renderQuiz(7, S7_QUIZ); }
 function checkSection7()       { checkQuiz(7, S7_QUIZ); }
 function renderSection8Game()  { renderDragDrop(8, S8_ITEMS, S8_ZONES); }
 function checkSection8()       { checkDragDrop(8, S8_ZONES); }
-function renderSection9Game()  { renderStoryOrder(9, S9_EVENTS_CORRECT); }
-function checkSection9()       { checkStoryOrder(9, S9_EVENTS_CORRECT); }
+window.registerFillBlank(9, S9_FIB);
 function renderSection10Game() { renderDragDrop(10, S10_ITEMS, S10_ZONES); }
 function checkSection10()      { checkDragDrop(10, S10_ZONES); }
 

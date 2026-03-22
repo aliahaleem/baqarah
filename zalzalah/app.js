@@ -7,13 +7,13 @@ const REWARDS = {
   1:{xp:60, gems:3, icon:'📖', title:'Words Learned!',
      msg:'MashAllah! You learned the key Arabic words of this surah!'},
   2:{xp:70, gems:3, icon:'🌍', title:'Earth Shook',   msg:"SubhanAllah! 'Idha zulzilatil-ardu zilzalaha' — When the earth is shaken with its full shaking! Imagine: the earth brings forth all its hidden burdens. The dead rise. The account begins!"},
-  3:{xp:80, gems:3, icon:'📋', title:'Story Ordered',  msg:"MashAllah! You ordered the earthquake correctly — from the shaking to the earth's confession to the viewing of all deeds. The sequence is vivid!"},
+  3:{xp:80, gems:3, icon:'📋', title:'Verse Completed',  msg:"MashAllah! You mastered the earthquake — from the shaking to the earth's confession to the viewing of all deeds. The sequence is vivid!"},
   4:{xp:90, gems:4, icon:'⚖️', title:'Az-Zalzalah Complete', msg:"Allahu Akbar! Az-Zalzalah complete! 'Faman ya\'mal mithqala dharratin khayran yarah — wa man ya\'mal mithqala dharratin sharran yarah.' An atom's weight of good, an atom's weight of evil — ALL SEEN. Nothing is lost. Ameen! 🏆"},
 };
 
 window.SURAH_CONFIG = {
   id:'s99', surahName:'Az-Zalzalah', surahArabic:'الزلزلة', totalLevels:4, wbwSection:1, rewards:REWARDS,
-  tileIcons:['📖','🌍','📋','⚖️'], tileLabels:['Word by Word','The Earthquake','Story Order','Atom\'s Weight'],
+  tileIcons:['📖','🌍','📋','⚖️'], tileLabels:['Word by Word','The Earthquake','Complete the Verse','Atom\'s Weight'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Az-Zalzalah — The Earthquake! The earth shakes, reveals its secrets, and then every soul sees every deed — down to an atom's weight. 4 levels!`,
     partial: (n,d)=>`Welcome back, ${n}! ${d}/4 done. The earth is shaking! 🌍`,
@@ -94,13 +94,12 @@ const S1_QUIZ = [
    correct:2},
 ];
 
-const S2_EVENTS_CORRECT = [
-  {id:'z1', text:'🌍 The earth is shaken with its full, violent shaking (99:1)'},
-  {id:'z2', text:'💀 The earth brings forth its heavy burdens — the dead emerge (99:2)'},
-  {id:'z3', text:'😮 Man asks: what is happening to the earth? (99:3)'},
-  {id:'z4', text:'📣 The earth speaks and reports all that happened upon it (99:4-5)'},
-  {id:'z5', text:'👣 People go forth in different groups to be shown their deeds (99:6)'},
-  {id:'z6', text:'⚖️ An atom\'s weight of good is seen. An atom\'s weight of evil is seen. (99:7-8)'},
+const S3_FIB = [
+  {verse:'إِذَا زُلْزِلَتِ الْأَرْضُ _____', opts:['زِلْزَالَهَا','رَجْفَتَهَا','صَيْحَتَهَا','زَلَّتَهَا'], correct:0, ref:'99:1', translation:'When the earth is shaken with its full earthquake'},
+  {verse:'وَأَخْرَجَتِ الْأَرْضُ _____', opts:['أَثْقَالَهَا','أَمْوَاتَهَا','كُنُوزَهَا','أَسْرَارَهَا'], correct:0, ref:'99:2', translation:'And the earth brings forth its burdens'},
+  {verse:'يَوْمَئِذٍ تُحَدِّثُ _____', opts:['أَخْبَارَهَا','أَسْرَارَهَا','شُهُودَهَا','حِكَايَاتِهَا'], correct:0, ref:'99:4', translation:'That Day, it will report its news'},
+  {verse:'فَمَن يَعْمَلْ مِثْقَالَ _____ خَيْرًا يَرَهُ', opts:['ذَرَّةٍ','حَبَّةٍ','نَمْلَةٍ','قَطْرَةٍ'], correct:0, ref:'99:7', translation:'So whoever does an atom\'s weight of good will see it'},
+  {verse:'وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ _____ يَرَهُ', opts:['شَرًّا','ظُلْمًا','إِثْمًا','سُوءًا'], correct:0, ref:'99:8', translation:'And whoever does an atom\'s weight of evil will see it'},
 ];
 
 const S3_QUIZ = [
@@ -122,7 +121,7 @@ const S3_QUIZ = [
 //  SECTION REGISTRATION (shared helpers from engine.js)
 // =============================================
 window.registerQuiz(2, S1_QUIZ);
-window.registerOrder(3, S2_EVENTS_CORRECT);
+window.registerFillBlank(3, S3_FIB);
 window.registerQuiz(4, S3_QUIZ);
 
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}

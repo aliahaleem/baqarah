@@ -6,7 +6,7 @@ window.state = {
   s1Checked:false,
   s2Answers:{}, s2Checked:false,
   s3Checked:false,
-  s4Order:[], s4Checked:false,
+  s4Answers:{}, s4Checked:false,
   s5Checked:false,
 };
 
@@ -45,16 +45,16 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'v1', text:'⚡ Sight becomes\ndazzled (75:7)',        zone:'z1'},
-  {id:'v2', text:'🌑 Moon is\neclipsed (75:8)',             zone:'z2'},
-  {id:'v3', text:'☀️ Sun and moon\nbring together (75:9)',  zone:'z3'},
-  {id:'v4', text:'🏃 Man asks:\nwhere to flee? (75:10)',    zone:'z4'},
+  {id:'v1', text:'فَإِذَا بَرِقَ\nالْبَصَرُ',                       zone:'z1'},
+  {id:'v2', text:'وَخَسَفَ الْقَمَرُ',                              zone:'z2'},
+  {id:'v3', text:'وَجُمِعَ الشَّمْسُ\nوَالْقَمَرُ',                  zone:'z3'},
+  {id:'v4', text:'يَقُولُ الْإِنسَانُ\nيَوْمَئِذٍ أَيْنَ الْمَفَرُّ', zone:'z4'},
 ];
 const S2_ZONES = [
-  {id:'z1', desc:'The sight is dazzled and overwhelmed — "basiqa al-basar" (75:7) — a sign of the cosmic upheaval'},
-  {id:'z2', desc:'The moon is eclipsed — "khasafa al-qamar" (75:8) — cosmic order collapses on that Day'},
+  {id:'z1', desc:'The sight is dazzled and overwhelmed — a sign of the cosmic upheaval (75:7)'},
+  {id:'z2', desc:'The moon is eclipsed — cosmic order collapses on that Day (75:8)'},
   {id:'z3', desc:'Sun and moon are joined together — total cosmic dissolution, all light merged (75:9)'},
-  {id:'z4', desc:'Man cries: "Where is the place of refuge?" (75:10) — but there is no escape anywhere'},
+  {id:'z4', desc:'Man cries out: Where is the place of refuge? But there is no escape anywhere (75:10)'},
 ];
 
 const S3_QUIZ = [
@@ -72,15 +72,13 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-const S4_EVENTS_CORRECT = [
-  {id:'r1', text:'💀 Two oaths: by the Day of Resurrection and the reproaching soul (75:1-2)'},
-  {id:'r2', text:'🤷 Man denies: Does Allah think He can reassemble our bones? (75:3)'},
-  {id:'r3', text:'👆 Yes — even fingertip by fingertip, Allah will reconstruct perfectly (75:4)'},
-  {id:'r4', text:'📖 Allah personally guarantees Quran\'s collection and recitation (75:17)'},
-  {id:'r5', text:'✨ Bright faces gazing at their Lord — dark faces fearing calamity (75:22-25)'},
-  {id:'r6', text:'🤔 Final question: Does man think he was left with no purpose or accounting? (75:36)'},
+const S4_FIB = [
+  {verse:'لَا أُقْسِمُ بِيَوْمِ _____', opts:['الْقِيَامَةِ','الْحَشْرِ','الْحِسَابِ','الْبَعْثِ'], correct:0, ref:'75:1', translation:'I swear by the Day of Resurrection'},
+  {verse:'أَيَحْسَبُ الْإِنسَانُ أَلَّن نَّجْمَعَ _____', opts:['عِظَامَهُ','جِسْمَهُ','رُوحَهُ','تُرَابَهُ'], correct:0, ref:'75:3', translation:'Does man think that We will not assemble his bones?'},
+  {verse:'بَلَىٰ قَادِرِينَ عَلَىٰ أَن نُّسَوِّيَ _____', opts:['بَنَانَهُ','يَدَيْهِ','جِلْدَهُ','وَجْهَهُ'], correct:0, ref:'75:4', translation:'Yes! We are able to put together even his fingertips'},
+  {verse:'وُجُوهٌ يَوْمَئِذٍ _____ إِلَىٰ رَبِّهَا نَاظِرَةٌ', opts:['نَّاضِرَةٌ','ضَاحِكَةٌ','مُشْرِقَةٌ','بَيْضَاءُ'], correct:0, ref:'75:22-23', translation:'Faces that Day will be radiant, looking at their Lord'},
+  {verse:'أَيَحْسَبُ الْإِنسَانُ أَن يُتْرَكَ _____', opts:['سُدًى','هَمَلًا','عَبَثًا','بَاطِلًا'], correct:0, ref:'75:36', translation:'Does man think he will be left neglected?'},
 ];
-window._S4_EVENTS = S4_EVENTS_CORRECT;
 
 function renderSection1Game(){renderQuiz(1,S1_QUIZ);}
 function checkSection1(){checkQuiz(1,S1_QUIZ);}
@@ -88,8 +86,8 @@ function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}
 function checkSection2(){checkDragDrop(2,S2_ZONES);}
 function renderSection3Game(){renderQuiz(3,S3_QUIZ);}
 function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderStoryOrder(4,S4_EVENTS_CORRECT);}
-function checkSection4(){checkStoryOrder(4,S4_EVENTS_CORRECT);}
+function renderSection4Game(){renderFillBlank(4,S4_FIB);}
+function checkSection4(){checkFillBlank(4,S4_FIB);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {

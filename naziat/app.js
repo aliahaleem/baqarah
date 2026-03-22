@@ -106,11 +106,12 @@ const S2_QUIZ = [
     correct: 3 },
 ];
 
-const S3_EVENTS_CORRECT = [
-  { id: 'e1', text: '🌄 Allah calls to Moses from the sacred, holy valley of Tuwa on the slopes of Mount Sinai (79:16)' },
-  { id: 'e2', text: '📢 Allah commands: "Go to Pharaoh — indeed he has transgressed (tagha) all limits!" (79:17)' },
-  { id: 'e3', text: '🕊️ The message to deliver: "Would you like to purify yourself (tazakka)?" — an invitation to tazkiyah, not a threat (79:18)' },
-  { id: 'e4', text: '✨ "And I will guide you to your Lord, so you may fear [Him]." — Allah offers His own guidance (79:19)' },
+const S4_FIB = [
+  {verse:'إِذْ نَادَاهُ رَبُّهُ بِالْوَادِ الْمُقَدَّسِ _____', opts:['طُوًى','سِينَاءَ','بَكَّةَ','حِرَاءَ'], correct:0, ref:'79:16', translation:'When his Lord called to him in the sacred valley of Tuwa'},
+  {verse:'اذْهَبْ إِلَىٰ _____ إِنَّهُ طَغَىٰ', opts:['فِرْعَوْنَ','قَارُونَ','هَامَانَ','أَبِي لَهَبٍ'], correct:0, ref:'79:17', translation:'Go to Pharaoh — indeed he has transgressed'},
+  {verse:'فَقُلْ هَل لَّكَ إِلَىٰ أَن _____', opts:['تَزَكَّىٰ','تُسْلِمَ','تَتُوبَ','تُؤْمِنَ'], correct:0, ref:'79:18', translation:'And say: Would you like to purify yourself?'},
+  {verse:'وَأَهْدِيَكَ إِلَىٰ رَبِّكَ _____', opts:['فَتَخْشَىٰ','فَتُحِبَّ','فَتَشْكُرَ','فَتَعْبُدَ'], correct:0, ref:'79:19', translation:'And I will guide you to your Lord so you may fear Him'},
+  {verse:'فَأَرَاهُ الْآيَةَ _____', opts:['الْكُبْرَىٰ','الْعُظْمَىٰ','الصُّغْرَىٰ','الْأُولَىٰ'], correct:0, ref:'79:20', translation:'And he showed him the greatest sign'},
 ];
 
 const S4_QUIZ = [
@@ -141,16 +142,16 @@ const S4_QUIZ = [
 ];
 
 const S5_ITEMS = [
-  { id: 'c1', text: '🌌 Sky built,\nraised & proportioned', zone: 'z1' },
-  { id: 'c2', text: '🌙 Night darkened /\nDay\'s light extracted', zone: 'z2' },
-  { id: 'c3', text: '🌍 Earth spread\nout (daha)',           zone: 'z3' },
-  { id: 'c4', text: '💧 Water &\npastures brought forth',   zone: 'z4' },
+  { id: 'c1', text: 'بَنَاهَا ۝ رَفَعَ سَمْكَهَا\nفَسَوَّاهَا', zone: 'z1' },
+  { id: 'c2', text: 'وَأَغْطَشَ لَيْلَهَا\nوَأَخْرَجَ ضُحَاهَا', zone: 'z2' },
+  { id: 'c3', text: 'وَالْأَرْضَ بَعْدَ ذَٰلِكَ\nدَحَاهَا', zone: 'z3' },
+  { id: 'c4', text: 'أَخْرَجَ مِنْهَا\nمَاءَهَا وَمَرْعَاهَا', zone: 'z4' },
 ];
 const S5_ZONES = [
-  { id: 'z1', desc: '"Are you harder to create — or the sky? He built it (bana-ha). He raised its canopy (rafa\'a samkaha) and proportioned it perfectly." (79:27-28) — Seven firm, perfect heavens above us.' },
-  { id: 'z2', desc: '"He darkened its night (aghtasha layla-ha) and extracted its brightness (akhraja duha-ha)." (79:29) — Night and day: both designed by Allah for your benefit.' },
-  { id: 'z3', desc: '"And the earth after that He spread out (daha-ha)." (79:30) — The earth laid out as a habitable place. "Daha" relates to an egg-shape — the earth is spherical!' },
-  { id: 'z4', desc: '"He brought forth from it its water (ma\'aha) and its pastures (mar\'aha)." (79:31) — All rivers, wells, rainfall, and every green plant for every creature.' },
+  { id: 'z1', desc: 'Are you harder to create, or the sky? He built it, raised its canopy, and proportioned it perfectly (79:27-28)' },
+  { id: 'z2', desc: 'He darkened its night and extracted its brightness (79:29) — Night and day, both designed by Allah' },
+  { id: 'z3', desc: 'And the earth after that He spread it out (79:30) — laid out as a habitable place' },
+  { id: 'z4', desc: 'He brought forth from it its water and its pastures (79:31) — all provision for every creature' },
 ];
 
 const S6_QUIZ = [
@@ -213,7 +214,7 @@ const S7_QUIZ = [
 // =============================================
 window.registerMatch(2, S1_ITEMS, S1_ZONES);
 window.registerQuiz(3, S2_QUIZ);
-window.registerOrder(4, S3_EVENTS_CORRECT);
+window.registerFillBlank(4, S4_FIB);
 window.registerQuiz(5, S4_QUIZ);
 window.registerMatch(6, S5_ITEMS, S5_ZONES);
 window.registerQuiz(7, S6_QUIZ);

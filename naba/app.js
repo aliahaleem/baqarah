@@ -371,11 +371,11 @@ const S3_ZONES = [
   { id: 'z4', desc: 'grain and vegetation — "grain, plants, and gardens" (78:15-16)' },
 ];
 
-const S4_EVENTS_CORRECT = [
-  { id: 'd1', text: '📅 The Day of Decision (Yawm al-Fasl) has its fixed, appointed time (78:17)' },
-  { id: 'd2', text: '📯 The Horn is blown — all the dead rise and come forth in vast crowds (78:18)' },
-  { id: 'd3', text: '🌌 The sky is torn open and becomes like gates (78:19)' },
-  { id: 'd4', text: '⛰️ The mountains are moved away completely — they become a mirage (78:20)' },
+const S5_FIB = [
+  {verse:'إِنَّ يَوْمَ _____ كَانَ مِيقَاتًا', opts:['الْفَصْلِ','الْحَشْرِ','الْقِيَامَةِ','الْبَعْثِ'], correct:0, ref:'78:17', translation:'Indeed, the Day of Sorting has been an appointed time'},
+  {verse:'يَوْمَ يُنفَخُ فِي _____ فَتَأْتُونَ أَفْوَاجًا', opts:['الصُّورِ','الْأَرْضِ','السَّمَاءِ','النَّارِ'], correct:0, ref:'78:18', translation:'The Day the Horn is blown and you will come forth in crowds'},
+  {verse:'وَفُتِحَتِ السَّمَاءُ فَكَانَتْ _____', opts:['أَبْوَابًا','سَرَابًا','رَمَادًا','شُهُبًا'], correct:0, ref:'78:19', translation:'And the heaven is opened and becomes gateways'},
+  {verse:'وَسُيِّرَتِ الْجِبَالُ فَكَانَتْ _____', opts:['تُرَابًا','سَرَابًا','رَمَادًا','هَبَاءً'], correct:1, ref:'78:20', translation:'And the mountains are moved and become a mirage'},
 ];
 const S5_QUIZ = [
   { q: 'What does "mirsad" mean for Hell in 78:21?',
@@ -465,7 +465,7 @@ const S8_QUIZ = [
 window.registerQuiz(2, S1_QUIZ);
 window.registerMatch(3, S2_ITEMS, S2_ZONES);
 window.registerMatch(4, S3_ITEMS, S3_ZONES);
-window.registerOrder(5, S4_EVENTS_CORRECT);
+window.registerFillBlank(5, S5_FIB);
 window.registerQuiz(6, S5_QUIZ);
 window.registerMatch(7, S6_ITEMS, S6_ZONES);
 window.registerQuiz(8, S7_QUIZ);

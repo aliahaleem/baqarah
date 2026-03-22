@@ -9,7 +9,7 @@ const REWARDS = {
   2:{xp:70, gems:3, icon:'📖', title:'First Word',    msg:"SubhanAllah! The very first word revealed to any prophet — 'IQRA!' Read! Not 'pray', not 'fast' — READ. In the name of your Lord who CREATED. Knowledge is from Allah. The pen taught what man did not know."},
   3:{xp:80, gems:3, icon:'🩸', title:'Origin Known',  msg:"MashAllah! 'Khalaqal-insana min alaq' — man was created from a clinging blood clot. From something so humble — such an arrogant creature! Yet Allah honoured him with the pen, with knowledge."},
   4:{xp:85, gems:3, icon:'⚠️', title:'Tyrant Warned', msg:"SubhanAllah! Man transgresses when he sees himself as self-sufficient. Abu Jahl threatened to crush the Prophet ﷺ. Allah warned: 'Kalla! Truly, if he does not stop — We will drag him by the forelock!'"},
-  5:{xp:90, gems:3, icon:'📜', title:'Story Ordered',  msg:"MashAllah! You ordered the story of the first revelation correctly. From the cave of Hira to the arrogance of Abu Jahl to the command: bow down and draw near!"},
+  5:{xp:90, gems:3, icon:'📜', title:'Verse Completed',  msg:"MashAllah! You mastered the story of the first revelation. From the cave of Hira to the arrogance of Abu Jahl to the command: bow down and draw near!"},
   6:{xp:100, gems:4, icon:'🌟', title:'Al-Alaq Complete', msg:"Allahu Akbar! Al-Alaq complete! 'Kalla la tuti\'hu wasjud waqtarib.' Do not obey him — PROSTRATE and draw near! The surah ends with sujud — the closest we get to Allah. Ameen! 🏆"},
 };
 
@@ -182,13 +182,12 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-const S4_EVENTS_CORRECT = [
-  {id:'e1', text:'🏔️ Prophet ﷺ retreats to cave of Hira for contemplation and reflection'},
-  {id:'e2', text:'📖 Angel Jibreel (AS) appears: "Iqra!" — the first revelation begins (96:1)'},
-  {id:'e3', text:'😨 Prophet ﷺ rushes home trembling — Khadijah (RA) consoles him'},
-  {id:'e4', text:'😤 Abu Jahl threatens to step on the Prophet\'s neck while he prays (96:9-10)'},
-  {id:'e5', text:'⚡ Allah warns: if he does not stop, We will seize his lying, sinful forelock (96:15-16)'},
-  {id:'e6', text:'🕌 Final command: "Kalla la tuti\'hu — wasjud waqtarib!" Do not obey — prostrate and draw near! (96:19)'},
+const S5_FIB = [
+  {verse:'_____ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ', opts:['اقْرَأْ','اكْتُبْ','اذْكُرْ','اسْمَعْ'], correct:0, ref:'96:1', translation:'Read in the name of your Lord who created'},
+  {verse:'خَلَقَ الْإِنسَانَ مِنْ _____', opts:['عَلَقٍ','تُرَابٍ','مَاءٍ','طِينٍ'], correct:0, ref:'96:2', translation:'He created man from a clinging clot'},
+  {verse:'كَلَّا إِنَّ الْإِنسَانَ _____', opts:['لَيَطْغَىٰ','لَيَكْفُرُ','لَيَنْسَىٰ','لَيَضِلُّ'], correct:0, ref:'96:6', translation:'No! Indeed, man transgresses'},
+  {verse:'كَلَّا لَئِن لَّمْ يَنتَهِ _____ بِالنَّاصِيَةِ', opts:['لَنَسْفَعًا','لَنَأْخُذَنَّ','لَنَضْرِبَنَّ','لَنُهْلِكَنَّ'], correct:0, ref:'96:15', translation:'No! If he does not desist, We will surely drag him by the forelock'},
+  {verse:'كَلَّا لَا تُطِعْهُ وَاسْجُدْ _____', opts:['وَاقْتَرِبْ','وَادْعُ','وَاذْكُرْ','وَاصْبِرْ'], correct:0, ref:'96:19', translation:'No! Do not obey him — prostrate and draw near'},
 ];
 
 const S5_QUIZ = [
@@ -212,7 +211,7 @@ const S5_QUIZ = [
 window.registerQuiz(2, S1_QUIZ);
 window.registerMatch(3, S2_ITEMS,S2_ZONES);
 window.registerQuiz(4, S3_QUIZ);
-window.registerOrder(5, S4_EVENTS_CORRECT);
+window.registerFillBlank(5, S5_FIB);
 window.registerQuiz(6, S5_QUIZ);
 
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}

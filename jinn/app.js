@@ -6,7 +6,7 @@ window.state = {
   s1Checked:false,
   s2Answers:{}, s2Checked:false,
   s3Checked:false,
-  s4Order:[], s4Checked:false,
+  s4Answers:{}, s4Checked:false,
   s5Checked:false,
 };
 
@@ -45,16 +45,16 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'j1', text:'✅ Jinn believed\nin Quran',          zone:'z1'},
-  {id:'j2', text:'👶 No wife\nor son for Allah',        zone:'z2'},
-  {id:'j3', text:'🌠 They used to\nspy on heaven',      zone:'z3'},
-  {id:'j4', text:'🚫 Now heaven\nis heavily guarded',   zone:'z4'},
+  {id:'j1', text:'إِنَّا سَمِعْنَا قُرْآنًا\nعَجَبًا فَآمَنَّا بِهِ',  zone:'z1'},
+  {id:'j2', text:'مَا اتَّخَذَ صَاحِبَةً\nوَلَا وَلَدًا',              zone:'z2'},
+  {id:'j3', text:'كُنَّا نَقْعُدُ مِنْهَا\nمَقَاعِدَ لِلسَّمْعِ',      zone:'z3'},
+  {id:'j4', text:'مُلِئَتْ حَرَسًا شَدِيدًا\nوَشُهُبًا',               zone:'z4'},
 ];
 const S2_ZONES = [
-  {id:'z1', desc:'The jinn who believed went back to warn their people: this Quran is amazing — believe in it (72:1-2)'},
-  {id:'z2', desc:'Jinn confessed: our Lord is exalted — He has taken no wife or son (72:3)'},
-  {id:'z3', desc:'Jinn admit: we used to sit in positions of the sky to listen in on the heavens (72:9)'},
-  {id:'z4', desc:'But now we find it filled with fierce guards and burning flames — shooting stars drive us away (72:8)'},
+  {id:'z1', desc:'The jinn heard the Quran and believed — they went back to warn their people (72:1-2)'},
+  {id:'z2', desc:'Our Lord is exalted — He has taken no wife or son (72:3)'},
+  {id:'z3', desc:'We used to sit in positions of the sky to listen in on the heavens (72:9)'},
+  {id:'z4', desc:'But now we find it filled with fierce guards and burning flames (72:8)'},
 ];
 
 const S3_QUIZ = [
@@ -72,15 +72,13 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-const S4_EVENTS_CORRECT = [
-  {id:'q1', text:'👁️ A group of jinn passed by the Prophet ﷺ while he was reciting Quran'},
-  {id:'q2', text:'✅ They heard the Quran, were amazed, and believed on the spot'},
-  {id:'q3', text:'📢 They returned to their people as warners: "Believe in this Quran!"'},
-  {id:'q4', text:'🌌 They confessed: we used to spy on heaven but now it\'s heavily guarded'},
-  {id:'q5', text:'🛡️ Message: Mosques are for Allah alone — call on no one with Him'},
-  {id:'q6', text:'🔮 Allah alone knows the unseen — He reveals it only to chosen messengers'},
+const S4_FIB = [
+  {verse:'إِنَّا سَمِعْنَا قُرْآنًا _____', opts:['عَجَبًا','كَرِيمًا','عَظِيمًا','مُبِينًا'], correct:0, ref:'72:1', translation:'Indeed, we have heard a wondrous Quran'},
+  {verse:'مَا اتَّخَذَ صَاحِبَةً وَلَا _____', opts:['وَلَدًا','شَرِيكًا','وَزِيرًا','نَظِيرًا'], correct:0, ref:'72:3', translation:'He has not taken a wife or a son'},
+  {verse:'فَوَجَدْنَاهَا مُلِئَتْ حَرَسًا شَدِيدًا وَ_____', opts:['شُهُبًا','نَارًا','حِجَارَةً','رِيَاحًا'], correct:0, ref:'72:8', translation:'We found it filled with fierce guards and burning flames'},
+  {verse:'وَأَنَّ الْمَسَاجِدَ _____ فَلَا تَدْعُوا مَعَ اللَّهِ أَحَدًا', opts:['لِلَّهِ','لِلنَّاسِ','لِلْعِبَادِ','لِلْمُؤْمِنِينَ'], correct:0, ref:'72:18', translation:'The mosques are for Allah, so do not invoke with Allah anyone'},
+  {verse:'عَالِمُ _____ فَلَا يُظْهِرُ عَلَىٰ غَيْبِهِ أَحَدًا', opts:['الْغَيْبِ','الْأَمْرِ','السِّرِّ','الْعِلْمِ'], correct:0, ref:'72:26', translation:'Knower of the unseen, He does not reveal His unseen to anyone'},
 ];
-window._S4_EVENTS = S4_EVENTS_CORRECT;
 
 function renderSection1Game(){renderQuiz(1,S1_QUIZ);}
 function checkSection1(){checkQuiz(1,S1_QUIZ);}
@@ -88,8 +86,8 @@ function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}
 function checkSection2(){checkDragDrop(2,S2_ZONES);}
 function renderSection3Game(){renderQuiz(3,S3_QUIZ);}
 function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderStoryOrder(4,S4_EVENTS_CORRECT);}
-function checkSection4(){checkStoryOrder(4,S4_EVENTS_CORRECT);}
+function renderSection4Game(){renderFillBlank(4,S4_FIB);}
+function checkSection4(){checkFillBlank(4,S4_FIB);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {

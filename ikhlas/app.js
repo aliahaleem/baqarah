@@ -53,26 +53,6 @@ const WBW_DATA = [
 ];
 
 /* ────────────────────────────────────────────────────────
-   LEVEL 1 — Word by Word: Match Arabic word to English
-   ──────────────────────────────────────────────────────── */
-const S1_ITEMS = [
-  {id:'w1', text:'قُلْ',       zone:'z1'},
-  {id:'w2', text:'أَحَدٌ',     zone:'z2'},
-  {id:'w3', text:'الصَّمَدُ', zone:'z3'},
-  {id:'w4', text:'يَلِدْ',     zone:'z4'},
-  {id:'w5', text:'يُولَدْ',   zone:'z5'},
-  {id:'w6', text:'كُفُوًا',   zone:'z6'},
-];
-const S1_ZONES = [
-  {id:'z1', desc:'Say — a command to proclaim clearly and openly (112:1)'},
-  {id:'z2', desc:'One — uniquely singular, indivisible, no equal or parallel (112:1)'},
-  {id:'z3', desc:'The Eternal Refuge — all creation depends on Him, He needs nothing (112:2)'},
-  {id:'z4', desc:'He begets — Allah did NOT do this; no offspring or children (112:3)'},
-  {id:'z5', desc:'He was born — Allah was NOT this; He has no origin or beginning (112:3)'},
-  {id:'z6', desc:'Equal/comparable — absolutely NOTHING is kufuwan (equivalent) to Allah (112:4)'},
-];
-
-/* ────────────────────────────────────────────────────────
    LEVEL 2 — Quiz: Ahad & Samad (112:1-2)
    ──────────────────────────────────────────────────────── */
 const S2_QUIZ = [
@@ -103,7 +83,7 @@ const S3_ZONES = [
   {id:'z1', desc:'One — uniquely singular, no division, no partners, no comparison (112:1)'},
   {id:'z2', desc:'The Refuge depended upon by all — He alone is Self-Sufficient (112:2)'},
   {id:'z3', desc:'He did not beget — refutes idea of children/offspring of Allah (112:3)'},
-  {id:'z4', desc:'Equal, comparable — nothing is kufuwan (equivalent) to Allah (112:4)'},
+  {id:'z4', desc:'Equal, comparable — absolutely nothing is equivalent to Allah (112:4)'},
 ];
 
 /* ────────────────────────────────────────────────────────
@@ -124,8 +104,6 @@ const S4_QUIZ = [
    correct:1},
 ];
 
-function renderSection1Game(){if(window.renderWBW)renderWBW('wbw-display',WBW_DATA,'wbw-reveal-btn');renderDragDrop(1,S1_ITEMS,S1_ZONES);}
-function checkSection1(){checkDragDrop(1,S1_ZONES);}
 function renderSection2Game(){renderQuiz(2,S2_QUIZ);}
 function checkSection2(){checkQuiz(2,S2_QUIZ);}
 function renderSection3Game(){renderDragDrop(3,S3_ITEMS,S3_ZONES);}
@@ -150,3 +128,5 @@ window._drawBuildCanvas = function(n) {
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
   ctx.fillText(n>=4?'AL-IKHLAS COMPLETE! 💎':`Al-Ikhlas — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
 };
+
+window.setupWBWLevel(WBW_DATA, 10);

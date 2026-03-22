@@ -86,8 +86,8 @@ const S1_ITEMS = [
 const S1_ZONES = [
   {id:'z1', desc:'The Fig — blessed land of the prophets of Sham / Greater Syria (95:1)'},
   {id:'z2', desc:'The Olive — blessed land of Jerusalem and Palestine (95:1)'},
-  {id:'z3', desc:'Mount Sinai — where Allah spoke directly to Musa (Moses) AS (95:2)'},
-  {id:'z4', desc:'The Secure City — "Al-Balad al-Amin": Mecca al-Mukarramah (95:3)'},
+  {id:'z3', desc:'Mount Sinai — where Allah spoke directly to Musa (95:2)'},
+  {id:'z4', desc:'The Secure City — Mecca, the safe and sacred land (95:3)'},
 ];
 
 const S2_QUIZ = [

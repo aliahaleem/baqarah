@@ -5,7 +5,7 @@ window.state = {
   explorerName:'', xp:0, gems:0, completed:[],
   s1Checked:false,
   s2Answers:{}, s2Checked:false,
-  s3Order:[], s3Checked:false,
+  s3Answers:{}, s3Checked:false,
   s4Checked:false,
   s5Checked:false,
 };
@@ -45,27 +45,25 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'d1', text:'📣 Called publicly\nto the people',        zone:'z1'},
-  {id:'d2', text:'🤫 Called privately\nin secret whispers',  zone:'z2'},
-  {id:'d3', text:'🌙 Called day\nand night — non-stop',      zone:'z3'},
-  {id:'d4', text:'🌧️ Connected worship\nto blessings',       zone:'z4'},
+  {id:'d1', text:'ثُمَّ إِنِّي دَعَوْتُهُمْ\nجِهَارًا',     zone:'z1'},
+  {id:'d2', text:'وَأَسْرَرْتُ لَهُمْ\nإِسْرَارًا',         zone:'z2'},
+  {id:'d3', text:'دَعَوْتُ قَوْمِي\nلَيْلًا وَنَهَارًا',    zone:'z3'},
+  {id:'d4', text:'اسْتَغْفِرُوا رَبَّكُمْ\nإِنَّهُ كَانَ غَفَّارًا', zone:'z4'},
 ];
 const S2_ZONES = [
-  {id:'z1', desc:'"Thumma inni da\'autuhum jiharan" — Then I called them publicly and openly (71:8)'},
-  {id:'z2', desc:'"Thumma inni asrartu lahum israran" — Then I called them secretly in private (71:9)'},
-  {id:'z3', desc:'"Inni da\'awtu qawmi laylan wa naharan" — I called my people night and day (71:5)'},
-  {id:'z4', desc:'If you seek forgiveness Allah will send rain, increase your wealth, give children and gardens (71:10-12)'},
+  {id:'z1', desc:'Then I called them publicly and openly (71:8)'},
+  {id:'z2', desc:'Then I called them secretly in private (71:9)'},
+  {id:'z3', desc:'I called my people night and day (71:5)'},
+  {id:'z4', desc:'If you seek forgiveness, Allah will send rain, increase your wealth, give children and gardens (71:10-12)'},
 ];
 
-const S3_EVENTS_CORRECT = [
-  {id:'f1', text:'🙏 Nuh called his people for 950 years with three methods'},
-  {id:'f2', text:'🤦 His people refused, mocked him, and covered their ears'},
-  {id:'f3', text:'⚓ Allah commanded Nuh to build the ark — and Nuh obeyed'},
-  {id:'f4', text:'💧 Allah opened the gates of the sky and earth — the great flood'},
-  {id:'f5', text:'🚢 Nuh and the believers boarded the ark — saved by Allah'},
-  {id:'f6', text:'😢 Nuh\'s own son refused — was swallowed by the waves and drowned'},
+const S3_FIB = [
+  {verse:'إِنَّا أَرْسَلْنَا _____ إِلَىٰ قَوْمِهِ', opts:['نُوحًا','هُودًا','مُوسَىٰ','إِبْرَاهِيمَ'], correct:0, ref:'71:1', translation:'Indeed, We sent Nuh to his people'},
+  {verse:'جَعَلُوا أَصَابِعَهُمْ فِي _____', opts:['آذَانِهِمْ','أَفْوَاهِهِمْ','عُيُونِهِمْ','قُلُوبِهِمْ'], correct:0, ref:'71:7', translation:'They put their fingers in their ears'},
+  {verse:'اسْتَغْفِرُوا رَبَّكُمْ إِنَّهُ كَانَ _____', opts:['غَفَّارًا','رَحِيمًا','عَفُوًّا','تَوَّابًا'], correct:0, ref:'71:10', translation:'Seek forgiveness of your Lord — indeed, He is ever a Perpetual Forgiver'},
+  {verse:'رَّبِّ لَا تَذَرْ عَلَى الْأَرْضِ مِنَ الْكَافِرِينَ _____', opts:['دَيَّارًا','أَحَدًا','نَفْسًا','بَشَرًا'], correct:0, ref:'71:26', translation:'My Lord, do not leave upon the earth from among the disbelievers an inhabitant'},
+  {verse:'رَّبِّ اغْفِرْ لِي وَلِوَالِدَيَّ وَلِمَن دَخَلَ بَيْتِيَ _____', opts:['مُؤْمِنًا','مُسْلِمًا','تَائِبًا','صَالِحًا'], correct:0, ref:'71:28', translation:'My Lord, forgive me and my parents and whoever enters my house as a believer'},
 ];
-window._S3_EVENTS = S3_EVENTS_CORRECT;
 
 const S4_QUIZ = [
   {q:'What does Nuh pray for in 71:26? A remarkable prayer of firm boundaries.',
@@ -86,8 +84,8 @@ function renderSection1Game(){renderQuiz(1,S1_QUIZ);}
 function checkSection1(){checkQuiz(1,S1_QUIZ);}
 function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}
 function checkSection2(){checkDragDrop(2,S2_ZONES);}
-function renderSection3Game(){renderStoryOrder(3,S3_EVENTS_CORRECT);}
-function checkSection3(){checkStoryOrder(3,S3_EVENTS_CORRECT);}
+function renderSection3Game(){renderFillBlank(3,S3_FIB);}
+function checkSection3(){checkFillBlank(3,S3_FIB);}
 function renderSection4Game(){renderQuiz(4,S4_QUIZ);}
 function checkSection4(){checkQuiz(4,S4_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}

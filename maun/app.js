@@ -43,24 +43,6 @@ const WBW_DATA = [
   ]},
 ];
 
-/* ─── LEVEL 1: Word by Word matching ─── */
-const S1_ITEMS = [
-  {id:'w1', text:'يُكَذِّبُ',  zone:'z1'},
-  {id:'w2', text:'الْيَتِيمَ',  zone:'z2'},
-  {id:'w3', text:'الْمِسْكِينِ',  zone:'z3'},
-  {id:'w4', text:'سَاهُونَ',  zone:'z4'},
-  {id:'w5', text:'يُرَاءُونَ',  zone:'z5'},
-  {id:'w6', text:'الْمَاعُونَ',  zone:'z6'}
-];
-const S1_ZONES = [
-  {id:'z1', desc:"Denies/rejects — the root attitude of disconnection from deen (107:1)"},
-  {id:'z2', desc:"The orphan — the one he pushes away harshly (107:2)"},
-  {id:'z3', desc:"The poor/needy — whose feeding he does not encourage (107:3)"},
-  {id:'z4', desc:"Heedless/neglectful — praying while being completely inattentive (107:5)"},
-  {id:'z5', desc:"Show off / riya — praying only to be seen by people (107:6)"},
-  {id:'z6', desc:"Small kindnesses — basic neighbourly help they withhold (107:7)"}
-];
-
 const S2_QUIZ = [
   {q:'Who is the one who denies the deen (religion) according to 107:1?',
    opts:['The one who never prays','The one who pushes away the orphan and doesn\'t encourage feeding the poor','The one who breaks his promises','The one who refuses to fast in Ramadan'],
@@ -105,8 +87,6 @@ const S4_QUIZ = [
 ];
 
 
-function renderSection1Game(){if(window.renderWBW)renderWBW('wbw-display',WBW_DATA,'wbw-reveal-btn');renderDragDrop(1,S1_ITEMS,S1_ZONES);}
-function checkSection1(){checkDragDrop(1,S1_ZONES);}
 function renderSection2Game(){renderQuiz(2,S2_QUIZ);}function checkSection2(){checkQuiz(2,S2_QUIZ);}
 function renderSection3Game(){renderDragDrop(3,S3_ITEMS,S3_ZONES);}function checkSection3(){checkDragDrop(3,S3_ZONES);}
 function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
@@ -122,3 +102,5 @@ window._drawBuildCanvas = function(n) {
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
   ctx.fillText(n>=4?'AL-MAUN COMPLETE! 🤲':`Al-Maun — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
 };
+
+window.setupWBWLevel(WBW_DATA, 10);

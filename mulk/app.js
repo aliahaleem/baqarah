@@ -9,11 +9,11 @@ window.state = {
   explorerName: '', xp: 0, gems: 0, completed: [],
   s1Answers: {}, s1Checked: false,
   s2Checked: false,
-  s3Order:   [], s3Checked: false,
+  s3Answers: {}, s3Checked: false,
   s4Answers: {}, s4Checked: false,
   s5Checked: false,
   s6Answers: {}, s6Checked: false,
-  s7Order:   [], s7Checked: false,
+  s7Checked: false,
   s8Answers: {}, s8Checked: false,
   s9Checked: false,
 };
@@ -89,27 +89,25 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  { id: 'h1', text: '👁️ "Look once —\ndo you see flaws?"',   zone: 'z1' },
-  { id: 'h2', text: '🔁 "Look AGAIN —\na second time"',       zone: 'z2' },
-  { id: 'h3', text: '⭐ "Stars adorn\nthe nearest heaven"',   zone: 'z3' },
-  { id: 'h4', text: '☄️ "Shooting stars\nchase the devils"',  zone: 'z4' },
+  { id: 'h1', text: 'مَا تَرَىٰ فِي خَلْقِ\nالرَّحْمَٰنِ مِن تَفَاوُتٍ', zone: 'z1' },
+  { id: 'h2', text: 'يَنقَلِبْ إِلَيْكَ الْبَصَرُ\nخَاسِئًا وَهُوَ حَسِيرٌ',  zone: 'z2' },
+  { id: 'h3', text: 'وَلَقَدْ زَيَّنَّا السَّمَاءَ\nالدُّنْيَا بِمَصَابِيحَ',    zone: 'z3' },
+  { id: 'h4', text: 'وَجَعَلْنَاهَا رُجُومًا\nلِّلشَّيَاطِينِ',                  zone: 'z4' },
 ];
 const S2_ZONES = [
-  { id: 'z1', desc: '"You see no inconsistency in the creation of the Most Merciful." No flaws anywhere! (67:3)' },
-  { id: 'z2', desc: '"Your sight will return to you humbled while it is fatigued." (67:4)' },
-  { id: 'z3', desc: '"We have adorned the nearest heaven with lamps (stars)." (67:5)' },
-  { id: 'z4', desc: '"We have made them as missiles to drive away the devils." (67:5)' },
+  { id: 'z1', desc: 'You see no inconsistency in the creation of the Most Merciful. (67:3)' },
+  { id: 'z2', desc: 'Your sight will return to you humbled while it is fatigued. (67:4)' },
+  { id: 'z3', desc: 'We have adorned the nearest heaven with lamps — stars. (67:5)' },
+  { id: 'z4', desc: 'We have made them as missiles to drive away the devils. (67:5)' },
 ];
 
-const S3_EVENTS_CORRECT = [
-  { id: 'f1', text: '🔥 For those who disbelieve in their Lord — the punishment of Hell awaits (67:6)' },
-  { id: 'f2', text: '😱 When thrown into it, they hear its terrifying inhaling — it almost bursts with rage (67:7-8)' },
-  { id: 'f3', text: '⚔️ The guardians ask every group: "Did no warner come to you?" (67:8)' },
-  { id: 'f4', text: '😔 They confess: "Yes! A warner came — but we denied him" (67:9)' },
-  { id: 'f5', text: '💭 They say: "If only we had been listening or reasoning — we would not be here!" (67:10)' },
-  { id: 'f6', text: '⚡ So they acknowledge their sin — but far removed from mercy are the companions of the Blaze (67:11)' },
+const S3_FIB = [
+  {verse:'وَلِلَّذِينَ كَفَرُوا بِرَبِّهِمْ عَذَابُ _____', opts:['جَهَنَّمَ','النَّارِ','السَّعِيرِ','الْحُطَمَةِ'], correct:0, ref:'67:6', translation:'And for those who disbelieve in their Lord is the punishment of Hell'},
+  {verse:'إِذَا أُلْقُوا فِيهَا سَمِعُوا لَهَا _____', opts:['شَهِيقًا','صُرَاخًا','عَوِيلًا','نِدَاءً'], correct:0, ref:'67:7', translation:'When they are thrown into it, they hear from it an inhaling'},
+  {verse:'تَكَادُ تَمَيَّزُ مِنَ _____', opts:['الْحَرِّ','الْغَيْظِ','النَّارِ','الْأَلَمِ'], correct:1, ref:'67:8', translation:'It almost bursts with rage'},
+  {verse:'قَالُوا بَلَىٰ قَدْ جَاءَنَا _____ فَكَذَّبْنَا', opts:['نَذِيرٌ','رَسُولٌ','بَشِيرٌ','كِتَابٌ'], correct:0, ref:'67:9', translation:'They will say: Yes, a warner had come to us, but we denied'},
+  {verse:'لَوْ كُنَّا نَسْمَعُ أَوْ _____ مَا كُنَّا فِي أَصْحَابِ السَّعِيرِ', opts:['نَعْقِلُ','نُؤْمِنُ','نَعْلَمُ','نَتَّبِعُ'], correct:0, ref:'67:10', translation:'Had we been listening or reasoning, we would not be among the companions of the Blaze'},
 ];
-window._S3_EVENTS = S3_EVENTS_CORRECT;
 
 const S4_QUIZ = [
   { q: 'What does Allah promise those who fear Him "in the unseen" (bil-ghayb)? (67:12)',
@@ -125,10 +123,10 @@ const S4_QUIZ = [
            '"He tests people specifically to find out"'],
     correct: 1 },
   { q: 'What are the two Names of Allah mentioned in 67:14?',
-    opts: ['Al-Aziz and Al-Hakim',
+    opts: ['Al-Aziz (the Almighty) and Al-Hakim (the Wise)',
            'Al-Latif (the Subtle) and Al-Khabir (the Acquainted)',
-           'Ar-Rahman and Ar-Rahim',
-           'Al-Malik and Al-Quddus'],
+           'Ar-Rahman (the Most Merciful) and Ar-Rahim (the Especially Merciful)',
+           'Al-Malik (the King) and Al-Quddus (the Most Holy)'],
     correct: 1 },
   { q: 'According to 67:13, what does Allah know of us?',
     opts: ['Only the spoken words that are said aloud',
@@ -145,16 +143,16 @@ const S4_QUIZ = [
 ];
 
 const S5_ITEMS = [
-  { id: 'e1', text: '🌍 "The earth made\ntame (dhalul)"',            zone: 'z1' },
-  { id: 'e2', text: '⚡ "What if He causes\nearth to swallow you?"', zone: 'z2' },
-  { id: 'e3', text: '🌬️ "What if a storm\nof stones is sent?"',     zone: 'z3' },
-  { id: 'e4', text: '📜 "Those before you\nalso denied"',            zone: 'z4' },
+  { id: 'e1', text: 'جَعَلَ لَكُمُ الْأَرْضَ\nذَلُولًا',                    zone: 'z1' },
+  { id: 'e2', text: 'أَن يَخْسِفَ بِكُمُ\nالْأَرْضَ',                       zone: 'z2' },
+  { id: 'e3', text: 'يُرْسِلَ عَلَيْكُمْ\nحَاصِبًا',                        zone: 'z3' },
+  { id: 'e4', text: 'وَلَقَدْ كَذَّبَ الَّذِينَ\nمِن قَبْلِهِمْ',            zone: 'z4' },
 ];
 const S5_ZONES = [
-  { id: 'z1', desc: '"He made the earth tame for you — walk through its slopes and eat of His provision." (67:15)' },
-  { id: 'z2', desc: '"Do you feel secure that He would not cause the earth to swallow you?" (67:16)' },
-  { id: 'z3', desc: '"Or do you feel secure He would not send against you a storm of stones?" (67:17)' },
-  { id: 'z4', desc: '"And already those before them denied — and how terrible was My reproach!" (67:18)' },
+  { id: 'z1', desc: 'He made the earth tame for you — walk through its slopes and eat of His provision. (67:15)' },
+  { id: 'z2', desc: 'Do you feel secure that He would not cause the earth to swallow you? (67:16)' },
+  { id: 'z3', desc: 'Or do you feel secure He would not send against you a storm of stones? (67:17)' },
+  { id: 'z4', desc: 'And already those before them denied — and how terrible was My reproach! (67:18)' },
 ];
 
 const S6_QUIZ = [
@@ -190,15 +188,20 @@ const S6_QUIZ = [
     correct: 1 },
 ];
 
-const S7_EVENTS_CORRECT = [
-  { id: 'sg1', text: "👁️ Allah gave us hearing, vision, and hearts (af'ida) — but how little thanks is given! (67:23)" },
-  { id: 'sg2', text: '🌍 He scattered us across the earth — and to Him we will be gathered (67:24)' },
-  { id: 'sg3', text: '❓ The disbelievers challenge: "When will this promise come — if you are truthful?" (67:25)' },
-  { id: 'sg4', text: '🗣️ The Prophet ﷺ responds: "The knowledge is only with Allah — I am only a plain warner" (67:26)' },
-  { id: 'sg5', text: '😰 When they SEE it approaching — the faces of disbelievers will be full of grief (67:27)' },
-  { id: 'sg6', text: '📢 And it will be said: "This is what you used to call for (in mockery)" (67:27)' },
+const S7_THEME_ITEMS = [
+  {id:'t1', text:'وَجَعَلَ لَكُمُ السَّمْعَ\nوَالْأَبْصَارَ وَالْأَفْئِدَةَ', zone:'z1'},
+  {id:'t2', text:'هُوَ الَّذِي ذَرَأَكُمْ\nفِي الْأَرْضِ وَإِلَيْهِ تُحْشَرُونَ', zone:'z2'},
+  {id:'t3', text:'وَيَقُولُونَ مَتَىٰ هَٰذَا\nالْوَعْدُ إِن كُنتُمْ صَادِقِينَ', zone:'z3'},
+  {id:'t4', text:'إِنَّمَا الْعِلْمُ عِندَ اللَّهِ\nوَإِنَّمَا أَنَا نَذِيرٌ مُّبِينٌ', zone:'z4'},
+  {id:'t5', text:'فَلَمَّا رَأَوْهُ زُلْفَةً\nسِيئَتْ وُجُوهُ الَّذِينَ كَفَرُوا', zone:'z5'},
 ];
-window._S7_EVENTS = S7_EVENTS_CORRECT;
+const S7_THEME_ZONES = [
+  {id:'z1', desc:'Every faculty is a trust — hearing, sight, and hearts were given for gratitude and obedience (67:23)'},
+  {id:'z2', desc:'Spread across the earth yet none can escape — the final gathering to Allah is certain (67:24)'},
+  {id:'z3', desc:'Mockery of the promise — demanding punishment out of arrogance rather than seeking guidance (67:25)'},
+  {id:'z4', desc:'The Prophet ﷺ\'s role is only to warn — knowledge of the Hour belongs to Allah alone (67:26)'},
+  {id:'z5', desc:'When the punishment approaches, denial turns to visible despair and anguish on their faces (67:27)'},
+];
 
 const S8_QUIZ = [
   { q: "What is the believer's declaration according to 67:29?",
@@ -240,16 +243,16 @@ function renderSection1Game() { renderQuiz(1, S1_QUIZ); }
 function checkSection1()      { checkQuiz(1, S1_QUIZ); }
 function renderSection2Game() { renderDragDrop(2, S2_ITEMS, S2_ZONES); }
 function checkSection2()      { checkDragDrop(2, S2_ZONES); }
-function renderSection3Game() { renderStoryOrder(3, S3_EVENTS_CORRECT); }
-function checkSection3()      { checkStoryOrder(3, S3_EVENTS_CORRECT); }
+function renderSection3Game() { renderFillBlank(3, S3_FIB); }
+function checkSection3()      { checkFillBlank(3, S3_FIB); }
 function renderSection4Game() { renderQuiz(4, S4_QUIZ); }
 function checkSection4()      { checkQuiz(4, S4_QUIZ); }
 function renderSection5Game() { renderDragDrop(5, S5_ITEMS, S5_ZONES); }
 function checkSection5()      { checkDragDrop(5, S5_ZONES); }
 function renderSection6Game() { renderQuiz(6, S6_QUIZ); }
 function checkSection6()      { checkQuiz(6, S6_QUIZ); }
-function renderSection7Game() { renderStoryOrder(7, S7_EVENTS_CORRECT); }
-function checkSection7()      { checkStoryOrder(7, S7_EVENTS_CORRECT); }
+function renderSection7Game() { renderDragDrop(7, S7_THEME_ITEMS, S7_THEME_ZONES); }
+function checkSection7()      { checkDragDrop(7, S7_THEME_ZONES); }
 function renderSection8Game() { renderQuiz(8, S8_QUIZ); }
 function checkSection8()      { checkQuiz(8, S8_QUIZ); }
 

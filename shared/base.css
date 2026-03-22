@@ -1071,3 +1071,8 @@ html[data-theme="stars"] .flip-freq-unique { color: #e8b84b; font-size: 14px; }
 }
 .wbw-match-feedback.success { color: var(--success); }
 .wbw-match-feedback.partial { color: var(--text-dim); }
+
+/* ── Fill-in-the-Blank states ── */
+.option-btn.correct-fb { border-color: var(--success); background: rgba(39,174,96,0.15); color: var(--success); }
+.option-btn.wrong-fb   { border-color: var(--error); background: rgba(231,76,60,0.12); opacity: 0.6; }
+.option-btn.disabled-fb { pointer-events: none; opacity: 0.7; }

@@ -304,14 +304,13 @@ const S2_QUIZ = [
     correct: 1 },
 ];
 
-// SECTION 3 — Story Order: Creation Stages (80:17-23)
-const S3_EVENTS_CORRECT = [
-  { id: 'e1', text: '💧 Created from a drop of liquid (nutfah) — the very beginning of human existence (80:18-19)' },
-  { id: 'e2', text: '🔧 Allah formed him and proportioned him perfectly (qaddarahu) — every organ, every function (80:19)' },
-  { id: 'e3', text: '🛤️ Allah made the path easy for him (yassara al-sabil) — guidance, language, reasoning given (80:20)' },
-  { id: 'e4', text: '☠️ Allah causes him to die (amatahu) at the appointed time (80:21)' },
-  { id: 'e5', text: '⚰️ Allah provides a grave (aqbarahu) — honourable burial (80:21)' },
-  { id: 'e6', text: '🌟 When Allah wills, He resurrects him (anshara) — the return to Him (80:22)' },
+// SECTION 3 — Complete the Verse: Creation Stages (80:17-23)
+const S4_FIB = [
+  {verse:'قُتِلَ الْإِنسَانُ مَا _____', opts:['أَكْفَرَهُ','أَظْلَمَهُ','أَجْهَلَهُ','أَضْعَفَهُ'], correct:0, ref:'80:17', translation:'Destroyed is man — how ungrateful he is!'},
+  {verse:'مِن نُّطْفَةٍ خَلَقَهُ _____', opts:['فَقَدَّرَهُ','فَصَوَّرَهُ','فَرَزَقَهُ','فَعَلَّمَهُ'], correct:0, ref:'80:19', translation:'From a sperm-drop He created him and proportioned him'},
+  {verse:'ثُمَّ السَّبِيلَ _____', opts:['يَسَّرَهُ','أَرَاهُ','عَلَّمَهُ','فَتَحَهُ'], correct:0, ref:'80:20', translation:'Then the path He eased for him'},
+  {verse:'ثُمَّ أَمَاتَهُ _____', opts:['فَأَقْبَرَهُ','فَأَنْشَرَهُ','فَأَحْيَاهُ','فَأَنْزَلَهُ'], correct:0, ref:'80:21', translation:'Then He caused him to die and provided a grave'},
+  {verse:'ثُمَّ إِذَا شَاءَ _____', opts:['أَنشَرَهُ','أَحْيَاهُ','بَعَثَهُ','أَقَامَهُ'], correct:0, ref:'80:22', translation:'Then when He wills, He will resurrect him'},
 ];
 
 // SECTION 4 — Drag & Drop: Provision (80:24-32)
@@ -392,7 +391,7 @@ const S6_QUIZ = [
 // =============================================
 window.registerMatch(2, S1_ITEMS, S1_ZONES);
 window.registerQuiz(3, S2_QUIZ);
-window.registerOrder(4, S3_EVENTS_CORRECT);
+window.registerFillBlank(4, S4_FIB);
 window.registerMatch(5, S4_ITEMS, S4_ZONES);
 window.registerQuiz(6, S5_QUIZ);
 window.registerQuiz(7, S6_QUIZ);

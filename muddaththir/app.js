@@ -6,7 +6,7 @@ window.state = {
   s1Checked:false,
   s2Answers:{}, s2Checked:false,
   s3Checked:false,
-  s4Order:[], s4Checked:false,
+  s4Answers:{}, s4Checked:false,
   s5Checked:false,
 };
 
@@ -45,16 +45,16 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'s1', text:'🚫 Did not\npray (salah)',             zone:'z1'},
-  {id:'s2', text:'🍞 Did not\nfeed the poor',            zone:'z2'},
-  {id:'s3', text:'💬 Engaged in\nvain talk',              zone:'z3'},
-  {id:'s4', text:'❌ Denied\nthe Day of Judgment',       zone:'z4'},
+  {id:'s1', text:'قَالُوا لَمْ نَكُ\nمِنَ الْمُصَلِّينَ',             zone:'z1'},
+  {id:'s2', text:'وَلَمْ نَكُ نُطْعِمُ\nالْمِسْكِينَ',               zone:'z2'},
+  {id:'s3', text:'وَكُنَّا نَخُوضُ\nمَعَ الْخَائِضِينَ',             zone:'z3'},
+  {id:'s4', text:'وَكُنَّا نُكَذِّبُ\nبِيَوْمِ الدِّينِ',            zone:'z4'},
 ];
 const S2_ZONES = [
-  {id:'z1', desc:'"Lam naku mina al-musalleen" — we were not among those who prayed (74:43) — first reason for Saqar'},
-  {id:'z2', desc:'"Wa lam naku nut\'im al-miskeen" — we did not feed the poor and needy (74:44) — second reason'},
-  {id:'z3', desc:'"Wa kunna nakhudu ma\'a al-kha\'ideen" — we talked idly with the vain speakers (74:45) — third reason'},
-  {id:'z4', desc:'"Wa kunna nukadhdhibu bi-yawm al-deen" — we denied the Day of Reckoning (74:46) — fourth reason'},
+  {id:'z1', desc:'We were not among those who prayed — first reason for entering Saqar (74:43)'},
+  {id:'z2', desc:'We did not feed the poor and needy — second reason (74:44)'},
+  {id:'z3', desc:'We engaged in vain talk with the vain speakers — third reason (74:45)'},
+  {id:'z4', desc:'We denied the Day of Judgment — fourth reason (74:46)'},
 ];
 
 const S3_QUIZ = [
@@ -72,15 +72,13 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-const S4_EVENTS_CORRECT = [
-  {id:'m1', text:'🧥 The Prophet ﷺ was wrapped in his garment after the pause in revelation'},
-  {id:'m2', text:'📯 Allah reveals: Arise! Warn! Glorify your Lord! Purify yourself!'},
-  {id:'m3', text:'🎭 A man hears Quran, admits it\'s extraordinary, then publicly calls it sorcery'},
-  {id:'m4', text:'💀 Allah exposes him: curse on him — how he plotted! (74:19-20)'},
-  {id:'m5', text:'🔥 Four reasons stated for entering Saqar: no prayer, no charity, vain talk, denied Day'},
-  {id:'m6', text:'🌙 Allah swears by the moon, night, and dawn as signs of His truth'},
+const S4_FIB = [
+  {verse:'قُمْ _____', opts:['فَأَنذِرْ','فَصَلِّ','فَاذْكُرْ','فَاسْجُدْ'], correct:0, ref:'74:2', translation:'Arise and warn!'},
+  {verse:'وَرَبَّكَ _____', opts:['فَكَبِّرْ','فَاحْمَدْ','فَسَبِّحْ','فَاعْبُدْ'], correct:0, ref:'74:3', translation:'And your Lord — glorify!'},
+  {verse:'إِنْ هَٰذَا إِلَّا سِحْرٌ _____', opts:['يُؤْثَرُ','يُذْكَرُ','يُنْشَرُ','يُقَدَّرُ'], correct:0, ref:'74:24', translation:'This is nothing but transmitted sorcery'},
+  {verse:'عَلَيْهَا _____ عَشَرَ', opts:['تِسْعَةَ','سَبْعَةَ','خَمْسَةَ','ثَلَاثَةَ'], correct:0, ref:'74:30', translation:'Over it are nineteen (angels)'},
+  {verse:'كُلُّ نَفْسٍ بِمَا كَسَبَتْ _____', opts:['رَهِينَةٌ','مَسْؤُولَةٌ','مَحْفُوظَةٌ','مَحْبُوسَةٌ'], correct:0, ref:'74:38', translation:'Every soul, for what it has earned, is held in pledge'},
 ];
-window._S4_EVENTS = S4_EVENTS_CORRECT;
 
 function renderSection1Game(){renderQuiz(1,S1_QUIZ);}
 function checkSection1(){checkQuiz(1,S1_QUIZ);}
@@ -88,8 +86,8 @@ function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}
 function checkSection2(){checkDragDrop(2,S2_ZONES);}
 function renderSection3Game(){renderQuiz(3,S3_QUIZ);}
 function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderStoryOrder(4,S4_EVENTS_CORRECT);}
-function checkSection4(){checkStoryOrder(4,S4_EVENTS_CORRECT);}
+function renderSection4Game(){renderFillBlank(4,S4_FIB);}
+function checkSection4(){checkFillBlank(4,S4_FIB);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {

@@ -6,7 +6,7 @@ window.state = {
   s1Checked:false,
   s2Answers:{}, s2Checked:false,
   s3Checked:false,
-  s4Order:[], s4Checked:false,
+  s4Answers:{}, s4Checked:false,
   s5Checked:false,
   s6Checked:false,
 };
@@ -74,15 +74,13 @@ const S3_QUIZ = [
    correct:0},
 ];
 
-const S4_EVENTS_CORRECT = [
-  {id:'r1', text:'📖 Right hand receives the book — rejoices: "Here, read my record!"'},
-  {id:'r2', text:'😊 Easy reckoning — returning to family in happiness and delight'},
-  {id:'r3', text:'💀 Left hand receives book behind their back — wishes for death'},
-  {id:'r4', text:'😰 Calls out: "Oh, would that my death had been the end of me!"'},
-  {id:'r5', text:'💸 Their wealth and authority availed them nothing on this Day'},
-  {id:'r6', text:'🔗 Seized, chained, dragged to the blazing Hellfire'},
+const S4_FIB = [
+  {verse:'فَأَمَّا مَنْ أُوتِيَ كِتَابَهُ _____', opts:['بِيَمِينِهِ','بِشِمَالِهِ','مِن وَرَائِهِ','مِن فَوْقِهِ'], correct:0, ref:'69:19', translation:'As for he who is given his record in his right hand'},
+  {verse:'فَهُوَ فِي عِيشَةٍ _____', opts:['رَّاضِيَةٍ','هَنِيئَةٍ','طَيِّبَةٍ','كَرِيمَةٍ'], correct:0, ref:'69:21', translation:'He will be in a pleasant life'},
+  {verse:'وَأَمَّا مَنْ أُوتِيَ كِتَابَهُ _____', opts:['بِشِمَالِهِ','بِيَمِينِهِ','مِن خَلْفِهِ','مِن أَمَامِهِ'], correct:0, ref:'69:25', translation:'But as for he who is given his record in his left hand'},
+  {verse:'مَا أَغْنَىٰ عَنِّي _____', opts:['مَالِيَهْ','عِلْمِيَهْ','جَاهِيَهْ','قُوَّتِيَهْ'], correct:0, ref:'69:28', translation:'My wealth has not availed me'},
+  {verse:'_____ فَغُلُّوهُ', opts:['خُذُوهُ','قَيِّدُوهُ','أَمْسِكُوهُ','احْبِسُوهُ'], correct:0, ref:'69:30', translation:'Seize him and shackle him'},
 ];
-window._S4_EVENTS = S4_EVENTS_CORRECT;
 
 const S5_QUIZ = [
   {q:'What does Allah say the Quran is NOT in 69:41?',
@@ -105,8 +103,8 @@ function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}
 function checkSection2(){checkDragDrop(2,S2_ZONES);}
 function renderSection3Game(){renderQuiz(3,S3_QUIZ);}
 function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderStoryOrder(4,S4_EVENTS_CORRECT);}
-function checkSection4(){checkStoryOrder(4,S4_EVENTS_CORRECT);}
+function renderSection4Game(){renderFillBlank(4,S4_FIB);}
+function checkSection4(){checkFillBlank(4,S4_FIB);}
 function renderSection5Game(){renderQuiz(5,S5_QUIZ);}
 function checkSection5(){checkQuiz(5,S5_QUIZ);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}

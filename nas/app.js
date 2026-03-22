@@ -63,26 +63,6 @@ const WBW_DATA = [
 ];
 
 /* ────────────────────────────────────────────────────────
-   LEVEL 1 — Word by Word: Match Arabic word to English
-   ──────────────────────────────────────────────────────── */
-const S1_ITEMS = [
-  {id:'w1', text:'مَلِكِ',        zone:'z1'},
-  {id:'w2', text:'إِلَٰهِ',      zone:'z2'},
-  {id:'w3', text:'الْوَسْوَاسِ', zone:'z3'},
-  {id:'w4', text:'الْخَنَّاسِ', zone:'z4'},
-  {id:'w5', text:'صُدُورِ',      zone:'z5'},
-  {id:'w6', text:'الْجِنَّةِ',  zone:'z6'},
-];
-const S1_ZONES = [
-  {id:'z1', desc:'King, Sovereign — Malik: He who owns and rules with complete authority (114:2)'},
-  {id:'z2', desc:'God, object of worship — Ilah: He alone deserves to be worshipped (114:3)'},
-  {id:'z3', desc:'The whisperer — al-waswas: one who plants whispering thoughts of doubt (114:4)'},
-  {id:'z4', desc:'The withdrawer — al-khannas: who slinks away when Allah is remembered (114:4)'},
-  {id:'z5', desc:'Chests/hearts — sudur: the battlefield where Shaytan whispers doubts (114:5)'},
-  {id:'z6', desc:'The Jinn — al-jinnah: unseen beings who can also whisper evil (114:6)'},
-];
-
-/* ────────────────────────────────────────────────────────
    LEVEL 2 — Quiz: Three Titles (114:1-3)
    ──────────────────────────────────────────────────────── */
 const S2_QUIZ = [
@@ -152,8 +132,6 @@ const S5_QUIZ = [
    correct:2},
 ];
 
-function renderSection1Game(){if(window.renderWBW)renderWBW('wbw-display',WBW_DATA,'wbw-reveal-btn');renderDragDrop(1,S1_ITEMS,S1_ZONES);}
-function checkSection1(){checkDragDrop(1,S1_ZONES);}
 function renderSection2Game(){renderQuiz(2,S2_QUIZ);}
 function checkSection2(){checkQuiz(2,S2_QUIZ);}
 function renderSection3Game(){renderDragDrop(3,S3_ITEMS,S3_ZONES);}
@@ -178,3 +156,5 @@ window._drawBuildCanvas = function(n) {
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
   ctx.fillText(n>=5?'AN-NAS COMPLETE! ✨':`An-Nas — ${n}/5 levels`,W/2,14);ctx.textAlign='left';
 };
+
+window.setupWBWLevel(WBW_DATA, 10);

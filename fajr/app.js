@@ -262,14 +262,13 @@ const S2_QUIZ = [
     correct: 2 },
 ];
 
-/* ── Level 3: Story Order — Two Attitudes Towards Tests (89:15-20) ── */
-const S3_EVENTS_CORRECT = [
-  { id: 'e1', text: '💰 Allah tests man by giving him wealth and honour — man says "My Lord honoured me!" (89:15)' },
-  { id: 'e2', text: '😟 Allah tests man by restricting his provision — man says "My Lord humiliated me!" (89:16)' },
-  { id: 'e3', text: '❌ But man does not honour the orphan or encourage feeding the poor (89:17-18)' },
-  { id: 'e4', text: '💸 He consumes inheritance greedily, devouring it all without right (89:19)' },
-  { id: 'e5', text: '❤️‍🔥 He loves wealth with an intense and overwhelming love (89:20)' },
-  { id: 'e6', text: '⚖️ Allah\'s verdict: Both wealth AND poverty are tests — man misunderstands both (89:15-16)' },
+/* ── Level 3: Complete the Verse — Two Attitudes Towards Tests (89:15-20) ── */
+const S4_FIB = [
+  {verse:'كَلَّا بَل لَّا تُكْرِمُونَ _____', opts:['الْيَتِيمَ','الْمِسْكِينَ','الْفَقِيرَ','الضَّعِيفَ'], correct:0, ref:'89:17', translation:'No! But you do not honour the orphan'},
+  {verse:'وَلَا تَحَاضُّونَ عَلَىٰ طَعَامِ _____', opts:['الْمِسْكِينِ','الْيَتِيمِ','الْفَقِيرِ','الْمُسَافِرِ'], correct:0, ref:'89:18', translation:'And you do not urge one another to feed the needy'},
+  {verse:'وَتَأْكُلُونَ التُّرَاثَ أَكْلًا _____', opts:['لَّمًّا','كَثِيرًا','قَلِيلًا','سَرِيعًا'], correct:0, ref:'89:19', translation:'And you consume the inheritance greedily'},
+  {verse:'وَتُحِبُّونَ الْمَالَ حُبًّا _____', opts:['جَمًّا','كَثِيرًا','شَدِيدًا','عَظِيمًا'], correct:0, ref:'89:20', translation:'And you love wealth with an excessive love'},
+  {verse:'فَأَمَّا الْإِنسَانُ إِذَا مَا _____ رَبُّهُ', opts:['ابْتَلَاهُ','أَكْرَمَهُ','رَزَقَهُ','هَدَاهُ'], correct:0, ref:'89:15', translation:'As for man, when his Lord tests him'},
 ];
 
 /* ── Level 4: Drag & Drop — What Man Does Wrong (89:17-20) ── */
@@ -328,7 +327,7 @@ const S6_QUIZ = [
 // =============================================
 window.registerMatch(2, S1_ITEMS, S1_ZONES);
 window.registerQuiz(3, S2_QUIZ);
-window.registerOrder(4, S3_EVENTS_CORRECT);
+window.registerFillBlank(4, S4_FIB);
 window.registerMatch(5, S4_ITEMS, S4_ZONES);
 window.registerQuiz(6, S5_QUIZ);
 window.registerQuiz(7, S6_QUIZ);

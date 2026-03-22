@@ -39,24 +39,6 @@ const WBW_DATA = [
   ]},
 ];
 
-/* ─── LEVEL 1: Word by Word matching ─── */
-const S1_ITEMS = [
-  {id:'w1', text:'إِيلَافِ',  zone:'z1'},
-  {id:'w2', text:'رِحْلَةَ',  zone:'z2'},
-  {id:'w3', text:'الشِّتَاءِ',  zone:'z3'},
-  {id:'w4', text:'الصَّيْفِ',  zone:'z4'},
-  {id:'w5', text:'الْبَيْتِ',  zone:'z5'},
-  {id:'w6', text:'جُوعٍ',  zone:'z6'}
-];
-const S1_ZONES = [
-  {id:'z1', desc:"Tradition / accustomed journey — the special status Allah gave the Quraysh (106:1)"},
-  {id:'z2', desc:"Journey / travel — the annual trading expedition (106:2)"},
-  {id:'z3', desc:"Winter — the winter journey south to Yemen (106:2)"},
-  {id:'z4', desc:"Summer — the summer journey north to Sham/Syria (106:2)"},
-  {id:'z5', desc:"The House — the Kaaba; source of their honour and safe passage (106:3)"},
-  {id:'z6', desc:"Hunger — Allah fed them from hunger; their blessings come from Him (106:4)"}
-];
-
 const S2_QUIZ = [
   {q:'What is the "ilaf" of the Quraysh mentioned in 106:1-2?',
    opts:['Their military strength and armor','Their tradition of two annual trade journeys','Their holy status as keepers of Mecca','Their unity as a tribe'],
@@ -73,12 +55,12 @@ const S2_QUIZ = [
 ];
 
 const S3_ITEMS = [
-  {id:'q1', text:'Rabb hadhil-bayt\n(Lord of this House)', zone:'z1'},
-  {id:'q2', text:'At\'amahum min ju\'\n(Fed them from hunger)', zone:'z2'},
-  {id:'q3', text:'Amanahum min khawf\n(Safety from fear)', zone:'z3'},
+  {id:'q1', text:'فَلْيَعْبُدُوا\nرَبَّ هَٰذَا الْبَيْتِ', zone:'z1'},
+  {id:'q2', text:'أَطْعَمَهُم مِّن جُوعٍ',               zone:'z2'},
+  {id:'q3', text:'وَآمَنَهُم مِّنْ خَوْفٍ',              zone:'z3'},
 ];
 const S3_ZONES = [
-  {id:'z1', desc:'Allah is "Lord of this House" — the Kaaba — so worship HIM alone (106:3)'},
+  {id:'z1', desc:'Let them worship the Lord of this House — the Kaaba — so worship Him alone (106:3)'},
   {id:'z2', desc:'He fed them when they were hungry — provided their food and sustenance (106:4)'},
   {id:'z3', desc:'He gave them safety from fear — security to travel and trade (106:4)'},
 ];
@@ -99,9 +81,7 @@ const S4_QUIZ = [
 ];
 
 
-function renderSection1Game(){if(window.renderWBW)renderWBW('wbw-display',WBW_DATA,'wbw-reveal-btn');renderDragDrop(1,S1_ITEMS,S1_ZONES);}
-function checkSection1(){checkDragDrop(1,S1_ZONES);}
-function renderSection2Game(){renderDragDrop(2,[{id:'j1',text:'Winter\nJourney',zone:'z1'},{id:'j2',text:'Summer\nJourney',zone:'z2'}],[{id:'z1',desc:'To Yemen — trade in the warm south during winter months'},{id:'z2',desc:'To Sham (Syria) — trade in the north during cooler summer months'}]);}
+function renderSection2Game(){renderDragDrop(2,[{id:'j1',text:'رِحْلَةَ\nالشِّتَاءِ',zone:'z1'},{id:'j2',text:'رِحْلَةَ\nالصَّيْفِ',zone:'z2'}],[{id:'z1',desc:'The winter journey — trade to Yemen in the warm south'},{id:'z2',desc:'The summer journey — trade to the north during cooler months'}]);}
 function checkSection2(){checkDragDrop(2,[{id:'z1'},{id:'z2'}]);}
 function renderSection3Game(){renderDragDrop(3,S3_ITEMS,S3_ZONES);}function checkSection3(){checkDragDrop(3,S3_ZONES);}
 function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
@@ -119,3 +99,5 @@ window._drawBuildCanvas = function(n) {
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
   ctx.fillText(n>=4?'QURAYSH COMPLETE! 🕋':`Quraysh — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
 };
+
+window.setupWBWLevel(WBW_DATA, 10);

@@ -6,7 +6,7 @@ window.state = {
   s1Checked:false,
   s2Answers:{}, s2Checked:false,
   s3Checked:false,
-  s4Order:[], s4Checked:false,
+  s4Answers:{}, s4Checked:false,
   s5Checked:false,
 };
 
@@ -45,16 +45,16 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'d1', text:'⭐ Stars are\nextinguished',          zone:'z1'},
-  {id:'d2', text:'🏔️ Mountains are\nblown away',        zone:'z2'},
-  {id:'d3', text:'📩 Messengers are\ngathered together', zone:'z3'},
-  {id:'d4', text:'📅 The Day of\nSorting arrives',       zone:'z4'},
+  {id:'d1', text:'فَإِذَا النُّجُومُ\nطُمِسَتْ',                   zone:'z1'},
+  {id:'d2', text:'وَإِذَا الْجِبَالُ\nنُسِفَتْ',                   zone:'z2'},
+  {id:'d3', text:'وَإِذَا الرُّسُلُ\nأُقِّتَتْ',                   zone:'z3'},
+  {id:'d4', text:'لِيَوْمِ الْفَصْلِ',                              zone:'z4'},
 ];
 const S2_ZONES = [
-  {id:'z1', desc:'"Wa idha al-nujumu tumisat" — when the stars are extinguished (77:8) — cosmic signs of the Hour'},
-  {id:'z2', desc:'"Wa idha al-jibalu nusifat" — when the mountains are blown away to dust (77:10)'},
-  {id:'z3', desc:'"Wa idha al-rusulu uqqitat" — when the messengers\' appointed time arrives (77:11)'},
-  {id:'z4', desc:'"Li-yawm al-fasl" — for the Day of Sorting and Deciding (77:13) — all gathered for judgment'},
+  {id:'z1', desc:'When the stars are extinguished — cosmic signs of the Hour (77:8)'},
+  {id:'z2', desc:'When the mountains are blown away to dust (77:10)'},
+  {id:'z3', desc:'When the messengers\' appointed time arrives (77:11)'},
+  {id:'z4', desc:'For the Day of Sorting and Deciding — all gathered for judgment (77:13)'},
 ];
 
 const S3_QUIZ = [
@@ -72,15 +72,13 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-const S4_EVENTS_CORRECT = [
-  {id:'w1', text:'💨 Five oaths by the winds/emissaries sent successively (77:1-5)'},
-  {id:'w2', text:'📅 Stars extinguished, mountains blown, messengers gathered — Day of Sorting (77:8-13)'},
-  {id:'w3', text:'🌊 Destroyed nations recalled: "Did We not destroy the earlier peoples?" (77:16)'},
-  {id:'w4', text:'💧 Allah recalls: We created you from water (77:20) — still you deny!'},
-  {id:'w5', text:'🌿 Earth as container for living and dead — designed and measured (77:25-28)'},
-  {id:'w6', text:'🔟 Refrain sounds 10 times — "Woe that Day to the deniers!" (throughout)'},
+const S4_FIB = [
+  {verse:'وَالْمُرْسَلَاتِ _____', opts:['عُرْفًا','نُورًا','رِيحًا','حَقًّا'], correct:0, ref:'77:1', translation:'By those winds sent forth in succession'},
+  {verse:'_____ لِلْمُكَذِّبِينَ', opts:['وَيْلٌ','عَذَابٌ','هَلَاكٌ','خِزْيٌ'], correct:0, ref:'77:15', translation:'Woe, that Day, to the deniers'},
+  {verse:'أَلَمْ نَخْلُقكُّم مِّن مَّاءٍ _____', opts:['مَّهِينٍ','طَهُورٍ','عَذْبٍ','دَافِقٍ'], correct:0, ref:'77:20', translation:'Did We not create you from a liquid disdained?'},
+  {verse:'أَلَمْ نَجْعَلِ الْأَرْضَ _____', opts:['كِفَاتًا','فِرَاشًا','مِهَادًا','بِسَاطًا'], correct:0, ref:'77:25', translation:'Have We not made the earth a container?'},
+  {verse:'انطَلِقُوا إِلَىٰ ظِلٍّ ذِي ثَلَاثِ _____', opts:['شُعَبٍ','طَبَقَاتٍ','أَبْوَابٍ','نِيرَانٍ'], correct:0, ref:'77:30', translation:'Proceed to a shadow of three columns'},
 ];
-window._S4_EVENTS = S4_EVENTS_CORRECT;
 
 function renderSection1Game(){renderQuiz(1,S1_QUIZ);}
 function checkSection1(){checkQuiz(1,S1_QUIZ);}
@@ -88,8 +86,8 @@ function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}
 function checkSection2(){checkDragDrop(2,S2_ZONES);}
 function renderSection3Game(){renderQuiz(3,S3_QUIZ);}
 function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderStoryOrder(4,S4_EVENTS_CORRECT);}
-function checkSection4(){checkStoryOrder(4,S4_EVENTS_CORRECT);}
+function renderSection4Game(){renderFillBlank(4,S4_FIB);}
+function checkSection4(){checkFillBlank(4,S4_FIB);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {

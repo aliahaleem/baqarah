@@ -43,16 +43,16 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'w1', text:'⚖️ The Quran\nis a heavy Word',          zone:'z1'},
-  {id:'w2', text:'🌙 Night prayer\nstrengthens the heart',  zone:'z2'},
-  {id:'w3', text:'😤 Be patient over\nwhat they say',       zone:'z3'},
-  {id:'w4', text:'🏃 Leave them\nwith beautiful grace',     zone:'z4'},
+  {id:'w1', text:'إِنَّا سَنُلْقِي عَلَيْكَ\nقَوْلًا ثَقِيلًا',           zone:'z1'},
+  {id:'w2', text:'نَاشِئَةَ اللَّيْلِ هِيَ أَشَدُّ\nوَطْئًا وَأَقْوَمُ قِيلًا', zone:'z2'},
+  {id:'w3', text:'وَاصْبِرْ عَلَىٰ\nمَا يَقُولُونَ',                       zone:'z3'},
+  {id:'w4', text:'وَاهْجُرْهُمْ\nهَجْرًا جَمِيلًا',                        zone:'z4'},
 ];
 const S2_ZONES = [
-  {id:'z1', desc:'"Inna sanulqi alayka qawlan thaqeela" — We are going to send you a heavy Word (73:5)'},
-  {id:'z2', desc:'"Inna nashiata al-layli hiya ashaddu wat\'an wa aqwamu qeela" — night devotion is firmest for treading and clearest in speech (73:6)'},
-  {id:'z3', desc:'"Wa\'sbir \'ala ma yaquloon" — Bear patiently what they say (73:10)'},
-  {id:'z4', desc:'"Wa uhjurhum hajran jameela" — And leave them gracefully (73:10) — respond to mockery with dignity'},
+  {id:'z1', desc:'We are going to send down upon you a heavy Word (73:5)'},
+  {id:'z2', desc:'Night devotion is firmest for treading and clearest in speech (73:6)'},
+  {id:'z3', desc:'Bear patiently what they say (73:10)'},
+  {id:'z4', desc:'And leave them with a beautiful leaving (73:10) — respond to mockery with dignity'},
 ];
 
 const S3_QUIZ = [

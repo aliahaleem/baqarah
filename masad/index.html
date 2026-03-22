@@ -37,7 +37,7 @@
     </div>
     <div class="map-tile locked" id="tile-3" onclick="openSection(3)">
       <div class="tile-icon">📖</div><div class="tile-level">LEVEL 3</div>
-      <div class="tile-name">Story Order</div><div class="tile-verses">111:1-5</div>
+      <div class="tile-name">Complete the Verse</div><div class="tile-verses">111:1-5</div>
       <div class="tile-status" id="status-3">🔒 LOCKED</div>
     </div>
     <div class="map-tile locked" id="tile-4" onclick="openSection(4)">
@@ -47,16 +47,16 @@
     </div>
   </div>
   </div>
-    <div class="map-tile locked" id="tile-2"><div class="tile-icon">📖</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Story Order</div><div class="tile-verses">111:1-5</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
+    <div class="map-tile locked" id="tile-2"><div class="tile-icon">📖</div><div class="tile-level">LEVEL 2</div><div class="tile-name">Complete the Verse</div><div class="tile-verses">111:1-5</div><div class="tile-status" id="status-2">🔒 LOCKED</div></div>
     <div class="map-tile locked" id="tile-3"><div class="tile-icon">🌿</div><div class="tile-level">LEVEL 3</div><div class="tile-name">His Wife</div><div class="tile-verses">111:4-5</div><div class="tile-status" id="status-3">🔒 LOCKED</div></div>
   </div>
   <div id="world-builder"><h2 class="section-heading">🔥 WORLD BUILDER</h2><div style="border:3px solid var(--primary);margin-bottom:12px;"><canvas id="build-canvas" width="560" height="180" style="width:100%;image-rendering:pixelated;display:block;"></canvas></div><div class="world-preview">
       <div class="world-chunk" id="chunk-1"><div class="chunk-emoji">⬛</div><div class="chunk-label">Words</div></div>
       <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Abu Lahab</div></div>
-      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Story Order</div></div>
+      <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">Complete the Verse</div></div>
       <div class="world-chunk" id="chunk-4"><div class="chunk-emoji">⬛</div><div class="chunk-label">His Wife</div></div>
       </div></div>
-      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Story Order</div></div>
+      <div class="world-chunk" id="chunk-2"><div class="chunk-emoji">⬛</div><div class="chunk-label">Complete the Verse</div></div>
       <div class="world-chunk" id="chunk-3"><div class="chunk-emoji">⬛</div><div class="chunk-label">His Wife</div></div>
   </div></div>
   <div id="all-complete" style="display:none"><div style="font-size:36px">🔥</div><div style="color:var(--accent);font-size:10px">SURAH AL-MASAD COMPLETE!</div></div>
@@ -135,19 +135,19 @@
       <div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>From Mount Safa to Abu Lahab's response to Allah's reply to his wife's role. Put the story in order!</div>
     </div>
     <div class="card" style="margin:14px 12px 0">
-      <div class="card-header">📖 LEVEL 3 — STORY ORDER (111:1-5)</div>
+      <div class="card-header">🎮 GAME: COMPLETE THE VERSE!</div>
       <div class="scene-container"><div class="scene-header"><span class="scene-title">🎬 Story of Abu Lahab — Click to reveal verse</span></div>
         <canvas id="canvas-3" width="560" height="220"></canvas></div>
       <div class="verse-block"><div class="arabic-text">سَيَصْلَىٰ نَارًا ذَاتَ لَهَبٍ</div>
         <div class="verse-translation">"He will burn in a flaming fire." (111:3)</div></div>
     </div>
     <div class="card" style="margin:8px 12px 0">
-      <div class="card-header">🎮 STORY ORDER — AL-MASAD</div>
-      <div class="game-instructions">Put the story of Abu Lahab in correct order!</div>
-      <div class="story-order-container" id="story-order-3"></div>
+      <div class="card-header">🎮 GAME: COMPLETE THE VERSE!</div>
+      <div class="game-instructions">Fill in the missing Arabic word in each verse.</div>
+      <div class="game-activity-container" id="order-3"></div>
       <div class="game-feedback" id="feedback-3"></div>
       <div class="game-footer">
-        <button class="action-btn" onclick="checkSection3()">✅ Check Order</button>
+        <button class="action-btn" onclick="checkSection3()">✅ Check Answer</button>
         <button class="action-btn gold" id="complete-3-btn" style="display:none" onclick="completeSection(3)">🏆 Claim Reward!</button>
       </div>
     </div>

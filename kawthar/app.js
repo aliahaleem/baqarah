@@ -36,24 +36,6 @@ const WBW_DATA = [
   ]},
 ];
 
-/* ─── LEVEL 1: Word by Word matching ─── */
-const S1_ITEMS = [
-  {id:'w1', text:'أَعْطَيْنَاكَ',  zone:'z1'},
-  {id:'w2', text:'الْكَوْثَرَ',  zone:'z2'},
-  {id:'w3', text:'فَصَلِّ',  zone:'z3'},
-  {id:'w4', text:'وَانْحَرْ',  zone:'z4'},
-  {id:'w5', text:'شَانِئَكَ',  zone:'z5'},
-  {id:'w6', text:'الْأَبْتَرُ',  zone:'z6'}
-];
-const S1_ZONES = [
-  {id:'z1', desc:"We have given you — Allah directly addresses and grants the Prophet ﷺ (108:1)"},
-  {id:'z2', desc:"Al-Kawthar — the river in Jannah + all abundant good given to him (108:1)"},
-  {id:'z3', desc:"So pray — the response to the gift: sincere salah to Allah (108:2)"},
-  {id:'z4', desc:"And sacrifice — animal sacrifice (udhiyyah) as additional gratitude (108:2)"},
-  {id:'z5', desc:"Your enemy/hater — the one who mocked the Prophet's sons dying (108:3)"},
-  {id:'z6', desc:"The one cut off — without legacy, descendants, or memory in history (108:3)"}
-];
-
 const S2_QUIZ = [
   {q:'What is Al-Kawthar according to the Prophet ﷺ?',
    opts:['A mountain in Paradise','A river given to the Prophet ﷺ in Jannah','A city in the Hereafter','A title of honour in Paradise'],
@@ -96,8 +78,6 @@ const S4_QUIZ = [
 ];
 
 
-function renderSection1Game(){if(window.renderWBW)renderWBW('wbw-display',WBW_DATA,'wbw-reveal-btn');renderDragDrop(1,S1_ITEMS,S1_ZONES);}
-function checkSection1(){checkDragDrop(1,S1_ZONES);}
 function renderSection2Game(){renderQuiz(2,S2_QUIZ);}function checkSection2(){checkQuiz(2,S2_QUIZ);}
 function renderSection3Game(){renderDragDrop(3,S3_ITEMS,S3_ZONES);}function checkSection3(){checkDragDrop(3,S3_ZONES);}
 function renderSection4Game(){renderQuiz(4,S4_QUIZ);}function checkSection4(){checkQuiz(4,S4_QUIZ);}
@@ -116,3 +96,5 @@ window._drawBuildCanvas = function(n) {
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
   ctx.fillText(n>=4?'AL-KAWTHAR COMPLETE! 🌊':`Al-Kawthar — ${n}/4 levels`,W/2,14);ctx.textAlign='left';
 };
+
+window.setupWBWLevel(WBW_DATA, 10);

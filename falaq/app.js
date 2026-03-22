@@ -61,26 +61,6 @@ const WBW_DATA = [
 ];
 
 /* ────────────────────────────────────────────────────────
-   LEVEL 1 — Word by Word: Match Arabic word to English
-   ──────────────────────────────────────────────────────── */
-const S1_ITEMS = [
-  {id:'w1', text:'أَعُوذُ',          zone:'z1'},
-  {id:'w2', text:'الْفَلَقِ',       zone:'z2'},
-  {id:'w3', text:'شَرِّ',            zone:'z3'},
-  {id:'w4', text:'غَاسِقٍ',         zone:'z4'},
-  {id:'w5', text:'النَّفَّاثَاتِ', zone:'z5'},
-  {id:'w6', text:'حَاسِدٍ',         zone:'z6'},
-];
-const S1_ZONES = [
-  {id:'z1', desc:'I seek refuge — a\'udhu: actively placing myself under Allah\'s protection (113:1)'},
-  {id:'z2', desc:'The daybreak — falaq: the dramatic splitting of dawn light (113:1)'},
-  {id:'z3', desc:'Evil/harm — sharr: the malicious damage something can cause (113:2)'},
-  {id:'z4', desc:'Darkening night — ghasiq: the deep covering darkness when night fully falls (113:3)'},
-  {id:'z5', desc:'The blowers — naffathat: those who blow on knots practising sihr/magic (113:4)'},
-  {id:'z6', desc:'An envier — hasid: one who actively feels hasad (envy) toward another (113:5)'},
-];
-
-/* ────────────────────────────────────────────────────────
    LEVEL 2 — Quiz: Lord of the Daybreak (113:1)
    ──────────────────────────────────────────────────────── */
 const S2_QUIZ = [
@@ -102,16 +82,16 @@ const S2_QUIZ = [
    LEVEL 3 — Drag & Drop: Four evils matched
    ──────────────────────────────────────────────────────── */
 const S3_ITEMS = [
-  {id:'f1', text:'Evil of\nwhat He created',  zone:'z1'},
-  {id:'f2', text:'Darkness of night\nwhen it settles', zone:'z2'},
-  {id:'f3', text:'Blowers on knots\n(witchcraft)',      zone:'z3'},
-  {id:'f4', text:'Envier when\nthey envy',              zone:'z4'},
+  {id:'f1', text:'مِن شَرِّ مَا خَلَقَ',              zone:'z1'},
+  {id:'f2', text:'وَمِن شَرِّ غَاسِقٍ\nإِذَا وَقَبَ', zone:'z2'},
+  {id:'f3', text:'وَمِن شَرِّ النَّفَّاثَاتِ\nفِي الْعُقَدِ', zone:'z3'},
+  {id:'f4', text:'وَمِن شَرِّ حَاسِدٍ\nإِذَا حَسَدَ',  zone:'z4'},
 ];
 const S3_ZONES = [
-  {id:'z1', desc:'General: "min sharri ma khalaq" — from all of creation\'s evil (113:2)'},
-  {id:'z2', desc:'"Wa min sharri ghasiqin idha waqab" — night brings hidden dangers (113:3)'},
-  {id:'z3', desc:'"Wa min sharri al-naffathat fil-uqad" — sihr/magic from knot blowers (113:4)'},
-  {id:'z4', desc:'"Wa min sharri hasidin idha hasad" — envy when actively directed at you (113:5)'},
+  {id:'z1', desc:'From the evil of all that He created — a general refuge from every harm (113:2)'},
+  {id:'z2', desc:'From the evil of darkness when it settles — night brings hidden dangers (113:3)'},
+  {id:'z3', desc:'From the evil of those who blow on knots — protection from witchcraft (113:4)'},
+  {id:'z4', desc:'From the evil of an envier when they actively envy (113:5)'},
 ];
 
 /* ────────────────────────────────────────────────────────
@@ -150,8 +130,6 @@ const S5_QUIZ = [
    correct:1},
 ];
 
-function renderSection1Game(){if(window.renderWBW)renderWBW('wbw-display',WBW_DATA,'wbw-reveal-btn');renderDragDrop(1,S1_ITEMS,S1_ZONES);}
-function checkSection1(){checkDragDrop(1,S1_ZONES);}
 function renderSection2Game(){renderQuiz(2,S2_QUIZ);}
 function checkSection2(){checkQuiz(2,S2_QUIZ);}
 function renderSection3Game(){renderDragDrop(3,S3_ITEMS,S3_ZONES);}
@@ -178,3 +156,5 @@ window._drawBuildCanvas = function(n) {
   ctx.fillStyle=acc;ctx.font='6px "Press Start 2P",monospace';ctx.textAlign='center';
   ctx.fillText(n>=5?'AL-FALAQ COMPLETE! 🌅':`Al-Falaq — ${n}/5 levels`,W/2,14);ctx.textAlign='left';
 };
+
+window.setupWBWLevel(WBW_DATA, 10);

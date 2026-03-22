@@ -183,13 +183,12 @@ const S3_QUIZ = [
    correct:2},
 ];
 
-const S4_EVENTS_CORRECT = [
-  {id:'p1', text:'🌙 Allah swears by the night, the day, and His creation — human strivings are varied (92:1-4)'},
-  {id:'p2', text:'💝 Path 1 — The Generous: gives, fears Allah, believes in Al-Husna → Allah eases their way (92:5-7)'},
-  {id:'p3', text:'💔 Path 2 — The Miser: stingy, feels self-sufficient, denies Al-Husna → Allah makes their way difficult (92:8-10)'},
-  {id:'p4', text:'⚠️ Warning: "What will his wealth avail him when he falls into the pit?" (92:11)'},
-  {id:'p5', text:'📖 Guidance belongs to Allah — both this world and the next are His (92:12-13)'},
-  {id:'p6', text:'🔥 The conclusion: the Fire is for those who denied and turned away (92:14-16)'},
+const S5_FIB = [
+  {verse:'فَأَمَّا مَنْ أَعْطَىٰ وَ_____', opts:['اتَّقَىٰ','صَبَرَ','شَكَرَ','آمَنَ'], correct:0, ref:'92:5', translation:'As for he who gives and fears Allah'},
+  {verse:'وَصَدَّقَ بِ_____', opts:['الْحُسْنَىٰ','الْجَنَّةِ','الْآخِرَةِ','الرَّحْمَةِ'], correct:0, ref:'92:6', translation:'And believed in the best reward'},
+  {verse:'فَسَنُيَسِّرُهُ _____', opts:['لِلْيُسْرَىٰ','لِلْعُسْرَىٰ','لِلْجَنَّةِ','لِلْهُدَىٰ'], correct:0, ref:'92:7', translation:'We will ease him to the path of ease'},
+  {verse:'وَأَمَّا مَن _____ وَاسْتَغْنَىٰ', opts:['بَخِلَ','كَفَرَ','أَعْرَضَ','ظَلَمَ'], correct:0, ref:'92:8', translation:'But as for he who withheld and felt self-sufficient'},
+  {verse:'فَأَنذَرْتُكُمْ نَارًا _____', opts:['تَلَظَّىٰ','حَامِيَةً','مُسَعَّرَةً','مُؤْصَدَةً'], correct:0, ref:'92:14', translation:'So I have warned you of a blazing Fire'},
 ];
 
 // =============================================
@@ -198,7 +197,7 @@ const S4_EVENTS_CORRECT = [
 window.registerQuiz(2, S1_QUIZ);
 window.registerMatch(3, S2_ITEMS,S2_ZONES);
 window.registerQuiz(4, S3_QUIZ);
-window.registerOrder(5, S4_EVENTS_CORRECT);
+window.registerFillBlank(5, S5_FIB);
 
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 

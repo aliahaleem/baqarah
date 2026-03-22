@@ -119,7 +119,15 @@ function updateUI() {
 //  SECTION NAVIGATION
 // =============================================
 function openSection(n) {
-  const unlocked = n === 1 || (window.state && window.state.completed.includes(n - 1));
+  const cfg = window.SURAH_CONFIG;
+  const wbw = cfg ? cfg.wbwSection : 0;
+  var unlocked;
+  if (n === wbw) {
+    unlocked = true;
+  } else {
+    const prevMain = _prevMainSection(n, wbw);
+    unlocked = prevMain === 0 || (window.state && window.state.completed.includes(prevMain));
+  }
   if (!unlocked) return;
   document.getElementById('main-view').style.display    = 'none';
   document.getElementById('section-view').style.display = 'block';

@@ -15,14 +15,14 @@ window.state = {
   completed: [],
   s1Checked: false,
   s2Answers: {}, s2Checked: false,
-  s3Order:   [], s3Checked: false,
+  s3Answers: {}, s3Checked: false,
   s4Checked: false,
   s5Answers: {}, s5Checked: false,
-  s6Order:   [], s6Checked: false,
+  s6Checked: false,
   s7Checked: false,
   s8Answers: {}, s8Checked: false,
   s9Checked: false,
-  s10Order:  [], s10Checked: false,
+  s10Answers:{}, s10Checked: false,
   s11Checked: false,
   s12Answers:{}, s12Checked: false,
   s13Checked: false,
@@ -74,7 +74,7 @@ const S1_ZONES = [
   { id: 'z2', desc: 'Keeping the 5 daily prayers — your direct connection to Allah' },
   { id: 'z3', desc: 'Giving sadaqah & zakat — sharing your blessings with those in need' },
   { id: 'z4', desc: 'The final revelation sent to Prophet Muhammad ﷺ' },
-  { id: 'z5', desc: 'The Torah of Musa (AS), Injeel of Isa (AS), and all earlier divine books' },
+  { id: 'z5', desc: 'The Torah of Musa, Injeel of Isa, and all earlier divine books' },
   { id: 'z6', desc: 'Full certainty in Paradise, Hellfire, and the Day of Return to Allah' },
 ];
 
@@ -112,17 +112,14 @@ const S2_QUIZ = [
     correct: 1 },
 ];
 
-// S3: Story Order — Story of Adam (AS) (2:30-39)
-const S3_EVENTS_CORRECT = [
-  { id: 'e1', text: '🌍 Allah announces He will place a Khalifah on Earth' },
-  { id: 'e2', text: '👼 Allah teaches Adam the names of ALL things' },
-  { id: 'e3', text: '❓ The angels cannot name what Adam was taught' },
-  { id: 'e4', text: '🙏 ALL angels bow to Adam in honor — Iblis arrogantly refuses' },
-  { id: 'e5', text: '🍃 Adam and his wife live in Jannah — one tree is forbidden' },
-  { id: 'e6', text: '😈 Shaytan tricks them — they eat from the forbidden tree' },
-  { id: 'e7', text: '🤲 Adam makes sincere tawbah — Allah forgives — they descend to Earth' },
+// S3: Fill-in-the-Blank — Banu Israel's Favours (2:47-60)
+const S3_FIB = [
+  {verse:'يَا بَنِي إِسْرَائِيلَ اذْكُرُوا نِعْمَتِيَ الَّتِي أَنْعَمْتُ _____', opts:['عَلَيْكُمْ','لَكُمْ','فِيكُمْ','بَيْنَكُمْ'], correct:0, ref:'2:47', translation:'O Children of Israel, remember My favour which I bestowed upon you'},
+  {verse:'وَإِذْ نَجَّيْنَاكُم مِّنْ آلِ _____ يَسُومُونَكُمْ سُوءَ الْعَذَابِ', opts:['فِرْعَوْنَ','قَارُونَ','هَامَانَ','جَالُوتَ'], correct:0, ref:'2:49', translation:'And when We saved you from the people of Pharaoh, who afflicted you with terrible torment'},
+  {verse:'وَإِذْ فَرَقْنَا بِكُمُ _____ فَأَنجَيْنَاكُمْ', opts:['الْبَحْرَ','النَّهْرَ','الْأَرْضَ','الْجَبَلَ'], correct:0, ref:'2:50', translation:'And when We parted the sea for you and saved you'},
+  {verse:'ثُمَّ اتَّخَذْتُمُ الْعِجْلَ مِن بَعْدِهِ وَأَنتُمْ _____', opts:['ظَالِمُونَ','غَافِلُونَ','كَافِرُونَ','خَاسِرُونَ'], correct:0, ref:'2:51', translation:'Then you took the calf for worship after him, and you were wrongdoers'},
+  {verse:'وَإِذِ اسْتَسْقَىٰ مُوسَىٰ لِقَوْمِهِ فَقُلْنَا اضْرِب بِّعَصَاكَ _____', opts:['الْحَجَرَ','الْأَرْضَ','الْبَحْرَ','الْجَبَلَ'], correct:0, ref:'2:60', translation:'And when Musa asked for water for his people, We said: Strike the rock with your staff'},
 ];
-window._S3_EVENTS = S3_EVENTS_CORRECT;
 
 // S4: Drag & Drop — Miracles of Bani Isra'il (2:49-60)
 const S4_ITEMS = [
@@ -174,16 +171,21 @@ const S5_QUIZ = [
     correct: 1 },
 ];
 
-// S6: Story Order — The Hard Heart (2:75-103)
-const S6_EVENTS_CORRECT = [
-  { id: 'h1', text: "📜 Allah takes a covenant: Bani Isra'il must worship Him alone and be good to parents, orphans and the needy (2:83)" },
-  { id: 'h2', text: '📖 Some of them change and corrupt the words of their own scripture (2:75–79)' },
-  { id: 'h3', text: '🔄 Despite knowing the truth, most of them turn away and break their covenant (2:84)' },
-  { id: 'h4', text: '🔮 They follow magic and what Shaytan spread, abandoning the Book of Allah (2:102)' },
-  { id: 'h5', text: '💎 Their hearts become harder than stone — warnings no longer soften them (2:74)' },
-  { id: 'h6', text: '🌊 Allah points out: even stones have rivers flowing from them — but their hearts have nothing left (2:74)' },
+// S6: Verse-to-Theme — Ibrahim's Journey (2:124-141)
+const S6_THEME_ITEMS = [
+  {id:'t1', text:'وَإِذِ ابْتَلَىٰ إِبْرَاهِيمَ رَبُّهُ بِكَلِمَاتٍ فَأَتَمَّهُنَّ', zone:'z1'},
+  {id:'t2', text:'وَإِذْ يَرْفَعُ إِبْرَاهِيمُ الْقَوَاعِدَ مِنَ الْبَيْتِ وَإِسْمَاعِيلُ', zone:'z2'},
+  {id:'t3', text:'رَبَّنَا وَاجْعَلْنَا مُسْلِمَيْنِ لَكَ', zone:'z3'},
+  {id:'t4', text:'رَبَّنَا وَابْعَثْ فِيهِمْ رَسُولًا مِّنْهُمْ', zone:'z4'},
+  {id:'t5', text:'قُلْ بَلْ مِلَّةَ إِبْرَاهِيمَ حَنِيفًا', zone:'z5'},
 ];
-window._S6_EVENTS = S6_EVENTS_CORRECT;
+const S6_THEME_ZONES = [
+  {id:'z1', desc:'True Imamah (leadership) is earned through tested obedience — not inherited or claimed (2:124)'},
+  {id:'z2', desc:'The best deeds combine action with du\'a — they built the Ka\'ba and prayed simultaneously (2:127)'},
+  {id:'z3', desc:'Even a Prophet feared deviation — no one is safe without begging Allah for steadfastness (2:128)'},
+  {id:'z4', desc:'A parent\'s du\'a can shape generations — our Prophet ﷺ was Ibrahim\'s du\'a answered (2:129)'},
+  {id:'z5', desc:'True religion has no sect label — it is pure submission (hanifiyyah) to Allah alone (2:135)'},
+];
 
 // S7: Drag & Drop — Ibrahim & the Ka'ba (2:124-141)
 const S7_ITEMS = [
@@ -251,32 +253,29 @@ const S9_ZONES = [
   { id: 'z5', desc: '"PATIENCE (Sabr)" — Bearing poverty, hardship and battles with patience (2:177)' },
 ];
 
-// S10: Story Order — Talut, Jalut & Dawud (2:243-253)
-const S10_EVENTS_CORRECT = [
-  { id: 't1', text: "🏰 Bani Isra'il ask their Prophet for a king to lead them in battle (2:246)" },
-  { id: 't2', text: '👑 Allah appoints Talut (Saul) as king — the people object: "He\'s not wealthy enough!" (2:247)' },
-  { id: 't3', text: '🌊 Talut tests the army at a river: "Do not drink — except one small handful" (2:249)' },
-  { id: 't4', text: '🏃 Most of the army drinks and leaves; only a small faithful group remains (2:249)' },
-  { id: 't5', text: "⚔️ The small army faces the massive army of Jalut (Goliath) and make du'a to Allah (2:250)" },
-  { id: 't6', text: '🗿 Young Dawud kills Jalut with a sling and stone — the great army is defeated (2:251)' },
-  { id: 't7', text: '🌟 Allah gives Dawud kingship and wisdom and teaches him what He wills (2:251)' },
+// S10: Fill-in-the-Blank — Messengers, Light & Ibrahim's Proof (2:253-260)
+const S10_FIB = [
+  {verse:'تِلْكَ الرُّسُلُ فَضَّلْنَا بَعْضَهُمْ عَلَىٰ _____', opts:['بَعْضٍ','النَّاسِ','الْأَنبِيَاءِ','الْخَلْقِ'], correct:0, ref:'2:253', translation:'Those messengers — We favoured some of them over others'},
+  {verse:'لَا إِكْرَاهَ فِي _____', opts:['الدِّينِ','الْإِسْلَامِ','الْعِبَادَةِ','الْحَيَاةِ'], correct:0, ref:'2:256', translation:'There is no compulsion in religion'},
+  {verse:'اللَّهُ وَلِيُّ الَّذِينَ آمَنُوا يُخْرِجُهُم مِّنَ الظُّلُمَاتِ إِلَى _____', opts:['النُّورِ','الْهُدَىٰ','الْجَنَّةِ','الْإِيمَانِ'], correct:0, ref:'2:257', translation:'Allah is the Protector of those who believe — He brings them out of darkness into light'},
+  {verse:'أَلَمْ تَرَ إِلَى الَّذِي حَاجَّ إِبْرَاهِيمَ فِي رَبِّهِ أَنْ آتَاهُ اللَّهُ _____', opts:['الْمُلْكَ','الْعِلْمَ','الْمَالَ','الْقُوَّةَ'], correct:0, ref:'2:258', translation:'Have you not seen the one who argued with Ibrahim about his Lord because Allah had given him kingship?'},
+  {verse:'فَخُذْ أَرْبَعَةً مِّنَ _____ فَصُرْهُنَّ إِلَيْكَ', opts:['الطَّيْرِ','الْأَنْعَامِ','الْحَيَوَانِ','الْخَيْلِ'], correct:0, ref:'2:260', translation:'Take four birds and draw them to you — then put a part on each mountain'},
 ];
-window._S10_EVENTS = S10_EVENTS_CORRECT;
 
 // S11: Drag & Drop — Ayat al-Kursi (2:255)
 const S11_ITEMS = [
-  { id: 'ac1', text: '"No deity\nexcept Him"',                  zone: 'z1' },
-  { id: 'ac2', text: '"Ever-Living,\nSustainer of All"',        zone: 'z2' },
-  { id: 'ac3', text: '"Neither sleep\nnor drowsiness"',         zone: 'z3' },
-  { id: 'ac4', text: '"Throne extends\nover heavens & earth"',  zone: 'z4' },
-  { id: 'ac5', text: '"None grasp\nany of His knowledge"',      zone: 'z5' },
+  { id: 'ac1', text: 'اللَّهُ لَا إِلَٰهَ\nإِلَّا هُوَ',                     zone: 'z1' },
+  { id: 'ac2', text: 'الْحَيُّ الْقَيُّومُ',                                   zone: 'z2' },
+  { id: 'ac3', text: 'لَا تَأْخُذُهُ سِنَةٌ\nوَلَا نَوْمٌ',                   zone: 'z3' },
+  { id: 'ac4', text: 'وَسِعَ كُرْسِيُّهُ\nالسَّمَاوَاتِ وَالْأَرْضَ',          zone: 'z4' },
+  { id: 'ac5', text: 'وَلَا يُحِيطُونَ بِشَيْءٍ\nمِّنْ عِلْمِهِ',              zone: 'z5' },
 ];
 const S11_ZONES = [
-  { id: 'z1', desc: '🔤 اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ — Allahu la ilaha illa huwa' },
-  { id: 'z2', desc: '🔤 الْحَيُّ الْقَيُّومُ — Al-Hayyu Al-Qayyum' },
-  { id: 'z3', desc: '🔤 لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ — La ta\'khudhuhu sinatun wa la nawm' },
-  { id: 'z4', desc: '🔤 وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ — Wasi\'a kursiyyuhu as-samawati wal-ard' },
-  { id: 'z5', desc: '🔤 وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ — Wala yuhituna bi shay\'in min ilmihi' },
+  { id: 'z1', desc: 'Allah — there is no deity except Him (2:255)' },
+  { id: 'z2', desc: 'The Ever-Living, the Sustainer of all existence (2:255)' },
+  { id: 'z3', desc: 'Neither drowsiness overtakes Him nor sleep (2:255)' },
+  { id: 'z4', desc: 'His Throne extends over the heavens and the earth (2:255)' },
+  { id: 'z5', desc: 'They encompass nothing of His knowledge except what He wills (2:255)' },
 ];
 
 // S12: Quiz — The Charity Garden (2:261-274)
@@ -312,18 +311,18 @@ const S12_QUIZ = [
 
 // S13: Drag & Drop — The Final Treasure (2:284-286)
 const S13_ITEMS = [
-  { id: 'd1', text: '"No difference\nbetween Prophets"',          zone: 'z1' },
-  { id: 'd2', text: "\"Allah doesn't\nburden beyond\ncapacity\"", zone: 'z2' },
-  { id: 'd3', text: '"Don\'t hold us\naccountable\nfor mistakes"',zone: 'z3' },
-  { id: 'd4', text: '"Don\'t burden\nus like those\nbefore us"',  zone: 'z4' },
-  { id: 'd5', text: '"Grant us\nvictory over\ndisbelievers"',      zone: 'z5' },
+  { id: 'd1', text: 'لَا نُفَرِّقُ بَيْنَ أَحَدٍ\nمِّن رُّسُلِهِ',               zone: 'z1' },
+  { id: 'd2', text: 'لَا يُكَلِّفُ اللَّهُ نَفْسًا\nإِلَّا وُسْعَهَا',            zone: 'z2' },
+  { id: 'd3', text: 'رَبَّنَا لَا تُؤَاخِذْنَا\nإِن نَّسِينَا أَوْ أَخْطَأْنَا', zone: 'z3' },
+  { id: 'd4', text: 'رَبَّنَا وَلَا تَحْمِلْ\nعَلَيْنَا إِصْرًا',               zone: 'z4' },
+  { id: 'd5', text: 'وَانصُرْنَا عَلَى\nالْقَوْمِ الْكَافِرِينَ',               zone: 'z5' },
 ];
 const S13_ZONES = [
-  { id: 'z1', desc: '🕊️ We believe in ALL the Prophets equally — Musa, Isa, Ibrahim, Muhammad ﷺ (2:285)' },
-  { id: 'z2', desc: "💛 Allah's ultimate mercy: He never asks more than you can do (2:286)" },
-  { id: 'z3', desc: '🙏 Asking forgiveness for honest mistakes and forgetfulness (2:286)' },
-  { id: 'z4', desc: '🌿 Asking Allah not to place on us the heavy burdens given to those before (2:286)' },
-  { id: 'z5', desc: "⚔️ The final plea of the Surah — asking Allah's help for the believers (2:286)" },
+  { id: 'z1', desc: 'We believe in ALL the Prophets equally — Musa, Isa, Ibrahim, Muhammad ﷺ (2:285)' },
+  { id: 'z2', desc: "Allah's ultimate mercy: He never asks more than you can do (2:286)" },
+  { id: 'z3', desc: 'Asking forgiveness for honest mistakes and forgetfulness (2:286)' },
+  { id: 'z4', desc: 'Asking Allah not to place on us the heavy burdens given to those before (2:286)' },
+  { id: 'z5', desc: "The final plea of the Surah — asking Allah's help for the believers (2:286)" },
 ];
 
 // =============================================
@@ -335,8 +334,7 @@ function checkSection1()       { checkDragDrop(1, S1_ZONES); }
 function renderSection2Game()  { renderQuiz(2, S2_QUIZ); }
 function checkSection2()       { checkQuiz(2, S2_QUIZ); }
 
-function renderSection3Game()  { renderStoryOrder(3, S3_EVENTS_CORRECT); }
-function checkSection3()       { checkStoryOrder(3, S3_EVENTS_CORRECT); }
+window.registerFillBlank(3, S3_FIB);
 
 function renderSection4Game()  { renderDragDrop(4, S4_ITEMS, S4_ZONES); }
 function checkSection4()       { checkDragDrop(4, S4_ZONES); }
@@ -344,8 +342,7 @@ function checkSection4()       { checkDragDrop(4, S4_ZONES); }
 function renderSection5Game()  { renderQuiz(5, S5_QUIZ); }
 function checkSection5()       { checkQuiz(5, S5_QUIZ); }
 
-function renderSection6Game()  { renderStoryOrder(6, S6_EVENTS_CORRECT); }
-function checkSection6()       { checkStoryOrder(6, S6_EVENTS_CORRECT); }
+window.registerMatch(6, S6_THEME_ITEMS, S6_THEME_ZONES);
 
 function renderSection7Game()  { renderDragDrop(7, S7_ITEMS, S7_ZONES); }
 function checkSection7()       { checkDragDrop(7, S7_ZONES); }
@@ -356,8 +353,7 @@ function checkSection8()       { checkQuiz(8, S8_QUIZ); }
 function renderSection9Game()  { renderDragDrop(9, S9_ITEMS, S9_ZONES); }
 function checkSection9()       { checkDragDrop(9, S9_ZONES); }
 
-function renderSection10Game() { renderStoryOrder(10, S10_EVENTS_CORRECT); }
-function checkSection10()      { checkStoryOrder(10, S10_EVENTS_CORRECT); }
+window.registerFillBlank(10, S10_FIB);
 
 function renderSection11Game() { renderDragDrop(11, S11_ITEMS, S11_ZONES); }
 function checkSection11()      { checkDragDrop(11, S11_ZONES); }

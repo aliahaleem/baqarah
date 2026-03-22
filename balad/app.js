@@ -211,14 +211,13 @@ const S4_ZONES = [
   {id:'z4', desc:'"Tawassaw bil-marhama" — urging each other to show mercy (90:17)'},
 ];
 
-/* Level 5: Story Order — Two Types of People (90:17-20) */
-const S5_EVENTS_CORRECT = [
-  {id:'p1', text:'🏔️ Allah describes the difficult righteous path as "al-aqabah" — the steep climb (90:11)'},
-  {id:'p2', text:'✅ Those who attempted the aqabah: believed, gave in charity, urged patience and mercy (90:17)'},
-  {id:'p3', text:'🌟 They become "Ashaab al-Maymana" — Companions of the Right Hand (Jannah) (90:18)'},
-  {id:'p4', text:'❌ But those who rejected Our signs — they are "Ashaab al-Mash\'ama" — Companions of the Left (90:19)'},
-  {id:'p5', text:'🔥 Over them fire is closing in — they are sealed within it (90:20)'},
-  {id:'p6', text:'⚖️ The conclusion: every person chooses their path — aqabah or easy road — then lives with the consequence'},
+/* Level 5: Complete the Verse — Two Types of People (90:17-20) */
+const S6_FIB = [
+  {verse:'فَلَا اقْتَحَمَ _____', opts:['الْعَقَبَةَ','الصِّرَاطَ','الْجَبَلَ','الطَّرِيقَ'], correct:0, ref:'90:11', translation:'But he has not attempted the steep path'},
+  {verse:'فَكُّ _____', opts:['رَقَبَةٍ','أَسِيرٍ','عَبْدٍ','سَجِينٍ'], correct:0, ref:'90:13', translation:'Freeing a slave'},
+  {verse:'أَوْ إِطْعَامٌ فِي يَوْمٍ ذِي _____', opts:['مَسْغَبَةٍ','مَجَاعَةٍ','شِدَّةٍ','فَاقَةٍ'], correct:0, ref:'90:14', translation:'Or feeding on a day of severe hunger'},
+  {verse:'وَتَوَاصَوْا بِالصَّبْرِ وَتَوَاصَوْا بِ_____', opts:['الْمَرْحَمَةِ','الْعَدَالَةِ','الصِّدْقِ','الْأَمَانَةِ'], correct:0, ref:'90:17', translation:'And urged each other to patience and urged each other to mercy'},
+  {verse:'عَلَيْهِمْ نَارٌ _____', opts:['مُّؤْصَدَةٌ','مُسَعَّرَةٌ','مُشْتَعِلَةٌ','حَامِيَةٌ'], correct:0, ref:'90:20', translation:'Upon them is a fire closed over them'},
 ];
 
 /* Level 6: Quiz — Companions of Right and Left (90:17-20) */
@@ -244,7 +243,7 @@ window.registerQuiz(2, S1_QUIZ);
 window.registerMatch(3, S2_ITEMS,S2_ZONES);
 window.registerQuiz(4, S3_QUIZ);
 window.registerMatch(5, S4_ITEMS,S4_ZONES);
-window.registerOrder(6, S5_EVENTS_CORRECT);
+window.registerFillBlank(6, S6_FIB);
 window.registerQuiz(7, S6_QUIZ);
 
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}

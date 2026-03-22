@@ -12,12 +12,12 @@ window.state = {
   s1Answers: {}, s1Checked: false,
   s2Checked: false, s2DdChecked: false,
   s2Answers: {}, s2QuizChecked: false,
-  s3Order:   [], s3Checked: false,
+  s3Answers: {}, s3Checked: false,
   s4Checked: false,
   s5Answers: {}, s5Checked: false,
   s6Answers: {}, s6Checked: false,
   s7Checked: false,
-  s8Order:   [], s8Checked: false,
+  s8Checked: false,
 };
 
 const REWARDS = {
@@ -82,16 +82,16 @@ const S1_QUIZ = [
 
 // Section 2 has a unique combined drag-drop + bonus quiz
 const S2_ITEMS = [
-  { id: 'sa1', text: "🌟 \"Support Allah\nin His cause\"",          zone: 'z1' },
-  { id: 'sa2', text: '❌ "Disbelieve\nand block the way"',          zone: 'z2' },
-  { id: 'sa3', text: '🚫 "Follow your\ndesires over guidance"',    zone: 'z3' },
-  { id: 'sa4', text: "🏆 \"Killed in\nAllah's cause\"",             zone: 'z4' },
+  { id: 'sa1', text: 'إِن تَنصُرُوا اللَّهَ\nيَنصُرْكُمْ',                           zone: 'z1' },
+  { id: 'sa2', text: 'وَالَّذِينَ كَفَرُوا\nفَتَعْسًا لَّهُمْ',                        zone: 'z2' },
+  { id: 'sa3', text: 'زُيِّنَ لَهُ سُوءُ عَمَلِهِ\nوَاتَّبَعُوا أَهْوَاءَهُمْ',        zone: 'z3' },
+  { id: 'sa4', text: 'وَالَّذِينَ قُتِلُوا\nفِي سَبِيلِ اللَّهِ',                      zone: 'z4' },
 ];
 const S2_ZONES = [
-  { id: 'z1', desc: '"He will support YOU and make your feet firm." The ground shakes but the believer stands. (47:7)' },
-  { id: 'z2', desc: '"Destruction for them — He made their deeds worthless." Their toil counts for nothing. (47:8)' },
-  { id: 'z3', desc: '"He let them go in their own wrongdoing — and blinded them." Desires lead to blindness. (47:14-17)' },
-  { id: 'z4', desc: '"He will not waste their deeds — He guides them and improves their state." Honoured. (47:4-5)' },
+  { id: 'z1', desc: 'He will support you and make your feet firm — the believer stands firm (47:7)' },
+  { id: 'z2', desc: 'Destruction for them — He made their deeds worthless, their toil counts for nothing (47:8)' },
+  { id: 'z3', desc: 'He let them go in their own wrongdoing and blinded them — desires lead to blindness (47:14-17)' },
+  { id: 'z4', desc: 'He will not waste their deeds — He guides them and improves their state (47:4-5)' },
 ];
 const S2_BONUS_QUIZ = [
   { q: 'What is the great promise of 47:7?',
@@ -108,27 +108,26 @@ const S2_BONUS_QUIZ = [
     correct: 1 },
 ];
 
-const S3_EVENTS_CORRECT = [
-  { id: 'h1', text: '⚡ Earlier nations were STRONGER than today — they left far greater marks on the earth (47:10)' },
-  { id: 'h2', text: '📜 Their messengers came to them with clear proofs and signs (47:13)' },
-  { id: 'h3', text: '😤 They rejected the messengers out of arrogance, pride, and denial' },
-  { id: 'h4', text: '🌍 Allah asks: "Have they not traveled the earth to see what happened before them?" (47:10)' },
-  { id: 'h5', text: '⚡ Allah destroyed them — not a single helper came to their rescue (47:11)' },
-  { id: 'h6', text: '📖 The lesson: those who disbelieve today are on the same path — their end will come too' },
+// S3: Fill-in-the-Blank — Battlefield & Forgiveness (47:3-10)
+const S3_FIB = [
+  {verse:'فَإِذَا لَقِيتُمُ الَّذِينَ كَفَرُوا فَضَرْبَ _____', opts:['الرِّقَابِ','الْأَعْدَاءِ','السُّيُوفِ','الْجُنُودِ'], correct:0, ref:'47:4', translation:'So when you meet those who disbelieve, strike their necks'},
+  {verse:'وَالَّذِينَ قُتِلُوا فِي سَبِيلِ اللَّهِ فَلَن يُضِلَّ _____', opts:['أَعْمَالَهُمْ','أَرْوَاحَهُمْ','ذُنُوبَهُمْ','أَهْلَهُمْ'], correct:0, ref:'47:4', translation:'And those killed in the cause of Allah — He will never render their deeds worthless'},
+  {verse:'ذَٰلِكَ بِأَنَّ الَّذِينَ كَفَرُوا اتَّبَعُوا _____', opts:['الْبَاطِلَ','الشَّيْطَانَ','الْهَوَىٰ','الظُّلْمَ'], correct:0, ref:'47:3', translation:'That is because those who disbelieve follow falsehood'},
+  {verse:'سَيَهْدِيهِمْ وَيُصْلِحُ _____', opts:['بَالَهُمْ','حَالَهُمْ','قَلْبَهُمْ','أَمْرَهُمْ'], correct:0, ref:'47:5', translation:'He will guide them and improve their condition'},
+  {verse:'أَفَلَمْ يَسِيرُوا فِي الْأَرْضِ فَيَنظُرُوا كَيْفَ كَانَ عَاقِبَةُ الَّذِينَ مِن _____', opts:['قَبْلِهِمْ','حَوْلِهِمْ','بَعْدِهِمْ','فَوْقِهِمْ'], correct:0, ref:'47:10', translation:'Have they not traveled through the earth to see the fate of those before them?'},
 ];
-window._S3_EVENTS = S3_EVENTS_CORRECT;
 
 const S4_ITEMS = [
-  { id: 'r1', text: '💧 Water that\nnever goes stale',    zone: 'z1' },
-  { id: 'r2', text: '🥛 Milk whose\ntaste never changes', zone: 'z2' },
-  { id: 'r3', text: '🍯 Purified honey\n— always pure',   zone: 'z3' },
-  { id: 'r4', text: '🍷 A drink of\npure delight',        zone: 'z4' },
+  { id: 'r1', text: 'أَنْهَارٌ مِّن مَّاءٍ\nغَيْرِ آسِنٍ',                zone: 'z1' },
+  { id: 'r2', text: 'أَنْهَارٌ مِّن لَّبَنٍ\nلَّمْ يَتَغَيَّرْ طَعْمُهُ', zone: 'z2' },
+  { id: 'r3', text: 'أَنْهَارٌ مِّنْ عَسَلٍ\nمُّصَفًّى',                  zone: 'z3' },
+  { id: 'r4', text: 'أَنْهَارٌ مِّنْ خَمْرٍ\nلَّذَّةٍ لِّلشَّارِبِينَ',   zone: 'z4' },
 ];
 const S4_ZONES = [
-  { id: 'z1', desc: '"Rivers of water that never changes in taste" (47:15)' },
-  { id: 'z2', desc: '"Rivers of milk whose taste never changes" (47:15)' },
-  { id: 'z3', desc: '"Rivers of purified honey" (47:15)' },
-  { id: 'z4', desc: '"Rivers of a drink that is a delight to those who drink" (47:15)' },
+  { id: 'z1', desc: 'Rivers of water that never changes in taste (47:15)' },
+  { id: 'z2', desc: 'Rivers of milk whose taste never changes (47:15)' },
+  { id: 'z3', desc: 'Rivers of purified honey (47:15)' },
+  { id: 'z4', desc: 'Rivers of a drink that is a delight to those who drink (47:15)' },
 ];
 
 const S5_QUIZ = [
@@ -198,27 +197,33 @@ const S6_QUIZ = [
 ];
 
 const S7_ITEMS = [
-  { id: 'd1', text: '🎮 Life of\nthis world',               zone: 'z1' },
-  { id: 'd2', text: '🌱 Believe AND\nhave taqwa',           zone: 'z2' },
-  { id: 'd3', text: '💰 Asked to give\nALL your wealth',    zone: 'z3' },
-  { id: 'd4', text: "🤲 Give for\nAllah's sake",            zone: 'z4' },
+  { id: 'd1', text: 'إِنَّمَا الْحَيَاةُ الدُّنْيَا\nلَعِبٌ وَلَهْوٌ',              zone: 'z1' },
+  { id: 'd2', text: 'وَإِن تُؤْمِنُوا وَتَتَّقُوا\nيُؤْتِكُمْ أُجُورَكُمْ',        zone: 'z2' },
+  { id: 'd3', text: 'إِن يَسْأَلْكُمُوهَا\nفَيُحْفِكُمْ تَبْخَلُوا',               zone: 'z3' },
+  { id: 'd4', text: 'تُدْعَوْنَ لِتُنفِقُوا\nفِي سَبِيلِ اللَّهِ',                  zone: 'z4' },
 ];
 const S7_ZONES = [
-  { id: 'z1', desc: '"Only play and amusement" — brief like a game. (47:36)' },
-  { id: 'z2', desc: '"He gives you your full rewards and does not ask you for your wealth." (47:36)' },
-  { id: 'z3', desc: '"You would be stingy — and it would expose the miserliness in your heart." (47:37)' },
-  { id: 'z4', desc: '"Whoever withholds only withholds against himself — Allah is the Rich, you are the poor." (47:38)' },
+  { id: 'z1', desc: 'Only play and amusement — brief like a game (47:36)' },
+  { id: 'z2', desc: 'He gives you your full rewards and does not ask you for your wealth (47:36)' },
+  { id: 'z3', desc: 'You would be stingy and it would expose the miserliness in your heart (47:37)' },
+  { id: 'z4', desc: 'Whoever withholds only withholds against himself — Allah is the Rich, you are the poor (47:38)' },
 ];
 
-const S8_EVENTS_CORRECT = [
-  { id: 'sp1', text: "📢 Allah addresses the believers: \"You are those invited to spend in the cause of Allah\" (47:38)" },
-  { id: 'sp2', text: '💛 Some among them give generously — their deeds are written and reward is certain' },
-  { id: 'sp3', text: '😰 Others hesitate — their hearts are pulled back by attachment to the dunya' },
-  { id: 'sp4', text: '💡 Allah reveals the truth: "Whoever withholds is only stingy against himself"' },
-  { id: 'sp5', text: '👑 The reality: "Allah is Al-Ghani (the Rich) — and YOU are the poor ones who need Him" (47:38)' },
-  { id: 'sp6', text: '⚠️ The warning: "If you turn away, He will replace you with another people" (47:38)' },
+// S8: Verse-to-Theme — Final Warnings (47:22-38)
+const S8_THEME_ITEMS = [
+  {id:'t1', text:'أَفَلَا يَتَدَبَّرُونَ الْقُرْآنَ أَمْ عَلَىٰ قُلُوبٍ أَقْفَالُهَا', zone:'z1'},
+  {id:'t2', text:'فَهَلْ عَسَيْتُمْ إِن تَوَلَّيْتُمْ أَن تُفْسِدُوا فِي الْأَرْضِ', zone:'z2'},
+  {id:'t3', text:'إِنَّ الَّذِينَ ارْتَدُّوا عَلَىٰ أَدْبَارِهِم مِّن بَعْدِ مَا تَبَيَّنَ لَهُمُ الْهُدَى', zone:'z3'},
+  {id:'t4', text:'وَلَنَبْلُوَنَّكُمْ حَتَّىٰ نَعْلَمَ الْمُجَاهِدِينَ مِنكُمْ وَالصَّابِرِينَ', zone:'z4'},
+  {id:'t5', text:'هَا أَنتُمْ هَٰؤُلَاءِ تُدْعَوْنَ لِتُنفِقُوا فِي سَبِيلِ اللَّهِ فَمِنكُم مَّن يَبْخَلُ', zone:'z5'},
 ];
-window._S8_EVENTS = S8_EVENTS_CORRECT;
+const S8_THEME_ZONES = [
+  {id:'z1', desc:'The Quran demands deep tadabbur — ignoring it places invisible locks on the heart (47:24)'},
+  {id:'z2', desc:'Turning away from guidance leads to corruption — the first casualty is family ties (47:22)'},
+  {id:'z3', desc:'Knowing the truth yet still choosing otherwise is the deepest spiritual danger (47:25)'},
+  {id:'z4', desc:'Tests reveal who you truly are — patience and striving are the only proof of faith (47:31)'},
+  {id:'z5', desc:'How you spend reveals your heart — stinginess toward Allah is stinginess against yourself (47:38)'},
+];
 
 // =============================================
 //  SECTION WRAPPERS
@@ -306,8 +311,7 @@ function _renderS2BonusQuiz() {
   });
   if (window.state.s2Checked) document.getElementById('complete-2-btn').style.display = 'inline-block';
 }
-function renderSection3Game() { renderStoryOrder(3, S3_EVENTS_CORRECT); }
-function checkSection3()      { checkStoryOrder(3, S3_EVENTS_CORRECT); }
+window.registerFillBlank(3, S3_FIB);
 function renderSection4Game() { renderDragDrop(4, S4_ITEMS, S4_ZONES); }
 function checkSection4()      { checkDragDrop(4, S4_ZONES); }
 function renderSection5Game() { renderQuiz(5, S5_QUIZ); }
@@ -316,8 +320,7 @@ function renderSection6Game() { renderQuiz(6, S6_QUIZ); }
 function checkSection6()      { checkQuiz(6, S6_QUIZ); }
 function renderSection7Game() { renderDragDrop(7, S7_ITEMS, S7_ZONES); }
 function checkSection7()      { checkDragDrop(7, S7_ZONES); }
-function renderSection8Game() { renderStoryOrder(8, S8_EVENTS_CORRECT); }
-function checkSection8()      { checkStoryOrder(8, S8_EVENTS_CORRECT); }
+window.registerMatch(8, S8_THEME_ITEMS, S8_THEME_ZONES);
 
 // =============================================
 //  BATTLE BANNER WORLD BUILDER (surah-specific)

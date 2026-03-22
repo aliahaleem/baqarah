@@ -6,7 +6,7 @@ window.state = {
   s1Checked:false,
   s2Answers:{}, s2Checked:false,
   s3Checked:false,
-  s4Order:[], s4Checked:false,
+  s4Answers:{}, s4Checked:false,
   s5Checked:false,
 };
 
@@ -45,15 +45,15 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'h1', text:'😱 Anxious when\nevil touches him', zone:'z1'},
-  {id:'h2', text:'🤑 Withholds when\ngood comes to him', zone:'z2'},
-  {id:'h3', text:'🙏 Except those\nwho pray regularly', zone:'z3'},
-  {id:'h4', text:'💰 Except those\nwho give a right\nin their wealth',  zone:'z4'},
+  {id:'h1', text:'إِذَا مَسَّهُ الشَّرُّ\nجَزُوعًا',       zone:'z1'},
+  {id:'h2', text:'وَإِذَا مَسَّهُ الْخَيْرُ\nمَنُوعًا',    zone:'z2'},
+  {id:'h3', text:'إِلَّا الْمُصَلِّينَ',                     zone:'z3'},
+  {id:'h4', text:'فِي أَمْوَالِهِمْ\nحَقٌّ مَّعْلُومٌ',     zone:'z4'},
 ];
 const S2_ZONES = [
-  {id:'z1', desc:'"Idha massahu al-sharru jazu\'a" — when evil touches him, he panics and despairs (70:20)'},
-  {id:'z2', desc:'"Wa idha massahu al-khairu manu\'a" — when good touches him, he is miserly and stingy (70:21)'},
-  {id:'z3', desc:'Those who establish prayer are EXEMPT from halu\' — "illa al-musalleen" (70:22-23)'},
+  {id:'z1', desc:'When evil touches him, he is full of grief and panic (70:20)'},
+  {id:'z2', desc:'When good touches him, he is miserly and withholding (70:21)'},
+  {id:'z3', desc:'Except those who establish prayer — they are constant in their worship (70:22-23)'},
   {id:'z4', desc:'Those in whose wealth there is a known right for the asker and the deprived (70:24-25)'},
 ];
 
@@ -72,15 +72,13 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-const S4_EVENTS_CORRECT = [
-  {id:'m1', text:'🪜 Allah owns the ascending stairways — He raises angels and the Spirit (70:3-4)'},
-  {id:'m2', text:'😰 Man is created anxious by nature — panics at hardship, withholds in ease (70:19-21)'},
-  {id:'m3', text:'🙏 Except the believers who pray, give zakah, and guard their trusts (70:22-35)'},
-  {id:'m4', text:'🏃 On the Day, the wicked wishes to ransom himself with his family (70:11-14)'},
-  {id:'m5', text:'🔥 The disbeliever who denied — hellfire awaits, and no escape (70:15-18)'},
-  {id:'m6', text:'✨ The believers are honoured in gardens of paradise (70:35-38)'},
+const S4_FIB = [
+  {verse:'فِي يَوْمٍ كَانَ مِقْدَارُهُ _____ أَلْفَ سَنَةٍ', opts:['خَمْسِينَ','ثَلَاثِينَ','أَرْبَعِينَ','عِشْرِينَ'], correct:0, ref:'70:4', translation:'In a Day the extent of which is fifty thousand years'},
+  {verse:'فَاصْبِرْ صَبْرًا _____', opts:['جَمِيلًا','عَظِيمًا','طَوِيلًا','كَثِيرًا'], correct:0, ref:'70:5', translation:'So be patient with a beautiful patience'},
+  {verse:'إِنَّ الْإِنسَانَ خُلِقَ _____', opts:['هَلُوعًا','ضَعِيفًا','عَجُولًا','ظَلُومًا'], correct:0, ref:'70:19', translation:'Indeed, mankind was created anxious'},
+  {verse:'إِلَّا _____', opts:['الْمُصَلِّينَ','الصَّابِرِينَ','الْمُؤْمِنِينَ','الذَّاكِرِينَ'], correct:0, ref:'70:22', translation:'Except those who establish prayer'},
+  {verse:'أُولَٰئِكَ فِي جَنَّاتٍ _____', opts:['مُّكْرَمُونَ','خَالِدُونَ','فَرِحُونَ','رَاضُونَ'], correct:0, ref:'70:35', translation:'Those will be in gardens, honoured'},
 ];
-window._S4_EVENTS = S4_EVENTS_CORRECT;
 
 function renderSection1Game(){renderQuiz(1,S1_QUIZ);}
 function checkSection1(){checkQuiz(1,S1_QUIZ);}
@@ -88,8 +86,8 @@ function renderSection2Game(){renderDragDrop(2,S2_ITEMS,S2_ZONES);}
 function checkSection2(){checkDragDrop(2,S2_ZONES);}
 function renderSection3Game(){renderQuiz(3,S3_QUIZ);}
 function checkSection3(){checkQuiz(3,S3_QUIZ);}
-function renderSection4Game(){renderStoryOrder(4,S4_EVENTS_CORRECT);}
-function checkSection4(){checkStoryOrder(4,S4_EVENTS_CORRECT);}
+function renderSection4Game(){renderFillBlank(4,S4_FIB);}
+function checkSection4(){checkFillBlank(4,S4_FIB);}
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
 window._drawBuildCanvas = function(n) {

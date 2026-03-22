@@ -234,13 +234,13 @@ const S2_QUIZ=[
    correct:0},
 ];
 
-// S3 — Story Order: The 4 events of 81:10-14
-const S3_EVENTS_CORRECT=[
-  {id:'e1',text:'📜 The records (suhuf) are unrolled and laid open — every deed visible (81:10)'},
-  {id:'e2',text:'🌌 The sky is stripped away (kushitat) — the heavens removed (81:11)'},
-  {id:'e3',text:'🔥 Hell (al-Jahim) is set ablaze (su\'\'irat) and blazing (81:12)'},
-  {id:'e4',text:'🌿 Paradise (al-Jannah) is brought near (uzlifat) — close enough to see (81:13)'},
-  {id:'e5',text:'💡 Then a soul will KNOW (alimat nafsun) what it has brought forward (81:14)'},
+// S3 — Complete the Verse: The 4 events of 81:10-14
+const S4_FIB=[
+  {verse:'وَإِذَا الصُّحُفُ _____', opts:['نُشِرَتْ','حُشِرَتْ','طُوِيَتْ','أُخْفِيَتْ'], correct:0, ref:'81:10', translation:'And when the records are laid open'},
+  {verse:'وَإِذَا السَّمَاءُ _____', opts:['كُشِطَتْ','فُتِحَتْ','انشَقَّتْ','سُجِّرَتْ'], correct:0, ref:'81:11', translation:'And when the sky is stripped away'},
+  {verse:'وَإِذَا الْجَحِيمُ _____', opts:['سُعِّرَتْ','أُطْفِئَتْ','فُتِحَتْ','أُغْلِقَتْ'], correct:0, ref:'81:12', translation:'And when the Hellfire is set ablaze'},
+  {verse:'وَإِذَا الْجَنَّةُ _____', opts:['أُزْلِفَتْ','أُغْلِقَتْ','فُتِحَتْ','بُعِّدَتْ'], correct:0, ref:'81:13', translation:'And when Paradise is brought near'},
+  {verse:'عَلِمَتْ نَفْسٌ مَّا _____', opts:['أَحْضَرَتْ','أَخْفَتْ','كَسَبَتْ','قَدَّمَتْ'], correct:0, ref:'81:14', translation:'A soul will know what it has brought forward'},
 ];
 
 // S4 — Quiz: The Noble Angel
@@ -332,7 +332,7 @@ const S6_QUIZ=[
 // =============================================
 window.registerMatch(2, S1_ITEMS,S1_ZONES);
 window.registerQuiz(3, S2_QUIZ);
-window.registerOrder(4, S3_EVENTS_CORRECT);
+window.registerFillBlank(4, S4_FIB);
 window.registerQuiz(5, S4_QUIZ);
 window.registerQuiz(6, S5_QUIZ);
 window.registerQuiz(7, S6_QUIZ);

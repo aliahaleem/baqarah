@@ -161,14 +161,13 @@ const S3_QUIZ = [
    correct:1},
 ];
 
-/* Level 4 — Story Order: The Thamud Story (91:11-15) */
-const S4_EVENTS_CORRECT = [
-  {id:'t1', text:'🏔️ Thamud: a powerful ancient people who lived in rock-carved cities (91:11)'},
-  {id:'t2', text:'🐪 Allah sent Salih (AS) with a miraculous she-camel as a clear sign (91:13)'},
-  {id:'t3', text:'⚠️ Allah warned Thamud: "The she-camel of Allah — let her graze freely!" (91:13)'},
-  {id:'t4', text:'🔪 The worst of them rose up and hamstrung (killed) the camel in defiance (91:12,14)'},
-  {id:'t5', text:'⚡ Allah destroyed them with a swift and crushing punishment (91:14)'},
-  {id:'t6', text:'😔 Allah has no fear of the consequence — arrogance against Him always ends in ruin (91:15)'},
+/* Level 4 — Complete the Verse: The Thamud Story (91:11-15) */
+const S5_FIB = [
+  {verse:'كَذَّبَتْ ثَمُودُ بِ_____', opts:['طَغْوَاهَا','كُفْرِهَا','ظُلْمِهَا','جَهْلِهَا'], correct:0, ref:'91:11', translation:'Thamud denied because of their transgression'},
+  {verse:'إِذِ انبَعَثَ _____', opts:['أَشْقَاهَا','أَكْبَرُهَا','أَقْوَاهَا','أَوَّلُهَا'], correct:0, ref:'91:12', translation:'When the most wretched of them rose up'},
+  {verse:'فَقَالَ لَهُمْ رَسُولُ اللَّهِ _____ اللَّهِ وَسُقْيَاهَا', opts:['نَاقَةَ','شَاةَ','بَقَرَةَ','دَابَّةَ'], correct:0, ref:'91:13', translation:'The messenger of Allah said: the she-camel of Allah and her drink'},
+  {verse:'فَكَذَّبُوهُ _____ فَدَمْدَمَ عَلَيْهِمْ رَبُّهُم', opts:['فَعَقَرُوهَا','فَقَتَلُوهَا','فَذَبَحُوهَا','فَطَرَدُوهَا'], correct:0, ref:'91:14', translation:'They denied him and hamstrung her, so their Lord destroyed them'},
+  {verse:'وَلَا يَخَافُ _____', opts:['عُقْبَاهَا','نِهَايَتَهَا','عَاقِبَتَهَا','جَزَاءَهَا'], correct:0, ref:'91:15', translation:'And He does not fear its consequence'},
 ];
 
 // =============================================
@@ -177,7 +176,7 @@ const S4_EVENTS_CORRECT = [
 window.registerQuiz(2, S1_QUIZ);
 window.registerMatch(3, S2_ITEMS,S2_ZONES);
 window.registerQuiz(4, S3_QUIZ);
-window.registerOrder(5, S4_EVENTS_CORRECT);
+window.registerFillBlank(5, S5_FIB);
 
 function updateUIExtra(){window._drawBuildCanvas(window.state.completed.length);}
 
