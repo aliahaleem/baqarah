@@ -13,7 +13,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s111', surahName:'Al-Masad', surahArabic:'المسد', totalLevels:4, rewards:REWARDS,
+  id:'s111', surahName:'Al-Masad', surahArabic:'المسد', totalLevels:4, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','🔥','📖','🌿'], tileLabels:['Word by Word','Abu Lahab','Story Order','His Wife'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Masad — The Palm Fiber! The only surah to name a specific enemy of the Prophet ﷺ by name — Abu Lahab (Father of Flame). And a Quranic prediction fulfilled! 4 levels!`,

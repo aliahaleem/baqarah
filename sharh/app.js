@@ -12,7 +12,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s94', surahName:'Ash-Sharh', surahArabic:'الشرح', totalLevels:4, rewards:REWARDS,
+  id:'s94', surahName:'Ash-Sharh', surahArabic:'الشرح', totalLevels:4, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','💙','🌟','🕊️'], tileLabels:['Word by Word','Expanded Chest','Ease after Hardship','Keep Striving'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Ash-Sharh — The Opening! Just 8 verses, but overflowing with comfort. Allah tells the Prophet ﷺ — I expanded your chest, removed your burden, and raised your name. And twice: with hardship COMES ease! 4 levels!`,

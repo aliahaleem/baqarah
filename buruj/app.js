@@ -13,7 +13,7 @@ const REWARDS={
   7:{xp:120,gems:5,icon:'📜',title:'SURAH AL-BURUJ COMPLETE!',msg:"ALLAHUMMA BARIK! All 7 levels of Surah Al-Buruj complete! The sky with constellations. The People of the Ditch. The only crime: faith. The great attainment. Allah's severe grip. And the Quran Majid — preserved in the Lawh al-Mahfudh, beyond all harm. May we be among the faithful. Ameen!"},
 };
 window.SURAH_CONFIG={
-  totalLevels:7,rewards:REWARDS,
+  totalLevels:7, wbwSection:1,rewards:REWARDS,
   tileIcons:['📖','⭐','🔥','✊','🌿','⚡','📜'],
   tileLabels:['Word by Word','The Oaths','Ditch','Their Crime','Attainment','Grip','Tablet'],
   welcomeMsg:{

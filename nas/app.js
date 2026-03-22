@@ -24,7 +24,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s114', surahName:'An-Nas', surahArabic:'الناس', totalLevels:5, rewards:REWARDS,
+  id:'s114', surahName:'An-Nas', surahArabic:'الناس', totalLevels:5, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','🌍','😈','🛡️','✨'],
   tileLabels:['Word by Word','Three Titles','Whisperer','The Chests','Quran Complete!'],
   welcomeMsg:{

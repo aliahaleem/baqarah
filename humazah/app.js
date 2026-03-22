@@ -12,7 +12,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s104', surahName:'Al-Humazah', surahArabic:'الهمزة', totalLevels:4, rewards:REWARDS,
+  id:'s104', surahName:'Al-Humazah', surahArabic:'الهمزة', totalLevels:4, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','👆','💰','🔥'], tileLabels:['Word by Word','The Slanderer','Wealth Delusion','Hutamah'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Humazah — The Slanderer! Woe to the backbiter who hoards wealth thinking it will make them live forever. Then the crushing fire — Hutamah! 4 levels!`,

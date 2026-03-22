@@ -13,7 +13,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s92', surahName:'Al-Layl', surahArabic:'الليل', totalLevels:5, rewards:REWARDS,
+  id:'s92', surahName:'Al-Layl', surahArabic:'الليل', totalLevels:5, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','🌙','💝','💔','🔥'],
   tileLabels:['Word by Word','The Oaths','Generous','The Miser','Two Paths'],
   welcomeMsg:{

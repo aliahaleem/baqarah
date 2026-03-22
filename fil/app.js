@@ -13,7 +13,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s105', surahName:'Al-Fil', surahArabic:'الفيل', totalLevels:4, rewards:REWARDS,
+  id:'s105', surahName:'Al-Fil', surahArabic:'الفيل', totalLevels:4, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','🐘','🐦','✨'], tileLabels:['Word by Word','Army of Elephant','Story Order','Al-Fil Complete'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Fil — The Elephant! Did you not see how your Lord dealt with the people of the Elephant? 60,000 soldiers, 13 war elephants — destroyed by tiny birds carrying stones. 4 levels!`,

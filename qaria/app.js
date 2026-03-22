@@ -13,7 +13,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s101', surahName:'Al-Qaria', surahArabic:'القارعة', totalLevels:5, rewards:REWARDS,
+  id:'s101', surahName:'Al-Qaria', surahArabic:'القارعة', totalLevels:5, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','💥','📋','⚖️','🔥'], tileLabels:['Word by Word','The Strike','Story Order','The Scales','Hawiyah'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Qaria — The Striking Hour! The Day strikes like a hammer. People scatter like moths. Mountains become fluffed wool. Then the scales: heavy = Jannah. Light = Hawiyah (Hellfire). 5 levels!`,

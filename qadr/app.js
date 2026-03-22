@@ -12,7 +12,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s97', surahName:'Al-Qadr', surahArabic:'القدر', totalLevels:4, rewards:REWARDS,
+  id:'s97', surahName:'Al-Qadr', surahArabic:'القدر', totalLevels:4, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','🌃','👼','✨'], tileLabels:['Word by Word','Night of Power','Angels Descend','Peace till Fajr'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Qadr — The Night of Power! Just 5 verses — but what verses! The Quran was revealed on this night. It's better than 1,000 months. Angels descend. Peace until dawn. 4 levels!`,

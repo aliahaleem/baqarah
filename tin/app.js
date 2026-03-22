@@ -12,7 +12,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s95', surahName:'At-Tin', surahArabic:'التين', totalLevels:4, rewards:REWARDS,
+  id:'s95', surahName:'At-Tin', surahArabic:'التين', totalLevels:4, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','🫐','🧠','⚖️'], tileLabels:['Word by Word','Four Oaths','Best Form','Divine Justice'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah At-Tin — The Fig! Four blessed oaths point to one truth: man was created in the finest form — but can fall to the lowest. The exception: those who believe and do good. 4 levels!`,

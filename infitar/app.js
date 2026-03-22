@@ -13,7 +13,7 @@ const REWARDS={
   7:{xp:120,gems:5,icon:'🌊',title:'SURAH AL-INFITAR COMPLETE!',msg:"ALLAHUMMA BARIK! All 7 levels of Surah Al-Infitar — The Cleaving — complete! The sky will split, records will be laid open, and every soul will stand completely alone. 'Wa al-amru yawma'idhin li-llah.' On that Day, only Allah commands. May our records be full of good. Ameen!"},
 };
 window.SURAH_CONFIG={
-  totalLevels:7,rewards:REWARDS,
+  totalLevels:7, wbwSection:1,rewards:REWARDS,
   tileIcons:['📖','🌌','🤔','✍️','⚖️','⚡','🌊'],
   tileLabels:['Word by Word','Sky Splits','Deceived?','Angels','Two Destinies','Yawm al-Din','No Help'],
   welcomeMsg:{

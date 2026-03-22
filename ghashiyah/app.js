@@ -18,7 +18,7 @@ window.SURAH_CONFIG = {
   id: 's88',
   surahName: 'Al-Ghashiyah',
   surahArabic: 'الغاشية',
-  totalLevels: 7,
+  totalLevels: 7, wbwSection:1,
   rewards: REWARDS,
   welcomeMsg: {
     fresh:    name => `As-salamu alaykum, ${name}! Welcome to Al-Ghashiyah — The Overwhelming! A stunning surah about the Day of Judgement. Two groups: faces downcast in the Fire, faces radiant in Paradise. 7 levels await!`,

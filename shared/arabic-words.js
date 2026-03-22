@@ -300,24 +300,85 @@ window.WBWScene.prototype.start = function() {
 };
 
 /**
- * Wire up WBW Level 1 with chunked rendering (flip cards + matching every N verses).
+ * Wire up the WBW bonus level with chunked rendering.
  *
- * Usage in app.js:
+ * Usage in app.js (after SURAH_CONFIG is set):
  *   window.setupWBWLevel(WBW_DATA, 10);
  *
- * No need for S1_MATCH_ITEMS / S1_MATCH_ZONES — matches auto-generate from WBW_DATA.
+ * Reads wbwSection from SURAH_CONFIG to determine the section number.
+ * Auto-injects the WBW tile + panel if they don't exist in the HTML,
+ * or moves the existing WBW tile to the bottom of the quest map.
  *
  * @param {Array}  wbwData    — [{label, words}] for every verse
  * @param {number} [chunk]    — verses per chunk (default 10)
  */
 window.setupWBWLevel = function(wbwData, chunk) {
-  var sz = (typeof chunk === 'number') ? chunk : 10;
-  window.renderSection1Game = function() {
+  var cfg = window.SURAH_CONFIG;
+  var sec = (cfg && cfg.wbwSection) || 1;
+  var sz  = (typeof chunk === 'number') ? chunk : 10;
+
+  window['renderSection' + sec + 'Game'] = function() {
     window.renderWBWPaginated('wbw-display', wbwData, sz);
   };
-  window.checkSection1 = function() {
-    window._checkWBWPage(1);
+  window['checkSection' + sec] = function() {
+    window._checkWBWPage(sec);
   };
+
+  if (typeof document === 'undefined') return;
+  window._wbwPlaceTile(sec);
+  window._wbwEnsurePanel(sec);
+};
+
+window._wbwPlaceTile = function(sec) {
+  var grid = document.querySelector('.map-grid');
+  if (!grid) return;
+  var existing = document.getElementById('tile-' + sec);
+  if (existing) {
+    grid.appendChild(existing);
+    existing.querySelector('.tile-level').textContent = '⭐ BONUS';
+    return;
+  }
+  var tile = document.createElement('div');
+  tile.className = 'map-tile bonus';
+  tile.id = 'tile-' + sec;
+  tile.innerHTML =
+    '<div class="tile-icon">📖</div>' +
+    '<div class="tile-level">⭐ BONUS</div>' +
+    '<div class="tile-name">Word by Word</div>' +
+    '<div class="tile-status" id="status-' + sec + '">⭐ PLAY</div>';
+  grid.appendChild(tile);
+};
+
+window._wbwEnsurePanel = function(sec) {
+  if (document.getElementById('wbw-display')) return;
+  var sv = document.querySelector('#section-view .container');
+  if (!sv) return;
+  var panel = document.createElement('div');
+  panel.className = 'section-panel';
+  panel.id = 'section-panel-' + sec;
+  panel.style.display = 'none';
+  panel.innerHTML =
+    '<div class="ibn-ameen-panel" style="margin:14px 12px 0;">' +
+      '<div class="character-avatar">🧙‍♂️</div>' +
+      '<div class="speech-bubble"><strong>Ibn Ameen says:</strong><br/>' +
+        'This is the <strong>Bonus Round!</strong> Learn the key Arabic words of this surah. Tap each card to reveal its meaning.' +
+      '</div>' +
+    '</div>' +
+    '<div class="card" style="margin:14px 12px 0;">' +
+      '<div class="card-header">📖 BONUS — WORD BY WORD</div>' +
+      '<div class="story-text">' +
+        '<p class="word-grid-intro">Explore each word — <strong>tap a card to reveal its meaning</strong>.</p>' +
+        '<button id="wbw-reveal-btn" class="wbw-reveal-btn">👁 Reveal All Meanings</button>' +
+        '<div id="wbw-display"></div>' +
+      '</div>' +
+      '<div class="game-feedback" id="feedback-' + sec + '"></div>' +
+      '<div class="game-footer">' +
+        '<button class="action-btn" onclick="checkSection' + sec + '()">✅ Check Progress</button>' +
+        '<button class="action-btn gold" id="complete-' + sec + '-btn" style="display:none" onclick="completeSection(' + sec + ')">🏆 Claim Bonus!</button>' +
+      '</div>' +
+    '</div>' +
+    '<div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ Back to Map</button></div>';
+  sv.appendChild(panel);
 };
 
 /* ═══════════════════════════════════════════════════════════════════

@@ -13,7 +13,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s109', surahName:'Al-Kafirun', surahArabic:'الكافرون', totalLevels:4, rewards:REWARDS,
+  id:'s109', surahName:'Al-Kafirun', surahArabic:'الكافرون', totalLevels:4, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','🚫','🔄','✨'], tileLabels:['Word by Word','Declaration','No Compromise','Clear Deen'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Kafirun — The Disbelievers! A clear, firm, bold declaration: I do not worship what you worship. No compromise on tawhid. The Prophet ﷺ recited this in Fajr and before sleeping. 4 levels!`,

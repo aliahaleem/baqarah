@@ -13,7 +13,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s110', surahName:'An-Nasr', surahArabic:'النصر', totalLevels:4, rewards:REWARDS,
+  id:'s110', surahName:'An-Nasr', surahArabic:'النصر', totalLevels:4, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','🏆','📖','🌅'], tileLabels:['Word by Word','Victory','Story Order','An-Nasr'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah An-Nasr — The Help! When Allah's help comes and you see masses entering the religion — glorify your Lord and seek forgiveness. The 'farewell surah.' 4 levels!`,

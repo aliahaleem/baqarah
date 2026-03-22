@@ -31,7 +31,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  totalLevels: 9,
+  totalLevels: 9, wbwSection:1,
   rewards: REWARDS,
   tileIcons:['📖','❓','⛰️','🌧️','📯','🔥','🌿','👑','🏆'],
   tileLabels:['Word by Word','Great News','Earth Signs','Sky Signs','Day of Sorting','Hellfire','Paradise','The Rows','Final Warning'],

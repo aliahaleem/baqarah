@@ -13,7 +13,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s106', surahName:'Quraysh', surahArabic:'قريش', totalLevels:4, rewards:REWARDS,
+  id:'s106', surahName:'Quraysh', surahArabic:'قريش', totalLevels:4, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','🕋','🙏','🌟'], tileLabels:['Word by Word','Two Journeys','Worship the Lord','Quraysh'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Quraysh! For the Quraysh's tradition of two trade journeys, let them worship the Lord of this House — who fed them and gave them safety. 4 levels!`,

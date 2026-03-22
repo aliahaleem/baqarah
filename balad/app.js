@@ -15,7 +15,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s90', surahName:'Al-Balad', surahArabic:'البلد', totalLevels:7, rewards:REWARDS,
+  id:'s90', surahName:'Al-Balad', surahArabic:'البلد', totalLevels:7, wbwSection:1, rewards:REWARDS,
   welcomeMsg:{
     fresh:   name=>`As-salamu alaykum, ${name}! Welcome to Surah Al-Balad — The City! Allah swears by Mecca. Man is created in hardship. Two paths: the easy path of selfishness, and the steep aqabah of freeing slaves, feeding orphans, and urging mercy. Which path will you choose? 7 levels await!`,
     partial: (name,done)=>`Welcome back, ${name}! ${done} level${done>1?'s':''} complete. The aqabah is steep — but keep climbing! 💪`,

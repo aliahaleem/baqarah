@@ -25,7 +25,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  totalLevels: 7,
+  totalLevels: 7, wbwSection:1,
   rewards: REWARDS,
   tileIcons:['📖','🙈','📜','🌱','🌾','💥','✨'],
   tileLabels:['Word by Word','He Frowned','Noble Quran','From a Drop','Your Food','The Blast','Two Faces'],

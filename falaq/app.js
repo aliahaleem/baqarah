@@ -24,7 +24,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s113', surahName:'Al-Falaq', surahArabic:'الفلق', totalLevels:5, rewards:REWARDS,
+  id:'s113', surahName:'Al-Falaq', surahArabic:'الفلق', totalLevels:5, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','🌅','🌑','🔮','✨'],
   tileLabels:['Word by Word','Lord of Dawn','4 Evils','Envy & Magic','Al-Falaq'],
   welcomeMsg:{

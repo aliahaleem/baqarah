@@ -14,7 +14,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s96', surahName:'Al-Alaq', surahArabic:'العلق', totalLevels:6, rewards:REWARDS,
+  id:'s96', surahName:'Al-Alaq', surahArabic:'العلق', totalLevels:6, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','📖','🩸','⚠️','📜','🌟'], tileLabels:['Word by Word','Read!','The Clot','Transgression','Story','Draw Near'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Alaq — The Clot! The FIRST revealed surah. 'Iqra!' — Read! Then it jumps to arrogant man who thinks he's self-sufficient. Then a direct confrontation with Abu Jahl. Ends with: prostrate and draw near to Allah. 6 levels!`,

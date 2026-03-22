@@ -13,7 +13,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s107', surahName:'Al-Maun', surahArabic:'الماعون', totalLevels:4, rewards:REWARDS,
+  id:'s107', surahName:'Al-Maun', surahArabic:'الماعون', totalLevels:4, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','😢','🙏','🤲'], tileLabels:['Word by Word','The Denier','Hypocrisy','Small Kindness'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Maun — Small Kindnesses! 7 verses that connect RELIGION to SOCIAL action. Denying the orphan and withholding small kindnesses = denying the deen. And hollow prayer without heart = hypocrisy! 4 levels!`,

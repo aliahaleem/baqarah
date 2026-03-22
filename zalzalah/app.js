@@ -12,7 +12,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s99', surahName:'Az-Zalzalah', surahArabic:'الزلزلة', totalLevels:4, rewards:REWARDS,
+  id:'s99', surahName:'Az-Zalzalah', surahArabic:'الزلزلة', totalLevels:4, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','🌍','📋','⚖️'], tileLabels:['Word by Word','The Earthquake','Story Order','Atom\'s Weight'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Az-Zalzalah — The Earthquake! The earth shakes, reveals its secrets, and then every soul sees every deed — down to an atom's weight. 4 levels!`,

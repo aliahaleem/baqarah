@@ -13,7 +13,7 @@ const REWARDS={
   7:{xp:120,gems:5,icon:'📜',title:'SURAH AL-ALA COMPLETE!',msg:"ALLAHUMMA BARIK! All 7 levels of Surah Al-Ala complete! Glorify the Most High. He will make you not forget. Fear Allah to be reminded. Purify and pray for success. Prefer the Hereafter. And remember: these truths were in the scrolls of Ibrahim and Musa too! This message is eternal. Ameen!"},
 };
 window.SURAH_CONFIG={
-  totalLevels:7,rewards:REWARDS,
+  totalLevels:7, wbwSection:1,rewards:REWARDS,
   tileIcons:['📖','🌿','📿','🤲','✨','⚡','📜'],
   tileLabels:['Word by Word','Glorify','Recite','Who Fears','Purify','Dunya/Akhira','Scrolls'],
   welcomeMsg:{

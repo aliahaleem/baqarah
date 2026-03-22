@@ -16,7 +16,7 @@ const REWARDS={
   7:{xp:120,gems:5,icon:'🌌',title:'SURAH AT-TAKWIR COMPLETE!',msg:"ALLAHUMMA BARIK! All 7 levels of Surah At-Takwir — The Overthrowing — complete! 'Fa-ayna tadh-habun?' Where are you going? The Quran is a reminder for all the worlds — for whoever WILLS to take the straight path. May Allah will for us the straight path. Ameen!"},
 };
 window.SURAH_CONFIG={
-  totalLevels:7,rewards:REWARDS,
+  totalLevels:7, wbwSection:1,rewards:REWARDS,
   tileIcons:['📖','⭐','👼','📜','👁️','🌟','🌌'],
   tileLabels:['Word by Word','12 Signs','Buried Girl','Prepared','Noble Angel','Not Mad','Where Going?'],
   welcomeMsg:{

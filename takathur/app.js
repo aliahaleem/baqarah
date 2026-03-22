@@ -12,7 +12,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s102', surahName:'At-Takathur', surahArabic:'التكاثر', totalLevels:4, rewards:REWARDS,
+  id:'s102', surahName:'At-Takathur', surahArabic:'التكاثر', totalLevels:4, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','💰','👁️','❓'], tileLabels:['Word by Word','Distracted','Hellfire','Questioned'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah At-Takathur — Competing for More! Competing and boasting of MORE distracted you until the grave. Three warnings. Three types of certainty. And a final question about the blessings. 4 levels!`,

@@ -21,7 +21,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s112', surahName:'Al-Ikhlas', surahArabic:'الإخلاص', totalLevels:4, rewards:REWARDS,
+  id:'s112', surahName:'Al-Ikhlas', surahArabic:'الإخلاص', totalLevels:4, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','✨','🌟','💎'],
   tileLabels:['Word by Word','Ahad & Samad','Attributes','Pure Tawhid'],
   welcomeMsg:{

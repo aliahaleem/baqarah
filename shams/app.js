@@ -13,7 +13,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s91', surahName:'Ash-Shams', surahArabic:'الشمس', totalLevels:5, rewards:REWARDS,
+  id:'s91', surahName:'Ash-Shams', surahArabic:'الشمس', totalLevels:5, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','☀️','🌅','✨','🐪'],
   tileLabels:['Word by Word','The Oaths','11 Signs','Soul','Thamud'],
   welcomeMsg:{

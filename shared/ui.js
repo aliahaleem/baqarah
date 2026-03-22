@@ -7,6 +7,13 @@
    (set by each surah's app.js before this loads).
    ================================================ */
 
+function _prevMainSection(n, wbw) {
+  for (var p = n - 1; p >= 1; p--) {
+    if (p !== wbw) return p;
+  }
+  return 0;
+}
+
 // =============================================
 //  THEME MANAGEMENT
 // =============================================
@@ -35,15 +42,17 @@ function updateUI() {
   if (headerName) headerName.textContent = name;
   if (xpEl)       xpEl.textContent       = window.state.xp || 0;
   if (gemsEl)     gemsEl.textContent     = window.state.gems || 0;
-  if (doneEl)     doneEl.textContent     = window.state.completed.length;
+  const wbw = cfg ? cfg.wbwSection : 0;
+  const mainDone = window.state.completed.filter(s => s !== wbw).length;
+  const mainTotal = cfg ? (wbw ? cfg.totalLevels - 1 : cfg.totalLevels) : 0;
+  if (doneEl) doneEl.textContent = mainDone;
 
   // Welcome message (defined per-surah in SURAH_CONFIG.welcomeMsg)
   const welcomeEl = document.getElementById('welcome-text');
   if (welcomeEl && cfg && cfg.welcomeMsg) {
-    const done = window.state.completed.length;
-    if (!done)                       welcomeEl.textContent = cfg.welcomeMsg.fresh(name);
-    else if (done < cfg.totalLevels) welcomeEl.textContent = cfg.welcomeMsg.partial(name, done);
-    else                             welcomeEl.textContent = cfg.welcomeMsg.complete(name);
+    if (!mainDone)                welcomeEl.textContent = cfg.welcomeMsg.fresh(name);
+    else if (mainDone < mainTotal) welcomeEl.textContent = cfg.welcomeMsg.partial(name, mainDone);
+    else                           welcomeEl.textContent = cfg.welcomeMsg.complete(name);
   }
 
   // Map tiles
@@ -52,8 +61,20 @@ function updateUI() {
       const tile   = document.getElementById(`tile-${n}`);
       const status = document.getElementById(`status-${n}`);
       if (!tile || !status) continue;
-      const done     = window.state.completed.includes(n);
-      const unlocked = n === 1 || window.state.completed.includes(n - 1);
+      const done = window.state.completed.includes(n);
+
+      if (n === wbw) {
+        tile.className = 'map-tile bonus';
+        if (done) tile.classList.add('completed');
+        tile.onclick = () => openSection(n);
+        status.textContent = done ? '✅ DONE' : '⭐ PLAY';
+        const lvl = tile.querySelector('.tile-level');
+        if (lvl && !lvl.textContent.includes('BONUS')) lvl.textContent = '⭐ BONUS';
+        continue;
+      }
+
+      const prevMain = _prevMainSection(n, wbw);
+      const unlocked = prevMain === 0 || window.state.completed.includes(prevMain);
       tile.className = 'map-tile';
       if (done) {
         tile.classList.add('completed');
@@ -79,9 +100,14 @@ function updateUI() {
         if (lb) lb.textContent = cfg.tileLabels[n-1] || `Level ${n}`;
       }
     }
-    if (window.state.completed.length === cfg.totalLevels) {
+    if (mainDone >= mainTotal && mainTotal > 0) {
       const allComplete = document.getElementById('all-complete');
       if (allComplete) allComplete.style.display = 'block';
+    }
+    if (wbw) {
+      const grid = document.querySelector('.map-grid');
+      const wTile = document.getElementById('tile-' + wbw);
+      if (grid && wTile && wTile !== grid.lastElementChild) grid.appendChild(wTile);
     }
   }
 

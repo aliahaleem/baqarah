@@ -13,7 +13,7 @@ const REWARDS={
   7:{xp:120,gems:5,icon:'📊',title:'SURAH AL-MUTAFFIFIN COMPLETE!',msg:"ALLAHUMMA BARIK! All 7 levels of Surah Al-Mutaffifin — Those Who Defraud — complete! The lesson: be honest in every measure. Your record is being written — either in Sijjin or in Illiyyin. On That Day, what you gave in this world — full or less — will determine where you stand. Ameen!"},
 };
 window.SURAH_CONFIG={
-  totalLevels:7,rewards:REWARDS,
+  totalLevels:7, wbwSection:1,rewards:REWARDS,
   tileIcons:['📖','⚖️','📕','📗','🌿','🔄','📊'],
   tileLabels:['Word by Word','Defrauders','Sijjin','Illiyyin','Bliss','Reversal','Complete'],
   welcomeMsg:{

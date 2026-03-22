@@ -13,7 +13,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s93', surahName:'Ad-Duha', surahArabic:'الضحى', totalLevels:5, rewards:REWARDS,
+  id:'s93', surahName:'Ad-Duha', surahArabic:'الضحى', totalLevels:5, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','🌄','💛','🙏','☀️'], tileLabels:['Word by Word','Revelation','Blessings','Duties','Complete'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Welcome to Surah Ad-Duha — The Morning Brightness! Allah directly consoles Prophet Muhammad ﷺ after a painful pause in revelation. 'Your Lord has not forsaken you!' — A surah of divine love. 5 levels!`,

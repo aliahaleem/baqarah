@@ -12,7 +12,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s103', surahName:'Al-Asr', surahArabic:'العصر', totalLevels:4, rewards:REWARDS,
+  id:'s103', surahName:'Al-Asr', surahArabic:'العصر', totalLevels:4, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','⏳','🤝','✅'], tileLabels:['Word by Word','Time Oath','Four Conditions','Complete'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Asr — The Time! Three verses that contain the ENTIRE formula for human salvation. Imam Shafi\'i said these three verses are enough if you truly understand them. 4 levels!`,

@@ -18,7 +18,7 @@ window.SURAH_CONFIG = {
   id: 's89',
   surahName: 'Al-Fajr',
   surahArabic: 'الفجر',
-  totalLevels: 7,
+  totalLevels: 7, wbwSection:1,
   rewards: REWARDS,
   welcomeMsg: {
     fresh:    name => `As-salamu alaykum, ${name}! Welcome to Surah Al-Fajr — The Dawn! Ancient nations destroyed, the tests of wealth and poverty, the Day of Regret, and the most beautiful ending: "O tranquil soul — return to your Lord!" 7 levels of Quran quest await!`,

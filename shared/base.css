@@ -298,6 +298,20 @@ html[data-theme="stars"] .section-heading { text-shadow: 0 0 12px rgba(255,187,6
 .map-tile.completed .tile-status { color: var(--success); }
 .map-tile.locked    .tile-status { color: #555; }
 
+/* ── Bonus tile (WBW) ── */
+.map-tile.bonus {
+  background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,180,0,0.03));
+  border: 2px dashed var(--accent);
+  cursor: pointer; opacity: 1;
+  grid-column: 1 / -1;
+}
+.map-tile.bonus .tile-level {
+  color: var(--accent); font-weight: bold; letter-spacing: 1px;
+}
+.map-tile.bonus .tile-status { color: var(--accent); }
+.map-tile.bonus.completed { border-style: solid; border-color: var(--success); }
+.map-tile.bonus.completed .tile-status { color: var(--success); }
+
 /* ================================================
    WORLD BUILDER
    ================================================ */

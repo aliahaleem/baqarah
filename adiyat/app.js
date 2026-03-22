@@ -13,7 +13,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s100', surahName:'Al-Adiyat', surahArabic:'العاديات', totalLevels:5, rewards:REWARDS,
+  id:'s100', surahName:'Al-Adiyat', surahArabic:'العاديات', totalLevels:5, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','🐎','💔','📜','⚡'], tileLabels:['Word by Word','Charging Mares','Ingratitude','Story','Complete'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Adiyat — The Charging Mares! Five dramatic oaths by warhorses panting, sparking, raiding at dawn — all to condemn one thing: human ingratitude towards Allah. 5 levels!`,

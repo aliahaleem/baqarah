@@ -13,7 +13,7 @@ const REWARDS={
   7:{xp:120,gems:5,icon:'🌙',title:'SURAH AL-INSHIQAQ COMPLETE!',msg:"ALLAHUMMA BARIK! All 7 levels of Surah Al-Inshiqaq complete! You are striving toward your Lord, stage after stage. The sky will split. The earth will stretch. You will receive your book. May Allah give us books in our right hands, easy reckonings, and joyful returns to our people. Ameen!"},
 };
 window.SURAH_CONFIG={
-  totalLevels:7,rewards:REWARDS,
+  totalLevels:7, wbwSection:1,rewards:REWARDS,
   tileIcons:['📖','🌅','🚶','📖','⚠️','🔄','🌙'],
   tileLabels:['Word by Word','Sky Splits','Striving','Right Hand','Behind Back','Stages','Complete'],
   welcomeMsg:{

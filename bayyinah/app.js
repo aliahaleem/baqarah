@@ -13,7 +13,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s98', surahName:'Al-Bayyinah', surahArabic:'البينة', totalLevels:5, rewards:REWARDS,
+  id:'s98', surahName:'Al-Bayyinah', surahArabic:'البينة', totalLevels:5, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','📜','🕌','😇','✨'], tileLabels:['Word by Word','Clear Evidence','Pure Worship','Best of Creation','Al-Bayyinah'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Bayyinah — The Clear Evidence! A Messenger came with purified scriptures. He commanded pure worship. Then the surah divides humanity: the best of creation vs the worst of creation. 5 levels!`,

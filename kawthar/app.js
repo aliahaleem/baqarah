@@ -13,7 +13,7 @@ const REWARDS = {
 };
 
 window.SURAH_CONFIG = {
-  id:'s108', surahName:'Al-Kawthar', surahArabic:'الكوثر', totalLevels:4, rewards:REWARDS,
+  id:'s108', surahName:'Al-Kawthar', surahArabic:'الكوثر', totalLevels:4, wbwSection:1, rewards:REWARDS,
   tileIcons:['📖','🌊','🙏','✂️'], tileLabels:['Word by Word','Al-Kawthar Gift','Pray & Sacrifice','Abtar'],
   welcomeMsg:{
     fresh:   n=>`As-salamu alaykum, ${n}! Surah Al-Kawthar — Abundance! The shortest surah in the Quran — 3 verses — but what a message! Allah gave the Prophet ﷺ Al-Kawthar (a river in Jannah + abundant good). His enemies are the ones who are forgotten! 4 levels!`,

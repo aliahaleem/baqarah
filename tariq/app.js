@@ -13,7 +13,7 @@ const REWARDS={
   7:{xp:120,gems:5,icon:'⚡',title:'SURAH AT-TARIQ COMPLETE!',msg:"ALLAHUMMA BARIK! All 7 levels of Surah At-Tariq complete! The piercing star. Created from water. Secrets examined. The decisive Quran. Rain as proof. And: 'Innahum yakiduna kaydan — wa akidu kaydan.' They plot. Allah plans. 'Fa-mahhil al-kafirin amhilhum ruwayda.' The plan is already in motion. Ameen!"},
 };
 window.SURAH_CONFIG={
-  totalLevels:7,rewards:REWARDS,
+  totalLevels:7, wbwSection:1,rewards:REWARDS,
   tileIcons:['📖','💫','💧','🔍','📖','🌧️','⚡'],
   tileLabels:['Word by Word','Night Star','From Water','Secrets','Decisive','Rain/Rise','They Plot'],
   welcomeMsg:{
