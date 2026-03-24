@@ -62,12 +62,12 @@ window.SURAH_CONFIG = {
 
 // S1: Drag & Drop — Qualities of Muttaqeen (2:1-5)
 const S1_ITEMS = [
-  { id: 'i1', text: '🌙 Al-Ghayb\n(The Unseen)',             zone: 'z1' },
-  { id: 'i2', text: '🕌 As-Salah\n(Prayer)',                 zone: 'z2' },
-  { id: 'i3', text: '💰 Al-Infaq\n(Spending / Charity)',     zone: 'z3' },
-  { id: 'i4', text: '📖 The Quran\n(Revealed to Muhammad ﷺ)',zone: 'z4' },
-  { id: 'i5', text: '📜 Previous\nScriptures',               zone: 'z5' },
-  { id: 'i6', text: '⚖️ Al-Akhirah\n(The Hereafter)',        zone: 'z6' },
+  { id: 'i1', text: '🌙 الْغَيْبِ',     zone: 'z1' },
+  { id: 'i2', text: '🕌 الصَّلَاةَ',     zone: 'z2' },
+  { id: 'i3', text: '💰 يُنفِقُونَ',     zone: 'z3' },
+  { id: 'i4', text: '📖 الْقُرْآن',      zone: 'z4' },
+  { id: 'i5', text: '📜 الْكُتُبِ',      zone: 'z5' },
+  { id: 'i6', text: '⚖️ الْآخِرَةِ',     zone: 'z6' },
 ];
 const S1_ZONES = [
   { id: 'z1', desc: 'Things unseen by human eyes — angels, fate, Jannah, Jahannam, the Day of Judgment' },

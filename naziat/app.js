@@ -65,11 +65,11 @@ const WBW_DATA = [
 window.setupWBWLevel(WBW_DATA, 10);
 
 const S1_ITEMS = [
-  { id: 'a1', text: "🪝 Al-Nazi'at\n(The Extractors)",  zone: 'z1' },
-  { id: 'a2', text: "🕊️ Al-Nashitat\n(The Releasers)",  zone: 'z2' },
-  { id: 'a3', text: "☁️ Al-Sabihat\n(The Floaters)",    zone: 'z3' },
-  { id: 'a4', text: "🏃 Al-Sabiqat\n(The Racers)",      zone: 'z4' },
-  { id: 'a5', text: "📋 Al-Mudabbirat\n(The Admins)",   zone: 'z5' },
+  { id: 'a1', text: '🪝 وَالنَّازِعَاتِ',    zone: 'z1' },
+  { id: 'a2', text: '🕊️ وَالنَّاشِطَاتِ',    zone: 'z2' },
+  { id: 'a3', text: '☁️ وَالسَّابِحَاتِ',     zone: 'z3' },
+  { id: 'a4', text: '🏃 فَالسَّابِقَاتِ',     zone: 'z4' },
+  { id: 'a5', text: '📋 فَالْمُدَبِّرَاتِ',   zone: 'z5' },
 ];
 const S1_ZONES = [
   { id: 'z1', desc: '"By those who extract with violent force (gharqa)" (79:1) — Angels who pull out wicked souls forcefully, like iron hooks ripping through water.' },
