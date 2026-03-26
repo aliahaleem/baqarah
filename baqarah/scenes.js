@@ -464,6 +464,54 @@ const VERSES = {
     english: '"Allah does not burden a soul beyond its capacity. It will have [the consequence of] what [good] it has gained, and it will bear [the consequence of] what [evil] it has earned."',
     note: 'This is one of the most comforting verses in the Quran. Whatever you are going through — Allah already knows it is within your ability. He designed you for exactly the life He gave you. You are never given more than you can carry with His help.',
   },
+  first_call: {
+    ref: 'Al-Baqarah 2:21',
+    arabic: 'يَا أَيُّهَا النَّاسُ اعْبُدُوا رَبَّكُمُ الَّذِي خَلَقَكُمْ وَالَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ',
+    english: '"O mankind! Worship your Lord, who created you and those before you, so that you may become righteous."',
+    note: 'This is the first direct command in Surah Al-Baqarah. After describing the believers, the disbelievers, and the hypocrites, Allah now speaks to ALL of mankind: worship Me alone.',
+  },
+  quran_challenge: {
+    ref: 'Al-Baqarah 2:23-24',
+    arabic: 'وَإِن كُنتُمْ فِي رَيْبٍ مِّمَّا نَزَّلْنَا عَلَىٰ عَبْدِنَا فَأْتُوا بِسُورَةٍ مِّن مِّثْلِهِ وَادْعُوا شُهَدَاءَكُم مِّن دُونِ اللَّهِ إِن كُنتُمْ صَادِقِينَ',
+    english: '"If you are in doubt about what We have revealed to Our servant, then produce a surah like it and call your witnesses besides Allah — if you are truthful. But if you cannot — and you never will — then fear the Fire whose fuel is people and stones."',
+    note: 'Over 1,400 years and no one has met this challenge. Not the poets of Arabia, not the scholars of every age, not AI. The Quran\'s linguistic miracle stands unchallenged.',
+  },
+  mosquito_parable: {
+    ref: 'Al-Baqarah 2:26',
+    arabic: 'إِنَّ اللَّهَ لَا يَسْتَحْيِي أَن يَضْرِبَ مَثَلًا مَّا بَعُوضَةً فَمَا فَوْقَهَا',
+    english: '"Allah is not shy to use any example — even a mosquito or what is above it. Those who believe know it is the truth from their Lord. But the disbelievers say: What did Allah intend by this example?"',
+    note: 'A mosquito is tiny — but it has a heart, brain, kidneys, and wings that beat 600 times per second. If you cannot create even a mosquito, how dare you set up rivals to the Creator?',
+  },
+  distort_torah: {
+    ref: 'Al-Baqarah 2:79',
+    arabic: 'فَوَيْلٌ لِّلَّذِينَ يَكْتُبُونَ الْكِتَابَ بِأَيْدِيهِمْ ثُمَّ يَقُولُونَ هَٰذَا مِنْ عِندِ اللَّهِ لِيَشْتَرُوا بِهِ ثَمَنًا قَلِيلًا',
+    english: '"Woe to those who write the book with their own hands and then say: This is from Allah — to exchange it for a small price. Woe to them for what their hands have written, and woe to them for what they earn."',
+    note: 'Changing Allah\'s words for personal benefit — for status, money, or power. This is among the worst crimes: selling divine truth for worldly gain.',
+  },
+  fire_days: {
+    ref: 'Al-Baqarah 2:80-81',
+    arabic: 'وَقَالُوا لَن تَمَسَّنَا النَّارُ إِلَّا أَيَّامًا مَّعْدُودَةً ۚ قُلْ أَتَّخَذْتُمْ عِندَ اللَّهِ عَهْدًا',
+    english: '"They say: The Fire will not touch us except for a few numbered days. Say: Have you taken a covenant from Allah? For Allah does not break His covenant. Or do you say about Allah what you do not know?"',
+    note: 'False hope is dangerous. Thinking "I will only be punished briefly" leads to carelessness. Allah asks: who gave you that guarantee?',
+  },
+  harut_marut: {
+    ref: 'Al-Baqarah 2:102',
+    arabic: 'وَمَا أُنزِلَ عَلَى الْمَلَكَيْنِ بِبَابِلَ هَارُوتَ وَمَارُوتَ ۚ وَمَا يُعَلِّمَانِ مِنْ أَحَدٍ حَتَّىٰ يَقُولَا إِنَّمَا نَحْنُ فِتْنَةٌ فَلَا تَكْفُرْ',
+    english: '"...and what was revealed to the two angels at Babylon — Harut and Marut. They did not teach anyone without first warning: We are only a test, so do not disbelieve!"',
+    note: 'Even the knowledge of magic came with a clear warning. People chose to use it for harm anyway. Sorcery separates husband and wife — but it cannot harm anyone except by Allah\'s permission.',
+  },
+  east_west: {
+    ref: 'Al-Baqarah 2:115',
+    arabic: 'وَلِلَّهِ الْمَشْرِقُ وَالْمَغْرِبُ ۚ فَأَيْنَمَا تُوَلُّوا فَثَمَّ وَجْهُ اللَّهِ',
+    english: '"To Allah belong the East and the West. Wherever you turn, there is the Face of Allah. Indeed, Allah is All-Encompassing, All-Knowing."',
+    note: 'Allah is not confined to a direction, a building, or a place. His presence encompasses everything. This verse is both a comfort and a warning: wherever you are, Allah is aware.',
+  },
+  kun_fayakun: {
+    ref: 'Al-Baqarah 2:117',
+    arabic: 'بَدِيعُ السَّمَاوَاتِ وَالْأَرْضِ ۖ وَإِذَا قَضَىٰ أَمْرًا فَإِنَّمَا يَقُولُ لَهُ كُن فَيَكُونُ',
+    english: '"He is the Originator of the heavens and the earth. When He decrees a matter, He only says to it: Be! — and it is."',
+    note: 'This refutes the claim that Allah "took a son." He does not need offspring or helpers. He creates by command alone. The entire universe obeyed a single word: Kun.',
+  },
 };
 
 // ---- HTML POPUP ----
@@ -564,7 +612,7 @@ class BaseScene {
 
 class Scene1 extends BaseScene {
   constructor() {
-    super('canvas-s1');
+    super('canvas-1');
     if (!this.canvas) return;
     this.bX  = 290; // charity giver X
     this.bDir = 1;
@@ -677,7 +725,7 @@ class Scene1 extends BaseScene {
 
 class Scene2 extends BaseScene {
   constructor() {
-    super('canvas-s2');
+    super('canvas-2');
     if (!this.canvas) return;
     this.sub        = 'A';
     // Sub-A state — truth moves toward figure; figure turns away
@@ -1031,7 +1079,7 @@ class Scene2 extends BaseScene {
 
 class Scene3 extends BaseScene {
   constructor() {
-    super('canvas-s3');
+    super('canvas-4');
     if (!this.canvas) return;
     this.sub = 'A';         // 'A' = creation/angels,  'B' = forbidden tree/whisper
     this.whisperTimer = 0;
@@ -1041,7 +1089,7 @@ class Scene3 extends BaseScene {
   }
 
   _setupToggle() {
-    const btn = document.getElementById('s3-toggle-btn');
+    const btn = document.getElementById('s4-toggle-btn');
     if (!btn) return;
     btn.textContent = '🌳 SEE TREE SCENE →';
     btn.onclick = () => {
@@ -1345,7 +1393,7 @@ class Scene3 extends BaseScene {
 
 class Scene4 extends BaseScene {
   constructor() {
-    super('canvas-s4');
+    super('canvas-5');
     if (!this.canvas) return;
     const W = Math.floor(CW / 3);
     this.clickZones = [
@@ -1643,7 +1691,7 @@ const scenes = {};
 // =============================================
 class Scene5 extends BaseScene {
   constructor() {
-    super('canvas-s5');
+    super('canvas-6');
     if (!this.canvas) return;
     this.phase = 0; this.phaseTimer = 0;
     this.clickZones = [
@@ -1728,7 +1776,7 @@ class Scene5 extends BaseScene {
 // =============================================
 class Scene6 extends BaseScene {
   constructor() {
-    super('canvas-s6');
+    super('canvas-7');
     if (!this.canvas) return;
     this.spots = 0; this.spotTimer = 0;
     this.clickZones = [
@@ -1818,7 +1866,7 @@ class Scene6 extends BaseScene {
 // =============================================
 class Scene7 extends BaseScene {
   constructor() {
-    super('canvas-s7');
+    super('canvas-9');
     if (!this.canvas) return;
     this.blocksBuilt = 0;
     this.clickZones = [
@@ -1905,7 +1953,7 @@ class Scene7 extends BaseScene {
 // =============================================
 class Scene8 extends BaseScene {
   constructor() {
-    super('canvas-s8');
+    super('canvas-11');
     if (!this.canvas) return;
     this.clickZones = [
       { x: 0,      y: 0, w: CW / 2, h: CH, key: 'qibla_verse'  },
@@ -1975,7 +2023,7 @@ class Scene8 extends BaseScene {
 // =============================================
 class Scene9 extends BaseScene {
   constructor() {
-    super('canvas-s9');
+    super('canvas-13');
     if (!this.canvas) return;
     this.clickZones = [
       { x: 0,      y: 0, w: CW / 2, h: CH, key: 'al_birr'       },
@@ -2065,7 +2113,7 @@ class Scene9 extends BaseScene {
 // =============================================
 class Scene10 extends BaseScene {
   constructor() {
-    super('canvas-s10');
+    super('canvas-16');
     if (!this.canvas) return;
     this.phase = 0;
     this.clickZones = [
@@ -2171,7 +2219,7 @@ class Scene10 extends BaseScene {
 // =============================================
 class Scene11 extends BaseScene {
   constructor() {
-    super('canvas-s11');
+    super('canvas-19');
     if (!this.canvas) return;
     this.clickZones = [
       { x: 0, y: 0, w: CW, h: CH, key: 'ayat_kursi' },
@@ -2268,7 +2316,7 @@ class Scene11 extends BaseScene {
 // =============================================
 class Scene12 extends BaseScene {
   constructor() {
-    super('canvas-s12');
+    super('canvas-20');
     if (!this.canvas) return;
     this.clickZones = [
       { x: 0,          y: 0, w: CW * 0.62, h: CH, key: 'charity_parable'   },
@@ -2356,7 +2404,7 @@ class Scene12 extends BaseScene {
 // =============================================
 class Scene13 extends BaseScene {
   constructor() {
-    super('canvas-s13');
+    super('canvas-22');
     if (!this.canvas) return;
     this.clickZones = [
       { x: 0, y: 0,          w: CW, h: CH * 0.6, key: 'amana_rasul'  },
@@ -2430,20 +2478,175 @@ class Scene13 extends BaseScene {
   }
 }
 
+// ====================================================
+//  SCENE 3 (Level 3) — THE FIRST CALL  (2:21-29)
+// ====================================================
+
+class SceneFirstCall extends BaseScene {
+  constructor() {
+    super('canvas-3');
+    if (!this.canvas) return;
+    this.tabletY = -40;
+    this.mosquitoAngle = 0;
+    this.clickZones = [
+      { x: 30,  y: 20,  w: 180, h: 140, key: 'first_call' },
+      { x: 260, y: 30,  w: 180, h: 130, key: 'quran_challenge' },
+      { x: 500, y: 20,  w: 170, h: 140, key: 'mosquito_parable' },
+    ];
+  }
+
+  draw() {
+    const ctx = this.ctx, p = sceneP();
+    fillRect(ctx, 0, 0, CW, CH, p.sky0);
+    this.stars(30);
+    this.ground(p.gnd, p.gndAcc);
+
+    if (this.tabletY < 40) this.tabletY += 0.3;
+    var tY = this.tabletY + Math.sin(this.t * 0.03) * 4;
+    var grd = ctx.createRadialGradient(120, tY + 40, 10, 120, tY + 40, 90);
+    grd.addColorStop(0, 'rgba(255,215,0,0.35)');
+    grd.addColorStop(1, 'rgba(255,215,0,0)');
+    ctx.fillStyle = grd;
+    ctx.fillRect(30, tY - 20, 180, 140);
+    ctx.fillStyle = '#f5f0d8'; ctx.fillRect(70, tY, 100, 70);
+    ctx.fillStyle = '#1a3a1a';
+    ctx.font = 'bold 18px "Amiri", serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('ٱعْبُدُوا۟', 120, tY + 30);
+    ctx.font = 'bold 12px "Amiri", serif';
+    ctx.fillText('رَبَّكُمُ', 120, tY + 52);
+    ctx.textAlign = 'left';
+
+    var cx = 350, cy = 65 + Math.sin(this.t * 0.025) * 5;
+    ctx.fillStyle = '#d4b060';
+    ctx.fillRect(cx - 50, cy - 30, 100, 60);
+    ctx.fillStyle = '#3a2a0a';
+    ctx.fillRect(cx - 46, cy - 26, 92, 52);
+    ctx.fillStyle = '#ffd700';
+    ctx.font = 'bold 9px "Amiri", serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('فَأْتُوا بِسُورَةٍ', cx, cy - 6);
+    ctx.fillText('مِّن مِّثْلِهِ', cx, cy + 10);
+    ctx.font = '7px "Press Start 2P", monospace';
+    ctx.fillText('CHALLENGE', cx, cy + 28);
+    ctx.textAlign = 'left';
+
+    this.mosquitoAngle += 0.07;
+    var mx = 585 + Math.sin(this.mosquitoAngle) * 30;
+    var my = 60 + Math.cos(this.mosquitoAngle * 1.3) * 20;
+    ctx.fillStyle = '#333'; ctx.beginPath(); ctx.ellipse(mx, my, 6, 3, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#555'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(mx - 2, my - 3); ctx.lineTo(mx - 8, my - 12); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(mx + 2, my - 3); ctx.lineTo(mx + 8, my - 12); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(mx + 6, my); ctx.lineTo(mx + 14, my + 2); ctx.stroke();
+    var mGlow = ctx.createRadialGradient(mx, my, 4, mx, my, 40);
+    mGlow.addColorStop(0, 'rgba(255,240,180,0.25)');
+    mGlow.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = mGlow;
+    ctx.fillRect(mx - 40, my - 40, 80, 80);
+
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 2, 2, 195, 16);
+    ctx.fillStyle = p.label; ctx.font = '7px "Press Start 2P", monospace';
+    ctx.fillText('👆 CLICK: Worship (2:21)', 6, 13);
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 245, 2, 200, 16);
+    ctx.fillStyle = p.label; ctx.fillText('👆 CLICK: Challenge (2:23)', 249, 13);
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 490, 2, 195, 16);
+    ctx.fillStyle = p.label; ctx.fillText('👆 CLICK: Mosquito (2:26)', 494, 13);
+  }
+}
+
+// ====================================================
+//  SCENE 8 (Level 8) — THE JEALOUS & THE REFUTED (2:104-123)
+// ====================================================
+
+class SceneRefuted extends BaseScene {
+  constructor() {
+    super('canvas-8');
+    if (!this.canvas) return;
+    this.kunFlash = 0;
+    this.clickZones = [
+      { x: 20,  y: 10,  w: 200, h: 150, key: 'east_west' },
+      { x: 250, y: 20,  w: 200, h: 140, key: 'kun_fayakun' },
+      { x: 490, y: 10,  w: 190, h: 150, key: 'distort_torah' },
+    ];
+  }
+
+  draw() {
+    const ctx = this.ctx, p = sceneP();
+    fillRect(ctx, 0, 0, CW, CH, '#0a0a1a');
+    this.stars(40);
+
+    var arrowPulse = 0.5 + 0.3 * Math.sin(this.t * 0.04);
+    ctx.globalAlpha = arrowPulse;
+    ctx.fillStyle = '#ffa040';
+    ctx.beginPath(); ctx.moveTo(30, 90); ctx.lineTo(60, 70); ctx.lineTo(60, 110); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#ff6040';
+    ctx.fillRect(60, 82, 50, 16);
+    ctx.fillStyle = '#40a0ff';
+    ctx.beginPath(); ctx.moveTo(200, 90); ctx.lineTo(170, 70); ctx.lineTo(170, 110); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#4060ff';
+    ctx.fillRect(120, 82, 50, 16);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = '#ffd700';
+    ctx.font = '8px "Press Start 2P", monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('EAST ← ALLAH → WEST', 115, 130);
+
+    this.kunFlash += 0.04;
+    var flashR = 30 + 20 * Math.abs(Math.sin(this.kunFlash));
+    var grd = ctx.createRadialGradient(350, 85, 5, 350, 85, flashR + 40);
+    grd.addColorStop(0, 'rgba(255,255,200,0.5)');
+    grd.addColorStop(0.5, 'rgba(255,200,50,0.2)');
+    grd.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = grd;
+    ctx.fillRect(250, 10, 200, 160);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 22px "Amiri", serif';
+    ctx.fillText('كُن فَيَكُونُ', 350, 75);
+    ctx.fillStyle = '#ffd700';
+    ctx.font = '8px "Press Start 2P", monospace';
+    ctx.fillText('BE! AND IT IS', 350, 100);
+
+    var figX = 560, figY = GY - 60;
+    spr(ctx, figX, figY, human('#5a2a2a', '#3a1a1a', SKIN2));
+    ctx.fillStyle = 'rgba(100,50,50,0.3)';
+    ctx.beginPath(); ctx.ellipse(figX + 15, figY - 15, 40, 25, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#ff6666'; ctx.font = '7px "Press Start 2P", monospace';
+    ctx.fillText('JEALOUSY', figX - 10, figY - 22);
+    ctx.textAlign = 'left';
+
+    fillRect(ctx, 0, GY, CW, CH - GY, '#1a1a30');
+
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 2, 2, 210, 16);
+    ctx.fillStyle = '#ffd700'; ctx.font = '7px "Press Start 2P", monospace';
+    ctx.fillText('👆 CLICK: East & West (2:115)', 6, 13);
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 235, 2, 230, 16);
+    ctx.fillStyle = '#ffd700'; ctx.fillText('👆 CLICK: Kun fa yakun (2:117)', 239, 13);
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 480, 2, 210, 16);
+    ctx.fillStyle = '#ffd700'; ctx.fillText('👆 CLICK: Woe to them (2:79)', 484, 13);
+  }
+}
+
+// ====================================================
+//  INIT & CONTROL
+// ====================================================
+
 function initScenes() {
   scenes.s1  = new Scene1();
   scenes.s2  = new Scene2();
-  scenes.s3  = new Scene3();
-  scenes.s4  = new Scene4();
-  scenes.s5  = new Scene5();
-  scenes.s6  = new Scene6();
-  scenes.s7  = new Scene7();
-  scenes.s8  = new Scene8();
-  scenes.s9  = new Scene9();
-  scenes.s10 = new Scene10();
-  scenes.s11 = new Scene11();
-  scenes.s12 = new Scene12();
-  scenes.s13 = new Scene13();
+  scenes.s3  = new SceneFirstCall();
+  scenes.s4  = new Scene3();
+  scenes.s5  = new Scene4();
+  scenes.s6  = new Scene5();
+  scenes.s7  = new Scene6();
+  scenes.s8  = new SceneRefuted();
+  scenes.s9  = new Scene7();
+  scenes.s11 = new Scene8();
+  scenes.s13 = new Scene9();
+  scenes.s16 = new Scene10();
+  scenes.s19 = new Scene11();
+  scenes.s20 = new Scene12();
+  scenes.s22 = new Scene13();
 }
 
 function startScene(n) {

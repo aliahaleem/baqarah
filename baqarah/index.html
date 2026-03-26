@@ -48,7 +48,7 @@
   <div class="stats-row">
     <div class="stat-chip">⭐ <span id="xp-display">0</span> XP</div>
     <div class="stat-chip gem-chip">💎 <span id="gems-display">0</span></div>
-    <div class="stat-chip done-chip">✅ <span id="done-display">0</span>/13</div>
+    <div class="stat-chip done-chip">✅ <span id="done-display">0</span>/23</div>
     <a href="../index.html" style="background:transparent;border:2px solid #5a8a3a;color:#88cc66;font-family:'Press Start 2P',monospace;font-size:7px;padding:4px 8px;text-decoration:none;transition:background 0.2s" onmouseover="this.style.background='#5a8a3a';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#88cc66'">🏠 HUB</a>
     <button class="reset-btn" onclick="resetGame()" title="Clear all progress and start over">🔄 Reset</button>
   </div>
@@ -73,105 +73,185 @@
       <div class="map-tile unlocked" id="tile-1" onclick="openSection(1)">
         <div class="tile-icon">🌿</div>
         <div class="tile-level">LEVEL 1</div>
-        <div class="tile-name">Plains of<br>Guidance</div>
-        <div class="tile-verses">Verses 1–5</div>
+        <div class="tile-name">The<br>Guided</div>
+        <div class="tile-verses">2:1–5</div>
         <div class="tile-status" id="status-1">▶ PLAY</div>
       </div>
 
       <div class="map-tile locked" id="tile-2">
         <div class="tile-icon">🌑</div>
         <div class="tile-level">LEVEL 2</div>
-        <div class="tile-name">Cave of<br>Shadows</div>
-        <div class="tile-verses">Verses 6–20</div>
+        <div class="tile-name">Sealed &amp;<br>Masked</div>
+        <div class="tile-verses">2:6–20</div>
         <div class="tile-status" id="status-2">🔒 LOCKED</div>
       </div>
 
       <div class="map-tile locked" id="tile-3">
-        <div class="tile-icon">🌟</div>
+        <div class="tile-icon">📢</div>
         <div class="tile-level">LEVEL 3</div>
-        <div class="tile-name">Garden of<br>First Light</div>
-        <div class="tile-verses">Verses 21–39</div>
+        <div class="tile-name">The First<br>Call</div>
+        <div class="tile-verses">2:21–29</div>
         <div class="tile-status" id="status-3">🔒 LOCKED</div>
       </div>
 
       <div class="map-tile locked" id="tile-4">
-        <div class="tile-icon">🌊</div>
+        <div class="tile-icon">🌟</div>
         <div class="tile-level">LEVEL 4</div>
-        <div class="tile-name">Shores of<br>Sinai</div>
-        <div class="tile-verses">Verses 40–61</div>
+        <div class="tile-name">The First<br>Test</div>
+        <div class="tile-verses">2:30–39</div>
         <div class="tile-status" id="status-4">🔒 LOCKED</div>
       </div>
 
       <div class="map-tile locked" id="tile-5">
-        <div class="tile-icon">🐄</div>
+        <div class="tile-icon">🌊</div>
         <div class="tile-level">LEVEL 5</div>
-        <div class="tile-name">Mystery<br>of the Cow</div>
-        <div class="tile-verses">Verses 62–74</div>
+        <div class="tile-name">Rescued<br>Nation</div>
+        <div class="tile-verses">2:40–61</div>
         <div class="tile-status" id="status-5">🔒 LOCKED</div>
       </div>
 
       <div class="map-tile locked" id="tile-6">
-        <div class="tile-icon">💎</div>
+        <div class="tile-icon">🐄</div>
         <div class="tile-level">LEVEL 6</div>
-        <div class="tile-name">The Hard<br>Heart</div>
-        <div class="tile-verses">Verses 75–103</div>
+        <div class="tile-name">Cow &amp;<br>Stone</div>
+        <div class="tile-verses">2:62–74</div>
         <div class="tile-status" id="status-6">🔒 LOCKED</div>
       </div>
 
       <div class="map-tile locked" id="tile-7">
-        <div class="tile-icon">🕋</div>
+        <div class="tile-icon">💔</div>
         <div class="tile-level">LEVEL 7</div>
-        <div class="tile-name">Ibrahim<br>Builds the Ka'ba</div>
-        <div class="tile-verses">Verses 124–141</div>
+        <div class="tile-name">Broken<br>Covenants</div>
+        <div class="tile-verses">2:75–103</div>
         <div class="tile-status" id="status-7">🔒 LOCKED</div>
       </div>
 
       <div class="map-tile locked" id="tile-8">
-        <div class="tile-icon">🧭</div>
+        <div class="tile-icon">🌐</div>
         <div class="tile-level">LEVEL 8</div>
-        <div class="tile-name">The New<br>Direction</div>
-        <div class="tile-verses">Verses 142–157</div>
+        <div class="tile-name">Jealous<br>Refuted</div>
+        <div class="tile-verses">2:104–123</div>
         <div class="tile-status" id="status-8">🔒 LOCKED</div>
       </div>
 
       <div class="map-tile locked" id="tile-9">
-        <div class="tile-icon">📋</div>
+        <div class="tile-icon">🕋</div>
         <div class="tile-level">LEVEL 9</div>
-        <div class="tile-name">The Big<br>Rules (Al-Birr)</div>
-        <div class="tile-verses">Verses 177+183</div>
+        <div class="tile-name">Ibrahim's<br>Legacy</div>
+        <div class="tile-verses">2:124–141</div>
         <div class="tile-status" id="status-9">🔒 LOCKED</div>
       </div>
 
-      <div class="map-tile locked" id="tile-10">
-        <div class="tile-icon">⚔️</div>
-        <div class="tile-level">LEVEL 10</div>
-        <div class="tile-name">Talut, Jalut<br>&amp; Dawud</div>
-        <div class="tile-verses">Verses 243–253</div>
+      <div class="map-tile bonus locked" id="tile-10">
+        <div class="tile-icon">📖</div>
+        <div class="tile-level">BONUS</div>
+        <div class="tile-name">Juz 1<br>WBW</div>
+        <div class="tile-verses">2:1–141</div>
         <div class="tile-status" id="status-10">🔒 LOCKED</div>
       </div>
 
       <div class="map-tile locked" id="tile-11">
-        <div class="tile-icon">👑</div>
+        <div class="tile-icon">🧭</div>
         <div class="tile-level">LEVEL 11</div>
-        <div class="tile-name">Ayat<br>al-Kursi</div>
-        <div class="tile-verses">Verse 255</div>
+        <div class="tile-name">New<br>Direction</div>
+        <div class="tile-verses">2:142–157</div>
         <div class="tile-status" id="status-11">🔒 LOCKED</div>
       </div>
 
       <div class="map-tile locked" id="tile-12">
-        <div class="tile-icon">🌱</div>
+        <div class="tile-icon">📜</div>
         <div class="tile-level">LEVEL 12</div>
-        <div class="tile-name">The Charity<br>Garden</div>
-        <div class="tile-verses">Verses 261–274</div>
+        <div class="tile-name">Complete<br>Way</div>
+        <div class="tile-verses">2:158–177</div>
         <div class="tile-status" id="status-12">🔒 LOCKED</div>
       </div>
 
       <div class="map-tile locked" id="tile-13">
-        <div class="tile-icon">🤲</div>
+        <div class="tile-icon">🌙</div>
         <div class="tile-level">LEVEL 13</div>
-        <div class="tile-name">The Final<br>Treasure</div>
-        <div class="tile-verses">Verses 284–286</div>
+        <div class="tile-name">Ramadan<br>&amp; Du'a</div>
+        <div class="tile-verses">2:183–203</div>
         <div class="tile-status" id="status-13">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-14">
+        <div class="tile-icon">⚡</div>
+        <div class="tile-level">LEVEL 14</div>
+        <div class="tile-name">True vs<br>False</div>
+        <div class="tile-verses">2:204–218</div>
+        <div class="tile-status" id="status-14">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-15">
+        <div class="tile-icon">⚖️</div>
+        <div class="tile-level">LEVEL 15</div>
+        <div class="tile-name">Social<br>Justice</div>
+        <div class="tile-verses">2:219–242</div>
+        <div class="tile-status" id="status-15">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-16">
+        <div class="tile-icon">⚔️</div>
+        <div class="tile-level">LEVEL 16</div>
+        <div class="tile-name">Small<br>Army</div>
+        <div class="tile-verses">2:243–252</div>
+        <div class="tile-status" id="status-16">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile bonus locked" id="tile-17">
+        <div class="tile-icon">📖</div>
+        <div class="tile-level">BONUS</div>
+        <div class="tile-name">Juz 2<br>WBW</div>
+        <div class="tile-verses">2:142–252</div>
+        <div class="tile-status" id="status-17">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-18">
+        <div class="tile-icon">💡</div>
+        <div class="tile-level">LEVEL 18</div>
+        <div class="tile-name">No<br>Compulsion</div>
+        <div class="tile-verses">2:253–260</div>
+        <div class="tile-status" id="status-18">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-19">
+        <div class="tile-icon">👑</div>
+        <div class="tile-level">LEVEL 19</div>
+        <div class="tile-name">The<br>Throne</div>
+        <div class="tile-verses">Verse 255</div>
+        <div class="tile-status" id="status-19">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-20">
+        <div class="tile-icon">🌱</div>
+        <div class="tile-level">LEVEL 20</div>
+        <div class="tile-name">Charity<br>Garden</div>
+        <div class="tile-verses">2:261–274</div>
+        <div class="tile-status" id="status-20">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-21">
+        <div class="tile-icon">📝</div>
+        <div class="tile-level">LEVEL 21</div>
+        <div class="tile-name">Riba &amp;<br>Debt</div>
+        <div class="tile-verses">2:275–283</div>
+        <div class="tile-status" id="status-21">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile locked" id="tile-22">
+        <div class="tile-icon">🏆</div>
+        <div class="tile-level">LEVEL 22</div>
+        <div class="tile-name">Final<br>Du'a</div>
+        <div class="tile-verses">2:284–286</div>
+        <div class="tile-status" id="status-22">🔒 LOCKED</div>
+      </div>
+
+      <div class="map-tile bonus locked" id="tile-23">
+        <div class="tile-icon">📖</div>
+        <div class="tile-level">BONUS</div>
+        <div class="tile-name">Juz 3<br>WBW</div>
+        <div class="tile-verses">2:253–286</div>
+        <div class="tile-status" id="status-23">🔒 LOCKED</div>
       </div>
 
     </div>
@@ -183,60 +263,20 @@
         <canvas id="build-canvas" width="560" height="250" style="width:100%;image-rendering:pixelated;display:block;"></canvas>
       </div>
       <p style="font-family:Georgia,serif;font-size:11px;color:#6a8a5a;text-align:center;margin-bottom:10px;line-height:1.6;">
-        Complete each level to place the next block — all 13 levels build the Ka'ba!
+        Complete each level to place the next block — all 23 levels build the Ka'ba! 🕋
       </p>
       <div class="world-preview">
-        <div class="world-chunk" id="chunk-1">
-          <span class="chunk-emoji">⬛</span>
-          <span class="chunk-label">Plains</span>
+        <div class="world-chunk" id="chunk-juz1">
+          <span class="chunk-emoji">📗</span>
+          <span class="chunk-label">Juz 1 (L1-10)</span>
         </div>
-        <div class="world-chunk" id="chunk-2">
-          <span class="chunk-emoji">⬛</span>
-          <span class="chunk-label">Caves</span>
+        <div class="world-chunk" id="chunk-juz2">
+          <span class="chunk-emoji">📘</span>
+          <span class="chunk-label">Juz 2 (L11-17)</span>
         </div>
-        <div class="world-chunk" id="chunk-3">
-          <span class="chunk-emoji">⬛</span>
-          <span class="chunk-label">Garden</span>
-        </div>
-        <div class="world-chunk" id="chunk-4">
-          <span class="chunk-emoji">⬛</span>
-          <span class="chunk-label">Shores</span>
-        </div>
-        <div class="world-chunk" id="chunk-5">
-          <span class="chunk-emoji">⬛</span>
-          <span class="chunk-label">The Cow</span>
-        </div>
-        <div class="world-chunk" id="chunk-6">
-          <span class="chunk-emoji">⬛</span>
-          <span class="chunk-label">Hard Heart</span>
-        </div>
-        <div class="world-chunk" id="chunk-7">
-          <span class="chunk-emoji">⬛</span>
-          <span class="chunk-label">Ka'ba</span>
-        </div>
-        <div class="world-chunk" id="chunk-8">
-          <span class="chunk-emoji">⬛</span>
-          <span class="chunk-label">Qibla</span>
-        </div>
-        <div class="world-chunk" id="chunk-9">
-          <span class="chunk-emoji">⬛</span>
-          <span class="chunk-label">Al-Birr</span>
-        </div>
-        <div class="world-chunk" id="chunk-10">
-          <span class="chunk-emoji">⬛</span>
-          <span class="chunk-label">Battle</span>
-        </div>
-        <div class="world-chunk" id="chunk-11">
-          <span class="chunk-emoji">⬛</span>
-          <span class="chunk-label">Kursi</span>
-        </div>
-        <div class="world-chunk" id="chunk-12">
-          <span class="chunk-emoji">⬛</span>
-          <span class="chunk-label">Charity</span>
-        </div>
-        <div class="world-chunk" id="chunk-13">
-          <span class="chunk-emoji">⬛</span>
-          <span class="chunk-label">Du'a</span>
+        <div class="world-chunk" id="chunk-juz3">
+          <span class="chunk-emoji">📙</span>
+          <span class="chunk-label">Juz 3 (L18-23)</span>
         </div>
       </div>
     </div>
@@ -263,7 +303,7 @@
         <div class="scene-header">
           <span class="scene-title">🎬 WATCH THE SCENE — Click on characters to reveal verses!</span>
         </div>
-        <canvas id="canvas-s1"></canvas>
+        <canvas id="canvas-1"></canvas>
       </div>
 
       <!-- STORY -->
@@ -371,7 +411,7 @@
           <span class="scene-title">🎬 WATCH THE SCENE — Click characters to reveal verses!</span>
           <button class="scene-toggle-btn" id="s2-toggle-btn">🎭 SEE THE HYPOCRITE →</button>
         </div>
-        <canvas id="canvas-s2"></canvas>
+        <canvas id="canvas-2"></canvas>
       </div>
 
       <!-- STORY -->
@@ -456,8 +496,67 @@
 
     </div><!-- /section-panel-2 -->
 
+    
     <!-- ========== SECTION 3 ========== -->
     <div class="section-panel" id="section-panel-3">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>After describing believers, disbelievers, and hypocrites, Allah now turns to ALL of mankind with a direct command: <strong>Worship your Lord!</strong> And then comes the greatest challenge ever issued: produce even ONE surah like the Quran. Over 1,400 years later, no one has succeeded. Let's explore why!</em></p></div>
+      </div>
+
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">📢 THE FIRST CALL — Click elements to explore verses!</span></div>
+        <canvas id="canvas-3"></canvas>
+      </div>
+
+      <div class="card story-card">
+        <div class="card-header">📜 THE STORY — The First Call (2:21–29)</div>
+        <div class="story-text">
+          <p>After 20 verses describing three types of people, Allah now speaks to <strong>ALL of mankind</strong>: <em>"O mankind! Worship your Lord who created you and those before you, so that you may develop taqwa."</em> (2:21)</p>
+          <p>Then comes the great challenge: <em>"If you are in doubt about what We have revealed to Our servant, then produce a surah like it."</em> (2:23) Call upon everyone and everything besides Allah — you will never succeed. And if you cannot (and you never will), then fear the Fire.</p>
+          <p>Allah then shows His creative power through a humble example — the <strong>mosquito</strong>: <em>"Allah is not shy to use any example — even a mosquito."</em> (2:26) Those with faith see wisdom in it. Those without faith mock it. But a mosquito — with its heart, brain, and wings beating 600 times per second — is a miracle of design.</p>
+          <p>And in 2:29, Allah reminds us: <em>"He created for you all that is on the earth. Then He turned to the heaven and fashioned it into seven heavens."</em> Everything was made for you — as a trust.</p>
+          <div class="story-highlight">💡 <strong>Key Lesson:</strong> The Quran's challenge is open — forever. If it were man-made, surely someone would have matched it by now. The fact that no one has is itself a proof of its divine origin.</div>
+        </div>
+      </div>
+
+      <div class="card verse-card">
+        <div class="card-header">📿 THE VERSES — Al-Baqarah 2:21–29</div>
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:21</div>
+          <div class="arabic">يَا أَيُّهَا النَّاسُ اعْبُدُوا رَبَّكُمُ الَّذِي خَلَقَكُمْ وَالَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ</div>
+          <div class="english">O mankind, worship your Lord, who created you and those before you, that you may become righteous.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:23</div>
+          <div class="arabic">وَإِن كُنتُمْ فِي رَيْبٍ مِّمَّا نَزَّلْنَا عَلَىٰ عَبْدِنَا فَأْتُوا بِسُورَةٍ مِّن مِّثْلِهِ</div>
+          <div class="english">And if you are in doubt about what We have sent down to Our Servant, then produce a surah the like thereof and call upon your witnesses other than Allah, if you should be truthful.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:26</div>
+          <div class="arabic">إِنَّ اللَّهَ لَا يَسْتَحْيِي أَن يَضْرِبَ مَثَلًا مَّا بَعُوضَةً فَمَا فَوْقَهَا</div>
+          <div class="english">Indeed, Allah is not timid to present an example — that of a mosquito or what is smaller than it.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+      </div>
+
+      <div class="card game-card">
+        <div class="card-header">🎮 QUIZ — The First Call (2:21–29)</div>
+        <div class="game-instructions">Choose the best answer for each question. You need <strong>4 out of 5</strong> correct!</div>
+        <div id="quiz-3"></div>
+        <div id="feedback-3" class="game-feedback"></div>
+        <div class="game-footer">
+          <button class="action-btn" onclick="checkSection3()">SUBMIT QUIZ ✓</button>
+          <button class="action-btn gold" id="complete-3-btn" onclick="completeSection(3)" style="display:none">🏆 CLAIM REWARD!</button>
+        </div>
+        <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+      </div>
+    </div><!-- /section-panel-3 -->
+
+    <!-- ========== SECTION 4 ========== -->
+    <div class="section-panel" id="section-panel-4">
 
       <div class="ibn-ameen-panel">
         <div class="character-avatar">🧙‍♂️</div>
@@ -470,14 +569,14 @@
       <div class="scene-container">
         <div class="scene-header">
           <span class="scene-title">🎬 WATCH THE SCENE — Click anything to reveal verses!</span>
-          <button class="scene-toggle-btn" id="s3-toggle-btn">🌳 SEE TREE SCENE →</button>
+          <button class="scene-toggle-btn" id="s4-toggle-btn">🌳 SEE TREE SCENE →</button>
         </div>
-        <canvas id="canvas-s3"></canvas>
+        <canvas id="canvas-4"></canvas>
       </div>
 
       <!-- STORY -->
       <div class="card story-card">
-        <div class="card-header">📜 THE STORY — Garden of First Light (2:21–39)</div>
+        <div class="card-header">📜 THE STORY — The First Test (2:30–39)</div>
         <div class="story-text">
           <p>Before humans existed, the angels were constantly worshipping Allah in the heavens. Then came an announcement that changed everything.</p>
           <br>
@@ -544,21 +643,21 @@
       <div class="card game-card">
         <div class="card-header">🎮 GAME: COMPLETE THE VERSE!</div>
         <div class="game-instructions">Fill in the missing Arabic word in each verse.</div>
-        <div id="order-3" class="order-list"></div>
-        <div id="feedback-3" class="game-feedback"></div>
+        <div id="order-4" class="order-list"></div>
+        <div id="feedback-4" class="game-feedback"></div>
         <div class="game-footer">
-          <button class="action-btn" onclick="checkSection3()">CHECK ANSWER ✓</button>
-          <button class="action-btn gold" id="complete-3-btn" onclick="completeSection(3)" style="display:none">🏆 CLAIM REWARD!</button>
+          <button class="action-btn" onclick="checkSection4()">CHECK ANSWER ✓</button>
+          <button class="action-btn gold" id="complete-4-btn" onclick="completeSection(4)" style="display:none">🏆 CLAIM REWARD!</button>
         </div>
         <div class="back-btn-bottom">
           <button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button>
         </div>
       </div>
 
-    </div><!-- /section-panel-3 -->
+    </div><!-- /section-panel-4 -->
 
-    <!-- ========== SECTION 4 ========== -->
-    <div class="section-panel" id="section-panel-4">
+    <!-- ========== SECTION 5 ========== -->
+    <div class="section-panel" id="section-panel-5">
 
       <div class="ibn-ameen-panel">
         <div class="character-avatar">🧙‍♂️</div>
@@ -572,7 +671,7 @@
         <div class="scene-header">
           <span class="scene-title">🎬 THREE MIRACLES IN THE DESERT — Click each panel for its verse!</span>
         </div>
-        <canvas id="canvas-s4"></canvas>
+        <canvas id="canvas-5"></canvas>
       </div>
 
       <!-- STORY -->
@@ -635,23 +734,23 @@
         <div class="card-header">🎮 MATCH THE MIRACLE!</div>
         <div class="game-instructions">Tap the Arabic on the left, then tap its English meaning on the right.</div>
         <div class="drag-layout">
-          <div class="drag-pool" id="drag-pool-4"></div>
-          <div class="drop-zones" id="drop-zones-4"></div>
+          <div class="drag-pool" id="drag-pool-5"></div>
+          <div class="drop-zones" id="drop-zones-5"></div>
         </div>
-        <div id="feedback-4" class="game-feedback"></div>
+        <div id="feedback-5" class="game-feedback"></div>
         <div class="game-footer">
-          <button class="action-btn" onclick="checkSection4()">CHECK MATCHES ✓</button>
-          <button class="action-btn gold" id="complete-4-btn" onclick="completeSection(4)" style="display:none">🏆 CLAIM REWARD!</button>
+          <button class="action-btn" onclick="checkSection5()">CHECK MATCHES ✓</button>
+          <button class="action-btn gold" id="complete-5-btn" onclick="completeSection(5)" style="display:none">🏆 CLAIM REWARD!</button>
         </div>
         <div class="back-btn-bottom">
           <button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button>
         </div>
       </div>
 
-    </div><!-- /section-panel-4 -->
+    </div><!-- /section-panel-5 -->
 
-    <!-- ==================== SECTION 5 ==================== -->
-    <div id="section-panel-5" class="section-panel">
+    <!-- ==================== SECTION 6 ==================== -->
+    <div id="section-panel-6" class="section-panel">
       <div class="ibn-ameen-panel">
         <div class="character-avatar">🧙‍♂️</div>
         <div class="speech-bubble"><p>Ibn Ameen says: <em>The whole Surah is named after this story — "Al-Baqarah" means "The Cow." When Allah gave a command, Bani Isra'il kept asking questions instead of obeying. Each question made the command harder on themselves. What do we learn? <strong>When Allah commands — obey first, ask less.</strong> And then the miracle: a dead man comes back to life and names his killer! Let's explore it.</em></p></div>
@@ -662,7 +761,7 @@
         <div class="scene-header">
           <span class="scene-title">🐄 THE MYSTERY COW</span>
         </div>
-        <canvas id="canvas-s5" width="560" height="220"></canvas>
+        <canvas id="canvas-6" width="560" height="220"></canvas>
         <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click on the cow or the figure to reveal verses</div>
       </div>
 
@@ -698,18 +797,18 @@
       <!-- QUIZ GAME -->
       <div class="card">
         <div class="card-header">🎮 QUIZ: The Mystery Cow</div>
-        <div id="quiz-5"></div>
-        <div id="feedback-5" class="game-feedback"></div>
+        <div id="quiz-6"></div>
+        <div id="feedback-6" class="game-feedback"></div>
         <div class="game-footer">
-          <button class="action-btn" onclick="checkSection5()">SUBMIT QUIZ ✓</button>
-          <button class="action-btn gold" id="complete-5-btn" onclick="completeSection(5)" style="display:none">🏆 CLAIM REWARD!</button>
+          <button class="action-btn" onclick="checkSection6()">SUBMIT QUIZ ✓</button>
+          <button class="action-btn gold" id="complete-6-btn" onclick="completeSection(6)" style="display:none">🏆 CLAIM REWARD!</button>
         </div>
         <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
       </div>
-    </div><!-- /section-panel-5 -->
+    </div><!-- /section-panel-6 -->
 
-    <!-- ==================== SECTION 6 ==================== -->
-    <div id="section-panel-6" class="section-panel">
+    <!-- ==================== SECTION 7 ==================== -->
+    <div id="section-panel-7" class="section-panel">
       <div class="ibn-ameen-panel">
         <div class="character-avatar">🧙‍♂️</div>
         <div class="speech-bubble"><p>Ibn Ameen says: <em>This section shows us how hearts can slowly harden. Bani Isra'il heard the truth, saw miracles, made covenants with Allah — yet still turned away. Their hearts became harder than stone. <strong>The rock at least gives water. Their hearts gave nothing.</strong> May Allah protect our hearts. Let's learn this as a warning, not a judgment.</em></p></div>
@@ -720,13 +819,13 @@
         <div class="scene-header">
           <span class="scene-title">💎 THE HARD HEART</span>
         </div>
-        <canvas id="canvas-s6" width="560" height="220"></canvas>
+        <canvas id="canvas-7" width="560" height="220"></canvas>
         <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click the heart or the stone to see verses</div>
       </div>
 
       <!-- STORY CARD -->
       <div class="card">
-        <div class="card-header">📖 Story: The Hard Heart (2:75–103)</div>
+        <div class="card-header">📖 Story: Broken Covenants (2:75–103)</div>
         <div class="story-text">
           <p>Allah took a solemn covenant from Bani Isra'il at Mount Sinai: worship Allah alone, honour your parents, care for orphans, speak kindly to people (2:83). It was a clear promise. But what did they do? They broke it.</p>
           <p>Some of them began to change their scripture — after understanding it — writing things with their own hands and claiming it was from Allah (2:79). They exchanged what was true for a small price.</p>
@@ -751,20 +850,73 @@
 
       <!-- COMPLETE THE VERSE GAME -->
       <div class="card">
-        <div class="card-header">🎮 GAME: MATCH VERSE TO THEME!</div>
-        <p class="game-instructions">Match each Arabic verse to its deeper theme or lesson.</p>
-        <div id="order-6" class="order-list"></div>
-        <div id="feedback-6" class="game-feedback"></div>
+        <div class="card-header">🎮 QUIZ: Broken Covenants (2:75–103)</div>
+        <div class="game-instructions">Choose the best answer for each question. You need <strong>4 out of 5</strong> correct!</div>
+        <div id="quiz-7"></div>
+        <div id="feedback-7" class="game-feedback"></div>
         <div class="game-footer">
-          <button class="action-btn" onclick="checkSection6()">CHECK ANSWER ✓</button>
-          <button class="action-btn gold" id="complete-6-btn" onclick="completeSection(6)" style="display:none">🏆 CLAIM REWARD!</button>
+          <button class="action-btn" onclick="checkSection7()">SUBMIT QUIZ ✓</button>
+          <button class="action-btn gold" id="complete-7-btn" onclick="completeSection(7)" style="display:none">🏆 CLAIM REWARD!</button>
         </div>
         <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
       </div>
-    </div><!-- /section-panel-6 -->
+    </div><!-- /section-panel-7 -->
 
-    <!-- ==================== SECTION 7 ==================== -->
-    <div id="section-panel-7" class="section-panel">
+    
+    <!-- ========== SECTION 8 ========== -->
+    <div class="section-panel" id="section-panel-8">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>Some people are so jealous of the truth that they wish others would leave Islam. They twist words and claim only their group enters Paradise. But Allah responds powerfully: <strong>"To Allah belong the East and the West — wherever you turn, there is the Face of Allah."</strong> And the ultimate refutation: He does not need a son. He simply says "Be!" — and it is. Kun fa yakun!</em></p></div>
+      </div>
+
+      <div class="scene-container">
+        <div class="scene-header"><span class="scene-title">🌐 THE JEALOUS & THE REFUTED — Click to explore!</span></div>
+        <canvas id="canvas-8"></canvas>
+      </div>
+
+      <div class="card story-card">
+        <div class="card-header">📜 THE STORY — The Jealous &amp; The Refuted (2:104–123)</div>
+        <div class="story-text">
+          <p>Allah warns the believers: stop using the word <strong>"Ra'ina"</strong> (2:104). Why? Because some enemies twisted it to sound like an insult. Instead, say <strong>"Undhurna"</strong> (look at us / wait for us). Allah closes every loophole Shaytan might exploit.</p>
+          <p>Then Allah addresses a bold claim: <em>"None will enter Paradise except those who are Jews or Christians."</em> (2:111) Allah's response is sharp: <strong>"Produce your proof if you are truthful!"</strong> And then the real standard: whoever submits their face to Allah and does good — their reward is with their Lord.</p>
+          <p>Some prevented people from entering mosques and tried to ruin them (2:114). But Allah owns all direction: <em>"To Allah belong the East and the West. Wherever you turn, there is the Face of Allah."</em> (2:115)</p>
+          <p>And when they say "Allah has taken a son" — the Quran responds with cosmic authority: <em>"He is the Originator of the heavens and the earth. When He decrees a matter, He only says to it: <strong>Be! And it is.</strong>"</em> (2:117) He does not need children. He creates by command.</p>
+          <div class="story-highlight">🌟 <strong>Key Takeaway:</strong> Truth is not defined by group labels. It is defined by submission to Allah alone. No jealousy or false claim can change that.</div>
+        </div>
+      </div>
+
+      <div class="card verse-card">
+        <div class="card-header">📿 KEY VERSES — 2:104–123</div>
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:115</div>
+          <div class="arabic">وَلِلَّهِ الْمَشْرِقُ وَالْمَغْرِبُ ۚ فَأَيْنَمَا تُوَلُّوا فَثَمَّ وَجْهُ اللَّهِ</div>
+          <div class="english">And to Allah belongs the east and the west. So wherever you [might] turn, there is the Face of Allah.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+        <div class="verse-entry">
+          <div class="verse-number">Verse 2:117</div>
+          <div class="arabic">بَدِيعُ السَّمَاوَاتِ وَالْأَرْضِ ۖ وَإِذَا قَضَىٰ أَمْرًا فَإِنَّمَا يَقُولُ لَهُ كُن فَيَكُونُ</div>
+          <div class="english">Originator of the heavens and the earth. When He decrees a matter, He only says to it, "Be," and it is.</div>
+          <div class="trans-source">— Sahih International</div>
+        </div>
+      </div>
+
+      <div class="card game-card">
+        <div class="card-header">🎮 QUIZ — The Jealous &amp; The Refuted (2:104–123)</div>
+        <div class="game-instructions">Choose the best answer for each question. You need <strong>4 out of 5</strong> correct!</div>
+        <div id="quiz-8"></div>
+        <div id="feedback-8" class="game-feedback"></div>
+        <div class="game-footer">
+          <button class="action-btn" onclick="checkSection8()">SUBMIT QUIZ ✓</button>
+          <button class="action-btn gold" id="complete-8-btn" onclick="completeSection(8)" style="display:none">🏆 CLAIM REWARD!</button>
+        </div>
+        <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+      </div>
+    </div><!-- /section-panel-8 -->
+
+    <!-- ==================== SECTION 9 ==================== -->
+    <div id="section-panel-9" class="section-panel">
       <div class="ibn-ameen-panel">
         <div class="character-avatar">🧙‍♂️</div>
         <div class="speech-bubble"><p>Ibn Ameen says: <em>Did you know the Ka'ba — the cube that millions face in prayer every day — was built by Ibrahim (AS) and his son Ismail (AS)? With their own hands. And with every brick they placed, they made du'a: "Accept this from us, O Allah." This level is about Ibrahim — the friend of Allah (Khalilullah). He was tested more than almost anyone, and he passed every single test.</em></p></div>
@@ -775,7 +927,7 @@
         <div class="scene-header">
           <span class="scene-title">🕋 IBRAHIM BUILDS THE KA'BA</span>
         </div>
-        <canvas id="canvas-s7" width="560" height="220"></canvas>
+        <canvas id="canvas-9" width="560" height="220"></canvas>
         <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click the Ka'ba or the figures to see verses</div>
       </div>
 
@@ -808,20 +960,31 @@
         <div class="card-header">🎮 GAME: Match Ibrahim's Story</div>
         <p class="game-instructions">Tap the Arabic on the left, then tap its English meaning on the right.</p>
         <div class="drag-game-container">
-          <div class="drag-pool" id="drag-pool-7"></div>
-          <div class="drop-zones" id="drop-zones-7"></div>
+          <div class="drag-pool" id="drag-pool-9"></div>
+          <div class="drop-zones" id="drop-zones-9"></div>
         </div>
-        <div id="feedback-7" class="game-feedback"></div>
+        <div id="feedback-9" class="game-feedback"></div>
         <div class="game-footer">
-          <button class="action-btn" onclick="checkSection7()">CHECK MATCHES ✓</button>
-          <button class="action-btn gold" id="complete-7-btn" onclick="completeSection(7)" style="display:none">🏆 CLAIM REWARD!</button>
+          <button class="action-btn" onclick="checkSection9()">CHECK MATCHES ✓</button>
+          <button class="action-btn gold" id="complete-9-btn" onclick="completeSection(9)" style="display:none">🏆 CLAIM REWARD!</button>
         </div>
         <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
       </div>
-    </div><!-- /section-panel-7 -->
+    </div><!-- /section-panel-9 -->
 
-    <!-- ==================== SECTION 8 ==================== -->
-    <div id="section-panel-8" class="section-panel">
+    
+    <!-- ========== SECTION 10 — JUZ 1 WBW ========== -->
+    <div class="section-panel" id="section-panel-10">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>MashAllah, you've completed Juz 1! Now let's master the KEY Arabic words from these verses. Knowing these words will transform how you understand the Quran — not just Al-Baqarah, but every Surah that uses them. Tap each word to see its meaning!</em></p></div>
+      </div>
+      <div id="wbw-container-10"></div>
+      <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+    </div><!-- /section-panel-10 -->
+
+    <!-- ==================== SECTION 11 ==================== -->
+    <div id="section-panel-11" class="section-panel">
       <div class="ibn-ameen-panel">
         <div class="character-avatar">🧙‍♂️</div>
         <div class="speech-bubble"><p>Ibn Ameen says: <em>Did you know Muslims used to face Jerusalem when they prayed? Then Allah changed the Qibla to face Mecca — the Ka'ba that Ibrahim built. Some people mocked: "Why did they change direction?" But Allah says: <strong>Wherever you turn, there is the face of Allah.</strong> The direction is not magic — it's obedience. And in the same verses, Allah teaches us the most important thing to say when hardship strikes.</em></p></div>
@@ -832,7 +995,7 @@
         <div class="scene-header">
           <span class="scene-title">🧭 THE NEW DIRECTION</span>
         </div>
-        <canvas id="canvas-s8" width="560" height="220"></canvas>
+        <canvas id="canvas-11" width="560" height="220"></canvas>
         <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click to see the verses of patience</div>
       </div>
 
@@ -865,18 +1028,18 @@
       <!-- QUIZ GAME -->
       <div class="card">
         <div class="card-header">🎮 QUIZ: The New Direction</div>
-        <div id="quiz-8"></div>
-        <div id="feedback-8" class="game-feedback"></div>
+        <div id="quiz-11"></div>
+        <div id="feedback-11" class="game-feedback"></div>
         <div class="game-footer">
-          <button class="action-btn" onclick="checkSection8()">SUBMIT QUIZ ✓</button>
-          <button class="action-btn gold" id="complete-8-btn" onclick="completeSection(8)" style="display:none">🏆 CLAIM REWARD!</button>
+          <button class="action-btn" onclick="checkSection11()">SUBMIT QUIZ ✓</button>
+          <button class="action-btn gold" id="complete-11-btn" onclick="completeSection(11)" style="display:none">🏆 CLAIM REWARD!</button>
         </div>
         <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
       </div>
-    </div><!-- /section-panel-8 -->
+    </div><!-- /section-panel-11 -->
 
-    <!-- ==================== SECTION 9 ==================== -->
-    <div id="section-panel-9" class="section-panel">
+    <!-- ==================== SECTION 13 ==================== -->
+    <div id="section-panel-13" class="section-panel">
       <div class="ibn-ameen-panel">
         <div class="character-avatar">🧙‍♂️</div>
         <div class="speech-bubble"><p>Ibn Ameen says: <em>A lot of people think being a good Muslim just means praying. But Allah defines <strong>Al-Birr</strong> — true righteousness — as something much bigger: belief, generosity, worship, keeping promises, AND patience. All five together. Then comes the month of Ramadan — a whole month to train all five. Let's build the full picture.</em></p></div>
@@ -887,7 +1050,7 @@
         <div class="scene-header">
           <span class="scene-title">📋 AL-BIRR — TRUE RIGHTEOUSNESS</span>
         </div>
-        <canvas id="canvas-s9" width="560" height="220"></canvas>
+        <canvas id="canvas-13" width="560" height="220"></canvas>
         <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click on the glowing traits to see their verse</div>
       </div>
 
@@ -923,20 +1086,20 @@
         <div class="card-header">🎮 GAME: Build Al-Birr — Match the 5 Traits</div>
         <p class="game-instructions">Tap the Arabic on the left, then tap its English meaning on the right.</p>
         <div class="drag-game-container">
-          <div class="drag-pool" id="drag-pool-9"></div>
-          <div class="drop-zones" id="drop-zones-9"></div>
+          <div class="drag-pool" id="drag-pool-13"></div>
+          <div class="drop-zones" id="drop-zones-13"></div>
         </div>
-        <div id="feedback-9" class="game-feedback"></div>
+        <div id="feedback-13" class="game-feedback"></div>
         <div class="game-footer">
-          <button class="action-btn" onclick="checkSection9()">CHECK MATCHES ✓</button>
-          <button class="action-btn gold" id="complete-9-btn" onclick="completeSection(9)" style="display:none">🏆 CLAIM REWARD!</button>
+          <button class="action-btn" onclick="checkSection13()">CHECK MATCHES ✓</button>
+          <button class="action-btn gold" id="complete-13-btn" onclick="completeSection(13)" style="display:none">🏆 CLAIM REWARD!</button>
         </div>
         <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
       </div>
-    </div><!-- /section-panel-9 -->
+    </div><!-- /section-panel-13 -->
 
-    <!-- ==================== SECTION 10 ==================== -->
-    <div id="section-panel-10" class="section-panel">
+    <!-- ==================== SECTION 16 ==================== -->
+    <div id="section-panel-16" class="section-panel">
       <div class="ibn-ameen-panel">
         <div class="character-avatar">🧙‍♂️</div>
         <div class="speech-bubble"><p>Ibn Ameen says: <em>This is the battle story of Bani Isra'il — and it's one of the greatest lessons in leadership. Their king Talut had a small army. The enemy was massive. But Talut did something smart: <strong>he tested his soldiers first.</strong> Most failed the test and left. The few who remained — with full trust in Allah — defeated a giant. Sound familiar? This is like Dawud (AS) and Jalut (Goliath). Let's go!</em></p></div>
@@ -947,7 +1110,7 @@
         <div class="scene-header">
           <span class="scene-title">⚔️ TALUT, JALUT &amp; DAWUD</span>
         </div>
-        <canvas id="canvas-s10" width="560" height="220"></canvas>
+        <canvas id="canvas-16" width="560" height="220"></canvas>
         <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click on the armies or Dawud to see verses</div>
       </div>
 
@@ -980,18 +1143,18 @@
       <div class="card">
         <div class="card-header">🎮 GAME: COMPLETE THE VERSE!</div>
         <p class="game-instructions">Fill in the missing Arabic word in each verse.</p>
-        <div id="order-10" class="order-list"></div>
-        <div id="feedback-10" class="game-feedback"></div>
+        <div id="order-16" class="order-list"></div>
+        <div id="feedback-16" class="game-feedback"></div>
         <div class="game-footer">
-          <button class="action-btn" onclick="checkSection10()">CHECK ANSWER ✓</button>
-          <button class="action-btn gold" id="complete-10-btn" onclick="completeSection(10)" style="display:none">🏆 CLAIM REWARD!</button>
+          <button class="action-btn" onclick="checkSection16()">CHECK ANSWER ✓</button>
+          <button class="action-btn gold" id="complete-16-btn" onclick="completeSection(16)" style="display:none">🏆 CLAIM REWARD!</button>
         </div>
         <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
       </div>
-    </div><!-- /section-panel-10 -->
+    </div><!-- /section-panel-16 -->
 
-    <!-- ==================== SECTION 11 ==================== -->
-    <div id="section-panel-11" class="section-panel">
+    <!-- ==================== SECTION 19 ==================== -->
+    <div id="section-panel-19" class="section-panel">
       <div class="ibn-ameen-panel">
         <div class="character-avatar">🧙‍♂️</div>
         <div class="speech-bubble"><p>Ibn Ameen says: <em>You have been reciting this verse since you were small — <strong>Ayat al-Kursi</strong>. The Prophet ﷺ said it is the greatest verse in the entire Quran. But do you KNOW what each part means? This level is about understanding — word by word — the verse you recite after every salah. By the end, you will never recite it the same way again. <strong>In sha Allah.</strong></em></p></div>
@@ -1002,7 +1165,7 @@
         <div class="scene-header">
           <span class="scene-title">👑 AYAT AL-KURSI — THE THRONE VERSE</span>
         </div>
-        <canvas id="canvas-s11" width="560" height="220"></canvas>
+        <canvas id="canvas-19" width="560" height="220"></canvas>
         <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click on the scene to reveal the full verse</div>
       </div>
 
@@ -1035,20 +1198,20 @@
         <div class="card-header">🎮 GAME: Match the Meaning to the Arabic</div>
         <p class="game-instructions">Tap the Arabic on the left, then tap its English meaning on the right.</p>
         <div class="drag-game-container">
-          <div class="drag-pool" id="drag-pool-11"></div>
-          <div class="drop-zones" id="drop-zones-11"></div>
+          <div class="drag-pool" id="drag-pool-19"></div>
+          <div class="drop-zones" id="drop-zones-19"></div>
         </div>
-        <div id="feedback-11" class="game-feedback"></div>
+        <div id="feedback-19" class="game-feedback"></div>
         <div class="game-footer">
-          <button class="action-btn" onclick="checkSection11()">CHECK MATCHES ✓</button>
-          <button class="action-btn gold" id="complete-11-btn" onclick="completeSection(11)" style="display:none">🏆 CLAIM REWARD!</button>
+          <button class="action-btn" onclick="checkSection19()">CHECK MATCHES ✓</button>
+          <button class="action-btn gold" id="complete-19-btn" onclick="completeSection(19)" style="display:none">🏆 CLAIM REWARD!</button>
         </div>
         <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
       </div>
-    </div><!-- /section-panel-11 -->
+    </div><!-- /section-panel-19 -->
 
-    <!-- ==================== SECTION 12 ==================== -->
-    <div id="section-panel-12" class="section-panel">
+    <!-- ==================== SECTION 20 ==================== -->
+    <div id="section-panel-20" class="section-panel">
       <div class="ibn-ameen-panel">
         <div class="character-avatar">🧙‍♂️</div>
         <div class="speech-bubble"><p>Ibn Ameen says: <em>Imagine planting one grain of wheat... and getting back <strong>700 grains</strong>. That's what giving for Allah is like. But there's a catch: the reward is only that big if you give with a pure heart. The moment you remind someone what you gave them, or hurt their feelings — the reward vanishes. This level teaches you the full art of true generosity.</em></p></div>
@@ -1059,7 +1222,7 @@
         <div class="scene-header">
           <span class="scene-title">🌱 THE CHARITY GARDEN</span>
         </div>
-        <canvas id="canvas-s12" width="560" height="220"></canvas>
+        <canvas id="canvas-20" width="560" height="220"></canvas>
         <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click the plant or the rock to see the parables</div>
       </div>
 
@@ -1092,18 +1255,18 @@
       <!-- QUIZ GAME -->
       <div class="card">
         <div class="card-header">🎮 QUIZ: The Charity Garden</div>
-        <div id="quiz-12"></div>
-        <div id="feedback-12" class="game-feedback"></div>
+        <div id="quiz-20"></div>
+        <div id="feedback-20" class="game-feedback"></div>
         <div class="game-footer">
-          <button class="action-btn" onclick="checkSection12()">SUBMIT QUIZ ✓</button>
-          <button class="action-btn gold" id="complete-12-btn" onclick="completeSection(12)" style="display:none">🏆 CLAIM REWARD!</button>
+          <button class="action-btn" onclick="checkSection20()">SUBMIT QUIZ ✓</button>
+          <button class="action-btn gold" id="complete-20-btn" onclick="completeSection(20)" style="display:none">🏆 CLAIM REWARD!</button>
         </div>
         <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
       </div>
-    </div><!-- /section-panel-12 -->
+    </div><!-- /section-panel-20 -->
 
-    <!-- ==================== SECTION 13 ==================== -->
-    <div id="section-panel-13" class="section-panel">
+    <!-- ==================== SECTION 22 ==================== -->
+    <div id="section-panel-22" class="section-panel">
       <div class="ibn-ameen-panel">
         <div class="character-avatar">🧙‍♂️</div>
         <div class="speech-bubble"><p>Ibn Ameen says: <em>You have reached the end of Surah Al-Baqarah — and it ends with the most beautiful treasure. Allah ends the longest Surah in the Quran with a promise and a du'a. <strong>The last two verses (2:285–286) are themselves a shield.</strong> The Prophet ﷺ said: "Whoever recites the last two verses of Surah Al-Baqarah at night, they will suffice him." This is your final level, Explorer. Make it count.</em></p></div>
@@ -1114,7 +1277,7 @@
         <div class="scene-header">
           <span class="scene-title">🤲 THE FINAL TREASURE — LAST VERSES</span>
         </div>
-        <canvas id="canvas-s13" width="560" height="220"></canvas>
+        <canvas id="canvas-22" width="560" height="220"></canvas>
         <div style="text-align:center;font-size:10px;color:#aaa;margin-top:4px">👆 Click the stars or the figure to see the final du'a</div>
       </div>
 
@@ -1148,17 +1311,116 @@
         <div class="card-header">🎮 GAME: Match the Du'a to its Meaning</div>
         <p class="game-instructions">Tap the Arabic on the left, then tap its English meaning on the right.</p>
         <div class="drag-game-container">
-          <div class="drag-pool" id="drag-pool-13"></div>
-          <div class="drop-zones" id="drop-zones-13"></div>
+          <div class="drag-pool" id="drag-pool-22"></div>
+          <div class="drop-zones" id="drop-zones-22"></div>
         </div>
-        <div id="feedback-13" class="game-feedback"></div>
+        <div id="feedback-22" class="game-feedback"></div>
         <div class="game-footer">
-          <button class="action-btn" onclick="checkSection13()">CHECK MATCHES ✓</button>
-          <button class="action-btn gold" id="complete-13-btn" onclick="completeSection(13)" style="display:none">🏆 CLAIM REWARD!</button>
+          <button class="action-btn" onclick="checkSection22()">CHECK MATCHES ✓</button>
+          <button class="action-btn gold" id="complete-22-btn" onclick="completeSection(22)" style="display:none">🏆 CLAIM REWARD!</button>
         </div>
         <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
       </div>
-    </div><!-- /section-panel-13 -->
+    </div><!-- /section-panel-22 -->
+
+    
+    <!-- ========== SECTION 12 — The Complete Way (2:158–177) (COMING SOON) ========== -->
+    <div class="section-panel" id="section-panel-12">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>Safa & Marwa, halal food, and Al-Birr — the definition of true righteousness.</em></p></div>
+      </div>
+      <div class="card" style="text-align:center;padding:40px 20px">
+        <div style="font-size:48px;margin-bottom:16px">📜</div>
+        <div class="card-header">The Complete Way (2:158–177)</div>
+        <p style="color:#888;font-family:Georgia,serif;margin-top:12px">This level is coming in a future update. In shaa Allah!</p>
+      </div>
+      <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+    </div><!-- /section-panel-12 -->
+
+    <!-- ========== SECTION 14 — True vs False (2:204–218) (COMING SOON) ========== -->
+    <div class="section-panel" id="section-panel-14">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>Some impress with their speech but destroy in secret. Others sell their souls for Allah's pleasure.</em></p></div>
+      </div>
+      <div class="card" style="text-align:center;padding:40px 20px">
+        <div style="font-size:48px;margin-bottom:16px">⚡</div>
+        <div class="card-header">True vs False (2:204–218)</div>
+        <p style="color:#888;font-family:Georgia,serif;margin-top:12px">This level is coming in a future update. In shaa Allah!</p>
+      </div>
+      <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+    </div><!-- /section-panel-14 -->
+
+    <!-- ========== SECTION 15 — Social Justice (2:219–242) (COMING SOON) ========== -->
+    <div class="section-panel" id="section-panel-15">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>Wine, gambling, orphans, marriage, divorce — Allah's social laws protect the vulnerable.</em></p></div>
+      </div>
+      <div class="card" style="text-align:center;padding:40px 20px">
+        <div style="font-size:48px;margin-bottom:16px">⚖️</div>
+        <div class="card-header">Social Justice (2:219–242)</div>
+        <p style="color:#888;font-family:Georgia,serif;margin-top:12px">This level is coming in a future update. In shaa Allah!</p>
+      </div>
+      <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+    </div><!-- /section-panel-15 -->
+
+    <!-- ========== SECTION 17 — Juz 2 Word by Word (COMING SOON) ========== -->
+    <div class="section-panel" id="section-panel-17">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>Master the key Arabic words from Juz 2 of Al-Baqarah!</em></p></div>
+      </div>
+      <div class="card" style="text-align:center;padding:40px 20px">
+        <div style="font-size:48px;margin-bottom:16px">📖</div>
+        <div class="card-header">Juz 2 Word by Word</div>
+        <p style="color:#888;font-family:Georgia,serif;margin-top:12px">This level is coming in a future update. In shaa Allah!</p>
+      </div>
+      <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+    </div><!-- /section-panel-17 -->
+
+    <!-- ========== SECTION 18 — No Compulsion (2:253–260) (COMING SOON) ========== -->
+    <div class="section-panel" id="section-panel-18">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>There is no compulsion in religion — truth stands clear from error. Light vs darkness.</em></p></div>
+      </div>
+      <div class="card" style="text-align:center;padding:40px 20px">
+        <div style="font-size:48px;margin-bottom:16px">💡</div>
+        <div class="card-header">No Compulsion (2:253–260)</div>
+        <p style="color:#888;font-family:Georgia,serif;margin-top:12px">This level is coming in a future update. In shaa Allah!</p>
+      </div>
+      <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+    </div><!-- /section-panel-18 -->
+
+    <!-- ========== SECTION 21 — Riba & Debt (2:275–283) (COMING SOON) ========== -->
+    <div class="section-panel" id="section-panel-21">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>Interest forbidden, the longest verse in the Quran about writing debts — justice in transactions.</em></p></div>
+      </div>
+      <div class="card" style="text-align:center;padding:40px 20px">
+        <div style="font-size:48px;margin-bottom:16px">📝</div>
+        <div class="card-header">Riba & Debt (2:275–283)</div>
+        <p style="color:#888;font-family:Georgia,serif;margin-top:12px">This level is coming in a future update. In shaa Allah!</p>
+      </div>
+      <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+    </div><!-- /section-panel-21 -->
+
+    <!-- ========== SECTION 23 — Juz 3 Word by Word (COMING SOON) ========== -->
+    <div class="section-panel" id="section-panel-23">
+      <div class="ibn-ameen-panel">
+        <div class="character-avatar">🧙‍♂️</div>
+        <div class="speech-bubble"><p>Ibn Ameen says: <em>Master the key Arabic words from the end of Al-Baqarah!</em></p></div>
+      </div>
+      <div class="card" style="text-align:center;padding:40px 20px">
+        <div style="font-size:48px;margin-bottom:16px">📖</div>
+        <div class="card-header">Juz 3 Word by Word</div>
+        <p style="color:#888;font-family:Georgia,serif;margin-top:12px">This level is coming in a future update. In shaa Allah!</p>
+      </div>
+      <div class="back-btn-bottom"><button class="back-btn" onclick="closeSection()">◀ BACK TO MAP</button></div>
+    </div><!-- /section-panel-23 -->
 
     <!-- ALL COMPLETE -->
     <div id="all-complete" style="display:none">
@@ -1168,7 +1430,7 @@
           <div style="font-size:60px;margin-bottom:16px">🏆</div>
           <div class="story-text">
             <p><strong>ALLAHUMMA BARIK, Explorer!</strong><br><br>
-            You have completed all 13 levels of Baqarah Quest — all 286 verses of Surah Al-Baqarah!<br><br>
+            You have completed all 23 levels of Baqarah Quest — all 286 verses of Surah Al-Baqarah!<br><br>
             You now understand:<br><br>
             ✅ The 5 qualities of the Muttaqeen (1–5)<br>
             ✅ The Disbelievers and Hypocrites (6–20)<br>
@@ -1218,6 +1480,7 @@
   </div>
 </div>
 
+<script src="../shared/arabic-words.js"></script>
 <script src="scenes.js"></script>
 <script src="../shared/engine.js"></script>
 <script src="../shared/ui.js"></script>
