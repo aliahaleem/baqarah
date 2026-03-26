@@ -51,7 +51,9 @@ function showVersePopup(v) {
   const eng    = document.getElementById('vp-eng');
   const note   = document.getElementById('vp-note');
   if (ref)    ref.textContent    = v.ref    || '';
-  if (arabic) arabic.textContent = v.arabic || '';
+  var arText = v.arabic || '';
+  if (arText && !arText.trim().endsWith('\u06e9')) arText = arText.trim() + ' \u06e9';
+  if (arabic) arabic.textContent = arText;
   if (eng)    eng.textContent    = v.english || v.eng || '';
   if (note)   note.textContent   = v.note   || '';
   p.classList.add('visible');
@@ -220,6 +222,7 @@ function renderDragDrop(n, items, zones) {
   parent.innerHTML = html;
 
   let selectedLeft = null;
+  var _matchCount = 0;
   parent.addEventListener('click', function(ev) {
     const btn = ev.target.closest('.wbw-match-btn');
     if (!btn || btn.classList.contains('matched')) return;
@@ -232,8 +235,10 @@ function renderDragDrop(n, items, zones) {
     } else if (side === 'right' && selectedLeft !== null) {
       const leftBtn = parent.querySelector(`[data-side="left"][data-idx="${selectedLeft}"]`);
       if (idx === selectedLeft) {
-        btn.classList.add('matched');
-        if (leftBtn) leftBtn.classList.add('matched');
+        var colorCls = 'match-c' + (_matchCount % 8);
+        _matchCount++;
+        btn.classList.add('matched', colorCls);
+        if (leftBtn) leftBtn.classList.add('matched', colorCls);
         if (leftBtn) leftBtn.classList.remove('selected');
         selectedLeft = null;
         const total = parent.querySelectorAll('[data-side="left"]').length;

@@ -41,6 +41,12 @@ const VD = {
     english: '"But you prefer the worldly life, while the Hereafter is better and more lasting." (87:16-17)',
     note: 'The world is dunya (lowest), the Hereafter is better in quality and duration.',
   },
+  scrolls: {
+    ref: 'Al-Ala 87:18-19',
+    arabic: 'إِنَّ هَٰذَا لَفِي الصُّحُفِ الْأُولَىٰ ۩ صُحُفِ إِبْرَاهِيمَ وَمُوسَىٰ',
+    english: '"Indeed, this is in the former scriptures — the scriptures of Abraham and Moses." (87:18-19)',
+    note: 'The surah closes by connecting its message to the earliest revelations. Everything taught here — glorify Allah, purify yourself, prefer the Hereafter — was also in the scrolls of Ibrahim and Musa. The core message of all prophets is one.',
+  },
 };
 
 class S2 extends BS{constructor(){super('canvas-2');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.glorify);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();
@@ -99,7 +105,7 @@ ctx.fillStyle=p.label;ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='c
 // Arrow comparing
 ctx.strokeStyle='white';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(138,120);ctx.lineTo(352,110);ctx.stroke();ctx.fillStyle='white';ctx.font='5px "Press Start 2P",monospace';ctx.fillText('خَيْرٌ وَأَبْقَى',CW/2,170);ctx.textAlign='left';};draw();}}
 
-class S7 extends BS{constructor(){super('canvas-7');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.glorify);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,170);_label(ctx,'CLICK: This Was in the Earlier Scriptures — 87:18-19');
+class S7 extends BS{constructor(){super('canvas-7');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.scrolls);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_ground(ctx,170);_label(ctx,'CLICK: This Was in the Earlier Scriptures — 87:18-19');
 // Two scrolls: Torah and Ibrahim
 [[100,100],[350,95]].forEach(([sx,sy],i)=>{fillRect(ctx,sx,sy,80,60,'#201808');ctx.strokeStyle=p.acStr+'0.7)';ctx.lineWidth=1;ctx.strokeRect(sx,sy,80,60);ctx.fillStyle=p.label;ctx.font='5px serif';ctx.textAlign='center';const names=['صُحُفِ إِبْرَاهِيم','صُحُفِ مُوسَى'];ctx.fillText(names[i],sx+40,sy+30);ctx.font='4px "Press Start 2P",monospace';const labels=['Scrolls of','Scrolls of'];ctx.fillText(labels[i],sx+40,sy+43);const names2=['IBRAHIM','MUSA'];ctx.fillText(names2[i],sx+40,sy+53);ctx.textAlign='left';});
 ctx.fillStyle=p.acStr+'0.8)';ctx.font='5px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('"This was in the earlier scriptures — of Ibrahim and Musa" (87:18-19)',CW/2,CH-8);ctx.textAlign='left';};draw();}}

@@ -45,15 +45,15 @@ const S1_QUIZ = [
 ];
 
 const S2_ITEMS = [
-  {id:'j1', text:'إِنَّا سَمِعْنَا قُرْآنًا\nعَجَبًا فَآمَنَّا بِهِ',  zone:'z1'},
+  {id:'j1', text:'إِنَّا سَمِعْنَا قُرْآنًا عَجَبًا\nيَهْدِي إِلَى الرُّشْدِ فَآمَنَّا بِهِ',  zone:'z1'},
   {id:'j2', text:'مَا اتَّخَذَ صَاحِبَةً\nوَلَا وَلَدًا',              zone:'z2'},
-  {id:'j3', text:'كُنَّا نَقْعُدُ مِنْهَا\nمَقَاعِدَ لِلسَّمْعِ',      zone:'z3'},
+  {id:'j3', text:'كُنَّا نَقْعُدُ مِنْهَا مَقَاعِدَ لِلسَّمْعِ\nفَمَن يَسْتَمِعِ الْآنَ يَجِدْ لَهُ شِهَابًا',      zone:'z3'},
   {id:'j4', text:'مُلِئَتْ حَرَسًا شَدِيدًا\nوَشُهُبًا',               zone:'z4'},
 ];
 const S2_ZONES = [
   {id:'z1', desc:'The jinn heard the Quran and believed — they went back to warn their people (72:1-2)'},
   {id:'z2', desc:'Our Lord is exalted — He has taken no wife or son (72:3)'},
-  {id:'z3', desc:'We used to sit in positions of the sky to listen in on the heavens (72:9)'},
+  {id:'z3', desc:'We used to sit in positions to listen, but now whoever listens finds a burning flame (72:9)'},
   {id:'z4', desc:'But now we find it filled with fierce guards and burning flames (72:8)'},
 ];
 

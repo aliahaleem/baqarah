@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="minecraft">
 <head>
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quran Quest — Choose Your Journey</title>
@@ -92,6 +100,121 @@
     transition: color 0.4s;
   }
   html[data-theme="stars"] .hub-subtitle { font-size: clamp(11px, 2.5vw, 14px); }
+
+  /* ─── QUICK-NAV DROPDOWN ─── */
+  .quick-nav-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .quick-nav-label {
+    font-size: 7px;
+    color: var(--hub-sub-col);
+    white-space: nowrap;
+  }
+  html[data-theme="stars"] .quick-nav-label { font-size: 11px; }
+  .quick-nav-select {
+    font-family: var(--font-hub);
+    font-size: 8px;
+    padding: 8px 12px;
+    border: 2px solid var(--toggle-border);
+    border-radius: var(--card-radius);
+    background: var(--toggle-bg);
+    color: var(--hub-text);
+    cursor: pointer;
+    max-width: 320px;
+    width: 100%;
+    transition: border-color 0.2s;
+  }
+  html[data-theme="stars"] .quick-nav-select {
+    font-size: 12px;
+    border-radius: 24px;
+    padding: 10px 16px;
+  }
+  .quick-nav-select:focus {
+    outline: none;
+    border-color: var(--hub-title-col);
+    box-shadow: 0 0 12px currentColor;
+  }
+  .quick-nav-select option {
+    background: var(--hub-bg);
+    color: var(--hub-text);
+  }
+
+  /* ─── PROMO BANNER ─── */
+  .promo-banner {
+    text-align: center;
+    margin-bottom: 28px;
+    padding: 20px 24px;
+    border: 2px solid var(--hub-title-col);
+    border-radius: var(--card-radius);
+    background: linear-gradient(135deg, rgba(255,215,0,0.06) 0%, rgba(0,0,0,0) 60%);
+    position: relative;
+    overflow: hidden;
+  }
+  html[data-theme="stars"] .promo-banner {
+    background: linear-gradient(135deg, rgba(212,160,255,0.08) 0%, rgba(0,0,0,0) 60%);
+    border-radius: 18px;
+  }
+  .promo-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 40px rgba(255,215,0,0.05);
+    pointer-events: none;
+  }
+  html[data-theme="stars"] .promo-banner::before {
+    box-shadow: inset 0 0 50px rgba(212,160,255,0.06);
+  }
+  .promo-tagline {
+    font-size: clamp(9px, 2.5vw, 13px);
+    color: var(--hub-title-col);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-shadow: 0 0 12px currentColor;
+  }
+  html[data-theme="stars"] .promo-tagline {
+    font-size: clamp(13px, 3vw, 18px);
+    letter-spacing: 3px;
+    font-weight: 700;
+  }
+  .promo-desc {
+    font-size: clamp(6px, 1.5vw, 8px);
+    color: var(--hub-sub-col);
+    line-height: 2.2;
+    letter-spacing: 0.5px;
+  }
+  .promo-desc em {
+    color: var(--hub-title-col);
+    font-style: italic;
+    text-shadow: 0 0 8px currentColor;
+  }
+  html[data-theme="stars"] .promo-desc {
+    font-size: clamp(10px, 2vw, 13px);
+    line-height: 1.8;
+  }
+  .promo-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .promo-stat {
+    font-size: clamp(6px, 1.5vw, 8px);
+    color: var(--hub-text);
+    opacity: 0.7;
+  }
+  html[data-theme="stars"] .promo-stat { font-size: clamp(9px, 1.8vw, 12px); }
+  .promo-stat strong {
+    color: var(--hub-title-col);
+    display: block;
+    font-size: 1.4em;
+    margin-bottom: 2px;
+  }
 
   /* ─── THEME TOGGLE ─── */
   .theme-toggle-wrap {
@@ -363,6 +486,23 @@
     <div class="hub-subtitle">Choose a Surah to explore its meaning</div>
   </div>
 
+  <!-- ─── PROMO BANNER ─── -->
+  <div class="promo-banner">
+    <div class="promo-tagline">EVERY AYAH HAS A WORLD INSIDE IT</div>
+    <div class="promo-desc">
+      What if you didn't just read the Quran — but <em>experienced</em> it?<br>
+      Animated scenes that bring verses to life. Word-by-word Arabic you actually retain.<br>
+      Quizzes, matching games &amp; fill-in-the-blanks that make learning feel like play.<br>
+      No accounts. No ads. No cost. Just you and the Book of Allah.
+    </div>
+    <div class="promo-stats">
+      <div class="promo-stat"><strong>51</strong>SURAHS</div>
+      <div class="promo-stat"><strong>290+</strong>LEVELS</div>
+      <div class="promo-stat"><strong>1,000+</strong>ARABIC WORDS</div>
+      <div class="promo-stat"><strong>100%</strong>FREE FOREVER</div>
+    </div>
+  </div>
+
   <!-- ─── THEME TOGGLE ─── -->
   <div class="theme-toggle-wrap">
     <span class="theme-toggle-label">THEME:</span>
@@ -372,6 +512,14 @@
     <button class="theme-btn" id="btn-stars" onclick="setHubTheme('stars')">
       ✨ Elegant
     </button>
+  </div>
+
+  <!-- ─── SURAH QUICK-NAV ─── -->
+  <div class="quick-nav-wrap">
+    <label class="quick-nav-label" for="surah-select">JUMP TO SURAH:</label>
+    <select class="quick-nav-select" id="surah-select">
+      <option value="">— Select a Surah —</option>
+    </select>
   </div>
 
   <div class="portals">
@@ -1042,6 +1190,32 @@
   renderProgress('ikhlasQuestSave',     'ikhlas-progress',        4); // 112
   renderProgress('falaqQuestSave',      'falaq-progress',         5); // 113
   renderProgress('nasQuestSave',        'nas-progress',           5); // 114
+
+  // ─── POPULATE QUICK-NAV FROM EXISTING PORTALS (DRY) ───
+  (function() {
+    var sel = document.getElementById('surah-select');
+    if (!sel) return;
+    var portals = document.querySelectorAll('.portal');
+    portals.forEach(function(p, i) {
+      var title = p.querySelector('.portal-title');
+      if (!title) return;
+      p.id = p.id || ('portal-' + i);
+      var opt = document.createElement('option');
+      opt.value = p.id;
+      opt.textContent = title.textContent;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener('change', function() {
+      if (!sel.value) return;
+      var target = document.getElementById(sel.value);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.style.transition = 'box-shadow 0.3s';
+        target.style.boxShadow = '0 0 30px var(--hub-title-col)';
+        setTimeout(function() { target.style.boxShadow = ''; }, 1500);
+      }
+    });
+  })();
 </script>
 </body>
 </html>

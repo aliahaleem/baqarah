@@ -289,6 +289,43 @@ def check_intro_screen(html_text, surah_name):
         warn(surah_name, "Neither standard intro (.intro-form/.intro-input) nor alternate (.intro-box) found")
 
 # =============================================
+#  SCENE HELPER INTEGRITY (K)
+# =============================================
+
+SCENE_GLOBALS = ['_sky', '_stars', '_ground', '_label', '_fig']
+SCENE_METHODS = ['this._sky', 'this._stars', 'this._ground', 'this._label', 'this._figure']
+
+def check_scene_helpers(html_text, surah_name, surah_dir):
+    scenes_path = os.path.join(surah_dir, 'scenes.js')
+    if not os.path.exists(scenes_path):
+        return
+    scenes_text = open(scenes_path).read()
+    scripts = [os.path.basename(s) for s in get_script_tags(html_text)]
+    loads_scene_base = 'scene-base.js' in scripts
+
+    for fn in SCENE_GLOBALS:
+        call_pat = fn + '(ctx'
+        define_pat = 'function ' + fn
+        if call_pat in scenes_text and define_pat not in scenes_text:
+            if not loads_scene_base:
+                err(surah_name, f"scenes.js calls {fn}() but neither defines it nor loads scene-base.js")
+
+    for meth in SCENE_METHODS:
+        if meth + '(' in scenes_text:
+            if not loads_scene_base:
+                err(surah_name, f"scenes.js calls {meth}() but scene-base.js is not loaded")
+
+def check_scene_base_has_helpers():
+    sb_path = os.path.join(BASE, 'shared', 'scene-base.js')
+    if not os.path.exists(sb_path):
+        err('shared', 'scene-base.js not found')
+        return
+    sb = open(sb_path).read()
+    for fn in SCENE_GLOBALS:
+        if 'function ' + fn not in sb:
+            err('shared', f"scene-base.js missing global helper function {fn}()")
+
+# =============================================
 #  MAIN SURAH VALIDATION
 # =============================================
 
@@ -367,7 +404,7 @@ def validate_surah(surah_dir):
             line = html_text[:m.start()].count('\n') + 1
             err(surah_name, f"Card header ordering remnant at line ~{line}: \"{header}\"")
 
-    # New checks A-J
+    # Checks A-K
     check_scripts(html_text, app_text, surah_name, surah_dir)
     check_canvas_ids(html_text, surah_name, surah_dir)
     check_landmarks(html_text, surah_name)
@@ -376,6 +413,7 @@ def validate_surah(surah_dir):
     check_arabic_font_hardcoded(surah_dir, surah_name)
     check_palette(surah_dir, surah_name)
     check_intro_screen(html_text, surah_name)
+    check_scene_helpers(html_text, surah_name, surah_dir)
 
 # =============================================
 #  MAIN
@@ -385,8 +423,9 @@ def main():
     surah_dirs = sorted(glob.glob(os.path.join(BASE, '*/')))
     total_surahs = 0
 
-    # Check C: --font-arabic defined in base.css (one-time global check)
+    # Global checks (C, K)
     check_font_arabic_defined()
+    check_scene_base_has_helpers()
 
     for d in surah_dirs:
         name = os.path.basename(d.rstrip('/'))

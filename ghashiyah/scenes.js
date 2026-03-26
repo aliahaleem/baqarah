@@ -43,10 +43,10 @@ const VD = {
     note: '"Al-Ghashiyah" means something that overwhelms and covers — like a flood covering all. The Day of Judgement will overwhelm every previous human experience. Two groups follow: those who suffer and those who rejoice.',
   },
   downcast: {
-    ref: 'Al-Ghashiyah 88:4-7',
-    arabic: 'تَصْلَىٰ نَارًا حَامِيَةً ۩ تُسْقَىٰ مِنْ عَيْنٍ آنِيَةٍ ۩ لَّيْسَ لَهُمْ طَعَامٌ إِلَّا مِن ضَرِيعٍ',
-    english: '"They will enter a scorching fire — given to drink from a boiling spring — no food for them except bitter thorns." (88:4-7)',
-    note: '"Amilah nasibah" — laboring and exhausted. They toiled in this world without faith, so their deeds availed them nothing. May Allah protect us from this fate.',
+    ref: 'Al-Ghashiyah 88:2-7',
+    arabic: 'وُجُوهٌ يَوْمَئِذٍ خَاشِعَةٌ ۩ عَامِلَةٌ نَّاصِبَةٌ ۩ تَصْلَىٰ نَارًا حَامِيَةً ۩ تُسْقَىٰ مِنْ عَيْنٍ آنِيَةٍ ۩ لَّيْسَ لَهُمْ طَعَامٌ إِلَّا مِن ضَرِيعٍ ۩ لَّا يُسْمِنُ وَلَا يُغْنِي مِن جُوعٍ',
+    english: '"Faces that Day will be humbled — laboring, exhausted. They will enter a scorching fire — given to drink from a boiling spring — no food for them except bitter thorns — that neither nourishes nor avails against hunger." (88:2-7)',
+    note: '"Khashi\'ah" — faces utterly humbled, broken. "Amilah nasibah" — they labored and exhausted themselves, but in the wrong direction — their deeds without faith availed them nothing. Scorching fire, boiling water, and dari\' (bitter thorns) that neither nourish nor satisfy. May Allah protect us.',
   },
   paradise: {
     ref: 'Al-Ghashiyah 88:8-11',
@@ -55,10 +55,10 @@ const VD = {
     note: '"Na\'imah" — soft, radiant, glowing with comfort. They strove in worship and are now satisfied. "Jannatin aliyah" — a HIGH garden. Peace and dignity only. No noise or nonsense of this world.',
   },
   camel: {
-    ref: 'Al-Ghashiyah 88:17-18',
-    arabic: 'أَفَلَا يَنظُرُونَ إِلَى الْإِبِلِ كَيْفَ خُلِقَتْ ۩ وَإِلَى السَّمَاءِ كَيْفَ رُفِعَتْ',
-    english: '"Do they not look at the camels — how they were created? And at the sky — how it was raised?" (88:17-18)',
-    note: 'The camel: triple-eyelids for sandstorms, padded feet for sand, stores water in blood, can carry huge loads. Every feature points to a perfect Designer. The "ship of the desert" as a gateway to recognising the Creator.',
+    ref: 'Al-Ghashiyah 88:17-20',
+    arabic: 'أَفَلَا يَنظُرُونَ إِلَى الْإِبِلِ كَيْفَ خُلِقَتْ ۩ وَإِلَى السَّمَاءِ كَيْفَ رُفِعَتْ ۩ وَإِلَى الْجِبَالِ كَيْفَ نُصِبَتْ ۩ وَإِلَى الْأَرْضِ كَيْفَ سُطِحَتْ',
+    english: '"Do they not look at the camels — how they were created? And at the sky — how it was raised? And at the mountains — how they were set? And at the earth — how it was spread?" (88:17-20)',
+    note: 'Four signs of Allah in nature — the camel (perfect desert engineering), the sky (raised without pillars), the mountains (pegged into the earth), and the earth (spread flat for habitation). Every one of these is an invitation to reflect on the Creator.',
   },
   mountains: {
     ref: 'Al-Ghashiyah 88:19-24',
@@ -67,10 +67,10 @@ const VD = {
     note: 'Mountains are stabilisers of the earth\'s crust — pegs driven in (awatad). The earth is spread accessible for human habitation. Four signs point to Allah. The Prophet\'s ﷺ role: to remind, not to force. But those who turn away face the greatest punishment.',
   },
   return: {
-    ref: 'Al-Ghashiyah 88:25-26',
-    arabic: 'إِنَّ إِلَيْنَا إِيَابَهُمْ ۩ ثُمَّ إِنَّ عَلَيْنَا حِسَابَهُمْ',
-    english: '"Indeed to Us is their return — then indeed upon Us is their reckoning." (88:25-26)',
-    note: 'Two "Inna" — two emphatic certainties. The return is certain. The reckoning is certain. No one escapes either. The Prophet\'s ﷺ role: to remind, not to force. Every soul will stand before Allah.',
+    ref: 'Al-Ghashiyah 88:21-26',
+    arabic: 'فَذَكِّرْ إِنَّمَا أَنتَ مُذَكِّرٌ ۩ لَّسْتَ عَلَيْهِم بِمُصَيْطِرٍ ۩ إِلَّا مَن تَوَلَّىٰ وَكَفَرَ ۩ فَيُعَذِّبُهُ اللَّهُ الْعَذَابَ الْأَكْبَرَ ۩ إِنَّ إِلَيْنَا إِيَابَهُمْ ۩ ثُمَّ إِنَّ عَلَيْنَا حِسَابَهُمْ',
+    english: '"So remind — you are only a reminder. You are not over them a controller. However, he who turns away and disbelieves — Allah will punish him with the greatest punishment. Indeed to Us is their return — then indeed upon Us is their reckoning." (88:21-26)',
+    note: 'The Prophet\'s ﷺ role: "Fa dhakkir" — remind! You are a mudhakkir (reminder), not a musaytir (tyrant/controller). No compulsion — but those who turn away face al-\'adhab al-akbar (the greatest punishment). And the final truth: to Allah is the return (iyab), upon Allah is the reckoning (hisab). No escape.',
   },
 };
 

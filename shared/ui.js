@@ -7,6 +7,11 @@
    (set by each surah's app.js before this loads).
    ================================================ */
 
+var _isLocal = (function() {
+  var h = location.hostname;
+  return h === 'localhost' || h === '127.0.0.1' || h === '' || location.protocol === 'file:';
+})();
+
 function _prevMainSection(n, wbw) {
   for (var p = n - 1; p >= 1; p--) {
     if (p !== wbw) return p;
@@ -74,7 +79,7 @@ function updateUI() {
       }
 
       const prevMain = _prevMainSection(n, wbw);
-      const unlocked = prevMain === 0 || window.state.completed.includes(prevMain);
+      const unlocked = _isLocal || prevMain === 0 || window.state.completed.includes(prevMain);
       tile.className = 'map-tile';
       if (done) {
         tile.classList.add('completed');
@@ -122,7 +127,7 @@ function openSection(n) {
   const cfg = window.SURAH_CONFIG;
   const wbw = cfg ? cfg.wbwSection : 0;
   var unlocked;
-  if (n === wbw) {
+  if (_isLocal || n === wbw) {
     unlocked = true;
   } else {
     const prevMain = _prevMainSection(n, wbw);
@@ -162,6 +167,25 @@ function markSectionComplete(n) {
   if (xpEl)  xpEl.textContent  = `+${r.xp} XP`;
   if (gems)  gems.textContent  = `+${r.gems} 💎`;
   if (msg)   msg.textContent   = r.msg;
+
+  var old = document.getElementById('reward-next-btn');
+  if (old) old.remove();
+  var wbw = cfg.wbwSection || 0;
+  var nextMain = n + 1;
+  if (nextMain === wbw) nextMain++;
+  if (nextMain <= cfg.totalLevels) {
+    var box = document.querySelector('.reward-box');
+    if (box) {
+      var btn = document.createElement('button');
+      btn.id = 'reward-next-btn';
+      btn.className = 'reward-ok-btn';
+      btn.style.marginTop = '6px';
+      btn.textContent = '▶ Next Level';
+      btn.onclick = function() { dismissReward(); closeSection(); openSection(nextMain); };
+      box.appendChild(btn);
+    }
+  }
+
   const overlay = document.getElementById('reward-overlay');
   if (overlay) overlay.classList.add('visible');
 }

@@ -39,6 +39,45 @@ function sceneP() {
                  : (custom.minecraft || _DEFAULT_PALETTE.minecraft);
 }
 
+/* ── Shared scene drawing helpers ─────────────────────────────────
+   Global functions used by many surahs' scenes.js files.
+   Surahs may override these locally — the local copy simply shadows. */
+
+function _sky(ctx) {
+  const p = sceneP();
+  const g = ctx.createLinearGradient(0, 0, 0, CH);
+  g.addColorStop(0, p.sky0); g.addColorStop(0.6, p.sky1); g.addColorStop(1, p.sky2);
+  ctx.fillStyle = g; ctx.fillRect(0, 0, CW, CH);
+}
+function _ground(ctx, y) {
+  if (y === undefined) y = 170;
+  const p = sceneP();
+  fillRect(ctx, 0, y, CW, CH - y, p.gnd);
+  fillRect(ctx, 0, y, CW, 4, p.gndAcc);
+}
+function _label(ctx, txt, y) {
+  if (y === undefined) y = 18;
+  ctx.fillStyle = sceneP().label;
+  ctx.font = '6px "Press Start 2P",monospace';
+  ctx.textAlign = 'center'; ctx.fillText(txt, CW / 2, y); ctx.textAlign = 'left';
+}
+function _stars(ctx, t) {
+  const p = sceneP();
+  [[40,15],[90,8],[160,22],[220,5],[300,18],[380,10],[440,25],[510,8],[70,45],[200,38],[330,42],[460,35]].forEach(function(pt, i) {
+    var twinkle = 0.4 + Math.sin((t || 0) * 0.05 + i) * 0.3;
+    ctx.fillStyle = p.starStr + twinkle + ')';
+    ctx.beginPath(); ctx.arc(pt[0], pt[1], i % 3 === 0 ? 1.5 : 1, 0, Math.PI * 2); ctx.fill();
+  });
+}
+function _fig(ctx, x, y, hc, bc, pc) {
+  fillRect(ctx, x + P, y, P * 3, P * 3, hc);
+  fillRect(ctx, x, y + P * 3, P * 5, P * 4, bc);
+  fillRect(ctx, x - P, y + P * 3, P, P * 3, hc);
+  fillRect(ctx, x + P * 5, y + P * 3, P, P * 3, hc);
+  fillRect(ctx, x, y + P * 7, P * 2, P * 4, pc);
+  fillRect(ctx, x + P * 3, y + P * 7, P * 2, P * 4, pc);
+}
+
 /* ── Pixel-art fillRect with optional rounded corners ────────────── */
 
 function fillRect(ctx, x, y, w, h, col) {
@@ -111,4 +150,9 @@ class BaseScene {
     fillRect(ctx, x-P*3, y+P,  P*3, P*2, '#fff8e0');
     fillRect(ctx, x+P*4, y+P,  P*3, P*2, '#fff8e0');
   }
+  _sky(ctx)                 { _sky(ctx); }
+  _stars(ctx)               { _stars(ctx, this.t); }
+  _ground(ctx, y)           { _ground(ctx, y); }
+  _label(ctx, txt, y)       { _label(ctx, txt, y); }
+  _figure(ctx, x, y, hc, bc, pc) { _fig(ctx, x, y, hc, bc, pc); }
 }

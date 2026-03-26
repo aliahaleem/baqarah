@@ -49,7 +49,7 @@ const pulse=0.2+Math.sin(this.t*0.05)*0.15;ctx.fillStyle=`rgba(216,232,255,${pul
 ctx.fillStyle=p.label;ctx.font='6px serif';ctx.textAlign='center';ctx.fillText('قَوْلٌ',CW/2,115);ctx.fillText('فَصْلٌ',CW/2,128);
 ctx.fillStyle=p.acStr+'0.9)';ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"A DECISIVE word — not jest" (86:13-14)',CW/2,CH-5);ctx.textAlign='left';};draw();}}
 
-class S6 extends BS{constructor(){super('canvas-6');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.tariq);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,175);_label(ctx,'CLICK: Sky Returns, Earth Opens Up — 86:11-12');
+class S6 extends BS{constructor(){super('canvas-6');}start(){if(!this.ctx)return;this.canvas.onclick=()=>showVersePopup(VD.sky);const draw=()=>{this.t++;this.raf=requestAnimationFrame(draw);const ctx=this.ctx,p=sceneP();_sky(ctx);_stars(ctx);_ground(ctx,175);_label(ctx,'CLICK: Sky Returns, Earth Opens Up — 86:11-12');
 // Sky returning rain
 for(let r=0;r<5;r++){const rx=80+r*100,ry=(this.t*2+r*40)%150;ctx.fillStyle='rgba(144,184,224,0.6)';ctx.fillRect(rx,ry,2,8);}
 // Earth cracking open
@@ -67,6 +67,15 @@ ctx.fillStyle='white';ctx.font='8px "Press Start 2P",monospace';ctx.fillText('VS
 // Allah's plan (vast)
 const glow=0.2+Math.sin(this.t*0.04)*0.1;ctx.fillStyle=`rgba(216,232,255,${glow})`;ctx.beginPath();ctx.arc(420,80,60,0,Math.PI*2);ctx.fill();ctx.fillStyle=p.label;ctx.font='6px serif';ctx.textAlign='center';ctx.fillText('أَكِيدُ',420,80);ctx.font='5px "Press Start 2P",monospace';ctx.fillText('"I am planning"',420,95);ctx.fillText('— Allah',420,108);
 ctx.fillStyle='#90b8e0';ctx.fillText('"Give them respite — gently" (86:17)',CW/2,CH-5);ctx.textAlign='left';};draw();}}
+
+const VD = {
+  tariq: {ref:'At-Tariq 86:1-4', arabic:'وَالسَّمَاءِ وَالطَّارِقِ ۩ وَمَا أَدْرَاكَ مَا الطَّارِقُ ۩ النَّجْمُ الثَّاقِبُ ۩ إِن كُلُّ نَفْسٍ لَّمَّا عَلَيْهَا حَافِظٌ', english:'"By the sky and the night-comer! And what will make you know what the night-comer is? It is the piercing star. There is no soul but that it has over it a protector." (86:1-4)', note:'Allah swears by the sky and the Tariq — the night-comer, a piercing star that punches through the darkness. And the point of the oath: every single soul has a guardian (hafidh) watching over it. Nothing you do is hidden.'},
+  water: {ref:'At-Tariq 86:5-8', arabic:'فَلْيَنظُرِ الْإِنسَانُ مِمَّ خُلِقَ ۩ خُلِقَ مِن مَّاءٍ دَافِقٍ ۩ يَخْرُجُ مِن بَيْنِ الصُّلْبِ وَالتَّرَائِبِ ۩ إِنَّهُ عَلَىٰ رَجْعِهِ لَقَادِرٌ', english:'"So let man observe from what he was created. He was created from a fluid, ejected — emerging from between the backbone and the ribs. Indeed, He is able to return him [to life]." (86:5-8)', note:'A challenge to human arrogance: look at your origin. You came from a tiny drop of fluid. The One who created you from that can CERTAINLY bring you back. "Innahu ala raj\'ihi la-qadir" — He is absolutely able to return him.'},
+  secrets: {ref:'At-Tariq 86:9-10', arabic:'يَوْمَ تُبْلَى السَّرَائِرُ ۩ فَمَا لَهُ مِن قُوَّةٍ وَلَا نَاصِرٍ', english:'"The Day when secrets will be put on trial — then man will have no power and no helper." (86:9-10)', note:'"Tubla as-sara\'ir" — secrets will be TESTED, examined, exposed. Every hidden thought, every concealed deed, every private intention — all laid bare. And on that Day: no power (quwwah) and no helper (nasir). You stand alone before Allah.'},
+  sky: {ref:'At-Tariq 86:11-12', arabic:'وَالسَّمَاءِ ذَاتِ الرَّجْعِ ۩ وَالْأَرْضِ ذَاتِ الصَّدْعِ', english:'"By the sky which returns [rain] — and the earth which cracks open [with growth]." (86:11-12)', note:'Two oaths proving resurrection: the sky that sends water back down (rain cycles), and the earth that splits open for plants to grow. If Allah can revive dead land with rain, He can revive the dead.'},
+  quran: {ref:'At-Tariq 86:13-14', arabic:'إِنَّهُ لَقَوْلٌ فَصْلٌ ۩ وَمَا هُوَ بِالْهَزْلِ', english:'"Indeed, it is a decisive word — and it is not amusement." (86:13-14)', note:'"Qawlun fasl" — a decisive, separating word. The Quran is not entertainment, not jest (hazl). It separates truth from falsehood with absolute finality. Every word carries weight.'},
+  plot: {ref:'At-Tariq 86:15-17', arabic:'إِنَّهُمْ يَكِيدُونَ كَيْدًا ۩ وَأَكِيدُ كَيْدًا ۩ فَمَهِّلِ الْكَافِرِينَ أَمْهِلْهُمْ رُوَيْدًا', english:'"Indeed, they are planning a plan — and I am planning a plan. So allow time for the disbelievers — leave them awhile." (86:15-17)', note:'The disbelievers plot their plans (yakiduna kayda). But Allah says: I too am planning (akidu kayda). There is no comparison. Then the chilling final word: "Fa-mahhil" — give them respite, leave them a little while. Not a threat of immediate punishment, but something far more terrifying: patient, certain, unstoppable divine justice.'},
+};
 
 const scenes={};
 

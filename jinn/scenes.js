@@ -13,7 +13,7 @@ class BS{constructor(id){this.cv=document.getElementById(id);this.ctx=this.cv?th
 stop(){if(this.raf){cancelAnimationFrame(this.raf);this.raf=null;}if(this.ctx)this.ctx.clearRect(0,0,CW,CH);if(this.cv)this.cv.onclick=null;}}
 
 
-const VD_jinn1={ref:'Al-Jinn 72:1-2',arabic:'قُلْ أُوحِيَ إِلَيَّ أَنَّهُ اسْتَمَعَ نَفَرٌ مِّنَ الْجِنِّ فَقَالُوا إِنَّا سَمِعْنَا قُرْآنًا عَجَبًا ۩ يَهْدِي إِلَى الرُّشْدِ فَآمَنَّا بِهِ',english:'"Say: It has been revealed to me that a group of jinn listened and said: We have heard a wondrous Quran — it guides to the right course and we have believed in it." (72:1-2)',note:"The jinn heard the Quran and immediately recognized its extraordinariness. Their word: 'ajan' — wondrous, amazing! And immediately: 'we believed in it.' The Quran moves all creation."};
+const VD_jinn1={ref:'Al-Jinn 72:1-6',arabic:'قُلْ أُوحِيَ إِلَيَّ أَنَّهُ اسْتَمَعَ نَفَرٌ مِّنَ الْجِنِّ فَقَالُوا إِنَّا سَمِعْنَا قُرْآنًا عَجَبًا ۩ يَهْدِي إِلَى الرُّشْدِ فَآمَنَّا بِهِ وَلَن نُّشْرِكَ بِرَبِّنَا أَحَدًا ۩ وَأَنَّهُ تَعَالَىٰ جَدُّ رَبِّنَا مَا اتَّخَذَ صَاحِبَةً وَلَا وَلَدًا ۩ وَأَنَّهُ كَانَ يَقُولُ سَفِيهُنَا عَلَى اللَّهِ شَطَطًا ۩ وَأَنَّا ظَنَنَّا أَن لَّن تَقُولَ الْإِنسُ وَالْجِنُّ عَلَى اللَّهِ كَذِبًا ۩ وَأَنَّهُ كَانَ رِجَالٌ مِّنَ الْإِنسِ يَعُوذُونَ بِرِجَالٍ مِّنَ الْجِنِّ فَزَادُوهُمْ رَهَقًا',english:'"Say: It has been revealed to me that a group of jinn listened and said: We have heard a wondrous Quran — it guides to the right course, so we believed in it and we will never associate anyone with our Lord. Exalted is the majesty of our Lord — He has taken no wife or son. The foolish among us used to say outrageous things about Allah. We had thought that mankind and jinn would never speak a lie about Allah. And there were men among mankind who sought refuge with men among the jinn, so they only increased them in burden." (72:1-6)',note:"The jinn heard the Quran and immediately recognized its extraordinariness — 'ajaban' (wondrous)! They believed at once and declared tawhid: no partners with Allah. They confessed their Lord has no wife or son, and that the foolish among them used to say outrageous things (shatat). They admitted they assumed jinn and humans would never lie about Allah — but they were wrong. And a powerful warning: men used to seek protection from jinn, but it only increased them in rahaq (burden and sin). Belief in the Quran corrected everything."};
 
 class S1 extends BS{
   constructor(){super('canvas-1');}
@@ -34,11 +34,11 @@ class S1 extends BS{
       const g=ctx.createRadialGradient(CW*0.5,CH*0.3,5,CW*0.5,CH*0.3,50);
       g.addColorStop(0,'rgba(64,224,144,0.5)');g.addColorStop(1,'transparent');
       ctx.fillStyle=g;ctx.fillRect(0,0,CW,CH);
-      _label(ctx,'CLICK: Jinn Hear the Quran & Believe (72:1-2)',p.label);
+      _label(ctx,'CLICK: Jinn Hear the Quran & Believe (72:1-6)',p.label);
     };draw();
   }
 }
-const VD_jinn2={ref:'Al-Jinn 72:3-4',arabic:'وَأَنَّهُ تَعَالَىٰ جَدُّ رَبِّنَا مَا اتَّخَذَ صَاحِبَةً وَلَا وَلَدًا ۩ وَأَنَّهُ كَانَ يَقُولُ سَفِيهُنَا عَلَى اللَّهِ شَطَطًا',english:'"That our Lord is exalted in His majesty — He has taken no wife or son. But the foolish among us used to say outrageous things about Allah." (72:3-4)',note:'The believing jinn immediately correct their theology: Allah has no wife, no son. And they confess: our foolish ones were wrong to say outrageous things. Belief corrects wrong ideas immediately.'};
+const VD_jinn2={ref:'Al-Jinn 72:3-10',arabic:'وَأَنَّهُ تَعَالَىٰ جَدُّ رَبِّنَا مَا اتَّخَذَ صَاحِبَةً وَلَا وَلَدًا ۩ وَأَنَّهُ كَانَ يَقُولُ سَفِيهُنَا عَلَى اللَّهِ شَطَطًا ۩ وَأَنَّا ظَنَنَّا أَن لَّن تَقُولَ الْإِنسُ وَالْجِنُّ عَلَى اللَّهِ كَذِبًا ۩ وَأَنَّهُ كَانَ رِجَالٌ مِّنَ الْإِنسِ يَعُوذُونَ بِرِجَالٍ مِّنَ الْجِنِّ فَزَادُوهُمْ رَهَقًا ۩ وَأَنَّهُمْ ظَنُّوا كَمَا ظَنَنتُمْ أَن لَّن يَبْعَثَ اللَّهُ أَحَدًا ۩ وَأَنَّا لَمَسْنَا السَّمَاءَ فَوَجَدْنَاهَا مُلِئَتْ حَرَسًا شَدِيدًا وَشُهُبًا ۩ وَأَنَّا كُنَّا نَقْعُدُ مِنْهَا مَقَاعِدَ لِلسَّمْعِ فَمَن يَسْتَمِعِ الْآنَ يَجِدْ لَهُ شِهَابًا رَّصَدًا ۩ وَأَنَّا لَا نَدْرِي أَشَرٌّ أُرِيدَ بِمَن فِي الْأَرْضِ أَمْ أَرَادَ بِهِمْ رَبُّهُمْ رَشَدًا',english:'"Exalted is the majesty of our Lord — He has taken no wife or son. The foolish among us used to say outrageous things about Allah. We assumed mankind and jinn would never lie about Allah. There were men who sought refuge with jinn, so they only increased them in burden. They assumed Allah would never raise anyone. We reached toward the heaven and found it filled with fierce guards and burning flames. We used to sit in positions to listen, but whoever listens now finds a burning flame lying in wait. We do not know whether evil is intended for those on earth, or their Lord intends guidance." (72:3-10)',note:'The jinn report back everything: They correct their theology (no wife, no son for Allah). They confess the foolish among them lied. They warn: men who sought jinn for protection only got more burdened. They describe how the heavens are now sealed with guards and shooting stars since the Prophet\'s arrival. And they humbly admit: we don\'t know what Allah intends for the earth — only He knows.'};
 
 class S2 extends BS{
   constructor(){super('canvas-2');}
@@ -55,11 +55,11 @@ class S2 extends BS{
       for(let i=0;i<4;i++){ctx.beginPath();ctx.arc(CW*0.2,CH*0.7,20+i*15,0,Math.PI*2*(0.5+Math.sin(this.t*0.03)*0.3));ctx.stroke();}
       // Crowd of jinn
       for(let i=0;i<6;i++)_fig(ctx,CW*0.35+i*CW*0.11,CH*0.8,`rgba(96,40,160,${0.5+i*0.07})`);
-      _label(ctx,'CLICK: Jinn Report Back to Their People (72:3-4)',p.label);
+      _label(ctx,'CLICK: Jinn Report Back to Their People (72:3-10)',p.label);
     };draw();
   }
 }
-const VD_jinn3={ref:'Al-Jinn 72:8-9',arabic:'وَأَنَّا لَمَسْنَا السَّمَاءَ فَوَجَدْنَاهَا مُلِئَتْ حَرَسًا شَدِيدًا وَشُهُبًا ۩ وَأَنَّا كُنَّا نَقْعُدُ مِنْهَا مَقَاعِدَ لِلسَّمْعِ',english:'"We reached toward the heaven but found it filled with powerful guards and flaming meteors. We used to sit in positions to listen but anyone listening now finds a flaming meteor lying in wait." (72:8-9)',note:"Before the Prophet ﷺ, jinn used to eavesdrop on heavenly news. After his prophethood, the heavens were sealed — guarded by fierce angels and shooting stars. The Prophet's arrival changed the universe."};
+const VD_jinn3={ref:'Al-Jinn 72:11-19',arabic:'وَأَنَّا مِنَّا الصَّالِحُونَ وَمِنَّا دُونَ ذَٰلِكَ ۖ كُنَّا طَرَائِقَ قِدَدًا ۩ وَأَنَّا ظَنَنَّا أَن لَّن نُّعْجِزَ اللَّهَ فِي الْأَرْضِ وَلَن نُّعْجِزَهُ هَرَبًا ۩ وَأَنَّا لَمَّا سَمِعْنَا الْهُدَىٰ آمَنَّا بِهِ ۖ فَمَن يُؤْمِن بِرَبِّهِ فَلَا يَخَافُ بَخْسًا وَلَا رَهَقًا ۩ وَأَنَّا مِنَّا الْمُسْلِمُونَ وَمِنَّا الْقَاسِطُونَ ۩ وَأَنَّ الْمَسَاجِدَ لِلَّهِ فَلَا تَدْعُوا مَعَ اللَّهِ أَحَدًا ۩ وَأَنَّهُ لَمَّا قَامَ عَبْدُ اللَّهِ يَدْعُوهُ كَادُوا يَكُونُونَ عَلَيْهِ لِبَدًا',english:'"Among us are the righteous and less than that — we have been on different paths. We know we cannot escape Allah on earth nor escape Him by fleeing. When we heard the guidance, we believed. Whoever believes in his Lord fears no loss or burden. Among us are Muslims and among us are the unjust. The mosques are for Allah — so call on no one beside Him. When the servant of Allah stood calling upon Him, they almost crowded upon him in multitudes." (72:11-19)',note:"The jinn confess: we are diverse — righteous and less so, on different paths (taraa'iq qidada). But they all know: you cannot outrun Allah. When guidance came, they believed — and whoever believes fears no loss (bakhs) or burden (rahaq). Among them are Muslims and deviants. Then tawhid's clearest declaration: mosques are for Allah alone! And when the Prophet ﷺ stood to pray, the jinn almost crushed upon him — the power of sincere devotion."};
 
 class S3 extends BS{
   constructor(){super('canvas-3');}
@@ -78,7 +78,7 @@ class S3 extends BS{
       // Guard angels
       for(let i=0;i<3;i++){_fig(ctx,CW*0.25+i*CW*0.25,CH*0.55,'#c0d8f8');
         fillRect(ctx,CW*0.22+i*CW*0.25,CH*0.4,16,28,'rgba(192,216,248,0.4)',4);}
-      _label(ctx,'CLICK: Heaven Guarded — Shooting Stars (72:8-9)',p.label);
+      _label(ctx,'CLICK: Diverse Jinn on the Straight Path (72:11-19)',p.label);
     };draw();
   }
 }
