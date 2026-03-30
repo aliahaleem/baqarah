@@ -193,11 +193,25 @@ function checkQuiz(n, data) {
 // =============================================
 //  TAP-TO-MATCH (replaces drag & drop)
 // =============================================
+/* Return the correct write-target for the match grid.
+   Old HTML used  dnd-wrapper > dnd-col > drag-pool  (two sibling columns).
+   New HTML uses  drag-game-container > drag-pool     (flat wrapper).
+   In both cases we want the outermost dedicated container so we can
+   replace its full innerHTML with the two-column tap-match-grid. */
+function _matchContainer(pool, zonesEl, orderEl) {
+  const el = pool || zonesEl;
+  if (!el) return orderEl || null;
+  let p = el.parentElement;
+  // If the element is inside a legacy dnd-col, step up one more level to dnd-wrapper
+  if (p && p.classList.contains('dnd-col')) p = p.parentElement;
+  return p;
+}
+
 function renderDragDrop(n, items, zones) {
   const pool = document.getElementById(`drag-pool-${n}`);
   const zonesEl = document.getElementById(`drop-zones-${n}`);
   const orderEl = document.getElementById(`order-${n}`);
-  const parent = pool ? pool.parentElement : (zonesEl ? zonesEl.parentElement : (orderEl || null));
+  const parent = _matchContainer(pool, zonesEl, orderEl);
   if (!parent) return;
 
   const pairs = items.map(item => {

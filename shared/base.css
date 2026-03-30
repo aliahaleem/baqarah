@@ -456,7 +456,8 @@ html[data-theme="stars"] .game-instructions { border-color: rgba(255,255,255,0.1
 .dnd-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 8px; }
 .dnd-col { display: flex; flex-direction: column; gap: 8px; }
 .col-label { font-size: var(--font-size-sm); color: var(--accent); text-align: center; margin-bottom: 4px; }
-.drag-game-container { padding: 12px 18px; display: grid; grid-template-columns: 1fr 2fr; gap: 12px; }
+/* renderDragDrop() writes a single .tap-match-grid child here — use block, not grid */
+.drag-game-container { padding: 4px 0; }
 .drag-pool { display: flex; flex-direction: column; gap: 8px; min-height: 60px; }
 .drop-zones { display: flex; flex-direction: column; gap: 8px; }
 
@@ -485,8 +486,8 @@ html[data-theme="stars"] .drop-zone-desc { font-size: 14px; }
 .drop-zone.incorrect  { border-color: var(--error)   !important; background: rgba(231,76,60,0.1); border-style: solid !important; }
 
 /* ── Tap-to-Match grid (replaces drag-drop interaction) ── */
-.tap-match-grid { display: flex; gap: 10px; justify-content: center; padding: 8px 0; }
-.tap-match-col  { display: flex; flex-direction: column; gap: 6px; flex: 1; max-width: 240px; }
+.tap-match-grid { display: flex; gap: 12px; padding: 8px 0; width: 100%; box-sizing: border-box; }
+.tap-match-col  { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 0; }
 .wbw-match-btn.en-btn {
   font-family: var(--font-body); font-size: 13px;
   text-align: left; line-height: 1.5; padding: 10px 12px;
