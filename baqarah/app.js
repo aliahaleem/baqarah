@@ -277,11 +277,10 @@ const WBW_DATA = [
 ];
 
 /* ════════════════════════════════════════════════
-   JUZ 2 & 3 — GAME DATA STUBS
-   (preserved from old levels 8-13, registered to new section #s)
+   JUZ 2 — GAME DATA  (Levels 11-17)
    ════════════════════════════════════════════════ */
 
-// L11 (old L8): Quiz — The New Direction (2:142-157)
+// L11: Quiz — The New Direction (2:142-157)
 const L11_QUIZ = [
   {q:'What was the original Qibla direction for Muslims?',
    opts:['Mecca (al-Masjid al-Haram)','Jerusalem — Masjid al-Aqsa','Medina — Masjid an-Nabawi','Cairo — the great mosque'], correct:1},
@@ -293,6 +292,25 @@ const L11_QUIZ = [
    opts:['"Alhamdulillah" only','"Inna lillahi wa inna ilayhi raji\'un"','"Astaghfirullahi al-Azeem"','"Allahu Akbar"'], correct:1},
   {q:'What does Allah promise those who are patient? (2:157)',
    opts:['Immediate wealth and comfort','Freedom from all future tests','Allah\'s blessings, mercy and guidance upon them','They enter Jannah before everyone else'], correct:2},
+];
+
+// L12: Quiz — The Complete Way (2:158-177) — NEW
+const L12_QUIZ = [
+  {q:'Safa and Marwa are mentioned in 2:158. What does Allah say about walking between them?',
+   opts:['It is forbidden except during Hajj','It is compulsory in all circumstances','There is no blame on those who walk between them — it is a rite of Allah','It is only for the elderly and sick'],
+   correct:2},
+  {q:'In 2:159, what does Allah say about those who hide clear guidance after it has been revealed?',
+   opts:['They will be forgiven if they explain later','Allah and the angels curse them, and so do all who have the right to curse','They will only face a minor punishment','Their deeds will be accepted without penalty'],
+   correct:1},
+  {q:'What is the definition of Al-Birr (true righteousness) in 2:177?',
+   opts:['Praying five times a day','Turning your face East or West','Believing in Allah, the Last Day, angels, books, prophets — AND giving, praying, and keeping promises','Only giving charity to the poor'],
+   correct:2},
+  {q:'According to 2:173, what is forbidden as food?',
+   opts:['All meat except fish','Dead animals, blood, pork, and animals slaughtered in other than Allah\'s name','Meat that is not slaughtered by a Muslim','All animals with claws'],
+   correct:1},
+  {q:'The verse of Qisas (2:178-179) sets a law about equal retribution. What does Allah call this law?',
+   opts:['A punishment for the guilty','Life for you — so that you may have taqwa','A reminder to the believers only','A burden placed upon you'],
+   correct:1},
 ];
 
 // L13 (old L9): Match — Al-Birr & Ramadan (2:177+183)
@@ -311,15 +329,172 @@ const L13_ZONES = [
   {id:'z5', desc:'Prescribed for you as it was for those before you — so you may develop taqwa (2:183)'},
 ];
 
-// L16 (old L10): FIB — Battle & Light (2:253-260) — stub for now
-const L16_FIB = [
-  {verse:'تِلْكَ الرُّسُلُ فَضَّلْنَا بَعْضَهُمْ عَلَىٰ _____',
-   opts:['بَعْضٍ','النَّاسِ','الْأَنبِيَاءِ','الْخَلْقِ'], correct:0, ref:'2:253', translation:'Those messengers — We favoured some over others'},
-  {verse:'لَا إِكْرَاهَ فِي _____',
-   opts:['الدِّينِ','الْإِسْلَامِ','الْعِبَادَةِ','الْحَيَاةِ'], correct:0, ref:'2:256', translation:'There is no compulsion in religion'},
-  {verse:'اللَّهُ وَلِيُّ الَّذِينَ آمَنُوا يُخْرِجُهُم مِّنَ الظُّلُمَاتِ إِلَى _____',
-   opts:['النُّورِ','الْهُدَىٰ','الْجَنَّةِ','الْإِيمَانِ'], correct:0, ref:'2:257', translation:'Allah brings them out of darkness into light'},
+// L14: Quiz — True vs False (2:204-218) — NEW
+const L14_QUIZ = [
+  {q:'In 2:204, what is the "impressive talker" actually like inside?',
+   opts:['He is sincere but speaks too much','His words are beautiful but he spreads corruption and destroys crops and lives','He is a great leader who makes mistakes','He simply disagrees with the Prophet ﷺ'],
+   correct:1},
+  {q:'In contrast to the impressive talker, what does 2:207 say about the sincere believer?',
+   opts:['He stays silent and never speaks','He sells himself (his soul) seeking Allah\'s pleasure — and Allah is kind to His servants','He leaves his family behind for worship','He gives all his money away immediately'],
+   correct:1},
+  {q:'In 2:208, Allah commands the believers: "Enter into Islam _____."',
+   opts:['gradually, one practice at a time','only in its key pillars','completely (silm = whole/peace) — do not follow the footsteps of Shaytan','only during Ramadan and Hajj'],
+   correct:2},
+  {q:'What does Allah say in 2:216 about fighting (jihad) being prescribed?',
+   opts:['It is easy and beloved by the believers','You may dislike it — but it may be good for you. And you may love something that is bad for you. Allah knows, you do not.','It is only for those who are strong','It is optional for those with fear'],
+   correct:1},
+  {q:'When the companions asked about wine and gambling (2:219), what was Allah\'s balanced response?',
+   opts:['Both are completely forbidden — do not discuss them','In both is great sin AND some benefit for people — but the sin is greater than the benefit','They are allowed in moderation','They are forbidden only during prayer times'],
+   correct:1},
 ];
+
+// L15: Match — Social Justice (2:219-242) — NEW
+const L15_ITEMS = [
+  {id:'s1', text:'الْخَمْرُ وَالْمَيْسِرُ\nWine & Gambling', zone:'z1'},
+  {id:'s2', text:'أَمْوَالَ الْيَتَامَىٰ\nOrphan Wealth',   zone:'z2'},
+  {id:'s3', text:'الطَّلَاقُ\nDivorce',                    zone:'z3'},
+  {id:'s4', text:'الرَّضَاعَة\nBreastfeeding',              zone:'z4'},
+  {id:'s5', text:'نِكَاحُ الْمُشْرِكِينَ\nMarrying Idolaters', zone:'z5'},
+];
+const L15_ZONES = [
+  {id:'z1', desc:'Great sin AND some benefit — but the sin outweighs the benefit. Eventually fully forbidden (2:219)'},
+  {id:'z2', desc:'"Keep separate and manage it well for them" — mixing their wealth with yours is a trust violation (2:220)'},
+  {id:'z3', desc:'Two chances to reconcile, then final — women retain all their rights; let her go with kindness (2:229-232)'},
+  {id:'z4', desc:'Two full years for mothers who wish to complete it — the father provides their food and clothing (2:233)'},
+  {id:'z5', desc:'A believing slave is better than an idolater — do not marry those who associate partners with Allah (2:221)'},
+];
+
+// L16: Quiz — The Small Army (2:243-252) — NEW
+const L16_QUIZ = [
+  {q:"Bani Isra'il asked their Prophet for a king to lead them in battle. Allah chose Talut. Why did the people object?",
+   opts:['He was too old and weak','He was not wealthy or from a noble family','He did not know how to fight','He had not memorized the Torah'],
+   correct:1},
+  {q:"How did Talut TEST his army at the river? (2:249)",
+   opts:['He made them fight each other first','He told them not to drink from the river — except one handful','He told them to carry heavy loads','He asked them to fast for three days'],
+   correct:1},
+  {q:"What did the small faithful band of soldiers say when they saw Jalut's massive army? (2:250)",
+   opts:['"We cannot fight them today — we are too few"','"Our Lord! Pour patience upon us, plant our feet firmly, and help us against the disbelievers"','"Should we retreat and gather more soldiers?"','"Let us negotiate a peace first"'],
+   correct:1},
+  {q:"How many small groups have overcome large ones by Allah's permission? (2:249)",
+   opts:['Only three times in history','None — numbers always matter','Many times — and Allah is with the patient','Only when Prophets led the army'],
+   correct:2},
+  {q:"After Dawud killed Jalut, what did Allah give him? (2:251)",
+   opts:['Only wealth and land','Kingship and wisdom and knowledge of whatever He willed','The power of prophecy only','Protection from all future enemies'],
+   correct:1},
+];
+
+// L17: WBW — Juz 2 Key Words (2:142-252)
+const WBW_DATA_JUZ2 = [
+  {ar:'الْقِبْلَةَ',     en:'the direction of prayer',   root:'ق ب ل'},
+  {ar:'الْمَسْجِدِ الْحَرَامِ', en:'the Sacred Mosque',  root:'ح ر م'},
+  {ar:'الصَّبْرُ',       en:'patience / endurance',       root:'ص ب ر'},
+  {ar:'إِنَّا لِلَّهِ',  en:'Indeed to Allah we belong',  root:'—'},
+  {ar:'الصِّرَاطَ الْمُسْتَقِيمَ', en:'the straight path', root:'ص ر ط'},
+  {ar:'الصَّفَا وَالْمَرْوَةَ', en:'Safa and Marwa',     root:'—'},
+  {ar:'الْبِرَّ',         en:'true righteousness (Al-Birr)', root:'ب ر ر'},
+  {ar:'الزَّكَاةَ',       en:'the obligatory charity',    root:'ز ك و'},
+  {ar:'يُوفُونَ',         en:'they fulfil (their promises)', root:'و ف ي'},
+  {ar:'الصِّيَامُ',       en:'fasting',                   root:'ص و م'},
+  {ar:'شَهْرُ رَمَضَانَ', en:'the month of Ramadan',      root:'ر م ض'},
+  {ar:'فَإِنِّي قَرِيبٌ', en:'I am near',                 root:'ق ر ب'},
+  {ar:'الطَّلَاقُ',       en:'divorce',                   root:'ط ل ق'},
+  {ar:'الرَّضَاعَةَ',     en:'breastfeeding',              root:'ر ض ع'},
+  {ar:'الْخَمْرَ',        en:'wine / intoxicants',         root:'خ م ر'},
+  {ar:'الْمَيْسِرَ',      en:'gambling / games of chance', root:'ي س ر'},
+  {ar:'الْيَتَامَىٰ',     en:'the orphans',                root:'ي ت م'},
+  {ar:'النِّكَاحَ',       en:'marriage',                  root:'ن ك ح'},
+  {ar:'طَلُوتَ',          en:'Talut (Saul)',               root:'—'},
+  {ar:'جَالُوتَ',         en:'Jalut (Goliath)',            root:'—'},
+  {ar:'دَاوُودَ',         en:'Dawud (David)',              root:'—'},
+  {ar:'الصَّابِرِينَ',    en:'the patient ones',           root:'ص ب ر'},
+  {ar:'الْمُلْكَ',        en:'kingship / sovereignty',     root:'م ل ك'},
+  {ar:'الْحِكْمَةَ',      en:'wisdom',                    root:'ح ك م'},
+  {ar:'السَّلَامُ',       en:'peace / wholeness',          root:'س ل م'},
+  {ar:'كُرْسِيُّهُ',      en:'His footstool / Kursi',     root:'ك ر س'},
+  {ar:'الرَّحْمَٰنُ',     en:'the Most Merciful',          root:'ر ح م'},
+  {ar:'الرَّحِيمُ',       en:'the Especially Merciful',   root:'ر ح م'},
+  {ar:'سَمِعْنَا وَأَطَعْنَا', en:'we hear and we obey',  root:'—'},
+  {ar:'تَقْوَى',          en:'God-consciousness',          root:'و ق ي'},
+];
+
+/* ════════════════════════════════════════════════
+   JUZ 3 — GAME DATA  (Levels 18-23)
+   ════════════════════════════════════════════════ */
+
+// L18: Quiz — No Compulsion (2:253-260) — NEW
+const L18_QUIZ = [
+  {q:'In 2:253, Allah says He favoured some messengers over others. What is one example?',
+   opts:['Some were given more wealth','Allah spoke directly to Musa, and raised Isa with clear signs','Some Prophets were taller','Some Prophets lived longer lives'],
+   correct:1},
+  {q:'What does "Lā ikrāha fī al-dīn" (2:256) mean?',
+   opts:['There is no difficulty in religion','Religion is not a burden','There is no compulsion in religion — truth is clear from error','Belief cannot be forced upon the heart'],
+   correct:2},
+  {q:'In 2:257, what is the contrast between the way of the believers and the way of the disbelievers?',
+   opts:['Believers are always successful; disbelievers always fail','Allah takes believers from darkness to light; for disbelievers, the Taghut leads them from light to darkness','Believers are poor; disbelievers are rich','Believers pray; disbelievers refuse to pray'],
+   correct:1},
+  {q:'In 2:258, a king argued with Ibrahim about his Lord. What was Ibrahim\'s argument?',
+   opts:['"My Lord created the heavens and the earth"','"My Lord gives life and causes death — and He makes the sun rise from the east; can you make it rise from the west?"','He simply said "There is no god but Allah"','He showed the king a miracle immediately'],
+   correct:1},
+  {q:'In 2:260, Ibrahim asked Allah: "Show me how You give life to the dead." What did Allah tell him to do?',
+   opts:['Wait patiently and it would be revealed','Take four birds, cut them, place their parts on separate hills, then call them — they came flying back','Visit a graveyard and make du\'a','Fast for forty days and he would see'],
+   correct:1},
+];
+
+// L21: FIB — Riba & Debt (2:275-283) — NEW
+const L21_FIB = [
+  {verse:'وَأَحَلَّ اللَّهُ _____ وَحَرَّمَ الرِّبَا',
+   opts:['الْبَيْعَ','الصَّدَقَةَ','الزَّكَاةَ','الْقَرْضَ'], correct:0,
+   ref:'2:275', translation:'Allah has permitted trade and forbidden interest (riba)'},
+  {verse:'يَمْحَقُ اللَّهُ الرِّبَا وَيُرْبِي _____',
+   opts:['الصَّدَقَاتِ','الْأَمْوَالَ','الْخَيْرَاتِ','الْبَرَكَاتِ'], correct:0,
+   ref:'2:276', translation:'Allah destroys interest and grows charities'},
+  {verse:'وَإِن كَانَ ذُو عُسْرَةٍ فَنَظِرَةٌ إِلَىٰ _____',
+   opts:['مَيْسَرَةٍ','وَقْتٍ مَعْلُومٍ','يَوْمِ الْقِيَامَةِ','أَجَلٍ مُسَمًّى'], correct:0,
+   ref:'2:280', translation:'If the debtor is in hardship, give him time until it is easy for him'},
+  {verse:'يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا تَدَايَنتُم بِدَيْنٍ إِلَىٰ أَجَلٍ مُّسَمًّى _____',
+   opts:['فَاكْتُبُوهُ','فَاشْهَدُوا','فَأَوْفُوهُ','فَاحْفَظُوهُ'], correct:0,
+   ref:'2:282', translation:'When you contract a debt for a specified term, write it down'},
+  {verse:'وَإِن تَتُوبُوا فَلَكُمْ رُءُوسُ أَمْوَالِكُمْ لَا تَظْلِمُونَ _____',
+   opts:['وَلَا تُظْلَمُونَ','وَلَا تُسْرِفُونَ','وَلَا تَكْذِبُونَ','وَلَا تَجْهَلُونَ'], correct:0,
+   ref:'2:279', translation:'If you repent, you may have your principal — neither wronging nor being wronged'},
+];
+
+// L23: WBW — Juz 3 Key Words (2:253-286)
+const WBW_DATA_JUZ3 = [
+  {ar:'لَا إِكْرَاهَ',    en:'no compulsion',              root:'ك ر ه'},
+  {ar:'الطَّاغُوتَ',      en:'false gods / Taghut',        root:'ط غ و'},
+  {ar:'الظُّلُمَاتِ',     en:'the darknesses',             root:'ظ ل م'},
+  {ar:'النُّورِ',          en:'the light',                  root:'ن و ر'},
+  {ar:'الْوَلِيُّ',        en:'the Protector / Guardian',  root:'و ل ي'},
+  {ar:'الرِّبَا',          en:'interest / usury',           root:'ر ب و'},
+  {ar:'الْبَيْعَ',         en:'trade / sale',               root:'ب ي ع'},
+  {ar:'الصَّدَقَاتِ',      en:'charities',                  root:'ص د ق'},
+  {ar:'الدَّيْنَ',         en:'the debt',                   root:'د ي ن'},
+  {ar:'فَاكْتُبُوهُ',     en:'then write it down',         root:'ك ت ب'},
+  {ar:'الشَّهِيدَ',        en:'the witness',                root:'ش ه د'},
+  {ar:'تُظْلَمُونَ',       en:'you are wronged',           root:'ظ ل م'},
+  {ar:'الْكُرْسِيُّ',      en:'the Footstool (of Allah)',  root:'ك ر س'},
+  {ar:'الْعَلِيُّ',        en:'the Most High',              root:'ع ل و'},
+  {ar:'الْعَظِيمُ',        en:'the Most Great',             root:'ع ظ م'},
+  {ar:'السَّبِيلِ',        en:'the path / way',             root:'س ب ل'},
+  {ar:'الْأَمَانَةَ',      en:'the trust / covenant',       root:'أ م ن'},
+  {ar:'غُفْرَانَكَ',       en:'Your forgiveness',           root:'غ ف ر'},
+  {ar:'الْمَصِيرُ',        en:'the final destination',      root:'ص ي ر'},
+  {ar:'لَا يُكَلِّفُ',     en:'He does not burden',         root:'ك ل ف'},
+  {ar:'وُسْعَهَا',         en:'its capacity',               root:'و س ع'},
+  {ar:'نَسِينَا',          en:'we forgot',                  root:'ن س ي'},
+  {ar:'أَخْطَأْنَا',       en:'we erred / made a mistake', root:'خ ط أ'},
+  {ar:'إِصْرًا',           en:'a heavy burden',             root:'أ ص ر'},
+  {ar:'آمَنَّا',           en:'we believed',                root:'أ م ن'},
+  {ar:'سَمِعْنَا',         en:'we heard',                   root:'س م ع'},
+  {ar:'أَطَعْنَا',         en:'we obeyed',                  root:'ط و ع'},
+  {ar:'رُسُلِهِ',          en:'His messengers',             root:'ر س ل'},
+  {ar:'وَانصُرْنَا',       en:'and grant us victory',       root:'ن ص ر'},
+  {ar:'الْكَافِرِينَ',     en:'the disbelievers',           root:'ك ف ر'},
+];
+
+// L16 old FIB content REMOVED — those verses (2:253-256) belong to L18
+// L16 now uses L16_QUIZ above (Talut/Dawud)
 
 // L19 (old L11): Match — Ayat al-Kursi (2:255)
 const L19_ITEMS = [
@@ -389,16 +564,28 @@ function renderSection8Game()  { renderQuiz(8, L8_QUIZ); }
 function checkSection8()       { checkQuiz(8, L8_QUIZ); }
 window.registerMatch(9, L9_ITEMS, L9_ZONES);
 
-// Juz 2 & 3 (wired to preserved data where available)
+// Juz 2 (fully wired)
 function renderSection11Game() { renderQuiz(11, L11_QUIZ); }
 function checkSection11()      { checkQuiz(11, L11_QUIZ); }
+function renderSection12Game() { renderQuiz(12, L12_QUIZ); }
+function checkSection12()      { checkQuiz(12, L12_QUIZ); }
 window.registerMatch(13, L13_ITEMS, L13_ZONES);
-window.registerFillBlank(16, L16_FIB);
+function renderSection14Game() { renderQuiz(14, L14_QUIZ); }
+function checkSection14()      { checkQuiz(14, L14_QUIZ); }
+window.registerMatch(15, L15_ITEMS, L15_ZONES);
+function renderSection16Game() { renderQuiz(16, L16_QUIZ); }
+function checkSection16()      { checkQuiz(16, L16_QUIZ); }
+window.setupWBWLevel(WBW_DATA_JUZ2, 17);
+
+// Juz 3 (fully wired)
+function renderSection18Game() { renderQuiz(18, L18_QUIZ); }
+function checkSection18()      { checkQuiz(18, L18_QUIZ); }
 window.registerMatch(19, L19_ITEMS, L19_ZONES);
 function renderSection20Game() { renderQuiz(20, L20_QUIZ); }
 function checkSection20()      { checkQuiz(20, L20_QUIZ); }
-function renderSection22Game() { renderDragDrop(22, L22_ITEMS, L22_ZONES); }
-function checkSection22()      { checkDragDrop(22, L22_ZONES); }
+window.registerFillBlank(21, L21_FIB);
+window.registerMatch(22, L22_ITEMS, L22_ZONES);
+window.setupWBWLevel(WBW_DATA_JUZ3, 23);
 
 // WBW
 window.setupWBWLevel(WBW_DATA, 10);

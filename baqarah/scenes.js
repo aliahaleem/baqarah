@@ -258,13 +258,13 @@ function bookSpr() {
 }
 
 // ---- VERSE DATA ----
-
+// pop ups for each scene upon click
 const VERSES = {
   believer_prayer: {
     ref: 'Al-Baqarah 2:3',
     arabic: 'وَيُقِيمُونَ ٱلصَّلَوٰةَ',
     english: '"...and establish prayer..."',
-    note: 'The Muttaqeen truly maintain their salah — their direct line to Allah, five times every day.',
+    note: 'The Muttaqeen truly maintain their salah; their direct line to Allah, 5X daily!',
   },
   believer_charity: {
     ref: 'Al-Baqarah 2:3',
@@ -511,6 +511,60 @@ const VERSES = {
     arabic: 'بَدِيعُ السَّمَاوَاتِ وَالْأَرْضِ ۖ وَإِذَا قَضَىٰ أَمْرًا فَإِنَّمَا يَقُولُ لَهُ كُن فَيَكُونُ',
     english: '"He is the Originator of the heavens and the earth. When He decrees a matter, He only says to it: Be! — and it is."',
     note: 'This refutes the claim that Allah "took a son." He does not need offspring or helpers. He creates by command alone. The entire universe obeyed a single word: Kun.',
+  },
+  qisas: {
+    ref: 'Al-Baqarah 2:179',
+    arabic: 'وَلَكُمْ فِي الْقِصَاصِ حَيَاةٌ يَا أُولِي الْأَلْبَابِ لَعَلَّكُمْ تَتَّقُونَ',
+    english: '"And there is life for you in legal retribution (Qisas), O people of understanding, so that you may become conscious of Allah."',
+    note: 'The law of Qisas (equal retribution) is not just about punishment — it is about saving lives. When people know that unjust killing has consequences, violence decreases. Justice protects everyone.',
+  },
+  no_compulsion: {
+    ref: 'Al-Baqarah 2:256',
+    arabic: 'لَا إِكْرَاهَ فِي الدِّينِ ۖ قَد تَّبَيَّنَ الرُّشْدُ مِنَ الْغَيِّ',
+    english: '"There is no compulsion in religion. Truth has been made clear from error. Whoever rejects false gods and believes in Allah has grasped the most trustworthy handhold, that never breaks. And Allah is All-Hearing, All-Knowing."',
+    note: 'Faith cannot be forced. The Quran was presented to all of humanity — its truth is clear and its challenge stands. Each soul chooses its own path. But the one who grasps the truth has held the unbreakable handhold.',
+  },
+  light_darkness: {
+    ref: 'Al-Baqarah 2:257',
+    arabic: 'اللَّهُ وَلِيُّ الَّذِينَ آمَنُوا يُخْرِجُهُم مِّنَ الظُّلُمَاتِ إِلَى النُّورِ',
+    english: '"Allah is the Protector of those who believe — He brings them out of darknesses into the light. But those who disbelieve — their protectors are false gods who take them out of the light into darknesses."',
+    note: 'Guidance is movement: from many darknesses (plural) to a single light. Note the singular light — there is only one truth. But there are many paths of darkness. Allah\'s wilaayah (guardianship) is the one exit.',
+  },
+  riba_forbidden: {
+    ref: 'Al-Baqarah 2:275-276',
+    arabic: 'وَأَحَلَّ اللَّهُ الْبَيْعَ وَحَرَّمَ الرِّبَا ۚ يَمْحَقُ اللَّهُ الرِّبَا وَيُرْبِي الصَّدَقَاتِ',
+    english: '"Allah has permitted trade and forbidden interest. Allah destroys interest and gives growth to charities."',
+    note: 'The word Riba means "increase" — taking more than you gave. Trade is different: both parties agree and benefit. Riba exploits the desperate. Allah destroys its blessing. Charity does the opposite — it multiplies in this life and the next.',
+  },
+  debt_record: {
+    ref: 'Al-Baqarah 2:282',
+    arabic: 'يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا تَدَايَنتُم بِدَيْنٍ إِلَىٰ أَجَلٍ مُّسَمًّى فَاكْتُبُوهُ',
+    english: '"O believers! When you contract a debt for a specified term, write it down..."',
+    note: 'This is the longest verse in the Quran (Āyat al-Mudāyanah). It protects both parties. Writing removes doubt, prevents disputes, and ensures justice. Islam\'s approach to finance is built on transparency and documentation.',
+  },
+  ibrahim_birds: {
+    ref: 'Al-Baqarah 2:260',
+    arabic: 'وَإِذْ قَالَ إِبْرَاهِيمُ رَبِّ أَرِنِي كَيْفَ تُحْيِي الْمَوْتَىٰ',
+    english: '"And when Ibrahim said: My Lord! Show me how You give life to the dead. He said: Do you not believe? He said: Yes! But so my heart may be satisfied. He said: Take four birds, then incline them toward you, then place a part of them on each hill — then call them and they will come flying to you swiftly."',
+    note: 'Ibrahim was not doubting — he was asking to see with his eyes what he already knew with his heart. Allah gave him a personal miracle. This is the intimacy of the friend of Allah — He grants their deepest requests.',
+  },
+  wine_gambling: {
+    ref: 'Al-Baqarah 2:219',
+    arabic: 'يَسْأَلُونَكَ عَنِ الْخَمْرِ وَالْمَيْسِرِ ۖ قُلْ فِيهِمَا إِثْمٌ كَبِيرٌ وَمَنَافِعُ لِلنَّاسِ وَإِثْمُهُمَا أَكْبَرُ مِن نَّفْعِهِمَا',
+    english: '"They ask you about wine and gambling. Say: In both there is great sin and some benefit for people, but their sin is greater than their benefit."',
+    note: 'The Quran\'s method of forbidding wine was gradual. First acknowledging the benefit — then showing the harm outweighs it. This verse was step one. The complete prohibition came later. Allah knows how to guide hearts — step by step.',
+  },
+  orphan_wealth: {
+    ref: 'Al-Baqarah 2:220',
+    arabic: 'وَيَسْأَلُونَكَ عَنِ الْيَتَامَىٰ ۖ قُلْ إِصْلَاحٌ لَّهُمْ خَيْرٌ',
+    english: '"They ask you about orphans. Say: Improvement for them is best. And if you intermix your affairs with theirs — they are your brothers. And Allah knows the corrupter from the reformer."',
+    note: 'The companions asked about orphan wealth — were they allowed to mix their food with the orphans\' food? Allah\'s answer is gracious: what matters is your intention. If you genuinely care for them, managing their affairs with yours is fine. Allah sees the heart.',
+  },
+  believing_marriage: {
+    ref: 'Al-Baqarah 2:221',
+    arabic: 'وَلَا تَنكِحُوا الْمُشْرِكَاتِ حَتَّىٰ يُؤْمِنَّ ۚ وَلَأَمَةٌ مُّؤْمِنَةٌ خَيْرٌ مِّن مُّشْرِكَةٍ',
+    english: '"Do not marry polytheist women until they believe. A believing slave woman is better than a polytheist woman, even though she might please you."',
+    note: 'The foundation of a Muslim household is shared belief. A marriage without shared deen faces the most fundamental incompatibility — who do we turn to in hardship? Who do we raise our children to worship? Deen first.',
   },
 };
 
@@ -2628,6 +2682,338 @@ class SceneRefuted extends BaseScene {
 }
 
 // ====================================================
+//  SCENE 12 (Level 12) — THE COMPLETE WAY (2:158-177)
+//  Safa & Marwa, halal food, Al-Birr
+// ====================================================
+
+class SceneCompleteWay extends BaseScene {
+  constructor() {
+    super('canvas-12');
+    if (!this.canvas) return;
+    this.pilY = GY - 55;
+    this.pilDir = 1;
+    this.pilX = 80;
+    this.clickZones = [
+      { x: 0,   y: 0,  w: 230, h: 200, key: 'al_birr' },
+      { x: 260, y: 0,  w: 200, h: 200, key: 'ramadan_verse' },
+      { x: 500, y: 0,  w: 200, h: 200, key: 'inna_lillahi' },
+    ];
+  }
+
+  draw() {
+    const ctx = this.ctx, p = sceneP();
+    fillRect(ctx, 0, 0, CW, CH, '#2a1a0a');
+    this.stars(18);
+
+    // Hill A (Safa)
+    ctx.fillStyle = '#8a6a3a';
+    ctx.beginPath(); ctx.moveTo(0, GY); ctx.quadraticCurveTo(110, GY - 70, 220, GY); ctx.fill();
+    ctx.fillStyle = p.label; ctx.font = '7px "Press Start 2P", monospace';
+    ctx.fillText('الصَّفَا', 80, GY - 55);
+
+    // Hill B (Marwa)
+    ctx.fillStyle = '#7a5a30';
+    ctx.beginPath(); ctx.moveTo(CW - 220, GY); ctx.quadraticCurveTo(CW - 110, GY - 70, CW, GY); ctx.fill();
+    ctx.fillStyle = p.label;
+    ctx.fillText('الْمَرْوَة', CW - 160, GY - 55);
+
+    // Pilgrim walking between hills
+    this.pilX += this.pilDir * 0.8;
+    if (this.pilX > CW - 80) this.pilDir = -1;
+    if (this.pilX < 80) this.pilDir = 1;
+    var lp = Math.floor(this.t / 10) % 2;
+    var pl = human('#ffffff', '#3a3a3a', SKIN);
+    pl[6] = lp === 0 ? [0,7,2,6,'#3a3a3a'] : [0,8,2,4,'#3a3a3a'];
+    pl[7] = lp === 0 ? [3,8,2,4,'#3a3a3a'] : [3,7,2,6,'#3a3a3a'];
+    spr(ctx, Math.round(this.pilX), this.pilY, pl);
+
+    // Ground
+    fillRect(ctx, 0, GY, CW, CH - GY, '#4a3a1a');
+
+    // Path line
+    ctx.strokeStyle = 'rgba(255,215,0,0.4)'; ctx.lineWidth = 2; ctx.setLineDash([8,6]);
+    ctx.beginPath(); ctx.moveTo(220, GY - 3); ctx.lineTo(CW - 220, GY - 3); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Labels
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 2, 2, 230, 16);
+    ctx.fillStyle = p.label; ctx.font = '7px "Press Start 2P", monospace';
+    ctx.fillText('👆 CLICK: Al-Birr (2:177)', 6, 13);
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 245, 2, 215, 16);
+    ctx.fillStyle = p.label; ctx.fillText('👆 CLICK: Ramadan (2:183)', 249, 13);
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 490, 2, 200, 16);
+    ctx.fillStyle = p.label; ctx.fillText('👆 CLICK: Inna lillahi (2:156)', 494, 13);
+  }
+}
+
+// ====================================================
+//  SCENE 14 (Level 14) — TRUE vs FALSE (2:204-218)
+// ====================================================
+
+class SceneTrueFalse extends BaseScene {
+  constructor() {
+    super('canvas-14');
+    if (!this.canvas) return;
+    this.maskX = 90;
+    this.maskDir = 0.5;
+    this.clickZones = [
+      { x: 10,  y: 10, w: 310, h: 180, key: 'hypocrite_corrupt' },
+      { x: 380, y: 10, w: 300, h: 180, key: 'heart_sealed' },
+    ];
+  }
+
+  draw() {
+    const ctx = this.ctx, p = sceneP();
+    fillRect(ctx, 0, 0, CW, CH, '#1a0a0a');
+    this.stars(20);
+
+    // Left side: impressive talker (mask over dark inside)
+    this.maskX += this.maskDir;
+    if (this.maskX > 100) this.maskDir = -0.5;
+    if (this.maskX < 80)  this.maskDir = 0.5;
+    ctx.fillStyle = 'rgba(50,0,0,0.4)';
+    ctx.fillRect(20, 20, 290, 165);
+    spr(ctx, 40, GY - 65, human('#ffd700', '#2a2a2a', SKIN));
+    // Speech bubble over him
+    ctx.fillStyle = 'rgba(80,20,20,0.85)';
+    ctx.fillRect(90, 30, 160, 50);
+    ctx.fillStyle = '#ff8888'; ctx.font = '7px "Press Start 2P", monospace'; ctx.textAlign = 'center';
+    ctx.fillText('IMPRESSIVE', 170, 50);
+    ctx.fillText('WORDS...', 170, 64);
+    // Skull behind him
+    ctx.fillStyle = 'rgba(200,50,50,0.4)';
+    ctx.font = '40px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('💀', 75, GY - 30);
+    // Label
+    ctx.fillStyle = '#ff6666'; ctx.font = '7px "Press Start 2P", monospace'; ctx.textAlign = 'left';
+    ctx.fillText('THE TALKER', 90, GY - 72);
+
+    // Divider
+    ctx.strokeStyle = p.label; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(330, 10); ctx.lineTo(330, CH - 10); ctx.stroke();
+    ctx.fillStyle = p.label; ctx.font = '9px "Press Start 2P", monospace'; ctx.textAlign = 'center';
+    ctx.fillText('VS', 330, CH / 2 + 4);
+
+    // Right side: sincere believer
+    ctx.fillStyle = 'rgba(0,50,0,0.3)';
+    ctx.fillRect(350, 20, 290, 165);
+    spr(ctx, 470, GY - 65, human('#3a6b3a', '#1a3a6e'));
+    var glow = ctx.createRadialGradient(505, GY - 40, 5, 505, GY - 40, 50);
+    glow.addColorStop(0, 'rgba(100,255,100,0.3)');
+    glow.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = glow; ctx.fillRect(440, GY - 95, 140, 110);
+    ctx.fillStyle = '#88ff88'; ctx.font = '7px "Press Start 2P", monospace'; ctx.textAlign = 'left';
+    ctx.fillText('SELLS SOUL FOR ALLAH', 360, GY - 72);
+
+    fillRect(ctx, 0, GY, CW, CH - GY, '#1a1a2a');
+    ctx.textAlign = 'left';
+  }
+}
+
+// ====================================================
+//  SCENE 15 (Level 15) — SOCIAL JUSTICE (2:219-242)
+// ====================================================
+
+class SceneSocialJustice extends BaseScene {
+  constructor() {
+    super('canvas-15');
+    if (!this.canvas) return;
+    this.scaleAngle = 0;
+    this.clickZones = [
+      { x: 10,  y: 0,  w: 200, h: 200, key: 'wine_gambling' },
+      { x: 240, y: 0,  w: 230, h: 200, key: 'orphan_wealth' },
+      { x: 500, y: 0,  w: 200, h: 200, key: 'believing_marriage' },
+    ];
+  }
+
+  draw() {
+    const ctx = this.ctx, p = sceneP();
+    fillRect(ctx, 0, 0, CW, CH, '#1a1a2a');
+    this.stars(22);
+
+    this.scaleAngle += 0.02;
+    var tilt = Math.sin(this.scaleAngle) * 12;
+
+    // Scale / balance
+    var cx = CW / 2, cy = 80;
+    ctx.strokeStyle = '#c8a820'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(cx, cy - 30); ctx.lineTo(cx, cy + 20); ctx.stroke();
+    ctx.beginPath();
+    ctx.save(); ctx.translate(cx, cy);
+    ctx.rotate(tilt * Math.PI / 180);
+    ctx.moveTo(-120, 0); ctx.lineTo(120, 0); ctx.stroke();
+    // Left pan
+    ctx.fillStyle = '#8a6a2a';
+    ctx.fillRect(-130, 10, 40, 20);
+    ctx.fillStyle = p.label; ctx.font = '6px "Press Start 2P", monospace'; ctx.textAlign = 'center';
+    ctx.fillText('WINE', -110, 23);
+    // Right pan
+    ctx.fillStyle = '#3a6a3a';
+    ctx.fillRect(90, -18, 40, 20);
+    ctx.fillStyle = '#aaffaa';
+    ctx.fillText('CHARITY', 110, -5);
+    ctx.restore();
+
+    // Three figures below representing social categories
+    var figY = GY - 60;
+    spr(ctx, 80, figY, human('#5a3a1a', '#2a2a2a', SKIN2));
+    ctx.fillStyle = '#ffcc88'; ctx.font = '6px "Press Start 2P", monospace'; ctx.textAlign = 'center';
+    ctx.fillText('ORPHAN', 103, figY - 8);
+    spr(ctx, CW/2 - 20, figY, human('#3a6b3a', '#1a3a1a'));
+    ctx.fillStyle = '#88ff88';
+    ctx.fillText('FAMILY', CW/2 + 3, figY - 8);
+    spr(ctx, CW - 130, figY, human('#5a2a5a', '#2a2a3a', SKIN));
+    ctx.fillStyle = '#cc88ff';
+    ctx.fillText('DIVORCED', CW - 107, figY - 8);
+
+    fillRect(ctx, 0, GY, CW, CH - GY, '#1a2a1a');
+    ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 2, 2, 190, 16);
+    ctx.fillStyle = p.label; ctx.font = '7px "Press Start 2P", monospace';
+    ctx.fillText('👆 CLICK: Wine & Sin (2:219)', 6, 13);
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 230, 2, 235, 16);
+    ctx.fillStyle = p.label; ctx.fillText('👆 CLICK: Orphans (2:220)', 234, 13);
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 490, 2, 200, 16);
+    ctx.fillStyle = p.label; ctx.fillText('👆 CLICK: Marriage (2:221)', 494, 13);
+  }
+}
+
+// ====================================================
+//  SCENE 18 (Level 18) — NO COMPULSION (2:253-260)
+//  Light vs Darkness
+// ====================================================
+
+class SceneNoCompulsion extends BaseScene {
+  constructor() {
+    super('canvas-18');
+    if (!this.canvas) return;
+    this.lightPhase = 0;
+    this.clickZones = [
+      { x: 10,  y: 10, w: 290, h: 180, key: 'no_compulsion' },
+      { x: 380, y: 10, w: 300, h: 180, key: 'light_darkness' },
+    ];
+  }
+
+  draw() {
+    const ctx = this.ctx, p = sceneP();
+    this.lightPhase += 0.03;
+
+    // Split scene: dark left / light right
+    var split = CW / 2;
+    fillRect(ctx, 0, 0, split, CH, '#04060e');
+    fillRect(ctx, split, 0, CW - split, CH, '#0a2a10');
+    this.stars(25);
+
+    // Dark side — Taghut figure
+    ctx.fillStyle = '#222233';
+    spr(ctx, 80, GY - 65, iblisSpr());
+    ctx.fillStyle = '#8888aa'; ctx.font = '7px "Press Start 2P", monospace';
+    ctx.fillText('TAGHUT', 75, GY - 75);
+    ctx.fillStyle = '#6666aa'; ctx.font = '7px "Press Start 2P", monospace'; ctx.textAlign = 'center';
+    ctx.fillText('Darkness', 110, CH - 25);
+    ctx.fillText('→ Darkness', 110, CH - 12);
+
+    // Divider flash
+    var alpha = 0.3 + 0.2 * Math.sin(this.lightPhase * 2);
+    ctx.fillStyle = `rgba(255,255,200,${alpha})`;
+    ctx.fillRect(split - 2, 0, 4, CH);
+
+    // Light side — believer with glow
+    var grd = ctx.createRadialGradient(split + 140, GY - 40, 10, split + 140, GY - 40, 100);
+    grd.addColorStop(0, 'rgba(100,255,100,0.25)');
+    grd.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = grd; ctx.fillRect(split, 0, CW - split, CH);
+    spr(ctx, split + 110, GY - 65, human('#3a6b3a', '#1a3a6e'));
+    ctx.fillStyle = '#88ff88'; ctx.font = '7px "Press Start 2P", monospace'; ctx.textAlign = 'center';
+    ctx.fillText('BELIEVER', split + 135, GY - 75);
+    ctx.fillText('Darkness', split + 140, CH - 25);
+    ctx.fillText('→ Light ✨', split + 140, CH - 12);
+
+    // Center text
+    ctx.fillStyle = p.hint; ctx.font = 'bold 8px "Press Start 2P", monospace';
+    ctx.fillText('لَا إِكْرَاهَ فِي الدِّينِ', CW / 2, 22);
+    ctx.font = '6px "Press Start 2P", monospace';
+    ctx.fillText('NO COMPULSION IN RELIGION', CW / 2, 35);
+
+    fillRect(ctx, 0, GY, CW, CH - GY, '#0a100a');
+    ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 2, 2, 285, 16);
+    ctx.fillStyle = p.label; ctx.font = '7px "Press Start 2P", monospace';
+    ctx.fillText('👆 CLICK: No Compulsion (2:256)', 6, 13);
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 365, 2, 310, 16);
+    ctx.fillStyle = p.label; ctx.fillText('👆 CLICK: Light vs Darkness (2:257)', 369, 13);
+  }
+}
+
+// ====================================================
+//  SCENE 21 (Level 21) — RIBA & DEBT (2:275-283)
+// ====================================================
+
+class SceneRibaDebt extends BaseScene {
+  constructor() {
+    super('canvas-21');
+    if (!this.canvas) return;
+    this.coinY = -20;
+    this.scrollUnroll = 0;
+    this.clickZones = [
+      { x: 10,  y: 10, w: 290, h: 180, key: 'riba_forbidden' },
+      { x: 360, y: 10, w: 310, h: 180, key: 'debt_record' },
+    ];
+  }
+
+  draw() {
+    const ctx = this.ctx, p = sceneP();
+    fillRect(ctx, 0, 0, CW, CH, '#0e0e1a');
+    this.stars(15);
+
+    // Left: Riba — coin stack growing then being struck
+    if (this.coinY < GY - 80) this.coinY += 0.5;
+    for (var ci = 0; ci < 5; ci++) {
+      ctx.fillStyle = '#c8a820';
+      ctx.beginPath(); ctx.ellipse(120, this.coinY + ci * 12, 22, 8, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#e0c030';
+      ctx.beginPath(); ctx.ellipse(120, this.coinY + ci * 12 - 3, 22, 6, 0, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.fillStyle = '#ff4444'; ctx.font = '24px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('✕', 120, this.coinY - 15);
+    ctx.fillStyle = '#ff8888'; ctx.font = '7px "Press Start 2P", monospace';
+    ctx.fillText('RIBA DESTROYED', 120, GY - 85);
+
+    // Divider
+    ctx.strokeStyle = '#555'; ctx.lineWidth = 1; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(CW/2, 10); ctx.lineTo(CW/2, CH - 10); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Right: Scroll (debt contract)
+    if (this.scrollUnroll < 100) this.scrollUnroll += 0.4;
+    var sw = this.scrollUnroll;
+    ctx.fillStyle = '#e8d8a0';
+    ctx.fillRect(CW/2 + 50, 35, sw * 2, 110);
+    if (sw > 10) {
+      ctx.fillStyle = '#1a1a1a'; ctx.font = '6px sans-serif'; ctx.textAlign = 'left';
+      ctx.fillText('فَاكْتُبُوهُ', CW/2 + 58, 65);
+      ctx.fillText('Write it down', CW/2 + 58, 82);
+      ctx.fillText('2:282 — The longest verse', CW/2 + 58, 100);
+      ctx.fillText('in the Quran', CW/2 + 58, 117);
+    }
+    ctx.fillStyle = '#8a6a2a';
+    ctx.fillRect(CW/2 + 44, 28, 10, 124);
+    ctx.fillStyle = '#6a4a1a';
+    ctx.fillRect(CW/2 + 44 + sw * 2, 28, 10, 124);
+    ctx.fillStyle = '#88aaff'; ctx.font = '7px "Press Start 2P", monospace'; ctx.textAlign = 'center';
+    ctx.fillText('WRITE DEBTS DOWN', CW/2 + 50 + sw, GY - 82);
+
+    fillRect(ctx, 0, GY, CW, CH - GY, '#0a0a14');
+    ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 2, 2, 285, 16);
+    ctx.fillStyle = p.label; ctx.font = '7px "Press Start 2P", monospace';
+    ctx.fillText('👆 CLICK: Riba Forbidden (2:275)', 6, 13);
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; fillRect(ctx, 345, 2, 330, 16);
+    ctx.fillStyle = p.label; ctx.fillText('👆 CLICK: Write Debts (2:282)', 349, 13);
+  }
+}
+
+// ====================================================
 //  INIT & CONTROL
 // ====================================================
 
@@ -2642,10 +3028,15 @@ function initScenes() {
   scenes.s8  = new SceneRefuted();
   scenes.s9  = new Scene7();
   scenes.s11 = new Scene8();
+  scenes.s12 = new SceneCompleteWay();
   scenes.s13 = new Scene9();
+  scenes.s14 = new SceneTrueFalse();
+  scenes.s15 = new SceneSocialJustice();
   scenes.s16 = new Scene10();
+  scenes.s18 = new SceneNoCompulsion();
   scenes.s19 = new Scene11();
   scenes.s20 = new Scene12();
+  scenes.s21 = new SceneRibaDebt();
   scenes.s22 = new Scene13();
 }
 
